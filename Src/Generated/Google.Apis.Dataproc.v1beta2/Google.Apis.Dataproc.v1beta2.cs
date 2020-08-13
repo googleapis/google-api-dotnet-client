@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -7057,6 +7057,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
         public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; } 
 
+        /// <summary>Output only. List of references to Compute Engine instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceReferences")]
+        public virtual System.Collections.Generic.IList<InstanceReference> InstanceReferences { get; set; } 
+
         /// <summary>Output only. Specifies that this instance group contains preemptible instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPreemptible")]
         public virtual System.Nullable<bool> IsPreemptible { get; set; } 
@@ -7090,6 +7094,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// is PREEMPTIBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptibility")]
         public virtual string Preemptibility { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to a Compute Engine instance.</summary>
+    public class InstanceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; } 
+
+        /// <summary>The user-friendly name of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

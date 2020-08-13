@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200804 (2042)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -367,23 +367,16 @@ namespace Google.Apis.Docs.v1
         }
 
 
-        /// <summary>Applies one or more updates to the document.
-        ///
-        /// Each request is validated before being applied. If any request is not valid, then the entire request will
-        /// fail and nothing will be applied.
-        ///
-        /// Some requests have replies to give you some information about how they are applied. Other requests do not
-        /// need to return information; these each return an empty reply. The order of replies matches that of the
-        /// requests.
-        ///
-        /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
+        /// <summary>Applies one or more updates to the document. Each request is validated before being applied. If any
+        /// request is not valid, then the entire request will fail and nothing will be applied. Some requests have
+        /// replies to give you some information about how they are applied. Other requests do not need to return
+        /// information; these each return an empty reply. The order of replies matches that of the requests. For
+        /// example, suppose you call batchUpdate with four updates, and only the third one returns information. The
         /// response would have two empty replies, the reply to the third request, and another empty reply, in that
-        /// order.
-        ///
-        /// Because other users may be editing the document, the document might not exactly reflect your changes: your
-        /// changes may be altered with respect to collaborator changes. If there are no collaborators, the document
-        /// should reflect your changes. In any case, the updates in your request are guaranteed to be applied together
-        /// atomically.</summary>
+        /// order. Because other users may be editing the document, the document might not exactly reflect your changes:
+        /// your changes may be altered with respect to collaborator changes. If there are no collaborators, the
+        /// document should reflect your changes. In any case, the updates in your request are guaranteed to be applied
+        /// together atomically.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="documentId">The ID of the document to update.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Docs.v1.Data.BatchUpdateDocumentRequest body, string documentId)
@@ -391,23 +384,16 @@ namespace Google.Apis.Docs.v1
             return new BatchUpdateRequest(service, body, documentId);
         }
 
-        /// <summary>Applies one or more updates to the document.
-        ///
-        /// Each request is validated before being applied. If any request is not valid, then the entire request will
-        /// fail and nothing will be applied.
-        ///
-        /// Some requests have replies to give you some information about how they are applied. Other requests do not
-        /// need to return information; these each return an empty reply. The order of replies matches that of the
-        /// requests.
-        ///
-        /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
+        /// <summary>Applies one or more updates to the document. Each request is validated before being applied. If any
+        /// request is not valid, then the entire request will fail and nothing will be applied. Some requests have
+        /// replies to give you some information about how they are applied. Other requests do not need to return
+        /// information; these each return an empty reply. The order of replies matches that of the requests. For
+        /// example, suppose you call batchUpdate with four updates, and only the third one returns information. The
         /// response would have two empty replies, the reply to the third request, and another empty reply, in that
-        /// order.
-        ///
-        /// Because other users may be editing the document, the document might not exactly reflect your changes: your
-        /// changes may be altered with respect to collaborator changes. If there are no collaborators, the document
-        /// should reflect your changes. In any case, the updates in your request are guaranteed to be applied together
-        /// atomically.</summary>
+        /// order. Because other users may be editing the document, the document might not exactly reflect your changes:
+        /// your changes may be altered with respect to collaborator changes. If there are no collaborators, the
+        /// document should reflect your changes. In any case, the updates in your request are guaranteed to be applied
+        /// together atomically.</summary>
         public class BatchUpdateRequest : DocsBaseServiceRequest<Google.Apis.Docs.v1.Data.BatchUpdateDocumentResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -468,9 +454,7 @@ namespace Google.Apis.Docs.v1
         }
 
         /// <summary>Creates a blank document using the title given in the request. Other fields in the request,
-        /// including any provided content, are ignored.
-        ///
-        /// Returns the created document.</summary>
+        /// including any provided content, are ignored. Returns the created document.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Docs.v1.Data.Document body)
         {
@@ -478,9 +462,7 @@ namespace Google.Apis.Docs.v1
         }
 
         /// <summary>Creates a blank document using the title given in the request. Other fields in the request,
-        /// including any provided content, are ignored.
-        ///
-        /// Returns the created document.</summary>
+        /// including any provided content, are ignored. Returns the created document.</summary>
         public class CreateRequest : DocsBaseServiceRequest<Google.Apis.Docs.v1.Data.Document>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -560,12 +542,23 @@ namespace Google.Apis.Docs.v1
             /// used.</summary>
             public enum SuggestionsViewModeEnum
             {
+                /// <summary>The SuggestionsViewMode applied to the returned document depends on the user's current
+                /// access level. If the user only has view access, PREVIEW_WITHOUT_SUGGESTIONS is applied. Otherwise,
+                /// SUGGESTIONS_INLINE is applied. This is the default suggestions view mode.</summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT_FOR_CURRENT_ACCESS")]
                 DEFAULTFORCURRENTACCESS,
+                /// <summary>The returned document has suggestions inline. Suggested changes will be differentiated from
+                /// base content within the document. Requests to retrieve a document using this mode will return a 403
+                /// error if the user does not have permission to view suggested changes.</summary>
                 [Google.Apis.Util.StringValueAttribute("SUGGESTIONS_INLINE")]
                 SUGGESTIONSINLINE,
+                /// <summary>The returned document is a preview with all suggested changes accepted. Requests to
+                /// retrieve a document using this mode will return a 403 error if the user does not have permission to
+                /// view suggested changes.</summary>
                 [Google.Apis.Util.StringValueAttribute("PREVIEW_SUGGESTIONS_ACCEPTED")]
                 PREVIEWSUGGESTIONSACCEPTED,
+                /// <summary>The returned document is a preview with all suggested changes rejected if there are any
+                /// suggestions in the document.</summary>
                 [Google.Apis.Util.StringValueAttribute("PREVIEW_WITHOUT_SUGGESTIONS")]
                 PREVIEWWITHOUTSUGGESTIONS,
             }
@@ -709,14 +702,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The document body.
-    ///
-    /// The body typically contains the full document contents except for headers, footers and footnotes.</summary>
+    /// <summary>The document body. The body typically contains the full document contents except for headers, footers
+    /// and footnotes.</summary>
     public class Body : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contents of the body.
-        ///
-        /// The indexes for the body's content begin at zero.</summary>
+        /// <summary>The contents of the body. The indexes for the body's content begin at zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; } 
 
@@ -793,10 +783,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedTextStyle> SuggestedTextStyleChanges { get; set; } 
 
-        /// <summary>The text style of this ColumnBreak.
-        ///
-        /// Similar to text content, like text runs and footnote references, the text style of a column break can affect
-        /// content layout as well as the styling of text inserted adjacent to it.</summary>
+        /// <summary>The text style of this ColumnBreak. Similar to text content, like text runs and footnote
+        /// references, the text style of a column break can affect content layout as well as the styling of text
+        /// inserted adjacent to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
 
@@ -805,9 +794,8 @@ namespace Google.Apis.Docs.v1.Data
     }    
 
     /// <summary>Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if
-    /// specificed, otherwise it is applied to the DocumentStyle.
-    ///
-    /// If a footer of the specified type already exists, a 400 bad request error is returned.</summary>
+    /// specificed, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a
+    /// 400 bad request error is returned.</summary>
     public class CreateFooterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The location of the SectionBreak immediately preceding the section whose SectionStyle this footer
@@ -835,25 +823,21 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Footnote segment and inserts a new FootnoteReference to it at the given location.
-    ///
-    /// The new Footnote segment will contain a space followed by a newline character.</summary>
+    /// <summary>Creates a Footnote segment and inserts a new FootnoteReference to it at the given location. The new
+    /// Footnote segment will contain a space followed by a newline character.</summary>
     public class CreateFootnoteRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inserts the footnote reference at the end of the document body.
-        ///
-        /// Footnote references cannot be inserted inside a header, footer or footnote. Since footnote references can
-        /// only be inserted in the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts the footnote reference at the end of the document body. Footnote references cannot be
+        /// inserted inside a header, footer or footnote. Since footnote references can only be inserted in the body,
+        /// the segment ID field must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts the footnote reference at a specific index in the document.
-        ///
-        /// The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot
-        /// be inserted at a table's start index (i.e. between the table and its preceding paragraph).
-        ///
-        /// Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote
-        /// references can only be inserted in the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts the footnote reference at a specific index in the document. The footnote reference must be
+        /// inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start
+        /// index (i.e. between the table and its preceding paragraph). Footnote references cannot be inserted inside an
+        /// equation, header, footer or footnote. Since footnote references can only be inserted in the body, the
+        /// segment ID field must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
@@ -873,9 +857,8 @@ namespace Google.Apis.Docs.v1.Data
     }    
 
     /// <summary>Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if
-    /// specificed, otherwise it is applied to the DocumentStyle.
-    ///
-    /// If a header of the specified type already exists, a 400 bad request error is returned.</summary>
+    /// specificed, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a
+    /// 400 bad request error is returned.</summary>
     public class CreateHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The location of the SectionBreak which begins the section this header should belong to. If
@@ -906,9 +889,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Creates a NamedRange referencing the given range.</summary>
     public class CreateNamedRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the NamedRange. Names do not need to be unique.
-        ///
-        /// Names must be at least 1 character and no more than 256 characters, measured in UTF-16 code units.</summary>
+        /// <summary>The name of the NamedRange. Names do not need to be unique. Names must be at least 1 character and
+        /// no more than 256 characters, measured in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -931,14 +913,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates bullets for all of the paragraphs that overlap with the given range.
-    ///
-    /// The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To
-    /// avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this
-    /// request. This may change the indices of parts of the text.
-    ///
-    /// If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs
-    /// being updated are added to that preceding list.</summary>
+    /// <summary>Creates bullets for all of the paragraphs that overlap with the given range. The nesting level of each
+    /// paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between
+    /// the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the
+    /// indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a
+    /// matching preset, the paragraphs being updated are added to that preceding list.</summary>
     public class CreateParagraphBulletsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kinds of bullet glyphs to be used.</summary>
@@ -953,14 +932,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The crop properties of an image.
-    ///
-    /// The crop rectangle is represented using fractional offsets from the original content's four edges.
-    ///
-    /// - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is positioned inside of the
-    /// image's original bounding rectangle. - If the offset is negative or greater than 1, the corresponding edge of
-    /// crop rectangle is positioned outside of the image's original bounding rectangle. - If all offsets and rotation
-    /// angle are 0, the image is not cropped.</summary>
+    /// <summary>The crop properties of an image. The crop rectangle is represented using fractional offsets from the
+    /// original content's four edges. - If the offset is in the interval (0, 1), the corresponding edge of crop
+    /// rectangle is positioned inside of the image's original bounding rectangle. - If the offset is negative or
+    /// greater than 1, the corresponding edge of crop rectangle is positioned outside of the image's original bounding
+    /// rectangle. - If all offsets and rotation angle are 0, the image is not cropped.</summary>
     public class CropProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The clockwise rotation angle of the crop rectangle around its center, in radians. Rotation is
@@ -1023,21 +999,15 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Deletes content from the document.</summary>
     public class DeleteContentRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The range of content to delete.
-        ///
-        /// Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned
-        /// objects and bookmarks as the two paragraphs are merged.
-        ///
+        /// <summary>The range of content to delete. Deleting text that crosses a paragraph boundary may result in
+        /// changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged.
         /// Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad
-        /// request error is returned.
-        ///
-        /// Some examples of invalid delete requests include:
-        ///
-        /// * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header,
-        /// Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or
-        /// Equation without deleting the entire element. * Deleting the newline character before a Table,
-        /// TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a
-        /// table. Deleting the content within a table cell is allowed.</summary>
+        /// request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a
+        /// surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or
+        /// TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the
+        /// entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without
+        /// deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table
+        /// cell is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
 
@@ -1088,10 +1058,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deletes bullets from all of the paragraphs that overlap with the given range.
-    ///
-    /// The nesting level of each paragraph will be visually preserved by adding indent to the start of the
-    /// corresponding paragraph.</summary>
+    /// <summary>Deletes bullets from all of the paragraphs that overlap with the given range. The nesting level of each
+    /// paragraph will be visually preserved by adding indent to the start of the corresponding paragraph.</summary>
     public class DeleteParagraphBulletsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range to delete bullets from.</summary>
@@ -1116,11 +1084,9 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Deletes a column from a table.</summary>
     public class DeleteTableColumnRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which the column will be deleted.
-        ///
-        /// The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all
-        /// columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the
-        /// whole table is deleted.</summary>
+        /// <summary>The reference table cell location from which the column will be deleted. The column this cell spans
+        /// will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will
+        /// be deleted. If no columns remain in the table after this deletion, the whole table is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
         public virtual TableCellLocation TableCellLocation { get; set; } 
 
@@ -1131,11 +1097,9 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Deletes a row from a table.</summary>
     public class DeleteTableRowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which the row will be deleted.
-        ///
-        /// The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that
-        /// the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is
-        /// deleted.</summary>
+        /// <summary>The reference table cell location from which the row will be deleted. The row this cell spans will
+        /// be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted.
+        /// If no rows remain in the table after this deletion, the whole table is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
         public virtual TableCellLocation TableCellLocation { get; set; } 
 
@@ -1207,13 +1171,12 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>Output only. The revision ID of the document. Can be used in update requests to specify which
         /// revision of a document to apply updates to and how the request should behave if the document has been edited
-        /// since that revision. Only populated if the user has edit access to the document.
-        ///
-        /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
-        /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If
-        /// the revision ID is unchanged between calls, then the document has not changed. Conversely, a changed ID (for
-        /// the same document and user) usually means the document has been updated; however, a changed ID can also be
-        /// due to internal factors such as ID format changes.</summary>
+        /// since that revision. Only populated if the user has edit access to the document. The format of the revision
+        /// ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be
+        /// valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is
+        /// unchanged between calls, then the document has not changed. Conversely, a changed ID (for the same document
+        /// and user) usually means the document has been updated; however, a changed ID can also be due to internal
+        /// factors such as ID format changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; } 
 
@@ -1226,9 +1189,8 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedNamedStylesChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedNamedStyles> SuggestedNamedStylesChanges { get; set; } 
 
-        /// <summary>Output only. The suggestions view mode applied to the document.
-        ///
-        /// Note: When editing a document, changes must be based on a document with SUGGESTIONS_INLINE.</summary>
+        /// <summary>Output only. The suggestions view mode applied to the document. Note: When editing a document,
+        /// changes must be based on a document with SUGGESTIONS_INLINE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionsViewMode")]
         public virtual string SuggestionsViewMode { get; set; } 
 
@@ -1247,38 +1209,31 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("background")]
         public virtual Background Background { get; set; } 
 
-        /// <summary>The ID of the default footer. If not set, there is no default footer.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>The ID of the default footer. If not set, there is no default footer. This property is read-
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
         public virtual string DefaultFooterId { get; set; } 
 
-        /// <summary>The ID of the default header. If not set, there is no default header.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>The ID of the default header. If not set, there is no default header. This property is read-
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; } 
 
         /// <summary>The ID of the footer used only for even pages. The value of use_even_page_header_footer determines
         /// whether to use the default_footer_id or this value for the footer on even pages. If not set, there is no
-        /// even page footer.
-        ///
-        /// This property is read-only.</summary>
+        /// even page footer. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
         public virtual string EvenPageFooterId { get; set; } 
 
         /// <summary>The ID of the header used only for even pages. The value of use_even_page_header_footer determines
         /// whether to use the default_header_id or this value for the header on even pages. If not set, there is no
-        /// even page header.
-        ///
-        /// This property is read-only.</summary>
+        /// even page header. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
         public virtual string EvenPageHeaderId { get; set; } 
 
         /// <summary>The ID of the footer used only for the first page. If not set then a unique footer for the first
         /// page does not exist. The value of use_first_page_header_footer determines whether to use the
         /// default_footer_id or this value for the footer on the first page. If not set, there is no first page footer.
-        ///
         /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
         public virtual string FirstPageFooterId { get; set; } 
@@ -1286,15 +1241,12 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The ID of the header used only for the first page. If not set then a unique header for the first
         /// page does not exist. The value of use_first_page_header_footer determines whether to use the
         /// default_header_id or this value for the header on the first page. If not set, there is no first page header.
-        ///
         /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; } 
 
-        /// <summary>The bottom page margin.
-        ///
-        /// Updating the bottom page margin on the document style clears the bottom page margin on all section
-        /// styles.</summary>
+        /// <summary>The bottom page margin. Updating the bottom page margin on the document style clears the bottom
+        /// page margin on all section styles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottom")]
         public virtual Dimension MarginBottom { get; set; } 
 
@@ -1306,24 +1258,18 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("marginHeader")]
         public virtual Dimension MarginHeader { get; set; } 
 
-        /// <summary>The left page margin.
-        ///
-        /// Updating the left page margin on the document style clears the left page margin on all section styles. It
-        /// may also cause columns to resize in all sections.</summary>
+        /// <summary>The left page margin. Updating the left page margin on the document style clears the left page
+        /// margin on all section styles. It may also cause columns to resize in all sections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginLeft")]
         public virtual Dimension MarginLeft { get; set; } 
 
-        /// <summary>The right page margin.
-        ///
-        /// Updating the right page margin on the document style clears the right page margin on all section styles. It
-        /// may also cause columns to resize in all sections.</summary>
+        /// <summary>The right page margin. Updating the right page margin on the document style clears the right page
+        /// margin on all section styles. It may also cause columns to resize in all sections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginRight")]
         public virtual Dimension MarginRight { get; set; } 
 
-        /// <summary>The top page margin.
-        ///
-        /// Updating the top page margin on the document style clears the top page margin on all section
-        /// styles.</summary>
+        /// <summary>The top page margin. Updating the top page margin on the document style clears the top page margin
+        /// on all section styles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; } 
 
@@ -1337,9 +1283,7 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>Indicates whether DocumentStyle margin_header, SectionStyle margin_header and DocumentStyle
         /// margin_footer, SectionStyle margin_footer are respected. When false, the default values in the Docs editor
-        /// for header and footer margin are used.
-        ///
-        /// This property is read-only.</summary>
+        /// for header and footer margin are used. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useCustomHeaderFooterMargins")]
         public virtual System.Nullable<bool> UseCustomHeaderFooterMargins { get; set; } 
 
@@ -1472,9 +1416,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual ImageProperties ImageProperties { get; set; } 
 
         /// <summary>A reference to the external linked source content. For example, it contains a reference to the
-        /// source Sheets chart when the embedded object is a linked chart.
-        ///
-        /// If unset, then the embedded object is not linked.</summary>
+        /// source Sheets chart when the embedded object is a linked chart. If unset, then the embedded object is not
+        /// linked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedContentReference")]
         public virtual LinkedContentReference LinkedContentReference { get; set; } 
 
@@ -1643,9 +1586,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A document footer.</summary>
     public class Footer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contents of the footer.
-        ///
-        /// The indexes for a footer's content begin at zero.</summary>
+        /// <summary>The contents of the footer. The indexes for a footer's content begin at zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; } 
 
@@ -1660,9 +1601,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A document footnote.</summary>
     public class Footnote : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contents of the footnote.
-        ///
-        /// The indexes for a footnote's content begin at zero.</summary>
+        /// <summary>The contents of the footnote. The indexes for a footnote's content begin at zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; } 
 
@@ -1711,9 +1650,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A document header.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contents of the header.
-        ///
-        /// The indexes for a header's content begin at zero.</summary>
+        /// <summary>The contents of the header. The indexes for a header's content begin at zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; } 
 
@@ -1742,10 +1679,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedTextStyle> SuggestedTextStyleChanges { get; set; } 
 
-        /// <summary>The text style of this HorizontalRule.
-        ///
-        /// Similar to text content, like text runs and footnote references, the text style of a horizontal rule can
-        /// affect content layout as well as the styling of text inserted adjacent to it.</summary>
+        /// <summary>The text style of this HorizontalRule. Similar to text content, like text runs and footnote
+        /// references, the text style of a horizontal rule can affect content layout as well as the styling of text
+        /// inserted adjacent to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
 
@@ -1880,10 +1816,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedTextStyle> SuggestedTextStyleChanges { get; set; } 
 
-        /// <summary>The text style of this InlineObjectElement.
-        ///
-        /// Similar to text content, like text runs and footnote references, the text style of an inline object element
-        /// can affect content layout as well as the styling of text inserted adjacent to it.</summary>
+        /// <summary>The text style of this InlineObjectElement. Similar to text content, like text runs and footnote
+        /// references, the text style of an inline object element can affect content layout as well as the styling of
+        /// text inserted adjacent to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
 
@@ -1918,18 +1853,15 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Inserts an InlineObject containing an image at the given location.</summary>
     public class InsertInlineImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inserts the text at the end of a header, footer or the document body.
-        ///
-        /// Inline images cannot be inserted inside a footnote.</summary>
+        /// <summary>Inserts the text at the end of a header, footer or the document body. Inline images cannot be
+        /// inserted inside a footnote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts the image at a specific index in the document.
-        ///
-        /// The image must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted
-        /// at a table's start index (i.e. between the table and its preceding paragraph).
-        ///
-        /// Inline images cannot be inserted inside a footnote or equation.</summary>
+        /// <summary>Inserts the image at a specific index in the document. The image must be inserted inside the bounds
+        /// of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the
+        /// table and its preceding paragraph). Inline images cannot be inserted inside a footnote or
+        /// equation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
@@ -1942,13 +1874,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectSize")]
         public virtual Size ObjectSize { get; set; } 
 
-        /// <summary>The image URI.
-        ///
-        /// The image is fetched once at insertion time and a copy is stored for display inside the document. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        ///
-        /// The provided URI can be at most 2 kB in length. The URI itself is saved with the image, and exposed via the
-        /// ImageProperties.content_uri field.</summary>
+        /// <summary>The image URI. The image is fetched once at insertion time and a copy is stored for display inside
+        /// the document. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG,
+        /// JPEG, or GIF format. The provided URI can be at most 2 kB in length. The URI itself is saved with the image,
+        /// and exposed via the ImageProperties.content_uri field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -1981,20 +1910,17 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Inserts a page break followed by a newline at the specified location.</summary>
     public class InsertPageBreakRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inserts the page break at the end of the document body.
-        ///
-        /// Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted
-        /// inside the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a
+        /// footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field
+        /// must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts the page break at a specific index in the document.
-        ///
-        /// The page break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be
-        /// inserted at a table's start index (i.e. between the table and its preceding paragraph).
-        ///
-        /// Page breaks cannot be inserted inside a table, equation, footnote, header or footer. Since page breaks can
-        /// only be inserted inside the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts the page break at a specific index in the document. The page break must be inserted inside
+        /// the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e.
+        /// between the table and its preceding paragraph). Page breaks cannot be inserted inside a table, equation,
+        /// footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field
+        /// must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
@@ -2002,25 +1928,21 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Inserts a section break at the given location.
-    ///
-    /// A newline character will be inserted before the section break.</summary>
+    /// <summary>Inserts a section break at the given location. A newline character will be inserted before the section
+    /// break.</summary>
     public class InsertSectionBreakRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inserts a newline and a section break at the end of the document body.
-        ///
-        /// Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be
-        /// inserted inside the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts a newline and a section break at the end of the document body. Section breaks cannot be
+        /// inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body,
+        /// the segment ID field must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts a newline and a section break at a specific index in the document.
-        ///
-        /// The section break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be
-        /// inserted at a table's start index (i.e. between the table and its preceding paragraph).
-        ///
-        /// Section breaks cannot be inserted inside a table, equation, footnote, header, or footer. Since section
-        /// breaks can only be inserted inside the body, the segment ID field must be empty.</summary>
+        /// <summary>Inserts a newline and a section break at a specific index in the document. The section break must
+        /// be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's
+        /// start index (i.e. between the table and its preceding paragraph). Section breaks cannot be inserted inside a
+        /// table, equation, footnote, header, or footer. Since section breaks can only be inserted inside the body, the
+        /// segment ID field must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
@@ -2035,17 +1957,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Inserts an empty column into a table.</summary>
     public class InsertTableColumnRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to insert new column to the right of the reference cell location.
-        ///
-        /// - `True`: insert to the right. - `False`: insert to the left.</summary>
+        /// <summary>Whether to insert new column to the right of the reference cell location. - `True`: insert to the
+        /// right. - `False`: insert to the left.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertRight")]
         public virtual System.Nullable<bool> InsertRight { get; set; } 
 
-        /// <summary>The reference table cell location from which columns will be inserted.
-        ///
-        /// A new column will be inserted to the left (or right) of the column where the reference cell is. If the
-        /// reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged
-        /// cell.</summary>
+        /// <summary>The reference table cell location from which columns will be inserted. A new column will be
+        /// inserted to the left (or right) of the column where the reference cell is. If the reference cell is a merged
+        /// cell, a new column will be inserted to the left (or right) of the merged cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
         public virtual TableCellLocation TableCellLocation { get; set; } 
 
@@ -2053,9 +1972,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Inserts a table at the specified location.
-    ///
-    /// A newline character will be inserted before the inserted table.</summary>
+    /// <summary>Inserts a table at the specified location. A newline character will be inserted before the inserted
+    /// table.</summary>
     public class InsertTableRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of columns in the table.</summary>
@@ -2063,21 +1981,15 @@ namespace Google.Apis.Docs.v1.Data
         public virtual System.Nullable<int> Columns { get; set; } 
 
         /// <summary>Inserts the table at the end of the given header, footer or document body. A newline character will
-        /// be inserted before the inserted table.
-        ///
-        /// Tables cannot be inserted inside a footnote.</summary>
+        /// be inserted before the inserted table. Tables cannot be inserted inside a footnote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts the table at a specific model index.
-        ///
-        /// A newline character will be inserted before the inserted table, therefore the table start index will be at
-        /// the specified location index + 1.
-        ///
-        /// The table must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted
-        /// at a table's start index (i.e. between an existing table and its preceding paragraph).
-        ///
-        /// Tables cannot be inserted inside a footnote or equation.</summary>
+        /// <summary>Inserts the table at a specific model index. A newline character will be inserted before the
+        /// inserted table, therefore the table start index will be at the specified location index + 1. The table must
+        /// be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's
+        /// start index (i.e. between an existing table and its preceding paragraph). Tables cannot be inserted inside a
+        /// footnote or equation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
@@ -2092,16 +2004,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Inserts an empty row into a table.</summary>
     public class InsertTableRowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to insert new row below the reference cell location.
-        ///
-        /// - `True`: insert below the cell. - `False`: insert above the cell.</summary>
+        /// <summary>Whether to insert new row below the reference cell location. - `True`: insert below the cell. -
+        /// `False`: insert above the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertBelow")]
         public virtual System.Nullable<bool> InsertBelow { get; set; } 
 
-        /// <summary>The reference table cell location from which rows will be inserted.
-        ///
-        /// A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a
-        /// merged cell, a new row will be inserted above (or below) the merged cell.</summary>
+        /// <summary>The reference table cell location from which rows will be inserted. A new row will be inserted
+        /// above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will
+        /// be inserted above (or below) the merged cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
         public virtual TableCellLocation TableCellLocation { get; set; } 
 
@@ -2116,26 +2026,19 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
 
-        /// <summary>Inserts the text at a specific index in the document.
-        ///
-        /// Text must be inserted inside the bounds of an existing Paragraph. For instance, text cannot be inserted at a
-        /// table's start index (i.e. between the table and its preceding paragraph). The text must be inserted in the
-        /// preceding paragraph.</summary>
+        /// <summary>Inserts the text at a specific index in the document. Text must be inserted inside the bounds of an
+        /// existing Paragraph. For instance, text cannot be inserted at a table's start index (i.e. between the table
+        /// and its preceding paragraph). The text must be inserted in the preceding paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; } 
 
-        /// <summary>The text to be inserted.
-        ///
-        /// Inserting a newline character will implicitly create a new Paragraph at that index. The paragraph style of
-        /// the new paragraph will be copied from the paragraph at the current insertion index, including lists and
-        /// bullets.
-        ///
-        /// Text styles for inserted text will be determined automatically, generally preserving the styling of
-        /// neighboring text. In most cases, the text style for the inserted text will match the text immediately before
-        /// the insertion index.
-        ///
-        /// Some control characters (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual
-        /// Plane Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted text.</summary>
+        /// <summary>The text to be inserted. Inserting a newline character will implicitly create a new Paragraph at
+        /// that index. The paragraph style of the new paragraph will be copied from the paragraph at the current
+        /// insertion index, including lists and bullets. Text styles for inserted text will be determined
+        /// automatically, generally preserving the styling of neighboring text. In most cases, the text style for the
+        /// inserted text will match the text immediately before the insertion index. Some control characters
+        /// (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual Plane Private Use Area
+        /// (U+E000-U+F8FF) will be stripped out of the inserted text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
@@ -2214,11 +2117,10 @@ namespace Google.Apis.Docs.v1.Data
     /// with a list.</summary>
     public class ListProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Describes the properties of the bullets at the associated level.
-        ///
-        /// A list has at most nine levels of nesting with nesting level 0 corresponding to the top-most level and
-        /// nesting level 8 corresponding to the most nested level. The nesting levels are returned in ascending order
-        /// with the least nested returned first.</summary>
+        /// <summary>Describes the properties of the bullets at the associated level. A list has at most nine levels of
+        /// nesting with nesting level 0 corresponding to the top-most level and nesting level 8 corresponding to the
+        /// most nested level. The nesting levels are returned in ascending order with the least nested returned
+        /// first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nestingLevels")]
         public virtual System.Collections.Generic.IList<NestingLevel> NestingLevels { get; set; } 
 
@@ -2231,10 +2133,8 @@ namespace Google.Apis.Docs.v1.Data
     public class ListPropertiesSuggestionState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A mask that indicates which of the fields on the corresponding NestingLevel in nesting_levels have
-        /// been changed in this suggestion.
-        ///
-        /// The nesting level suggestion states are returned in ascending order of the nesting level with the least
-        /// nested returned first.</summary>
+        /// been changed in this suggestion. The nesting level suggestion states are returned in ascending order of the
+        /// nesting level with the least nested returned first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nestingLevelsSuggestionStates")]
         public virtual System.Collections.Generic.IList<NestingLevelSuggestionState> NestingLevelsSuggestionStates { get; set; } 
 
@@ -2245,9 +2145,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A particular location in the document.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based index, in UTF-16 code units.
-        ///
-        /// The index is relative to the beginning of the segment specified by segment_id.</summary>
+        /// <summary>The zero-based index, in UTF-16 code units. The index is relative to the beginning of the segment
+        /// specified by segment_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; } 
 
@@ -2263,14 +2162,11 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Merges cells in a Table.</summary>
     public class MergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The table range specifying which cells of the table to merge.
-        ///
-        /// Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is
-        /// the upper-left cell of the range when the content direction is left to right, and the upper-right cell of
-        /// the range otherwise.
-        ///
-        /// If the range is non-rectangular (which can occur in some cases where the range covers cells that are already
-        /// merged or where the table is non-rectangular), a 400 bad request error is returned.</summary>
+        /// <summary>The table range specifying which cells of the table to merge. Any text in the cells being merged
+        /// will be concatenated and stored in the "head" cell of the range. This is the upper-left cell of the range
+        /// when the content direction is left to right, and the upper-right cell of the range otherwise. If the range
+        /// is non-rectangular (which can occur in some cases where the range covers cells that are already merged or
+        /// where the table is non-rectangular), a 400 bad request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; } 
 
@@ -2278,17 +2174,13 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A collection of Ranges with the same named range ID.
-    ///
-    /// Named ranges allow developers to associate parts of a document with an arbitrary user-defined label so their
-    /// contents can be programmatically read or edited at a later time. A document can contain multiple named ranges
-    /// with the same name, but every named range has a unique ID.
-    ///
-    /// A named range is created with a single Range, and content inserted inside a named range generally expands that
-    /// range. However, certain document changes can cause the range to be split into multiple ranges.
-    ///
-    /// Named ranges are not private. All applications and collaborators that have access to the document can see its
-    /// named ranges.</summary>
+    /// <summary>A collection of Ranges with the same named range ID. Named ranges allow developers to associate parts
+    /// of a document with an arbitrary user-defined label so their contents can be programmatically read or edited at a
+    /// later time. A document can contain multiple named ranges with the same name, but every named range has a unique
+    /// ID. A named range is created with a single Range, and content inserted inside a named range generally expands
+    /// that range. However, certain document changes can cause the range to be split into multiple ranges. Named ranges
+    /// are not private. All applications and collaborators that have access to the document can see its named
+    /// ranges.</summary>
     public class NamedRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the named range.</summary>
@@ -2345,10 +2237,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A suggestion state of a NamedStyle message.</summary>
     public class NamedStyleSuggestionState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named style type that this suggestion state corresponds to.
-        ///
-        /// This field is provided as a convenience for matching the NamedStyleSuggestionState with its corresponding
-        /// NamedStyle.</summary>
+        /// <summary>The named style type that this suggestion state corresponds to. This field is provided as a
+        /// convenience for matching the NamedStyleSuggestionState with its corresponding NamedStyle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyleType")]
         public virtual string NamedStyleType { get; set; } 
 
@@ -2370,9 +2260,7 @@ namespace Google.Apis.Docs.v1.Data
     /// named styles.</summary>
     public class NamedStyles : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named styles.
-        ///
-        /// There is an entry for each of the possible named style types.</summary>
+        /// <summary>The named styles. There is an entry for each of the possible named style types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("styles")]
         public virtual System.Collections.Generic.IList<NamedStyle> Styles { get; set; } 
 
@@ -2384,10 +2272,8 @@ namespace Google.Apis.Docs.v1.Data
     public class NamedStylesSuggestionState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A mask that indicates which of the fields on the corresponding NamedStyle in styles have been
-        /// changed in this suggestion.
-        ///
-        /// The order of these named style suggestion states match the order of the corresponding named style within the
-        /// named styles suggestion.</summary>
+        /// changed in this suggestion. The order of these named style suggestion states match the order of the
+        /// corresponding named style within the named styles suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stylesSuggestionStates")]
         public virtual System.Collections.Generic.IList<NamedStyleSuggestionState> StylesSuggestionStates { get; set; } 
 
@@ -2403,42 +2289,34 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bulletAlignment")]
         public virtual string BulletAlignment { get; set; } 
 
-        /// <summary>The format string used by bullets at this level of nesting.
-        ///
-        /// The glyph format contains one or more placeholders, and these placeholder are replaced with the appropriate
-        /// values depending on the glyph_type or glyph_symbol. The placeholders follow the pattern `%[nesting_level]`.
-        /// Furthermore, placeholders can have prefixes and suffixes. Thus, the glyph format follows the pattern
-        /// `%[nesting_level]`. Note that the prefix and suffix are optional and can be arbitrary strings.
-        ///
-        /// For example, the glyph format `%0.` indicates that the rendered glyph will replace the placeholder with the
-        /// corresponding glyph for nesting level 0 followed by a period as the suffix. So a list with a glyph type of
-        /// UPPER_ALPHA and glyph format `%0.` at nesting level 0 will result in a list with rendered glyphs `A.` `B.`
-        /// `C.`
-        ///
-        /// The glyph format can contain placeholders for the current nesting level as well as placeholders for parent
-        /// nesting levels. For example, a list can have a glyph format of `%0.` at nesting level 0 and a glyph format
-        /// of `%0.%1.` at nesting level 1. Assuming both nesting levels have DECIMAL glyph types, this would result in
-        /// a list with rendered glyphs `1.` `2.` `  2.1.` `  2.2.` `3.`
-        ///
-        /// For nesting levels that are ordered, the string that replaces a placeholder in the glyph format for a
-        /// particular paragraph depends on the paragraph's order within the list.</summary>
+        /// <summary>The format string used by bullets at this level of nesting. The glyph format contains one or more
+        /// placeholders, and these placeholder are replaced with the appropriate values depending on the glyph_type or
+        /// glyph_symbol. The placeholders follow the pattern `%[nesting_level]`. Furthermore, placeholders can have
+        /// prefixes and suffixes. Thus, the glyph format follows the pattern `%[nesting_level]`. Note that the prefix
+        /// and suffix are optional and can be arbitrary strings. For example, the glyph format `%0.` indicates that the
+        /// rendered glyph will replace the placeholder with the corresponding glyph for nesting level 0 followed by a
+        /// period as the suffix. So a list with a glyph type of UPPER_ALPHA and glyph format `%0.` at nesting level 0
+        /// will result in a list with rendered glyphs `A.` `B.` `C.` The glyph format can contain placeholders for the
+        /// current nesting level as well as placeholders for parent nesting levels. For example, a list can have a
+        /// glyph format of `%0.` at nesting level 0 and a glyph format of `%0.%1.` at nesting level 1. Assuming both
+        /// nesting levels have DECIMAL glyph types, this would result in a list with rendered glyphs `1.` `2.` ` 2.1.`
+        /// ` 2.2.` `3.` For nesting levels that are ordered, the string that replaces a placeholder in the glyph format
+        /// for a particular paragraph depends on the paragraph's order within the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glyphFormat")]
         public virtual string GlyphFormat { get; set; } 
 
-        /// <summary>A custom glyph symbol used by bullets when paragraphs at this level of nesting are unordered.
-        ///
-        /// The glyph symbol replaces placeholders within the glyph_format. For example, if the glyph_symbol is the
-        /// solid circle corresponding to Unicode U+25cf code point and the glyph_format is `%0`, the rendered glyph
-        /// would be the solid circle.</summary>
+        /// <summary>A custom glyph symbol used by bullets when paragraphs at this level of nesting are unordered. The
+        /// glyph symbol replaces placeholders within the glyph_format. For example, if the glyph_symbol is the solid
+        /// circle corresponding to Unicode U+25cf code point and the glyph_format is `%0`, the rendered glyph would be
+        /// the solid circle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glyphSymbol")]
         public virtual string GlyphSymbol { get; set; } 
 
-        /// <summary>The type of glyph used by bullets when paragraphs at this level of nesting are ordered.
-        ///
-        /// The glyph type determines the type of glyph used to replace placeholders within the glyph_format when
-        /// paragraphs at this level of nesting are ordered. For example, if the nesting level is 0, the glyph_format is
-        /// `%0.` and the glyph type is DECIMAL, then the rendered glyph would replace the placeholder `%0` in the glyph
-        /// format with a number corresponding to list item's order within the list.</summary>
+        /// <summary>The type of glyph used by bullets when paragraphs at this level of nesting are ordered. The glyph
+        /// type determines the type of glyph used to replace placeholders within the glyph_format when paragraphs at
+        /// this level of nesting are ordered. For example, if the nesting level is 0, the glyph_format is `%0.` and the
+        /// glyph type is DECIMAL, then the rendered glyph would replace the placeholder `%0` in the glyph format with a
+        /// number corresponding to list item's order within the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glyphType")]
         public virtual string GlyphType { get; set; } 
 
@@ -2451,12 +2329,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indentStart")]
         public virtual Dimension IndentStart { get; set; } 
 
-        /// <summary>The number of the first list item at this nesting level.
-        ///
-        /// A value of 0 is treated as a value of 1 for lettered lists and roman numeraled lists, i.e. for values of
-        /// both 0 and 1, lettered and roman numeraled lists will begin at `a` and `i` respectively.
-        ///
-        /// This value is ignored for nesting levels with unordered glyphs.</summary>
+        /// <summary>The number of the first list item at this nesting level. A value of 0 is treated as a value of 1
+        /// for lettered lists and roman numeraled lists, i.e. for values of both 0 and 1, lettered and roman numeraled
+        /// lists will begin at `a` and `i` respectively. This value is ignored for nesting levels with unordered
+        /// glyphs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startNumber")]
         public virtual System.Nullable<int> StartNumber { get; set; } 
 
@@ -2550,10 +2426,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedTextStyle> SuggestedTextStyleChanges { get; set; } 
 
-        /// <summary>The text style of this PageBreak.
-        ///
-        /// Similar to text content, like text runs and footnote references, the text style of a page break can affect
-        /// content layout as well as the styling of text inserted adjacent to it.</summary>
+        /// <summary>The text style of this PageBreak. Similar to text content, like text runs and footnote references,
+        /// the text style of a page break can affect content layout as well as the styling of text inserted adjacent to
+        /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
 
@@ -2668,18 +2543,14 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Styles that apply to a whole paragraph.
-    ///
-    /// Inherited paragraph styles are represented as unset fields in this message. A paragraph style's parent depends
-    /// on where the paragraph style is defined:
-    ///
-    /// * The ParagraphStyle on a Paragraph inherits from the paragraph's corresponding named style type. * The
-    /// ParagraphStyle on a named style inherits from the normal text named style. * The ParagraphStyle of the normal
-    /// text named style inherits from the default paragraph style in the Docs editor. * The ParagraphStyle on a
-    /// Paragraph element that is contained in a table may inherit its paragraph style from the table style.
-    ///
-    /// If the paragraph style does not inherit from a parent, unsetting fields will revert the style to a value
-    /// matching the defaults in the Docs editor.</summary>
+    /// <summary>Styles that apply to a whole paragraph. Inherited paragraph styles are represented as unset fields in
+    /// this message. A paragraph style's parent depends on where the paragraph style is defined: * The ParagraphStyle
+    /// on a Paragraph inherits from the paragraph's corresponding named style type. * The ParagraphStyle on a named
+    /// style inherits from the normal text named style. * The ParagraphStyle of the normal text named style inherits
+    /// from the default paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph element that is
+    /// contained in a table may inherit its paragraph style from the table style. If the paragraph style does not
+    /// inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs
+    /// editor.</summary>
     public class ParagraphStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The text alignment for this paragraph.</summary>
@@ -2692,44 +2563,35 @@ namespace Google.Apis.Docs.v1.Data
         public virtual System.Nullable<bool> AvoidWidowAndOrphan { get; set; } 
 
         /// <summary>The border between this paragraph and the next and previous paragraphs. If unset, the value is
-        /// inherited from the parent.
-        ///
-        /// The between border is rendered when the adjacent paragraph has the same border and indent properties.
-        ///
-        /// Paragraph borders cannot be partially updated. When making changes to a paragraph border the new border must
-        /// be specified in its entirety.</summary>
+        /// inherited from the parent. The between border is rendered when the adjacent paragraph has the same border
+        /// and indent properties. Paragraph borders cannot be partially updated. When making changes to a paragraph
+        /// border the new border must be specified in its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borderBetween")]
         public virtual ParagraphBorder BorderBetween { get; set; } 
 
-        /// <summary>The border at the bottom of this paragraph. If unset, the value is inherited from the parent.
-        ///
-        /// The bottom border is rendered when the paragraph below has different border and indent properties.
-        ///
-        /// Paragraph borders cannot be partially updated. When making changes to a paragraph border the new border must
-        /// be specified in its entirety.</summary>
+        /// <summary>The border at the bottom of this paragraph. If unset, the value is inherited from the parent. The
+        /// bottom border is rendered when the paragraph below has different border and indent properties. Paragraph
+        /// borders cannot be partially updated. When making changes to a paragraph border the new border must be
+        /// specified in its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borderBottom")]
         public virtual ParagraphBorder BorderBottom { get; set; } 
 
         /// <summary>The border to the left of this paragraph. If unset, the value is inherited from the parent.
-        ///
         /// Paragraph borders cannot be partially updated. When making changes to a paragraph border the new border must
         /// be specified in its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borderLeft")]
         public virtual ParagraphBorder BorderLeft { get; set; } 
 
         /// <summary>The border to the right of this paragraph. If unset, the value is inherited from the parent.
-        ///
         /// Paragraph borders cannot be partially updated. When making changes to a paragraph border the new border must
         /// be specified in its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borderRight")]
         public virtual ParagraphBorder BorderRight { get; set; } 
 
-        /// <summary>The border at the top of this paragraph. If unset, the value is inherited from the parent.
-        ///
-        /// The top border is rendered when the paragraph above has different border and indent properties.
-        ///
-        /// Paragraph borders cannot be partially updated. When making changes to a paragraph border the new border must
-        /// be specified in its entirety.</summary>
+        /// <summary>The border at the top of this paragraph. If unset, the value is inherited from the parent. The top
+        /// border is rendered when the paragraph above has different border and indent properties. Paragraph borders
+        /// cannot be partially updated. When making changes to a paragraph border the new border must be specified in
+        /// its entirety.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borderTop")]
         public virtual ParagraphBorder BorderTop { get; set; } 
 
@@ -2738,9 +2600,8 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
-        /// <summary>The heading ID of the paragraph. If empty, then this paragraph is not a heading.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is
+        /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headingId")]
         public virtual string HeadingId { get; set; } 
 
@@ -2774,10 +2635,8 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineSpacing")]
         public virtual System.Nullable<float> LineSpacing { get; set; } 
 
-        /// <summary>The named style type of the paragraph.
-        ///
-        /// Since updating the named style type affects other properties within ParagraphStyle, the named style type is
-        /// applied before the other properties are updated.</summary>
+        /// <summary>The named style type of the paragraph. Since updating the named style type affects other properties
+        /// within ParagraphStyle, the named style type is applied before the other properties are updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyleType")]
         public virtual string NamedStyleType { get; set; } 
 
@@ -2799,9 +2658,8 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spacingMode")]
         public virtual string SpacingMode { get; set; } 
 
-        /// <summary>A list of the tab stops for this paragraph. The list of tab stops is not inherited.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property
+        /// is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabStops")]
         public virtual System.Collections.Generic.IList<TabStop> TabStops { get; set; } 
 
@@ -3008,10 +2866,9 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Specifies a contiguous range of text.</summary>
     public class Range : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based end index of this range, exclusive, in UTF-16 code units.
-        ///
-        /// In all current uses, an end index must be provided. This field is an Int32Value in order to accommodate
-        /// future use cases with open-ended ranges.</summary>
+        /// <summary>The zero-based end index of this range, exclusive, in UTF-16 code units. In all current uses, an
+        /// end index must be provided. This field is an Int32Value in order to accommodate future use cases with open-
+        /// ended ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
@@ -3020,10 +2877,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
         public virtual string SegmentId { get; set; } 
 
-        /// <summary>The zero-based start index of this range, in UTF-16 code units.
-        ///
-        /// In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate
-        /// future use cases with open-ended ranges.</summary>
+        /// <summary>The zero-based start index of this range, in UTF-16 code units. In all current uses, a start index
+        /// must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended
+        /// ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
@@ -3057,10 +2913,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces an existing image with a new image.
-    ///
-    /// Replacing an image removes some image effects from the existing image in order to mirror the behavior of the
-    /// Docs editor.</summary>
+    /// <summary>Replaces an existing image with a new image. Replacing an image removes some image effects from the
+    /// existing image in order to mirror the behavior of the Docs editor.</summary>
     public class ReplaceImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the existing image that will be replaced.</summary>
@@ -3071,13 +2925,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
         public virtual string ImageReplaceMethod { get; set; } 
 
-        /// <summary>The URI of the new image.
-        ///
-        /// The image is fetched once at insertion time and a copy is stored for display inside the document. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        ///
-        /// The provided URI can be at most 2 kB in length. The URI itself is saved with the image, and exposed via the
-        /// ImageProperties.source_uri field.</summary>
+        /// <summary>The URI of the new image. The image is fetched once at insertion time and a copy is stored for
+        /// display inside the document. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
+        /// in one of PNG, JPEG, or GIF format. The provided URI can be at most 2 kB in length. The URI itself is saved
+        /// with the image, and exposed via the ImageProperties.source_uri field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -3086,24 +2937,20 @@ namespace Google.Apis.Docs.v1.Data
     }    
 
     /// <summary>Replaces the contents of the specified NamedRange or NamedRanges with the given replacement content.
-    ///
     /// Note that an individual NamedRange may consist of multiple discontinuous ranges. In this case, only the content
-    /// in the first range will be replaced. The other ranges and their content will be deleted.
-    ///
-    /// In cases where replacing or deleting any ranges would result in an invalid document structure, a 400 bad request
-    /// error is returned.</summary>
+    /// in the first range will be replaced. The other ranges and their content will be deleted. In cases where
+    /// replacing or deleting any ranges would result in an invalid document structure, a 400 bad request error is
+    /// returned.</summary>
     public class ReplaceNamedRangeContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the named range whose content will be replaced.
-        ///
-        /// If there is no named range with the given ID a 400 bad request error is returned.</summary>
+        /// <summary>The ID of the named range whose content will be replaced. If there is no named range with the given
+        /// ID a 400 bad request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; } 
 
-        /// <summary>The name of the NamedRanges whose content will be replaced.
-        ///
-        /// If there are multiple named ranges with the given name, then the content of each one will be replaced. If
-        /// there are no named ranges with the given name, then the request will be a no-op.</summary>
+        /// <summary>The name of the NamedRanges whose content will be replaced. If there are multiple named ranges with
+        /// the given name, then the content of each one will be replaced. If there are no named ranges with the given
+        /// name, then the request will be a no-op.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeName")]
         public virtual string NamedRangeName { get; set; } 
 
@@ -3306,9 +3153,7 @@ namespace Google.Apis.Docs.v1.Data
 
     /// <summary>A StructuralElement representing a section break. A section is a range of content which has the same
     /// SectionStyle. A section break represents the start of a new section, and the section style applies to the
-    /// section after the section break.
-    ///
-    /// The document body always begins with a section break.</summary>
+    /// section after the section break. The document body always begins with a section break.</summary>
     public class SectionBreak : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The style of the section after this section break.</summary>
@@ -3347,45 +3192,34 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>The styling that applies to a section.</summary>
     public class SectionStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The section's columns properties.
-        ///
-        /// If empty, the section contains one column with the default properties in the Docs editor. A section can be
-        /// updated to have no more than three columns.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property will result in a
-        /// 400 bad request error.</summary>
+        /// <summary>The section's columns properties. If empty, the section contains one column with the default
+        /// properties in the Docs editor. A section can be updated to have no more than three columns. When updating
+        /// this property, setting a concrete value is required. Unsetting this property will result in a 400 bad
+        /// request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
         public virtual System.Collections.Generic.IList<SectionColumnProperties> ColumnProperties { get; set; } 
 
-        /// <summary>The style of column separators.
-        ///
-        /// This style can be set even when there is one column in the section.
-        ///
+        /// <summary>The style of column separators. This style can be set even when there is one column in the section.
         /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
         /// bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnSeparatorStyle")]
         public virtual string ColumnSeparatorStyle { get; set; } 
 
-        /// <summary>The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// <summary>The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT. When updating
+        /// this property, setting a concrete value is required. Unsetting this property results in a 400 bad request
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDirection")]
         public virtual string ContentDirection { get; set; } 
 
         /// <summary>The ID of the default footer. If unset, the value inherits from the previous SectionBreak's
         /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
-        /// default_footer_id.
-        ///
-        /// This property is read-only.</summary>
+        /// default_footer_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
         public virtual string DefaultFooterId { get; set; } 
 
         /// <summary>The ID of the default header. If unset, the value inherits from the previous SectionBreak's
         /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
-        /// default_header_id.
-        ///
-        /// This property is read-only.</summary>
+        /// default_header_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; } 
 
@@ -3393,9 +3227,7 @@ namespace Google.Apis.Docs.v1.Data
         /// use_even_page_header_footer is true, this value is used for the footers on even pages in the section. If it
         /// is false, the footers on even pages uses the default_footer_id. If unset, the value inherits from the
         /// previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's even_page_footer_id.
-        ///
-        /// This property is read-only.</summary>
+        /// DocumentStyle's even_page_footer_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
         public virtual string EvenPageFooterId { get; set; } 
 
@@ -3403,9 +3235,7 @@ namespace Google.Apis.Docs.v1.Data
         /// use_even_page_header_footer is true, this value is used for the headers on even pages in the section. If it
         /// is false, the headers on even pages uses the default_header_id. If unset, the value inherits from the
         /// previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's even_page_header_id.
-        ///
-        /// This property is read-only.</summary>
+        /// DocumentStyle's even_page_header_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
         public virtual string EvenPageHeaderId { get; set; } 
 
@@ -3413,9 +3243,7 @@ namespace Google.Apis.Docs.v1.Data
         /// is true, this value is used for the footer on the first page of the section. If it is false, the footer on
         /// the first page of the section uses the default_footer_id. If unset, the value inherits from the previous
         /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's first_page_footer_id.
-        ///
-        /// This property is read-only.</summary>
+        /// DocumentStyle's first_page_footer_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
         public virtual string FirstPageFooterId { get; set; } 
 
@@ -3423,70 +3251,56 @@ namespace Google.Apis.Docs.v1.Data
         /// is true, this value is used for the header on the first page of the section. If it is false, the header on
         /// the first page of the section uses the default_header_id. If unset, the value inherits from the previous
         /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's first_page_header_id.
-        ///
-        /// This property is read-only.</summary>
+        /// DocumentStyle's first_page_header_id. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; } 
 
-        /// <summary>The bottom page margin of the section. If unset, uses margin_bottom from DocumentStyle.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// <summary>The bottom page margin of the section. If unset, uses margin_bottom from DocumentStyle. When
+        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
+        /// request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottom")]
         public virtual Dimension MarginBottom { get; set; } 
 
         /// <summary>The footer margin of the section. If unset, uses margin_footer from DocumentStyle. If updated,
         /// use_custom_header_footer_margins is set to true on DocumentStyle. The value of
         /// use_custom_header_footer_margins on DocumentStyle indicates if a footer margin is being respected for this
-        /// section
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// section When updating this property, setting a concrete value is required. Unsetting this property results
+        /// in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginFooter")]
         public virtual Dimension MarginFooter { get; set; } 
 
         /// <summary>The header margin of the section. If unset, uses margin_header from DocumentStyle. If updated,
         /// use_custom_header_footer_margins is set to true on DocumentStyle. The value of
         /// use_custom_header_footer_margins on DocumentStyle indicates if a header margin is being respected for this
-        /// section.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// section. When updating this property, setting a concrete value is required. Unsetting this property results
+        /// in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginHeader")]
         public virtual Dimension MarginHeader { get; set; } 
 
         /// <summary>The left page margin of the section. If unset, uses margin_left from DocumentStyle. Updating left
         /// margin causes columns in this section to resize. Since the margin affects column width, it is applied before
-        /// column properties.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// column properties. When updating this property, setting a concrete value is required. Unsetting this
+        /// property results in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginLeft")]
         public virtual Dimension MarginLeft { get; set; } 
 
         /// <summary>The right page margin of the section. If unset, uses margin_right from DocumentStyle. Updating
         /// right margin causes columns in this section to resize. Since the margin affects column width, it is applied
-        /// before column properties.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// before column properties. When updating this property, setting a concrete value is required. Unsetting this
+        /// property results in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginRight")]
         public virtual Dimension MarginRight { get; set; } 
 
-        /// <summary>The top page margin of the section. If unset, uses margin_top from DocumentStyle.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// <summary>The top page margin of the section. If unset, uses margin_top from DocumentStyle. When updating
+        /// this property, setting a concrete value is required. Unsetting this property results in a 400 bad request
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; } 
 
         /// <summary>The page number from which to start counting the number of pages for this section. If unset, page
         /// numbering continues from the previous section. If the value is unset in the first SectionBreak, refer to
-        /// DocumentStyle's page_number_start.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// DocumentStyle's page_number_start. When updating this property, setting a concrete value is required.
+        /// Unsetting this property results in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageNumberStart")]
         public virtual System.Nullable<int> PageNumberStart { get; set; } 
 
@@ -3496,10 +3310,8 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>Indicates whether to use the first page header / footer IDs for the first page of the section. If
         /// unset, it inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is
-        /// unset for subsequent sectors, it should be interpreted as false.
-        ///
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.</summary>
+        /// unset for subsequent sectors, it should be interpreted as false. When updating this property, setting a
+        /// concrete value is required. Unsetting this property results in a 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
         public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; } 
 
@@ -3626,9 +3438,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A criteria that matches a specific string of text in the document.</summary>
     public class SubstringMatchCriteria : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether the search should respect case:
-        ///
-        /// - `True`: the search is case sensitive. - `False`: the search is case insensitive.</summary>
+        /// <summary>Indicates whether the search should respect case: - `True`: the search is case sensitive. -
+        /// `False`: the search is case insensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchCase")]
         public virtual System.Nullable<bool> MatchCase { get; set; } 
 
@@ -3830,10 +3641,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A StructuralElement representing a table.</summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of columns in the table.
-        ///
-        /// It is possible for a table to be non-rectangular, so some rows may have a different number of
-        /// cells.</summary>
+        /// <summary>Number of columns in the table. It is possible for a table to be non-rectangular, so some rows may
+        /// have a different number of cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; } 
 
@@ -3900,14 +3709,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A border around a table cell.
-    ///
-    /// Table cell borders cannot be transparent. To hide a table cell border, make its width 0.</summary>
+    /// <summary>A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border,
+    /// make its width 0.</summary>
     public class TableCellBorder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border.
-        ///
-        /// This color cannot be transparent.</summary>
+        /// <summary>The color of the border. This color cannot be transparent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OptionalColor Color { get; set; } 
 
@@ -3943,10 +3749,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The style of a TableCell.
-    ///
-    /// Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from
-    /// the table's style.</summary>
+    /// <summary>The style of a TableCell. Inherited table cell styles are represented as unset fields in this message.
+    /// A table cell style can inherit from the table's style.</summary>
     public class TableCellStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The background color of the cell.</summary>
@@ -3969,9 +3773,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("borderTop")]
         public virtual TableCellBorder BorderTop { get; set; } 
 
-        /// <summary>The column span of the cell.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>The column span of the cell. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnSpan")]
         public virtual System.Nullable<int> ColumnSpan { get; set; } 
 
@@ -3996,9 +3798,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paddingTop")]
         public virtual Dimension PaddingTop { get; set; } 
 
-        /// <summary>The row span of the cell.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>The row span of the cell. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
         public virtual System.Nullable<int> RowSpan { get; set; } 
 
@@ -4098,18 +3898,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A table range represents a reference to a subset of a table.
-    ///
-    /// It's important to note that the cells specified by a table range do not necessarily form a rectangle. For
-    /// example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table
-    /// looks like this:
-    ///
-    /// [             ]
-    ///
-    /// A table range with table cell location = (table_start_location, row = 0, column = 0), row span = 3 and column
-    /// span = 2 specifies the following cells:
-    ///
-    /// x     x [ x    x    x ]</summary>
+    /// <summary>A table range represents a reference to a subset of a table. It's important to note that the cells
+    /// specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+    /// where all the cells of the last row are merged together. The table looks like this: [ ] A table range with table
+    /// cell location = (table_start_location, row = 0, column = 0), row span = 3 and column span = 2 specifies the
+    /// following cells: x x [ x x x ]</summary>
     public class TableRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The column span of the table range.</summary>
@@ -4153,10 +3946,8 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedTableRowStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedTableRowStyle> SuggestedTableRowStyleChanges { get; set; } 
 
-        /// <summary>The contents and style of each cell in this row.
-        ///
-        /// It is possible for a table to be non-rectangular, so some rows may have a different number of cells than
-        /// other rows in the same table.</summary>
+        /// <summary>The contents and style of each cell in this row. It is possible for a table to be non-rectangular,
+        /// so some rows may have a different number of cells than other rows in the same table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCells")]
         public virtual System.Collections.Generic.IList<TableCell> TableCells { get; set; } 
 
@@ -4195,10 +3986,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Styles that apply to a table.</summary>
     public class TableStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The properties of each column.
-        ///
-        /// Note that in Docs, tables contain rows and rows contain cells, similar to HTML. So the properties for a row
-        /// can be found on the row's table_row_style.</summary>
+        /// <summary>The properties of each column. Note that in Docs, tables contain rows and rows contain cells,
+        /// similar to HTML. So the properties for a row can be found on the row's table_row_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumnProperties")]
         public virtual System.Collections.Generic.IList<TableColumnProperties> TableColumnProperties { get; set; } 
 
@@ -4209,9 +3998,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A ParagraphElement that represents a run of text that all has the same styling.</summary>
     public class TextRun : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text of this run.
-        ///
-        /// Any non-text elements in the run are replaced with the Unicode character U+E907.</summary>
+        /// <summary>The text of this run. Any non-text elements in the run are replaced with the Unicode character
+        /// U+E907.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -4237,18 +4025,13 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the styling that can be applied to text.
-    ///
-    /// Inherited text styles are represented as unset fields in this message. A text style's parent depends on where
-    /// the text style is defined:
-    ///
-    /// * The TextStyle of text in a Paragraph inherits from the paragraph's corresponding named style type. * The
-    /// TextStyle on a named style inherits from the normal text named style. * The TextStyle of the normal text named
-    /// style inherits from the default text style in the Docs editor. * The TextStyle on a Paragraph element that is
-    /// contained in a table may inherit its text style from the table style.
-    ///
-    /// If the text style does not inherit from a parent, unsetting fields will revert the style to a value matching the
-    /// defaults in the Docs editor.</summary>
+    /// <summary>Represents the styling that can be applied to text. Inherited text styles are represented as unset
+    /// fields in this message. A text style's parent depends on where the text style is defined: * The TextStyle of
+    /// text in a Paragraph inherits from the paragraph's corresponding named style type. * The TextStyle on a named
+    /// style inherits from the normal text named style. * The TextStyle of the normal text named style inherits from
+    /// the default text style in the Docs editor. * The TextStyle on a Paragraph element that is contained in a table
+    /// may inherit its text style from the table style. If the text style does not inherit from a parent, unsetting
+    /// fields will revert the style to a value matching the defaults in the Docs editor.</summary>
     public class TextStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The background color of the text. If set, the color is either an RGB color or transparent,
@@ -4256,11 +4039,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual OptionalColor BackgroundColor { get; set; } 
 
-        /// <summary>The text's vertical offset from its normal position.
-        ///
-        /// Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size,
-        /// computed based on the `font_size` field. The `font_size` itself is not affected by changes in this
-        /// field.</summary>
+        /// <summary>The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT`
+        /// baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field.
+        /// The `font_size` itself is not affected by changes in this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineOffset")]
         public virtual string BaselineOffset { get; set; } 
 
@@ -4282,19 +4063,16 @@ namespace Google.Apis.Docs.v1.Data
         public virtual System.Nullable<bool> Italic { get; set; } 
 
         /// <summary>The hyperlink destination of the text. If unset, there is no link. Links are not inherited from
-        /// parent text.
-        ///
-        /// Changing the link in an update request causes some other changes to the text style of the range:
-        ///
-        /// * When setting a link, the text foreground color will be updated to the default link color and the text will
-        /// be underlined. If these fields are modified in the same request, those values will be used instead of the
-        /// link defaults. * Setting a link on a text range that overlaps with an existing link will also update the
-        /// existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting
-        /// a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline
-        /// character(s) into their own text runs. The link will be applied separately to the runs before and after the
-        /// newline. * Removing a link will update the text style of the range to match the style of the preceding text
-        /// (or the default text styles if the preceding text is another link) unless different styles are being set in
-        /// the same request.</summary>
+        /// parent text. Changing the link in an update request causes some other changes to the text style of the
+        /// range: * When setting a link, the text foreground color will be updated to the default link color and the
+        /// text will be underlined. If these fields are modified in the same request, those values will be used instead
+        /// of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update
+        /// the existing link to point to the new URL. * Links are not settable on newline characters. As a result,
+        /// setting a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the
+        /// newline character(s) into their own text runs. The link will be applied separately to the runs before and
+        /// after the newline. * Removing a link will update the text style of the range to match the style of the
+        /// preceding text (or the default text styles if the preceding text is another link) unless different styles
+        /// are being set in the same request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual Link Link { get; set; } 
 
@@ -4310,15 +4088,11 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("underline")]
         public virtual System.Nullable<bool> Underline { get; set; } 
 
-        /// <summary>The font family and rendered weight of the text.
-        ///
-        /// If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family`
-        /// is applied first, then `bold`.
-        ///
-        /// If `weighted_font_family#weight` is not set, it defaults to `400`.
-        ///
-        /// If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty
-        /// value. Otherwise, a 400 bad request error is returned.</summary>
+        /// <summary>The font family and rendered weight of the text. If an update request specifies values for both
+        /// `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If
+        /// `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then
+        /// `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request
+        /// error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightedFontFamily")]
         public virtual WeightedFontFamily WeightedFontFamily { get; set; } 
 
@@ -4381,14 +4155,11 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Unmerges cells in a Table.</summary>
     public class UnmergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The table range specifying which cells of the table to unmerge.
-        ///
-        /// All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected.
-        /// If the range has no merged cells, the request will do nothing.
-        ///
-        /// If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block
-        /// of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right,
-        /// and the upper-right otherwise.</summary>
+        /// <summary>The table range specifying which cells of the table to unmerge. All merged cells in this range will
+        /// be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the
+        /// request will do nothing. If there is text in any of the merged cells, the text will remain in the "head"
+        /// cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content
+        /// direction is from left to right, and the upper-right otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; } 
 
@@ -4399,18 +4170,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Updates the DocumentStyle.</summary>
     public class UpdateDocumentStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The styles to set on the document.
-        ///
-        /// Certain document style changes may cause other changes in order to mirror the behavior of the Docs editor.
-        /// See the documentation of DocumentStyle for more information.</summary>
+        /// <summary>The styles to set on the document. Certain document style changes may cause other changes in order
+        /// to mirror the behavior of the Docs editor. See the documentation of DocumentStyle for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
         public virtual DocumentStyle DocumentStyle { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `document_style` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `document_style`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
         /// For example to update the background, set `fields` to `"background"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
@@ -4422,21 +4189,16 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Update the styling of all paragraphs that overlap with the given range.</summary>
     public class UpdateParagraphStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `paragraph_style` is implied and should not be specified.
-        ///
-        /// For example, to update the paragraph style's alignment property, set `fields` to `"alignment"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `paragraph_style`
+        /// is implied and should not be specified. For example, to update the paragraph style's alignment property, set
+        /// `fields` to `"alignment"`. To reset a property to its default value, include its field name in the field
+        /// mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The styles to set on the paragraphs.
-        ///
-        /// Certain paragraph style changes may cause other changes in order to mirror the behavior of the Docs editor.
-        /// See the documentation of ParagraphStyle for more information.</summary>
+        /// <summary>The styles to set on the paragraphs. Certain paragraph style changes may cause other changes in
+        /// order to mirror the behavior of the Docs editor. See the documentation of ParagraphStyle for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paragraphStyle")]
         public virtual ParagraphStyle ParagraphStyle { get; set; } 
 
@@ -4451,25 +4213,20 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Updates the SectionStyle.</summary>
     public class UpdateSectionStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `section_style` is implied and must not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the left margin, set `fields` to `"margin_left"`.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `section_style`
+        /// is implied and must not be specified. A single `"*"` can be used as short-hand for listing every field. For
+        /// example to update the left margin, set `fields` to `"margin_left"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The range overlapping the sections to style.
-        ///
-        /// Because section breaks can only be inserted inside the body, the segment ID field must be empty.</summary>
+        /// <summary>The range overlapping the sections to style. Because section breaks can only be inserted inside the
+        /// body, the segment ID field must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
 
-        /// <summary>The styles to  be set on the section.
-        ///
-        /// Certain section style changes may cause other changes in order to mirror the behavior of the Docs editor.
-        /// See the documentation of SectionStyle for more information.</summary>
+        /// <summary>The styles to be set on the section. Certain section style changes may cause other changes in order
+        /// to mirror the behavior of the Docs editor. See the documentation of SectionStyle for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionStyle")]
         public virtual SectionStyle SectionStyle { get; set; } 
 
@@ -4480,27 +4237,19 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Updates the style of a range of table cells.</summary>
     public class UpdateTableCellStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableCellStyle` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the table cell background color, set `fields` to `"backgroundColor"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `tableCellStyle`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// For example to update the table cell background color, set `fields` to `"backgroundColor"`. To reset a
+        /// property to its default value, include its field name in the field mask but leave the field itself
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The style to set on the table cells.
-        ///
-        /// When updating borders, if a cell shares a border with an adjacent cell, the corresponding border property of
-        /// the adjacent cell is updated as well. Borders that are merged and invisible are not updated.
-        ///
-        /// Since updating a border shared by adjacent cells in the same request can cause conflicting border updates,
-        /// border updates are applied in the following order:
-        ///
-        /// - `border_right` - `border_left` - `border_bottom` - `border_top`</summary>
+        /// <summary>The style to set on the table cells. When updating borders, if a cell shares a border with an
+        /// adjacent cell, the corresponding border property of the adjacent cell is updated as well. Borders that are
+        /// merged and invisible are not updated. Since updating a border shared by adjacent cells in the same request
+        /// can cause conflicting border updates, border updates are applied in the following order: - `border_right` -
+        /// `border_left` - `border_bottom` - `border_top`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellStyle")]
         public virtual TableCellStyle TableCellStyle { get; set; } 
 
@@ -4525,19 +4274,14 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> ColumnIndices { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableColumnProperties` is implied and should not be
-        /// specified. A single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the column width, set `fields` to `"width"`.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root
+        /// `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for
+        /// listing every field. For example to update the column width, set `fields` to `"width"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The table column properties to update.
-        ///
-        /// If the value of `table_column_properties#width` is less than 5 points (5/72 inch), a 400 bad request error
-        /// is returned.</summary>
+        /// <summary>The table column properties to update. If the value of `table_column_properties#width` is less than
+        /// 5 points (5/72 inch), a 400 bad request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumnProperties")]
         public virtual TableColumnProperties TableColumnProperties { get; set; } 
 
@@ -4552,11 +4296,8 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Updates the TableRowStyle of rows in a table.</summary>
     public class UpdateTableRowStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableRowStyle` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `tableRowStyle`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
         /// For example to update the minimum row height, set `fields` to `"min_row_height"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
@@ -4581,35 +4322,22 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Update the styling of text.</summary>
     public class UpdateTextStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `text_style` is implied and should not be specified. A single
-        /// `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example, to update the text style to bold, set `fields` to `"bold"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `text_style` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For
+        /// example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default
+        /// value, include its field name in the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The range of text to style.
-        ///
-        /// The range may be extended to include adjacent newlines.
-        ///
-        /// If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the
-        /// matching text style.
-        ///
-        /// Ranges cannot be inserted inside a relative UpdateTextStyleRequest.</summary>
+        /// <summary>The range of text to style. The range may be extended to include adjacent newlines. If the range
+        /// fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching
+        /// text style. Ranges cannot be inserted inside a relative UpdateTextStyleRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
 
-        /// <summary>The styles to set on the text.
-        ///
-        /// If the value for a particular style matches that of the parent, that style will be set to inherit.
-        ///
-        /// Certain text style changes may cause other changes in order to to mirror the behavior of the Docs editor.
-        /// See the documentation of TextStyle for more information.</summary>
+        /// <summary>The styles to set on the text. If the value for a particular style matches that of the parent, that
+        /// style will be set to inherit. Certain text style changes may cause other changes in order to to mirror the
+        /// behavior of the Docs editor. See the documentation of TextStyle for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
 
@@ -4620,27 +4348,22 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Represents a font family and weight of text.</summary>
     public class WeightedFontFamily : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The font family of the text.
-        ///
-        /// The font family can be any font from the Font menu in Docs or from [Google Fonts]
-        /// (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`.</summary>
+        /// <summary>The font family of the text. The font family can be any font from the Font menu in Docs or from
+        /// [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in
+        /// `Arial`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; } 
 
         /// <summary>The weight of the font. This field can have any value that is a multiple of `100` between `100` and
         /// `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification,
         /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed.
-        ///
-        /// The default value is `400` ("normal").
-        ///
-        /// The font weight makes up just one component of the rendered font weight. The rendered weight is determined
-        /// by a combination of the `weight` and the text style's resolved `bold` value, after accounting for
-        /// inheritance:
-        ///
-        /// * If the text is bold and the weight is less than `400`, the rendered weight is 400. * If the text is bold
-        /// and the weight is greater than or equal to `400` but is less than `700`, the rendered weight is `700`. * If
-        /// the weight is greater than or equal to `700`, the rendered weight is equal to the weight. * If the text is
-        /// not bold, the rendered weight is equal to the weight.</summary>
+        /// The default value is `400` ("normal"). The font weight makes up just one component of the rendered font
+        /// weight. The rendered weight is determined by a combination of the `weight` and the text style's resolved
+        /// `bold` value, after accounting for inheritance: * If the text is bold and the weight is less than `400`, the
+        /// rendered weight is 400. * If the text is bold and the weight is greater than or equal to `400` but is less
+        /// than `700`, the rendered weight is `700`. * If the weight is greater than or equal to `700`, the rendered
+        /// weight is equal to the weight. * If the text is not bold, the rendered weight is equal to the
+        /// weight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; } 
 
@@ -4653,25 +4376,21 @@ namespace Google.Apis.Docs.v1.Data
     {
         /// <summary>The revision ID of the document that the write request will be applied to. If this is not the
         /// latest revision of the document, the request will not be processed and will return a 400 bad request error.
-        ///
         /// When a required revision ID is returned in a response, it indicates the revision ID of the document after
         /// the request was applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredRevisionId")]
         public virtual string RequiredRevisionId { get; set; } 
 
-        /// <summary>The target revision ID of the document that the write request will be applied to.
-        ///
-        /// If collaborator changes have occurred after the document was read using the API, the changes produced by
-        /// this write request will be transformed against the collaborator changes. This results in a new revision of
-        /// the document which incorporates both the changes in the request and the collaborator changes, and the Docs
-        /// server will resolve conflicting changes. When using `target_revision_id`, the API client can be thought of
-        /// as another collaborator of the document.
-        ///
-        /// The target revision ID may only be used to write to recent versions of a document. If the target revision is
-        /// too far behind the latest revision, the request will not be processed and will return a 400 bad request
-        /// error and the request should be retried after reading the latest version of the document. In most cases a
-        /// `revision_id` will remain valid for use as a target revision for several minutes after it is read, but for
-        /// frequently-edited documents this window may be shorter.</summary>
+        /// <summary>The target revision ID of the document that the write request will be applied to. If collaborator
+        /// changes have occurred after the document was read using the API, the changes produced by this write request
+        /// will be transformed against the collaborator changes. This results in a new revision of the document which
+        /// incorporates both the changes in the request and the collaborator changes, and the Docs server will resolve
+        /// conflicting changes. When using `target_revision_id`, the API client can be thought of as another
+        /// collaborator of the document. The target revision ID may only be used to write to recent versions of a
+        /// document. If the target revision is too far behind the latest revision, the request will not be processed
+        /// and will return a 400 bad request error and the request should be retried after reading the latest version
+        /// of the document. In most cases a `revision_id` will remain valid for use as a target revision for several
+        /// minutes after it is read, but for frequently-edited documents this window may be shorter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetRevisionId")]
         public virtual string TargetRevisionId { get; set; } 
 

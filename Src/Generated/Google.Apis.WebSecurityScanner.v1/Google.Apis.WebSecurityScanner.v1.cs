@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200809 (2047)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/'>
  *              https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/cloud-dns'>Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200806 (2044)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/cloud-dns'>
  *              http://developers.google.com/cloud-dns</a>
@@ -2721,9 +2721,7 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token.
-        ///
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
+        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// "snapshot" of collections larger than the maximum page size.</summary>
@@ -2852,9 +2850,7 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token.
-        ///
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
+        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// "snapshot" of collections larger than the maximum page size.</summary>
@@ -2887,7 +2883,7 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnssecConfig")]
         public virtual ManagedZoneDnsSecConfig DnssecConfig { get; set; } 
 
-        /// <summary>The presence for this field indicates that outbound forwarding is enabled for this zone.  The value
+        /// <summary>The presence for this field indicates that outbound forwarding is enabled for this zone. The value
         /// of this field contains the set of destinations to forward to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingConfig")]
         public virtual ManagedZoneForwardingConfig ForwardingConfig { get; set; } 
@@ -3011,7 +3007,6 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        ///
         /// In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
@@ -3111,7 +3106,6 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        ///
         /// In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
@@ -3208,7 +3202,6 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        ///
         /// In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
@@ -3471,9 +3464,7 @@ namespace Google.Apis.Dns.v2beta1.Data
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token.
-        ///
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
+        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
         /// However, if the contents of the collection change between the first and last paginated list request, the set
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// consistent snapshot of a collection larger than the maximum page size.</summary>

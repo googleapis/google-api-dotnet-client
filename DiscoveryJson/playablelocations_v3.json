@@ -146,7 +146,7 @@
    }
   }
  }, 
- "revision": "20200808", 
+ "revision": "20200811", 
  "rootUrl": "https://playablelocations.googleapis.com/", 
  "schemas": {
   "GoogleMapsPlayablelocationsV3Impression": {

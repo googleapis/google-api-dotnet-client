@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200704 (2011)
+ *      <tr><th>API Rev<td>20200801 (2039)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -379,9 +379,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// once the Access Level has propagated to long-lasting storage. Access Levels containing errors will
             /// result in an error response for the first error encountered.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Resource name for the access policy which owns this Access Level.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns this Access Level. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1.Data.AccessLevel body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -402,9 +401,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy which owns this Access Level.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy which owns this Access Level. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -453,9 +451,8 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>Delete an Access Level by resource name. The longrunning operation from this RPC will have a
             /// successful status once the Access Level has been removed from long-lasting storage.</summary>
-            /// <param name="name">Required. Resource name for the Access Level.
-            ///
-            /// Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</param>
+            /// <param name="name">Required. Resource name for the Access Level. Format:
+            /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -474,9 +471,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the Access Level.
-                ///
-                /// Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</summary>
+                /// <summary>Required. Resource name for the Access Level. Format:
+                /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -518,9 +514,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Get an Access Level by resource name.</summary>
-            /// <param name="name">Required. Resource name for the Access Level.
-            ///
-            /// Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</param>
+            /// <param name="name">Required. Resource name for the Access Level. Format:
+            /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -538,9 +533,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the Access Level.
-                ///
-                /// Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</summary>
+                /// <summary>Required. Resource name for the Access Level. Format:
+                /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -559,10 +553,15 @@ namespace Google.Apis.AccessContextManager.v1
                 /// `CustomLevels`.</summary>
                 public enum AccessLevelFormatEnum
                 {
+                    /// <summary>The format was not specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("LEVEL_FORMAT_UNSPECIFIED")]
                     LEVELFORMATUNSPECIFIED,
+                    /// <summary>Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
+                    /// CustomLevels are returned as CustomLevels.</summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
                     ASDEFINED,
+                    /// <summary>Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
+                    /// CustomLevels are returned as CustomLevels.</summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL,
                 }
@@ -614,9 +613,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>List all Access Levels for an access policy.</summary>
-            /// <param name="parent">Required. Resource name for the access policy to list Access Levels from.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy to list Access Levels from. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -634,9 +632,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy to list Access Levels from.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy to list Access Levels from. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -651,10 +648,15 @@ namespace Google.Apis.AccessContextManager.v1
                 /// defined.</summary>
                 public enum AccessLevelFormatEnum
                 {
+                    /// <summary>The format was not specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("LEVEL_FORMAT_UNSPECIFIED")]
                     LEVELFORMATUNSPECIFIED,
+                    /// <summary>Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
+                    /// CustomLevels are returned as CustomLevels.</summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
                     ASDEFINED,
+                    /// <summary>Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
+                    /// CustomLevels are returned as CustomLevels.</summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL,
                 }
@@ -825,13 +827,12 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
             /// done atomically. The longrunning operation from this RPC will have a successful status once all
             /// replacements have propagated to long-lasting storage. Replacements containing errors will result in an
-            /// error response for the first error encountered.  Replacement will be cancelled on error, existing Access
+            /// error response for the first error encountered. Replacement will be cancelled on error, existing Access
             /// Levels will not be affected. Operation.response field will contain ReplaceAccessLevelsResponse. Removing
             /// Access Levels contained in existing Service Perimeters will result in error.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Resource name for the access policy which owns these Access Levels.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns these Access Levels. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual ReplaceAllRequest ReplaceAll(Google.Apis.AccessContextManager.v1.Data.ReplaceAccessLevelsRequest body, string parent)
             {
                 return new ReplaceAllRequest(service, body, parent);
@@ -840,7 +841,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
             /// done atomically. The longrunning operation from this RPC will have a successful status once all
             /// replacements have propagated to long-lasting storage. Replacements containing errors will result in an
-            /// error response for the first error encountered.  Replacement will be cancelled on error, existing Access
+            /// error response for the first error encountered. Replacement will be cancelled on error, existing Access
             /// Levels will not be affected. Operation.response field will contain ReplaceAccessLevelsResponse. Removing
             /// Access Levels contained in existing Service Perimeters will result in error.</summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
@@ -855,9 +856,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy which owns these Access Levels.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy which owns these Access Levels. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -938,9 +938,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// `spec` fields will be cleared after a successful commit operation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Resource name for the parent Access Policy which owns all Service Perimeters in scope
-            /// for the commit operation.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// for the commit operation. Format: `accessPolicies/{policy_id}`</param>
             public virtual CommitRequest Commit(Google.Apis.AccessContextManager.v1.Data.CommitServicePerimetersRequest body, string parent)
             {
                 return new CommitRequest(service, body, parent);
@@ -967,9 +965,7 @@ namespace Google.Apis.AccessContextManager.v1
 
 
                 /// <summary>Required. Resource name for the parent Access Policy which owns all Service Perimeters in
-                /// scope for the commit operation.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// scope for the commit operation. Format: `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1020,9 +1016,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing
             /// errors will result in an error response for the first error encountered.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Resource name for the access policy which owns this Service Perimeter.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns this Service Perimeter. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1.Data.ServicePerimeter body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1043,9 +1038,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy which owns this Service Perimeter.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy which owns this Service Perimeter. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1094,9 +1088,8 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>Delete a Service Perimeter by resource name. The longrunning operation from this RPC will have
             /// a successful status once the Service Perimeter has been removed from long-lasting storage.</summary>
-            /// <param name="name">Required. Resource name for the Service Perimeter.
-            ///
-            /// Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`</param>
+            /// <param name="name">Required. Resource name for the Service Perimeter. Format:
+            /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1115,9 +1108,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the Service Perimeter.
-                ///
-                /// Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`</summary>
+                /// <summary>Required. Resource name for the Service Perimeter. Format:
+                /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1159,9 +1151,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>Get a Service Perimeter by resource name.</summary>
-            /// <param name="name">Required. Resource name for the Service Perimeter.
-            ///
-            /// Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`</param>
+            /// <param name="name">Required. Resource name for the Service Perimeter. Format:
+            /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1179,9 +1170,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the Service Perimeter.
-                ///
-                /// Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`</summary>
+                /// <summary>Required. Resource name for the Service Perimeter. Format:
+                /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1223,9 +1213,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>List all Service Perimeters for an access policy.</summary>
-            /// <param name="parent">Required. Resource name for the access policy to list Service Perimeters from.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy to list Service Perimeters from. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1243,9 +1232,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy to list Service Perimeters from.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy to list Service Perimeters from. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1317,7 +1305,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// status once the changes to the Service Perimeter have propagated to long-lasting storage. Service
             /// Perimeter containing errors will result in an error response for the first error encountered.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. Resource name for the ServicePerimeter.  The `short_name` component must begin with a
+            /// <param name="name">Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
             /// letter and only include alphanumeric and '_'. Format:
             /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.ServicePerimeter body, string name)
@@ -1340,7 +1328,7 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the ServicePerimeter.  The `short_name` component must begin
+                /// <summary>Required. Resource name for the ServicePerimeter. The `short_name` component must begin
                 /// with a letter and only include alphanumeric and '_'. Format:
                 /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1409,9 +1397,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// existing Service Perimeters will not be affected. Operation.response field will contain
             /// ReplaceServicePerimetersResponse.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Resource name for the access policy which owns these Service Perimeters.
-            ///
-            /// Format: `accessPolicies/{policy_id}`</param>
+            /// <param name="parent">Required. Resource name for the access policy which owns these Service Perimeters. Format:
+            /// `accessPolicies/{policy_id}`</param>
             public virtual ReplaceAllRequest ReplaceAll(Google.Apis.AccessContextManager.v1.Data.ReplaceServicePerimetersRequest body, string parent)
             {
                 return new ReplaceAllRequest(service, body, parent);
@@ -1435,9 +1422,8 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
 
-                /// <summary>Required. Resource name for the access policy which owns these Service Perimeters.
-                ///
-                /// Format: `accessPolicies/{policy_id}`</summary>
+                /// <summary>Required. Resource name for the access policy which owns these Service Perimeters. Format:
+                /// `accessPolicies/{policy_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1544,9 +1530,8 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Delete an AccessPolicy by resource name. The longrunning Operation will have a successful status
         /// once the AccessPolicy has been removed from long-lasting storage.</summary>
-        /// <param name="name">Required. Resource name for the access policy to delete.
-        ///
-        /// Format `accessPolicies/{policy_id}`</param>
+        /// <param name="name">Required. Resource name for the access policy to delete. Format
+        /// `accessPolicies/{policy_id}`</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -1565,9 +1550,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
 
-            /// <summary>Required. Resource name for the access policy to delete.
-            ///
-            /// Format `accessPolicies/{policy_id}`</summary>
+            /// <summary>Required. Resource name for the access policy to delete. Format
+            /// `accessPolicies/{policy_id}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1609,9 +1593,8 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
         /// <summary>Get an AccessPolicy by name.</summary>
-        /// <param name="name">Required. Resource name for the access policy to get.
-        ///
-        /// Format `accessPolicies/{policy_id}`</param>
+        /// <param name="name">Required. Resource name for the access policy to get. Format
+        /// `accessPolicies/{policy_id}`</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1629,9 +1612,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
 
-            /// <summary>Required. Resource name for the access policy to get.
-            ///
-            /// Format `accessPolicies/{policy_id}`</summary>
+            /// <summary>Required. Resource name for the access policy to get. Format
+            /// `accessPolicies/{policy_id}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1698,9 +1680,8 @@ namespace Google.Apis.AccessContextManager.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
-            ///
-            /// Format: `organizations/{org_id}`</summary>
+            /// <summary>Required. Resource name for the container to list AccessPolicy instances from. Format:
+            /// `organizations/{org_id}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -1863,9 +1844,9 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -1876,9 +1857,9 @@ namespace Google.Apis.AccessContextManager.v1
             return new CancelRequest(service, body, name);
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -2005,7 +1986,7 @@ namespace Google.Apis.AccessContextManager.v1
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -2013,7 +1994,7 @@ namespace Google.Apis.AccessContextManager.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
         {
@@ -2068,13 +2049,11 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
@@ -2082,13 +2061,11 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2388,11 +2365,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2401,29 +2376,15 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -2524,9 +2485,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2536,11 +2497,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2645,7 +2606,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Required. Resource name for the ServicePerimeter.  The `short_name` component must begin with a
+        /// <summary>Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
         /// letter and only include alphanumeric and '_'. Format:
         /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2673,7 +2634,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
+        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service
         /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
         /// inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a
         /// configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test
@@ -2721,9 +2682,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2731,8 +2691,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2749,7 +2709,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class VpcAccessibleServices : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
+        /// True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value,
+        /// which automatically includes all of the services protected by the perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
         public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
 

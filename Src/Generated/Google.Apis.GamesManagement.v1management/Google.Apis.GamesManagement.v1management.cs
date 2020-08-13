@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Management</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -1549,9 +1549,9 @@ namespace Google.Apis.GamesManagement.v1management.Data
     /// <summary>An achievement reset response.</summary>
     public class AchievementResetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current state of the achievement.  This is the same as the initial state of the achievement.
-        /// Possible values are: "`HIDDEN`"- Achievement is hidden. "`REVEALED`" - Achievement is revealed. "`UNLOCKED`"
-        /// - Achievement is unlocked. </summary>
+        /// <summary>The current state of the achievement. This is the same as the initial state of the achievement.
+        /// Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. -
+        /// "`UNLOCKED`" - Achievement is unlocked. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; } 
 
@@ -1770,8 +1770,8 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The time spans of the updated score. Possible values are: "`ALL_TIME`" - The score is an all-time
-        /// score. "`WEEKLY`" - The score is a weekly score. "`DAILY`" - The score is a daily score. </summary>
+        /// <summary>The time spans of the updated score. Possible values are: - "`ALL_TIME`" - The score is an all-time
+        /// score. - "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a daily score. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetScoreTimeSpans")]
         public virtual System.Collections.Generic.IList<string> ResetScoreTimeSpans { get; set; } 
 

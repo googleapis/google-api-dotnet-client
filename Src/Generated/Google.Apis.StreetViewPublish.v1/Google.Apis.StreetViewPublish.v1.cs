@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -351,16 +351,12 @@ namespace Google.Apis.StreetViewPublish.v1
 
 
         /// <summary>After the client finishes uploading the photo with the returned UploadRef, CreatePhoto publishes
-        /// the uploaded Photo to Street View on Google Maps.
-        ///
-        /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is through the [Photo Sphere XMP
-        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. CreatePhoto
-        /// ignores the  `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo.
-        /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
+        /// the uploaded Photo to Street View on Google Maps. Currently, the only way to set heading, pitch, and roll in
+        /// CreatePhoto is through the [Photo Sphere XMP metadata](https://developers.google.com/streetview/spherical-
+        /// metadata) in the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`, `pose.roll`,
+        /// `pose.altitude`, and `pose.level` fields in Pose. This method returns the following error codes: *
+        /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo. *
+        /// google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
         /// the account has reached the storage limit.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.StreetViewPublish.v1.Data.Photo body)
@@ -369,16 +365,12 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>After the client finishes uploading the photo with the returned UploadRef, CreatePhoto publishes
-        /// the uploaded Photo to Street View on Google Maps.
-        ///
-        /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is through the [Photo Sphere XMP
-        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. CreatePhoto
-        /// ignores the  `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo.
-        /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
+        /// the uploaded Photo to Street View on Google Maps. Currently, the only way to set heading, pitch, and roll in
+        /// CreatePhoto is through the [Photo Sphere XMP metadata](https://developers.google.com/streetview/spherical-
+        /// metadata) in the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`, `pose.roll`,
+        /// `pose.altitude`, and `pose.level` fields in Pose. This method returns the following error codes: *
+        /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo. *
+        /// google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
         /// the account has reached the storage limit.</summary>
         public class CreateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
         {
@@ -425,11 +417,8 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Deletes a Photo and its metadata.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
+        /// <summary>Deletes a Photo and its metadata. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.NOT_FOUND if the photo ID does not exist.</summary>
         /// <param name="photoId">Required. ID of the Photo.</param>
         public virtual DeleteRequest Delete(string photoId)
@@ -437,11 +426,8 @@ namespace Google.Apis.StreetViewPublish.v1
             return new DeleteRequest(service, photoId);
         }
 
-        /// <summary>Deletes a Photo and its metadata.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
+        /// <summary>Deletes a Photo and its metadata. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.NOT_FOUND if the photo ID does not exist.</summary>
         public class DeleteRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Empty>
         {
@@ -495,11 +481,8 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Gets the metadata of the specified Photo.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
+        /// <summary>Gets the metadata of the specified Photo. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
         /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the
         /// requested Photo is still being indexed.</summary>
         /// <param name="photoId">Required. ID of the Photo.</param>
@@ -508,11 +491,8 @@ namespace Google.Apis.StreetViewPublish.v1
             return new GetRequest(service, photoId);
         }
 
-        /// <summary>Gets the metadata of the specified Photo.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
+        /// <summary>Gets the metadata of the specified Photo. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
         /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the
         /// requested Photo is still being indexed.</summary>
         public class GetRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
@@ -545,8 +525,11 @@ namespace Google.Apis.StreetViewPublish.v1
             /// response.</summary>
             public enum ViewEnum
             {
+                /// <summary>Server reponses do not include the download URL for the photo bytes. The default
+                /// value.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Server responses include the download URL for the photo bytes.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
@@ -606,42 +589,30 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Creates an upload session to start uploading photo bytes.  The method uses the upload URL of the
-        /// returned UploadRef to upload the bytes for the Photo.
-        ///
-        /// In addition to the photo requirements shown in
+        /// <summary>Creates an upload session to start uploading photo bytes. The method uses the upload URL of the
+        /// returned UploadRef to upload the bytes for the Photo. In addition to the photo requirements shown in
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must meet the following
-        /// requirements:
-        ///
-        /// * Photo Sphere XMP metadata must be included in the photo metadata. See
+        /// requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
         /// https://developers.google.com/streetview/spherical-metadata for the required fields. * The pixel size of the
         /// photo must meet the size requirements listed in
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, and the photo must be a full 360
-        /// horizontally.
-        ///
-        /// After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo object
-        /// entry.</summary>
+        /// horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
+        /// object entry.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual StartUploadRequest StartUpload(Google.Apis.StreetViewPublish.v1.Data.Empty body)
         {
             return new StartUploadRequest(service, body);
         }
 
-        /// <summary>Creates an upload session to start uploading photo bytes.  The method uses the upload URL of the
-        /// returned UploadRef to upload the bytes for the Photo.
-        ///
-        /// In addition to the photo requirements shown in
+        /// <summary>Creates an upload session to start uploading photo bytes. The method uses the upload URL of the
+        /// returned UploadRef to upload the bytes for the Photo. In addition to the photo requirements shown in
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must meet the following
-        /// requirements:
-        ///
-        /// * Photo Sphere XMP metadata must be included in the photo metadata. See
+        /// requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
         /// https://developers.google.com/streetview/spherical-metadata for the required fields. * The pixel size of the
         /// photo must meet the size requirements listed in
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, and the photo must be a full 360
-        /// horizontally.
-        ///
-        /// After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo object
-        /// entry.</summary>
+        /// horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
+        /// object entry.</summary>
         public class StartUploadRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.UploadRef>
         {
             /// <summary>Constructs a new StartUpload request.</summary>
@@ -688,14 +659,9 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
-        /// pixels of a photo is not supported.
-        ///
-        /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
-        /// applies to all fields.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
+        /// pixels of a photo is not supported. Only the fields specified in the updateMask field are used. If
+        /// `updateMask` is not present, the update applies to all fields. This method returns the following error
+        /// codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested
         /// photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.</summary>
         /// <param name="body">The body of the request.</param>
@@ -706,14 +672,9 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
-        /// pixels of a photo is not supported.
-        ///
-        /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
-        /// applies to all fields.
-        ///
-        /// This method returns the following error codes:
-        ///
-        /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
+        /// pixels of a photo is not supported. Only the fields specified in the updateMask field are used. If
+        /// `updateMask` is not present, the update applies to all fields. This method returns the following error
+        /// codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested
         /// photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.</summary>
         public class UpdateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
@@ -734,16 +695,12 @@ namespace Google.Apis.StreetViewPublish.v1
 
             /// <summary>Required. Mask that identifies fields on the photo metadata to update. If not present, the old
             /// Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if
-            /// invalid fields are specified. Multiple fields can be specified in a comma-delimited list.
-            ///
-            /// The following fields are valid:
-            ///
-            /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
-            /// `connections` * `places`
-            ///
-            /// Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the
-            /// new contents. For example, if updateMask contains `connections` and
-            /// `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.</summary>
+            /// invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following
+            /// fields are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` *
+            /// `pose.altitude` * `connections` * `places` *Note:* When updateMask contains repeated fields, the entire
+            /// set of repeated values get replaced with the new contents. For example, if updateMask contains
+            /// `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are
+            /// removed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -816,24 +773,20 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
 
-        /// <summary>Deletes a list of Photos and their metadata.
-        ///
-        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication
-        /// error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures
-        /// are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for
-        /// specific failures that can occur per photo.</summary>
+        /// <summary>Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical
+        /// fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual
+        /// photos in the batch may have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteRequest BatchDelete(Google.Apis.StreetViewPublish.v1.Data.BatchDeletePhotosRequest body)
         {
             return new BatchDeleteRequest(service, body);
         }
 
-        /// <summary>Deletes a list of Photos and their metadata.
-        ///
-        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication
-        /// error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures
-        /// are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for
-        /// specific failures that can occur per photo.</summary>
+        /// <summary>Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical
+        /// fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual
+        /// photos in the batch may have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo.</summary>
         public class BatchDeleteRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchDeletePhotosResponse>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
@@ -879,23 +832,19 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Gets the metadata of the specified Photo batch.
-        ///
-        /// Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error.
-        /// Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are
-        /// specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures
-        /// that can occur per photo.</summary>
+        /// <summary>Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos fails, either critical
+        /// fields are missing or there is an authentication error. Even if BatchGetPhotos succeeds, individual photos
+        /// in the batch may have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchGetPhotosResponse.results. See GetPhoto for specific failures that can occur per photo.</summary>
         public virtual BatchGetRequest BatchGet()
         {
             return new BatchGetRequest(service);
         }
 
-        /// <summary>Gets the metadata of the specified Photo batch.
-        ///
-        /// Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error.
-        /// Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are
-        /// specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures
-        /// that can occur per photo.</summary>
+        /// <summary>Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos fails, either critical
+        /// fields are missing or there is an authentication error. Even if BatchGetPhotos succeeds, individual photos
+        /// in the batch may have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchGetPhotosResponse.results. See GetPhoto for specific failures that can occur per photo.</summary>
         public class BatchGetRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchGetPhotosResponse>
         {
             /// <summary>Constructs a new BatchGet request.</summary>
@@ -926,8 +875,11 @@ namespace Google.Apis.StreetViewPublish.v1
             /// response.</summary>
             public enum ViewEnum
             {
+                /// <summary>Server reponses do not include the download URL for the photo bytes. The default
+                /// value.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Server responses include the download URL for the photo bytes.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
@@ -988,19 +940,13 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the
-        /// pixels of photos is not supported.
-        ///
-        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication
-        /// error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures
-        /// are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for
-        /// specific failures that can occur per photo.
-        ///
-        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
-        /// to all fields.
-        ///
-        /// The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20.
-        ///
-        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
+        /// pixels of photos is not supported. Note that if BatchUpdatePhotos fails, either critical fields are missing
+        /// or there is an authentication error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may
+        /// have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures that can occur per photo. Only the
+        /// fields specified in updateMask field are used. If `updateMask` is not present, the update applies to all
+        /// fields. The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. *Note:*
+        /// To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
         /// fail.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosRequest body)
@@ -1009,19 +955,13 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the
-        /// pixels of photos is not supported.
-        ///
-        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication
-        /// error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures
-        /// are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for
-        /// specific failures that can occur per photo.
-        ///
-        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
-        /// to all fields.
-        ///
-        /// The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20.
-        ///
-        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
+        /// pixels of photos is not supported. Note that if BatchUpdatePhotos fails, either critical fields are missing
+        /// or there is an authentication error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may
+        /// have failures. These failures are specified in each PhotoResponse.status in
+        /// BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures that can occur per photo. Only the
+        /// fields specified in updateMask field are used. If `updateMask` is not present, the update applies to all
+        /// fields. The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. *Note:*
+        /// To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
         /// fail.</summary>
         public class BatchUpdateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosResponse>
         {
@@ -1068,17 +1008,15 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Lists all the Photos that belong to the user.
-        ///
-        /// Note: Recently created photos that are still being indexed are not returned in the response.</summary>
+        /// <summary>Lists all the Photos that belong to the user. *Note:* Recently created photos that are still being
+        /// indexed are not returned in the response.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all the Photos that belong to the user.
-        ///
-        /// Note: Recently created photos that are still being indexed are not returned in the response.</summary>
+        /// <summary>Lists all the Photos that belong to the user. *Note:* Recently created photos that are still being
+        /// indexed are not returned in the response.</summary>
         public class ListRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.ListPhotosResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1089,9 +1027,8 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-            ///
-            /// The only filter supported at the moment is `placeId`.</summary>
+            /// <summary>Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only
+            /// filter supported at the moment is `placeId`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1121,8 +1058,11 @@ namespace Google.Apis.StreetViewPublish.v1
             /// response.</summary>
             public enum ViewEnum
             {
+                /// <summary>Server reponses do not include the download URL for the photo bytes. The default
+                /// value.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Server responses include the download URL for the photo bytes.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
@@ -1274,11 +1214,9 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1348,9 +1286,9 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1360,11 +1298,11 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1528,9 +1466,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1538,8 +1475,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1561,16 +1498,11 @@ namespace Google.Apis.StreetViewPublish.v1.Data
 
         /// <summary>Required. Mask that identifies fields on the photo metadata to update. If not present, the old
         /// Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid
-        /// fields are specified. Multiple fields can be specified in a comma-delimited list.
-        ///
-        /// The following fields are valid:
-        ///
-        /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
-        /// `connections` * `places`
-        ///
-        /// Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new
-        /// contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is
-        /// empty, all connections are removed.</summary>
+        /// fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are
+        /// valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
+        /// `connections` * `places` *Note:* When updateMask contains repeated fields, the entire set of repeated values
+        /// get replaced with the new contents. For example, if updateMask contains `connections` and
+        /// `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

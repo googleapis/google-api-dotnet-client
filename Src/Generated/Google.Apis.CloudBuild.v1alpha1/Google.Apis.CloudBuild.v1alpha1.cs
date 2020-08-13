@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200809 (2047)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -390,10 +390,10 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -404,10 +404,10 @@ namespace Google.Apis.CloudBuild.v1alpha1
                     return new CancelRequest(service, body, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -470,7 +470,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -478,7 +478,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.Operation>
                 {
@@ -890,9 +890,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     public class ArtifactObjects : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see
-        /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-        ///
-        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a
+        /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the
+        /// workspace matching any path pattern will be uploaded to Cloud Storage with this location as a
         /// prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
@@ -930,24 +929,18 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// steps.</summary>
     public class Artifacts : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of images to be pushed upon the successful completion of all build steps.
-        ///
-        /// The images will be pushed using the builder service account's credentials.
-        ///
-        /// The digests of the pushed images will be stored in the Build resource's results field.
-        ///
-        /// If any of the images fail to be pushed, the build is marked FAILURE.</summary>
+        /// <summary>A list of images to be pushed upon the successful completion of all build steps. The images will be
+        /// pushed using the builder service account's credentials. The digests of the pushed images will be stored in
+        /// the Build resource's results field. If any of the images fail to be pushed, the build is marked
+        /// FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<string> Images { get; set; } 
 
         /// <summary>A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
-        ///
         /// Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage
-        /// location using the builder service account's credentials.
-        ///
-        /// The location and generation of the uploaded objects will be stored in the Build resource's results field.
-        ///
-        /// If any objects fail to be pushed, the build is marked FAILURE.</summary>
+        /// location using the builder service account's credentials. The location and generation of the uploaded
+        /// objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is
+        /// marked FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objects")]
         public virtual ArtifactObjects Objects { get; set; } 
 
@@ -955,14 +948,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A build resource in the Cloud Build API.
-    ///
-    /// At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image
-    /// to run on the source), and where to store the built artifacts.
-    ///
-    /// Fields can include the following variables, which will be expanded when the build is created:
-    ///
-    /// - $PROJECT_ID: the project ID of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the
+    /// <summary>A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source
+    /// code, how to build it (for example, the builder image to run on the source), and where to store the built
+    /// artifacts. Fields can include the following variables, which will be expanded when the build is created: -
+    /// $PROJECT_ID: the project ID of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the
     /// source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. -
     /// $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by
     /// RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or
@@ -983,9 +972,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Output only. Time at which execution of the build was finished.
-        ///
-        /// The difference between finish_time and start_time is the duration of the build's execution.</summary>
+        /// <summary>Output only. Time at which execution of the build was finished. The difference between finish_time
+        /// and start_time is the duration of the build's execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
         public virtual object FinishTime { get; set; } 
 
@@ -993,13 +981,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of images to be pushed upon the successful completion of all build steps.
-        ///
-        /// The images are pushed using the builder service account's credentials.
-        ///
-        /// The digests of the pushed images will be stored in the `Build` resource's results field.
-        ///
-        /// If any of the images fail to be pushed, the build status is marked `FAILURE`.</summary>
+        /// <summary>A list of images to be pushed upon the successful completion of all build steps. The images are
+        /// pushed using the builder service account's credentials. The digests of the pushed images will be stored in
+        /// the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked
+        /// `FAILURE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<string> Images { get; set; } 
 
@@ -1022,9 +1007,7 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ProjectId { get; set; } 
 
         /// <summary>TTL in queue for this build. If provided and the build is enqueued longer than this value, the
-        /// build will expire and the build status will be `EXPIRED`.
-        ///
-        /// The TTL starts ticking from create_time.</summary>
+        /// build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queueTtl")]
         public virtual object QueueTtl { get; set; } 
 
@@ -1069,20 +1052,14 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
         /// <summary>Amount of time that this build should be allowed to run, to second granularity. If this amount of
-        /// time elapses, work on the build will cease and the build status will be `TIMEOUT`.
-        ///
-        /// `timeout` starts ticking from `startTime`.
-        ///
-        /// Default time is ten minutes.</summary>
+        /// time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking
+        /// from `startTime`. Default time is ten minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; } 
 
-        /// <summary>Output only. Stores timing information for phases of the build. Valid keys are:
-        ///
-        /// * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to
-        /// fetch source.
-        ///
-        /// If the build does not specify source or images, these keys will not be included.</summary>
+        /// <summary>Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to
+        /// execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If
+        /// the build does not specify source or images, these keys will not be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual System.Collections.Generic.IDictionary<string,TimeSpan> Timing { get; set; } 
 
@@ -1112,18 +1089,15 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
-        /// <summary>Option to specify whether or not to apply bash style string operations to the substitutions.
-        ///
-        /// NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration
+        /// <summary>Option to specify whether or not to apply bash style string operations to the substitutions. NOTE:
+        /// this is always enabled for triggered builds and cannot be overridden in the build configuration
         /// file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSubstitutions")]
         public virtual System.Nullable<bool> DynamicSubstitutions { get; set; } 
 
         /// <summary>A list of global environment variable definitions that will exist for all build steps in this
         /// build. If a variable is defined in both globally and in a build step, the variable will use the build step
-        /// value.
-        ///
-        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
+        /// value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
         /// "VALUE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; } 
@@ -1154,27 +1128,21 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
         public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
 
-        /// <summary>Option to specify behavior when there is an error in the substitution checks.
-        ///
-        /// NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build
-        /// configuration file.</summary>
+        /// <summary>Option to specify behavior when there is an error in the substitution checks. NOTE: this is always
+        /// set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
         public virtual string SubstitutionOption { get; set; } 
 
-        /// <summary>Global list of volumes to mount for ALL build steps
-        ///
-        /// Each volume is created as an empty volume prior to starting the build process. Upon completion of the build,
-        /// volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes
-        /// defined a build step.
-        ///
-        /// Using a global volume in a build with only one step is not valid as it is indicative of a build request with
-        /// an incorrect configuration.</summary>
+        /// <summary>Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior
+        /// to starting the build process. Upon completion of the build, volumes and their contents are discarded.
+        /// Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume
+        /// in a build with only one step is not valid as it is indicative of a build request with an incorrect
+        /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
 
-        /// <summary>Option to specify a `WorkerPool` for the build. Format: projects/{project}/workerPools/{workerPool}
-        ///
-        /// This field is experimental.</summary>
+        /// <summary>Option to specify a `WorkerPool` for the build. Format:
+        /// projects/{project}/locations/{location}/workerPools/{workerPool} This field is experimental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; } 
 
@@ -1185,22 +1153,19 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// <summary>A step in the build pipeline.</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of arguments that will be presented to the step when it is started.
-        ///
-        /// If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that
-        /// entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint,
-        /// and the remainder will be used as arguments.</summary>
+        /// <summary>A list of arguments that will be presented to the step when it is started. If the image used to run
+        /// the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image
+        /// does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will
+        /// be used as arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Working directory to use when running this step's container.
-        ///
-        /// If this value is a relative path, it is relative to the build's working directory. If this value is
-        /// absolute, it may be outside the build's working directory, in which case the contents of the path may not be
-        /// persisted across build step executions, unless a `volume` for that path is specified.
-        ///
-        /// If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path,
-        /// the `RepoSource` `dir` is ignored for the step's execution.</summary>
+        /// <summary>Working directory to use when running this step's container. If this value is a relative path, it
+        /// is relative to the build's working directory. If this value is absolute, it may be outside the build's
+        /// working directory, in which case the contents of the path may not be persisted across build step executions,
+        /// unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step
+        /// with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's
+        /// execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
 
@@ -1209,10 +1174,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
         public virtual string Entrypoint { get; set; } 
 
-        /// <summary>A list of environment variable definitions to be used when running a step.
-        ///
-        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
-        /// "VALUE".</summary>
+        /// <summary>A list of environment variable definitions to be used when running a step. The elements are of the
+        /// form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; } 
 
@@ -1221,18 +1184,15 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Required. The name of the container image that will run this particular build step.
-        ///
-        /// If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host
-        /// will attempt to pull the image first, using the builder service account's credentials if necessary.
-        ///
-        /// The Docker daemon's cache will already have the latest versions of all of the officially supported build
-        /// steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-
+        /// <summary>Required. The name of the container image that will run this particular build step. If the image is
+        /// available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to
+        /// pull the image first, using the builder service account's credentials if necessary. The Docker daemon's
+        /// cache will already have the latest versions of all of the officially supported build steps
+        /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-
         /// builders)). The Docker daemon will also have cached many of the layers for some popular images, like
-        /// "ubuntu", "debian", but they will be refreshed at the time you attempt to use them.
-        ///
-        /// If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is
-        /// available to use as the name for a later build step.</summary>
+        /// "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in
+        /// a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the
+        /// name for a later build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1259,12 +1219,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual TimeSpan Timing { get; set; } 
 
-        /// <summary>List of volumes to mount into the build step.
-        ///
-        /// Each volume is created as an empty volume prior to execution of the build step. Upon completion of the
-        /// build, volumes and their contents are discarded.
-        ///
-        /// Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect
+        /// <summary>List of volumes to mount into the build step. Each volume is created as an empty volume prior to
+        /// execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a
+        /// named volume in only one step is not valid as it is indicative of a build request with an incorrect
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
@@ -1307,11 +1264,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1516,9 +1471,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1528,11 +1483,11 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1543,10 +1498,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Regex matching branches to build.
-        ///
-        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
-        /// https://github.com/google/re2/wiki/Syntax</summary>
+        /// <summary>Regex matching branches to build. The syntax of the regular expressions accepted is the syntax
+        /// accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
         public virtual string BranchName { get; set; } 
 
@@ -1554,10 +1507,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
         public virtual string CommitSha { get; set; } 
 
-        /// <summary>Directory, relative to the source root, in which to run the build.
-        ///
-        /// This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored
-        /// for that step's execution.</summary>
+        /// <summary>Directory, relative to the source root, in which to run the build. This must be a relative path. If
+        /// a step's `dir` is specified and is an absolute path, this value is ignored for that step's
+        /// execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
 
@@ -1578,10 +1530,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
 
-        /// <summary>Regex matching tags to build.
-        ///
-        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
-        /// https://github.com/google/re2/wiki/Syntax</summary>
+        /// <summary>Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted
+        /// by RE2 and described at https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
         public virtual string TagName { get; set; } 
 
@@ -1605,10 +1555,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; } 
 
         /// <summary>List of build step outputs, produced by builder images, in the order corresponding to build step
-        /// indices.
-        ///
-        /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.</summary>
+        /// indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output
+        /// by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; } 
 
@@ -1665,11 +1613,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
-        /// <summary>Map of environment variable name to its encrypted value.
-        ///
-        /// Secret environment variables must be unique across all of a build's secrets, and must be used by at least
-        /// one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a
-        /// build's secrets.</summary>
+        /// <summary>Map of environment variable name to its encrypted value. Secret environment variables must be
+        /// unique across all of a build's secrets, and must be used by at least one build step. Values can be at most
+        /// 64 KB in size. There can be at most 100 secret values across all of a build's secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IDictionary<string,string> SecretEnv { get; set; } 
 
@@ -1710,13 +1656,9 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     {
         /// <summary>Output only. Hash(es) of the build source, which can be used to verify that the original source
         /// integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has
-        /// requested a `SourceProvenanceHash`.
-        ///
-        /// The keys to this map are file paths used as build source and the values contain the hash values for those
-        /// files.
-        ///
-        /// If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be
-        /// for the single path to that file.</summary>
+        /// requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values
+        /// contain the hash values for those files. If the build source came in a single package such as a gzipped
+        /// tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
 
@@ -1734,9 +1676,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1744,8 +1685,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1771,9 +1712,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; } 
 
-        /// <summary>Google Cloud Storage object containing the source.
-        ///
-        /// This object must be a gzipped archive file (`.tar.gz`) containing source to build.</summary>
+        /// <summary>Google Cloud Storage object containing the source. This object must be a gzipped archive file
+        /// (`.tar.gz`) containing source to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; } 
 
@@ -1800,17 +1740,13 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// across build step execution.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the volume to mount.
-        ///
-        /// Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume
-        /// must be used by at least two build steps.</summary>
+        /// <summary>Name of the volume to mount. Volume names must be unique per build step and must be valid names for
+        /// Docker volumes. Each named volume must be used by at least two build steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Path at which to mount the volume.
-        ///
-        /// Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain
-        /// reserved volume paths.</summary>
+        /// <summary>Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume
+        /// paths on the same build step or with certain reserved volume paths.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
@@ -1851,12 +1787,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration for a WorkerPool to run the builds.
-    ///
-    /// Workers are machines that Cloud Build uses to run your builds. By default, all workers run in a project owned by
-    /// Cloud Build. To have full control over the workers that execute your builds -- such as enabling them to access
-    /// private resources on your private network -- you can request Cloud Build to run the workers in your own project
-    /// by creating a custom workers pool.</summary>
+    /// <summary>Configuration for a WorkerPool to run the builds. Workers are machines that Cloud Build uses to run
+    /// your builds. By default, all workers run in a project owned by Cloud Build. To have full control over the
+    /// workers that execute your builds -- such as enabling them to access private resources on your private network --
+    /// you can request Cloud Build to run the workers in your own project by creating a custom workers pool.</summary>
     public class WorkerPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time at which the request to create the `WorkerPool` was received.</summary>

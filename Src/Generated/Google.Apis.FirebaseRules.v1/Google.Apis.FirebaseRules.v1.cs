@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200610 (1987)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -378,49 +378,36 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
 
-            /// <summary>Create a `Release`.
-            ///
-            /// Release names should reflect the developer's deployment practices. For example, the release name may
-            /// include the environment name, application name, application version, or any other name meaningful to the
-            /// developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled
-            /// services.
-            ///
-            /// More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for
-            /// `projects/foo` and the `Ruleset` to which they refer.
-            ///
-            /// Release Name                    | Ruleset Name --------------------------------|-------------
-            /// projects/foo/releases/prod      | projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta |
-            /// projects/foo/rulesets/uuid123 projects/foo/releases/prod/v23  | projects/foo/rulesets/uuid456
-            ///
-            /// The table reflects the `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the
-            /// same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release`
-            /// may be updated using the UpdateRelease method.</summary>
+            /// <summary>Create a `Release`. Release names should reflect the developer's deployment practices. For
+            /// example, the release name may include the environment name, application name, application version, or
+            /// any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be
+            /// enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently.
+            /// Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer.
+            /// Release Name | Ruleset Name --------------------------------|------------- projects/foo/releases/prod |
+            /// projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123
+            /// projects/foo/releases/prod/v23 | projects/foo/rulesets/uuid456 The table reflects the `Ruleset` rollout
+            /// in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers
+            /// to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease
+            /// method.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name for the project which owns this `Release`.
-            ///
-            /// Format: `projects/{project_id}`</param>
+            /// <param name="name">Resource name for the project which owns this `Release`. Format:
+            /// `projects/{project_id}`</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Release body, string name)
             {
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Create a `Release`.
-            ///
-            /// Release names should reflect the developer's deployment practices. For example, the release name may
-            /// include the environment name, application name, application version, or any other name meaningful to the
-            /// developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled
-            /// services.
-            ///
-            /// More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for
-            /// `projects/foo` and the `Ruleset` to which they refer.
-            ///
-            /// Release Name                    | Ruleset Name --------------------------------|-------------
-            /// projects/foo/releases/prod      | projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta |
-            /// projects/foo/rulesets/uuid123 projects/foo/releases/prod/v23  | projects/foo/rulesets/uuid456
-            ///
-            /// The table reflects the `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the
-            /// same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release`
-            /// may be updated using the UpdateRelease method.</summary>
+            /// <summary>Create a `Release`. Release names should reflect the developer's deployment practices. For
+            /// example, the release name may include the environment name, application name, application version, or
+            /// any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be
+            /// enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently.
+            /// Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer.
+            /// Release Name | Ruleset Name --------------------------------|------------- projects/foo/releases/prod |
+            /// projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123
+            /// projects/foo/releases/prod/v23 | projects/foo/rulesets/uuid456 The table reflects the `Ruleset` rollout
+            /// in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers
+            /// to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease
+            /// method.</summary>
             public class CreateRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Release>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -433,9 +420,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the project which owns this `Release`.
-                ///
-                /// Format: `projects/{project_id}`</summary>
+                /// <summary>Resource name for the project which owns this `Release`. Format:
+                /// `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -483,9 +469,8 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>Delete a `Release` by resource name.</summary>
-            /// <param name="name">Resource name for the `Release` to delete.
-            ///
-            /// Format: `projects/{project_id}/releases/{release_id}`</param>
+            /// <param name="name">Resource name for the `Release` to delete. Format:
+            /// `projects/{project_id}/releases/{release_id}`</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -503,9 +488,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the `Release` to delete.
-                ///
-                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
+                /// <summary>Resource name for the `Release` to delete. Format:
+                /// `projects/{project_id}/releases/{release_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -547,9 +531,8 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>Get a `Release` by name.</summary>
-            /// <param name="name">Resource name of the `Release`.
-            ///
-            /// Format: `projects/{project_id}/releases/{release_id}`</param>
+            /// <param name="name">Resource name of the `Release`. Format:
+            /// `projects/{project_id}/releases/{release_id}`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -567,9 +550,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name of the `Release`.
-                ///
-                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
+                /// <summary>Resource name of the `Release`. Format:
+                /// `projects/{project_id}/releases/{release_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -611,9 +593,8 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>Get the `Release` executable to use when enforcing rules.</summary>
-            /// <param name="name">Resource name of the `Release`.
-            ///
-            /// Format: `projects/{project_id}/releases/{release_id}`</param>
+            /// <param name="name">Resource name of the `Release`. Format:
+            /// `projects/{project_id}/releases/{release_id}`</param>
             public virtual GetExecutableRequest GetExecutable(string name)
             {
                 return new GetExecutableRequest(service, name);
@@ -631,9 +612,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name of the `Release`.
-                ///
-                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
+                /// <summary>Resource name of the `Release`. Format:
+                /// `projects/{project_id}/releases/{release_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -646,10 +626,14 @@ namespace Google.Apis.FirebaseRules.v1
                 /// FIREBASE_RULES_EXECUTABLE_V1.</summary>
                 public enum ExecutableVersionEnum
                 {
+                    /// <summary>Executable format unspecified. Defaults to FIREBASE_RULES_EXECUTABLE_V1</summary>
                     [Google.Apis.Util.StringValueAttribute("RELEASE_EXECUTABLE_VERSION_UNSPECIFIED")]
                     RELEASEEXECUTABLEVERSIONUNSPECIFIED,
+                    /// <summary>Firebase Rules syntax 'rules2' executable versions: Custom AST for use with Java
+                    /// clients.</summary>
                     [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V1")]
                     FIREBASERULESEXECUTABLEV1,
+                    /// <summary>CEL-based executable for use with C++ clients.</summary>
                     [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V2")]
                     FIREBASERULESEXECUTABLEV2,
                 }
@@ -702,9 +686,7 @@ namespace Google.Apis.FirebaseRules.v1
 
             /// <summary>List the `Release` values for a project. This list may optionally be filtered by `Release`
             /// name, `Ruleset` name, `TestSuite` name, or any combination thereof.</summary>
-            /// <param name="name">Resource name for the project.
-            ///
-            /// Format: `projects/{project_id}`</param>
+            /// <param name="name">Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -723,32 +705,22 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the project.
-                ///
-                /// Format: `projects/{project_id}`</summary>
+                /// <summary>Resource name for the project. Format: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>`Release` filter. The list method supports filters with restrictions on the `Release.name`,
-                /// `Release.ruleset_name`, and `Release.test_suite_name`.
-                ///
-                /// Example 1: A filter of 'name=prod*' might return `Release`s with names within 'projects/foo'
-                /// prefixed with 'prod':
-                ///
-                /// Name                          | Ruleset Name ------------------------------|-------------
-                /// projects/foo/releases/prod    | projects/foo/rulesets/uuid1234 projects/foo/releases/prod/v1 |
-                /// projects/foo/rulesets/uuid1234 projects/foo/releases/prod/v2 | projects/foo/rulesets/uuid8888
-                ///
-                /// Example 2: A filter of `name=prod* ruleset_name=uuid1234` would return only `Release` instances for
-                /// 'projects/foo' with names prefixed with 'prod' referring to the same `Ruleset` name of 'uuid1234':
-                ///
-                /// Name                          | Ruleset Name ------------------------------|-------------
-                /// projects/foo/releases/prod    | projects/foo/rulesets/1234 projects/foo/releases/prod/v1 |
-                /// projects/foo/rulesets/1234
-                ///
-                /// In the examples, the filter parameters refer to the search filters are relative to the project.
-                /// Fully qualified prefixed may also be used. e.g.
-                /// `test_suite_name=projects/foo/testsuites/uuid1`</summary>
+                /// `Release.ruleset_name`, and `Release.test_suite_name`. Example 1: A filter of 'name=prod*' might
+                /// return `Release`s with names within 'projects/foo' prefixed with 'prod': Name | Ruleset Name
+                /// ------------------------------|------------- projects/foo/releases/prod |
+                /// projects/foo/rulesets/uuid1234 projects/foo/releases/prod/v1 | projects/foo/rulesets/uuid1234
+                /// projects/foo/releases/prod/v2 | projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod*
+                /// ruleset_name=uuid1234` would return only `Release` instances for 'projects/foo' with names prefixed
+                /// with 'prod' referring to the same `Ruleset` name of 'uuid1234': Name | Ruleset Name
+                /// ------------------------------|------------- projects/foo/releases/prod | projects/foo/rulesets/1234
+                /// projects/foo/releases/prod/v1 | projects/foo/rulesets/1234 In the examples, the filter parameters
+                /// refer to the search filters are relative to the project. Fully qualified prefixed may also be used.
+                /// e.g. `test_suite_name=projects/foo/testsuites/uuid1`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -827,23 +799,20 @@ namespace Google.Apis.FirebaseRules.v1
 
             }
 
-            /// <summary>Update a `Release` via PATCH.
-            ///
-            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
-            /// supported. To create a `Release` use the CreateRelease method.</summary>
+            /// <summary>Update a `Release` via PATCH. Only updates to the `ruleset_name` and `test_suite_name` fields
+            /// will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease
+            /// method.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name for the project which owns this `Release`.
-            ///
-            /// Format: `projects/{project_id}`</param>
+            /// <param name="name">Resource name for the project which owns this `Release`. Format:
+            /// `projects/{project_id}`</param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Update a `Release` via PATCH.
-            ///
-            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
-            /// supported. To create a `Release` use the CreateRelease method.</summary>
+            /// <summary>Update a `Release` via PATCH. Only updates to the `ruleset_name` and `test_suite_name` fields
+            /// will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease
+            /// method.</summary>
             public class PatchRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Release>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -856,9 +825,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the project which owns this `Release`.
-                ///
-                /// Format: `projects/{project_id}`</summary>
+                /// <summary>Resource name for the project which owns this `Release`. Format:
+                /// `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -929,25 +897,21 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
 
-            /// <summary>Create a `Ruleset` from `Source`.
-            ///
-            /// The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing
-            /// syntactic or semantics errors will result in an error response indicating the first error encountered.
-            /// For a detailed view of `Source` issues, use TestRuleset.</summary>
+            /// <summary>Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is
+            /// returned to the caller. `Source` containing syntactic or semantics errors will result in an error
+            /// response indicating the first error encountered. For a detailed view of `Source` issues, use
+            /// TestRuleset.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name for Project which owns this `Ruleset`.
-            ///
-            /// Format: `projects/{project_id}`</param>
+            /// <param name="name">Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`</param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Ruleset body, string name)
             {
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Create a `Ruleset` from `Source`.
-            ///
-            /// The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing
-            /// syntactic or semantics errors will result in an error response indicating the first error encountered.
-            /// For a detailed view of `Source` issues, use TestRuleset.</summary>
+            /// <summary>Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is
+            /// returned to the caller. `Source` containing syntactic or semantics errors will result in an error
+            /// response indicating the first error encountered. For a detailed view of `Source` issues, use
+            /// TestRuleset.</summary>
             public class CreateRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Ruleset>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -960,9 +924,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for Project which owns this `Ruleset`.
-                ///
-                /// Format: `projects/{project_id}`</summary>
+                /// <summary>Resource name for Project which owns this `Ruleset`. Format:
+                /// `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1009,20 +972,17 @@ namespace Google.Apis.FirebaseRules.v1
 
             }
 
-            /// <summary>Delete a `Ruleset` by resource name.
-            ///
-            /// If the `Ruleset` is referenced by a `Release` the operation will fail.</summary>
-            /// <param name="name">Resource name for the ruleset to delete.
-            ///
-            /// Format: `projects/{project_id}/rulesets/{ruleset_id}`</param>
+            /// <summary>Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the
+            /// operation will fail.</summary>
+            /// <param name="name">Resource name for the ruleset to delete. Format:
+            /// `projects/{project_id}/rulesets/{ruleset_id}`</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Delete a `Ruleset` by resource name.
-            ///
-            /// If the `Ruleset` is referenced by a `Release` the operation will fail.</summary>
+            /// <summary>Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the
+            /// operation will fail.</summary>
             public class DeleteRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1034,9 +994,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the ruleset to delete.
-                ///
-                /// Format: `projects/{project_id}/rulesets/{ruleset_id}`</summary>
+                /// <summary>Resource name for the ruleset to delete. Format:
+                /// `projects/{project_id}/rulesets/{ruleset_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1078,9 +1037,8 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>Get a `Ruleset` by name including the full `Source` contents.</summary>
-            /// <param name="name">Resource name for the ruleset to get.
-            ///
-            /// Format: `projects/{project_id}/rulesets/{ruleset_id}`</param>
+            /// <param name="name">Resource name for the ruleset to get. Format:
+            /// `projects/{project_id}/rulesets/{ruleset_id}`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1098,9 +1056,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the ruleset to get.
-                ///
-                /// Format: `projects/{project_id}/rulesets/{ruleset_id}`</summary>
+                /// <summary>Resource name for the ruleset to get. Format:
+                /// `projects/{project_id}/rulesets/{ruleset_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1141,20 +1098,16 @@ namespace Google.Apis.FirebaseRules.v1
 
             }
 
-            /// <summary>List `Ruleset` metadata only and optionally filter the results by `Ruleset` name.
-            ///
-            /// The full `Source` contents of a `Ruleset` may be retrieved with GetRuleset.</summary>
-            /// <param name="name">Resource name for the project.
-            ///
-            /// Format: `projects/{project_id}`</param>
+            /// <summary>List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full
+            /// `Source` contents of a `Ruleset` may be retrieved with GetRuleset.</summary>
+            /// <param name="name">Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>List `Ruleset` metadata only and optionally filter the results by `Ruleset` name.
-            ///
-            /// The full `Source` contents of a `Ruleset` may be retrieved with GetRuleset.</summary>
+            /// <summary>List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full
+            /// `Source` contents of a `Ruleset` may be retrieved with GetRuleset.</summary>
             public class ListRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.ListRulesetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1166,18 +1119,14 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
 
-                /// <summary>Resource name for the project.
-                ///
-                /// Format: `projects/{project_id}`</summary>
+                /// <summary>Resource name for the project. Format: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
-                ///
                 /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
-                /// the RFC 3339 date/time specifications.
-                ///
-                /// Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*`</summary>
+                /// the RFC 3339 date/time specifications. Example: `create_time > date("2017-01-01T00:00:00Z") AND
+                /// name=UUID-*`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1257,44 +1206,29 @@ namespace Google.Apis.FirebaseRules.v1
         }
 
         /// <summary>Test `Source` for syntactic and semantic correctness. Issues present, if any, will be returned to
-        /// the caller with a description, severity, and source location.
-        ///
-        /// The test method may be executed with `Source` or a `Ruleset` name. Passing `Source` is useful for unit
-        /// testing new rules. Passing a `Ruleset` name is useful for regression testing an existing rule.
-        ///
-        /// The following is an example of `Source` that permits users to upload images to a bucket bearing their user
-        /// id and matching the correct metadata:
-        ///
-        /// _*Example*_
-        ///
-        /// // Users are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match
+        /// the caller with a description, severity, and source location. The test method may be executed with `Source`
+        /// or a `Ruleset` name. Passing `Source` is useful for unit testing new rules. Passing a `Ruleset` name is
+        /// useful for regression testing an existing rule. The following is an example of `Source` that permits users
+        /// to upload images to a bucket bearing their user id and matching the correct metadata: _*Example*_ // Users
+        /// are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match
         /// /users/{userId}/images/{imageName} { allow write: if userId == request.auth.uid &&
         /// (imageName.matches('*.png$') || imageName.matches('*.jpg$')) && resource.mimeType.matches('^image/') }
         /// }</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Tests may either provide `source` or a `Ruleset` resource name.
-        ///
-        /// For tests against `source`, the resource name must refer to the project: Format: `projects/{project_id}`
-        ///
-        /// For tests against a `Ruleset`, this must be the `Ruleset` resource name: Format:
-        /// `projects/{project_id}/rulesets/{ruleset_id}`</param>
+        /// <param name="name">Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the
+        /// resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must be
+        /// the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}`</param>
         public virtual TestRequest Test(Google.Apis.FirebaseRules.v1.Data.TestRulesetRequest body, string name)
         {
             return new TestRequest(service, body, name);
         }
 
         /// <summary>Test `Source` for syntactic and semantic correctness. Issues present, if any, will be returned to
-        /// the caller with a description, severity, and source location.
-        ///
-        /// The test method may be executed with `Source` or a `Ruleset` name. Passing `Source` is useful for unit
-        /// testing new rules. Passing a `Ruleset` name is useful for regression testing an existing rule.
-        ///
-        /// The following is an example of `Source` that permits users to upload images to a bucket bearing their user
-        /// id and matching the correct metadata:
-        ///
-        /// _*Example*_
-        ///
-        /// // Users are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match
+        /// the caller with a description, severity, and source location. The test method may be executed with `Source`
+        /// or a `Ruleset` name. Passing `Source` is useful for unit testing new rules. Passing a `Ruleset` name is
+        /// useful for regression testing an existing rule. The following is an example of `Source` that permits users
+        /// to upload images to a bucket bearing their user id and matching the correct metadata: _*Example*_ // Users
+        /// are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match
         /// /users/{userId}/images/{imageName} { allow write: if userId == request.auth.uid &&
         /// (imageName.matches('*.png$') || imageName.matches('*.jpg$')) && resource.mimeType.matches('^image/') }
         /// }</summary>
@@ -1310,11 +1244,9 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
 
-            /// <summary>Tests may either provide `source` or a `Ruleset` resource name.
-            ///
-            /// For tests against `source`, the resource name must refer to the project: Format: `projects/{project_id}`
-            ///
-            /// For tests against a `Ruleset`, this must be the `Ruleset` resource name: Format:
+            /// <summary>Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the
+            /// resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`,
+            /// this must be the `Ruleset` resource name: Format:
             /// `projects/{project_id}/rulesets/{ruleset_id}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1383,11 +1315,9 @@ namespace Google.Apis.FirebaseRules.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1448,15 +1378,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Mock function definition.
-    ///
-    /// Mocks must refer to a function declared by the target service. The type of the function args and result will be
-    /// inferred at test time. If either the arg or result values are not compatible with function type declaration, the
-    /// request will be considered invalid.
-    ///
-    /// More than one `FunctionMock` may be provided for a given function name so long as the `Arg` matchers are
-    /// distinct. There may be only one function for a given overload where all `Arg` values are
-    /// `Arg.any_value`.</summary>
+    /// <summary>Mock function definition. Mocks must refer to a function declared by the target service. The type of
+    /// the function args and result will be inferred at test time. If either the arg or result values are not
+    /// compatible with function type declaration, the request will be considered invalid. More than one `FunctionMock`
+    /// may be provided for a given function name so long as the `Arg` matchers are distinct. There may be only one
+    /// function for a given overload where all `Arg` values are `Arg.any_value`.</summary>
     public class FunctionMock : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of `Arg` values to match. The order in which the arguments are provided is the order in
@@ -1464,9 +1390,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<Arg> Args { get; set; } 
 
-        /// <summary>The name of the function.
-        ///
-        /// The function name must match one provided by a service declaration.</summary>
+        /// <summary>The name of the function. The function name must match one provided by a service
+        /// declaration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; } 
 
@@ -1581,24 +1506,17 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Resource name for the `Release`.
-        ///
-        /// `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2` which affords developers a great
-        /// deal of flexibility in mapping the name to the style that best fits their existing development practices.
-        /// For example, a name could refer to an environment, an app, a version, or some combination of three.
-        ///
-        /// In the table below, for the project name `projects/foo`, the following relative release paths show how flat
-        /// and structured names might be chosen to match a desired development / deployment strategy.
-        ///
-        /// Use Case     | Flat Name           | Structured Name -------------|---------------------|----------------
-        /// Environments | releases/qa         | releases/qa Apps         | releases/app1_qa    | releases/app1/qa
-        /// Versions     | releases/app1_v2_qa | releases/app1/v2/qa
-        ///
-        /// The delimiter between the release name path elements can be almost anything and it should work equally well
-        /// with the release name list filter, but in many ways the structured paths provide a clearer picture of the
-        /// relationship between `Release` instances.
-        ///
-        /// Format: `projects/{project_id}/releases/{release_id}`</summary>
+        /// <summary>Resource name for the `Release`. `Release` names may be structured `app1/prod/v2` or flat
+        /// `app1_prod_v2` which affords developers a great deal of flexibility in mapping the name to the style that
+        /// best fits their existing development practices. For example, a name could refer to an environment, an app, a
+        /// version, or some combination of three. In the table below, for the project name `projects/foo`, the
+        /// following relative release paths show how flat and structured names might be chosen to match a desired
+        /// development / deployment strategy. Use Case | Flat Name | Structured Name
+        /// -------------|---------------------|---------------- Environments | releases/qa | releases/qa Apps |
+        /// releases/app1_qa | releases/app1/qa Versions | releases/app1_v2_qa | releases/app1/v2/qa The delimiter
+        /// between the release name path elements can be almost anything and it should work equally well with the
+        /// release name list filter, but in many ways the structured paths provide a clearer picture of the
+        /// relationship between `Release` instances. Format: `projects/{project_id}/releases/{release_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1697,11 +1615,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
 
     /// <summary>`TestCase` messages provide the request context and an expectation as to whether the given context will
     /// be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function
-    /// call to a service-provided function.
-    ///
-    /// The `request` object represents context present at request-time.
-    ///
-    /// The `resource` is the value of the target resource as it appears in persistent storage before the request is
+    /// call to a service-provided function. The `request` object represents context present at request-time. The
+    /// `resource` is the value of the target resource as it appears in persistent storage before the request is
     /// executed.</summary>
     public class TestCase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1722,24 +1637,17 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pathEncoding")]
         public virtual string PathEncoding { get; set; } 
 
-        /// <summary>Request context.
-        ///
-        /// The exact format of the request context is service-dependent. See the appropriate service documentation for
-        /// information about the supported fields and types on the request. Minimally, all services support the
-        /// following fields and types:
-        ///
-        /// Request field  | Type ---------------|----------------- auth.uid       | `string` auth.token     | `map`
-        /// headers        | `map` method         | `string` params         | `map` path           | `string` time
-        /// | `google.protobuf.Timestamp`
-        ///
-        /// If the request value is not well-formed for the service, the request will be rejected as an invalid
-        /// argument.</summary>
+        /// <summary>Request context. The exact format of the request context is service-dependent. See the appropriate
+        /// service documentation for information about the supported fields and types on the request. Minimally, all
+        /// services support the following fields and types: Request field | Type ---------------|-----------------
+        /// auth.uid | `string` auth.token | `map` headers | `map` method | `string` params | `map` path | `string` time
+        /// | `google.protobuf.Timestamp` If the request value is not well-formed for the service, the request will be
+        /// rejected as an invalid argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual object Request { get; set; } 
 
-        /// <summary>Optional resource value as it appears in persistent storage before the request is fulfilled.
-        ///
-        /// The resource type depends on the `request.path` value.</summary>
+        /// <summary>Optional resource value as it appears in persistent storage before the request is fulfilled. The
+        /// resource type depends on the `request.path` value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual object Resource { get; set; } 
 
@@ -1751,21 +1659,16 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// test failures.</summary>
     public class TestResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Debug messages related to test execution issues encountered during evaluation.
-        ///
-        /// Debug messages may be related to too many or too few invocations of function mocks or to runtime errors that
-        /// occur during evaluation.
-        ///
-        /// For example: ```Unable to read variable [name: "resource"]```</summary>
+        /// <summary>Debug messages related to test execution issues encountered during evaluation. Debug messages may
+        /// be related to too many or too few invocations of function mocks or to runtime errors that occur during
+        /// evaluation. For example: ```Unable to read variable [name: "resource"]```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugMessages")]
         public virtual System.Collections.Generic.IList<string> DebugMessages { get; set; } 
 
-        /// <summary>Position in the `Source` or `Ruleset` where the principle runtime error occurs.
-        ///
-        /// Evaluation of an expression may result in an error. Rules are deny by default, so a `DENY` expectation when
-        /// an error is generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned.
-        ///
-        /// E.g. `error_position { line: 19 column: 37 }`</summary>
+        /// <summary>Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an
+        /// expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is
+        /// generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g.
+        /// `error_position { line: 19 column: 37 }`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorPosition")]
         public virtual SourcePosition ErrorPosition { get; set; } 
 
@@ -1775,10 +1678,9 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expressionReports")]
         public virtual System.Collections.Generic.IList<ExpressionReport> ExpressionReports { get; set; } 
 
-        /// <summary>The set of function calls made to service-defined methods.
-        ///
-        /// Function calls are included in the order in which they are encountered during evaluation, are provided for
-        /// both mocked and unmocked functions, and included on the response regardless of the test `state`.</summary>
+        /// <summary>The set of function calls made to service-defined methods. Function calls are included in the order
+        /// in which they are encountered during evaluation, are provided for both mocked and unmocked functions, and
+        /// included on the response regardless of the test `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionCalls")]
         public virtual System.Collections.Generic.IList<FunctionCall> FunctionCalls { get; set; } 
 
@@ -1800,9 +1702,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// <summary>The request for FirebaseRulesService.TestRuleset.</summary>
     public class TestRulesetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional `Source` to be checked for correctness.
-        ///
-        /// This field must not be set when the resource name refers to a `Ruleset`.</summary>
+        /// <summary>Optional `Source` to be checked for correctness. This field must not be set when the resource name
+        /// refers to a `Ruleset`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 
 

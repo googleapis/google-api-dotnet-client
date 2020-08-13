@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -11815,7 +11815,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderShipmentScheduledDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The phone number of the carrier fulfilling the delivery.</summary>
+        /// <summary>The phone number of the carrier fulfilling the delivery. The phone number is formatted as the
+        /// international notation in ITU-T Recommendation E.123 (e.g., "+41 44 668 1800").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
         public virtual string CarrierPhoneNumber { get; set; } 
 

@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Gmail Postmaster Tools API Version v1beta1
+ *   Postmaster Tools API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/gmail/postmaster'>Gmail Postmaster Tools API</a>
+ *          <td><a href='https://developers.google.com/gmail/postmaster'>Postmaster Tools API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200806 (2044)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/postmaster'>
  *              https://developers.google.com/gmail/postmaster</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Gmail Postmaster Tools API can be found at
+ * The complete API documentation for using Postmaster Tools API can be found at
  * <a href='https://developers.google.com/gmail/postmaster'>https://developers.google.com/gmail/postmaster</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -109,7 +109,7 @@ namespace Google.Apis.PostmasterTools.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Gmail Postmaster Tools API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Postmaster Tools API.</summary>
         public class Scope
         {
             /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
@@ -118,7 +118,7 @@ namespace Google.Apis.PostmasterTools.v1beta1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Gmail Postmaster Tools API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Postmaster Tools API.</summary>
         public static class ScopeConstants
         {
             /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster

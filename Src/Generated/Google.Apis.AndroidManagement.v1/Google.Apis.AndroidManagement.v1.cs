@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200803 (2041)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -843,10 +843,13 @@ namespace Google.Apis.AndroidManagement.v1
                 /// <summary>Optional flags that control the device wiping behavior.</summary>
                 public enum WipeDataFlagsEnum
                 {
+                    /// <summary>This value is ignored.</summary>
                     [Google.Apis.Util.StringValueAttribute("WIPE_DATA_FLAG_UNSPECIFIED")]
                     WIPEDATAFLAGUNSPECIFIED,
+                    /// <summary>Preserve the factory reset protection data on the device.</summary>
                     [Google.Apis.Util.StringValueAttribute("PRESERVE_RESET_PROTECTION_DATA")]
                     PRESERVERESETPROTECTIONDATA,
+                    /// <summary>Additionally wipe the device's external storage (such as SD cards).</summary>
                     [Google.Apis.Util.StringValueAttribute("WIPE_EXTERNAL_STORAGE")]
                     WIPEEXTERNALSTORAGE,
                 }
@@ -2624,6 +2627,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleTrackIds")]
         public virtual System.Collections.Generic.IList<string> AccessibleTrackIds { get; set; } 
 
+        /// <summary>Controls whether the app can communicate with itself across a device’s work and personal profiles,
+        /// subject to user consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedWorkAndPersonalApp")]
+        public virtual string ConnectedWorkAndPersonalApp { get; set; } 
+
         /// <summary>The default policy for all permissions requested by the app. If specified, this overrides the
         /// policy-level default_permission_policy which applies to all apps. It does not override the permission_grants
         /// which applies to all apps.</summary>
@@ -2650,8 +2658,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Managed configuration applied to the app. The format for the configuration is dictated by the
         /// ManagedProperty values supported by the app. Each field name in the managed configuration must match the key
         /// field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty:
-        /// typeJSON value BOOLtrue or false STRINGstring INTEGERnumber CHOICEstring MULTISELECTarray of strings
-        /// HIDDENstring BUNDLE_ARRAYarray of objects </summary>
+        /// *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of
+        /// strings HIDDEN string BUNDLE_ARRAY array of objects </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> ManagedConfiguration { get; set; } 
 
@@ -3531,7 +3539,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// iframe.</summary>
     public class ManagedConfigurationTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional, a map containing  configuration variables defined for the configuration.</summary>
+        /// <summary>Optional, a map containing configuration variables defined for the configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> ConfigurationVariables { get; set; } 
 
@@ -3666,7 +3674,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>For settings with nested fields, if a particular nested field is out of compliance, this specifies
         /// the full path to the offending field. The path is formatted in the same way the policy JSON field would be
         /// referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a
-        /// subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in
+        /// subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in
         /// brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd
         /// application, the path would be applications[2].externalData.url</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
@@ -3685,7 +3693,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
-        /// <summary>The name of the policy setting. This is the JSON field name of a top-level Policy  field.</summary>
+        /// <summary>The name of the policy setting. This is the JSON field name of a top-level Policy field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settingName")]
         public virtual string SettingName { get; set; } 
 
@@ -4667,7 +4675,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMessage")]
         public virtual string DefaultMessage { get; set; } 
 
-        /// <summary>A map containing  pairs, where locale is a well-formed BCP 47 language
+        /// <summary>A map containing pairs, where locale is a well-formed BCP 47 language
         /// (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedMessages")]
         public virtual System.Collections.Generic.IDictionary<string,string> LocalizedMessages { get; set; } 
@@ -4714,8 +4722,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class WebAppIcon : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64
-        /// Encoding with URL and Filename Safe Alphabet").  The image type can be png or jpg. The image should ideally
-        /// be square. The image should ideally have a size of 512x512. </summary>
+        /// Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should
+        /// ideally be square. - The image should ideally have a size of 512x512. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageData")]
         public virtual string ImageData { get; set; } 
 
@@ -4727,9 +4735,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class WebToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The features to enable. Use this if you want to control exactly which feature(s) will be activated;
-        /// leave empty to allow all features.Restrictions / things to note:   If no features are listed here, all
-        /// features are enabled — this is the  default behavior where you give access to all features to your admins.
-        /// This must not contain any FEATURE_UNSPECIFIED values.  Repeated values are ignored </summary>
+        /// leave empty to allow all features.Restrictions / things to note: - If no features are listed here, all
+        /// features are enabled — this is the default behavior where you give access to all features to your admins. -
+        /// This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are ignored </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledFeatures")]
         public virtual System.Collections.Generic.IList<string> EnabledFeatures { get; set; } 
 

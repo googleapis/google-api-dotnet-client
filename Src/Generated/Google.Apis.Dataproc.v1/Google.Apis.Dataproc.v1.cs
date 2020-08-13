@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -6044,8 +6044,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to remove
         /// workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining
         /// after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be
-        /// beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0,
-        /// 1.0.</summary>
+        /// beneficial for autoscaling a single job. See How autoscaling works
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for
+        /// more information.Bounds: 0.0, 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleDownFactor")]
         public virtual System.Nullable<double> ScaleDownFactor { get; set; } 
 
@@ -6059,8 +6060,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to add
         /// workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining
         /// after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude
-        /// of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0,
-        /// 1.0.</summary>
+        /// of scaling up (less aggressive scaling). See How autoscaling works
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for
+        /// more information.Bounds: 0.0, 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleUpFactor")]
         public virtual System.Nullable<double> ScaleUpFactor { get; set; } 
 
@@ -6745,6 +6747,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
         public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; } 
 
+        /// <summary>Output only. List of references to Compute Engine instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceReferences")]
+        public virtual System.Collections.Generic.IList<InstanceReference> InstanceReferences { get; set; } 
+
         /// <summary>Output only. Specifies that this instance group contains preemptible instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPreemptible")]
         public virtual System.Nullable<bool> IsPreemptible { get; set; } 
@@ -6778,6 +6784,21 @@ namespace Google.Apis.Dataproc.v1.Data
         /// is PREEMPTIBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptibility")]
         public virtual string Preemptibility { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to a Compute Engine instance.</summary>
+    public class InstanceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; } 
+
+        /// <summary>The user-friendly name of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

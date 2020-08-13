@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200804 (2042)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -480,9 +480,8 @@ namespace Google.Apis.Slides.v1
             }
 
             /// <summary>Generates a thumbnail of the latest version of the specified page in the presentation and
-            /// returns a URL to the thumbnail image.
-            ///
-            /// This request counts as an [expensive read request](/slides/limits) for quota purposes.</summary>
+            /// returns a URL to the thumbnail image. This request counts as an [expensive read request](/slides/limits)
+            /// for quota purposes.</summary>
             /// <param name="presentationId">The ID of the presentation to retrieve.</param>
             /// <param name="pageObjectId">The
             /// object ID of the page whose thumbnail to retrieve.</param>
@@ -492,9 +491,8 @@ namespace Google.Apis.Slides.v1
             }
 
             /// <summary>Generates a thumbnail of the latest version of the specified page in the presentation and
-            /// returns a URL to the thumbnail image.
-            ///
-            /// This request counts as an [expensive read request](/slides/limits) for quota purposes.</summary>
+            /// returns a URL to the thumbnail image. This request counts as an [expensive read request](/slides/limits)
+            /// for quota purposes.</summary>
             public class GetThumbnailRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Thumbnail>
             {
                 /// <summary>Constructs a new GetThumbnail request.</summary>
@@ -515,38 +513,40 @@ namespace Google.Apis.Slides.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageObjectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PageObjectId { get; private set; }
 
-                /// <summary>The optional mime type of the thumbnail image.
-                ///
-                /// If you don't specify the mime type, the mime type defaults to PNG.</summary>
+                /// <summary>The optional mime type of the thumbnail image. If you don't specify the mime type, the mime
+                /// type defaults to PNG.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.mimeType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ThumbnailPropertiesMimeTypeEnum> ThumbnailPropertiesMimeType { get; set; }
 
-                /// <summary>The optional mime type of the thumbnail image.
-                ///
-                /// If you don't specify the mime type, the mime type defaults to PNG.</summary>
+                /// <summary>The optional mime type of the thumbnail image. If you don't specify the mime type, the mime
+                /// type defaults to PNG.</summary>
                 public enum ThumbnailPropertiesMimeTypeEnum
                 {
+                    /// <summary>The default mime type.</summary>
                     [Google.Apis.Util.StringValueAttribute("PNG")]
                     PNG,
                 }
 
-                /// <summary>The optional thumbnail image size.
-                ///
-                /// If you don't specify the size, the server chooses a default size of the image.</summary>
+                /// <summary>The optional thumbnail image size. If you don't specify the size, the server chooses a
+                /// default size of the image.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.thumbnailSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ThumbnailPropertiesThumbnailSizeEnum> ThumbnailPropertiesThumbnailSize { get; set; }
 
-                /// <summary>The optional thumbnail image size.
-                ///
-                /// If you don't specify the size, the server chooses a default size of the image.</summary>
+                /// <summary>The optional thumbnail image size. If you don't specify the size, the server chooses a
+                /// default size of the image.</summary>
                 public enum ThumbnailPropertiesThumbnailSizeEnum
                 {
+                    /// <summary>The default thumbnail image size. The unspecified thumbnail size implies that the
+                    /// server chooses the size of the image in a way that might vary in the future.</summary>
                     [Google.Apis.Util.StringValueAttribute("THUMBNAIL_SIZE_UNSPECIFIED")]
                     THUMBNAILSIZEUNSPECIFIED,
+                    /// <summary>The thumbnail image width of 1600px.</summary>
                     [Google.Apis.Util.StringValueAttribute("LARGE")]
                     LARGE,
+                    /// <summary>The thumbnail image width of 800px.</summary>
                     [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                     MEDIUM,
+                    /// <summary>The thumbnail image width of 200px.</summary>
                     [Google.Apis.Util.StringValueAttribute("SMALL")]
                     SMALL,
                 }
@@ -616,20 +616,13 @@ namespace Google.Apis.Slides.v1
             }
         }
 
-        /// <summary>Applies one or more updates to the presentation.
-        ///
-        /// Each request is validated before being applied. If any request is not valid, then the entire request will
-        /// fail and nothing will be applied.
-        ///
-        /// Some requests have replies to give you some information about how they are applied. Other requests do not
-        /// need to return information; these each return an empty reply. The order of replies matches that of the
-        /// requests.
-        ///
-        /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
+        /// <summary>Applies one or more updates to the presentation. Each request is validated before being applied. If
+        /// any request is not valid, then the entire request will fail and nothing will be applied. Some requests have
+        /// replies to give you some information about how they are applied. Other requests do not need to return
+        /// information; these each return an empty reply. The order of replies matches that of the requests. For
+        /// example, suppose you call batchUpdate with four updates, and only the third one returns information. The
         /// response would have two empty replies: the reply to the third request, and another empty reply, in that
-        /// order.
-        ///
-        /// Because other users may be editing the presentation, the presentation might not exactly reflect your
+        /// order. Because other users may be editing the presentation, the presentation might not exactly reflect your
         /// changes: your changes may be altered with respect to collaborator changes. If there are no collaborators,
         /// the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be
         /// applied together atomically.</summary>
@@ -640,20 +633,13 @@ namespace Google.Apis.Slides.v1
             return new BatchUpdateRequest(service, body, presentationId);
         }
 
-        /// <summary>Applies one or more updates to the presentation.
-        ///
-        /// Each request is validated before being applied. If any request is not valid, then the entire request will
-        /// fail and nothing will be applied.
-        ///
-        /// Some requests have replies to give you some information about how they are applied. Other requests do not
-        /// need to return information; these each return an empty reply. The order of replies matches that of the
-        /// requests.
-        ///
-        /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
+        /// <summary>Applies one or more updates to the presentation. Each request is validated before being applied. If
+        /// any request is not valid, then the entire request will fail and nothing will be applied. Some requests have
+        /// replies to give you some information about how they are applied. Other requests do not need to return
+        /// information; these each return an empty reply. The order of replies matches that of the requests. For
+        /// example, suppose you call batchUpdate with four updates, and only the third one returns information. The
         /// response would have two empty replies: the reply to the third request, and another empty reply, in that
-        /// order.
-        ///
-        /// Because other users may be editing the presentation, the presentation might not exactly reflect your
+        /// order. Because other users may be editing the presentation, the presentation might not exactly reflect your
         /// changes: your changes may be altered with respect to collaborator changes. If there are no collaborators,
         /// the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be
         /// applied together atomically.</summary>
@@ -839,15 +825,9 @@ namespace Google.Apis.Slides.v1.Data
 {    
 
     /// <summary>AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates
-    /// (x,y) into destination coordinates (x', y') according to:
-    ///
-    /// x'  x  =   shear_y  scale_y  translate_y 1  [ 1 ]
-    ///
-    /// After transformation,
-    ///
-    /// x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y;
-    ///
-    /// This message is therefore composed of these six matrix elements.</summary>
+    /// (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After
+    /// transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This
+    /// message is therefore composed of these six matrix elements.</summary>
     public class AffineTransform : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The X coordinate scaling element.</summary>
@@ -923,7 +903,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("presentationId")]
         public virtual string PresentationId { get; set; } 
 
-        /// <summary>The reply of the updates.  This maps 1:1 with the updates, although replies to some requests may be
+        /// <summary>The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<Response> Replies { get; set; } 
@@ -993,38 +973,27 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates an image.</summary>
     public class CreateImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The element properties for the image.
-        ///
-        /// When the aspect ratio of the provided size does not match the image aspect ratio, the image is scaled and
-        /// centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after
-        /// this operation.
-        ///
-        /// The PageElementProperties.size property is optional. If you don't specify the size, the default size of the
-        /// image is used.
-        ///
-        /// The PageElementProperties.transform property is optional. If you don't specify a transform, the image will
-        /// be placed at the top left corner of the page.</summary>
+        /// <summary>The element properties for the image. When the aspect ratio of the provided size does not match the
+        /// image aspect ratio, the image is scaled and centered with respect to the size in order to maintain aspect
+        /// ratio. The provided transform is applied after this operation. The PageElementProperties.size property is
+        /// optional. If you don't specify the size, the default size of the image is used. The
+        /// PageElementProperties.transform property is optional. If you don't specify a transform, the image will be
+        /// placed at the top left corner of the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an
+        /// ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The image URL.
-        ///
-        /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        ///
-        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
-        /// Image.source_url field.</summary>
+        /// <summary>The image URL. The image is fetched once at insertion time and a copy is stored for display inside
+        /// the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of
+        /// PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the
+        /// image, and exposed via the Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1046,17 +1015,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates a line.</summary>
     public class CreateLineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The category of the line to be created.
-        ///
-        /// The exact line type created is determined based on the category and how it's routed to connect to other page
-        /// elements.
-        ///
-        /// If you specify both a `category` and a `line_category`, the `category` takes precedence.
-        ///
-        /// If you do not specify a value for `category`, but specify a value for `line_category`, then the specified
-        /// `line_category` value is used.
-        ///
-        /// If you do not specify either, then STRAIGHT is used.</summary>
+        /// <summary>The category of the line to be created. The exact line type created is determined based on the
+        /// category and how it's routed to connect to other page elements. If you specify both a `category` and a
+        /// `line_category`, the `category` takes precedence. If you do not specify a value for `category`, but specify
+        /// a value for `line_category`, then the specified `line_category` value is used. If you do not specify either,
+        /// then STRAIGHT is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; } 
 
@@ -1064,25 +1027,17 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>The category of the line to be created.
-        ///
-        /// Deprecated: use `category` instead.
-        ///
-        /// The exact line type created is determined based on the category and how it's routed to connect to other page
-        /// elements.
-        ///
-        /// If you specify both a `category` and a `line_category`, the `category` takes precedence.</summary>
+        /// <summary>The category of the line to be created. *Deprecated*: use `category` instead. The exact line type
+        /// created is determined based on the category and how it's routed to connect to other page elements. If you
+        /// specify both a `category` and a `line_category`, the `category` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
         public virtual string LineCategory { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an
+        /// ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1101,14 +1056,11 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates bullets for all of the paragraphs that overlap with the given text index range.
-    ///
-    /// The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To
-    /// avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this
-    /// request. This may change the indices of parts of the text.
-    ///
-    /// If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs
-    /// being updated are added to that preceding list.</summary>
+    /// <summary>Creates bullets for all of the paragraphs that overlap with the given text index range. The nesting
+    /// level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess
+    /// space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This
+    /// may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in
+    /// a list with a matching preset, the paragraphs being updated are added to that preceding list.</summary>
     public class CreateParagraphBulletsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kinds of bullet glyphs to be used. Defaults to the `BULLET_DISC_CIRCLE_SQUARE`
@@ -1140,12 +1092,11 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50. If empty, a unique identifier will be generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If empty, a unique
+        /// identifier will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1168,21 +1119,17 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates an embedded Google Sheets chart.
-    ///
-    /// NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly,
-    /// drive.file, or drive OAuth scopes.</summary>
+    /// <summary>Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the
+    /// spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.</summary>
     public class CreateSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the specific chart in the Google Sheets spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
         public virtual System.Nullable<int> ChartId { get; set; } 
 
-        /// <summary>The element properties for the chart.
-        ///
-        /// When the aspect ratio of the provided size does not match the chart aspect ratio, the chart is scaled and
-        /// centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after
-        /// this operation.</summary>
+        /// <summary>The element properties for the chart. When the aspect ratio of the provided size does not match the
+        /// chart aspect ratio, the chart is scaled and centered with respect to the size in order to maintain aspect
+        /// ratio. The provided transform is applied after this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
@@ -1191,12 +1138,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkingMode")]
         public virtual string LinkingMode { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If specified, the ID must be unique among all pages and page elements in the presentation. The ID should
-        /// start with a word character [a-zA-Z0-9_] and then followed by any number of the following characters
-        /// [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater than 50. If empty, a unique
-        /// identifier will be generated.</summary>
+        /// <summary>A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in
+        /// the presentation. The ID should start with a word character [a-zA-Z0-9_] and then followed by any number of
+        /// the following characters [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater than 50.
+        /// If empty, a unique identifier will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1222,20 +1167,16 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates a new slide.</summary>
     public class CreateSlideRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The optional zero-based index indicating where to insert the slides.
-        ///
-        /// If you don't specify an index, the new slide is created at the end.</summary>
+        /// <summary>The optional zero-based index indicating where to insert the slides. If you don't specify an index,
+        /// the new slide is created at the end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionIndex")]
         public virtual System.Nullable<int> InsertionIndex { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an
+        /// ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1246,15 +1187,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual System.Collections.Generic.IList<LayoutPlaceholderIdMapping> PlaceholderIdMappings { get; set; } 
 
         /// <summary>Layout reference of the slide to be inserted, based on the *current master*, which is one of the
-        /// following:
-        ///
-        /// - The master of the previous slide index. - The master of the first slide, if the insertion_index is zero. -
-        /// The first master in the presentation, if there are no slides.
-        ///
-        /// If the LayoutReference is not found in the current master, a 400 bad request error is returned.
-        ///
-        /// If you don't specify a layout reference, then the new slide will use the predefined layout
-        /// `BLANK`.</summary>
+        /// following: - The master of the previous slide index. - The master of the first slide, if the insertion_index
+        /// is zero. - The first master in the presentation, if there are no slides. If the LayoutReference is not found
+        /// in the current master, a 400 bad request error is returned. If you don't specify a layout reference, then
+        /// the new slide will use the predefined layout `BLANK`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slideLayoutReference")]
         public virtual LayoutReference SlideLayoutReference { get; set; } 
 
@@ -1280,24 +1216,18 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; } 
 
-        /// <summary>The element properties for the table.
-        ///
-        /// The table will be created at the provided size, subject to a minimum size. If no size is provided, the table
-        /// will be automatically sized.
-        ///
-        /// Table transforms must have a scale of 1 and no shear components. If no transform is provided, the table will
-        /// be centered on the page.</summary>
+        /// <summary>The element properties for the table. The table will be created at the provided size, subject to a
+        /// minimum size. If no size is provided, the table will be automatically sized. Table transforms must have a
+        /// scale of 1 and no shear components. If no transform is provided, the table will be centered on the
+        /// page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an
+        /// ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1320,38 +1250,29 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a video.
-    ///
-    /// NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive,
-    /// drive.readonly, or drive.file OAuth scopes.</summary>
+    /// <summary>Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at
+    /// least one of the drive, drive.readonly, or drive.file OAuth scopes.</summary>
     public class CreateVideoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The element properties for the video.
-        ///
-        /// The PageElementProperties.size property is optional. If you don't specify a size, a default size is chosen
-        /// by the server.
-        ///
-        /// The PageElementProperties.transform property is optional. The transform must not have shear components. If
-        /// you don't specify a transform, the video will be placed at the top left corner of the page.</summary>
+        /// <summary>The element properties for the video. The PageElementProperties.size property is optional. If you
+        /// don't specify a size, a default size is chosen by the server. The PageElementProperties.transform property
+        /// is optional. The transform must not have shear components. If you don't specify a transform, the video will
+        /// be placed at the top left corner of the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>The video source's unique identifier for this video.
-        ///
-        /// e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google
-        /// Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is
-        /// 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.</summary>
+        /// <summary>The video source's unique identifier for this video. e.g. For YouTube video
+        /// https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google Drive video
+        /// https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-
+        /// q6Hi5Q.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A user-supplied object ID.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID. If you specify an ID, it must be unique among all pages and page
+        /// elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches
+        /// regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex
+        /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an
+        /// ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1374,20 +1295,16 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The crop properties of an object enclosed in a container. For example, an Image.
-    ///
-    /// The crop properties is represented by the offsets of four edges which define a crop rectangle. The offsets are
-    /// measured in percentage from the corresponding edges of the object's original bounding rectangle towards inside,
-    /// relative to the object's original dimensions.
-    ///
-    /// - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is positioned inside of the
-    /// object's original bounding rectangle. - If the offset is negative or greater than 1, the corresponding edge of
-    /// crop rectangle is positioned outside of the object's original bounding rectangle. - If the left edge of the crop
-    /// rectangle is on the right side of its right edge, the object will be flipped horizontally. - If the top edge of
-    /// the crop rectangle is below its bottom edge, the object will be flipped vertically. - If all offsets and
-    /// rotation angle is 0, the object is not cropped.
-    ///
-    /// After cropping, the content in the crop rectangle will be stretched to fit its container.</summary>
+    /// <summary>The crop properties of an object enclosed in a container. For example, an Image. The crop properties is
+    /// represented by the offsets of four edges which define a crop rectangle. The offsets are measured in percentage
+    /// from the corresponding edges of the object's original bounding rectangle towards inside, relative to the
+    /// object's original dimensions. - If the offset is in the interval (0, 1), the corresponding edge of crop
+    /// rectangle is positioned inside of the object's original bounding rectangle. - If the offset is negative or
+    /// greater than 1, the corresponding edge of crop rectangle is positioned outside of the object's original bounding
+    /// rectangle. - If the left edge of the crop rectangle is on the right side of its right edge, the object will be
+    /// flipped horizontally. - If the top edge of the crop rectangle is below its bottom edge, the object will be
+    /// flipped vertically. - If all offsets and rotation angle is 0, the object is not cropped. After cropping, the
+    /// content in the crop rectangle will be stretched to fit its container.</summary>
     public class CropProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The rotation angle of the crop window around its center, in radians. Rotation angle is applied
@@ -1422,11 +1339,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Deletes an object, either pages or page elements, from the presentation.</summary>
     public class DeleteObjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object ID of the page or page element to delete.
-        ///
-        /// If after a delete operation a group contains only 1 or no page elements, the group is also deleted.
-        ///
-        /// If a placeholder is deleted on a layout, any empty inheriting shapes are also deleted.</summary>
+        /// <summary>The object ID of the page or page element to delete. If after a delete operation a group contains
+        /// only 1 or no page elements, the group is also deleted. If a placeholder is deleted on a layout, any empty
+        /// inheriting shapes are also deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1434,10 +1349,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deletes bullets from all of the paragraphs that overlap with the given text index range.
-    ///
-    /// The nesting level of each paragraph will be visually preserved by adding indent to the start of the
-    /// corresponding paragraph.</summary>
+    /// <summary>Deletes bullets from all of the paragraphs that overlap with the given text index range. The nesting
+    /// level of each paragraph will be visually preserved by adding indent to the start of the corresponding
+    /// paragraph.</summary>
     public class DeleteParagraphBulletsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The optional table cell location if the text to be modified is in a table cell. If present, the
@@ -1460,10 +1374,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Deletes a column from a table.</summary>
     public class DeleteTableColumnRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which a column will be deleted.
-        ///
-        /// The column this cell spans will be deleted. If this is a merged cell, multiple columns will be deleted. If
-        /// no columns remain in the table after this deletion, the whole table is deleted.</summary>
+        /// <summary>The reference table cell location from which a column will be deleted. The column this cell spans
+        /// will be deleted. If this is a merged cell, multiple columns will be deleted. If no columns remain in the
+        /// table after this deletion, the whole table is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
@@ -1478,10 +1391,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Deletes a row from a table.</summary>
     public class DeleteTableRowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which a row will be deleted.
-        ///
-        /// The row this cell spans will be deleted. If this is a merged cell, multiple rows will be deleted. If no rows
-        /// remain in the table after this deletion, the whole table is deleted.</summary>
+        /// <summary>The reference table cell location from which a row will be deleted. The row this cell spans will be
+        /// deleted. If this is a merged cell, multiple rows will be deleted. If no rows remain in the table after this
+        /// deletion, the whole table is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
@@ -1505,17 +1417,12 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The range of text to delete, based on TextElement indexes.
-        ///
-        /// There is always an implicit newline character at the end of a shape's or table cell's text that cannot be
-        /// deleted. `Range.Type.ALL` will use the correct bounds, but care must be taken when specifying explicit
-        /// bounds for range types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text is "ABC", followed by
-        /// an implicit newline, then the maximum value is 2 for `text_range.start_index` and 3 for
-        /// `text_range.end_index`.
-        ///
-        /// Deleting text that crosses a paragraph boundary may result in changes to paragraph styles and lists as the
-        /// two paragraphs are merged.
-        ///
+        /// <summary>The range of text to delete, based on TextElement indexes. There is always an implicit newline
+        /// character at the end of a shape's or table cell's text that cannot be deleted. `Range.Type.ALL` will use the
+        /// correct bounds, but care must be taken when specifying explicit bounds for range types `FROM_START_INDEX`
+        /// and `FIXED_RANGE`. For example, if the text is "ABC", followed by an implicit newline, then the maximum
+        /// value is 2 for `text_range.start_index` and 3 for `text_range.end_index`. Deleting text that crosses a
+        /// paragraph boundary may result in changes to paragraph styles and lists as the two paragraphs are merged.
         /// Ranges that include only one code unit of a surrogate pair are expanded to include both code
         /// units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
@@ -1540,11 +1447,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Duplicates a slide or page element.
-    ///
-    /// When duplicating a slide, the duplicate slide will be created immediately following the specified slide. When
-    /// duplicating a page element, the duplicate will be placed on the same page at the same position as the
-    /// original.</summary>
+    /// <summary>Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created
+    /// immediately following the specified slide. When duplicating a page element, the duplicate will be placed on the
+    /// same page at the same position as the original.</summary>
     public class DuplicateObjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the object to duplicate.</summary>
@@ -1555,15 +1460,12 @@ namespace Google.Apis.Slides.v1.Data
         /// group page element. This map defines how the IDs of duplicated objects are generated: the keys are the IDs
         /// of the original objects and its values are the IDs that will be assigned to the corresponding duplicate
         /// object. The ID of the source object's duplicate may be specified in this map as well, using the same value
-        /// of the `object_id` field as a key and the newly desired ID as the value.
-        ///
-        /// All keys must correspond to existing IDs in the presentation. All values must be unique in the presentation
-        /// and must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining
-        /// characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of
-        /// the new ID must not be less than 5 or greater than 50.
-        ///
-        /// If any IDs of source objects are omitted from the map, a new random ID will be assigned. If the map is empty
-        /// or unset, all duplicate objects will receive a new random ID.</summary>
+        /// of the `object_id` field as a key and the newly desired ID as the value. All keys must correspond to
+        /// existing IDs in the presentation. All values must be unique in the presentation and must start with an
+        /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include
+        /// those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the new ID must not be
+        /// less than 5 or greater than 50. If any IDs of source objects are omitted from the map, a new random ID will
+        /// be assigned. If the map is empty or unset, all duplicate objects will receive a new random ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectIds")]
         public virtual System.Collections.Generic.IDictionary<string,string> ObjectIds { get; set; } 
 
@@ -1597,22 +1499,17 @@ namespace Google.Apis.Slides.v1.Data
     /// same page as all the children.</summary>
     public class GroupObjectsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object IDs of the objects to group.
-        ///
-        /// Only page elements can be grouped. There should be at least two page elements on the same page that are not
-        /// already in another group. Some page elements, such as videos, tables and placeholder shapes cannot be
-        /// grouped.</summary>
+        /// <summary>The object IDs of the objects to group. Only page elements can be grouped. There should be at least
+        /// two page elements on the same page that are not already in another group. Some page elements, such as
+        /// videos, tables and placeholder shapes cannot be grouped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childrenObjectIds")]
         public virtual System.Collections.Generic.IList<string> ChildrenObjectIds { get; set; } 
 
-        /// <summary>A user-supplied object ID for the group to be created.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
-        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// <summary>A user-supplied object ID for the group to be created. If you specify an ID, it must be unique
+        /// among all pages and page elements in the presentation. The ID must start with an alphanumeric character or
+        /// an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or
+        /// colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If
+        /// you don't specify an ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupObjectId")]
         public virtual string GroupObjectId { get; set; } 
 
@@ -1696,22 +1593,18 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Inserts columns into a table.
-    ///
-    /// Other columns in the table will be resized to fit the new column.</summary>
+    /// <summary>Inserts columns into a table. Other columns in the table will be resized to fit the new
+    /// column.</summary>
     public class InsertTableColumnsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which columns will be inserted.
-        ///
-        /// A new column will be inserted to the left (or right) of the column where the reference cell is. If the
-        /// reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged
-        /// cell.</summary>
+        /// <summary>The reference table cell location from which columns will be inserted. A new column will be
+        /// inserted to the left (or right) of the column where the reference cell is. If the reference cell is a merged
+        /// cell, a new column will be inserted to the left (or right) of the merged cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
-        /// <summary>Whether to insert new columns to the right of the reference cell location.
-        ///
-        /// - `True`: insert to the right. - `False`: insert to the left.</summary>
+        /// <summary>Whether to insert new columns to the right of the reference cell location. - `True`: insert to the
+        /// right. - `False`: insert to the left.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertRight")]
         public virtual System.Nullable<bool> InsertRight { get; set; } 
 
@@ -1730,16 +1623,14 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Inserts rows into a table.</summary>
     public class InsertTableRowsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reference table cell location from which rows will be inserted.
-        ///
-        /// A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a
-        /// merged cell, a new row will be inserted above (or below) the merged cell.</summary>
+        /// <summary>The reference table cell location from which rows will be inserted. A new row will be inserted
+        /// above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will
+        /// be inserted above (or below) the merged cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
-        /// <summary>Whether to insert new rows below the reference cell location.
-        ///
-        /// - `True`: insert below the cell. - `False`: insert above the cell.</summary>
+        /// <summary>Whether to insert new rows below the reference cell location. - `True`: insert below the cell. -
+        /// `False`: insert above the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertBelow")]
         public virtual System.Nullable<bool> InsertBelow { get; set; } 
 
@@ -1763,9 +1654,8 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
-        /// <summary>The index where the text will be inserted, in Unicode code units, based on TextElement indexes.
-        ///
-        /// The index is zero-based and is computed from the start of the string. The index may be adjusted to prevent
+        /// <summary>The index where the text will be inserted, in Unicode code units, based on TextElement indexes. The
+        /// index is zero-based and is computed from the start of the string. The index may be adjusted to prevent
         /// insertions inside Unicode grapheme clusters. In these cases, the text will be inserted immediately after the
         /// grapheme cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionIndex")]
@@ -1775,17 +1665,13 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The text to be inserted.
-        ///
-        /// Inserting a newline character will implicitly create a new ParagraphMarker at that index. The paragraph
-        /// style of the new paragraph will be copied from the paragraph at the current insertion index, including lists
-        /// and bullets.
-        ///
-        /// Text styles for inserted text will be determined automatically, generally preserving the styling of
-        /// neighboring text. In most cases, the text will be added to the TextRun that exists at the insertion index.
-        ///
-        /// Some control characters (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual
-        /// Plane Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted text.</summary>
+        /// <summary>The text to be inserted. Inserting a newline character will implicitly create a new ParagraphMarker
+        /// at that index. The paragraph style of the new paragraph will be copied from the paragraph at the current
+        /// insertion index, including lists and bullets. Text styles for inserted text will be determined
+        /// automatically, generally preserving the styling of neighboring text. In most cases, the text will be added
+        /// to the TextRun that exists at the insertion index. Some control characters (U+0000-U+0008, U+000C-U+001F)
+        /// and characters from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF) will be stripped
+        /// out of the inserted text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
@@ -1807,14 +1693,11 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layoutPlaceholderObjectId")]
         public virtual string LayoutPlaceholderObjectId { get; set; } 
 
-        /// <summary>A user-supplied object ID for the placeholder identified above that to be created onto a slide.
-        ///
-        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
+        /// <summary>A user-supplied object ID for the placeholder identified above that to be created onto a slide. If
+        /// you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
         /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
         /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
-        /// not be less than 5 or greater than 50.
-        ///
-        /// If you don't specify an ID, a unique one is generated.</summary>
+        /// not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -1841,9 +1724,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Slide layout reference. This may reference either:
-    ///
-    /// - A predefined layout - One of the layouts in the presentation.</summary>
+    /// <summary>Slide layout reference. This may reference either: - A predefined layout - One of the layouts in the
+    /// presentation.</summary>
     public class LayoutReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Layout ID: the object ID of one of the layouts in the presentation.</summary>
@@ -1862,10 +1744,8 @@ namespace Google.Apis.Slides.v1.Data
     /// connector.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The category of the line.
-        ///
-        /// It matches the `category` specified in CreateLineRequest, and can be updated with
-        /// UpdateLineCategoryRequest.</summary>
+        /// <summary>The category of the line. It matches the `category` specified in CreateLineRequest, and can be
+        /// updated with UpdateLineCategoryRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
         public virtual string LineCategory { get; set; } 
 
@@ -1884,22 +1764,18 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The properties for one end of a Line connection.</summary>
     public class LineConnection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object ID of the connected page element.
-        ///
-        /// Some page elements, such as groups, tables, and lines do not have connection sites and therefore cannot be
-        /// connected to a connector line.</summary>
+        /// <summary>The object ID of the connected page element. Some page elements, such as groups, tables, and lines
+        /// do not have connection sites and therefore cannot be connected to a connector line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedObjectId")]
         public virtual string ConnectedObjectId { get; set; } 
 
-        /// <summary>The index of the connection site on the connected page element.
-        ///
-        /// In most cases, it corresponds to the predefined connection site index from the ECMA-376 standard. More
-        /// information on those connection sites can be found in the description of the "cnx" attribute in section
-        /// 20.1.9.9 and Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open XML File Formats-
-        /// Fundamentals and Markup Language Reference", part 1 of [ECMA-376 5th edition] (http://www.ecma-
-        /// international.org/publications/standards/Ecma-376.htm).
-        ///
-        /// The position of each connection site can also be viewed from Slides editor.</summary>
+        /// <summary>The index of the connection site on the connected page element. In most cases, it corresponds to
+        /// the predefined connection site index from the ECMA-376 standard. More information on those connection sites
+        /// can be found in the description of the "cnx" attribute in section 20.1.9.9 and Annex H. "Predefined
+        /// DrawingML Shape and Text Geometries" of "Office Open XML File Formats-Fundamentals and Markup Language
+        /// Reference", part 1 of [ECMA-376 5th edition] (http://www.ecma-
+        /// international.org/publications/standards/Ecma-376.htm). The position of each connection site can also be
+        /// viewed from Slides editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionSiteIndex")]
         public virtual System.Nullable<int> ConnectionSiteIndex { get; set; } 
 
@@ -1918,10 +1794,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The properties of the Line.
-    ///
-    /// When unset, these fields default to values that match the appearance of new lines created in the Slides
-    /// editor.</summary>
+    /// <summary>The properties of the Line. When unset, these fields default to values that match the appearance of new
+    /// lines created in the Slides editor.</summary>
     public class LineProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dash style of the line.</summary>
@@ -1932,9 +1806,8 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endArrow")]
         public virtual string EndArrow { get; set; } 
 
-        /// <summary>The connection at the end of the line. If unset, there is no connection.
-        ///
-        /// Only lines with a Type indicating it is a "connector" can have an `end_connection`.</summary>
+        /// <summary>The connection at the end of the line. If unset, there is no connection. Only lines with a Type
+        /// indicating it is a "connector" can have an `end_connection`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endConnection")]
         public virtual LineConnection EndConnection { get; set; } 
 
@@ -1951,9 +1824,8 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startArrow")]
         public virtual string StartArrow { get; set; } 
 
-        /// <summary>The connection at the beginning of the line. If unset, there is no connection.
-        ///
-        /// Only lines with a Type indicating it is a "connector" can have a `start_connection`.</summary>
+        /// <summary>The connection at the beginning of the line. If unset, there is no connection. Only lines with a
+        /// Type indicating it is a "connector" can have a `start_connection`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startConnection")]
         public virtual LineConnection StartConnection { get; set; } 
 
@@ -2027,11 +1899,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The table range specifying which cells of the table to merge.
-        ///
-        /// Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the
-        /// range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are
-        /// already merged), a 400 bad request error is returned.</summary>
+        /// <summary>The table range specifying which cells of the table to merge. Any text in the cells being merged
+        /// will be concatenated and stored in the upper-left ("head") cell of the range. If the range is non-
+        /// rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad
+        /// request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; } 
 
@@ -2092,11 +1963,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The outline of a PageElement.
-    ///
-    /// If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent,
-    /// the fields will default to the value used for new page elements created in the Slides editor, which may depend
-    /// on the page element kind.</summary>
+    /// <summary>The outline of a PageElement. If these fields are unset, they may be inherited from a parent
+    /// placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements
+    /// created in the Slides editor, which may depend on the page element kind.</summary>
     public class Outline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dash style of the outline.</summary>
@@ -2107,11 +1976,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outlineFill")]
         public virtual OutlineFill OutlineFill { get; set; } 
 
-        /// <summary>The outline property state.
-        ///
-        /// Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value
-        /// is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In
-        /// this case, any other outline fields set in the same request will be ignored.</summary>
+        /// <summary>The outline property state. Updating the outline on a page element will implicitly update this
+        /// field to `RENDERED`, unless another value is specified in the same request. To have no outline on a page
+        /// element, set this field to `NOT_RENDERED`. In this case, any other outline fields set in the same request
+        /// will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -2168,13 +2036,11 @@ namespace Google.Apis.Slides.v1.Data
 
         /// <summary>The revision ID of the presentation containing this page. Can be used in update requests to assert
         /// that the presentation revision hasn't changed since the last read operation. Only populated if the user has
-        /// edit access to the presentation.
-        ///
-        /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
-        /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If
-        /// the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID
-        /// (for the same presentation and user) usually means the presentation has been updated; however, a changed ID
-        /// can also be due to internal factors such as ID format changes.</summary>
+        /// edit access to the presentation. The format of the revision ID may change over time, so it should be treated
+        /// opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and
+        /// cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not
+        /// changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has
+        /// been updated; however, a changed ID can also be due to internal factors such as ID format changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; } 
 
@@ -2189,11 +2055,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The page background fill.</summary>
     public class PageBackgroundFill : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background fill property state.
-        ///
-        /// Updating the fill on a page will implicitly update this field to `RENDERED`, unless another value is
-        /// specified in the same request. To have no fill on a page, set this field to `NOT_RENDERED`. In this case,
-        /// any other fill fields set in the same request will be ignored.</summary>
+        /// <summary>The background fill property state. Updating the fill on a page will implicitly update this field
+        /// to `RENDERED`, unless another value is specified in the same request. To have no fill on a page, set this
+        /// field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be
+        /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -2212,9 +2077,8 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A visual element rendered on a page.</summary>
     public class PageElement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The description of the page element. Combined with title to display alt text.
-        ///
-        /// The field is not supported for Group elements.</summary>
+        /// <summary>The description of the page element. Combined with title to display alt text. The field is not
+        /// supported for Group elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -2251,19 +2115,16 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual Table Table { get; set; } 
 
-        /// <summary>The title of the page element. Combined with description to display alt text.
-        ///
-        /// The field is not supported for Group elements.</summary>
+        /// <summary>The title of the page element. Combined with description to display alt text. The field is not
+        /// supported for Group elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The transform of the page element.
-        ///
-        /// The visual appearance of the page element is determined by its absolute transform. To compute the absolute
-        /// transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the
-        /// page element is not in a group, its absolute transform is the same as the value in this field.
-        ///
-        /// The initial transform for the newly created Group is always the identity transform.</summary>
+        /// <summary>The transform of the page element. The visual appearance of the page element is determined by its
+        /// absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the
+        /// transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the
+        /// same as the value in this field. The initial transform for the newly created Group is always the identity
+        /// transform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transform")]
         public virtual AffineTransform Transform { get; set; } 
 
@@ -2279,10 +2140,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Common properties for a page element.
-    ///
-    /// Note: When you initially create a PageElement, the API may modify the values of both `size` and `transform`, but
-    /// the visual size will be unchanged.</summary>
+    /// <summary>Common properties for a page element. Note: When you initially create a PageElement, the API may modify
+    /// the values of both `size` and `transform`, but the visual size will be unchanged.</summary>
     public class PageElementProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The object ID of the page where the element is located.</summary>
@@ -2301,20 +2160,16 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The properties of the Page.
-    ///
-    /// The page will inherit properties from the parent page. Depending on the page type the hierarchy is defined in
-    /// either SlideProperties or LayoutProperties.</summary>
+    /// <summary>The properties of the Page. The page will inherit properties from the parent page. Depending on the
+    /// page type the hierarchy is defined in either SlideProperties or LayoutProperties.</summary>
     public class PageProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The color scheme of the page. If unset, the color scheme is inherited from a parent page. If the
         /// page has no parent, the color scheme uses a default Slides color scheme, matching the defaults in the Slides
-        /// editor.
-        ///
-        /// Only the concrete colors of the first 12 ThemeColorTypes are editable. In addition, only the color scheme on
-        /// `Master` pages can be updated. To update the field, a color scheme containing mappings from all the first 12
-        /// ThemeColorTypes to their concrete colors must be provided. Colors for the remaining ThemeColorTypes will be
-        /// ignored.</summary>
+        /// editor. Only the concrete colors of the first 12 ThemeColorTypes are editable. In addition, only the color
+        /// scheme on `Master` pages can be updated. To update the field, a color scheme containing mappings from all
+        /// the first 12 ThemeColorTypes to their concrete colors must be provided. Colors for the remaining
+        /// ThemeColorTypes will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorScheme")]
         public virtual ColorScheme ColorScheme { get; set; } 
 
@@ -2343,16 +2198,12 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Styles that apply to a whole paragraph.
-    ///
-    /// If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited
-    /// from the parent. Which paragraph styles are inherited depend on the nesting level of lists:
-    ///
-    /// * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0 nesting level of the
-    /// list inside the parent placeholder. * A paragraph in a list will inherit its paragraph style from the paragraph
-    /// at its corresponding nesting level of the list inside the parent placeholder.
-    ///
-    /// Inherited paragraph styles are represented as unset fields in this message.</summary>
+    /// <summary>Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder,
+    /// then these paragraph styles may be inherited from the parent. Which paragraph styles are inherited depend on the
+    /// nesting level of lists: * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0
+    /// nesting level of the list inside the parent placeholder. * A paragraph in a list will inherit its paragraph
+    /// style from the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited
+    /// paragraph styles are represented as unset fields in this message.</summary>
     public class ParagraphStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The text alignment for this paragraph.</summary>
@@ -2436,24 +2287,19 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string Locale { get; set; } 
 
         /// <summary>The slide masters in the presentation. A slide master contains all common page elements and the
-        /// common properties for a set of layouts. They serve three purposes:
-        ///
-        /// - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder
-        /// shapes on pages that use that master. - The master page properties define the common page properties
-        /// inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master,
-        /// regardless of their layout.</summary>
+        /// common properties for a set of layouts. They serve three purposes: - Placeholder shapes on a master contain
+        /// the default text styles and shape properties of all placeholder shapes on pages that use that master. - The
+        /// master page properties define the common page properties inherited by its layouts. - Any other shapes on the
+        /// master slide appear on all slides using that master, regardless of their layout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masters")]
         public virtual System.Collections.Generic.IList<Page> Masters { get; set; } 
 
-        /// <summary>The notes master in the presentation. It serves three purposes:
-        ///
-        /// - Placeholder shapes on a notes master contain the default text styles and shape properties of all
-        /// placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide
-        /// thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties
-        /// define the common page properties inherited by all notes pages. - Any other shapes on the notes master
-        /// appears on all notes pages.
-        ///
-        /// The notes master is read-only.</summary>
+        /// <summary>The notes master in the presentation. It serves three purposes: - Placeholder shapes on a notes
+        /// master contain the default text styles and shape properties of all placeholder shapes on notes pages.
+        /// Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape
+        /// contains the speaker notes. - The notes master page properties define the common page properties inherited
+        /// by all notes pages. - Any other shapes on the notes master appears on all notes pages. The notes master is
+        /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesMaster")]
         public virtual Page NotesMaster { get; set; } 
 
@@ -2467,13 +2313,11 @@ namespace Google.Apis.Slides.v1.Data
 
         /// <summary>The revision ID of the presentation. Can be used in update requests to assert that the presentation
         /// revision hasn't changed since the last read operation. Only populated if the user has edit access to the
-        /// presentation.
-        ///
-        /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
-        /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If
-        /// the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID
-        /// (for the same presentation and user) usually means the presentation has been updated; however, a changed ID
-        /// can also be due to internal factors such as ID format changes.</summary>
+        /// presentation. The format of the revision ID may change over time, so it should be treated opaquely. A
+        /// returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be
+        /// shared across users. If the revision ID is unchanged between calls, then the presentation has not changed.
+        /// Conversely, a changed ID (for the same presentation and user) usually means the presentation has been
+        /// updated; however, a changed ID can also be due to internal factors such as ID format changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; } 
 
@@ -2513,17 +2357,14 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A recolor effect applied on an image.</summary>
     public class Recolor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the recolor effect.
-        ///
-        /// The name is determined from the `recolor_stops` by matching the gradient against the colors in the page's
-        /// current color scheme. This property is read-only.</summary>
+        /// <summary>The name of the recolor effect. The name is determined from the `recolor_stops` by matching the
+        /// gradient against the colors in the page's current color scheme. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The recolor effect is represented by a gradient, which is a list of color stops.
-        ///
-        /// The colors in the gradient will replace the corresponding colors at the same position in the color palette
-        /// and apply to the image. This property is read-only.</summary>
+        /// <summary>The recolor effect is represented by a gradient, which is a list of color stops. The colors in the
+        /// gradient will replace the corresponding colors at the same position in the color palette and apply to the
+        /// image. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recolorStops")]
         public virtual System.Collections.Generic.IList<ColorStop> RecolorStops { get; set; } 
 
@@ -2532,10 +2373,8 @@ namespace Google.Apis.Slides.v1.Data
     }    
 
     /// <summary>Refreshes an embedded Google Sheets chart by replacing it with the latest version of the chart from
-    /// Google Sheets.
-    ///
-    /// NOTE: Refreshing charts requires  at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or
-    /// drive OAuth scopes.</summary>
+    /// Google Sheets. NOTE: Refreshing charts requires at least one of the spreadsheets.readonly, spreadsheets,
+    /// drive.readonly, or drive OAuth scopes.</summary>
     public class RefreshSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The object ID of the chart to refresh.</summary>
@@ -2546,51 +2385,37 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces all shapes that match the given criteria with the provided image.
-    ///
-    /// The images replacing the shapes are rectangular after being inserted into the presentation and do not take on
-    /// the forms of the shapes.</summary>
+    /// <summary>Replaces all shapes that match the given criteria with the provided image. The images replacing the
+    /// shapes are rectangular after being inserted into the presentation and do not take on the forms of the
+    /// shapes.</summary>
     public class ReplaceAllShapesWithImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, this request will replace all of the shapes that contain the given text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsText")]
         public virtual SubstringMatchCriteria ContainsText { get; set; } 
 
-        /// <summary>The image replace method.
-        ///
-        /// If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes
-        /// precedence.
-        ///
-        /// If you do not specify a value for `image_replace_method`, but specify a value for `replace_method`, then the
-        /// specified `replace_method` value is used.
-        ///
-        /// If you do not specify either, then CENTER_INSIDE is used.</summary>
+        /// <summary>The image replace method. If you specify both a `replace_method` and an `image_replace_method`, the
+        /// `image_replace_method` takes precedence. If you do not specify a value for `image_replace_method`, but
+        /// specify a value for `replace_method`, then the specified `replace_method` value is used. If you do not
+        /// specify either, then CENTER_INSIDE is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
         public virtual string ImageReplaceMethod { get; set; } 
 
-        /// <summary>The image URL.
-        ///
-        /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        ///
-        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
-        /// Image.source_url field.</summary>
+        /// <summary>The image URL. The image is fetched once at insertion time and a copy is stored for display inside
+        /// the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of
+        /// PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the
+        /// image, and exposed via the Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
-        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
-        ///
-        /// Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page
-        /// with that object ID doesn't exist in the presentation.</summary>
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad
+        /// request error if given the page object ID of a notes page or a notes master, or if a page with that object
+        /// ID doesn't exist in the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
         public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
 
-        /// <summary>The replace method.
-        ///
-        /// Deprecated: use `image_replace_method` instead.
-        ///
-        /// If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes
-        /// precedence.</summary>
+        /// <summary>The replace method. *Deprecated*: use `image_replace_method` instead. If you specify both a
+        /// `replace_method` and an `image_replace_method`, the `image_replace_method` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceMethod")]
         public virtual string ReplaceMethod { get; set; } 
 
@@ -2610,10 +2435,9 @@ namespace Google.Apis.Slides.v1.Data
     }    
 
     /// <summary>Replaces all shapes that match the given criteria with the provided Google Sheets chart. The chart will
-    /// be scaled and centered to fit within the bounds of the original shape.
-    ///
-    /// NOTE: Replacing shapes with a chart requires at least one of the spreadsheets.readonly, spreadsheets,
-    /// drive.readonly, or drive OAuth scopes.</summary>
+    /// be scaled and centered to fit within the bounds of the original shape. NOTE: Replacing shapes with a chart
+    /// requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth
+    /// scopes.</summary>
     public class ReplaceAllShapesWithSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the specific chart in the Google Sheets spreadsheet.</summary>
@@ -2630,10 +2454,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkingMode")]
         public virtual string LinkingMode { get; set; } 
 
-        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
-        ///
-        /// Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page
-        /// with that object ID doesn't exist in the presentation.</summary>
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad
+        /// request error if given the page object ID of a notes page or a notes master, or if a page with that object
+        /// ID doesn't exist in the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
         public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
 
@@ -2663,10 +2486,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containsText")]
         public virtual SubstringMatchCriteria ContainsText { get; set; } 
 
-        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
-        ///
-        /// Returns a 400 bad request error if given the page object ID of a notes master, or if a page with that object
-        /// ID doesn't exist in the presentation.</summary>
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad
+        /// request error if given the page object ID of a notes master, or if a page with that object ID doesn't exist
+        /// in the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
         public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
 
@@ -2689,9 +2511,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces an existing image with a new image.
-    ///
-    /// Replacing an image removes some image effects from the existing image.</summary>
+    /// <summary>Replaces an existing image with a new image. Replacing an image removes some image effects from the
+    /// existing image.</summary>
     public class ReplaceImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the existing image that will be replaced.</summary>
@@ -2702,13 +2523,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
         public virtual string ImageReplaceMethod { get; set; } 
 
-        /// <summary>The image URL.
-        ///
-        /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        ///
-        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
-        /// Image.source_url field.</summary>
+        /// <summary>The image URL. The image is fetched once at insertion time and a copy is stored for display inside
+        /// the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of
+        /// PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the
+        /// image, and exposed via the Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -2900,10 +2718,8 @@ namespace Google.Apis.Slides.v1.Data
     /// elements.</summary>
     public class RerouteLineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object ID of the line to reroute.
-        ///
-        /// Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of
-        /// the line must be on different page elements.</summary>
+        /// <summary>The object ID of the line to reroute. Only a line with a category indicating it is a "connector"
+        /// can be rerouted. The start and end connections of the line must be on different page elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -2985,11 +2801,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The shadow properties of a page element.
-    ///
-    /// If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent,
-    /// the fields will default to the value used for new page elements created in the Slides editor, which may depend
-    /// on the page element kind.</summary>
+    /// <summary>The shadow properties of a page element. If these fields are unset, they may be inherited from a parent
+    /// placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements
+    /// created in the Slides editor, which may depend on the page element kind.</summary>
     public class Shadow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment point of the shadow, that sets the origin for translate, scale and skew of the
@@ -3010,11 +2824,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OpaqueColor Color { get; set; } 
 
-        /// <summary>The shadow property state.
-        ///
-        /// Updating the shadow on a page element will implicitly update this field to `RENDERED`, unless another value
-        /// is specified in the same request. To have no shadow on a page element, set this field to `NOT_RENDERED`. In
-        /// this case, any other shadow fields set in the same request will be ignored.</summary>
+        /// <summary>The shadow property state. Updating the shadow on a page element will implicitly update this field
+        /// to `RENDERED`, unless another value is specified in the same request. To have no shadow on a page element,
+        /// set this field to `NOT_RENDERED`. In this case, any other shadow fields set in the same request will be
+        /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -3039,10 +2852,9 @@ namespace Google.Apis.Slides.v1.Data
     /// classification.</summary>
     public class Shape : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Placeholders are shapes that are inherit from corresponding placeholders on layouts and masters.
-        ///
-        /// If set, the shape is a placeholder shape and any inherited properties can be resolved by looking at the
-        /// parent placeholder identified by the Placeholder.parent_object_id field.</summary>
+        /// <summary>Placeholders are shapes that are inherit from corresponding placeholders on layouts and masters. If
+        /// set, the shape is a placeholder shape and any inherited properties can be resolved by looking at the parent
+        /// placeholder identified by the Placeholder.parent_object_id field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
         public virtual Placeholder Placeholder { get; set; } 
 
@@ -3065,11 +2877,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The shape background fill.</summary>
     public class ShapeBackgroundFill : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background fill property state.
-        ///
-        /// Updating the fill on a shape will implicitly update this field to `RENDERED`, unless another value is
-        /// specified in the same request. To have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
-        /// any other fill fields set in the same request will be ignored.</summary>
+        /// <summary>The background fill property state. Updating the fill on a shape will implicitly update this field
+        /// to `RENDERED`, unless another value is specified in the same request. To have no fill on a shape, set this
+        /// field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be
+        /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -3081,11 +2892,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The properties of a Shape.
-    ///
-    /// If the shape is a placeholder shape as determined by the placeholder field, then these properties may be
-    /// inherited from a parent placeholder shape. Determining the rendered value of the property depends on the
-    /// corresponding property_state field value.</summary>
+    /// <summary>The properties of a Shape. If the shape is a placeholder shape as determined by the placeholder field,
+    /// then these properties may be inherited from a parent placeholder shape. Determining the rendered value of the
+    /// property depends on the corresponding property_state field value.</summary>
     public class ShapeProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment of the content in the shape. If unspecified, the alignment is inherited from a parent
@@ -3195,18 +3004,14 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A solid color fill. The page or page element is filled entirely with the specified color value.
-    ///
-    /// If any field is unset, its value may be inherited from a parent placeholder if it exists.</summary>
+    /// <summary>A solid color fill. The page or page element is filled entirely with the specified color value. If any
+    /// field is unset, its value may be inherited from a parent placeholder if it exists.</summary>
     public class SolidFill : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fraction of this `color` that should be applied to the pixel. That is, the final pixel color is
-        /// defined by the equation:
-        ///
-        /// pixel color = alpha * (color) + (1.0 - alpha) * (background color)
-        ///
-        /// This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
-        /// completely transparent color.</summary>
+        /// defined by the equation: pixel color = alpha * (color) + (1.0 - alpha) * (background color) This means that
+        /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent
+        /// color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
         public virtual System.Nullable<float> Alpha { get; set; } 
 
@@ -3222,19 +3027,12 @@ namespace Google.Apis.Slides.v1.Data
     /// picture is stretched to fit its container.</summary>
     public class StretchedPictureFill : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Reading the content_url:
-        ///
-        /// An URL to a picture with a default lifetime of 30 minutes. This URL is tagged with the account of the
-        /// requester. Anyone with the URL effectively accesses the picture as the original requester. Access to the
-        /// picture may be lost if the presentation's sharing settings change.
-        ///
-        /// Writing the content_url:
-        ///
-        /// The picture is fetched once at insertion time and a copy is stored for display inside the presentation.
-        /// Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or
-        /// GIF format.
-        ///
-        /// The provided URL can be at most 2 kB in length.</summary>
+        /// <summary>Reading the content_url: An URL to a picture with a default lifetime of 30 minutes. This URL is
+        /// tagged with the account of the requester. Anyone with the URL effectively accesses the picture as the
+        /// original requester. Access to the picture may be lost if the presentation's sharing settings change. Writing
+        /// the content_url: The picture is fetched once at insertion time and a copy is stored for display inside the
+        /// presentation. Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of
+        /// PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
         public virtual string ContentUrl { get; set; } 
 
@@ -3249,9 +3047,8 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A criteria that matches a specific string of text in a shape or table.</summary>
     public class SubstringMatchCriteria : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether the search should respect case:
-        ///
-        /// - `True`: the search is case sensitive. - `False`: the search is case insensitive.</summary>
+        /// <summary>Indicates whether the search should respect case: - `True`: the search is case sensitive. -
+        /// `False`: the search is case insensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchCase")]
         public virtual System.Nullable<bool> MatchCase { get; set; } 
 
@@ -3270,11 +3067,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; } 
 
-        /// <summary>Properties of horizontal cell borders.
-        ///
-        /// A table's horizontal cell borders are represented as a grid. The grid has one more row than the number of
-        /// rows in the table and the same number of columns as the table. For example, if the table is 3 x 3, its
-        /// horizontal borders will be represented as a grid with 4 rows and 3 columns.</summary>
+        /// <summary>Properties of horizontal cell borders. A table's horizontal cell borders are represented as a grid.
+        /// The grid has one more row than the number of rows in the table and the same number of columns as the table.
+        /// For example, if the table is 3 x 3, its horizontal borders will be represented as a grid with 4 rows and 3
+        /// columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalBorderRows")]
         public virtual System.Collections.Generic.IList<TableBorderRow> HorizontalBorderRows { get; set; } 
 
@@ -3286,18 +3082,15 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumns")]
         public virtual System.Collections.Generic.IList<TableColumnProperties> TableColumns { get; set; } 
 
-        /// <summary>Properties and contents of each row.
-        ///
-        /// Cells that span multiple rows are contained in only one of these rows and have a row_span greater than
-        /// 1.</summary>
+        /// <summary>Properties and contents of each row. Cells that span multiple rows are contained in only one of
+        /// these rows and have a row_span greater than 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRows")]
         public virtual System.Collections.Generic.IList<TableRow> TableRows { get; set; } 
 
-        /// <summary>Properties of vertical cell borders.
-        ///
-        /// A table's vertical cell borders are represented as a grid. The grid has the same number of rows as the table
-        /// and one more column than the number of columns in the table. For example, if the table is 3 x 3, its
-        /// vertical borders will be represented as a grid with 3 rows and 4 columns.</summary>
+        /// <summary>Properties of vertical cell borders. A table's vertical cell borders are represented as a grid. The
+        /// grid has the same number of rows as the table and one more column than the number of columns in the table.
+        /// For example, if the table is 3 x 3, its vertical borders will be represented as a grid with 3 rows and 4
+        /// columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalBorderRows")]
         public virtual System.Collections.Generic.IList<TableBorderRow> VerticalBorderRows { get; set; } 
 
@@ -3392,11 +3185,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The table cell background fill.</summary>
     public class TableCellBackgroundFill : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background fill property state.
-        ///
-        /// Updating the fill on a table cell will implicitly update this field to `RENDERED`, unless another value is
-        /// specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this
-        /// case, any other fill fields set in the same request will be ignored.</summary>
+        /// <summary>The background fill property state. Updating the fill on a table cell will implicitly update this
+        /// field to `RENDERED`, unless another value is specified in the same request. To have no fill on a table cell,
+        /// set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be
+        /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -3451,17 +3243,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A table range represents a reference to a subset of a table.
-    ///
-    /// It's important to note that the cells specified by a table range do not necessarily form a rectangle. For
-    /// example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table
-    /// looks like this:
-    ///
-    /// [             ]
-    ///
-    /// A table range with location = (0, 0), row span = 3 and column span = 2 specifies the following cells:
-    ///
-    /// x     x [ x    x    x ]</summary>
+    /// <summary>A table range represents a reference to a subset of a table. It's important to note that the cells
+    /// specified by a table range do not necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+    /// where all the cells of the last row are merged together. The table looks like this: [ ] A table range with
+    /// location = (0, 0), row span = 3 and column span = 2 specifies the following cells: x x [ x x x ]</summary>
     public class TableRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The column span of the table range.</summary>
@@ -3487,10 +3272,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowHeight")]
         public virtual Dimension RowHeight { get; set; } 
 
-        /// <summary>Properties and contents of each cell.
-        ///
-        /// Cells that span multiple columns are represented only once with a column_span greater than 1. As a result,
-        /// the length of this collection does not always match the number of columns of the entire table.</summary>
+        /// <summary>Properties and contents of each cell. Cells that span multiple columns are represented only once
+        /// with a column_span greater than 1. As a result, the length of this collection does not always match the
+        /// number of columns of the entire table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCells")]
         public virtual System.Collections.Generic.IList<TableCell> TableCells { get; set; } 
 
@@ -3544,11 +3328,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
-        /// <summary>A marker representing the beginning of a new paragraph.
-        ///
-        /// The `start_index` and `end_index` of this TextElement represent the range of the paragraph. Other
-        /// TextElements with an index range contained inside this paragraph's range are considered to be part of this
-        /// paragraph. The range of indices of two separate paragraphs will never overlap.</summary>
+        /// <summary>A marker representing the beginning of a new paragraph. The `start_index` and `end_index` of this
+        /// TextElement represent the range of the paragraph. Other TextElements with an index range contained inside
+        /// this paragraph's range are considered to be part of this paragraph. The range of indices of two separate
+        /// paragraphs will never overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paragraphMarker")]
         public virtual ParagraphMarker ParagraphMarker { get; set; } 
 
@@ -3557,10 +3340,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
         /// <summary>A TextElement representing a run of text where all of the characters in the run have the same
-        /// TextStyle.
-        ///
-        /// The `start_index` and `end_index` of TextRuns will always be fully contained in the index range of a single
-        /// `paragraph_marker` TextElement. In other words, a TextRun will never span multiple paragraphs.</summary>
+        /// TextStyle. The `start_index` and `end_index` of TextRuns will always be fully contained in the index range
+        /// of a single `paragraph_marker` TextElement. In other words, a TextRun will never span multiple
+        /// paragraphs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRun")]
         public virtual TextRun TextRun { get; set; } 
 
@@ -3583,16 +3365,12 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the styling that can be applied to a TextRun.
-    ///
-    /// If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the
-    /// parent. Which text styles are inherited depend on the nesting level of lists:
-    ///
-    /// * A text run in a paragraph that is not in a list will inherit its text style from the the newline character in
-    /// the paragraph at the 0 nesting level of the list inside the parent placeholder. * A text run in a paragraph that
-    /// is in a list will inherit its text style from the newline character in the paragraph at its corresponding
-    /// nesting level of the list inside the parent placeholder.
-    ///
+    /// <summary>Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a
+    /// parent placeholder, then these text styles may be inherited from the parent. Which text styles are inherited
+    /// depend on the nesting level of lists: * A text run in a paragraph that is not in a list will inherit its text
+    /// style from the the newline character in the paragraph at the 0 nesting level of the list inside the parent
+    /// placeholder. * A text run in a paragraph that is in a list will inherit its text style from the newline
+    /// character in the paragraph at its corresponding nesting level of the list inside the parent placeholder.
     /// Inherited text styles are represented as unset fields in this message. If text is contained in a shape without a
     /// parent placeholder, unsetting these fields will revert the style to a value matching the defaults in the Slides
     /// editor.</summary>
@@ -3603,11 +3381,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual OptionalColor BackgroundColor { get; set; } 
 
-        /// <summary>The text's vertical offset from its normal position.
-        ///
-        /// Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size,
-        /// computed based on the `font_size` field. The `font_size` itself is not affected by changes in this
-        /// field.</summary>
+        /// <summary>The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT`
+        /// baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field.
+        /// The `font_size` itself is not affected by changes in this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineOffset")]
         public virtual string BaselineOffset { get; set; } 
 
@@ -3615,13 +3391,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bold")]
         public virtual System.Nullable<bool> Bold { get; set; } 
 
-        /// <summary>The font family of the text.
-        ///
-        /// The font family can be any font from the Font menu in Slides or from [Google Fonts]
-        /// (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`.
-        ///
-        /// Some fonts can affect the weight of the text. If an update request specifies values for both `font_family`
-        /// and `bold`, the explicitly-set `bold` value is used.</summary>
+        /// <summary>The font family of the text. The font family can be any font from the Font menu in Slides or from
+        /// [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in
+        /// `Arial`. Some fonts can affect the weight of the text. If an update request specifies values for both
+        /// `font_family` and `bold`, the explicitly-set `bold` value is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; } 
 
@@ -3639,13 +3412,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual System.Nullable<bool> Italic { get; set; } 
 
         /// <summary>The hyperlink destination of the text. If unset, there is no link. Links are not inherited from
-        /// parent text.
-        ///
-        /// Changing the link in an update request causes some other changes to the text style of the range:
-        ///
-        /// * When setting a link, the text foreground color will be set to ThemeColorType.HYPERLINK and the text will
-        /// be underlined. If these fields are modified in the same request, those values will be used instead of the
-        /// link defaults. * Setting a link on a text range that overlaps with an existing link will also update the
+        /// parent text. Changing the link in an update request causes some other changes to the text style of the
+        /// range: * When setting a link, the text foreground color will be set to ThemeColorType.HYPERLINK and the text
+        /// will be underlined. If these fields are modified in the same request, those values will be used instead of
+        /// the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the
         /// existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting
         /// a link on a text range that crosses a paragraph boundary, such as `"ABC\n123"`, will separate the newline
         /// character(s) into their own text runs. The link will be applied separately to the runs before and after the
@@ -3667,29 +3437,21 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("underline")]
         public virtual System.Nullable<bool> Underline { get; set; } 
 
-        /// <summary>The font family and rendered weight of the text.
-        ///
-        /// This field is an extension of `font_family` meant to support explicit font weights without breaking
-        /// backwards compatibility. As such, when reading the style of a range of text, the value of
-        /// `weighted_font_family#font_family` will always be equal to that of `font_family`. However, when writing, if
-        /// both fields are included in the field mask (either explicitly or through the wildcard `"*"`), their values
-        /// are reconciled as follows:
-        ///
-        /// * If `font_family` is set and `weighted_font_family` is not, the value of `font_family` is applied with
-        /// weight `400` ("normal"). * If both fields are set, the value of `font_family` must match that of
-        /// `weighted_font_family#font_family`. If so, the font family and weight of `weighted_font_family` is applied.
-        /// Otherwise, a 400 bad request error is returned. * If `weighted_font_family` is set and `font_family` is not,
-        /// the font family and weight of `weighted_font_family` is applied. * If neither field is set, the font family
-        /// and weight of the text inherit from the parent. Note that these properties cannot inherit separately from
-        /// each other.
-        ///
-        /// If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family`
-        /// is applied first, then `bold`.
-        ///
-        /// If `weighted_font_family#weight` is not set, it defaults to `400`.
-        ///
-        /// If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty
-        /// value. Otherwise, a 400 bad request error is returned.</summary>
+        /// <summary>The font family and rendered weight of the text. This field is an extension of `font_family` meant
+        /// to support explicit font weights without breaking backwards compatibility. As such, when reading the style
+        /// of a range of text, the value of `weighted_font_family#font_family` will always be equal to that of
+        /// `font_family`. However, when writing, if both fields are included in the field mask (either explicitly or
+        /// through the wildcard `"*"`), their values are reconciled as follows: * If `font_family` is set and
+        /// `weighted_font_family` is not, the value of `font_family` is applied with weight `400` ("normal"). * If both
+        /// fields are set, the value of `font_family` must match that of `weighted_font_family#font_family`. If so, the
+        /// font family and weight of `weighted_font_family` is applied. Otherwise, a 400 bad request error is returned.
+        /// * If `weighted_font_family` is set and `font_family` is not, the font family and weight of
+        /// `weighted_font_family` is applied. * If neither field is set, the font family and weight of the text inherit
+        /// from the parent. Note that these properties cannot inherit separately from each other. If an update request
+        /// specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first,
+        /// then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is
+        /// set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad
+        /// request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightedFontFamily")]
         public virtual WeightedFontFamily WeightedFontFamily { get; set; } 
 
@@ -3715,12 +3477,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The thumbnail of a page.</summary>
     public class Thumbnail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content URL of the thumbnail image.
-        ///
-        /// The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the
-        /// requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image
-        /// may be lost if the presentation's sharing settings change. The mime type of the thumbnail image is the same
-        /// as specified in the `GetPageThumbnailRequest`.</summary>
+        /// <summary>The content URL of the thumbnail image. The URL to the image has a default lifetime of 30 minutes.
+        /// This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as
+        /// the original requester. Access to the image may be lost if the presentation's sharing settings change. The
+        /// mime type of the thumbnail image is the same as specified in the `GetPageThumbnailRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
         public virtual string ContentUrl { get; set; } 
 
@@ -3739,10 +3499,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Ungroups objects, such as groups.</summary>
     public class UngroupObjectsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object IDs of the objects to ungroup.
-        ///
-        /// Only groups that are not inside other groups can be ungrouped. All the groups should be on the same page.
-        /// The group itself is deleted. The visual sizes and positions of all the children are preserved.</summary>
+        /// <summary>The object IDs of the objects to ungroup. Only groups that are not inside other groups can be
+        /// ungrouped. All the groups should be on the same page. The group itself is deleted. The visual sizes and
+        /// positions of all the children are preserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectIds")]
         public virtual System.Collections.Generic.IList<string> ObjectIds { get; set; } 
 
@@ -3757,11 +3516,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The table range specifying which cells of the table to unmerge.
-        ///
-        /// All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected.
-        /// If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells,
-        /// the text will remain in the upper-left ("head") cell of the resulting block of unmerged cells.</summary>
+        /// <summary>The table range specifying which cells of the table to unmerge. All merged cells in this range will
+        /// be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the
+        /// request will do nothing. If there is text in any of the merged cells, the text will remain in the upper-left
+        /// ("head") cell of the resulting block of unmerged cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; } 
 
@@ -3772,15 +3530,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the properties of an Image.</summary>
     public class UpdateImagePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `imageProperties` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the image outline color, set `fields` to `"outline.outlineFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `imageProperties`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// For example to update the image outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To
+        /// reset a property to its default value, include its field name in the field mask but leave the field itself
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -3799,18 +3553,13 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Updates the category of a line.</summary>
     public class UpdateLineCategoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The line category to update to.
-        ///
-        /// The exact line type is determined based on the category to update to and how it's routed to connect to other
-        /// page elements.</summary>
+        /// <summary>The line category to update to. The exact line type is determined based on the category to update
+        /// to and how it's routed to connect to other page elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
         public virtual string LineCategory { get; set; } 
 
-        /// <summary>The object ID of the line the update is applied to.
-        ///
-        /// Only a line with a category indicating it is a "connector" can be updated.
-        ///
-        /// The line may be rerouted after updating its category.</summary>
+        /// <summary>The object ID of the line the update is applied to. Only a line with a category indicating it is a
+        /// "connector" can be updated. The line may be rerouted after updating its category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -3821,15 +3570,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Updates the properties of a Line.</summary>
     public class UpdateLinePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `lineProperties` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the line solid fill color, set `fields` to `"lineFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `lineProperties`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// For example to update the line solid fill color, set `fields` to `"lineFill.solidFill.color"`. To reset a
+        /// property to its default value, include its field name in the field mask but leave the field itself
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -3868,10 +3613,9 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates the transform of a page element.
-    ///
-    /// Updating the transform of a group will change the absolute transform of the page elements in that group, which
-    /// can change their visual appearance. See the documentation for PageElement.transform for more details.</summary>
+    /// <summary>Updates the transform of a page element. Updating the transform of a group will change the absolute
+    /// transform of the page elements in that group, which can change their visual appearance. See the documentation
+    /// for PageElement.transform for more details.</summary>
     public class UpdatePageElementTransformRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The apply mode of the transform update.</summary>
@@ -3894,16 +3638,13 @@ namespace Google.Apis.Slides.v1.Data
     /// front. The page element in the front may cover the elements that are behind it.</summary>
     public class UpdatePageElementsZOrderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Z-order operation to apply on the page elements.
-        ///
-        /// When applying the operation on multiple page elements, the relative Z-orders within these page elements
-        /// before the operation is maintained.</summary>
+        /// <summary>The Z-order operation to apply on the page elements. When applying the operation on multiple page
+        /// elements, the relative Z-orders within these page elements before the operation is maintained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; } 
 
-        /// <summary>The object IDs of the page elements to update.
-        ///
-        /// All the page elements must be on the same page and must not be grouped.</summary>
+        /// <summary>The object IDs of the page elements to update. All the page elements must be on the same page and
+        /// must not be grouped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageElementObjectIds")]
         public virtual System.Collections.Generic.IList<string> PageElementObjectIds { get; set; } 
 
@@ -3914,16 +3655,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Updates the properties of a Page.</summary>
     public class UpdatePagePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `pageProperties` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `pageProperties`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
         /// For example to update the page background solid fill color, set `fields` to
-        /// `"pageBackgroundFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// `"pageBackgroundFill.solidFill.color"`. To reset a property to its default value, include its field name in
+        /// the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -3948,15 +3684,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `style` is implied and should not be specified. A single
-        /// `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example, to update the paragraph alignment, set `fields` to `"alignment"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `style` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For
+        /// example, to update the paragraph alignment, set `fields` to `"alignment"`. To reset a property to its
+        /// default value, include its field name in the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -3979,16 +3710,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the properties of a Shape.</summary>
     public class UpdateShapePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `shapeProperties` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `shapeProperties`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
         /// For example to update the shape background solid fill color, set `fields` to
-        /// `"shapeBackgroundFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// `"shapeBackgroundFill.solidFill.color"`. To reset a property to its default value, include its field name in
+        /// the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4029,16 +3755,11 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("borderPosition")]
         public virtual string BorderPosition { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableBorderProperties` is implied and should not be
-        /// specified. A single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the table border solid fill color, set `fields` to
-        /// `"tableBorderFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root
+        /// `tableBorderProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for
+        /// listing every field. For example to update the table border solid fill color, set `fields` to
+        /// `"tableBorderFill.solidFill.color"`. To reset a property to its default value, include its field name in the
+        /// field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4062,16 +3783,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the properties of a TableCell.</summary>
     public class UpdateTableCellPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableCellProperties` is implied and should not be specified.
-        /// A single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the table cell background solid fill color, set `fields` to
-        /// `"tableCellBackgroundFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root
+        /// `tableCellProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for
+        /// listing every field. For example to update the table cell background solid fill color, set `fields` to
+        /// `"tableCellBackgroundFill.solidFill.color"`. To reset a property to its default value, include its field
+        /// name in the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4100,15 +3816,11 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> ColumnIndices { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableColumnProperties` is implied and should not be
-        /// specified. A single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the column width, set `fields` to `"column_width"`.
-        ///
-        /// If '"column_width"' is included in the field mask but the property is left unset, the column width will
-        /// default to 406,400 EMU (32 points).</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root
+        /// `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for
+        /// listing every field. For example to update the column width, set `fields` to `"column_width"`. If
+        /// '"column_width"' is included in the field mask but the property is left unset, the column width will default
+        /// to 406,400 EMU (32 points).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4116,10 +3828,8 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The table column properties to update.
-        ///
-        /// If the value of `table_column_properties#column_width` in the request is less than 406,400 EMU (32 points),
-        /// a 400 bad request error is returned.</summary>
+        /// <summary>The table column properties to update. If the value of `table_column_properties#column_width` in
+        /// the request is less than 406,400 EMU (32 points), a 400 bad request error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumnProperties")]
         public virtual TableColumnProperties TableColumnProperties { get; set; } 
 
@@ -4130,15 +3840,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Updates the properties of a Table row.</summary>
     public class UpdateTableRowPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `tableRowProperties` is implied and should not be specified.
-        /// A single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the minimum row height, set `fields` to `"min_row_height"`.
-        ///
-        /// If '"min_row_height"' is included in the field mask but the property is left unset, the minimum row height
-        /// will default to 0.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root
+        /// `tableRowProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for
+        /// listing every field. For example to update the minimum row height, set `fields` to `"min_row_height"`. If
+        /// '"min_row_height"' is included in the field mask but the property is left unset, the minimum row height will
+        /// default to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4167,15 +3873,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `style` is implied and should not be specified. A single
-        /// `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example, to update the text style to bold, set `fields` to `"bold"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `style` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For
+        /// example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default
+        /// value, include its field name in the field mask but leave the field itself unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4183,21 +3884,15 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
-        /// <summary>The style(s) to set on the text.
-        ///
-        /// If the value for a particular style matches that of the parent, that style will be set to inherit.
-        ///
-        /// Certain text style changes may cause other changes meant to mirror the behavior of the Slides editor. See
-        /// the documentation of TextStyle for more information.</summary>
+        /// <summary>The style(s) to set on the text. If the value for a particular style matches that of the parent,
+        /// that style will be set to inherit. Certain text style changes may cause other changes meant to mirror the
+        /// behavior of the Slides editor. See the documentation of TextStyle for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual TextStyle Style { get; set; } 
 
-        /// <summary>The range of text to style.
-        ///
-        /// The range may be extended to include adjacent newlines.
-        ///
-        /// If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the
-        /// matching text style.</summary>
+        /// <summary>The range of text to style. The range may be extended to include adjacent newlines. If the range
+        /// fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching
+        /// text style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
         public virtual Range TextRange { get; set; } 
 
@@ -4208,15 +3903,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the properties of a Video.</summary>
     public class UpdateVideoPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that should be updated.
-        ///
-        /// At least one field must be specified. The root `videoProperties` is implied and should not be specified. A
-        /// single `"*"` can be used as short-hand for listing every field.
-        ///
-        /// For example to update the video outline color, set `fields` to `"outline.outlineFill.solidFill.color"`.
-        ///
-        /// To reset a property to its default value, include its field name in the field mask but leave the field
-        /// itself unset.</summary>
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `videoProperties`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// For example to update the video outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To
+        /// reset a property to its default value, include its field name in the field mask but leave the field itself
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
@@ -4293,10 +3984,9 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Represents a font family and weight used to style a TextRun.</summary>
     public class WeightedFontFamily : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The font family of the text.
-        ///
-        /// The font family can be any font from the Font menu in Slides or from [Google Fonts]
-        /// (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`.</summary>
+        /// <summary>The font family of the text. The font family can be any font from the Font menu in Slides or from
+        /// [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in
+        /// `Arial`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
         public virtual string FontFamily { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>Groups Settings API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200804 (2042)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>
  *              https://developers.google.com/google-apps/groups-settings/get_started</a>

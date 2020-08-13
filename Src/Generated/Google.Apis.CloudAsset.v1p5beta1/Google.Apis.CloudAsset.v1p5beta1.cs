@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p5beta1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -369,16 +369,11 @@ namespace Google.Apis.CloudAsset.v1p5beta1
             public virtual string Parent { get; private set; }
 
             /// <summary>A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk".
-            ///
-            /// Regular expression is also supported. For example:
-            ///
-            /// * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com".
-            /// * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots
-            /// resources whose asset type contains "Instance".
-            ///
+            /// Regular expression is also supported. For example: * "compute.googleapis.com.*" snapshots resources
+            /// whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset
+            /// type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance".
             /// See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
             /// regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned.
-            ///
             /// If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See
             /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all
             /// supported asset types.</summary>
@@ -392,14 +387,19 @@ namespace Google.Apis.CloudAsset.v1p5beta1
             /// <summary>Asset content type. If not specified, no content but the asset name will be returned.</summary>
             public enum ContentTypeEnum
             {
+                /// <summary>Unspecified content type.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONTENT_TYPE_UNSPECIFIED")]
                 CONTENTTYPEUNSPECIFIED,
+                /// <summary>Resource metadata.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESOURCE")]
                 RESOURCE,
+                /// <summary>The actual IAM policy set on a resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("IAM_POLICY")]
                 IAMPOLICY,
+                /// <summary>The Cloud Organization Policy set on an asset.</summary>
                 [Google.Apis.Util.StringValueAttribute("ORG_POLICY")]
                 ORGPOLICY,
+                /// <summary>The Cloud Access context mananger Policy set on an asset.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESS_POLICY")]
                 ACCESSPOLICY,
             }
@@ -529,16 +529,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>The ancestry path of an asset in Google Cloud [resource hierarchy](https://cloud.google.com
         /// /resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names.
         /// An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the asset is a
-        /// project, folder, or organization, the ancestry path starts from the asset itself.
-        ///
-        /// Example: `["projects/123456789", "folders/5432", "organizations/1234"]`</summary>
+        /// project, folder, or organization, the ancestry path starts from the asset itself. Example:
+        /// `["projects/123456789", "folders/5432", "organizations/1234"]`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
         public virtual System.Collections.Generic.IList<string> Ancestors { get; set; } 
 
-        /// <summary>The type of the asset. Example: `compute.googleapis.com/Disk`
-        ///
-        /// See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more
-        /// information.</summary>
+        /// <summary>The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; } 
 
@@ -552,9 +549,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual Policy IamPolicy { get; set; } 
 
         /// <summary>The full name of the asset. Example:
-        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-        ///
-        /// See [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -580,21 +576,15 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -610,11 +600,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -635,53 +622,33 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -696,29 +663,15 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -747,29 +700,22 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     /// <summary>Used in `policy_type` to specify how `boolean_policy` will behave at this resource.</summary>
     public class GoogleCloudOrgpolicyV1BooleanPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable.
-        ///
-        /// Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set
-        /// to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
+        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose
+        /// you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to
+        /// `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
         /// resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at
         /// this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy`
         /// at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is
         /// set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be
         /// allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the
-        /// behavior is as if the`Policy` were set at this resource.
-        ///
-        /// The following examples demonstrate the different possible layerings:
-        ///
-        /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false}
-        /// `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be
-        /// enforced.
-        ///
-        /// Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false}
-        /// `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced.
-        /// The constraint at `projects/bar` is enforced.
-        ///
-        /// Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a
-        /// `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
+        /// behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different
+        /// possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with:
+        /// {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and
+        /// `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a
+        /// `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at
+        /// `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3
+        /// (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy`
+        /// with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
         /// `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforced")]
         public virtual System.Nullable<bool> Enforced { get; set; } 
@@ -778,26 +724,24 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource.
-    ///
-    /// `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy
-    /// (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and
-    /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
-    /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
-    /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
-    /// Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" -
-    /// "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the
-    /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
-    /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
-    /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
-    /// `denied_values` must be unset.</summary>
+    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define
+    /// specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`,
+    /// `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is
+    /// achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource
+    /// subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a
+    /// ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one
+    /// of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" -
+    /// "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines
+    /// whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if
+    /// `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If
+    /// `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset.</summary>
     public class GoogleCloudOrgpolicyV1ListPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The policy all_values state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
         public virtual string AllValues { get; set; } 
 
-        /// <summary>List of values allowed  at this resource. Can only be set if `all_values` is set to
+        /// <summary>List of values allowed at this resource. Can only be set if `all_values` is set to
         /// `ALL_VALUES_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
         public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
@@ -807,64 +751,47 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
         public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; } 
 
-        /// <summary>Determines the inheritance behavior for this `Policy`.
-        ///
-        /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy.
-        /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
-        /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
-        /// the hierarchy.
-        ///
-        /// Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most
-        /// circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy`
-        /// with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that
-        /// are allowed must be in `allowed_values` and not present in `denied_values`.
-        ///
-        /// For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a
-        /// `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the
-        /// Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then,
-        /// if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false`
-        /// and field all_values set to DENY, then an attempt to activate any API will be denied.
-        ///
-        /// The following examples demonstrate different possible layerings for `projects/bar` parented by
-        /// `organizations/foo`:
-        ///
-        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-        /// allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
-        /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
-        /// `projects/bar` are `E3`, and `E4`.
-        ///
-        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4"
-        /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
-        /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
-        ///
+        /// <summary>Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource
+        /// supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to
+        /// `true`, then the values from the effective `Policy` of the parent resource are inherited, meaning the values
+        /// set in this `Policy` are added to the values inherited up the hierarchy. Setting `Policy` hierarchies that
+        /// inherit both allowed values and denied values isn't recommended in most circumstances to keep the
+        /// configuration simple and understandable. However, it is possible to set a `Policy` with `allowed_values` set
+        /// that inherits a `Policy` with `denied_values` set. In this case, the values that are allowed must be in
+        /// `allowed_values` and not present in `denied_values`. For example, suppose you have a `Constraint`
+        /// `constraints/serviceuser.services`, which has a `constraint_type` of `list_constraint`, and with
+        /// `constraint_default` set to `ALLOW`. Suppose that at the Organization level, a `Policy` is applied that
+        /// restricts the allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to a project below the
+        /// Organization that has `inherit_from_parent` set to `false` and field all_values set to DENY, then an attempt
+        /// to activate any API will be denied. The following examples demonstrate different possible layerings for
+        /// `projects/bar` parented by `organizations/foo`: Example 1 (no inherited values): `organizations/foo` has a
+        /// `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has `inherit_from_parent`
+        /// `false` and values: {allowed_values: "E3" allowed_values: "E4"} The accepted values at `organizations/foo`
+        /// are `E1`, `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2 (inherited values):
+        /// `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar`
+        /// has a `Policy` with values: {value: "E3" value: "E4" inherit_from_parent: true} The accepted values at
+        /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
         /// Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values:
         /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
-        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
-        ///
-        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`. Example
+        /// 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
         /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
         /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
-        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
-        ///
-        /// Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no
-        /// `Policy` set. The accepted values at both levels are either all or none depending on the value of
-        /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
-        ///
-        /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
-        /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
-        ///
-        /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
-        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
-        ///
-        /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource
-        /// hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
-        /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values:
-        /// "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are
-        /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted
-        /// values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
+        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits
+        /// parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no `Policy` set. The accepted
+        /// values at both levels are either all or none depending on the value of `constraint_default` (if `ALLOW`,
+        /// all; if `DENY`, none). Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with
+        /// values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The
+        /// accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`. Example 7
+        /// (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`. Example 10 (allowed and denied
+        /// subtrees of Resource Manager hierarchy): Given the following resource hierarchy O1->{F1, F2}; F1->{P1};
+        /// F2->{P2, P3}, `organizations/foo` has a `Policy` with values: {allowed_values: "under:organizations/O1"}
+        /// `projects/bar` has a `Policy` with: {allowed_values: "under:projects/P3"} {denied_values:
+        /// "under:folders/F2"} The accepted values at `organizations/foo` are `organizations/O1`, `folders/F1`,
+        /// `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
+        /// `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
         public virtual System.Nullable<bool> InheritFromParent { get; set; } 
 
@@ -887,25 +814,18 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual GoogleCloudOrgpolicyV1BooleanPolicy BooleanPolicy { get; set; } 
 
         /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
-        /// `constraints/serviceuser.services`.
-        ///
-        /// A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is
-        /// available.
-        ///
-        /// Immutable after creation.</summary>
+        /// `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-
+        /// policy/org-policy-constraints) is available. Immutable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
         public virtual string Constraint { get; set; } 
 
-        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control.
-        ///
-        /// When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates
-        /// the version of the current `Policy` to use when executing a read-modify-write loop.
-        ///
-        /// When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
-        ///
-        /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a
-        /// `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in
-        /// a `SetOrgPolicy` request will result in an unconditional write of the `Policy`.</summary>
+        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control. When
+        /// the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the
+        /// version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is
+        /// returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a
+        /// `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a
+        /// read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will
+        /// result in an unconditional write of the `Policy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -930,13 +850,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     }    
 
     /// <summary>Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of
-    /// the specific `Constraint` at this resource.
-    ///
-    /// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`.
-    /// Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed
-    /// service activations to deny all service activations. They could then set a `Policy` with the `policy_type`
-    /// `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the
-    /// `Constraint` for only those projects, allowing those projects to have all services activated.</summary>
+    /// the specific `Constraint` at this resource. Suppose that `constraint_default` is set to `ALLOW` for the
+    /// `Constraint` `constraints/serviceuser.services`. Suppose that organization foo.com sets a `Policy` at their
+    /// Organization resource node that restricts the allowed service activations to deny all service activations. They
+    /// could then set a `Policy` with the `policy_type` `restore_default` on several experimental projects, restoring
+    /// the `constraint_default` enforcement of the `Constraint` for only those projects, allowing those projects to
+    /// have all services activated.</summary>
     public class GoogleCloudOrgpolicyV1RestoreDefault : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1148,7 +1067,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Required. Resource name for the ServicePerimeter.  The `short_name` component must begin with a
+        /// <summary>Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
         /// letter and only include alphanumeric and '_'. Format:
         /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1176,7 +1095,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists  for all Service
+        /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service
         /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
         /// inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a
         /// configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test
@@ -1261,35 +1180,24 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1306,33 +1214,23 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -1348,35 +1246,28 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
 
         /// <summary>The URL of the discovery document containing the resource's JSON schema. Example:
-        /// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
-        ///
-        /// This value is unspecified for resources that do not have an API based on a discovery document, such as Cloud
-        /// Bigtable.</summary>
+        /// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest` This value is unspecified for resources that
+        /// do not have an API based on a discovery document, such as Cloud Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentUri")]
         public virtual string DiscoveryDocumentUri { get; set; } 
 
-        /// <summary>The JSON schema name listed in the discovery document. Example: `Project`
-        ///
-        /// This value is unspecified for resources that do not have an API based on a discovery document, such as Cloud
-        /// Bigtable.</summary>
+        /// <summary>The JSON schema name listed in the discovery document. Example: `Project` This value is unspecified
+        /// for resources that do not have an API based on a discovery document, such as Cloud Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryName")]
         public virtual string DiscoveryName { get; set; } 
 
         /// <summary>The full name of the immediate parent of this resource. See [Resource
-        /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
-        ///
-        /// For Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
+        /// Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
         /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
-        /// `//cloudresourcemanager.googleapis.com/projects/my_project_123`
-        ///
-        /// For third-party assets, this field may be set differently.</summary>
+        /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
+        /// set differently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
         /// <summary>The REST URL for accessing the resource. An HTTP `GET` request using this URL returns the resource
-        /// itself. Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
-        ///
-        /// This value is unspecified for resources without a REST API.</summary>
+        /// itself. Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123` This value is
+        /// unspecified for resources without a REST API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; } 
 

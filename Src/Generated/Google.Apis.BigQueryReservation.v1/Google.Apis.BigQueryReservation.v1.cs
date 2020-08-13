@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200808 (2046)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2542,6 +2542,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Creation time of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; } 
+
         /// <summary>If false, any query using this reservation will use idle slots from other reservations within the
         /// same admin project. If true, a query using this reservation will execute with the slot capacity specified
         /// above at most.</summary>
@@ -2559,6 +2563,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; } 
+
+        /// <summary>Output only. Last update time of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

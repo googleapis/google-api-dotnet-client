@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200722 (2029)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -390,16 +390,12 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
 
-                /// <summary>Creates a Redis instance based on the specified tier and memory size.
-                ///
-                /// By default, the instance is accessible from the project's [default
-                /// network](https://cloud.google.com/vpc/docs/vpc).
-                ///
+                /// <summary>Creates a Redis instance based on the specified tier and memory size. By default, the
+                /// instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc).
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
-                /// longrunning.Operation will contain the new instance object in the response field.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// longrunning.Operation will contain the new instance object in the response field. The returned
+                /// operation is automatically deleted after a few hours, so there is no need to call
                 /// DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
@@ -409,16 +405,12 @@ namespace Google.Apis.CloudRedis.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a Redis instance based on the specified tier and memory size.
-                ///
-                /// By default, the instance is accessible from the project's [default
-                /// network](https://cloud.google.com/vpc/docs/vpc).
-                ///
+                /// <summary>Creates a Redis instance based on the specified tier and memory size. By default, the
+                /// instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc).
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
-                /// longrunning.Operation will contain the new instance object in the response field.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// longrunning.Operation will contain the new instance object in the response field. The returned
+                /// operation is automatically deleted after a few hours, so there is no need to call
                 /// DeleteOperation.</summary>
                 public class CreateRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -439,11 +431,9 @@ namespace Google.Apis.CloudRedis.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>Required. The logical name of the Redis instance in the customer project with the
-                    /// following restrictions:
-                    ///
-                    /// * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must
-                    /// be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the
-                    /// customer project / location</summary>
+                    /// following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must
+                    /// start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. *
+                    /// Must be unique within the customer project / location</summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
 
@@ -499,7 +489,7 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Deletes a specific Redis instance.  Instance stops serving and data is deleted.</summary>
+                /// <summary>Deletes a specific Redis instance. Instance stops serving and data is deleted.</summary>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
                 /// region.</param>
@@ -508,7 +498,7 @@ namespace Google.Apis.CloudRedis.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a specific Redis instance.  Instance stops serving and data is deleted.</summary>
+                /// <summary>Deletes a specific Redis instance. Instance stops serving and data is deleted.</summary>
                 public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -563,12 +553,9 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Export Redis instance data into a Redis RDB format file in Cloud Storage.
-                ///
-                /// Redis will continue serving during this operation.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
-                /// DeleteOperation.</summary>
+                /// <summary>Export Redis instance data into a Redis RDB format file in Cloud Storage. Redis will
+                /// continue serving during this operation. The returned operation is automatically deleted after a few
+                /// hours, so there is no need to call DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
@@ -578,12 +565,9 @@ namespace Google.Apis.CloudRedis.v1
                     return new ExportRequest(service, body, name);
                 }
 
-                /// <summary>Export Redis instance data into a Redis RDB format file in Cloud Storage.
-                ///
-                /// Redis will continue serving during this operation.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
-                /// DeleteOperation.</summary>
+                /// <summary>Export Redis instance data into a Redis RDB format file in Cloud Storage. Redis will
+                /// continue serving during this operation. The returned operation is automatically deleted after a few
+                /// hours, so there is no need to call DeleteOperation.</summary>
                 public class ExportRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Export request.</summary>
@@ -783,13 +767,10 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
-                ///
-                /// Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation.
-                /// When complete, the instance will contain only data from the imported file.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
-                /// DeleteOperation.</summary>
+                /// <summary>Import a Redis RDB snapshot file from Cloud Storage into a Redis instance. Redis may stop
+                /// serving during this operation. Instance state will be IMPORTING for entire operation. When complete,
+                /// the instance will contain only data from the imported file. The returned operation is automatically
+                /// deleted after a few hours, so there is no need to call DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
@@ -799,13 +780,10 @@ namespace Google.Apis.CloudRedis.v1
                     return new ImportRequest(service, body, name);
                 }
 
-                /// <summary>Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
-                ///
-                /// Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation.
-                /// When complete, the instance will contain only data from the imported file.
-                ///
-                /// The returned operation is automatically deleted after a few hours, so there is no need to call
-                /// DeleteOperation.</summary>
+                /// <summary>Import a Redis RDB snapshot file from Cloud Storage into a Redis instance. Redis may stop
+                /// serving during this operation. Instance state will be IMPORTING for entire operation. When complete,
+                /// the instance will contain only data from the imported file. The returned operation is automatically
+                /// deleted after a few hours, so there is no need to call DeleteOperation.</summary>
                 public class ImportRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Import request.</summary>
@@ -868,14 +846,9 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>Lists all Redis instances owned by a project in either the specified location (region) or
-                /// all locations.
-                ///
-                /// The location should have the following format:
-                ///
-                /// * `projects/{project_id}/locations/{location_id}`
-                ///
-                /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
-                /// queried, and the results are aggregated.</summary>
+                /// all locations. The location should have the following format: *
+                /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
+                /// then all regions available to the project are queried, and the results are aggregated.</summary>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
                 /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.</param>
                 public virtual ListRequest List(string parent)
@@ -884,14 +857,9 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>Lists all Redis instances owned by a project in either the specified location (region) or
-                /// all locations.
-                ///
-                /// The location should have the following format:
-                ///
-                /// * `projects/{project_id}/locations/{location_id}`
-                ///
-                /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
-                /// queried, and the results are aggregated.</summary>
+                /// all locations. The location should have the following format: *
+                /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
+                /// then all regions available to the project are queried, and the results are aggregated.</summary>
                 public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListInstancesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -909,12 +877,10 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return.
-                    ///
-                    /// If not specified, a default value of 1000 will be used by the service. Regardless of the
-                    /// page_size value, the response may include a partial list and a caller should only rely on
-                    /// response's `next_page_token` to determine if there are more instances left to be
-                    /// queried.</summary>
+                    /// <summary>The maximum number of items to return. If not specified, a default value of 1000 will
+                    /// be used by the service. Regardless of the page_size value, the response may include a partial
+                    /// list and a caller should only rely on response's `next_page_token` to determine if there are
+                    /// more instances left to be queried.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -978,27 +944,24 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Updates the metadata and configuration of a specific Redis instance.
-                ///
-                /// Completed longrunning.Operation will contain the new instance object in the response field. The
-                /// returned operation is automatically deleted after a few hours, so there is no need to call
+                /// <summary>Updates the metadata and configuration of a specific Redis instance. Completed
+                /// longrunning.Operation will contain the new instance object in the response field. The returned
+                /// operation is automatically deleted after a few hours, so there is no need to call
                 /// DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Unique name of the resource in this scope including project and location using the
-                /// form:     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-                ///
-                /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region;
-                /// however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should
-                /// be provisioned in. Refer to location_id and alternative_location_id fields for more details.</param>
+                /// form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and
+                /// addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific
+                /// zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id
+                /// and alternative_location_id fields for more details.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1.Data.Instance body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the metadata and configuration of a specific Redis instance.
-                ///
-                /// Completed longrunning.Operation will contain the new instance object in the response field. The
-                /// returned operation is automatically deleted after a few hours, so there is no need to call
+                /// <summary>Updates the metadata and configuration of a specific Redis instance. Completed
+                /// longrunning.Operation will contain the new instance object in the response field. The returned
+                /// operation is automatically deleted after a few hours, so there is no need to call
                 /// DeleteOperation.</summary>
                 public class PatchRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -1013,19 +976,17 @@ namespace Google.Apis.CloudRedis.v1
 
 
                     /// <summary>Required. Unique name of the resource in this scope including project and location
-                    /// using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-                    ///
-                    /// Note: Redis instances are managed and addressed at regional level so location_id here refers to
-                    /// a GCP region; however, users may choose which specific zone (or collection of zones for cross-
-                    /// zone instances) an instance should be provisioned in. Refer to location_id and
+                    /// using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note:
+                    /// Redis instances are managed and addressed at regional level so location_id here refers to a GCP
+                    /// region; however, users may choose which specific zone (or collection of zones for cross-zone
+                    /// instances) an instance should be provisioned in. Refer to location_id and
                     /// alternative_location_id fields for more details.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// The elements of the repeated paths field may only include these fields from Instance:
-                    ///
-                    /// *   `displayName` *   `labels` *   `memorySizeGb` *   `redisConfig`</summary>
+                    /// The elements of the repeated paths field may only include these fields from Instance: *
+                    /// `displayName` * `labels` * `memorySizeGb` * `redisConfig`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1177,10 +1138,10 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -1190,10 +1151,10 @@ namespace Google.Apis.CloudRedis.v1
                     return new CancelRequest(service, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
@@ -1313,7 +1274,7 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -1321,7 +1282,7 @@ namespace Google.Apis.CloudRedis.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -1376,13 +1337,12 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -1390,13 +1350,12 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1655,11 +1614,9 @@ namespace Google.Apis.CloudRedis.v1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1953,12 +1910,11 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>SloExclusion represents an exclusion in SLI calculation applies to all SLOs.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Exclusion duration. No restrictions on the possible values.
-        ///
-        /// When an ongoing operation is taking longer than initially expected, an existing entry in the exclusion list
-        /// can be updated by extending the duration. This is supported by the subsystem exporting eligibility data as
-        /// long as such extension is committed at least 10 minutes before the original exclusion expiration - otherwise
-        /// it is possible that there will be "gaps" in the exclusion application in the exported timeseries.</summary>
+        /// <summary>Exclusion duration. No restrictions on the possible values. When an ongoing operation is taking
+        /// longer than initially expected, an existing entry in the exclusion list can be updated by extending the
+        /// duration. This is supported by the subsystem exporting eligibility data as long as such extension is
+        /// committed at least 10 minutes before the original exclusion expiration - otherwise it is possible that there
+        /// will be "gaps" in the exclusion application in the exported timeseries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; } 
 
@@ -1990,14 +1946,11 @@ namespace Google.Apis.CloudRedis.v1.Data
 
         /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
         /// time-window against current time point) the exclusion reason used in the first matching entry will be
-        /// published.
-        ///
-        /// It is not needed to include expired exclusion in this list, as only the currently applicable exclusions are
-        /// taken into account by the eligibility exporting subsystem (the historical state of exclusions will be
-        /// reflected in the historically produced timeseries regardless of the current state).
-        ///
-        /// This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For
-        /// permanent instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
+        /// published. It is not needed to include expired exclusion in this list, as only the currently applicable
+        /// exclusions are taken into account by the eligibility exporting subsystem (the historical state of exclusions
+        /// will be reflected in the historically produced timeseries regardless of the current state). This field can
+        /// be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For permanent
+        /// instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
         /// below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
@@ -2009,9 +1962,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; } 
 
         /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
-        /// specified in the service SLO configuration.
-        ///
-        /// Field is mandatory and must not be empty.</summary>
+        /// specified in the service SLO configuration. Field is mandatory and must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; } 
 
@@ -2097,12 +2048,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Nullable<int> MemorySizeGb { get; set; } 
 
         /// <summary>Required. Unique name of the resource in this scope including project and location using the form:
-        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-        ///
-        /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP
-        /// region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an
-        /// instance should be provisioned in. Refer to location_id and alternative_location_id fields for more
-        /// details.</summary>
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed
+        /// and addressed at regional level so location_id here refers to a GCP region; however, users may choose which
+        /// specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer
+        /// to location_id and alternative_location_id fields for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2117,27 +2066,15 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Nullable<int> Port { get; set; } 
 
         /// <summary>Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently,
-        /// the only supported parameters are:
-        ///
-        /// Redis version 3.2 and newer:
-        ///
-        /// *   maxmemory-policy *   notify-keyspace-events
-        ///
-        /// Redis version 4.0 and newer:
-        ///
-        /// *   activedefrag *   lfu-decay-time *   lfu-log-factor *   maxmemory-gb
-        ///
-        /// Redis version 5.0 and newer:
-        ///
-        /// *   stream-node-max-bytes *   stream-node-max-entries</summary>
+        /// the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events
+        /// Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version
+        /// 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
         public virtual System.Collections.Generic.IDictionary<string,string> RedisConfigs { get; set; } 
 
         /// <summary>Optional. The version of Redis software. If not provided, latest supported version will be used.
-        /// Currently, the supported values are:
-        ///
-        /// *   `REDIS_3_2` for Redis 3.2 compatibility *   `REDIS_4_0` for Redis 4.0 compatibility (default) *
-        /// `REDIS_5_0` for Redis 5.0 compatibility</summary>
+        /// Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0
+        /// compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; } 
 
@@ -2167,11 +2104,10 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Response for ListInstances.</summary>
     public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of Redis instances in the project in the specified location, or across all locations.
-        ///
-        /// If the `location_id` in the parent field of the request is "-", all regions available to the project are
-        /// queried, and the results aggregated. If in such an aggregated query a location is unavailable, a dummy Redis
-        /// entry is included in the response with the `name` field set to a value of the form
+        /// <summary>A list of Redis instances in the project in the specified location, or across all locations. If the
+        /// `location_id` in the parent field of the request is "-", all regions available to the project are queried,
+        /// and the results aggregated. If in such an aggregated query a location is unavailable, a dummy Redis entry is
+        /// included in the response with the `name` field set to a value of the form
         /// `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and
         /// `status_message` field set to "location not available for ListInstances".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
@@ -2227,9 +2163,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2264,25 +2199,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>{
-        ///
-        /// `createTime`: The time the operation was created.
-        ///
-        /// `endTime`: The time the operation finished running.
-        ///
-        /// `target`: Server-defined resource path for the target of the operation.
-        ///
-        /// `verb`: Name of the verb executed by the operation.
-        ///
-        /// `statusDetail`: Human-readable status of the operation, if any.
-        ///
+        /// <summary>{ `createTime`: The time the operation was created. `endTime`: The time the operation finished
+        /// running. `target`: Server-defined resource path for the target of the operation. `verb`: Name of the verb
+        /// executed by the operation. `statusDetail`: Human-readable status of the operation, if any.
         /// `cancelRequested`: Identifies whether the user has requested cancellation of the operation. Operations that
         /// have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
-        /// corresponding to `Code.CANCELLED`.
-        ///
-        /// `apiVersion`: API version used to start the operation.
-        ///
-        /// }</summary>
+        /// corresponding to `Code.CANCELLED`. `apiVersion`: API version used to start the operation. }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2292,11 +2214,11 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2317,9 +2239,8 @@ namespace Google.Apis.CloudRedis.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2327,8 +2248,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

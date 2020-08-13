@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -366,19 +366,12 @@ namespace Google.Apis.ManufacturerCenter.v1
 
 
             /// <summary>Deletes the product from a Manufacturer Center account.</summary>
-            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
-            ///
-            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+            /// Center account.</param>
             /// <param name="name">Name in the format
-            /// `{target_country}:{content_language}:{product_id}`.
-            ///
-            /// `target_country`   - The target country of the product as a CLDR territory                      code (for example,
-            /// US).
-            ///
-            /// `content_language` - The content language of the product as a two-letter                      ISO 639-1 language
-            /// code (for example, en).
-            ///
-            /// `product_id`     -   The ID of the product. For more information, see
+            /// `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR
+            /// territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1
+            /// language code (for example, en). `product_id` - The ID of the product. For more information, see
             /// https://support.google.com/manufacturers/answer/6124116#id.</param>
             public virtual DeleteRequest Delete(string parent, string name)
             {
@@ -398,20 +391,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                 }
 
 
-                /// <summary>Parent ID in the format `accounts/{account_id}`.
-                ///
-                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                /// <summary>Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+                /// Center account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
-                ///
-                /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
-                ///
-                /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code
-                /// (for example, en).
-                ///
-                /// `product_id`     -   The ID of the product. For more information, see
+                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` -
+                /// The target country of the product as a CLDR territory code (for example, US). `content_language` -
+                /// The content language of the product as a two-letter ISO 639-1 language code (for example, en).
+                /// `product_id` - The ID of the product. For more information, see
                 /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -462,35 +450,26 @@ namespace Google.Apis.ManufacturerCenter.v1
 
             }
 
-            /// <summary>Gets the product from a Manufacturer Center account, including product issues.
-            ///
-            /// A recently updated product takes around 15 minutes to process. Changes are only visible after it has
-            /// been processed. While some issues may be available once the product has been processed, other issues may
-            /// take days to appear.</summary>
-            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
-            ///
-            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <summary>Gets the product from a Manufacturer Center account, including product issues. A recently
+            /// updated product takes around 15 minutes to process. Changes are only visible after it has been
+            /// processed. While some issues may be available once the product has been processed, other issues may take
+            /// days to appear.</summary>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+            /// Center account.</param>
             /// <param name="name">Name in the format
-            /// `{target_country}:{content_language}:{product_id}`.
-            ///
-            /// `target_country`   - The target country of the product as a CLDR territory                      code (for example,
-            /// US).
-            ///
-            /// `content_language` - The content language of the product as a two-letter                      ISO 639-1 language
-            /// code (for example, en).
-            ///
-            /// `product_id`     -   The ID of the product. For more information, see
+            /// `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR
+            /// territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1
+            /// language code (for example, en). `product_id` - The ID of the product. For more information, see
             /// https://support.google.com/manufacturers/answer/6124116#id.</param>
             public virtual GetRequest Get(string parent, string name)
             {
                 return new GetRequest(service, parent, name);
             }
 
-            /// <summary>Gets the product from a Manufacturer Center account, including product issues.
-            ///
-            /// A recently updated product takes around 15 minutes to process. Changes are only visible after it has
-            /// been processed. While some issues may be available once the product has been processed, other issues may
-            /// take days to appear.</summary>
+            /// <summary>Gets the product from a Manufacturer Center account, including product issues. A recently
+            /// updated product takes around 15 minutes to process. Changes are only visible after it has been
+            /// processed. While some issues may be available once the product has been processed, other issues may take
+            /// days to appear.</summary>
             public class GetRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Product>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -503,20 +482,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                 }
 
 
-                /// <summary>Parent ID in the format `accounts/{account_id}`.
-                ///
-                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                /// <summary>Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+                /// Center account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
-                ///
-                /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
-                ///
-                /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code
-                /// (for example, en).
-                ///
-                /// `product_id`     -   The ID of the product. For more information, see
+                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` -
+                /// The target country of the product as a CLDR territory code (for example, US). `content_language` -
+                /// The content language of the product as a two-letter ISO 639-1 language code (for example, en).
+                /// `product_id` - The ID of the product. For more information, see
                 /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -530,12 +504,16 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// returned.</summary>
                 public enum IncludeEnum
                 {
+                    /// <summary>Unknown, never used.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                     UNKNOWN,
+                    /// <summary>Include the attributes of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
                     ATTRIBUTES,
+                    /// <summary>Include the issues of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ISSUES")]
                     ISSUES,
+                    /// <summary>Include the destination statuses of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
                     DESTINATIONSTATUSES,
                 }
@@ -596,9 +574,8 @@ namespace Google.Apis.ManufacturerCenter.v1
             }
 
             /// <summary>Lists all the products in a Manufacturer Center account.</summary>
-            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
-            ///
-            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+            /// Center account.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -616,9 +593,8 @@ namespace Google.Apis.ManufacturerCenter.v1
                 }
 
 
-                /// <summary>Parent ID in the format `accounts/{account_id}`.
-                ///
-                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                /// <summary>Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+                /// Center account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -631,12 +607,16 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// returned.</summary>
                 public enum IncludeEnum
                 {
+                    /// <summary>Unknown, never used.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                     UNKNOWN,
+                    /// <summary>Include the attributes of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
                     ATTRIBUTES,
+                    /// <summary>Include the issues of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ISSUES")]
                     ISSUES,
+                    /// <summary>Include the destination statuses of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
                     DESTINATIONSTATUSES,
                 }
@@ -713,47 +693,36 @@ namespace Google.Apis.ManufacturerCenter.v1
 
             }
 
-            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account.
-            ///
-            /// Creates a product with the provided attributes. If the product already exists, then all attributes are
-            /// replaced with the new ones. The checks at upload time are minimal. All required attributes need to be
-            /// present for a product to be valid. Issues may show up later after the API has accepted a new upload for
-            /// a product and it is possible to overwrite an existing valid product with an invalid product. To detect
-            /// this, you should retrieve the product and check it for issues once the new version is available.
-            ///
-            /// Uploaded attributes first need to be processed before they can be retrieved. Until then, new products
-            /// will be unavailable, and retrieval of previously uploaded products will return the original state of the
+            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a
+            /// product with the provided attributes. If the product already exists, then all attributes are replaced
+            /// with the new ones. The checks at upload time are minimal. All required attributes need to be present for
+            /// a product to be valid. Issues may show up later after the API has accepted a new upload for a product
+            /// and it is possible to overwrite an existing valid product with an invalid product. To detect this, you
+            /// should retrieve the product and check it for issues once the new version is available. Uploaded
+            /// attributes first need to be processed before they can be retrieved. Until then, new products will be
+            /// unavailable, and retrieval of previously uploaded products will return the original state of the
             /// product.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
-            ///
-            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+            /// Center account.</param>
             /// <param name="name">Name in the format
-            /// `{target_country}:{content_language}:{product_id}`.
-            ///
-            /// `target_country`   - The target country of the product as a CLDR territory                      code (for example,
-            /// US).
-            ///
-            /// `content_language` - The content language of the product as a two-letter                      ISO 639-1 language
-            /// code (for example, en).
-            ///
-            /// `product_id`     -   The ID of the product. For more information, see
+            /// `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR
+            /// territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1
+            /// language code (for example, en). `product_id` - The ID of the product. For more information, see
             /// https://support.google.com/manufacturers/answer/6124116#id.</param>
             public virtual UpdateRequest Update(Google.Apis.ManufacturerCenter.v1.Data.Attributes body, string parent, string name)
             {
                 return new UpdateRequest(service, body, parent, name);
             }
 
-            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account.
-            ///
-            /// Creates a product with the provided attributes. If the product already exists, then all attributes are
-            /// replaced with the new ones. The checks at upload time are minimal. All required attributes need to be
-            /// present for a product to be valid. Issues may show up later after the API has accepted a new upload for
-            /// a product and it is possible to overwrite an existing valid product with an invalid product. To detect
-            /// this, you should retrieve the product and check it for issues once the new version is available.
-            ///
-            /// Uploaded attributes first need to be processed before they can be retrieved. Until then, new products
-            /// will be unavailable, and retrieval of previously uploaded products will return the original state of the
+            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a
+            /// product with the provided attributes. If the product already exists, then all attributes are replaced
+            /// with the new ones. The checks at upload time are minimal. All required attributes need to be present for
+            /// a product to be valid. Issues may show up later after the API has accepted a new upload for a product
+            /// and it is possible to overwrite an existing valid product with an invalid product. To detect this, you
+            /// should retrieve the product and check it for issues once the new version is available. Uploaded
+            /// attributes first need to be processed before they can be retrieved. Until then, new products will be
+            /// unavailable, and retrieval of previously uploaded products will return the original state of the
             /// product.</summary>
             public class UpdateRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Empty>
             {
@@ -768,20 +737,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                 }
 
 
-                /// <summary>Parent ID in the format `accounts/{account_id}`.
-                ///
-                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                /// <summary>Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer
+                /// Center account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
-                ///
-                /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
-                ///
-                /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code
-                /// (for example, en).
-                ///
-                /// `product_id`     -   The ID of the product. For more information, see
+                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` -
+                /// The target country of the product as a CLDR territory code (for example, US). `content_language` -
+                /// The content language of the product as a two-letter ISO 639-1 language code (for example, en).
+                /// `product_id` - The ID of the product. For more information, see
                 /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1077,11 +1041,9 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1219,21 +1181,15 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
         public virtual System.Collections.Generic.IList<Issue> Issues { get; set; } 
 
-        /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
-        ///
-        /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
-        ///
-        /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for
-        /// example, en).
-        ///
-        /// `product_id`     -   The ID of the product. For more information, see
-        /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
+        /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The
+        /// target country of the product as a CLDR territory code (for example, US). `content_language` - The content
+        /// language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of
+        /// the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Parent ID in the format `accounts/{account_id}`.
-        ///
-        /// `account_id` - The ID of the Manufacturer Center account.</summary>
+        /// <summary>Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center
+        /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 

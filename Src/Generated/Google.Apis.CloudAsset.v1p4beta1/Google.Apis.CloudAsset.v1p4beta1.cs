@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1p4beta1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/asset-inventory/docs/quickstart'>
  *              https://cloud.google.com/asset-inventory/docs/quickstart</a>
@@ -344,12 +344,9 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").
-        ///
-        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
-        /// organization#retrieving_your_organization_id).
-        ///
-        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder id, visit
+        /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual AnalyzeIamPolicyRequest AnalyzeIamPolicy(string parent)
         {
@@ -370,13 +367,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
             /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123").
-            ///
-            /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
-            /// /creating-managing-organization#retrieving_your_organization_id).
-            ///
-            /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
-            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
+            /// folder number (such as "folders/123"). To know how to get organization id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// organization#retrieving_your_organization_id). To know how to get folder id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -389,13 +384,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             public virtual Google.Apis.Util.Repeatable<string> AnalysisQueryAccessSelectorRoles { get; set; }
 
             /// <summary>Required. The identity appear in the form of members in [IAM policy
-            /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
-            ///
-            /// The examples of supported forms are: "user:mike@example.com", "group:admins@example.com",
-            /// "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com".
-            ///
-            /// Notice that wildcard characters (such as * and ?) are not supported. You must give a specific
-            /// identity.</summary>
+            /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are:
+            /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+            /// id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported.
+            /// You must give a specific identity.</summary>
             [Google.Apis.Util.RequestParameterAttribute("analysisQuery.identitySelector.identity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AnalysisQueryIdentitySelectorIdentity { get; set; }
 
@@ -407,65 +399,47 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
             /// <summary>Optional. If true, the response will include access analysis from identities to resources via
             /// service account impersonation. This is a very expensive operation, because many derived queries will be
-            /// executed. We highly recommend you use AssetService.ExportIamPolicyAnalysis rpc instead.
-            ///
-            /// For example, if the request analyzes for which resources user A has permission P, and there's an IAM
-            /// policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and
-            /// there's another IAM policy states service account SA has permission P to a GCP folder F, then user A
-            /// potentially has access to the GCP folder F. And those advanced analysis results will be included in
-            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis.
-            ///
-            /// Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM
-            /// policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's
-            /// another IAM policy states service account SA has permission P to the GCP folder F, then user A
-            /// potentially has access to the GCP folder F. And those advanced analysis results will be included in
-            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis.
-            ///
-            /// Default is false.</summary>
+            /// executed. We highly recommend you use AssetService.ExportIamPolicyAnalysis rpc instead. For example, if
+            /// the request analyzes for which resources user A has permission P, and there's an IAM policy states user
+            /// A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM
+            /// policy states service account SA has permission P to a GCP folder F, then user A potentially has access
+            /// to the GCP folder F. And those advanced analysis results will be included in
+            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request
+            /// analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has
+            /// iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states
+            /// service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP
+            /// folder F. And those advanced analysis results will be included in
+            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("options.analyzeServiceAccountImpersonation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OptionsAnalyzeServiceAccountImpersonation { get; set; }
 
-            /// <summary>Optional. Amount of time executable has to complete.  See JSON representation of
-            /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json).
-            ///
-            /// If this field is set with a value less than the RPC deadline, and the execution of your query hasn't
-            /// finished in the specified execution timeout,  you will get a response with partial result. Otherwise,
-            /// your query's execution will continue until the RPC deadline. If it's not finished until then, you will
-            /// get a  DEADLINE_EXCEEDED error.
-            ///
-            /// Default is empty.</summary>
+            /// <summary>Optional. Amount of time executable has to complete. See JSON representation of
+            /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json). If this field is set with a
+            /// value less than the RPC deadline, and the execution of your query hasn't finished in the specified
+            /// execution timeout, you will get a response with partial result. Otherwise, your query's execution will
+            /// continue until the RPC deadline. If it's not finished until then, you will get a DEADLINE_EXCEEDED
+            /// error. Default is empty.</summary>
             [Google.Apis.Util.RequestParameterAttribute("options.executionTimeout", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object OptionsExecutionTimeout { get; set; }
 
             /// <summary>Optional. If true, the identities section of the result will expand any Google groups appearing
-            /// in an IAM policy binding.
-            ///
-            /// If identity_selector is specified, the identity in the result will be determined by the selector, and
-            /// this flag will have no effect.
-            ///
-            /// Default is false.</summary>
+            /// in an IAM policy binding. If identity_selector is specified, the identity in the result will be
+            /// determined by the selector, and this flag will have no effect. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("options.expandGroups", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OptionsExpandGroups { get; set; }
 
             /// <summary>Optional. If true, the resource section of the result will expand any resource attached to an
-            /// IAM policy to include resources lower in the resource hierarchy.
-            ///
-            /// For example, if the request analyzes for which resources user A has permission P, and the results
-            /// include an IAM policy with P on a GCP folder, the results will also include resources in that folder
-            /// with permission P.
-            ///
-            /// If resource_selector is specified, the resource section of the result will be determined by the
-            /// selector, and this flag will have no effect. Default is false.</summary>
+            /// IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes
+            /// for which resources user A has permission P, and the results include an IAM policy with P on a GCP
+            /// folder, the results will also include resources in that folder with permission P. If resource_selector
+            /// is specified, the resource section of the result will be determined by the selector, and this flag will
+            /// have no effect. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("options.expandResources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OptionsExpandResources { get; set; }
 
             /// <summary>Optional. If true, the access section of result will expand any roles appearing in IAM policy
-            /// bindings to include their permissions.
-            ///
-            /// If access_selector is specified, the access section of the result will be determined by the selector,
-            /// and this flag will have no effect.
-            ///
-            /// Default is false.</summary>
+            /// bindings to include their permissions. If access_selector is specified, the access section of the result
+            /// will be determined by the selector, and this flag will have no effect. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("options.expandRoles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OptionsExpandRoles { get; set; }
 
@@ -623,12 +597,9 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
         /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").
-        ///
-        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
-        /// organization#retrieving_your_organization_id).
-        ///
-        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder id, visit
+        /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual ExportIamPolicyAnalysisRequest ExportIamPolicyAnalysis(Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest body, string parent)
         {
@@ -654,13 +625,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
             /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123").
-            ///
-            /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
-            /// /creating-managing-organization#retrieving_your_organization_id).
-            ///
-            /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
-            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
+            /// folder number (such as "folders/123"). To know how to get organization id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// organization#retrieving_your_organization_id). To know how to get folder id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -758,53 +727,33 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -838,29 +787,15 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -919,16 +854,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     }    
 
     /// <summary>An access control list, derived from the above IAM policy binding, which contains a set of resources
-    /// and accesses. May include one item from each set to compose an access control entry.
-    ///
-    /// NOTICE that there could be multiple access control lists for one IAM policy binding. The access control lists
-    /// are created based on resource and access combinations.
-    ///
-    /// For example, assume we have the following cases in one IAM policy binding: - Permission P1 and P2 apply to
-    /// resource R1 and R2; - Permission P3 applies to resource R2 and R3;
-    ///
-    /// This will result in the following access control lists: - AccessControlList 1: [R1, R2], [P1, P2] -
-    /// AccessControlList 2: [R2, R3], [P3]</summary>
+    /// and accesses. May include one item from each set to compose an access control entry. NOTICE that there could be
+    /// multiple access control lists for one IAM policy binding. The access control lists are created based on resource
+    /// and access combinations. For example, assume we have the following cases in one IAM policy binding: - Permission
+    /// P1 and P2 apply to resource R1 and R2; - Permission P3 applies to resource R2 and R3; This will result in the
+    /// following access control lists: - AccessControlList 1: [R1, R2], [P1, P2] - AccessControlList 2: [R2, R3],
+    /// [P3]</summary>
     public class GoogleCloudAssetV1p4beta1AccessControlList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The accesses that match one of the following conditions: - The access_selector, if it is specified
@@ -1083,13 +1014,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
 
         /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the parent
         /// will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123").
-        ///
-        /// To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
-        /// managing-organization#retrieving_your_organization_id).
-        ///
-        /// To know how to get folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
-        /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
+        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com
+        /// /resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get
+        /// folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -1137,13 +1065,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     public class IdentitySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The identity appear in the form of members in [IAM policy
-        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
-        ///
-        /// The examples of supported forms are: "user:mike@example.com", "group:admins@example.com",
-        /// "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com".
-        ///
-        /// Notice that wildcard characters (such as * and ?) are not supported. You must give a specific
-        /// identity.</summary>
+        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are:
+        /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+        /// id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You
+        /// must give a specific identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; } 
 
@@ -1163,9 +1088,9 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1175,11 +1100,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1192,52 +1117,37 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>Optional. If true, the response will include access analysis from identities to resources via
         /// service account impersonation. This is a very expensive operation, because many derived queries will be
-        /// executed.
-        ///
-        /// For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy
-        /// states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another
-        /// IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has access
-        /// to the GCP folder F. And those advanced analysis results will be included in
-        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis.
-        ///
-        /// Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM
-        /// policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another
-        /// IAM policy states service account SA has permission P to the GCP folder F, then user A potentially has
-        /// access to the GCP folder F. And those advanced analysis results will be included in
-        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis.
-        ///
-        /// Default is false.</summary>
+        /// executed. For example, if the request analyzes for which resources user A has permission P, and there's an
+        /// IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and
+        /// there's another IAM policy states service account SA has permission P to a GCP folder F, then user A
+        /// potentially has access to the GCP folder F. And those advanced analysis results will be included in
+        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes
+        /// for who has permission P to a GCP folder F, and there's an IAM policy states user A has
+        /// iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service
+        /// account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And
+        /// those advanced analysis results will be included in
+        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyzeServiceAccountImpersonation")]
         public virtual System.Nullable<bool> AnalyzeServiceAccountImpersonation { get; set; } 
 
         /// <summary>Optional. If true, the identities section of the result will expand any Google groups appearing in
-        /// an IAM policy binding.
-        ///
-        /// If identity_selector is specified, the identity in the result will be determined by the selector, and this
-        /// flag will have no effect.
-        ///
-        /// Default is false.</summary>
+        /// an IAM policy binding. If identity_selector is specified, the identity in the result will be determined by
+        /// the selector, and this flag will have no effect. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandGroups")]
         public virtual System.Nullable<bool> ExpandGroups { get; set; } 
 
         /// <summary>Optional. If true, the resource section of the result will expand any resource attached to an IAM
-        /// policy to include resources lower in the resource hierarchy.
-        ///
-        /// For example, if the request analyzes for which resources user A has permission P, and the results include an
-        /// IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P.
-        ///
-        /// If resource_selector is specified, the resource section of the result will be determined by the selector,
-        /// and this flag will have no effect. Default is false.</summary>
+        /// policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which
+        /// resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results
+        /// will also include resources in that folder with permission P. If resource_selector is specified, the
+        /// resource section of the result will be determined by the selector, and this flag will have no effect.
+        /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandResources")]
         public virtual System.Nullable<bool> ExpandResources { get; set; } 
 
         /// <summary>Optional. If true, the access section of result will expand any roles appearing in IAM policy
-        /// bindings to include their permissions.
-        ///
-        /// If access_selector is specified, the access section of the result will be determined by the selector, and
-        /// this flag will have no effect.
-        ///
-        /// Default is false.</summary>
+        /// bindings to include their permissions. If access_selector is specified, the access section of the result
+        /// will be determined by the selector, and this flag will have no effect. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandRoles")]
         public virtual System.Nullable<bool> ExpandRoles { get; set; } 
 
@@ -1271,9 +1181,8 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1281,8 +1190,8 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

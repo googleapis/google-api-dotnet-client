@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200807 (2045)
+ *      <tr><th>API Rev<td>20200809 (2047)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         public CloudIdentityService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            devices = new DevicesResource(this);
             groups = new GroupsResource(this);
         }
 
@@ -112,6 +113,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Identity API.</summary>
         public class Scope
         {
+            /// <summary>See your device details</summary>
+            public static string CloudIdentityDevicesLookup = "https://www.googleapis.com/auth/cloud-identity.devices.lookup";
+
             /// <summary>See, change, create, and delete any of the Cloud Identity Groups that you can access, including
             /// the members of each group</summary>
             public static string CloudIdentityGroups = "https://www.googleapis.com/auth/cloud-identity.groups";
@@ -128,6 +132,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Identity API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>See your device details</summary>
+            public const string CloudIdentityDevicesLookup = "https://www.googleapis.com/auth/cloud-identity.devices.lookup";
+
             /// <summary>See, change, create, and delete any of the Cloud Identity Groups that you can access, including
             /// the members of each group</summary>
             public const string CloudIdentityGroups = "https://www.googleapis.com/auth/cloud-identity.groups";
@@ -142,6 +149,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
 
 
+
+        private readonly DevicesResource devices;
+
+        /// <summary>Gets the Devices resource.</summary>
+        public virtual DevicesResource Devices
+        {
+            get { return devices; }
+        }
 
         private readonly GroupsResource groups;
 
@@ -341,6 +356,1496 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
     }
 
+    /// <summary>The "devices" collection of methods.</summary>
+    public class DevicesResource
+    {
+        private const string Resource = "devices";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DevicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            deviceUsers = new DeviceUsersResource(service);
+
+        }
+
+        private readonly DeviceUsersResource deviceUsers;
+
+        /// <summary>Gets the DeviceUsers resource.</summary>
+        public virtual DeviceUsersResource DeviceUsers
+        {
+            get { return deviceUsers; }
+        }
+
+        /// <summary>The "deviceUsers" collection of methods.</summary>
+        public class DeviceUsersResource
+        {
+            private const string Resource = "deviceUsers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeviceUsersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                clientStates = new ClientStatesResource(service);
+
+            }
+
+            private readonly ClientStatesResource clientStates;
+
+            /// <summary>Gets the ClientStates resource.</summary>
+            public virtual ClientStatesResource ClientStates
+            {
+                get { return clientStates; }
+            }
+
+            /// <summary>The "clientStates" collection of methods.</summary>
+            public class ClientStatesResource
+            {
+                private const string Resource = "clientStates";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ClientStatesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the client state for the device user</summary>
+                /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState
+                /// in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is the
+                /// unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and partner_id identifies the
+                /// partner storing the data.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the client state for the device user</summary>
+                public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ClientState>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                    /// ClientState in format:
+                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is
+                    /// the unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and
+                    /// partner_id identifies the partner storing the data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                    /// customer. If you're using this API for your own organization, use `customers/my_customer` If
+                    /// you're using this API to manage another organization, use `customers/{customer_id}`, where
+                    /// customer_id is the customer to whom the device belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Customer { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "customer", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "customer",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates the client state for the device user</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
+                /// corresponds to the partner storing the data.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.ClientState body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the client state for the device user</summary>
+                public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.ClientState body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of
+                    /// the ClientState in format:
+                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
+                    /// corresponds to the partner storing the data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                    /// customer. If you're using this API for your own organization, use `customers/my_customer` If
+                    /// you're using this API to manage another organization, use `customers/{customer_id}`, where
+                    /// customer_id is the customer to whom the device belongs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Customer { get; set; }
+
+                    /// <summary>Optional. Comma-separated list of fully qualified names of fields to be updated. If not
+                    /// specified, all updatable fields in ClientState are updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudIdentity.v1beta1.Data.ClientState Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "customer", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "customer",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Approves device to access user data.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual ApproveRequest Approve(Google.Apis.CloudIdentity.v1beta1.Data.ApproveDeviceUserRequest body, string name)
+            {
+                return new ApproveRequest(service, body, name);
+            }
+
+            /// <summary>Approves device to access user data.</summary>
+            public class ApproveRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Approve request.</summary>
+                public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.ApproveDeviceUserRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.ApproveDeviceUserRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "approve"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}:approve"; }
+                }
+
+                /// <summary>Initializes Approve parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Blocks device from accessing user data</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual BlockRequest Block(Google.Apis.CloudIdentity.v1beta1.Data.BlockDeviceUserRequest body, string name)
+            {
+                return new BlockRequest(service, body, name);
+            }
+
+            /// <summary>Blocks device from accessing user data</summary>
+            public class BlockRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Block request.</summary>
+                public BlockRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.BlockDeviceUserRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.BlockDeviceUserRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "block"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}:block"; }
+                }
+
+                /// <summary>Initializes Block parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in
+            /// the gap between the wipe operation returning success and the device being wiped.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceUserRequest body, string name)
+            {
+                return new CancelWipeRequest(service, body, name);
+            }
+
+            /// <summary>Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in
+            /// the gap between the wipe operation returning success and the device being wiped.</summary>
+            public class CancelWipeRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new CancelWipe request.</summary>
+                public CancelWipeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceUserRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceUserRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "cancelWipe"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}:cancelWipe"; }
+                }
+
+                /// <summary>Initializes CancelWipe parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes the specified DeviceUser. This also revokes the user's access to device data.</summary>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes the specified DeviceUser. This also revokes the user's access to device data.</summary>
+            public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// customer. If you're using this API for your own organization, use `customers/my_customer` If you're
+                /// using this API to manage another organization, use `customers/{customer_id}`, where customer_id is
+                /// the customer to whom the device belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves the specified DeviceUser</summary>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves the specified DeviceUser</summary>
+            public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.DeviceUser>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// customer. If you're using this API for your own organization, use `customers/my_customer` If you're
+                /// using this API to manage another organization, use `customers/{customer_id}`, where customer_id is
+                /// the customer to whom the device belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists/Searches DeviceUsers.</summary>
+            /// <param name="parent">Required. To list all DeviceUsers, set this to "devices/-". To list all DeviceUsers owned by a
+            /// device, set this to the resource name of the device. Format: devices/{device}</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists/Searches DeviceUsers.</summary>
+            public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListDeviceUsersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. To list all DeviceUsers, set this to "devices/-". To list all DeviceUsers owned
+                /// by a device, set this to the resource name of the device. Format: devices/{device}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// customer. If you're using this API for your own organization, use `customers/my_customer` If you're
+                /// using this API to manage another organization, use `customers/{customer_id}`, where customer_id is
+                /// the customer to whom the device belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
+                /// <summary>Optional. Additional restrictions when fetching list of devices. [HC
+                /// article](https://support.google.com/a/answer/7549103)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. Order specification for devices in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional. The maximum number of DeviceUsers to return. If unspecified, at most 5
+                /// DeviceUsers will be returned. The maximum value is 20; values above 20 will be coerced to
+                /// 20.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. A page token, received from a previous `ListDeviceUsers` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to `ListBooks` must
+                /// match the call that provided the page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/deviceUsers"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as
+            /// the properties provided in the request. This method must be called with end-user credentials with the
+            /// scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are
+            /// provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query
+            /// behaves like an AND. Different platforms require different amounts of information from the caller to
+            /// ensure that the DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's
+            /// credentials are sufficient to identify the corresponding DeviceUser. - Android: Specifying the
+            /// 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.</summary>
+            /// <param name="parent">Must be set to "devices/-/deviceUsers" to search across all DeviceUser belonging to the
+            /// user.</param>
+            public virtual LookupRequest Lookup(string parent)
+            {
+                return new LookupRequest(service, parent);
+            }
+
+            /// <summary>Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as
+            /// the properties provided in the request. This method must be called with end-user credentials with the
+            /// scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are
+            /// provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query
+            /// behaves like an AND. Different platforms require different amounts of information from the caller to
+            /// ensure that the DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's
+            /// credentials are sufficient to identify the corresponding DeviceUser. - Android: Specifying the
+            /// 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.</summary>
+            public class LookupRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.LookupSelfDeviceUsersResponse>
+            {
+                /// <summary>Constructs a new Lookup request.</summary>
+                public LookupRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Must be set to "devices/-/deviceUsers" to search across all DeviceUser belonging to the
+                /// user.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Android Id returned by [Settings.Secure#ANDROID_ID](https://developer.android.com/reference
+                /// /android/provider/Settings.Secure.html#ANDROID_ID).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("androidId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AndroidId { get; set; }
+
+                /// <summary>The maximum number of DeviceUsers to return. If unspecified, at most 20 DeviceUsers will be
+                /// returned. The maximum value is 20; values above 20 will be coerced to 20.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A page token, received from a previous `LookupDeviceUsers` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `LookupDeviceUsers` must
+                /// match the call that provided the page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google
+                /// Endpoint Verification, this id will be saved as the 'device_resource_id' field in the following
+                /// platform dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows:
+                /// C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux:
+                /// ~/.secureConnect/context_aware_config.json</summary>
+                [Google.Apis.Util.RequestParameterAttribute("rawResourceId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RawResourceId { get; set; }
+
+                /// <summary>The user whose DeviceUser's resource name will be fetched. Must be set to 'me' to fetch the
+                /// DeviceUser's resource name for the calling user.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UserId { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "lookup"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}:lookup"; }
+                }
+
+                /// <summary>Initializes Lookup parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers$",
+                        });
+                    RequestParameters.Add(
+                        "androidId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "androidId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "rawResourceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "rawResourceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Wipes the user's account on a device.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+            /// and device_user_id is the unique ID assigned to the User.</param>
+            public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceUserRequest body, string name)
+            {
+                return new WipeRequest(service, body, name);
+            }
+
+            /// <summary>Wipes the user's account on a device.</summary>
+            public class WipeRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Wipe request.</summary>
+                public WipeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceUserRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique
+                /// ID assigned to the Device, and device_user_id is the unique ID assigned to the User.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceUserRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "wipe"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}:wipe"; }
+                }
+
+                /// <summary>Initializes Wipe parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^devices/[^/]+/deviceUsers/[^/]+$",
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Cancels an unfinished device wipe. This operation can be used to cancel device wipe in the gap
+        /// between the wipe operation returning success and the device being wiped.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the
+        /// unique ID assigned to the User.</param>
+        public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceRequest body, string name)
+        {
+            return new CancelWipeRequest(service, body, name);
+        }
+
+        /// <summary>Cancels an unfinished device wipe. This operation can be used to cancel device wipe in the gap
+        /// between the wipe operation returning success and the device being wiped.</summary>
+        public class CancelWipeRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new CancelWipe request.</summary>
+            public CancelWipeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceRequest body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device, and
+            /// device_user_id is the unique ID assigned to the User.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "cancelWipe"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}:cancelWipe"; }
+            }
+
+            /// <summary>Initializes CancelWipe parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^devices/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a device. Only company-owned device may be created.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a device. Only company-owned device may be created.</summary>
+        public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/devices"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Deletes the specified device.</summary>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Deletes the specified device.</summary>
+        public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
+            /// If you're using this API for your own organization, use `customers/my_customer` If you're using this API
+            /// to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
+            /// the device belongs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^devices/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the specified device.</summary>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Retrieves the specified device.</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Device>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer
+            /// in format: `customers/{customer_id}`, where customer_id is the customer to whom the device
+            /// belongs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^devices/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists/Searches devices.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists/Searches devices.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListDevicesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// customer.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Customer { get; set; }
+
+            /// <summary>Optional. Additional restrictions when fetching list of devices. [HC article
+            /// link](https://support.google.com/a/answer/7549103)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Optional. Order specification for devices in the response. Only one of the following field
+            /// names may be used to specify the order: `create_time`, `last_sync_time`, `model`, `os_version`,
+            /// `device_type` and `serial_number`. `desc` may be specified optionally to specify results to be sorted in
+            /// descending order. Default order is ascending.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The maximum number of Devices to return. If unspecified, at most 20 Devices will be
+            /// returned. The maximum value is 100; values above 100 will be coerced to 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A page token, received from a previous `ListDevices` call. Provide this to retrieve
+            /// the subsequent page. When paginating, all other parameters provided to `ListDevices` must match the call
+            /// that provided the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The view to use for the List request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Optional. The view to use for the List request.</summary>
+            public enum ViewEnum
+            {
+                /// <summary>Default value. The value is unused.</summary>
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED,
+                /// <summary>This view contains all devices imported by the company admin. Each device in the response
+                /// contains all information specified by the company admin when importing the device (i.e. asset
+                /// tags).</summary>
+                [Google.Apis.Util.StringValueAttribute("COMPANY_INVENTORY")]
+                COMPANYINVENTORY,
+                /// <summary>This view contains all devices with at least one user registered on the device. Each device
+                /// in the response contains all device information, except for asset tags.</summary>
+                [Google.Apis.Util.StringValueAttribute("USER_ASSIGNED_DEVICES")]
+                USERASSIGNEDDEVICES,
+            }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/devices"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Wipes all data on the specified device.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
+        /// and device_user_id is the unique ID assigned to the User.</param>
+        public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceRequest body, string name)
+        {
+            return new WipeRequest(service, body, name);
+        }
+
+        /// <summary>Wipes all data on the specified device.</summary>
+        public class WipeRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Wipe request.</summary>
+            public WipeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceRequest body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+            /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to
+            /// the Device, and device_user_id is the unique ID assigned to the User.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "wipe"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}:wipe"; }
+            }
+
+            /// <summary>Initializes Wipe parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^devices/[^/]+$",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "groups" collection of methods.</summary>
     public class GroupsResource
     {
@@ -383,9 +1888,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Creates a `Membership`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent `Group` resource under which to create the `Membership`.
-            ///
-            /// Must be of the form `groups/{group_id}`.</param>
+            /// <param name="parent">Required. The parent `Group` resource under which to create the `Membership`. Must be of the
+            /// form `groups/{group_id}`.</param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Membership body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -404,9 +1908,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>Required. The parent `Group` resource under which to create the `Membership`.
-                ///
-                /// Must be of the form `groups/{group_id}`.</summary>
+                /// <summary>Required. The parent `Group` resource under which to create the `Membership`. Must be of
+                /// the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -455,9 +1958,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Deletes a `Membership`.</summary>
             /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Membership` to delete.
-            ///
-            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
+            /// `Membership` to delete. Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -476,9 +1977,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
                 /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-                /// `Membership` to delete.
-                ///
-                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+                /// `Membership` to delete. Must be of the form
+                /// `groups/{group_id}/memberships/{membership_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -521,9 +2021,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Retrieves a `Membership`.</summary>
             /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Membership` to retrieve.
-            ///
-            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
+            /// `Membership` to retrieve. Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -542,9 +2040,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
                 /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-                /// `Membership` to retrieve.
-                ///
-                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+                /// `Membership` to retrieve. Must be of the form
+                /// `groups/{group_id}/memberships/{membership_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -586,9 +2083,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>Lists the `Membership`s within a `Group`.</summary>
-            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name.
-            ///
-            /// Must be of the form `groups/{group_id}`.</param>
+            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of
+            /// the form `groups/{group_id}`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -606,21 +2102,16 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name.
-                ///
-                /// Must be of the form `groups/{group_id}`.</summary>
+                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name. Must be
+                /// of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of results to return.
-                ///
-                /// Note that the number of results returned may be less than this value even if there are more
-                /// available results. To fetch all results, clients must continue calling this method repeatedly until
-                /// the response no longer contains a `next_page_token`.
-                ///
-                /// If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`.
-                ///
-                /// Must not be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
+                /// <summary>The maximum number of results to return. Note that the number of results returned may be
+                /// less than this value even if there are more available results. To fetch all results, clients must
+                /// continue calling this method repeatedly until the response no longer contains a `next_page_token`.
+                /// If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`. Must not be
+                /// greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -628,19 +2119,19 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The level of detail to be returned.
-                ///
-                /// If unspecified, defaults to `MembershipView.BASIC`.</summary>
+                /// <summary>The level of detail to be returned. If unspecified, defaults to
+                /// `MembershipView.BASIC`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>The level of detail to be returned.
-                ///
-                /// If unspecified, defaults to `MembershipView.BASIC`.</summary>
+                /// <summary>The level of detail to be returned. If unspecified, defaults to
+                /// `MembershipView.BASIC`.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Default. Only basic resource information is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
                     BASIC,
+                    /// <summary>All resource information is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
@@ -711,9 +2202,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a
             /// `Membership` by its `EntityKey`.</summary>
-            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name.
-            ///
-            /// Must be of the form `groups/{group_id}`.</param>
+            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of
+            /// the form `groups/{group_id}`.</param>
             public virtual LookupRequest Lookup(string parent)
             {
                 return new LookupRequest(service, parent);
@@ -732,31 +2222,21 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name.
-                ///
-                /// Must be of the form `groups/{group_id}`.</summary>
+                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name. Must be
+                /// of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The ID of the entity.
-                ///
-                /// For Google-managed entities, the `id` must be the email address of an existing group or user.
-                ///
-                /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
-                /// requirements.
-                ///
-                /// Must be unique within a `namespace`.</summary>
+                /// <summary>The ID of the entity. For Google-managed entities, the `id` must be the email address of an
+                /// existing group or user. For external-identity-mapped entities, the `id` must be a string conforming
+                /// to the Identity Source's requirements. Must be unique within a `namespace`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.id", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyId { get; set; }
 
-                /// <summary>The namespace in which the entity exists.
-                ///
-                /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a
-                /// Google Group.
-                ///
-                /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must
-                /// correspond to an identity source created in Admin Console and must be in the form of
-                /// `identitysources/{identity_source_id}.</summary>
+                /// <summary>The namespace in which the entity exists. If not specified, the `EntityKey` represents a
+                /// Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey`
+                /// represents an external-identity-mapped group. The namespace must correspond to an identity source
+                /// created in Admin Console and must be in the form of `identitysources/{identity_source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyNamespace { get; set; }
 
@@ -818,9 +2298,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Membership` whose roles are to be modified.
-            ///
-            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
+            /// `Membership` whose roles are to be modified. Must be of the form
+            /// `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual ModifyMembershipRolesRequest ModifyMembershipRoles(Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesRequest body, string name)
             {
                 return new ModifyMembershipRolesRequest(service, body, name);
@@ -840,9 +2319,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
                 /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-                /// `Membership` whose roles are to be modified.
-                ///
-                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+                /// `Membership` whose roles are to be modified. Must be of the form
+                /// `groups/{group_id}/memberships/{membership_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -916,10 +2394,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// <summary>Required. The initial configuration option for the `Group`.</summary>
             public enum InitialGroupConfigEnum
             {
+                /// <summary>Default. Should not be used.</summary>
                 [Google.Apis.Util.StringValueAttribute("INITIAL_GROUP_CONFIG_UNSPECIFIED")]
                 INITIALGROUPCONFIGUNSPECIFIED,
+                /// <summary>The end user making the request will be added as the initial owner of the
+                /// `Group`.</summary>
                 [Google.Apis.Util.StringValueAttribute("WITH_INITIAL_OWNER")]
                 WITHINITIALOWNER,
+                /// <summary>An empty group is created without any initial owners. This can only be used by admins of
+                /// the domain.</summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTY")]
                 EMPTY,
             }
@@ -969,9 +2452,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         /// <summary>Deletes a `Group`.</summary>
         /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`
-        /// to retrieve.
-        ///
-        /// Must be of the form `groups/{group_id}`.</param>
+        /// to retrieve. Must be of the form `groups/{group_id}`.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -990,9 +2471,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
             /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Group` to retrieve.
-            ///
-            /// Must be of the form `groups/{group_id}`.</summary>
+            /// `Group` to retrieve. Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1035,9 +2514,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         /// <summary>Retrieves a `Group`.</summary>
         /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`
-        /// to retrieve.
-        ///
-        /// Must be of the form `groups/{group_id}`.</param>
+        /// to retrieve. Must be of the form `groups/{group_id}`.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1056,9 +2533,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
             /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Group` to retrieve.
-            ///
-            /// Must be of the form `groups/{group_id}`.</summary>
+            /// `Group` to retrieve. Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1116,15 +2591,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The maximum number of results to return.
-            ///
-            /// Note that the number of results returned may be less than this value even if there are more available
-            /// results. To fetch all results, clients must continue calling this method repeatedly until the response
-            /// no longer contains a `next_page_token`.
-            ///
-            /// If unspecified, defaults to 200 for `View.BASIC` and to 50 for `View.FULL`.
-            ///
-            /// Must not be greater than 1000 for `View.BASIC` or 500 for `View.FULL`.</summary>
+            /// <summary>The maximum number of results to return. Note that the number of results returned may be less
+            /// than this value even if there are more available results. To fetch all results, clients must continue
+            /// calling this method repeatedly until the response no longer contains a `next_page_token`. If
+            /// unspecified, defaults to 200 for `View.BASIC` and to 50 for `View.FULL`. Must not be greater than 1000
+            /// for `View.BASIC` or 500 for `View.FULL`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1132,28 +2603,26 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Required. The parent resource under which to list all `Group`s.
-            ///
-            /// Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or
-            /// `customers/{customer_id}` for Google Groups.</summary>
+            /// <summary>Required. The parent resource under which to list all `Group`s. Must be of the form
+            /// `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}`
+            /// for Google Groups.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
-            /// <summary>The level of detail to be returned.
-            ///
-            /// If unspecified, defaults to `View.BASIC`.</summary>
+            /// <summary>The level of detail to be returned. If unspecified, defaults to `View.BASIC`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>The level of detail to be returned.
-            ///
-            /// If unspecified, defaults to `View.BASIC`.</summary>
+            /// <summary>The level of detail to be returned. If unspecified, defaults to `View.BASIC`.</summary>
             public enum ViewEnum
             {
+                /// <summary>Default. Should not be used.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED,
+                /// <summary>Only basic resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>All resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
@@ -1241,25 +2710,16 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The ID of the entity.
-            ///
-            /// For Google-managed entities, the `id` must be the email address of an existing group or user.
-            ///
-            /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
-            /// requirements.
-            ///
-            /// Must be unique within a `namespace`.</summary>
+            /// <summary>The ID of the entity. For Google-managed entities, the `id` must be the email address of an
+            /// existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to
+            /// the Identity Source's requirements. Must be unique within a `namespace`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyId { get; set; }
 
-            /// <summary>The namespace in which the entity exists.
-            ///
-            /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
-            /// Group.
-            ///
-            /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must
-            /// correspond to an identity source created in Admin Console and must be in the form of
-            /// `identitysources/{identity_source_id}.</summary>
+            /// <summary>The namespace in which the entity exists. If not specified, the `EntityKey` represents a
+            /// Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents
+            /// an external-identity-mapped group. The namespace must correspond to an identity source created in Admin
+            /// Console and must be in the form of `identitysources/{identity_source_id}.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
 
@@ -1312,9 +2772,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Updates a `Group`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-        /// `Group`.
-        ///
-        /// Shall be of the form `groups/{group_id}`.</param>
+        /// `Group`. Shall be of the form `groups/{group_id}`.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.Group body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -1334,15 +2792,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
             /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-            /// `Group`.
-            ///
-            /// Shall be of the form `groups/{group_id}`.</summary>
+            /// `Group`. Shall be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. The fully-qualified names of fields to update.
-            ///
-            /// May only contain the following fields: `display_name`, `description`.</summary>
+            /// <summary>Required. The fully-qualified names of fields to update. May only contain the following fields:
+            /// `display_name`, `description`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1415,15 +2870,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The maximum number of results to return.
-            ///
-            /// Note that the number of results returned may be less than this value even if there are more available
-            /// results. To fetch all results, clients must continue calling this method repeatedly until the response
-            /// no longer contains a `next_page_token`.
-            ///
-            /// If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`.
-            ///
-            /// Must not be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
+            /// <summary>The maximum number of results to return. Note that the number of results returned may be less
+            /// than this value even if there are more available results. To fetch all results, clients must continue
+            /// calling this method repeatedly until the response no longer contains a `next_page_token`. If
+            /// unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`. Must not be greater
+            /// than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1431,28 +2882,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Required. The search query.
-            ///
-            /// Must be specified in [Common Expression Language](https://opensource.google/projects/cel). May only
-            /// contain equality operators on the parent and inclusion operators on labels (e.g., `parent ==
-            /// 'customers/{customer_id}' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
-            /// labels`).</summary>
+            /// <summary>Required. The search query. Must be specified in [Common Expression
+            /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
+            /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &&
+            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>The level of detail to be returned.
-            ///
-            /// If unspecified, defaults to `View.BASIC`.</summary>
+            /// <summary>The level of detail to be returned. If unspecified, defaults to `View.BASIC`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>The level of detail to be returned.
-            ///
-            /// If unspecified, defaults to `View.BASIC`.</summary>
+            /// <summary>The level of detail to be returned. If unspecified, defaults to `View.BASIC`.</summary>
             public enum ViewEnum
             {
+                /// <summary>Default. Only basic resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>All resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
@@ -1551,6 +2998,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for approving the device to access user data.</summary>
+    public class ApproveDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for approving the device to access user data.</summary>
     public class ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1562,12 +3023,40 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for blocking account on device.</summary>
+    public class BlockDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for blocking the device from accessing user data.</summary>
     public class BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
         public virtual DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for cancelling an unfinished device wipe.</summary>
+    public class CancelWipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1585,6 +3074,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for cancelling an unfinished user account wipe.</summary>
+    public class CancelWipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for cancelling an unfinished user account wipe.</summary>
     public class CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1596,7 +3099,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing ClientState and supports updates from API users</summary>
+    /// <summary>Represents the state associated with an API client calling the Devices API. Resource representing
+    /// ClientState and supports updates from API users</summary>
     public class ClientState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The caller can specify asset tags for this resource</summary>
@@ -1654,6 +3158,27 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
     }    
 
+    /// <summary>Request message for creating a Company Owned device.</summary>
+    public class CreateDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
+
+        /// <summary>Required. The device to be created. The name field within this device is ignored in the create
+        /// method. A new name is created by the method, and returned within the response. Only the fields
+        /// `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device.`device_type` and
+        /// `serial_number` are required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Additional custom attribute values may be one of these types</summary>
     public class CustomAttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1673,8 +3198,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is
-    /// assigned or in use by a user.</summary>
+    /// <summary>A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent
+    /// of the device ownership, type, and whether it is assigned or in use by a user.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Attributes specific to Android devices.</summary>
@@ -1798,7 +3323,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A DeviceUser is a resource representing a user's use of a Device</summary>
+    /// <summary>Represents a user's use of a Device in the Cloud Identity Devices API. A DeviceUser is a resource
+    /// representing a user's use of a Device</summary>
     public class DeviceUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Compromised State of the DeviceUser object</summary>
@@ -1847,65 +3373,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An EndpointApp represents an app that is installed on a device</summary>
-    public class EndpointApp : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Name of the app displayed to the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        /// EndpointApp in format: `devices/{device}/deviceUsers/{device_user}/endpointApps/{endpoint_app}`, where
-        /// client_app_id is the ID of the app associated with the Device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>Output only. Full package name of the installed app</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
-
-        /// <summary>Output only. Names of all permissions granted to the installed app</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
-
-        /// <summary>Output only. Version code of the installed app</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
-
-        /// <summary>Output only. Version name of the installed app</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
-        public virtual string VersionName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A unique identifier for an entity in the Cloud Identity Groups API.
-    ///
-    /// An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The
-    /// combination of `id` and `namespace` must be unique; however, the same `id` can be used with different
-    /// `namespace`s.</summary>
+    /// <summary>A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a
+    /// group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must
+    /// be unique; however, the same `id` can be used with different `namespace`s.</summary>
     public class EntityKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the entity.
-        ///
-        /// For Google-managed entities, the `id` must be the email address of an existing group or user.
-        ///
-        /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
-        /// requirements.
-        ///
-        /// Must be unique within a `namespace`.</summary>
+        /// <summary>The ID of the entity. For Google-managed entities, the `id` must be the email address of an
+        /// existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the
+        /// Identity Source's requirements. Must be unique within a `namespace`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The namespace in which the entity exists.
-        ///
-        /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
-        /// Group.
-        ///
-        /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to
-        /// an identity source created in Admin Console and must be in the form of
-        /// `identitysources/{identity_source_id}.</summary>
+        /// <summary>The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-
+        /// managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an
+        /// external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console
+        /// and must be in the form of `identitysources/{identity_source_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
@@ -1940,10 +3422,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A group within the Cloud Identity Groups API.
-    ///
-    /// A `Group` is a collection of entities, where each entity is either a user, another group or a service
-    /// account.</summary>
+    /// <summary>A group within the Cloud Identity Groups API. A `Group` is a collection of entities, where each entity
+    /// is either a user, another group, or a service account.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional entity key aliases for a Group.</summary>
@@ -1954,9 +3434,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>An extended description to help users determine the purpose of a `Group`.
-        ///
-        /// Must not be longer than 4,096 characters.</summary>
+        /// <summary>An extended description to help users determine the purpose of a `Group`. Must not be longer than
+        /// 4,096 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1968,26 +3447,25 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; } 
 
-        /// <summary>Required. The labels that apply to the `Group`.
-        ///
-        /// Must not contain more than one entry. Must contain the entry
-        /// `'cloudidentity.googleapis.com/groups.discussion_forum': ''` if the `Group` is a Google Group or
-        /// `'system/groups/external': ''` if the `Group` is an external-identity-mapped group.</summary>
+        /// <summary>Required. One or more label entries that apply to the Group. Currently supported labels contain a
+        /// key with an empty value. Google Groups are the default type of group and have a label with a key of
+        /// 'cloudidentity.googleapis.com/groups.discussion_forum' and an empty value. Existing Google Groups can have
+        /// an additional label with a key of 'cloudidentity.googleapis.com/groups.security' and an empty value added to
+        /// them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups
+        /// have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud
+        /// Search have a label with a key of 'system/groups/external' and an empty value. Examples:
+        /// {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-        /// `Group`.
-        ///
-        /// Shall be of the form `groups/{group_id}`.</summary>
+        /// `Group`. Shall be of the form `groups/{group_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud
-        /// Identity resource hierarchy.
-        ///
-        /// Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or
-        /// `customers/{customer_id}` for Google Groups.</summary>
+        /// Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external-
+        /// identity-mapped groups or `customers/{customer_id}` for Google Groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -2014,7 +3492,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
+    /// <summary>Response message that is returned from the ListDeviceUsers method.</summary>
     public class ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Devices meeting the list restrictions.</summary>
@@ -2029,27 +3507,12 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
+    /// <summary>Response message that is returned from the ListDevices method.</summary>
     public class ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Devices meeting the list restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for listing all apps on the device.</summary>
-    public class ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
-        public virtual System.Collections.Generic.IList<EndpointApp> EndpointApps { get; set; } 
 
         /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -2107,9 +3570,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class LookupMembershipNameResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up
-        /// `Membership`.
-        ///
-        /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+        /// `Membership`. Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2140,42 +3601,33 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A membership within the Cloud Identity Groups API.
-    ///
-    /// A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as
-    /// a "member".</summary>
+    /// <summary>A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a
+    /// `Group` and an entity belonging to that `Group`, referred to as a "member".</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time when the `Membership` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Immutable. The `EntityKey` of the member.
-        ///
-        /// Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership
-        /// but not both; both shall be set when returned.</summary>
+        /// <summary>Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set
+        /// when calling MembershipsService.CreateMembership but not both; both shall be set when returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberKey")]
         public virtual EntityKey MemberKey { get; set; } 
 
         /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-        /// `Membership`.
-        ///
-        /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+        /// `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. Immutable. The `EntityKey` of the member.
-        ///
-        /// Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership
-        /// but not both; both shall be set when returned.</summary>
+        /// <summary>Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key`
+        /// must be set when calling MembershipsService.CreateMembership but not both; both shall be set when
+        /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredMemberKey")]
         public virtual EntityKey PreferredMemberKey { get; set; } 
 
-        /// <summary>The `MembershipRole`s that apply to the `Membership`.
-        ///
-        /// If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`.
-        ///
-        /// Must not contain duplicate `MembershipRole`s with the same `name`.</summary>
+        /// <summary>The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single
+        /// `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same
+        /// `name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<MembershipRole> Roles { get; set; } 
 
@@ -2206,22 +3658,16 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A membership role within the Cloud Identity Groups API.
-    ///
-    /// A `MembershipRole` defines the privileges granted to a `Membership`.</summary>
+    /// <summary>A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges
+    /// granted to a `Membership`.</summary>
     public class MembershipRole : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The expiry details of the `MembershipRole`.
-        ///
-        /// Expiry details are only supported for `MEMBER` `MembershipRoles`.
-        ///
-        /// May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.</summary>
+        /// <summary>The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER`
+        /// `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryDetail")]
         public virtual ExpiryDetail ExpiryDetail { get; set; } 
 
-        /// <summary>The name of the `MembershipRole`.
-        ///
-        /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
+        /// <summary>The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2232,30 +3678,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>The request message for MembershipsService.ModifyMembershipRoles.</summary>
     public class ModifyMembershipRolesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The `MembershipRole`s to be added.
-        ///
-        /// Adding or removing roles in the same request as updating roles is not supported.
-        ///
-        /// Must not be set if `update_roles_params` is set.</summary>
+        /// <summary>The `MembershipRole`s to be added. Adding or removing roles in the same request as updating roles
+        /// is not supported. Must not be set if `update_roles_params` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addRoles")]
         public virtual System.Collections.Generic.IList<MembershipRole> AddRoles { get; set; } 
 
-        /// <summary>The `name`s of the `MembershipRole`s to be removed.
-        ///
-        /// Adding or removing roles in the same request as updating roles is not supported.
-        ///
-        /// It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to delete a `Membership`, call
-        /// MembershipsService.DeleteMembership instead.
-        ///
-        /// Must not contain `MEMBER`. Must not be set if `update_roles_params` is set.</summary>
+        /// <summary>The `name`s of the `MembershipRole`s to be removed. Adding or removing roles in the same request as
+        /// updating roles is not supported. It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to
+        /// delete a `Membership`, call MembershipsService.DeleteMembership instead. Must not contain `MEMBER`. Must not
+        /// be set if `update_roles_params` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeRoles")]
         public virtual System.Collections.Generic.IList<string> RemoveRoles { get; set; } 
 
-        /// <summary>The `MembershipRole`s to be updated.
-        ///
-        /// Updating roles in the same request as adding or removing roles is not supported.
-        ///
-        /// Must not be set if either `add_roles` or `remove_roles` is set.</summary>
+        /// <summary>The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles
+        /// is not supported. Must not be set if either `add_roles` or `remove_roles` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateRolesParams")]
         public virtual System.Collections.Generic.IList<UpdateMembershipRolesParams> UpdateRolesParams { get; set; } 
 
@@ -2286,9 +3722,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2298,11 +3734,11 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2328,9 +3764,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2338,8 +3773,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2355,19 +3790,29 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>The details of an update to a `MembershipRole`.</summary>
     public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fully-qualified names of fields to update.
-        ///
-        /// May only contain the field `expiry_detail`.</summary>
+        /// <summary>The fully-qualified names of fields to update. May only contain the field
+        /// `expiry_detail`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; } 
 
-        /// <summary>The `MembershipRole`s to be updated.
-        ///
-        /// Only `MEMBER` `MembershipRoles` can currently be updated.
-        ///
-        /// May only contain a `MembershipRole` with `name` `MEMBER`.</summary>
+        /// <summary>The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRoles` can currently be updated. May
+        /// only contain a `MembershipRole` with `name` `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
         public virtual MembershipRole MembershipRole { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for wiping all data on the device.</summary>
+    public class WipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2380,6 +3825,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for starting an account wipe on device.</summary>
+    public class WipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+        /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
+        /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the
+        /// device belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

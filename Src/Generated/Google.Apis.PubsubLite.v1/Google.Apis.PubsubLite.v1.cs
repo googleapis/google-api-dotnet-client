@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/lite/docs'>Pub/Sub Lite API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/lite/docs'>
  *              https://cloud.google.com/pubsub/lite/docs</a>
@@ -451,9 +451,7 @@ namespace Google.Apis.PubsubLite.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>Required. The ID to use for the subscription, which will become the final component
-                        /// of the subscription's name.
-                        ///
-                        /// This value is structured like: `my-sub-name`.</summary>
+                        /// of the subscription's name. This value is structured like: `my-sub-name`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string SubscriptionId { get; set; }
 
@@ -660,10 +658,8 @@ namespace Google.Apis.PubsubLite.v1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>A page token, received from a previous `ListSubscriptions` call. Provide this to
-                        /// retrieve the subsequent page.
-                        ///
-                        /// When paginating, all other parameters provided to `ListSubscriptions` must match the call
-                        /// that provided the page token.</summary>
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListSubscriptions` must match the call that provided the page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -883,10 +879,8 @@ namespace Google.Apis.PubsubLite.v1
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>A page token, received from a previous `ListTopicSubscriptions` call. Provide
-                            /// this to retrieve the subsequent page.
-                            ///
-                            /// When paginating, all other parameters provided to `ListTopicSubscriptions` must match
-                            /// the call that provided the page token.</summary>
+                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListTopicSubscriptions` must match the call that provided the page token.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -974,9 +968,7 @@ namespace Google.Apis.PubsubLite.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>Required. The ID to use for the topic, which will become the final component of the
-                        /// topic's name.
-                        ///
-                        /// This value is structured like: `my-topic-name`.</summary>
+                        /// topic's name. This value is structured like: `my-topic-name`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("topicId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TopicId { get; set; }
 
@@ -1243,10 +1235,8 @@ namespace Google.Apis.PubsubLite.v1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>A page token, received from a previous `ListTopics` call. Provide this to retrieve
-                        /// the subsequent page.
-                        ///
-                        /// When paginating, all other parameters provided to `ListTopics` must match the call that
-                        /// provided the page token.</summary>
+                        /// the subsequent page. When paginating, all other parameters provided to `ListTopics` must
+                        /// match the call that provided the page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1535,10 +1525,8 @@ namespace Google.Apis.PubsubLite.v1
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>A page token, received from a previous `ListPartitionCursors` call. Provide
-                            /// this to retrieve the subsequent page.
-                            ///
-                            /// When paginating, all other parameters provided to `ListPartitionCursors` must match the
-                            /// call that provided the page token.</summary>
+                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListPartitionCursors` must match the call that provided the page token.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -1644,11 +1632,9 @@ namespace Google.Apis.PubsubLite.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

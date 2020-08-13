@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -600,15 +600,11 @@ namespace Google.Apis.BinaryAuthorization.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned.
-                ///
-                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                ///
-                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.
-                ///
-                /// To learn which resources support conditions in their IAM policies, see the [IAM
-                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings
+                /// must specify version 3. Policies without any conditional bindings may specify any valid value or
+                /// leave the field unset. To learn which resources support conditions in their IAM policies, see the
+                /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -749,9 +745,8 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -760,9 +755,8 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -824,10 +818,9 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -837,10 +830,9 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1022,15 +1014,11 @@ namespace Google.Apis.BinaryAuthorization.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned.
-                ///
-                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                ///
-                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.
-                ///
-                /// To learn which resources support conditions in their IAM policies, see the [IAM
-                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings
+                /// must specify version 3. Policies without any conditional bindings may specify any valid value or
+                /// leave the field unset. To learn which resources support conditions in their IAM policies, see the
+                /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1080,9 +1068,8 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1091,9 +1078,8 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1155,10 +1141,9 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1168,10 +1153,9 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1235,9 +1219,8 @@ namespace Google.Apis.BinaryAuthorization.v1
 
         /// <summary>A policy specifies the attestors that must attest to a container image, before the project is
         /// allowed to deploy that image. There is at most one policy per project. All image admission requests are
-        /// permitted if a project has no policy.
-        ///
-        /// Gets the policy for this project. Returns a default policy if the project does not have one.</summary>
+        /// permitted if a project has no policy. Gets the policy for this project. Returns a default policy if the
+        /// project does not have one.</summary>
         /// <param name="name">Required. The resource name of the policy to retrieve, in the format
         /// `projects/policy`.</param>
         public virtual GetPolicyRequest GetPolicy(string name)
@@ -1247,9 +1230,8 @@ namespace Google.Apis.BinaryAuthorization.v1
 
         /// <summary>A policy specifies the attestors that must attest to a container image, before the project is
         /// allowed to deploy that image. There is at most one policy per project. All image admission requests are
-        /// permitted if a project has no policy.
-        ///
-        /// Gets the policy for this project. Returns a default policy if the project does not have one.</summary>
+        /// permitted if a project has no policy. Gets the policy for this project. Returns a default policy if the
+        /// project does not have one.</summary>
         public class GetPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetPolicy request.</summary>
@@ -1384,10 +1366,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
     /// <summary>An admission rule specifies either that all container images used in a pod creation request must be
     /// attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-    /// denied.
-    ///
-    /// Images matching an admission whitelist pattern are exempted from admission rules and will never block a pod
-    /// creation.</summary>
+    /// denied. Images matching an admission whitelist pattern are exempted from admission rules and will never block a
+    /// pod creation.</summary>
     public class AdmissionRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The action when a pod creation is denied by the admission rule.</summary>
@@ -1399,11 +1379,10 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string EvaluationMode { get; set; } 
 
         /// <summary>Optional. The resource names of the attestors that must attest to a container image, in the format
-        /// `projects/attestors`. Each attestor must exist before a policy can reference it.  To add an attestor to a
-        /// policy the principal issuing the policy change request must be able to read the attestor resource.
-        ///
-        /// Note: this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise
-        /// it must be empty.</summary>
+        /// `projects/attestors`. Each attestor must exist before a policy can reference it. To add an attestor to a
+        /// policy the principal issuing the policy change request must be able to read the attestor resource. Note:
+        /// this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must
+        /// be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAttestationsBy")]
         public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; } 
 
@@ -1427,7 +1406,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     /// where indicated.</summary>
     public class Attestor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A descriptive comment.  This field may be updated. The field may be displayed in chooser
+        /// <summary>Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser
         /// dialogs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -1455,8 +1434,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export
         /// --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank.
-        /// The BinAuthz API handlers will calculate the ID and fill it in automatically.  BinAuthz computes this ID as
-        /// the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex.  If `id` is provided by the caller, it
+        /// The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as
+        /// the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it
         /// will be overwritten by the API-calculated ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asciiArmoredPgpPublicKey")]
         public virtual string AsciiArmoredPgpPublicKey { get; set; } 
@@ -1472,11 +1451,9 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A raw PKIX SubjectPublicKeyInfo format public key.
-        ///
-        /// NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a
-        /// valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER
-        /// encoding of the public key.</summary>
+        /// <summary>A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the
+        /// caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a
+        /// default one will be computed based on the digest of the DER encoding of the public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pkixPublicKey")]
         public virtual PkixPublicKey PkixPublicKey { get; set; } 
 
@@ -1487,53 +1464,33 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1547,11 +1504,9 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1560,29 +1515,15 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -1609,35 +1550,24 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class IamPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1650,33 +1580,23 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -1806,28 +1726,23 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>Output only. This field will contain the service account email address that this Attestor will use
         /// as the principal when querying Container Analysis. Attestor administrators must grant this service account
         /// the IAM role needed to read attestations from the note_reference in Container Analysis
-        /// (`containeranalysis.notes.occurrences.viewer`).
-        ///
-        /// This email address is fixed for the lifetime of the Attestor, but callers should not make any other
-        /// assumptions about the service account email; future versions may use an email based on a different naming
-        /// pattern.</summary>
+        /// (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the
+        /// Attestor, but callers should not make any other assumptions about the service account email; future versions
+        /// may use an email based on a different naming pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegationServiceAccountEmail")]
         public virtual string DelegationServiceAccountEmail { get; set; } 
 
         /// <summary>Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the
-        /// format: `projects/notes`. This field may not be updated.
-        ///
-        /// An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a
-        /// container image and that links to this Note. Grafeas is an external dependency.</summary>
+        /// format: `projects/notes`. This field may not be updated. An attestation by this attestor is stored as a
+        /// Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas
+        /// is an external dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noteReference")]
         public virtual string NoteReference { get; set; } 
 
-        /// <summary>Optional. Public keys that verify attestations signed by this attestor.  This field may be updated.
-        ///
+        /// <summary>Optional. Public keys that verify attestations signed by this attestor. This field may be updated.
         /// If this field is non-empty, one of the specified public keys must verify that an attestation was signed by
-        /// this attestor for the image specified in the admission request.
-        ///
-        /// If this field is empty, this attestor always returns that no valid attestations exist.</summary>
+        /// this attestor for the image specified in the admission request. If this field is empty, this attestor always
+        /// returns that no valid attestations exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
         public virtual System.Collections.Generic.IList<AttestorPublicKey> PublicKeys { get; set; } 
 

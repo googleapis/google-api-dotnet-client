@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200803 (2041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -516,18 +516,16 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
 
-                    /// <summary>List all unmapped identities for a specific item.
-                    ///
-                    /// **Note:** This API requires an admin account to execute.</summary>
+                    /// <summary>List all unmapped identities for a specific item. **Note:** This API requires an admin
+                    /// account to execute.</summary>
                     /// <param name="parent">The name of the item, in the following format: datasources/{source_id}/items/{ID}</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>List all unmapped identities for a specific item.
-                    ///
-                    /// **Note:** This API requires an admin account to execute.</summary>
+                    /// <summary>List all unmapped identities for a specific item. **Note:** This API requires an admin
+                    /// account to execute.</summary>
                     public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -622,9 +620,8 @@ namespace Google.Apis.CloudSearch.v1
                     }
                 }
 
-                /// <summary>Checks whether an item is accessible by specified principal.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Checks whether an item is accessible by specified principal. **Note:** This API requires an
+                /// admin account to execute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Item name, format: datasources/{source_id}/items/{item_id}</param>
                 public virtual CheckAccessRequest CheckAccess(Google.Apis.CloudSearch.v1.Data.Principal body, string name)
@@ -632,9 +629,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new CheckAccessRequest(service, body, name);
                 }
 
-                /// <summary>Checks whether an item is accessible by specified principal.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Checks whether an item is accessible by specified principal. **Note:** This API requires an
+                /// admin account to execute.</summary>
                 public class CheckAccessRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.CheckAccessResponse>
                 {
                     /// <summary>Constructs a new CheckAccess request.</summary>
@@ -709,7 +705,6 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the request.
-                ///
                 /// **Note:** This API requires an admin account to execute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Source name, format: datasources/{source_id}</param>
@@ -719,7 +714,6 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the request.
-                ///
                 /// **Note:** This API requires an admin account to execute.</summary>
                 public class SearchByViewUrlRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlResponse>
                 {
@@ -830,9 +824,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Lists names of items associated with an unmapped identity.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Lists names of items associated with an unmapped identity. **Note:** This API requires an
+                /// admin account to execute.</summary>
                 /// <param name="parent">The name of the identity source, in the following format:
                 /// identitysources/{source_id}}</param>
                 public virtual ListForunmappedidentityRequest ListForunmappedidentity(string parent)
@@ -840,9 +833,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new ListForunmappedidentityRequest(service, parent);
                 }
 
-                /// <summary>Lists names of items associated with an unmapped identity.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Lists names of items associated with an unmapped identity. **Note:** This API requires an
+                /// admin account to execute.</summary>
                 public class ListForunmappedidentityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemNamesForUnmappedIdentityResponse>
                 {
                     /// <summary>Constructs a new ListForunmappedidentity request.</summary>
@@ -986,9 +978,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Lists unmapped user identities for an identity source.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Lists unmapped user identities for an identity source. **Note:** This API requires an admin
+                /// account to execute.</summary>
                 /// <param name="parent">The name of the identity source, in the following format:
                 /// identitysources/{source_id}</param>
                 public virtual ListRequest List(string parent)
@@ -996,9 +987,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists unmapped user identities for an identity source.
-                ///
-                /// **Note:** This API requires an admin account to execute.</summary>
+                /// <summary>Lists unmapped user identities for an identity source. **Note:** This API requires an admin
+                /// account to execute.</summary>
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1035,16 +1025,26 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Limit users selection to this status.</summary>
                     public enum ResolutionStatusCodeEnum
                     {
+                        /// <summary>Input-only value. Used to list all unmapped identities regardless of
+                        /// status.</summary>
                         [Google.Apis.Util.StringValueAttribute("CODE_UNSPECIFIED")]
                         CODEUNSPECIFIED,
+                        /// <summary>The unmapped identity was not found in IDaaS, and needs to be provided by the
+                        /// user.</summary>
                         [Google.Apis.Util.StringValueAttribute("NOT_FOUND")]
                         NOTFOUND,
+                        /// <summary>The identity source associated with the identity was either not found or
+                        /// deleted.</summary>
                         [Google.Apis.Util.StringValueAttribute("IDENTITY_SOURCE_NOT_FOUND")]
                         IDENTITYSOURCENOTFOUND,
+                        /// <summary>IDaaS does not understand the identity source, probably because the schema was
+                        /// modified in a non compatible way.</summary>
                         [Google.Apis.Util.StringValueAttribute("IDENTITY_SOURCE_MISCONFIGURED")]
                         IDENTITYSOURCEMISCONFIGURED,
+                        /// <summary>The number of users associated with the external identity is too large.</summary>
                         [Google.Apis.Util.StringValueAttribute("TOO_MANY_MAPPINGS_FOUND")]
                         TOOMANYMAPPINGSFOUND,
+                        /// <summary>Internal error.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTERNAL_ERROR")]
                         INTERNALERROR,
                     }
@@ -1235,21 +1235,24 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Required. The RequestMode for this request.</summary>
                     public enum ModeEnum
                     {
+                        /// <summary>Priority is not specified in the update request. Leaving priority unspecified
+                        /// results in an update failure.</summary>
                         [Google.Apis.Util.StringValueAttribute("UNSPECIFIED")]
                         UNSPECIFIED,
+                        /// <summary>For real-time updates.</summary>
                         [Google.Apis.Util.StringValueAttribute("SYNCHRONOUS")]
                         SYNCHRONOUS,
+                        /// <summary>For changes that are executed after the response is sent back to the
+                        /// caller.</summary>
                         [Google.Apis.Util.StringValueAttribute("ASYNCHRONOUS")]
                         ASYNCHRONOUS,
                     }
 
                     /// <summary>Required. The incremented version of the item to delete from the index. The indexing
                     /// system stores the version from the datasource as a byte string and compares the Item version in
-                    /// the index to the version of the queued Item using lexical ordering.
-                    ///
-                    /// Cloud Search Indexing won't delete any queued item with a version value that is less than or
-                    /// equal to the version of the currently indexed item. The maximum length for this field is 1024
-                    /// bytes.</summary>
+                    /// the index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't
+                    /// delete any queued item with a version value that is less than or equal to the version of the
+                    /// currently indexed item. The maximum length for this field is 1024 bytes.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Version { get; set; }
 
@@ -1326,10 +1329,9 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items. This API
+                /// requires an admin or service account to execute. The service account used is the one whitelisted in
+                /// the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to delete items in a queue. Format: datasources/{source_id}</param>
                 public virtual DeleteQueueItemsRequest DeleteQueueItems(Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name)
@@ -1337,10 +1339,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new DeleteQueueItemsRequest(service, body, name);
                 }
 
-                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items. This API
+                /// requires an admin or service account to execute. The service account used is the one whitelisted in
+                /// the corresponding data source.</summary>
                 public class DeleteQueueItemsRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new DeleteQueueItems request.</summary>
@@ -1401,20 +1402,16 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Gets Item resource by item name.
-                ///
-                /// This API requires an admin or service account to execute.  The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Gets Item resource by item name. This API requires an admin or service account to execute.
+                /// The service account used is the one whitelisted in the corresponding data source.</summary>
                 /// <param name="name">Name of the item to get info. Format: datasources/{source_id}/items/{item_id}</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets Item resource by item name.
-                ///
-                /// This API requires an admin or service account to execute.  The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Gets Item resource by item name. This API requires an admin or service account to execute.
+                /// The service account used is the one whitelisted in the corresponding data source.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1496,11 +1493,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This
-                /// method does not support partial updates.  Fields with no provided values are cleared out in the
-                /// Cloud Search index.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// method does not support partial updates. Fields with no provided values are cleared out in the Cloud
+                /// Search index. This API requires an admin or service account to execute. The service account used is
+                /// the one whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
                 /// maximum length is 1536 characters.</param>
@@ -1510,11 +1505,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This
-                /// method does not support partial updates.  Fields with no provided values are cleared out in the
-                /// Cloud Search index.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// method does not support partial updates. Fields with no provided values are cleared out in the Cloud
+                /// Search index. This API requires an admin or service account to execute. The service account used is
+                /// the one whitelisted in the corresponding data source.</summary>
                 public class IndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Index request.</summary>
@@ -1575,20 +1568,16 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Lists all or a subset of Item resources.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
-                /// <param name="name">Name of the Data Source to list Items.  Format: datasources/{source_id}</param>
+                /// <summary>Lists all or a subset of Item resources. This API requires an admin or service account to
+                /// execute. The service account used is the one whitelisted in the corresponding data source.</summary>
+                /// <param name="name">Name of the Data Source to list Items. Format: datasources/{source_id}</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists all or a subset of Item resources.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Lists all or a subset of Item resources. This API requires an admin or service account to
+                /// execute. The service account used is the one whitelisted in the corresponding data source.</summary>
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1600,7 +1589,7 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
 
-                    /// <summary>Name of the Data Source to list Items.  Format: datasources/{source_id}</summary>
+                    /// <summary>Name of the Data Source to list Items. Format: datasources/{source_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1624,7 +1613,7 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
                     /// <summary>Maximum number of items to fetch in a request. The max value is 1000 when brief is
-                    /// true.  The max value is 10 if brief is false. The default value is 10</summary>
+                    /// true. The max value is 10 if brief is false. The default value is 10</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1716,24 +1705,12 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>Polls for unreserved items from the indexing queue and marks a set as reserved, starting
                 /// with items that have the oldest timestamp from the highest priority ItemStatus. The priority order
-                /// is as follows: ERROR
-                ///
-                /// MODIFIED
-                ///
-                /// NEW_ITEM
-                ///
-                /// ACCEPTED
-                ///
-                /// Reserving items ensures that polling from other threads cannot create overlapping sets.
-                ///
-                /// After handling the reserved items, the client should put items back into the unreserved state,
-                /// either by calling index, or by calling push with the type REQUEUE.
-                ///
-                /// Items automatically become available (unreserved) after 4 hours even if no update or push method is
-                /// called.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// is as follows: ERROR MODIFIED NEW_ITEM ACCEPTED Reserving items ensures that polling from other
+                /// threads cannot create overlapping sets. After handling the reserved items, the client should put
+                /// items back into the unreserved state, either by calling index, or by calling push with the type
+                /// REQUEUE. Items automatically become available (unreserved) after 4 hours even if no update or push
+                /// method is called. This API requires an admin or service account to execute. The service account used
+                /// is the one whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to poll items. Format: datasources/{source_id}</param>
                 public virtual PollRequest Poll(Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name)
@@ -1743,24 +1720,12 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>Polls for unreserved items from the indexing queue and marks a set as reserved, starting
                 /// with items that have the oldest timestamp from the highest priority ItemStatus. The priority order
-                /// is as follows: ERROR
-                ///
-                /// MODIFIED
-                ///
-                /// NEW_ITEM
-                ///
-                /// ACCEPTED
-                ///
-                /// Reserving items ensures that polling from other threads cannot create overlapping sets.
-                ///
-                /// After handling the reserved items, the client should put items back into the unreserved state,
-                /// either by calling index, or by calling push with the type REQUEUE.
-                ///
-                /// Items automatically become available (unreserved) after 4 hours even if no update or push method is
-                /// called.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// is as follows: ERROR MODIFIED NEW_ITEM ACCEPTED Reserving items ensures that polling from other
+                /// threads cannot create overlapping sets. After handling the reserved items, the client should put
+                /// items back into the unreserved state, either by calling index, or by calling push with the type
+                /// REQUEUE. Items automatically become available (unreserved) after 4 hours even if no update or push
+                /// method is called. This API requires an admin or service account to execute. The service account used
+                /// is the one whitelisted in the corresponding data source.</summary>
                 public class PollRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.PollItemsResponse>
                 {
                     /// <summary>Constructs a new Poll request.</summary>
@@ -1820,10 +1785,9 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Pushes an item onto a queue for later polling and updating.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Pushes an item onto a queue for later polling and updating. This API requires an admin or
+                /// service account to execute. The service account used is the one whitelisted in the corresponding
+                /// data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This
                 /// is a required field. The maximum length is 1536 characters.</param>
@@ -1832,10 +1796,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new PushRequest(service, body, name);
                 }
 
-                /// <summary>Pushes an item onto a queue for later polling and updating.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Pushes an item onto a queue for later polling and updating. This API requires an admin or
+                /// service account to execute. The service account used is the one whitelisted in the corresponding
+                /// data source.</summary>
                 public class PushRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Push request.</summary>
@@ -1897,11 +1860,10 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Unreserves all items from a queue, making them all eligible to be polled.  This method is
-                /// useful for resetting the indexing queue after a connector has been restarted.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Unreserves all items from a queue, making them all eligible to be polled. This method is
+                /// useful for resetting the indexing queue after a connector has been restarted. This API requires an
+                /// admin or service account to execute. The service account used is the one whitelisted in the
+                /// corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to unreserve all items. Format: datasources/{source_id}</param>
                 public virtual UnreserveRequest Unreserve(Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name)
@@ -1909,11 +1871,10 @@ namespace Google.Apis.CloudSearch.v1
                     return new UnreserveRequest(service, body, name);
                 }
 
-                /// <summary>Unreserves all items from a queue, making them all eligible to be polled.  This method is
-                /// useful for resetting the indexing queue after a connector has been restarted.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// <summary>Unreserves all items from a queue, making them all eligible to be polled. This method is
+                /// useful for resetting the indexing queue after a connector has been restarted. This API requires an
+                /// admin or service account to execute. The service account used is the one whitelisted in the
+                /// corresponding data source.</summary>
                 public class UnreserveRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Unreserve request.</summary>
@@ -1975,10 +1936,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Creates an upload session for uploading item content. For items smaller than 100 KB, it's
-                /// easier to embed the content inline within an index request.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// easier to embed the content inline within an index request. This API requires an admin or service
+                /// account to execute. The service account used is the one whitelisted in the corresponding data
+                /// source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}.
                 /// The maximum length is 1536 bytes.</param>
@@ -1988,10 +1948,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Creates an upload session for uploading item content. For items smaller than 100 KB, it's
-                /// easier to embed the content inline within an index request.
-                ///
-                /// This API requires an admin or service account to execute. The service account used is the one
-                /// whitelisted in the corresponding data source.</summary>
+                /// easier to embed the content inline within an index request. This API requires an admin or service
+                /// account to execute. The service account used is the one whitelisted in the corresponding data
+                /// source.</summary>
                 public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.UploadItemRef>
                 {
                     /// <summary>Constructs a new Upload request.</summary>
@@ -2053,18 +2012,16 @@ namespace Google.Apis.CloudSearch.v1
                 }
             }
 
-            /// <summary>Deletes the schema of a data source.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
-            /// <param name="name">Name of the data source to delete Schema.  Format: datasources/{source_id}</param>
+            /// <summary>Deletes the schema of a data source. **Note:** This API requires an admin or service account to
+            /// execute.</summary>
+            /// <param name="name">Name of the data source to delete Schema. Format: datasources/{source_id}</param>
             public virtual DeleteSchemaRequest DeleteSchema(string name)
             {
                 return new DeleteSchemaRequest(service, name);
             }
 
-            /// <summary>Deletes the schema of a data source.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
+            /// <summary>Deletes the schema of a data source. **Note:** This API requires an admin or service account to
+            /// execute.</summary>
             public class DeleteSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new DeleteSchema request.</summary>
@@ -2076,7 +2033,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source to delete Schema.  Format: datasources/{source_id}</summary>
+                /// <summary>Name of the data source to delete Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2131,18 +2088,16 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets the schema of a data source.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
-            /// <param name="name">Name of the data source to get Schema.  Format: datasources/{source_id}</param>
+            /// <summary>Gets the schema of a data source. **Note:** This API requires an admin or service account to
+            /// execute.</summary>
+            /// <param name="name">Name of the data source to get Schema. Format: datasources/{source_id}</param>
             public virtual GetSchemaRequest GetSchema(string name)
             {
                 return new GetSchemaRequest(service, name);
             }
 
-            /// <summary>Gets the schema of a data source.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
+            /// <summary>Gets the schema of a data source. **Note:** This API requires an admin or service account to
+            /// execute.</summary>
             public class GetSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Schema>
             {
                 /// <summary>Constructs a new GetSchema request.</summary>
@@ -2154,7 +2109,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source to get Schema.  Format: datasources/{source_id}</summary>
+                /// <summary>Name of the data source to get Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2210,20 +2165,18 @@ namespace Google.Apis.CloudSearch.v1
             }
 
             /// <summary>Updates the schema of a data source. This method does not perform incremental updates to the
-            /// schema. Instead, this method updates the schema by overwriting the entire schema.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
+            /// schema. Instead, this method updates the schema by overwriting the entire schema. **Note:** This API
+            /// requires an admin or service account to execute.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the data source to update Schema.  Format: datasources/{source_id}</param>
+            /// <param name="name">Name of the data source to update Schema. Format: datasources/{source_id}</param>
             public virtual UpdateSchemaRequest UpdateSchema(Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name)
             {
                 return new UpdateSchemaRequest(service, body, name);
             }
 
             /// <summary>Updates the schema of a data source. This method does not perform incremental updates to the
-            /// schema. Instead, this method updates the schema by overwriting the entire schema.
-            ///
-            /// **Note:** This API requires an admin or service account to execute.</summary>
+            /// schema. Instead, this method updates the schema by overwriting the entire schema. **Note:** This API
+            /// requires an admin or service account to execute.</summary>
             public class UpdateSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new UpdateSchema request.</summary>
@@ -2236,7 +2189,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source to update Schema.  Format: datasources/{source_id}</summary>
+                /// <summary>Name of the data source to update Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2301,43 +2254,33 @@ namespace Google.Apis.CloudSearch.v1
         }
 
 
-        /// <summary>Uploads media for indexing.
-        ///
-        /// The upload endpoint supports direct and resumable upload protocols and is intended for large items that can
-        /// not be [inlined during index requests](https://developers.google.com/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content:
-        ///
-        /// 1. Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
+        /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
+        /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
+        /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
+        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
         /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
         /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
-        ///
-        /// **Note:** This API requires a service account to execute.</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
+        /// requires a service account to execute.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
         public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.Media body, string resourceName)
         {
             return new UploadRequest(service, body, resourceName);
         }
 
-        /// <summary>Uploads media for indexing.
-        ///
-        /// The upload endpoint supports direct and resumable upload protocols and is intended for large items that can
-        /// not be [inlined during index requests](https://developers.google.com/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content:
-        ///
-        /// 1. Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
+        /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
+        /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
+        /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
+        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
         /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
         /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
-        ///
-        /// **Note:** This API requires a service account to execute.</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
+        /// requires a service account to execute.</summary>
         public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Media>
         {
             /// <summary>Constructs a new Upload request.</summary>
@@ -2350,7 +2293,7 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -2397,21 +2340,16 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Uploads media for indexing.
-        ///
-        /// The upload endpoint supports direct and resumable upload protocols and is intended for large items that can
-        /// not be [inlined during index requests](https://developers.google.com/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content:
-        ///
-        /// 1. Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
+        /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
+        /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
+        /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
+        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
         /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
         /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
-        ///
-        /// **Note:** This API requires a service account to execute.</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
+        /// requires a service account to execute.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -2430,7 +2368,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </list>
         /// </remarks>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(Google.Apis.CloudSearch.v1.Data.Media body, string resourceName, System.IO.Stream stream, string contentType)
@@ -2516,7 +2454,7 @@ namespace Google.Apis.CloudSearch.v1
             public virtual string UploadProtocol { get; set; }
 
 
-            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -2564,7 +2502,7 @@ namespace Google.Apis.CloudSearch.v1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -2572,7 +2510,7 @@ namespace Google.Apis.CloudSearch.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
         {
@@ -2667,21 +2605,19 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.
-            ///
-            /// **Note:** This API requires a standard end user account to execute. A service account can't perform
-            /// Query API requests directly; to use a service account to perform queries, set up [G Suite domain-wide
-            /// delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+            /// <summary>Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API
+            /// requires a standard end user account to execute. A service account can't perform Query API requests
+            /// directly; to use a service account to perform queries, set up [G Suite domain-wide delegation of
+            /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.
-            ///
-            /// **Note:** This API requires a standard end user account to execute. A service account can't perform
-            /// Query API requests directly; to use a service account to perform queries, set up [G Suite domain-wide
-            /// delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+            /// <summary>Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API
+            /// requires a standard end user account to execute. A service account can't perform Query API requests
+            /// directly; to use a service account to perform queries, set up [G Suite domain-wide delegation of
+            /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListQuerySourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2702,15 +2638,11 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> RequestOptionsDebugOptionsEnableDebugging { get; set; }
 
                 /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.
-                ///
-                /// Set this field using the language set in browser or for the page. In the event that the user's
-                /// language preference is known, set this field to the known user language.
-                ///
-                /// When specified, the documents in search results are biased towards the specified language.
-                ///
-                /// The suggest API does not use this parameter. Instead, suggest autocompletes only based on characters
-                /// in the query.</summary>
+                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field
+                /// using the language set in browser or for the page. In the event that the user's language preference
+                /// is known, set this field to the known user language. When specified, the documents in search results
+                /// are biased towards the specified language. The suggest API does not use this parameter. Instead,
+                /// suggest autocompletes only based on characters in the query.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsLanguageCode { get; set; }
 
@@ -2803,12 +2735,11 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>The Cloud Search Query API provides the search method, which returns the most relevant results from
-        /// a user query.  The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
-        /// data that you have indexed from a third party.
-        ///
-        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Query
-        /// API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation
-        /// of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+        /// a user query. The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
+        /// data that you have indexed from a third party. **Note:** This API requires a standard end user account to
+        /// execute. A service account can't perform Query API requests directly; to use a service account to perform
+        /// queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-
+        /// search/docs/guides/delegation/).</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
         {
@@ -2816,12 +2747,11 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>The Cloud Search Query API provides the search method, which returns the most relevant results from
-        /// a user query.  The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
-        /// data that you have indexed from a third party.
-        ///
-        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Query
-        /// API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation
-        /// of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+        /// a user query. The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
+        /// data that you have indexed from a third party. **Note:** This API requires a standard end user account to
+        /// execute. A service account can't perform Query API requests directly; to use a service account to perform
+        /// queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-
+        /// search/docs/guides/delegation/).</summary>
         public class SearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -2867,22 +2797,20 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Provides suggestions for autocompleting the query.
-        ///
-        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Query
-        /// API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation
-        /// of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+        /// <summary>Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user
+        /// account to execute. A service account can't perform Query API requests directly; to use a service account to
+        /// perform queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-
+        /// search/docs/guides/delegation/).</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SuggestRequest Suggest(Google.Apis.CloudSearch.v1.Data.SuggestRequest body)
         {
             return new SuggestRequest(service, body);
         }
 
-        /// <summary>Provides suggestions for autocompleting the query.
-        ///
-        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Query
-        /// API requests directly; to use a service account to perform queries, set up [G Suite domain-wide delegation
-        /// of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).</summary>
+        /// <summary>Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user
+        /// account to execute. A service account can't perform Query API requests directly; to use a service account to
+        /// perform queries, set up [G Suite domain-wide delegation of authority](https://developers.google.com/cloud-
+        /// search/docs/guides/delegation/).</summary>
         public class SuggestRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SuggestResponse>
         {
             /// <summary>Constructs a new Suggest request.</summary>
@@ -2970,18 +2898,14 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Creates a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Creates a datasource. **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.DataSource body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Creates a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Creates a datasource. **Note:** This API requires an admin account to execute.</summary>
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3027,18 +2951,14 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Deletes a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Deletes a datasource. **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">Name of the datasource. Format: datasources/{source_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Deletes a datasource. **Note:** This API requires an admin account to execute.</summary>
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3105,18 +3025,14 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Gets a datasource. **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Gets a datasource. **Note:** This API requires an admin account to execute.</summary>
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3183,17 +3099,13 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Lists datasources.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Lists datasources. **Note:** This API requires an admin account to execute.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists datasources.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Lists datasources. **Note:** This API requires an admin account to execute.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListDataSourceResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3273,9 +3185,7 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Updates a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Updates a datasource. **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when
             /// creating a datasource.</param>
@@ -3284,9 +3194,7 @@ namespace Google.Apis.CloudSearch.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a datasource.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Updates a datasource. **Note:** This API requires an admin account to execute.</summary>
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3371,18 +3279,16 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Creates a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Creates a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.SearchApplication body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Creates a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Creates a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3428,9 +3334,8 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Deletes a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Deletes a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             /// <param name="name">The name of the search application to be deleted. Format:
             /// applications/{application_id}.</param>
             public virtual DeleteRequest Delete(string name)
@@ -3438,9 +3343,8 @@ namespace Google.Apis.CloudSearch.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Deletes a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3508,18 +3412,16 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets the specified search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Gets the specified search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             /// <param name="name">Name of the search application. Format: searchapplications/{application_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the specified search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Gets the specified search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchApplication>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3586,17 +3488,15 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Lists all search applications.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Lists all search applications. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists all search applications.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Lists all search applications. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListSearchApplicationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3676,9 +3576,8 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Resets a search application to default settings. This will return an empty response.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Resets a search application to default settings. This will return an empty response. **Note:**
+            /// This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the search application to be reset. Format:
             /// applications/{application_id}.</param>
@@ -3687,9 +3586,8 @@ namespace Google.Apis.CloudSearch.v1
                 return new ResetRequest(service, body, name);
             }
 
-            /// <summary>Resets a search application to default settings. This will return an empty response.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Resets a search application to default settings. This will return an empty response. **Note:**
+            /// This API requires an admin account to execute.</summary>
             public class ResetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Reset request.</summary>
@@ -3750,9 +3648,8 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Updates a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Updates a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the Search Application. Format: searchapplications/{application_id}.</param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
@@ -3760,9 +3657,8 @@ namespace Google.Apis.CloudSearch.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a search application.
-            ///
-            /// **Note:** This API requires an admin account to execute.</summary>
+            /// <summary>Updates a search application. **Note:** This API requires an admin account to
+            /// execute.</summary>
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3891,9 +3787,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Gets indexed item statistics for a single data source.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Gets indexed item statistics for a single data source. **Note:** This API requires a
+                /// standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the data source to retrieve statistics for, in the following format:
                 /// "datasources/{source_id}"</param>
                 public virtual GetRequest Get(string name)
@@ -3901,9 +3796,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets indexed item statistics for a single data source.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Gets indexed item statistics for a single data source. **Note:** This API requires a
+                /// standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetDataSourceIndexStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4084,9 +3978,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Get the query statistics for search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Get the query statistics for search application. **Note:** This API requires a standard end
+                /// user account to execute.</summary>
                 /// <param name="name">The resource id of the search application query stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -4094,9 +3987,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get the query statistics for search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Get the query statistics for search application. **Note:** This API requires a standard end
+                /// user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationQueryStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4278,9 +4170,7 @@ namespace Google.Apis.CloudSearch.v1
 
 
                 /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for
-                /// search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// search application. **Note:** This API requires a standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the search application session stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -4289,9 +4179,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for
-                /// search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// search application. **Note:** This API requires a standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationSessionStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4472,9 +4360,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Get the users statistics for search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Get the users statistics for search application. **Note:** This API requires a standard end
+                /// user account to execute.</summary>
                 /// <param name="name">The resource id of the search application session stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -4482,9 +4369,8 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get the users statistics for search application.
-                ///
-                /// **Note:** This API requires a standard end user account to execute.</summary>
+                /// <summary>Get the users statistics for search application. **Note:** This API requires a standard end
+                /// user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationUserStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4619,18 +4505,16 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>Gets indexed item statistics aggreggated across all data sources. This API only returns statistics
-        /// for previous dates; it doesn't return statistics for the current day.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// for previous dates; it doesn't return statistics for the current day. **Note:** This API requires a standard
+        /// end user account to execute.</summary>
         public virtual GetIndexRequest GetIndex()
         {
             return new GetIndexRequest(service);
         }
 
         /// <summary>Gets indexed item statistics aggreggated across all data sources. This API only returns statistics
-        /// for previous dates; it doesn't return statistics for the current day.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// for previous dates; it doesn't return statistics for the current day. **Note:** This API requires a standard
+        /// end user account to execute.</summary>
         public class GetIndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerIndexStatsResponse>
         {
             /// <summary>Constructs a new GetIndex request.</summary>
@@ -4747,17 +4631,15 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Get the query statistics for customer.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// <summary>Get the query statistics for customer. **Note:** This API requires a standard end user account to
+        /// execute.</summary>
         public virtual GetQueryRequest GetQuery()
         {
             return new GetQueryRequest(service);
         }
 
-        /// <summary>Get the query statistics for customer.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// <summary>Get the query statistics for customer. **Note:** This API requires a standard end user account to
+        /// execute.</summary>
         public class GetQueryRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerQueryStatsResponse>
         {
             /// <summary>Constructs a new GetQuery request.</summary>
@@ -4875,7 +4757,6 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for customer.
-        ///
         /// **Note:** This API requires a standard end user account to execute.</summary>
         public virtual GetSessionRequest GetSession()
         {
@@ -4883,7 +4764,6 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for customer.
-        ///
         /// **Note:** This API requires a standard end user account to execute.</summary>
         public class GetSessionRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerSessionStatsResponse>
         {
@@ -5001,17 +4881,15 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Get the users statistics for customer.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// <summary>Get the users statistics for customer. **Note:** This API requires a standard end user account to
+        /// execute.</summary>
         public virtual GetUserRequest GetUser()
         {
             return new GetUserRequest(service);
         }
 
-        /// <summary>Get the users statistics for customer.
-        ///
-        /// **Note:** This API requires a standard end user account to execute.</summary>
+        /// <summary>Get the users statistics for customer. **Note:** This API requires a standard end user account to
+        /// execute.</summary>
         public class GetUserRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerUserStatsResponse>
         {
             /// <summary>Constructs a new GetUser request.</summary>
@@ -5138,11 +5016,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class BooleanOperatorOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the boolean property. For
-        /// example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:value*
-        /// show results only where the value of the property named *isClosed* matches *value*. By contrast, a search
-        /// that uses the same *value* without an operator returns all items where *value* matches the value of any
-        /// String properties or text within the content field for the item. The operator name can only contain
-        /// lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:* show
+        /// results only where the value of the property named *isClosed* matches **. By contrast, a search that uses
+        /// the same ** without an operator returns all items where ** matches the value of any String properties or
+        /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
+        /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -5163,7 +5041,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class CheckAccessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Returns true if principal has access.  Returns false otherwise.</summary>
+        /// <summary>Returns true if principal has access. Returns false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAccess")]
         public virtual System.Nullable<bool> HasAccess { get; set; } 
 
@@ -5252,7 +5130,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Datasource is a logical namespace for items to be indexed. All items must belong to a datasource.  This
+    /// <summary>Datasource is a logical namespace for items to be indexed. All items must belong to a datasource. This
     /// is the prerequisite before items can be indexed into Cloud Search.</summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5290,9 +5168,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
         public virtual System.Collections.Generic.IList<string> OperationIds { get; set; } 
 
-        /// <summary>A short name or alias for the source.  This value will be used to match the 'source' operator. For
-        /// example, if the short name is *value* then queries like *source:value* will only return results for this
-        /// source. The value must be unique across all datasources. The value must only contain alphanumeric characters
+        /// <summary>A short name or alias for the source. This value will be used to match the 'source' operator. For
+        /// example, if the short name is ** then queries like *source:* will only return results for this source. The
+        /// value must be unique across all datasources. The value must only contain alphanumeric characters
         /// (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs,
         /// drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32
         /// characters.</summary>
@@ -5325,12 +5203,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Filter options restricting the results. If multiple filters are present, they are grouped by object
         /// type before joining. Filters with the same object type are joined conjunctively, then the resulting
-        /// expressions are joined disjunctively.
-        ///
-        /// The maximum number of elements is 20.
-        ///
-        /// NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now,
-        /// schema specific filters cannot be used to filter suggestions.</summary>
+        /// expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only
+        /// few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be
+        /// used to filter suggestions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterOptions")]
         public virtual System.Collections.Generic.IList<FilterOptions> FilterOptions { get; set; } 
 
@@ -5370,27 +5245,27 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the date property using the
         /// greater-than operator. For example, if greaterThanOperatorName is *closedafter* and the property's name is
-        /// *closeDate*, then queries like *closedafter:value* show results only where the value of the property named
-        /// *closeDate* is later than *value*. The operator name can only contain lowercase letters (a-z). The maximum
-        /// length is 32 characters.</summary>
+        /// *closeDate*, then queries like *closedafter:* show results only where the value of the property named
+        /// *closeDate* is later than **. The operator name can only contain lowercase letters (a-z). The maximum length
+        /// is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
         public virtual string GreaterThanOperatorName { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the date property using the
         /// less-than operator. For example, if lessThanOperatorName is *closedbefore* and the property's name is
-        /// *closeDate*, then queries like *closedbefore:value* show results only where the value of the property named
-        /// *closeDate* is earlier than *value*. The operator name can only contain lowercase letters (a-z). The maximum
+        /// *closeDate*, then queries like *closedbefore:* show results only where the value of the property named
+        /// *closeDate* is earlier than **. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
         public virtual string LessThanOperatorName { get; set; } 
 
         /// <summary>Indicates the actual string required in the query in order to isolate the date property. For
         /// example, suppose an issue tracking schema object has a property named *closeDate* that specifies an operator
-        /// with an operatorName of *closedon*. For searches on that data, queries like *closedon:value* show results
-        /// only where the value of the *closeDate* property matches *value*. By contrast, a search that uses the same
-        /// *value* without an operator returns all items where *value* matches the value of any String properties or
-        /// text within the content field for the indexed datasource. The operator name can only contain lowercase
-        /// letters (a-z). The maximum length is 32 characters.</summary>
+        /// with an operatorName of *closedon*. For searches on that data, queries like *closedon:* show results only
+        /// where the value of the *closeDate* property matches **. By contrast, a search that uses the same ** without
+        /// an operator returns all items where ** matches the value of any String properties or text within the content
+        /// field for the indexed datasource. The operator name can only contain lowercase letters (a-z). The maximum
+        /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -5560,10 +5435,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the enum property. For
         /// example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like
-        /// *priority:value* show results only where the value of the property named *priorityVal* matches *value*. By
-        /// contrast, a search that uses the same *value* without an operator returns all items where *value* matches
-        /// the value of any String properties or text within the content field for the item. The operator name can only
-        /// contain lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// *priority:* show results only where the value of the property named *priorityVal* matches **. By contrast, a
+        /// search that uses the same ** without an operator returns all items where ** matches the value of any String
+        /// properties or text within the content field for the item. The operator name can only contain lowercase
+        /// letters (a-z). The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -5748,11 +5623,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     }    
 
     /// <summary>A generic way of expressing filters in a query, which supports two approaches: **1. Setting a
-    /// ValueFilter.** The name must match an operator_name defined in the schema for your data source.
-    ///
-    /// **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators
-    /// can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-
-    /// level AND.</summary>
+    /// ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a
+    /// CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be
+    /// either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level
+    /// AND.</summary>
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("compositeFilter")]
@@ -5797,9 +5671,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This property indicates the freshness level of the object in the index. If set, this property must
         /// be a top-level property within the property definitions and it must be a timestamp type or date type.
         /// Otherwise, the Indexing API uses updateTime as the freshness indicator. The maximum length is 256
-        /// characters.
-        ///
-        /// When a property is used to calculate freshness, the value defaults to 2 years from the current
+        /// characters. When a property is used to calculate freshness, the value defaults to 2 years from the current
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessProperty")]
         public virtual string FreshnessProperty { get; set; } 
@@ -5905,11 +5777,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class HtmlOperatorOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the html property. For
-        /// example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like
-        /// *subject:value* show results only where the value of the property named *subjectLine* matches *value*. By
-        /// contrast, a search that uses the same *value* without an operator return all items where *value* matches the
-        /// value of any html properties or text within the content field for the item. The operator name can only
-        /// contain lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:*
+        /// show results only where the value of the property named *subjectLine* matches **. By contrast, a search that
+        /// uses the same ** without an operator return all items where ** matches the value of any html properties or
+        /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
+        /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -5968,7 +5840,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexItemOptions")]
         public virtual IndexItemOptions IndexItemOptions { get; set; } 
 
-        /// <summary>Name of the item.  Format: datasources/{source_id}/items/{item_id}</summary>
+        /// <summary>Name of the item. Format: datasources/{source_id}/items/{item_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual Item Item { get; set; } 
 
@@ -5986,26 +5858,26 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the integer property using
         /// the greater-than operator. For example, if greaterThanOperatorName is *priorityabove* and the property's
-        /// name is *priorityVal*, then queries like *priorityabove:value* show results only where the value of the
-        /// property named *priorityVal* is greater than *value*. The operator name can only contain lowercase letters
-        /// (a-z). The maximum length is 32 characters.</summary>
+        /// name is *priorityVal*, then queries like *priorityabove:* show results only where the value of the property
+        /// named *priorityVal* is greater than **. The operator name can only contain lowercase letters (a-z). The
+        /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
         public virtual string GreaterThanOperatorName { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the integer property using
         /// the less-than operator. For example, if lessThanOperatorName is *prioritybelow* and the property's name is
-        /// *priorityVal*, then queries like *prioritybelow:value* show results only where the value of the property
-        /// named *priorityVal* is less than *value*. The operator name can only contain lowercase letters (a-z). The
-        /// maximum length is 32 characters.</summary>
+        /// *priorityVal*, then queries like *prioritybelow:* show results only where the value of the property named
+        /// *priorityVal* is less than **. The operator name can only contain lowercase letters (a-z). The maximum
+        /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
         public virtual string LessThanOperatorName { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the integer property. For
         /// example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like
-        /// *priority:value* show results only where the value of the property named *priorityVal* matches *value*. By
-        /// contrast, a search that uses the same *value* without an operator returns all items where *value* matches
-        /// the value of any String properties or text within the content field for the item. The operator name can only
-        /// contain lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// *priority:* show results only where the value of the property named *priorityVal* matches **. By contrast, a
+        /// search that uses the same ** without an operator returns all items where ** matches the value of any String
+        /// properties or text within the content field for the item. The operator name can only contain lowercase
+        /// letters (a-z). The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -6054,7 +5926,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Represents an interaction between a user and an item.</summary>
     public class Interaction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time when the user acted on the item.  If multiple actions of the same type exist for a single
+        /// <summary>The time when the user acted on the item. If multiple actions of the same type exist for a single
         /// user, only the most recent action is recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionTime")]
         public virtual object InteractionTime { get; set; } 
@@ -6113,10 +5985,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual ItemStructuredData StructuredData { get; set; } 
 
         /// <summary>Required. The indexing system stores the version from the datasource as a byte string and compares
-        /// the Item version in the index to the version of the queued Item using lexical ordering.
-        ///
-        /// Cloud Search Indexing won't index or delete any queued item with a version value that is less than or equal
-        /// to the version of the currently indexed item. The maximum length for this field is 1024 bytes.</summary>
+        /// the Item version in the index to the version of the queued Item using lexical ordering. Cloud Search
+        /// Indexing won't index or delete any queued item with a version value that is less than or equal to the
+        /// version of the currently indexed item. The maximum length for this field is 1024 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
@@ -6208,7 +6079,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ItemMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the container for this item. Deletion of the container item leads to automatic deletion
-        /// of this item.  Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item,
+        /// of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item,
         /// use the inheritAclFrom field. The maximum length is 1536 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
         public virtual string ContainerName { get; set; } 
@@ -6228,7 +6099,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
         public virtual string Hash { get; set; } 
 
-        /// <summary>A list of interactions for the item.  Interactions are used to improve Search quality, but are not
+        /// <summary>A list of interactions for the item. Interactions are used to improve Search quality, but are not
         /// exposed to end users. The maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactions")]
         public virtual System.Collections.Generic.IList<Interaction> Interactions { get; set; } 
@@ -6243,10 +6114,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
-        /// <summary>The type of the item.  This should correspond to the name of an object definition in the schema
-        /// registered for the data source.  For example, if the schema for the data source contains an object
-        /// definition with name 'document', then item indexing requests for objects of that type should set objectType
-        /// to 'document'. The maximum length is 256 characters.</summary>
+        /// <summary>The type of the item. This should correspond to the name of an object definition in the schema
+        /// registered for the data source. For example, if the schema for the data source contains an object definition
+        /// with name 'document', then item indexing requests for objects of that type should set objectType to
+        /// 'document'. The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
@@ -6254,14 +6125,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchQualityMetadata")]
         public virtual SearchQualityMetadata SearchQualityMetadata { get; set; } 
 
-        /// <summary>Link to the source repository serving the data.  earch results apply this link to the title.
-        /// Whitespace or special characters may cause Cloud earch result links to trigger a redirect notice; to avoid
+        /// <summary>Link to the source repository serving the data. Search results apply this link to the title.
+        /// Whitespace or special characters may cause Cloud Search result links to trigger a redirect notice; to avoid
         /// this, encode the URL. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepositoryUrl")]
         public virtual string SourceRepositoryUrl { get; set; } 
 
-        /// <summary>The title of the item.  If given, this will be the displayed title of the Search result. The
-        /// maximum length is 2048 characters.</summary>
+        /// <summary>The title of the item. If given, this will be the displayed title of the Search result. The maximum
+        /// length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -6483,8 +6354,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A typed name-value pair for structured data.  The type of the value should be the same as the
-    /// registered type for the `name` property in the object definition of `objectType`.</summary>
+    /// <summary>A typed name-value pair for structured data. The type of the value should be the same as the registered
+    /// type for the `name` property in the object definition of `objectType`.</summary>
     public class NamedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
@@ -6505,7 +6376,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integerValues")]
         public virtual IntegerValues IntegerValues { get; set; } 
 
-        /// <summary>The name of the property.  This name should correspond to the name of the property that was
+        /// <summary>The name of the property. This name should correspond to the name of the property that was
         /// registered for object definition in the schema. The maximum allowable length for this property is 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6618,9 +6489,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -6630,11 +6501,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -6707,7 +6578,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; } 
 
-        /// <summary>Queue name to fetch items from.  If unspecified, PollItems will fetch from 'default' queue. The
+        /// <summary>Queue name to fetch items from. If unspecified, PollItems will fetch from 'default' queue. The
         /// maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
         public virtual string Queue { get; set; } 
@@ -6893,7 +6764,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
-        /// <summary>Queue to which this item belongs to.  The default queue is chosen if this field is not specified.
+        /// <summary>Queue to which this item belongs to. The default queue is chosen if this field is not specified.
         /// The maximum length is 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
         public virtual string Queue { get; set; } 
@@ -7009,7 +6880,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
         public virtual System.Collections.Generic.IList<string> EnumValues { get; set; } 
 
-        /// <summary>Indicates the operator name that can be used to  isolate the property using the greater-than
+        /// <summary>Indicates the operator name that can be used to isolate the property using the greater-than
         /// operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
         public virtual string GreaterThanOperatorName { get; set; } 
@@ -7034,7 +6905,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isSuggestable")]
         public virtual System.Nullable<bool> IsSuggestable { get; set; } 
 
-        /// <summary>Indicates the operator name that can be used to  isolate the property using the less-than
+        /// <summary>Indicates the operator name that can be used to isolate the property using the less-than
         /// operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
         public virtual string LessThanOperatorName { get; set; } 
@@ -7067,7 +6938,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operators")]
         public virtual System.Collections.Generic.IList<QueryOperator> Operators { get; set; } 
 
-        /// <summary>A short name or alias for the source.  This value can be used with the 'source' operator.</summary>
+        /// <summary>A short name or alias for the source. This value can be used with the 'source' operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
         public virtual string ShortName { get; set; } 
 
@@ -7095,7 +6966,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
-        /// <summary>Error codes.  Matches the definition of HTTP status codes.</summary>
+        /// <summary>Error codes. Matches the definition of HTTP status codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
         public virtual System.Nullable<int> HttpStatusCode { get; set; } 
 
@@ -7115,15 +6986,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual DebugOptions DebugOptions { get; set; } 
 
         /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.
-        ///
-        /// Set this field using the language set in browser or for the page. In the event that the user's language
-        /// preference is known, set this field to the known user language.
-        ///
-        /// When specified, the documents in search results are biased towards the specified language.
-        ///
-        /// The suggest API does not use this parameter. Instead, suggest autocompletes only based on characters in the
-        /// query.</summary>
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the
+        /// language set in browser or for the page. In the event that the user's language preference is known, set this
+        /// field to the known user language. When specified, the documents in search results are biased towards the
+        /// specified language. The suggest API does not use this parameter. Instead, suggest autocompletes only based
+        /// on characters in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -7710,9 +7577,8 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7720,8 +7586,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -7760,9 +7626,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SuggestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The sources to use for suggestions. If not specified, the data sources are taken from the current
-        /// search application.
-        ///
-        /// NOTE: Suggestions are supported only for third party data sources and people (i.e.
+        /// search application. NOTE: Suggestions are supported only for third party data sources and people (i.e.
         /// PredefinedSource.PERSON).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
         public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; } 
@@ -7828,11 +7692,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<bool> ExactMatchWithOperator { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the text property. For
-        /// example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like
-        /// *subject:value* show results only where the value of the property named *subjectLine* matches *value*. By
-        /// contrast, a search that uses the same *value* without an operator returns all items where *value* matches
-        /// the value of any text properties or text within the content field for the item. The operator name can only
-        /// contain lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:*
+        /// show results only where the value of the property named *subjectLine* matches **. By contrast, a search that
+        /// uses the same ** without an operator returns all items where ** matches the value of any text properties or
+        /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
+        /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -7873,26 +7737,26 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Indicates the operator name required in the query in order to isolate the timestamp property using
         /// the greater-than operator. For example, if greaterThanOperatorName is *closedafter* and the property's name
-        /// is *closeDate*, then queries like *closedafter:value* show results only where the value of the property
-        /// named *closeDate* is later than *value*. The operator name can only contain lowercase letters (a-z). The
-        /// maximum length is 32 characters.</summary>
+        /// is *closeDate*, then queries like *closedafter:* show results only where the value of the property named
+        /// *closeDate* is later than **. The operator name can only contain lowercase letters (a-z). The maximum length
+        /// is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
         public virtual string GreaterThanOperatorName { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the timestamp property using
         /// the less-than operator. For example, if lessThanOperatorName is *closedbefore* and the property's name is
-        /// *closeDate*, then queries like *closedbefore:value* show results only where the value of the property named
-        /// *closeDate* is earlier than *value*. The operator name can only contain lowercase letters (a-z). The maximum
+        /// *closeDate*, then queries like *closedbefore:* show results only where the value of the property named
+        /// *closeDate* is earlier than **. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
         public virtual string LessThanOperatorName { get; set; } 
 
         /// <summary>Indicates the operator name required in the query in order to isolate the timestamp property. For
-        /// example, if operatorName is *closedon* and the property's name is *closeDate*, then queries like
-        /// *closedon:value* show results only where the value of the property named *closeDate* matches *value*. By
-        /// contrast, a search that uses the same *value* without an operator returns all items where *value* matches
-        /// the value of any String properties or text within the content field for the item. The operator name can only
-        /// contain lowercase letters (a-z). The maximum length is 32 characters.</summary>
+        /// example, if operatorName is *closedon* and the property's name is *closeDate*, then queries like *closedon:*
+        /// show results only where the value of the property named *closeDate* matches **. By contrast, a search that
+        /// uses the same ** without an operator returns all items where ** matches the value of any String properties
+        /// or text within the content field for the item. The operator name can only contain lowercase letters (a-z).
+        /// The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 
@@ -8025,12 +7889,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ValueFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against
-        /// both types of filters defined in the schema for your data source:
-        ///
-        /// 1. `operator_name`, where the query filters results by the property that matches the value.
-        ///
-        /// 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results
-        /// for the property values that are greater than or less than  the supplied value in the query.</summary>
+        /// both types of filters defined in the schema for your data source: 1. `operator_name`, where the query
+        /// filters results by the property that matches the value. 2. `greater_than_operator_name` or
+        /// `less_than_operator_name` in your schema. The query filters the results for the property values that are
+        /// greater than or less than the supplied value in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; } 
 

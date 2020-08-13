@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200805 (2043)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow/'>
  *              https://cloud.google.com/dialogflow/</a>
@@ -5464,6 +5464,17 @@ namespace Google.Apis.Dialogflow.v2
 namespace Google.Apis.Dialogflow.v2.Data
 {    
 
+    /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5673,8 +5684,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents one segment of audio.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the playback of this segment can be interrupted by the end user's speech and the client
-        /// should then start the next Dialogflow request.</summary>
+        /// <summary>Output only. Whether the playback of this segment can be interrupted by the end user's speech and
+        /// the client should then start the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
         public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
 
@@ -5712,8 +5723,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Specifies an audio clip to be played by the client as part of the response.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the playback of this message can be interrupted by the end user's speech and the client can
-        /// then starts the next Dialogflow request.</summary>
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
         public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
 
@@ -5729,8 +5740,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The text response message.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the playback of this message can be interrupted by the end user's speech and the client can
-        /// then starts the next Dialogflow request.</summary>
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
         public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
 
@@ -9671,6 +9682,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
+    public class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

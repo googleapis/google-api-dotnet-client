@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.4
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200812 (2050)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -143,9 +143,9 @@ namespace Google.Apis.Dfareporting.v3_4
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/dfareporting/v3.4/"; }
+            get { return BaseUriOverride ?? "https://dfareporting.googleapis.com/dfareporting/v3.4/"; }
         #else
-            get { return "https://www.googleapis.com/dfareporting/v3.4/"; }
+            get { return "https://dfareporting.googleapis.com/dfareporting/v3.4/"; }
         #endif
         }
 
@@ -159,13 +159,13 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/dfareporting/v3.4"; }
+            get { return "https://dfareporting.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/dfareporting/v3.4"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -697,18 +697,47 @@ namespace Google.Apis.Dfareporting.v3_4
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -728,14 +757,18 @@ namespace Google.Apis.Dfareporting.v3_4
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Dfareporting parameter list.</summary>
         protected override void InitParameters()
@@ -743,12 +776,39 @@ namespace Google.Apis.Dfareporting.v3_4
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -797,9 +857,18 @@ namespace Google.Apis.Dfareporting.v3_4
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1576,22 +1645,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">User profile
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.AccountUserProfile body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.AccountUserProfile body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.AccountUserProfile body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.AccountUserProfile body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -1601,9 +1667,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>User profile ID.</summary>
+            /// <summary>AccountUserProfile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1648,7 +1714,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -2000,22 +2066,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Account
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Account body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Account body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Account body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Account body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -2027,7 +2090,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Account ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2072,7 +2135,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -2368,18 +2431,18 @@ namespace Google.Apis.Dfareporting.v3_4
             /// standard.</summary>
             public enum CompatibilityEnum
             {
-                [Google.Apis.Util.StringValueAttribute("APP")]
-                APP,
-                [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
-                APPINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY")]
                 DISPLAY,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL,
-                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
-                INSTREAMAUDIO,
+                [Google.Apis.Util.StringValueAttribute("APP")]
+                APP,
+                [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
+                APPINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
                 INSTREAMVIDEO,
+                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
+                INSTREAMAUDIO,
             }
 
             /// <summary>Select only ads with these creative IDs assigned.</summary>
@@ -2481,12 +2544,12 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only ads with these types.</summary>
             public enum TypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("AD_SERVING_CLICK_TRACKER")]
-                ADSERVINGCLICKTRACKER,
-                [Google.Apis.Util.StringValueAttribute("AD_SERVING_DEFAULT_AD")]
-                ADSERVINGDEFAULTAD,
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_STANDARD_AD")]
                 ADSERVINGSTANDARDAD,
+                [Google.Apis.Util.StringValueAttribute("AD_SERVING_DEFAULT_AD")]
+                ADSERVINGDEFAULTAD,
+                [Google.Apis.Util.StringValueAttribute("AD_SERVING_CLICK_TRACKER")]
+                ADSERVINGCLICKTRACKER,
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_TRACKING")]
                 ADSERVINGTRACKING,
             }
@@ -2738,22 +2801,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Ad
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Ad body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Ad body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Ad body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Ad body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -2765,7 +2825,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Ad ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2810,7 +2870,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3292,22 +3352,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Advertiser
-        /// group ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.AdvertiserGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.AdvertiserGroup body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.AdvertiserGroup body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.AdvertiserGroup body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -3317,9 +3374,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Advertiser group ID.</summary>
+            /// <summary>AdvertiserGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3364,7 +3421,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3820,25 +3877,22 @@ namespace Google.Apis.Dfareporting.v3_4
 
         }
 
-        /// <summary>Updates an existing landing page. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Landing page
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.LandingPage body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.LandingPage body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
-        /// <summary>Updates an existing landing page. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.LandingPage body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.LandingPage body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -3848,9 +3902,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Landing page ID.</summary>
+            /// <summary>LandingPage ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3895,7 +3949,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -4191,7 +4245,7 @@ namespace Google.Apis.Dfareporting.v3_4
             /// "advertiser*2015" will return objects with names like "advertiser June 2015", "advertiser April 2015",
             /// or simply "advertiser 2015". Most of the searches also add wildcards implicitly at the start and the end
             /// of the search string. For example, a search string of "advertiser" will match objects with name "my
-            /// advertiser", "advertiser 2015", or simply "advertiser".</summary>
+            /// advertiser", "advertiser 2015", or simply "advertiser" .</summary>
             [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SearchString { get; set; }
 
@@ -4388,22 +4442,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Advertiser
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Advertiser body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Advertiser body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Advertiser body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Advertiser body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -4415,7 +4466,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Advertiser ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4460,7 +4511,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -5268,22 +5319,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Campaign
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Campaign body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Campaign body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Campaign body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Campaign body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -5295,7 +5343,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Campaign ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -5340,7 +5388,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -5540,40 +5588,40 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only change logs with the specified action.</summary>
             public enum ActionEnum
             {
-                [Google.Apis.Util.StringValueAttribute("ACTION_ADD")]
-                ACTIONADD,
-                [Google.Apis.Util.StringValueAttribute("ACTION_ASSIGN")]
-                ACTIONASSIGN,
-                [Google.Apis.Util.StringValueAttribute("ACTION_ASSOCIATE")]
-                ACTIONASSOCIATE,
                 [Google.Apis.Util.StringValueAttribute("ACTION_CREATE")]
                 ACTIONCREATE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_DELETE")]
-                ACTIONDELETE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_DISABLE")]
-                ACTIONDISABLE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_EMAIL_TAGS")]
-                ACTIONEMAILTAGS,
-                [Google.Apis.Util.StringValueAttribute("ACTION_ENABLE")]
-                ACTIONENABLE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_LINK")]
-                ACTIONLINK,
-                [Google.Apis.Util.StringValueAttribute("ACTION_MARK_AS_DEFAULT")]
-                ACTIONMARKASDEFAULT,
-                [Google.Apis.Util.StringValueAttribute("ACTION_PUSH")]
-                ACTIONPUSH,
-                [Google.Apis.Util.StringValueAttribute("ACTION_REMOVE")]
-                ACTIONREMOVE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_SEND")]
-                ACTIONSEND,
-                [Google.Apis.Util.StringValueAttribute("ACTION_SHARE")]
-                ACTIONSHARE,
-                [Google.Apis.Util.StringValueAttribute("ACTION_UNASSIGN")]
-                ACTIONUNASSIGN,
-                [Google.Apis.Util.StringValueAttribute("ACTION_UNLINK")]
-                ACTIONUNLINK,
                 [Google.Apis.Util.StringValueAttribute("ACTION_UPDATE")]
                 ACTIONUPDATE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_DELETE")]
+                ACTIONDELETE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_ENABLE")]
+                ACTIONENABLE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_DISABLE")]
+                ACTIONDISABLE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_ADD")]
+                ACTIONADD,
+                [Google.Apis.Util.StringValueAttribute("ACTION_REMOVE")]
+                ACTIONREMOVE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_MARK_AS_DEFAULT")]
+                ACTIONMARKASDEFAULT,
+                [Google.Apis.Util.StringValueAttribute("ACTION_ASSOCIATE")]
+                ACTIONASSOCIATE,
+                [Google.Apis.Util.StringValueAttribute("ACTION_ASSIGN")]
+                ACTIONASSIGN,
+                [Google.Apis.Util.StringValueAttribute("ACTION_UNASSIGN")]
+                ACTIONUNASSIGN,
+                [Google.Apis.Util.StringValueAttribute("ACTION_SEND")]
+                ACTIONSEND,
+                [Google.Apis.Util.StringValueAttribute("ACTION_LINK")]
+                ACTIONLINK,
+                [Google.Apis.Util.StringValueAttribute("ACTION_UNLINK")]
+                ACTIONUNLINK,
+                [Google.Apis.Util.StringValueAttribute("ACTION_PUSH")]
+                ACTIONPUSH,
+                [Google.Apis.Util.StringValueAttribute("ACTION_EMAIL_TAGS")]
+                ACTIONEMAILTAGS,
+                [Google.Apis.Util.StringValueAttribute("ACTION_SHARE")]
+                ACTIONSHARE,
             }
 
             /// <summary>Select only change logs with these IDs.</summary>
@@ -5614,86 +5662,86 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only change logs with the specified object type.</summary>
             public enum ObjectTypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT")]
-                OBJECTACCOUNT,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT_BILLING_FEATURE")]
-                OBJECTACCOUNTBILLINGFEATURE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
                 OBJECTADVERTISER,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_CONFIGURATION")]
+                OBJECTFLOODLIGHTCONFIGURATION,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
+                OBJECTAD,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTVITY")]
+                OBJECTFLOODLIGHTACTVITY,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CAMPAIGN")]
+                OBJECTCAMPAIGN,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTIVITY_GROUP")]
+                OBJECTFLOODLIGHTACTIVITYGROUP,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
+                OBJECTCREATIVE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
+                OBJECTPLACEMENT,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_DFA_SITE")]
+                OBJECTDFASITE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_ROLE")]
+                OBJECTUSERROLE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE")]
+                OBJECTUSERPROFILE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER_GROUP")]
                 OBJECTADVERTISERGROUP,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT")]
+                OBJECTACCOUNT,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_SUBACCOUNT")]
+                OBJECTSUBACCOUNT,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_RICHMEDIA_CREATIVE")]
+                OBJECTRICHMEDIACREATIVE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_INSTREAM_CREATIVE")]
+                OBJECTINSTREAMCREATIVE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_MEDIA_ORDER")]
+                OBJECTMEDIAORDER,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CONTENT_CATEGORY")]
+                OBJECTCONTENTCATEGORY,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT_STRATEGY")]
+                OBJECTPLACEMENTSTRATEGY,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_SD_SITE")]
+                OBJECTSDSITE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_SIZE")]
+                OBJECTSIZE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_GROUP")]
+                OBJECTCREATIVEGROUP,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_ASSET")]
+                OBJECTCREATIVEASSET,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE_FILTER")]
+                OBJECTUSERPROFILEFILTER,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_LANDING_PAGE")]
+                OBJECTLANDINGPAGE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_FIELD")]
+                OBJECTCREATIVEFIELD,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_REMARKETING_LIST")]
+                OBJECTREMARKETINGLIST,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_PROVIDED_LIST_CLIENT")]
+                OBJECTPROVIDEDLISTCLIENT,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_EVENT_TAG")]
+                OBJECTEVENTTAG,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_BUNDLE")]
+                OBJECTCREATIVEBUNDLE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_ACCOUNT_GROUP")]
                 OBJECTBILLINGACCOUNTGROUP,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_FEATURE")]
                 OBJECTBILLINGFEATURE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_RATE_CARD")]
+                OBJECTRATECARD,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT_BILLING_FEATURE")]
+                OBJECTACCOUNTBILLINGFEATURE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_MINIMUM_FEE")]
                 OBJECTBILLINGMINIMUMFEE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_PROFILE")]
                 OBJECTBILLINGPROFILE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CAMPAIGN")]
-                OBJECTCAMPAIGN,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CONTENT_CATEGORY")]
-                OBJECTCONTENTCATEGORY,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
-                OBJECTCREATIVE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_ASSET")]
-                OBJECTCREATIVEASSET,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_BUNDLE")]
-                OBJECTCREATIVEBUNDLE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_FIELD")]
-                OBJECTCREATIVEFIELD,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_GROUP")]
-                OBJECTCREATIVEGROUP,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_DFA_SITE")]
-                OBJECTDFASITE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_EVENT_TAG")]
-                OBJECTEVENTTAG,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTIVITY_GROUP")]
-                OBJECTFLOODLIGHTACTIVITYGROUP,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTVITY")]
-                OBJECTFLOODLIGHTACTVITY,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_CONFIGURATION")]
-                OBJECTFLOODLIGHTCONFIGURATION,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_DV360_LINK")]
-                OBJECTFLOODLIGHTDV360LINK,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_INSTREAM_CREATIVE")]
-                OBJECTINSTREAMCREATIVE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_LANDING_PAGE")]
-                OBJECTLANDINGPAGE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_MEDIA_ORDER")]
-                OBJECTMEDIAORDER,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
-                OBJECTPLACEMENT,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT_STRATEGY")]
-                OBJECTPLACEMENTSTRATEGY,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLAYSTORE_LINK")]
                 OBJECTPLAYSTORELINK,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_PROVIDED_LIST_CLIENT")]
-                OBJECTPROVIDEDLISTCLIENT,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_RATE_CARD")]
-                OBJECTRATECARD,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_REMARKETING_LIST")]
-                OBJECTREMARKETINGLIST,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_RICHMEDIA_CREATIVE")]
-                OBJECTRICHMEDIACREATIVE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_SD_SITE")]
-                OBJECTSDSITE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_SEARCH_LIFT_STUDY")]
-                OBJECTSEARCHLIFTSTUDY,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_SIZE")]
-                OBJECTSIZE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_SUBACCOUNT")]
-                OBJECTSUBACCOUNT,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_TARGETING_TEMPLATE")]
                 OBJECTTARGETINGTEMPLATE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE")]
-                OBJECTUSERPROFILE,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE_FILTER")]
-                OBJECTUSERPROFILEFILTER,
-                [Google.Apis.Util.StringValueAttribute("OBJECT_USER_ROLE")]
-                OBJECTUSERROLE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_SEARCH_LIFT_STUDY")]
+                OBJECTSEARCHLIFTSTUDY,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_DV360_LINK")]
+                OBJECTFLOODLIGHTDV360LINK,
             }
 
             /// <summary>Value of the nextPageToken from the previous result page.</summary>
@@ -6523,22 +6571,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Content
-        /// category ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.ContentCategory body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.ContentCategory body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.ContentCategory>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.ContentCategory body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.ContentCategory body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -6548,9 +6593,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Content category ID.</summary>
+            /// <summary>ContentCategory ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -6595,7 +6640,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -7112,18 +7157,47 @@ namespace Google.Apis.Dfareporting.v3_4
         public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Dfareporting.v3_4.Data.CreativeAssetMetadata, Google.Apis.Dfareporting.v3_4.Data.CreativeAssetMetadata>
         {
 
-            /// <summary>Data format for the response.</summary>
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1,
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
             /// [default: json]
             [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-            /// <summary>Data format for the response.</summary>
+            /// <summary>Data format for response.</summary>
             public enum AltEnum
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media,
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto,
             }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -7143,14 +7217,18 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-            /// characters.</summary>
+            /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+            /// assigned to a user, but should not exceed 40 characters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
-            /// <summary>Deprecated. Please use quotaUser instead.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string UserIp { get; set; }
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
 
 
             /// <summary>User profile ID associated with this request.</summary>
@@ -7659,24 +7737,21 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
-        /// name="creativeFieldId">Creative field ID for this creative field value.</param>
-        /// <param name="id">Creative
-        /// Field Value ID</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
+        /// name="creativeFieldId">CreativeField ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
         {
-            return new PatchRequest(service, body, profileId, creativeFieldId, id);
+            return new PatchRequest(service, body, profileId, creativeFieldId);
         }
 
         /// <summary>Updates an existing creative field value. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
                 : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -7686,13 +7761,13 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Creative field ID for this creative field value.</summary>
+            /// <summary>CreativeField ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("creativeFieldId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long CreativeFieldId { get; private set; }
 
-            /// <summary>Creative Field Value ID</summary>
+            /// <summary>CreativeFieldValue ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -7746,7 +7821,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -8258,22 +8333,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Creative
-        /// Field ID</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeField body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeField body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.CreativeField>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeField body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeField body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -8283,9 +8355,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Creative Field ID</summary>
+            /// <summary>CreativeField ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -8330,7 +8402,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -8765,22 +8837,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Creative
-        /// group ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.CreativeGroup body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeGroup body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.CreativeGroup body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -8790,9 +8859,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Creative group ID.</summary>
+            /// <summary>CreativeGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -8837,7 +8906,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -9193,56 +9262,56 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only creatives with these creative types.</summary>
             public enum TypesEnum
             {
-                [Google.Apis.Util.StringValueAttribute("BRAND_SAFE_DEFAULT_INSTREAM_VIDEO")]
-                BRANDSAFEDEFAULTINSTREAMVIDEO,
-                [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY")]
-                CUSTOMDISPLAY,
-                [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY_INTERSTITIAL")]
-                CUSTOMDISPLAYINTERSTITIAL,
-                [Google.Apis.Util.StringValueAttribute("DISPLAY")]
-                DISPLAY,
-                [Google.Apis.Util.StringValueAttribute("DISPLAY_IMAGE_GALLERY")]
-                DISPLAYIMAGEGALLERY,
-                [Google.Apis.Util.StringValueAttribute("DISPLAY_REDIRECT")]
-                DISPLAYREDIRECT,
-                [Google.Apis.Util.StringValueAttribute("FLASH_INPAGE")]
-                FLASHINPAGE,
-                [Google.Apis.Util.StringValueAttribute("HTML5_BANNER")]
-                HTML5BANNER,
                 [Google.Apis.Util.StringValueAttribute("IMAGE")]
                 IMAGE,
-                [Google.Apis.Util.StringValueAttribute("INSTREAM_AUDIO")]
-                INSTREAMAUDIO,
-                [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO")]
-                INSTREAMVIDEO,
-                [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO_REDIRECT")]
-                INSTREAMVIDEOREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("DISPLAY_REDIRECT")]
+                DISPLAYREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY")]
+                CUSTOMDISPLAY,
                 [Google.Apis.Util.StringValueAttribute("INTERNAL_REDIRECT")]
                 INTERNALREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY_INTERSTITIAL")]
+                CUSTOMDISPLAYINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("INTERSTITIAL_INTERNAL_REDIRECT")]
                 INTERSTITIALINTERNALREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("TRACKING_TEXT")]
+                TRACKINGTEXT,
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_BANNER")]
                 RICHMEDIADISPLAYBANNER,
+                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_INPAGE_FLOATING")]
+                RICHMEDIAINPAGEFLOATING,
+                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_IM_EXPAND")]
+                RICHMEDIAIMEXPAND,
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_EXPANDING")]
                 RICHMEDIADISPLAYEXPANDING,
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_INTERSTITIAL")]
                 RICHMEDIADISPLAYINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL")]
                 RICHMEDIADISPLAYMULTIFLOATINGINTERSTITIAL,
-                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_IM_EXPAND")]
-                RICHMEDIAIMEXPAND,
-                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_INPAGE_FLOATING")]
-                RICHMEDIAINPAGEFLOATING,
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_MOBILE_IN_APP")]
                 RICHMEDIAMOBILEINAPP,
-                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_PEEL_DOWN")]
-                RICHMEDIAPEELDOWN,
-                [Google.Apis.Util.StringValueAttribute("TRACKING_TEXT")]
-                TRACKINGTEXT,
+                [Google.Apis.Util.StringValueAttribute("FLASH_INPAGE")]
+                FLASHINPAGE,
+                [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO")]
+                INSTREAMVIDEO,
                 [Google.Apis.Util.StringValueAttribute("VPAID_LINEAR_VIDEO")]
                 VPAIDLINEARVIDEO,
                 [Google.Apis.Util.StringValueAttribute("VPAID_NON_LINEAR_VIDEO")]
                 VPAIDNONLINEARVIDEO,
+                [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO_REDIRECT")]
+                INSTREAMVIDEOREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_PEEL_DOWN")]
+                RICHMEDIAPEELDOWN,
+                [Google.Apis.Util.StringValueAttribute("HTML5_BANNER")]
+                HTML5BANNER,
+                [Google.Apis.Util.StringValueAttribute("DISPLAY")]
+                DISPLAY,
+                [Google.Apis.Util.StringValueAttribute("DISPLAY_IMAGE_GALLERY")]
+                DISPLAYIMAGEGALLERY,
+                [Google.Apis.Util.StringValueAttribute("BRAND_SAFE_DEFAULT_INSTREAM_VIDEO")]
+                BRANDSAFEDEFAULTINSTREAMVIDEO,
+                [Google.Apis.Util.StringValueAttribute("INSTREAM_AUDIO")]
+                INSTREAMAUDIO,
             }
 
 
@@ -9429,22 +9498,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Creative
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Creative body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Creative body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Creative>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Creative body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Creative body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -9456,7 +9522,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Creative ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -9501,7 +9567,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -10238,10 +10304,10 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Type of the object of this dynamic targeting key. This is a required field.</summary>
             public enum ObjectTypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
                 OBJECTADVERTISER,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
+                OBJECTAD,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
                 OBJECTCREATIVE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
@@ -10426,10 +10492,10 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only dynamic targeting keys with this object type.</summary>
             public enum ObjectTypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
                 OBJECTADVERTISER,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
+                OBJECTAD,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
                 OBJECTCREATIVE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
@@ -10808,12 +10874,12 @@ namespace Google.Apis.Dfareporting.v3_4
             /// URL for either impression or click tracking.</summary>
             public enum EventTagTypesEnum
             {
-                [Google.Apis.Util.StringValueAttribute("CLICK_THROUGH_EVENT_TAG")]
-                CLICKTHROUGHEVENTTAG,
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_IMAGE_EVENT_TAG")]
                 IMPRESSIONIMAGEEVENTTAG,
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_JAVASCRIPT_EVENT_TAG")]
                 IMPRESSIONJAVASCRIPTEVENTTAG,
+                [Google.Apis.Util.StringValueAttribute("CLICK_THROUGH_EVENT_TAG")]
+                CLICKTHROUGHEVENTTAG,
             }
 
             /// <summary>Select only event tags with these IDs.</summary>
@@ -10986,22 +11052,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Event tag
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.EventTag body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.EventTag body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.EventTag>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.EventTag body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.EventTag body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -11011,9 +11074,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Event tag ID.</summary>
+            /// <summary>EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -11058,7 +11121,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12035,22 +12098,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Floodlight
-        /// activity ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightActivity body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightActivity body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightActivity body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightActivity body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -12060,9 +12120,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Floodlight activity ID.</summary>
+            /// <summary>FloodlightActivity ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12107,7 +12167,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12569,22 +12629,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Floodlight
-        /// activity Group ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightActivityGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightActivityGroup body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightActivityGroup body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightActivityGroup body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -12594,9 +12651,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Floodlight activity Group ID.</summary>
+            /// <summary>FloodlightActivityGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12641,7 +12698,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12888,22 +12945,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Floodlight
-        /// configuration ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightConfiguration body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.FloodlightConfiguration body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightConfiguration body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.FloodlightConfiguration body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -12913,9 +12967,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Floodlight configuration ID.</summary>
+            /// <summary>FloodlightConfiguration ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12960,7 +13014,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -13237,10 +13291,10 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only inventory items with this type.</summary>
             public enum TypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("PLANNING_PLACEMENT_TYPE_CREDIT")]
-                PLANNINGPLACEMENTTYPECREDIT,
                 [Google.Apis.Util.StringValueAttribute("PLANNING_PLACEMENT_TYPE_REGULAR")]
                 PLANNINGPLACEMENTTYPEREGULAR,
+                [Google.Apis.Util.StringValueAttribute("PLANNING_PLACEMENT_TYPE_CREDIT")]
+                PLANNINGPLACEMENTTYPECREDIT,
             }
 
 
@@ -13647,12 +13701,12 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only apps from these directories.</summary>
             public enum DirectoriesEnum
             {
+                [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                UNKNOWN,
                 [Google.Apis.Util.StringValueAttribute("APPLE_APP_STORE")]
                 APPLEAPPSTORE,
                 [Google.Apis.Util.StringValueAttribute("GOOGLE_PLAY_STORE")]
                 GOOGLEPLAYSTORE,
-                [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                UNKNOWN,
             }
 
             /// <summary>Select only apps with these IDs.</summary>
@@ -15121,18 +15175,18 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only placement groups with these pricing types.</summary>
             public enum PricingTypesEnum
             {
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
-                PRICINGTYPECPA,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
-                PRICINGTYPECPC,
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM")]
                 PRICINGTYPECPM,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
-                PRICINGTYPECPMACTIVEVIEW,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
-                PRICINGTYPEFLATRATECLICKS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
+                PRICINGTYPECPC,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
+                PRICINGTYPECPA,
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_IMPRESSIONS")]
                 PRICINGTYPEFLATRATEIMPRESSIONS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
+                PRICINGTYPEFLATRATECLICKS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
+                PRICINGTYPECPMACTIVEVIEW,
             }
 
             /// <summary>Allows searching for placement groups by name or ID. Wildcards (*) are allowed. For example,
@@ -15387,22 +15441,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Placement
-        /// group ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.PlacementGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.PlacementGroup body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.PlacementGroup body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.PlacementGroup body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -15412,9 +15463,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Placement group ID.</summary>
+            /// <summary>PlacementGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15459,7 +15510,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -15942,22 +15993,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Placement
-        /// strategy ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.PlacementStrategy body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.PlacementStrategy body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.PlacementStrategy body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.PlacementStrategy body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -15967,9 +16015,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Placement strategy ID.</summary>
+            /// <summary>PlacementStrategy ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16014,7 +16062,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -16139,55 +16187,53 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("placementIds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> PlacementIds { get; set; }
 
-            /// <summary>Tag formats to generate for these placements.
-            ///
-            /// Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.</summary>
+            /// <summary>Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be
+            /// generated for 1x1 placements.</summary>
             [Google.Apis.Util.RequestParameterAttribute("tagFormats", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TagFormatsEnum> TagFormats { get; set; }
 
-            /// <summary>Tag formats to generate for these placements.
-            ///
-            /// Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.</summary>
+            /// <summary>Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be
+            /// generated for 1x1 placements.</summary>
             public enum TagFormatsEnum
             {
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_CLICK_COMMANDS")]
-                PLACEMENTTAGCLICKCOMMANDS,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_ILAYER")]
-                PLACEMENTTAGIFRAMEILAYER,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_STANDARD")]
+                PLACEMENTTAGSTANDARD,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_JAVASCRIPT")]
                 PLACEMENTTAGIFRAMEJAVASCRIPT,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGIFRAMEJAVASCRIPTLEGACY,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCH,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST3,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_ILAYER")]
+                PLACEMENTTAGIFRAMEILAYER,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERNAL_REDIRECT")]
                 PLACEMENTTAGINTERNALREDIRECT,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT")]
+                PLACEMENTTAGJAVASCRIPT,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT")]
                 PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPT,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPTLEGACY,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT")]
                 PLACEMENTTAGINTERSTITIALINTERNALREDIRECT,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT")]
                 PLACEMENTTAGINTERSTITIALJAVASCRIPT,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGINTERSTITIALJAVASCRIPTLEGACY,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT")]
-                PLACEMENTTAGJAVASCRIPT,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGJAVASCRIPTLEGACY,
-                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_STANDARD")]
-                PLACEMENTTAGSTANDARD,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_CLICK_COMMANDS")]
+                PLACEMENTTAGCLICKCOMMANDS,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH")]
+                PLACEMENTTAGINSTREAMVIDEOPREFETCH,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING")]
                 PLACEMENTTAGTRACKING,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING_IFRAME")]
                 PLACEMENTTAGTRACKINGIFRAME,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING_JAVASCRIPT")]
                 PLACEMENTTAGTRACKINGJAVASCRIPT,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3")]
+                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST3,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY")]
+                PLACEMENTTAGIFRAMEJAVASCRIPTLEGACY,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT_LEGACY")]
+                PLACEMENTTAGJAVASCRIPTLEGACY,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY")]
+                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPTLEGACY,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY")]
+                PLACEMENTTAGINTERSTITIALJAVASCRIPTLEGACY,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4")]
+                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4,
             }
 
 
@@ -16447,18 +16493,18 @@ namespace Google.Apis.Dfareporting.v3_4
             /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.</summary>
             public enum CompatibilitiesEnum
             {
-                [Google.Apis.Util.StringValueAttribute("APP")]
-                APP,
-                [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
-                APPINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY")]
                 DISPLAY,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL,
-                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
-                INSTREAMAUDIO,
+                [Google.Apis.Util.StringValueAttribute("APP")]
+                APP,
+                [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
+                APPINTERSTITIAL,
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
                 INSTREAMVIDEO,
+                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
+                INSTREAMAUDIO,
             }
 
             /// <summary>Select only placements that are associated with these content categories.</summary>
@@ -16532,25 +16578,25 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Select only placements with these pricing types.</summary>
             public enum PricingTypesEnum
             {
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
-                PRICINGTYPECPA,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
-                PRICINGTYPECPC,
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM")]
                 PRICINGTYPECPM,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
-                PRICINGTYPECPMACTIVEVIEW,
-                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
-                PRICINGTYPEFLATRATECLICKS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
+                PRICINGTYPECPC,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
+                PRICINGTYPECPA,
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_IMPRESSIONS")]
                 PRICINGTYPEFLATRATEIMPRESSIONS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
+                PRICINGTYPEFLATRATECLICKS,
+                [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
+                PRICINGTYPECPMACTIVEVIEW,
             }
 
             /// <summary>Allows searching for placements by name or ID. Wildcards (*) are allowed. For example,
             /// "placement*2015" will return placements with names like "placement June 2015", "placement May 2015", or
             /// simply "placements 2015". Most of the searches also add wildcards implicitly at the start and the end of
             /// the search string. For example, a search string of "placement" will match placements with name "my
-            /// placement", "placement 2015", or simply "placement".</summary>
+            /// placement", "placement 2015", or simply "placement" .</summary>
             [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SearchString { get; set; }
 
@@ -16828,22 +16874,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Placement
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Placement body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Placement body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Placement>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Placement body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Placement body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -16855,7 +16898,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Placement ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16900,7 +16943,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -17376,14 +17419,14 @@ namespace Google.Apis.Dfareporting.v3_4
 
         }
 
-        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging.</summary>
+        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging .</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging.</summary>
+        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging .</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.ProjectsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -17728,7 +17771,7 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
-        /// name="remarketingListId">Remarketing list ID.</param>
+        /// name="remarketingListId">RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.RemarketingListShare body, long profileId, long remarketingListId)
         {
             return new PatchRequest(service, body, profileId, remarketingListId);
@@ -17752,9 +17795,13 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Remarketing list ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("remarketingListId", Google.Apis.Util.RequestParameterType.Query)]
+            /// <summary>RemarketingList ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("remarketingListId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long RemarketingListId { get; private set; }
+
+            /// <summary>RemarketingListShare ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17778,7 +17825,7 @@ namespace Google.Apis.Dfareporting.v3_4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "userprofiles/{profileId}/remarketingListShares"; }
+                get { return "userprofiles/{profileId}/remarketingLists/{remarketingListId}/remarketingListShares"; }
             }
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -17800,6 +17847,15 @@ namespace Google.Apis.Dfareporting.v3_4
                     {
                         Name = "remarketingListId",
                         IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -18235,22 +18291,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Remarketing
-        /// list ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.RemarketingList body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.RemarketingList body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.RemarketingList body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.RemarketingList body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -18260,9 +18313,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Remarketing list ID.</summary>
+            /// <summary>RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -18307,7 +18360,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -19205,7 +19258,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
         }
 
-        /// <summary>Updates a report. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing report. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">The DFA user profile ID.</param>
         /// <param name="reportId">The ID of the
@@ -19215,7 +19268,7 @@ namespace Google.Apis.Dfareporting.v3_4
             return new PatchRequest(service, body, profileId, reportId);
         }
 
-        /// <summary>Updates a report. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing report. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Report>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -19911,22 +19964,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Site
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Site body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Site body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Site>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Site body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Site body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -19938,7 +19988,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Site ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19983,7 +20033,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -20544,7 +20594,7 @@ namespace Google.Apis.Dfareporting.v3_4
             /// "subaccount*2015" will return objects with names like "subaccount June 2015", "subaccount April 2015",
             /// or simply "subaccount 2015". Most of the searches also add wildcards implicitly at the start and the end
             /// of the search string. For example, a search string of "subaccount" will match objects with name "my
-            /// subaccount", "subaccount 2015", or simply "subaccount".</summary>
+            /// subaccount", "subaccount 2015", or simply "subaccount" .</summary>
             [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SearchString { get; set; }
 
@@ -20670,22 +20720,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Subaccount
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Subaccount body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.Subaccount body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.Subaccount>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Subaccount body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.Subaccount body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -20697,7 +20744,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Subaccount ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -20742,7 +20789,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -21440,22 +21487,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Targeting
-        /// template ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.TargetingTemplate body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.TargetingTemplate body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.TargetingTemplate body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.TargetingTemplate body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -21465,9 +21509,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Targeting template ID.</summary>
+            /// <summary>TargetingTemplate ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -21512,7 +21556,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -22461,22 +22505,19 @@ namespace Google.Apis.Dfareporting.v3_4
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">User role
-        /// ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.UserRole body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_4.Data.UserRole body, long profileId)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_4.Data.UserRole>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.UserRole body, long profileId, long id)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_4.Data.UserRole body, long profileId)
                 : base(service)
             {
                 ProfileId = profileId;
-                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -22486,9 +22527,9 @@ namespace Google.Apis.Dfareporting.v3_4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>User role ID.</summary>
+            /// <summary>UserRole ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Id { get; private set; }
+            public virtual System.Nullable<long> Id { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22533,7 +22574,7 @@ namespace Google.Apis.Dfareporting.v3_4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -22807,7 +22848,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS
         /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
         /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP</summary>
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -22830,7 +22871,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// <summary>Locale of this account. Acceptable values are: - "cs" (Czech) - "de" (German) - "en" (English) -
         /// "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (French) - "it" (Italian) - "ja" (Japanese) - "ko"
         /// (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) -
-        /// "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional)</summary>
+        /// "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional) </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
@@ -22898,9 +22939,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// Campaign Manager require an account permission to be present in the account.</summary>
     public class AccountPermission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Account profiles associated with this account permission.
-        ///
-        /// Possible values are: - "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD"</summary>
+        /// <summary>Account profiles associated with this account permission. Possible values are: -
+        /// "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountProfiles")]
         public virtual System.Collections.Generic.IList<string> AccountProfiles { get; set; } 
 
@@ -23024,12 +23064,12 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// <summary>Locale of the user profile. This is a required field. Acceptable values are: - "cs" (Czech) - "de"
         /// (German) - "en" (English) - "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (French) - "it"
         /// (Italian) - "ja" (Japanese) - "ko" (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
-        /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional)</summary>
+        /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional) </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
         /// <summary>Name of the user profile. This is a required field. Must be less than 64 characters long, must be
-        /// globally unique, and cannot contain whitespace or any of the following characters: "&;"#%,".</summary>
+        /// globally unique, and cannot contain whitespace or any of the following characters: "&;<>"#%,".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -23191,7 +23231,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD,
         /// AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should have
-        /// exactly one creativeAssignment.</summary>
+        /// exactly one creativeAssignment .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRotation")]
         public virtual CreativeRotation CreativeRotation { get; set; } 
 
@@ -23215,8 +23255,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicClickTracker")]
         public virtual System.Nullable<bool> DynamicClickTracker { get; set; } 
 
-        /// <summary>Date and time that this ad should stop serving. Must be later than the start time. This is a
-        /// required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw { get; set; }
 
@@ -23296,8 +23334,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
         public virtual System.Nullable<bool> SslRequired { get; set; } 
 
-        /// <summary>Date and time that this ad should start serving. If creating an ad, this field must be a time in
-        /// the future. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw { get; set; }
 
@@ -23331,7 +23367,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
         public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
 
-        /// <summary>Type of ad. This is a required field on insertion. Note that default ads (AD_SERVING_DEFAULT_AD)
+        /// <summary>Type of ad. This is a required field on insertion. Note that default ads ( AD_SERVING_DEFAULT_AD)
         /// cannot be created directly (see Creative resource).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -23461,7 +23497,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// floodlight configuration ID in order to share that advertiser's floodlight configuration with this
         /// advertiser, so long as: - This advertiser's original floodlight configuration is not already associated with
         /// floodlight activities or floodlight activity groups. - This advertiser's original floodlight configuration
-        /// is not already shared with another advertiser.</summary>
+        /// is not already shared with another advertiser. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationId")]
         public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
 
@@ -23767,11 +23803,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLandingPageId")]
         public virtual System.Nullable<long> DefaultLandingPageId { get; set; } 
 
-        /// <summary>Date on which the campaign will stop running. On insert, the end date must be today or a future
-        /// date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015
-        /// as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The
-        /// hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is
-        /// a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -23810,9 +23841,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nielsenOcrEnabled")]
         public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; } 
 
-        /// <summary>Date on which the campaign starts running. The start date can be any date. The hours, minutes, and
-        /// seconds of the start date should not be set, as doing so will result in an error. This is a required
-        /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -23927,7 +23955,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Time when the object was modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeTime")]
         public virtual string ChangeTimeRaw { get; set; }
 
@@ -24145,7 +24172,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// The URL is computed as follows: - If defaultLandingPage is enabled then the campaign's default landing page
         /// URL is assigned to this field. - If defaultLandingPage is not enabled and a landingPageId is specified then
         /// that landing page's URL is assigned to this field. - If neither of the above cases apply, then the
-        /// customClickThroughUrl is assigned to this field.</summary>
+        /// customClickThroughUrl is assigned to this field. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computedClickThroughUrl")]
         public virtual string ComputedClickThroughUrl { get; set; } 
 
@@ -24734,10 +24761,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or
         /// DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the
         /// VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the VAST standard.
-        /// Applicable to all creative types.
-        ///
-        /// Acceptable values are: - "APP" - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" - "IN_STREAM_AUDIO" - "DISPLAY" -
-        /// "DISPLAY_INTERSTITIAL"</summary>
+        /// Applicable to all creative types. Acceptable values are: - "APP" - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" -
+        /// "IN_STREAM_AUDIO" - "DISPLAY" - "DISPLAY_INTERSTITIAL" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
         public virtual System.Collections.Generic.IList<string> Compatibility { get; set; } 
 
@@ -24965,10 +24990,9 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalFileSize")]
         public virtual System.Nullable<long> TotalFileSize { get; set; } 
 
-        /// <summary>Type of this creative. This is a required field. Applicable to all creative types.
-        ///
-        /// Note: FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use
-        /// DISPLAY as a replacement for these types.</summary>
+        /// <summary>Type of this creative. This is a required field. Applicable to all creative types. *Note:*
+        /// FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY
+        /// as a replacement for these types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -25009,7 +25033,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
 
         /// <summary>Possible alignments for an asset. This is a read-only field. Applicable to the following creative
-        /// types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.</summary>
+        /// types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
         public virtual string Alignment { get; set; } 
 
@@ -25211,8 +25235,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or
         /// removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to audios uploaded by the
         /// user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives. TRANSCODED_AUDIO refers to audios
-        /// transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO
-        /// creatives.</summary>
+        /// transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
@@ -25347,15 +25371,13 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual System.Collections.Generic.IList<CreativeCustomEvent> TimerCustomEvents { get; set; } 
 
         /// <summary>Rules validated during code generation that generated a warning. This is a read-only, auto-
-        /// generated field.
-        ///
-        /// Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" -
-        /// "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" -
+        /// generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" -
+        /// "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" -
         /// "CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" -
         /// "ENABLER_UNSUPPORTED_METHOD_DCM" - "EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" -
         /// "GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" - "MAX_FLASH_VERSION_11" -
         /// "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" -
-        /// "ZIP_INVALID"</summary>
+        /// "ZIP_INVALID" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnedValidationRules")]
         public virtual System.Collections.Generic.IList<string> WarnedValidationRules { get; set; } 
 
@@ -25417,8 +25439,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIdDimensionValue")]
         public virtual DimensionValue CreativeIdDimensionValue { get; set; } 
 
-        /// <summary>Date and time that the assigned creative should stop serving. Must be later than the start
-        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw { get; set; }
 
@@ -25439,7 +25459,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// <summary>Rich media exit overrides for this creative assignment. Applicable when the creative type is any of
         /// the following: - DISPLAY - RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND -
         /// RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING
-        /// - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR</summary>
+        /// - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("richMediaExitOverrides")]
         public virtual System.Collections.Generic.IList<RichMediaExitOverride> RichMediaExitOverrides { get; set; } 
 
@@ -25453,7 +25473,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
         public virtual System.Nullable<bool> SslCompliant { get; set; } 
 
-        /// <summary>Date and time that the assigned creative should start serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw { get; set; }
 
@@ -25485,7 +25504,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     {
         /// <summary>Read-only convenience field representing the actual URL that will be used for this click-through.
         /// The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to
-        /// this field. - Otherwise, the customClickThroughUrl is assigned to this field.</summary>
+        /// this field. - Otherwise, the customClickThroughUrl is assigned to this field. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computedClickThroughUrl")]
         public virtual string ComputedClickThroughUrl { get; set; } 
 
@@ -26177,7 +26196,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Represents a date range.</summary>
     public class DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The end date of the date range, inclusive. A string of the format: "yyyy-MM-dd".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -26189,7 +26207,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
         public virtual string RelativeDateRange { get; set; } 
 
-        /// <summary>The start date of the date range, inclusive. A string of the format: "yyyy-MM-dd".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -26200,10 +26217,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Day Part Targeting.</summary>
     public class DayPartTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Days of the week when the ad will serve.
-        ///
-        /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" - "THURSDAY" - "FRIDAY" -
-        /// "SATURDAY"</summary>
+        /// <summary>Days of the week when the ad will serve. Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" -
+        /// "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
         public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; } 
 
@@ -26424,8 +26439,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
         public virtual string DimensionName { get; set; } 
 
-        /// <summary>The end date of the date range for which to retrieve dimension values. A string of the format
-        /// "yyyy-MM-dd".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -26433,12 +26446,10 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<DimensionFilter> Filters { get; set; } 
 
-        /// <summary>The kind of request this is, in this case dfareporting#dimensionValueRequest.</summary>
+        /// <summary>The kind of request this is, in this case dfareporting#dimensionValueRequest .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The start date of the date range for which to retrieve dimension values. A string of the format
-        /// "yyyy-MM-dd".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -26459,17 +26470,13 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
         public virtual DimensionValue IdDimensionValue { get; set; } 
 
-        /// <summary>Tag types for regular placements.
-        ///
-        /// Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE" - "INTERNAL_REDIRECT_INPAGE" -
-        /// "JAVASCRIPT_INPAGE"</summary>
+        /// <summary>Tag types for regular placements. Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE"
+        /// - "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inpageTagFormats")]
         public virtual System.Collections.Generic.IList<string> InpageTagFormats { get; set; } 
 
-        /// <summary>Tag types for interstitial placements.
-        ///
-        /// Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" - "INTERNAL_REDIRECT_INTERSTITIAL" -
-        /// "JAVASCRIPT_INTERSTITIAL"</summary>
+        /// <summary>Tag types for interstitial placements. Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" -
+        /// "INTERNAL_REDIRECT_INTERSTITIAL" - "JAVASCRIPT_INTERSTITIAL" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interstitialTagFormats")]
         public virtual System.Collections.Generic.IList<string> InterstitialTagFormats { get; set; } 
 
@@ -26695,7 +26702,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual string SiteFilterType { get; set; } 
 
         /// <summary>Filter list of site IDs associated with this event tag. The siteFilterType determines whether this
-        /// is a whitelist or blacklist filter.</summary>
+        /// is a allowlist or blocklist filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> SiteIds { get; set; } 
 
@@ -26798,6 +26805,12 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
+        public virtual MediaRequestInfo MediaRequestInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
+        public virtual MediaResponseInfo MediaResponseInfo { get; set; } 
+
         /// <summary>The ID of the report this file was generated from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportId")]
         public virtual System.Nullable<long> ReportId { get; set; } 
@@ -26853,7 +26866,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Flight</summary>
     public class Flight : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inventory item flight end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -26861,7 +26873,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCost")]
         public virtual System.Nullable<long> RateOrCost { get; set; } 
 
-        /// <summary>Inventory item flight start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -27043,13 +27054,13 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the
         /// activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8
-        /// characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique
-        /// among activities of the same activity group. This field is read-only after insertion.</summary>
+        /// characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among
+        /// activities of the same activity group. This field is read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagString")]
         public virtual string TagString { get; set; } 
 
         /// <summary>List of the user-defined variables used by this conversion tag. These map to the "u[1-100]=" in the
-        /// tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive.</summary>
+        /// tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedVariableTypes")]
         public virtual System.Collections.Generic.IList<string> UserDefinedVariableTypes { get; set; } 
 
@@ -27129,9 +27140,9 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>Value of the type= parameter in the floodlight tag, which the ad servers use to identify the
         /// activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated
-        /// for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ].
-        /// This tag string must also be unique among activity groups of the same floodlight configuration. This field
-        /// is read-only after insertion.</summary>
+        /// for you. This string must be 1 to 8 characters long, with valid characters being a-z0-9[ _ ]. This tag
+        /// string must also be unique among activity groups of the same floodlight configuration. This field is read-
+        /// only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagString")]
         public virtual string TagString { get; set; } 
 
@@ -27747,6 +27758,98 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Extra information added to operations that support Scotty media requests.</summary>
+    public class MediaRequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of current bytes uploaded or downloaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentBytes")]
+        public virtual System.Nullable<long> CurrentBytes { get; set; } 
+
+        /// <summary>Data to be copied to backend requests. Custom data is returned to Scotty in the agent_state field,
+        /// which Scotty will then provide in subsequent upload notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
+        public virtual string CustomData { get; set; } 
+
+        /// <summary>Set if the http request info is diff encoded. The value of this field is the version number of the
+        /// base revision. This is corresponding to Apiary's mediaDiffObjectVersion
+        /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java). See go/esf-
+        /// scotty-diff-upload for more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffObjectVersion")]
+        public virtual string DiffObjectVersion { get; set; } 
+
+        /// <summary>The type of notification received from Scotty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
+        public virtual string NotificationType { get; set; } 
+
+        /// <summary>The Scotty request ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
+
+        /// <summary>The total size of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
+        public virtual System.Nullable<long> TotalBytes { get; set; } 
+
+        /// <summary>Whether the total bytes field contains an estimated data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesIsEstimated")]
+        public virtual System.Nullable<bool> TotalBytesIsEstimated { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message is for backends to pass their scotty media specific fields to ESF. Backend will include
+    /// this in their response message to ESF. Example: ExportFile is an rpc defined for upload using scotty from ESF.
+    /// rpc ExportFile(ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse will include
+    /// apiserving.MediaResponseInfo to tell ESF about data like dynamic_dropzone it needs to pass to Scotty. message
+    /// ExportFileResponse { optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo media_response_info =
+    /// 2 }</summary>
+    public class MediaResponseInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data to copy from backend response to the next backend requests. Custom data is returned to Scotty
+        /// in the agent_state field, which Scotty will then provide in subsequent upload notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
+        public virtual string CustomData { get; set; } 
+
+        /// <summary>Specifies any transformation to be applied to data before persisting it or retrieving from storage.
+        /// E.g., encryption options for blobstore2. This should be of the form
+        /// uploader_service.DataStorageTransform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageTransform")]
+        public virtual string DataStorageTransform { get; set; } 
+
+        /// <summary>Specifies the Scotty Drop Target to use for uploads. If present in a media response, Scotty does
+        /// not upload to a standard drop zone. Instead, Scotty saves the upload directly to the location specified in
+        /// this drop target. Unlike drop zones, the drop target is the final storage location for an upload. So, the
+        /// agent does not need to clone the blob at the end of the upload. The agent is responsible for garbage
+        /// collecting any orphaned blobs that may occur due to aborted uploads. For more information, see the drop
+        /// target design doc here: http://goto/ScottyDropTarget This field will be preferred to dynamicDropzone. If
+        /// provided, the identified field in the response must be of the type uploader.agent.DropTarget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropTarget")]
+        public virtual string DynamicDropTarget { get; set; } 
+
+        /// <summary>Specifies the Scotty dropzone to use for uploads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropzone")]
+        public virtual string DynamicDropzone { get; set; } 
+
+        /// <summary>Request class to use for all Blobstore operations for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestClass")]
+        public virtual string RequestClass { get; set; } 
+
+        /// <summary>Specifies the TrafficClass that Scotty should use for any RPCs to fetch the response bytes. Will
+        /// override the traffic class GTOS of the incoming http request. This is a temporary field to facilitate
+        /// whitelisting and experimentation by the bigstore agent only. For instance, this does not apply to RTMP
+        /// reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficClassField")]
+        public virtual string TrafficClassField { get; set; } 
+
+        /// <summary>Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-Hash
+        /// header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyHashFromHeader")]
+        public virtual System.Nullable<bool> VerifyHashFromHeader { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a metric.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28259,7 +28362,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdInfo")]
         public virtual LastModifiedInfo CreatedInfo { get; set; } 
 
-        /// <summary>Effective date of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
         public virtual string EffectiveDate { get; set; } 
 
@@ -28276,7 +28378,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastSentRecipients")]
         public virtual System.Collections.Generic.IList<string> LastSentRecipients { get; set; } 
 
-        /// <summary>Timestamp of the last email sent with this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSentTime")]
         public virtual string LastSentTimeRaw { get; set; }
 
@@ -28651,7 +28752,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" -
         /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" -
         /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME"
-        /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"</summary>
+        /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagFormats")]
         public virtual System.Collections.Generic.IList<string> TagFormats { get; set; } 
 
@@ -28673,10 +28774,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual VideoSettings VideoSettings { get; set; } 
 
         /// <summary>VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will
-        /// use for in-stream video creatives assigned to this placement.
-        ///
-        /// Note: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided:
-        /// FLASH, BOTH.</summary>
+        /// use for in-stream video creatives assigned to this placement. *Note:* Flash is no longer supported. This
+        /// field now defaults to HTML5 when the following values are provided: FLASH, BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoice")]
         public virtual string VpaidAdapterChoice { get; set; } 
 
@@ -29085,7 +29184,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capCostType")]
         public virtual string CapCostType { get; set; } 
 
-        /// <summary>End date of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -29107,7 +29205,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
         public virtual string PricingType { get; set; } 
 
-        /// <summary>Start date of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -29122,10 +29219,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capCostOption")]
         public virtual string CapCostOption { get; set; } 
 
-        /// <summary>Placement end date. This date must be later than, or the same day as, the placement start date, but
-        /// not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates,
-        /// the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end
-        /// date should not be set, as doing so will result in an error. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -29147,14 +29240,9 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
         public virtual string PricingType { get; set; } 
 
-        /// <summary>Placement start date. This date must be later than, or the same day as, the campaign start date.
-        /// The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error.
-        /// This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
-        /// <summary>Testing start date of this placement. The hours, minutes, and seconds of the start date should not
-        /// be set, as doing so will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingStartDate")]
         public virtual string TestingStartDate { get; set; } 
 
@@ -29165,11 +29253,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Pricing Period</summary>
     public class PricingSchedulePricingPeriod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Pricing period end date. This date must be later than, or the same day as, the pricing period start
-        /// date, but not later than the placement end date. The period end date can be the same date as the period
-        /// start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period
-        /// date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as
-        /// doing so will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -29182,9 +29265,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCostNanos")]
         public virtual System.Nullable<long> RateOrCostNanos { get; set; } 
 
-        /// <summary>Pricing period start date. This date must be later than, or the same day as, the placement start
-        /// date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an
-        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -29229,7 +29309,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientName")]
         public virtual string ClientName { get; set; } 
 
-        /// <summary>End date of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; } 
 
@@ -29253,7 +29332,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual string Overview { get; set; } 
 
-        /// <summary>Start date of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
@@ -29959,7 +30037,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
             public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
 
-            /// <summary>The list of names of  Reach By Frequency metrics the report should include.</summary>
+            /// <summary>The list of names of Reach By Frequency metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reachByFrequencyMetricNames")]
             public virtual System.Collections.Generic.IList<string> ReachByFrequencyMetricNames { get; set; } 
 
@@ -29978,13 +30056,12 @@ namespace Google.Apis.Dfareporting.v3_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("every")]
             public virtual System.Nullable<int> Every { get; set; } 
 
-            /// <summary>The expiration date when the scheduled report stops running.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
             public virtual string ExpirationDate { get; set; } 
 
             /// <summary>The interval for which the report is repeated. Note: - "DAILY" also requires field "every" to
             /// be set. - "WEEKLY" also requires fields "every" and "repeatsOnWeekDays" to be set. - "MONTHLY" also
-            /// requires fields "every" and "runsOnDayOfMonth" to be set.</summary>
+            /// requires fields "every" and "runsOnDayOfMonth" to be set. </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("repeats")]
             public virtual string Repeats { get; set; } 
 
@@ -29999,7 +30076,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("runsOnDayOfMonth")]
             public virtual string RunsOnDayOfMonth { get; set; } 
 
-            /// <summary>Start date of date range for which scheduled reports should be run.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
             public virtual string StartDate { get; set; } 
 
@@ -30071,18 +30147,16 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
 
         /// <summary>Report generation time zone ID of this account. This is a required field that can only be changed
-        /// by a superuser. Acceptable values are:
-        ///
-        /// - "1" for "America/New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" - "4" for
-        /// "Africa/Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "Asia/Hong_Kong" - "8"
-        /// for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for "Asia/Dubai" - "11" for "America/Los_Angeles" -
-        /// "12" for "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for
-        /// "America/Chicago" - "18" for "America/Denver" - "19" for "America/St_Johns" - "20" for "Asia/Dhaka" - "21"
-        /// for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for "Asia/Calcutta" - "25" for
-        /// "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for
-        /// "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31" for
-        /// "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
-        /// "Pacific/Tongatapu"</summary>
+        /// by a superuser. Acceptable values are: - "1" for "America/New_York" - "2" for "Europe/London" - "3" for
+        /// "Europe/Paris" - "4" for "Africa/Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7"
+        /// for "Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for "Asia/Dubai" - "11" for
+        /// "America/Los_Angeles" - "12" for "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for
+        /// "America/Asuncion" - "17" for "America/Chicago" - "18" for "America/Denver" - "19" for "America/St_Johns" -
+        /// "20" for "Asia/Dhaka" - "21" for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for
+        /// "Asia/Calcutta" - "25" for "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" -
+        /// "28" for "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31"
+        /// for "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
+        /// "Pacific/Tongatapu" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportGenerationTimeZoneId")]
         public virtual System.Nullable<long> ReportGenerationTimeZoneId { get; set; } 
 
@@ -30291,10 +30365,9 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement.
         /// Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the
         /// placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the
-        /// adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).
-        ///
-        /// Note: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided:
-        /// FLASH, BOTH.</summary>
+        /// adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter). *Note:* Flash is
+        /// no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH,
+        /// BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoiceTemplate")]
         public virtual string VpaidAdapterChoiceTemplate { get; set; } 
 
@@ -30929,7 +31002,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     }    
 
     /// <summary>A UserProfile resource lets you list all DFA user profiles that are associated with a Google user
-    /// account. The profile_id needs to be specified in other API requests. </summary>
+    /// account. The profile_id needs to be specified in other API requests. </summary>
     public class UserProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The account ID to which this profile belongs.</summary>

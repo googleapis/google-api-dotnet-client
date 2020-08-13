@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -592,8 +592,8 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
-            /// their values must be specified with array notation. `project``_``id` is required.  `job_names` and
-            /// `job_statuses` are optional.  The valid values for `job_statuses` are case-insensitive: ENABLED,
+            /// their values must be specified with array notation. `project``_``id` is required. `job_names` and
+            /// `job_statuses` are optional. The valid values for `job_statuses` are case-insensitive: ENABLED,
             /// DISABLED, and DELETED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -662,10 +662,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating a job's schedule is not allowed.
-        ///
-        /// **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to
-        /// DELETED, DISABLED, or ENABLED).</summary>
+        /// running already. Updating a job's schedule is not allowed. **Note:** The job's status field can be modified
+        /// using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="jobName">Required. The name of job to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.UpdateTransferJobRequest body, string jobName)
@@ -674,10 +672,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating a job's schedule is not allowed.
-        ///
-        /// **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to
-        /// DELETED, DISABLED, or ENABLED).</summary>
+        /// running already. Updating a job's schedule is not allowed. **Note:** The job's status field can be modified
+        /// using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).</summary>
         public class PatchRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.TransferJob>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -755,24 +751,17 @@ namespace Google.Apis.Storagetransfer.v1
 
 
         /// <summary>Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or
-        /// if the operation completed despite the `cancel` request.
-        ///
-        /// When you cancel an operation, the currently running transfer is interrupted.  For recurring transfer jobs,
-        /// the next instance of the transfer job will still run.  For example, if your job is configured to run every
-        /// day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job
-        /// will still be attempted on Tuesday.
-        ///
-        /// This applies only to currently running operations. If an operation is not currently running, `cancel` does
-        /// nothing.
-        ///
-        /// Caution: Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the
-        /// state at both the destination and the source after the `cancel` request completes so that your data is in a
-        /// consistent state.
-        ///
-        /// When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For
-        /// instance, if you run a job every day, and today's job found 10 new files and transferred five files before
-        /// you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were
-        /// not copied today plus any new files discovered tomorrow.</summary>
+        /// if the operation completed despite the `cancel` request. When you cancel an operation, the currently running
+        /// transfer is interrupted. For recurring transfer jobs, the next instance of the transfer job will still run.
+        /// For example, if your job is configured to run every day at 1pm and you cancel Monday's operation at 1:05pm,
+        /// Monday's transfer will stop. However, a transfer job will still be attempted on Tuesday. This applies only
+        /// to currently running operations. If an operation is not currently running, `cancel` does nothing. *Caution:*
+        /// Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the state at
+        /// both the destination and the source after the `cancel` request completes so that your data is in a
+        /// consistent state. When you cancel a job, the next job computes a delta of files and may repair any
+        /// inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and
+        /// transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta
+        /// with the five files that were not copied today plus any new files discovered tomorrow.</summary>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(string name)
         {
@@ -780,24 +769,17 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or
-        /// if the operation completed despite the `cancel` request.
-        ///
-        /// When you cancel an operation, the currently running transfer is interrupted.  For recurring transfer jobs,
-        /// the next instance of the transfer job will still run.  For example, if your job is configured to run every
-        /// day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job
-        /// will still be attempted on Tuesday.
-        ///
-        /// This applies only to currently running operations. If an operation is not currently running, `cancel` does
-        /// nothing.
-        ///
-        /// Caution: Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the
-        /// state at both the destination and the source after the `cancel` request completes so that your data is in a
-        /// consistent state.
-        ///
-        /// When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For
-        /// instance, if you run a job every day, and today's job found 10 new files and transferred five files before
-        /// you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were
-        /// not copied today plus any new files discovered tomorrow.</summary>
+        /// if the operation completed despite the `cancel` request. When you cancel an operation, the currently running
+        /// transfer is interrupted. For recurring transfer jobs, the next instance of the transfer job will still run.
+        /// For example, if your job is configured to run every day at 1pm and you cancel Monday's operation at 1:05pm,
+        /// Monday's transfer will stop. However, a transfer job will still be attempted on Tuesday. This applies only
+        /// to currently running operations. If an operation is not currently running, `cancel` does nothing. *Caution:*
+        /// Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the state at
+        /// both the destination and the source after the `cancel` request completes so that your data is in a
+        /// consistent state. When you cancel a job, the next job computes a delta of files and may repair any
+        /// inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and
+        /// transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta
+        /// with the five files that were not copied today plus any new files discovered tomorrow.</summary>
         public class CancelRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -850,7 +832,7 @@ namespace Google.Apis.Storagetransfer.v1
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -858,7 +840,7 @@ namespace Google.Apis.Storagetransfer.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Operation>
         {
@@ -1231,13 +1213,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
     /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent:
-    ///
-    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
-    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
-    /// a credit card expiration date
-    ///
-    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
+    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
+    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
@@ -1258,11 +1237,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1296,10 +1273,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
         public virtual System.Nullable<long> ErrorCount { get; set; } 
 
-        /// <summary>Error samples.
-        ///
-        /// At most 5 error log entries will be recorded for a given error code for a single transfer
-        /// operation.</summary>
+        /// <summary>Error samples. At most 5 error log entries will be recorded for a given error code for a single
+        /// transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogEntries")]
         public virtual System.Collections.Generic.IList<ErrorLogEntry> ErrorLogEntries { get; set; } 
 
@@ -1332,44 +1307,27 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An HttpData resource specifies a list of objects on the web to be transferred over HTTP.  The
+    /// <summary>An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The
     /// information of the objects to be transferred is contained in a file referenced by a URL. The first line in the
-    /// file must be `"TsvHttpData-1.0"`, which specifies the format of the file.  Subsequent lines specify the
+    /// file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the
     /// information of the list of objects, one object per list entry. Each entry has the following tab-delimited
-    /// fields:
-    ///
-    /// * **HTTP URL** — The location of the object.
-    ///
-    /// * **Length** — The size of the object in bytes.
-    ///
-    /// * **MD5** — The base64-encoded MD5 hash of the object.
-    ///
-    /// For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-
-    /// transfer/docs/create-url-list).
-    ///
-    /// When transferring data based on a URL list, keep the following in mind:
-    ///
-    /// * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at
-    /// the data sink is `/`.
-    ///
-    /// * If the specified size of an object does not match the actual size of the object fetched, the object will not
-    /// be transferred.
-    ///
-    /// * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will
-    /// fail. For more information, see [Generating MD5 hashes](https://cloud.google.com/storage-transfer/docs/create-
-    /// url-list#md5)
-    ///
-    /// * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an
-    /// object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
-    ///
-    /// * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range`
-    /// requests and to return a `Content-Length` header in each response.
-    ///
-    /// * ObjectConditions have no effect when filtering objects to transfer.</summary>
+    /// fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** —
+    /// The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from
+    /// URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL
+    /// list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a
+    /// data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match
+    /// the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match
+    /// the MD5 computed from the transferred bytes, the object transfer will fail. For more information, see
+    /// [Generating MD5 hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5) * Ensure that each
+    /// URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly]
+    /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+    /// Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a
+    /// `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to
+    /// transfer.</summary>
     public class HttpData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The URL that points to the file that stores the object list entries. This file must allow
-        /// public access.  Currently, only URLs with HTTP and HTTPS schemes are supported.</summary>
+        /// public access. Currently, only URLs with HTTP and HTTPS schemes are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
         public virtual string ListUrl { get; set; } 
 
@@ -1408,14 +1366,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }    
 
     /// <summary>Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to
-    /// the customer-provided topic using the following `PubsubMessage.attributes`:
-    ///
-    /// * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values *
-    /// `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the
-    /// `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation`
-    ///
-    /// The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified
-    /// `PayloadFormat`.</summary>
+    /// the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the
+    /// EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the
+    /// `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` *
+    /// `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a
+    /// TransferOperation resource formatted according to the specified `PayloadFormat`.</summary>
     public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Event types for which a notification is desired. If empty, send notifications for all event
@@ -1438,46 +1393,30 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }    
 
     /// <summary>Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as
-    /// S3, Azure, and Cloud Storage.
-    ///
-    /// The "last modification time" refers to the time of the last change to the object's content or metadata —
-    /// specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects,
-    /// and the `Last-Modified` header of Azure blobs.</summary>
+    /// S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's
+    /// content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified`
+    /// field of S3 objects, and the `Last-Modified` header of Azure blobs.</summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>`exclude_prefixes` must follow the requirements described for include_prefixes.
-        ///
-        /// The max size of `exclude_prefixes` is 1000.</summary>
+        /// <summary>`exclude_prefixes` must follow the requirements described for include_prefixes. The max size of
+        /// `exclude_prefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludePrefixes")]
         public virtual System.Collections.Generic.IList<string> ExcludePrefixes { get; set; } 
 
         /// <summary>If `include_prefixes` is specified, objects that satisfy the object conditions must have names that
         /// start with one of the `include_prefixes` and that do not start with any of the exclude_prefixes. If
         /// `include_prefixes` is not specified, all objects except those that have names starting with one of the
-        /// `exclude_prefixes` must satisfy the object conditions.
-        ///
-        /// Requirements:
-        ///
-        /// * Each include-prefix and exclude-prefix can contain any sequence of Unicode characters, to a max length of
-        /// 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters.  Wildcard
-        /// matching and regular expression matching are not supported.
-        ///
-        /// * Each include-prefix and exclude-prefix must omit the leading slash. For example, to include the
-        /// `requests.gz` object in a transfer from `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include
-        /// prefix as `logs/y=2015/requests.gz`.
-        ///
-        /// * None of the include-prefix or the exclude-prefix values can be empty, if specified.
-        ///
-        /// * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a
-        /// prefix of another include-prefix.
-        ///
-        /// * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a
-        /// prefix of another exclude-prefix.
-        ///
-        /// * If `include_prefixes` is specified, then each exclude-prefix must start with the value of a path
-        /// explicitly included by `include_prefixes`.
-        ///
-        /// The max size of `include_prefixes` is 1000.</summary>
+        /// `exclude_prefixes` must satisfy the object conditions. Requirements: * Each include-prefix and exclude-
+        /// prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and
+        /// must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching
+        /// are not supported. * Each include-prefix and exclude-prefix must omit the leading slash. For example, to
+        /// include the `requests.gz` object in a transfer from `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify
+        /// the include prefix as `logs/y=2015/requests.gz`. * None of the include-prefix or the exclude-prefix values
+        /// can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace.
+        /// No include-prefix may be a prefix of another include-prefix. * Each exclude-prefix must exclude a distinct
+        /// portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If
+        /// `include_prefixes` is specified, then each exclude-prefix must start with the value of a path explicitly
+        /// included by `include_prefixes`. The max size of `include_prefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; } 
 
@@ -1487,32 +1426,23 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual object LastModifiedBefore { get; set; } 
 
         /// <summary>If specified, only objects with a "last modification time" on or after this timestamp and objects
-        /// that don't have a "last modification time" are transferred.
-        ///
-        /// The `last_modified_since` and `last_modified_before` fields can be used together for chunked data
-        /// processing. For example, consider a script that processes each day's worth of data at a time. For that you'd
-        /// set each of the fields as follows:
-        ///
-        /// *  `last_modified_since` to the start of the day
-        ///
-        /// *  `last_modified_before` to the end of the day</summary>
+        /// that don't have a "last modification time" are transferred. The `last_modified_since` and
+        /// `last_modified_before` fields can be used together for chunked data processing. For example, consider a
+        /// script that processes each day's worth of data at a time. For that you'd set each of the fields as follows:
+        /// * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedSince")]
         public virtual object LastModifiedSince { get; set; } 
 
         /// <summary>If specified, only objects with a "last modification time" on or after `NOW` -
         /// `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
-        /// transferred.
-        ///
-        /// For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
+        /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
         /// `TransferOperation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
         public virtual object MaxTimeElapsedSinceLastModification { get; set; } 
 
         /// <summary>If specified, only objects with a "last modification time" before `NOW` -
         /// `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
-        /// transferred.
-        ///
-        /// For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
+        /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
         /// `TransferOperation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; } 
@@ -1544,11 +1474,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1574,38 +1504,29 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run
-        /// once per 24 hours within the following guidelines:
-        ///
-        /// *   If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the
-        /// transfer is executed only one time. *   If `schedule_end_date` is later than `schedule_start_date`  and
-        /// `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through
-        /// `schedule_end_date`.</summary>
+        /// once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the
+        /// same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is
+        /// later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run
+        /// each day at start_time_of_day through `schedule_end_date`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndDate")]
         public virtual Date ScheduleEndDate { get; set; } 
 
         /// <summary>Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If
         /// `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the
-        /// transfer starts the day after you schedule the transfer request.
-        ///
-        /// **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than
-        /// expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and
-        /// the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with
-        /// `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled
-        /// TransferOperation will take place on June 3 at midnight UTC.</summary>
+        /// transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near
+        /// midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound
+        /// request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the
+        /// request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a
+        /// `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at
+        /// midnight UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartDate")]
         public virtual Date ScheduleStartDate { get; set; } 
 
         /// <summary>The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time.
-        ///
-        /// If `start_time_of_day` is not specified:
-        ///
-        /// *   One-time transfers run immediately. *   Recurring transfers run immediately, and each day at midnight
-        /// UTC, through schedule_end_date.
-        ///
-        /// If `start_time_of_day` is specified:
-        ///
-        /// *   One-time transfers run at the specified time. *   Recurring transfers run at the specified time each
-        /// day, through `schedule_end_date`.</summary>
+        /// If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run
+        /// immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: *
+        /// One-time transfers run at the specified time. * Recurring transfers run at the specified time each day,
+        /// through `schedule_end_date`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOfDay")]
         public virtual TimeOfDay StartTimeOfDay { get; set; } 
 
@@ -1615,9 +1536,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1625,8 +1545,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1763,16 +1683,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
         public virtual object LastModificationTime { get; set; } 
 
-        /// <summary>A unique name (within the transfer project) assigned when the job is created.  If this field is
+        /// <summary>A unique name (within the transfer project) assigned when the job is created. If this field is
         /// empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the
-        /// specified name is used as the unique name for this job.
-        ///
-        /// If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error.
-        ///
-        /// This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more
-        /// than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
-        ///
-        /// Invalid job names will fail with an INVALID_ARGUMENT error.</summary>
+        /// specified name is used as the unique name for this job. If the specified name is in use by a job, the
+        /// creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and
+        /// end with a letter or a number, and should be no more than 128 characters. Example:
+        /// `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1788,11 +1705,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual Schedule Schedule { get; set; } 
 
-        /// <summary>Status of the job. This value MUST be specified for `CreateTransferJobRequests`.
-        ///
-        /// **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you
-        /// change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the
-        /// status change would not affect the current operation.</summary>
+        /// <summary>Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The
+        /// effect of the new job status takes place during a subsequent job run. For example, if you change the job
+        /// status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change
+        /// would not affect the current operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -1854,15 +1770,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>TransferOptions define the actions to be performed on objects in a transfer.</summary>
     public class TransferOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether objects should be deleted from the source after they are transferred to the sink.
-        ///
-        /// **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.</summary>
+        /// <summary>Whether objects should be deleted from the source after they are transferred to the sink. **Note:**
+        /// This option and delete_objects_unique_in_sink are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsFromSourceAfterTransfer")]
         public virtual System.Nullable<bool> DeleteObjectsFromSourceAfterTransfer { get; set; } 
 
-        /// <summary>Whether objects that exist only in the sink should be deleted.
-        ///
-        /// **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.</summary>
+        /// <summary>Whether objects that exist only in the sink should be deleted. **Note:** This option and
+        /// delete_objects_from_source_after_transfer are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; } 
 
@@ -1898,7 +1812,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual HttpData HttpDataSource { get; set; } 
 
         /// <summary>Only objects that satisfy these object conditions are included in the set of data source and data
-        /// sink objects.  Object conditions based on objects' "last modification time" do not exclude objects in a data
+        /// sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data
         /// sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; } 
@@ -1920,13 +1834,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ProjectId { get; set; } 
 
         /// <summary>Required. The job to update. `transferJob` is expected to specify only four fields: description,
-        /// transfer_spec, notification_config, and status.  An `UpdateTransferJobRequest` that specifies other fields
+        /// transfer_spec, notification_config, and status. An `UpdateTransferJobRequest` that specifies other fields
         /// will be rejected with the error INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; } 
 
-        /// <summary>The field mask of the fields in `transferJob` that are to be updated in this request.  Fields in
-        /// `transferJob` that can be updated are: description, transfer_spec, notification_config, and status.  To
+        /// <summary>The field mask of the fields in `transferJob` that are to be updated in this request. Fields in
+        /// `transferJob` that can be updated are: description, transfer_spec, notification_config, and status. To
         /// update the `transfer_spec` of the job, a complete transfer specification must be provided. An incomplete
         /// specification missing any required fields will be rejected with the error INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransferJobFieldMask")]

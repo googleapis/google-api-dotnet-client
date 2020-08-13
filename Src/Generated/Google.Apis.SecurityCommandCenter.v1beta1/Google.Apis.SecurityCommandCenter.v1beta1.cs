@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Security Command Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200806 (2044)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -2984,6 +2984,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// from the SecurityMarks resource that belongs to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; } 
+
+        /// <summary>The severity of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
 
         /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
         /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter

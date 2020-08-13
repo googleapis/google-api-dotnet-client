@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Policy Troubleshooter API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200805 (2043)
+ *      <tr><th>API Rev<td>20200809 (2047)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>

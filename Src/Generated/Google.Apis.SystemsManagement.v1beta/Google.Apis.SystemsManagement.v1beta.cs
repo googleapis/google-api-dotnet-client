@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -396,11 +396,9 @@ namespace Google.Apis.SystemsManagement.v1beta
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Required. The logical name of the guest policy in the project with the following
-                /// restrictions:
-                ///
-                /// * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be
-                /// between 1-63 characters. * Must end with a number or a letter. * Must be unique within the
-                /// project.</summary>
+                /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
+                /// letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique
+                /// within the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("guestPolicyId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GuestPolicyId { get; set; }
 
@@ -457,7 +455,7 @@ namespace Google.Apis.SystemsManagement.v1beta
             }
 
             /// <summary>Delete an OS Config guest policy.</summary>
-            /// <param name="name">Required. The resource name of the guest policy  using one of the following forms:
+            /// <param name="name">Required. The resource name of the guest policy using one of the following forms:
             /// `projects/{project_number}/guestPolicies/{guest_policy_id}`.</param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -476,7 +474,7 @@ namespace Google.Apis.SystemsManagement.v1beta
                 }
 
 
-                /// <summary>Required. The resource name of the guest policy  using one of the following forms:
+                /// <summary>Required. The resource name of the guest policy using one of the following forms:
                 /// `projects/{project_number}/guestPolicies/{guest_policy_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1148,7 +1146,7 @@ namespace Google.Apis.SystemsManagement.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>The maximum number of instance details records to return.  Default is 100.</summary>
+                    /// <summary>The maximum number of instance details records to return. Default is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1702,10 +1700,9 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An assignment represents the group or groups of VM instances that the policy applies to.
-    ///
-    /// If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all
-    /// the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those
+    /// <summary>An assignment represents the group or groups of VM instances that the policy applies to. If an
+    /// assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the
+    /// criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those
     /// labels and in those zones.</summary>
     public class Assignment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1714,33 +1711,26 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupLabels")]
         public virtual System.Collections.Generic.IList<AssignmentGroupLabel> GroupLabels { get; set; } 
 
-        /// <summary>Targets VM instances whose name starts with one of these prefixes.
-        ///
-        /// Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-".
-        ///
-        /// Only supported for project-level policies.</summary>
+        /// <summary>Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way
+        /// to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level
+        /// policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNamePrefixes")]
         public virtual System.Collections.Generic.IList<string> InstanceNamePrefixes { get; set; } 
 
         /// <summary>Targets any of the instances specified. Instances are specified by their URI in the form
-        /// `zones/[ZONE]/instances/[INSTANCE_NAME]`.
-        ///
-        /// Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or
-        /// to target specific VM instances for development and testing.
-        ///
-        /// Only supported for project-level policies and must reference instances within this project.</summary>
+        /// `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the
+        /// management of changes by the instance or to target specific VM instances for development and testing. Only
+        /// supported for project-level policies and must reference instances within this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
-        /// <summary>Targets VM instances matching at least one of the following OS types.
-        ///
-        /// VM instances must match all supplied criteria for a given OsType to be included.</summary>
+        /// <summary>Targets VM instances matching at least one of the following OS types. VM instances must match all
+        /// supplied criteria for a given OsType to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osTypes")]
         public virtual System.Collections.Generic.IList<AssignmentOsType> OsTypes { get; set; } 
 
-        /// <summary>Targets instances in any of these zones. Leave empty to target instances in any zone.
-        ///
-        /// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.</summary>
+        /// <summary>Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal
+        /// targeting is uncommon and is supported to facilitate the management of changes by zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
 
@@ -1854,11 +1844,9 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2019,9 +2007,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     /// <summary>A remote or local file.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defaults to false. When false, files will be subject to validations based on the file type:
-        ///
-        /// Remote: A checksum must be specified. GCS:    An object generation number must be specified.</summary>
+        /// <summary>Defaults to false. When false, files will be subject to validations based on the file type: Remote:
+        /// A checksum must be specified. GCS: An object generation number must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowInsecure")]
         public virtual System.Nullable<bool> AllowInsecure { get; set; } 
 
@@ -2094,10 +2081,9 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         /// <summary>Consists of three octal digits which represent, in order, the permissions of the owner, group, and
         /// other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit
         /// represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to
-        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755.
-        ///
-        /// Below are some examples of permissions and their associated values: read, write, and execute: 7 read and
-        /// execute: 5 read and write: 6 read only: 4</summary>
+        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are
+        /// some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5
+        /// read and write: 6 read only: 4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual string Permissions { get; set; } 
 
@@ -2175,13 +2161,11 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     public class GuestPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Specifies the VM instances that are assigned to this policy. This allows you to target
-        /// sets or groups of VM instances by different parameters such as labels, names, OS, or zones.
-        ///
-        /// If left empty, all VM instances underneath this policy are targeted.
-        ///
-        /// At the same level in the resource hierarchy (that is within a project), the service prevents the creation of
-        /// multiple policies that conflict with each other. For more information, see how the service [handles
-        /// assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).</summary>
+        /// sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty,
+        /// all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is
+        /// within a project), the service prevents the creation of multiple policies that conflict with each other. For
+        /// more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management
+        /// /create-guest-policy#handle-conflicts).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
         public virtual Assignment Assignment { get; set; } 
 
@@ -2336,19 +2320,12 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     }    
 
     /// <summary>Package is a reference to the software package to be installed or removed. The agent on the VM instance
-    /// uses the system package manager to apply the config.
-    ///
-    /// These are the commands that the agent uses to install or remove packages.
-    ///
-    /// Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove
-    /// package1 package2 package3`
-    ///
-    /// Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3`
-    ///
-    /// Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2`
-    ///
-    /// Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove
-    /// package1 package2 package3`</summary>
+    /// uses the system package manager to apply the config. These are the commands that the agent uses to install or
+    /// remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get
+    /// -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y
+    /// remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper
+    /// rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet
+    /// -noconfirm remove package1 package2 package3`</summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The desired_state the agent should maintain for this package. The default is to ensure the package
@@ -2359,9 +2336,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         /// <summary>Type of package manager that can be used to install this package. If a system does not have the
         /// package manager, the package is not installed or removed no error message is returned. By default, or if you
         /// specify `ANY`, the agent attempts to install and remove this package using the default package manager. This
-        /// is useful when creating a policy that applies to different types of systems.
-        ///
-        /// The default behavior is ANY.</summary>
+        /// is useful when creating a policy that applies to different types of systems. The default behavior is
+        /// ANY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manager")]
         public virtual string Manager { get; set; } 
 
@@ -2684,11 +2660,8 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A high level representation of a patch job that is either in progress or has completed.
-    ///
-    /// Instance details are not included in the job. To paginate through instance details, use
-    /// `ListPatchJobInstanceDetails`.
-    ///
+    /// <summary>A high level representation of a patch job that is either in progress or has completed. Instance
+    /// details are not included in the job. To paginate through instance details, use `ListPatchJobInstanceDetails`.
     /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
     /// management/create-patch-job).</summary>
     public class PatchJob : Google.Apis.Requests.IDirectResponseSchema
@@ -2863,22 +2836,18 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     public class PatchRollout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of
-        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
-        ///
-        /// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching
-        /// has completed. This disruption time includes the time to complete reboot and any post-patch steps.
-        ///
-        /// A VM contributes to the disruption budget if its patching operation fails either when applying the patches,
+        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During
+        /// patching, a VM is considered disrupted from the time the agent is notified to begin until patching has
+        /// completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM
+        /// contributes to the disruption budget if its patching operation fails either when applying the patches,
         /// running pre or post patch steps, or if it fails to respond with a success notification before timing out.
-        /// VMs that are not running or do not have an active agent do not count toward this disruption budget.
-        ///
-        /// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because
-        /// continuing to the next zone requires completion of the patch process in the previous zone.
-        ///
-        /// For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current
-        /// zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is
-        /// completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone
-        /// fail to patch, the patch job stops.</summary>
+        /// VMs that are not running or do not have an active agent do not count toward this disruption budget. For
+        /// zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because
+        /// continuing to the next zone requires completion of the patch process in the previous zone. For example, if
+        /// the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job
+        /// continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully,
+        /// patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch
+        /// job stops.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
         public virtual FixedOrPercent DisruptionBudget { get; set; } 
 
@@ -3065,35 +3034,24 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
 
     /// <summary>A software recipe is a set of instructions for installing and configuring a piece of software. It
     /// consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update
-    /// the software.
-    ///
-    /// Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar
-    /// archive, Windows MSI, Debian package, and RPM package.
-    ///
-    /// Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh,
-    /// cmd, and powershell.
-    ///
-    /// Updating a software recipe
-    ///
-    /// If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already
-    /// installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version.
-    ///
-    /// Script Working Directories
-    ///
-    /// Each script or execution step is run in its own temporary directory which is deleted after completing the
-    /// step.</summary>
+    /// the software. Recipes support installing and updating software from artifacts in the following formats: Zip
+    /// archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a
+    /// script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software
+    /// recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version
+    /// already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new
+    /// version. Script Working Directories Each script or execution step is run in its own temporary directory which is
+    /// deleted after completing the step.</summary>
     public class SoftwareRecipe : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resources available to be used in the steps in the recipe.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
         public virtual System.Collections.Generic.IList<SoftwareRecipeArtifact> Artifacts { get; set; } 
 
-        /// <summary>Default is INSTALLED. The desired state the agent should maintain for this recipe.
-        ///
-        /// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED:
-        /// The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher
-        /// version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and
-        /// attempts to create or update a recipe to the REMOVE state is rejected.</summary>
+        /// <summary>Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The
+        /// software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software
+        /// recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the
+        /// recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to
+        /// create or update a recipe to the REMOVE state is rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredState")]
         public virtual string DesiredState { get; set; } 
 
@@ -3104,15 +3062,13 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         public virtual System.Collections.Generic.IList<SoftwareRecipeStep> InstallSteps { get; set; } 
 
         /// <summary>Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an
-        /// instance.
-        ///
-        /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        /// This means that requests to create multiple recipes with the same name and version are rejected since they
-        /// could potentially have conflicting assignments.</summary>
+        /// instance. Names are also used to identify resources which helps to determine whether guest policies have
+        /// conflicts. This means that requests to create multiple recipes with the same name and version are rejected
+        /// since they could potentially have conflicting assignments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Actions to be taken for updating this recipe. On failure it stops executing steps and  does not
+        /// <summary>Actions to be taken for updating this recipe. On failure it stops executing steps and does not
         /// attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled
         /// back.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSteps")]
@@ -3131,7 +3087,6 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     public class SoftwareRecipeArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Defaults to false. When false, recipes are subject to validations based on the artifact type:
-        ///
         /// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS:
         /// An object generation number must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowInsecure")]
@@ -3249,10 +3204,9 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         /// <summary>Consists of three octal digits which represent, in order, the permissions of the owner, group, and
         /// other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit
         /// represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to
-        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755.
-        ///
-        /// Below are some examples of permissions and their associated values: read, write, and execute: 7 read and
-        /// execute: 5 read and write: 6 read only: 4</summary>
+        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are
+        /// some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5
+        /// read and write: 6 read only: 4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual string Permissions { get; set; } 
 
@@ -3484,9 +3438,7 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
     }    
 
     /// <summary>Yum patching is performed by executing `yum update`. Additional options can be set to control how this
-    /// is executed.
-    ///
-    /// Note that not all settings are supported on all platforms.</summary>
+    /// is executed. Note that not all settings are supported on all platforms.</summary>
     public class YumSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of packages to exclude from update. These packages are excluded by using the yum `--exclude`

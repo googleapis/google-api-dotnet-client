@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>Playable Locations API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200808 (2046)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>
  *              https://developers.google.com/maps/contact-sales/</a>

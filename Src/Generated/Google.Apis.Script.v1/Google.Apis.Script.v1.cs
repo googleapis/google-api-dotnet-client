@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/api/'>Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200801 (2039)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/api/'>
  *              https://developers.google.com/apps-script/api/</a>
@@ -530,22 +530,31 @@ namespace Google.Apis.Script.v1
             /// statuses.</summary>
             public enum UserProcessFilterStatusesEnum
             {
+                /// <summary>Unspecified status.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
                 PROCESSSTATUSUNSPECIFIED,
+                /// <summary>The process is currently running.</summary>
                 [Google.Apis.Util.StringValueAttribute("RUNNING")]
                 RUNNING,
+                /// <summary>The process has paused.</summary>
                 [Google.Apis.Util.StringValueAttribute("PAUSED")]
                 PAUSED,
+                /// <summary>The process has completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
                 COMPLETED,
+                /// <summary>The process was cancelled.</summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
                 CANCELED,
+                /// <summary>The process failed.</summary>
                 [Google.Apis.Util.StringValueAttribute("FAILED")]
                 FAILED,
+                /// <summary>The process timed out.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
                 TIMEDOUT,
+                /// <summary>Process status unknown.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                 UNKNOWN,
+                /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
                 DELAYED,
             }
@@ -559,24 +568,34 @@ namespace Google.Apis.Script.v1
             /// types.</summary>
             public enum UserProcessFilterTypesEnum
             {
+                /// <summary>Unspecified type.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
                 PROCESSTYPEUNSPECIFIED,
+                /// <summary>The process was started from an add-on entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("ADD_ON")]
                 ADDON,
+                /// <summary>The process was started using the Apps Script API.</summary>
                 [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
                 EXECUTIONAPI,
+                /// <summary>The process was started from a time-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
                 TIMEDRIVEN,
+                /// <summary>The process was started from an event-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TRIGGER")]
                 TRIGGER,
+                /// <summary>The process was started from a web app entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEBAPP")]
                 WEBAPP,
+                /// <summary>The process was started using the Apps Script IDE.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
                 EDITOR,
+                /// <summary>The process was started from a G Suite simple trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE_TRIGGER")]
                 SIMPLETRIGGER,
+                /// <summary>The process was started from a G Suite menu item.</summary>
                 [Google.Apis.Util.StringValueAttribute("MENU")]
                 MENU,
+                /// <summary>The process was started as a task in a batch job.</summary>
                 [Google.Apis.Util.StringValueAttribute("BATCH_TASK")]
                 BATCHTASK,
             }
@@ -590,14 +609,19 @@ namespace Google.Apis.Script.v1
             /// access levels.</summary>
             public enum UserProcessFilterUserAccessLevelsEnum
             {
+                /// <summary>User access level unspecified</summary>
                 [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
                 USERACCESSLEVELUNSPECIFIED,
+                /// <summary>The user has no access.</summary>
                 [Google.Apis.Util.StringValueAttribute("NONE")]
                 NONE,
+                /// <summary>The user has read-only access.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ")]
                 READ,
+                /// <summary>The user has write access.</summary>
                 [Google.Apis.Util.StringValueAttribute("WRITE")]
                 WRITE,
+                /// <summary>The user is an owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("OWNER")]
                 OWNER,
             }
@@ -790,22 +814,31 @@ namespace Google.Apis.Script.v1
             /// statuses.</summary>
             public enum ScriptProcessFilterStatusesEnum
             {
+                /// <summary>Unspecified status.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
                 PROCESSSTATUSUNSPECIFIED,
+                /// <summary>The process is currently running.</summary>
                 [Google.Apis.Util.StringValueAttribute("RUNNING")]
                 RUNNING,
+                /// <summary>The process has paused.</summary>
                 [Google.Apis.Util.StringValueAttribute("PAUSED")]
                 PAUSED,
+                /// <summary>The process has completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
                 COMPLETED,
+                /// <summary>The process was cancelled.</summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
                 CANCELED,
+                /// <summary>The process failed.</summary>
                 [Google.Apis.Util.StringValueAttribute("FAILED")]
                 FAILED,
+                /// <summary>The process timed out.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
                 TIMEDOUT,
+                /// <summary>Process status unknown.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                 UNKNOWN,
+                /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
                 DELAYED,
             }
@@ -819,24 +852,34 @@ namespace Google.Apis.Script.v1
             /// types.</summary>
             public enum ScriptProcessFilterTypesEnum
             {
+                /// <summary>Unspecified type.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
                 PROCESSTYPEUNSPECIFIED,
+                /// <summary>The process was started from an add-on entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("ADD_ON")]
                 ADDON,
+                /// <summary>The process was started using the Apps Script API.</summary>
                 [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
                 EXECUTIONAPI,
+                /// <summary>The process was started from a time-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
                 TIMEDRIVEN,
+                /// <summary>The process was started from an event-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TRIGGER")]
                 TRIGGER,
+                /// <summary>The process was started from a web app entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEBAPP")]
                 WEBAPP,
+                /// <summary>The process was started using the Apps Script IDE.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
                 EDITOR,
+                /// <summary>The process was started from a G Suite simple trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE_TRIGGER")]
                 SIMPLETRIGGER,
+                /// <summary>The process was started from a G Suite menu item.</summary>
                 [Google.Apis.Util.StringValueAttribute("MENU")]
                 MENU,
+                /// <summary>The process was started as a task in a batch job.</summary>
                 [Google.Apis.Util.StringValueAttribute("BATCH_TASK")]
                 BATCHTASK,
             }
@@ -850,14 +893,19 @@ namespace Google.Apis.Script.v1
             /// access levels.</summary>
             public enum ScriptProcessFilterUserAccessLevelsEnum
             {
+                /// <summary>User access level unspecified</summary>
                 [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
                 USERACCESSLEVELUNSPECIFIED,
+                /// <summary>The user has no access.</summary>
                 [Google.Apis.Util.StringValueAttribute("NONE")]
                 NONE,
+                /// <summary>The user has read-only access.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ")]
                 READ,
+                /// <summary>The user has write access.</summary>
                 [Google.Apis.Util.StringValueAttribute("WRITE")]
                 WRITE,
+                /// <summary>The user is an owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("OWNER")]
                 OWNER,
             }
@@ -1892,10 +1940,13 @@ namespace Google.Apis.Script.v1
             /// <summary>Required field indicating what granularity of metrics are returned.</summary>
             public enum MetricsGranularityEnum
             {
+                /// <summary>Default metric granularity used to query no metrics.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_GRANULARITY")]
                 UNSPECIFIEDGRANULARITY,
+                /// <summary>Represents weekly metrics.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+                /// <summary>Represents daily metrics over a period of 7 days.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
             }
@@ -2045,15 +2096,13 @@ namespace Google.Apis.Script.v1
 
 
         /// <summary>Runs a function in an Apps Script project. The script project must be deployed for use with the
-        /// Apps Script API and the calling application must share the same Cloud Platform project.
-        ///
-        /// This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed
-        /// in the [Authorization](#authorization-scopes) section; script projects that do not require authorization
-        /// cannot be executed through this API. To find the correct scopes to include in the authentication token, open
-        /// the project in the script editor, then select **File > Project properties** and click the **Scopes** tab.
-        ///
-        /// The error `403, PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform
-        /// project used to authorize the request is not the same as the one used by the script.</summary>
+        /// Apps Script API and the calling application must share the same Cloud Platform project. This method requires
+        /// authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the [Authorization
+        /// ](#authorization-scopes) section; script projects that do not require authorization cannot be executed
+        /// through this API. To find the correct scopes to include in the authentication token, open the project in the
+        /// script editor, then select **File > Project properties** and click the **Scopes** tab. The error `403,
+        /// PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to
+        /// authorize the request is not the same as the one used by the script.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="scriptId">The script ID of the script to be executed. To find the script ID, open the project in the
         /// script editor and select **File > Project properties**.</param>
@@ -2063,15 +2112,13 @@ namespace Google.Apis.Script.v1
         }
 
         /// <summary>Runs a function in an Apps Script project. The script project must be deployed for use with the
-        /// Apps Script API and the calling application must share the same Cloud Platform project.
-        ///
-        /// This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed
-        /// in the [Authorization](#authorization-scopes) section; script projects that do not require authorization
-        /// cannot be executed through this API. To find the correct scopes to include in the authentication token, open
-        /// the project in the script editor, then select **File > Project properties** and click the **Scopes** tab.
-        ///
-        /// The error `403, PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform
-        /// project used to authorize the request is not the same as the one used by the script.</summary>
+        /// Apps Script API and the calling application must share the same Cloud Platform project. This method requires
+        /// authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the [Authorization
+        /// ](#authorization-scopes) section; script projects that do not require authorization cannot be executed
+        /// through this API. To find the correct scopes to include in the authentication token, open the project in the
+        /// script editor, then select **File > Project properties** and click the **Scopes** tab. The error `403,
+        /// PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to
+        /// authorize the request is not the same as the one used by the script.</summary>
         public class RunRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
@@ -2217,11 +2264,9 @@ namespace Google.Apis.Script.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2308,11 +2353,11 @@ namespace Google.Apis.Script.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<object> Parameters { get; set; } 
 
-        /// <summary>Deprecated. For use with Android add-ons only. An ID that represents the user's current session in
-        /// the Android app for Google Docs or Sheets, included as extra data in the
+        /// <summary>*Deprecated*. For use with Android add-ons only. An ID that represents the user's current session
+        /// in the Android app for Google Docs or Sheets, included as extra data in the
         /// [Intent](https://developer.android.com/guide/components/intents-filters.html) that launches the add-on. When
         /// an Android add-on is run with a session state, it gains the privileges of a
-        /// [bound](https://developers.google.com/apps-script/guides/bound) scriptthat is, it can access information
+        /// [bound](https://developers.google.com/apps-script/guides/bound) script—that is, it can access information
         /// like the user's current cursor position (in Docs) or selected cell (in Sheets). To retrieve the state, call
         /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionState")]
@@ -2658,14 +2703,15 @@ namespace Google.Apis.Script.v1.Data
     /// <summary>A representation of an execution of an Apps Script function started with run. The execution response
     /// does not arrive until the function finishes executing. The maximum execution runtime is listed in the [Apps
     /// Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After execution has started, it
-    /// can have one of four outcomes:   If the script function returns successfully, the response field contains an
-    /// ExecutionResponse object with the function's return value in the object's `result` field. If the script function
-    /// (or Apps Script itself) throws an exception, the error field contains a Status object. The `Status` object's
-    /// `details` field contains an array with a single ExecutionError object that provides information about the nature
-    /// of the error. If the execution has not yet completed, the done field is `false` and the neither the `response`
-    /// nor `error` fields are present. If the `run` call itself fails (for example, because of a malformed request or
-    /// an authorization error), the method returns an HTTP response code in the 4XX range with a different format for
-    /// the response body. Client libraries automatically convert a 4XX response into an exception class. </summary>
+    /// can have one of four outcomes: - If the script function returns successfully, the response field contains an
+    /// ExecutionResponse object with the function's return value in the object's `result` field. - If the script
+    /// function (or Apps Script itself) throws an exception, the error field contains a Status object. The `Status`
+    /// object's `details` field contains an array with a single ExecutionError object that provides information about
+    /// the nature of the error. - If the execution has not yet completed, the done field is `false` and the neither the
+    /// `response` nor `error` fields are present. - If the `run` call itself fails (for example, because of a malformed
+    /// request or an authorization error), the method returns an HTTP response code in the 4XX range with a different
+    /// format for the response body. Client libraries automatically convert a 4XX response into an exception class.
+    /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field indicates whether the script execution has completed. A completed execution has a
@@ -2755,8 +2801,8 @@ namespace Google.Apis.Script.v1.Data
     /// response body's error field contains this `Status` object.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code. For this API, this value either:   10, indicating a `SCRIPT_TIMEOUT` error,  3,
-        /// indicating an `INVALID_ARGUMENT` error, or  1, indicating a `CANCELLED` execution. </summary>
+        /// <summary>The status code. For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT` error, - 3,
+        /// indicating an `INVALID_ARGUMENT` error, or - 1, indicating a `CANCELLED` execution. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 

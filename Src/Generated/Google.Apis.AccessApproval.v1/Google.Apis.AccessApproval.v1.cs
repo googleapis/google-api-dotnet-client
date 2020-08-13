@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200726 (2033)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -383,10 +383,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
@@ -394,10 +393,9 @@ namespace Google.Apis.AccessApproval.v1
                 return new ApproveRequest(service, body, name);
             }
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             public class ApproveRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Approve request.</summary>
@@ -457,14 +455,10 @@ namespace Google.Apis.AccessApproval.v1
 
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
@@ -472,14 +466,10 @@ namespace Google.Apis.AccessApproval.v1
                 return new DismissRequest(service, body, name);
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Dismiss request.</summary>
@@ -627,10 +617,10 @@ namespace Google.Apis.AccessApproval.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                ///
-                /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
-                /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
+                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
+                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
+                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
+                /// requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -836,9 +826,8 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of:
-        ///
-        ///   "projects/{project_id}/accessApprovalSettings"   "folders/{folder_id}/accessApprovalSettings"
+        /// <param name="name">The resource name of the settings. Format is one of: 1.
+        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
         /// "organizations/{organization_id}/accessApprovalSettings" </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
@@ -859,9 +848,8 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of:
-            ///
-            /// "projects/{project_id}/accessApprovalSettings" "folders/{folder_id}/accessApprovalSettings"
+            /// <summary>The resource name of the settings. Format is one of: 1.
+            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -869,7 +857,6 @@ namespace Google.Apis.AccessApproval.v1
             /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
             /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
             /// currently stored value will be entirely overwritten with the value of the field passed in this request.
-            ///
             /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
@@ -969,10 +956,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
@@ -980,10 +966,9 @@ namespace Google.Apis.AccessApproval.v1
                 return new ApproveRequest(service, body, name);
             }
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             public class ApproveRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Approve request.</summary>
@@ -1043,14 +1028,10 @@ namespace Google.Apis.AccessApproval.v1
 
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
@@ -1058,14 +1039,10 @@ namespace Google.Apis.AccessApproval.v1
                 return new DismissRequest(service, body, name);
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Dismiss request.</summary>
@@ -1213,10 +1190,10 @@ namespace Google.Apis.AccessApproval.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                ///
-                /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
-                /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
+                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
+                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
+                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
+                /// requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1422,9 +1399,8 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of:
-        ///
-        ///   "projects/{project_id}/accessApprovalSettings"   "folders/{folder_id}/accessApprovalSettings"
+        /// <param name="name">The resource name of the settings. Format is one of: 1.
+        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
         /// "organizations/{organization_id}/accessApprovalSettings" </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
@@ -1445,9 +1421,8 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of:
-            ///
-            /// "projects/{project_id}/accessApprovalSettings" "folders/{folder_id}/accessApprovalSettings"
+            /// <summary>The resource name of the settings. Format is one of: 1.
+            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1455,7 +1430,6 @@ namespace Google.Apis.AccessApproval.v1
             /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
             /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
             /// currently stored value will be entirely overwritten with the value of the field passed in this request.
-            ///
             /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
@@ -1555,10 +1529,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
@@ -1566,10 +1539,9 @@ namespace Google.Apis.AccessApproval.v1
                 return new ApproveRequest(service, body, name);
             }
 
-            /// <summary>Approves a request and returns the updated ApprovalRequest.
-            ///
-            /// Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but
-            /// is not in a pending state.</summary>
+            /// <summary>Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request
+            /// does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending
+            /// state.</summary>
             public class ApproveRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Approve request.</summary>
@@ -1629,14 +1601,10 @@ namespace Google.Apis.AccessApproval.v1
 
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
@@ -1644,14 +1612,10 @@ namespace Google.Apis.AccessApproval.v1
                 return new DismissRequest(service, body, name);
             }
 
-            /// <summary>Dismisses a request. Returns the updated ApprovalRequest.
-            ///
-            /// NOTE: This does not deny access to the resource if another request has been made and approved. It is
-            /// equivalent in effect to ignoring the request altogether.
-            ///
-            /// Returns NOT_FOUND if the request does not exist.
-            ///
-            /// Returns FAILED_PRECONDITION if the request exists but is not in a pending state.</summary>
+            /// <summary>Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to
+            /// the resource if another request has been made and approved. It is equivalent in effect to ignoring the
+            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
+            /// request exists but is not in a pending state.</summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
                 /// <summary>Constructs a new Dismiss request.</summary>
@@ -1799,10 +1763,10 @@ namespace Google.Apis.AccessApproval.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                ///
-                /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
-                /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. HISTORY: Active and dismissed (including expired) requests. </summary>
+                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
+                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
+                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
+                /// requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -2008,9 +1972,8 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of:
-        ///
-        ///   "projects/{project_id}/accessApprovalSettings"   "folders/{folder_id}/accessApprovalSettings"
+        /// <param name="name">The resource name of the settings. Format is one of: 1.
+        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
         /// "organizations/{organization_id}/accessApprovalSettings" </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
@@ -2031,9 +1994,8 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of:
-            ///
-            /// "projects/{project_id}/accessApprovalSettings" "folders/{folder_id}/accessApprovalSettings"
+            /// <summary>The resource name of the settings. Format is one of: 1.
+            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2041,7 +2003,6 @@ namespace Google.Apis.AccessApproval.v1
             /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
             /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
             /// currently stored value will be entirely overwritten with the value of the field passed in this request.
-            ///
             /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
@@ -2118,17 +2079,15 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// <summary>A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access
         /// requests for the resource given by name against any of these services contained here will be required to
         /// have explicit approval. If name refers to an organization, enrollment can be done for individual services.
-        /// If name refers to a folder or project, enrollment can only be done on an all or nothing basis.
-        ///
-        /// If a cloud_product is repeated in this list, the first entry will be honored and all following entries will
-        /// be discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported
+        /// If name refers to a folder or project, enrollment can only be done on an all or nothing basis. If a
+        /// cloud_product is repeated in this list, the first entry will be honored and all following entries will be
+        /// discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported
         /// services is expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
         public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; } 
 
-        /// <summary>The resource name of the settings. Format is one of:
-        ///
-        /// "projects/{project_id}/accessApprovalSettings" "folders/{folder_id}/accessApprovalSettings"
+        /// <summary>The resource name of the settings. Format is one of: 1.
+        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
         /// "organizations/{organization_id}/accessApprovalSettings" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -2148,19 +2107,16 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>The "home office" location of the principal. A two-letter country code (ISO 3166-1 alpha-2), such
         /// as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a
-        /// region code instead of a country code. Possible Region Codes:
-        ///
-        /// ASI: Asia EUR: Europe OCE: Oceania AFR: Africa NAM: North America SAM: South America ANT: Antarctica ANY:
-        /// Any location </summary>
+        /// region code instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE: Oceania 4.
+        /// AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalOfficeCountry")]
         public virtual string PrincipalOfficeCountry { get; set; } 
 
         /// <summary>Physical location of the principal at the time of the access. A two-letter country code (ISO 3166-1
         /// alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer
-        /// refer to a region code instead of a country code. Possible Region Codes:
-        ///
-        /// ASI: Asia EUR: Europe OCE: Oceania AFR: Africa NAM: North America SAM: South America ANT: Antarctica ANY:
-        /// Any location </summary>
+        /// refer to a region code instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE:
+        /// Oceania 4. AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalPhysicalLocationCountry")]
         public virtual string PrincipalPhysicalLocationCountry { get; set; } 
 
@@ -2281,11 +2237,9 @@ namespace Google.Apis.AccessApproval.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2296,11 +2250,9 @@ namespace Google.Apis.AccessApproval.v1.Data
     public class EnrolledService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The product for which Access Approval will be enrolled. Allowed values are listed below (case-
-        /// sensitive):
-        ///
-        /// all appengine.googleapis.com bigquery.googleapis.com bigtable.googleapis.com cloudkms.googleapis.com
-        /// compute.googleapis.com dataflow.googleapis.com iam.googleapis.com pubsub.googleapis.com
-        /// storage.googleapis.com </summary>
+        /// sensitive): 1. all 2. appengine.googleapis.com 3. bigquery.googleapis.com 4. bigtable.googleapis.com 5.
+        /// cloudkms.googleapis.com 6. compute.googleapis.com 7. dataflow.googleapis.com 8. iam.googleapis.com 9.
+        /// pubsub.googleapis.com 10. storage.googleapis.com </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
         public virtual string CloudProduct { get; set; } 
 

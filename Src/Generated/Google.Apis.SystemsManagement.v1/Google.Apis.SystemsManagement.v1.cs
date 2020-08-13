@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -738,7 +738,7 @@ namespace Google.Apis.SystemsManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>The maximum number of instance details records to return.  Default is 100.</summary>
+                    /// <summary>The maximum number of instance details records to return. Default is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1151,11 +1151,9 @@ namespace Google.Apis.SystemsManagement.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1316,9 +1314,8 @@ namespace Google.Apis.SystemsManagement.v1.Data
     /// <summary>A remote or local file.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defaults to false. When false, files will be subject to validations based on the file type:
-        ///
-        /// Remote: A checksum must be specified. GCS:    An object generation number must be specified.</summary>
+        /// <summary>Defaults to false. When false, files will be subject to validations based on the file type: Remote:
+        /// A checksum must be specified. GCS: An object generation number must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowInsecure")]
         public virtual System.Nullable<bool> AllowInsecure { get; set; } 
 
@@ -1391,10 +1388,9 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Consists of three octal digits which represent, in order, the permissions of the owner, group, and
         /// other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit
         /// represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to
-        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755.
-        ///
-        /// Below are some examples of permissions and their associated values: read, write, and execute: 7 read and
-        /// execute: 5 read and write: 6 read only: 4</summary>
+        /// the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are
+        /// some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5
+        /// read and write: 6 read only: 4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual string Permissions { get; set; } 
 
@@ -1801,10 +1797,9 @@ namespace Google.Apis.SystemsManagement.v1.Data
 
     /// <summary>Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs
     /// /labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to
-    /// target VMs for a patch job.
-    ///
-    /// For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`.
-    /// This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.</summary>
+    /// target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`:
+    /// `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels
+    /// `env=test` and `app=web`.</summary>
     public class PatchInstanceFilterGroupLabel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Compute Engine instance labels that must be present for a VM instance to be targeted by this
@@ -1816,12 +1811,9 @@ namespace Google.Apis.SystemsManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A high level representation of a patch job that is either in progress or has completed.
-    ///
-    /// Instance details are not included in the job. To paginate through instance details, use
-    /// ListPatchJobInstanceDetails.
-    ///
-    /// For more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
+    /// <summary>A high level representation of a patch job that is either in progress or has completed. Instance
+    /// details are not included in the job. To paginate through instance details, use ListPatchJobInstanceDetails. For
+    /// more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
     /// management/create-patch-job).</summary>
     public class PatchJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1995,22 +1987,18 @@ namespace Google.Apis.SystemsManagement.v1.Data
     public class PatchRollout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of
-        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
-        ///
-        /// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching
-        /// has completed. This disruption time includes the time to complete reboot and any post-patch steps.
-        ///
-        /// A VM contributes to the disruption budget if its patching operation fails either when applying the patches,
+        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During
+        /// patching, a VM is considered disrupted from the time the agent is notified to begin until patching has
+        /// completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM
+        /// contributes to the disruption budget if its patching operation fails either when applying the patches,
         /// running pre or post patch steps, or if it fails to respond with a success notification before timing out.
-        /// VMs that are not running or do not have an active agent do not count toward this disruption budget.
-        ///
-        /// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because
-        /// continuing to the next zone requires completion of the patch process in the previous zone.
-        ///
-        /// For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current
-        /// zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is
-        /// completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone
-        /// fail to patch, the patch job stops.</summary>
+        /// VMs that are not running or do not have an active agent do not count toward this disruption budget. For
+        /// zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because
+        /// continuing to the next zone requires completion of the patch process in the previous zone. For example, if
+        /// the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job
+        /// continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully,
+        /// patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch
+        /// job stops.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
         public virtual FixedOrPercent DisruptionBudget { get; set; } 
 
@@ -2286,9 +2274,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
     }    
 
     /// <summary>Yum patching is performed by executing `yum update`. Additional options can be set to control how this
-    /// is executed.
-    ///
-    /// Note that not all settings are supported on all platforms.</summary>
+    /// is executed. Note that not all settings are supported on all platforms.</summary>
     public class YumSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of packages to exclude from update. These packages are excluded by using the yum `--exclude`

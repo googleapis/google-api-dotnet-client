@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Services Publishing API</a>
  *      <tr><th>API Version<td>v1configuration
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -753,10 +753,13 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <summary>Selects which image in a resource for this method.</summary>
             public enum ImageTypeEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
                 IMAGETYPEUNSPECIFIED,
+                /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
                 ACHIEVEMENTICON,
+                /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
                 LEADERBOARDICON,
             }
@@ -925,10 +928,13 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <summary>Selects which image in a resource for this method.</summary>
             public enum ImageTypeEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
                 IMAGETYPEUNSPECIFIED,
+                /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
                 ACHIEVEMENTICON,
+                /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
                 LEADERBOARDICON,
             }
@@ -1355,7 +1361,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual AchievementConfigurationDetail Published { get; set; } 
 
-        /// <summary>Steps to unlock.  Only applicable to incremental achievements.</summary>
+        /// <summary>Steps to unlock. Only applicable to incremental achievements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepsToUnlock")]
         public virtual System.Nullable<int> StepsToUnlock { get; set; } 
 
@@ -1471,7 +1477,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numberFormatType")]
         public virtual string NumberFormatType { get; set; } 
 
-        /// <summary>An optional suffix for the NUMERIC format type.  These strings follow the same plural rules as all
+        /// <summary>An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all
         /// Android string resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual GamesNumberAffixConfiguration Suffix { get; set; } 

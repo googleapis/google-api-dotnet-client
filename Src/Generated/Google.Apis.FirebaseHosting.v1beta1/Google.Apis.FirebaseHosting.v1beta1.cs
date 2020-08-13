@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200806 (2044)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -3756,6 +3756,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>If provided, i18n rewrites are enabled.</summary>
+    public class I18nConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The user-supplied path where country and language specific content will be looked for
+        /// within the public directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("root")]
+        public virtual string Root { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response to listing Domains.</summary>
     public class ListDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4015,6 +4027,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// path, triggers Hosting to apply the specified custom response headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<Header> Headers { get; set; } 
+
+        /// <summary>Optional. Defines i18n rewrite behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("i18n")]
+        public virtual I18nConfig I18n { get; set; } 
 
         /// <summary>An array of objects (called redirect rules), where each rule specifies a URL pattern that, if
         /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination

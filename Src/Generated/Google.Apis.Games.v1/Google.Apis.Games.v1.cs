@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/'>Google Play Game Services</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200730 (2037)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/'>
  *              https://developers.google.com/games/</a>
@@ -672,21 +672,25 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Tells the server to return only achievements with the specified state.  If this parameter isn't
+            /// <summary>Tells the server to return only achievements with the specified state. If this parameter isn't
             /// specified, all achievements are returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateEnum> State { get; set; }
 
-            /// <summary>Tells the server to return only achievements with the specified state.  If this parameter isn't
+            /// <summary>Tells the server to return only achievements with the specified state. If this parameter isn't
             /// specified, all achievements are returned.</summary>
             public enum StateEnum
             {
+                /// <summary>List all achievements. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+                /// <summary>List only hidden achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("HIDDEN")]
                 HIDDEN,
+                /// <summary>List only revealed achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("REVEALED")]
                 REVEALED,
+                /// <summary>List only unlocked achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNLOCKED")]
                 UNLOCKED,
             }
@@ -1074,12 +1078,16 @@ namespace Google.Apis.Games.v1
             /// <summary>Restrict application details returned to the specific platform.</summary>
             public enum PlatformTypeEnum
             {
+                /// <summary>Default value, don't use.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_TYPE_UNSPECIFIED")]
                 PLATFORMTYPEUNSPECIFIED,
+                /// <summary>Retrieve applications that can be played on Android.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+                /// <summary>Retrieve applications that can be played on iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+                /// <summary>Retrieve applications that can be played on desktop web.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_APP")]
                 WEBAPP,
             }
@@ -1371,7 +1379,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of event definitions to return in the response, used for paging.  For any
+            /// <summary>The maximum number of event definitions to return in the response, used for paging. For any
             /// response, the actual number of event definitions to return may be less than the specified
             /// `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1615,7 +1623,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboards to return in the response.  For any response, the actual
+            /// <summary>The maximum number of leaderboards to return in the response. For any response, the actual
             /// number of leaderboards returned may be less than the specified `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -1775,8 +1783,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The collection of categories for which data will be returned.</summary>
             public enum CollectionEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("COLLECTION_UNSPECIFIED")]
                 COLLECTIONUNSPECIFIED,
+                /// <summary>Retrieve data for all categories. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
             }
@@ -1885,7 +1895,7 @@ namespace Google.Apis.Games.v1
         }
 
 
-        /// <summary>Retrieves the Player resource with the given ID.  To retrieve the player for the currently
+        /// <summary>Retrieves the Player resource with the given ID. To retrieve the player for the currently
         /// authenticated user, set `playerId` to `me`.</summary>
         /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
         /// ID.</param>
@@ -1894,7 +1904,7 @@ namespace Google.Apis.Games.v1
             return new GetRequest(service, playerId);
         }
 
-        /// <summary>Retrieves the Player resource with the given ID.  To retrieve the player for the currently
+        /// <summary>Retrieves the Player resource with the given ID. To retrieve the player for the currently
         /// authenticated user, set `playerId` to `me`.</summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Player>
         {
@@ -1987,10 +1997,15 @@ namespace Google.Apis.Games.v1
             /// <summary>Collection of players being retrieved</summary>
             public enum CollectionEnum
             {
+                /// <summary>Retrieve a list of players that are also playing this game in reverse chronological
+                /// order.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONNECTED")]
                 CONNECTED,
+                /// <summary>Retrieve a list of players in the user's social graph that are visible to this
+                /// game.</summary>
                 [Google.Apis.Util.StringValueAttribute("VISIBLE")]
                 VISIBLE,
+                /// <summary>Retrieve a list of players who are friends of the user in alphabetical order.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS_ALL")]
                 FRIENDSALL,
             }
@@ -2172,13 +2187,13 @@ namespace Google.Apis.Games.v1
         }
 
 
-        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player.  For
+        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For
         /// a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
-        /// time span.  `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
+        /// time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
         /// parameter may be set to 'ALL'.</summary>
         /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
         /// ID.</param>
-        /// <param name="leaderboardId">The ID of the leaderboard.  Can be set to 'ALL' to retrieve data for
+        /// <param name="leaderboardId">The ID of the leaderboard. Can be set to 'ALL' to retrieve data for
         /// all leaderboards for this application.</param>
         /// <param name="timeSpan">The time span for the scores and ranks
         /// you're requesting.</param>
@@ -2187,9 +2202,9 @@ namespace Google.Apis.Games.v1
             return new GetRequest(service, playerId, leaderboardId, timeSpan);
         }
 
-        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player.  For
+        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For
         /// a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
-        /// time span.  `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
+        /// time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
         /// parameter may be set to 'ALL'.</summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerLeaderboardScoreListResponse>
         {
@@ -2208,7 +2223,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
 
-            /// <summary>The ID of the leaderboard.  Can be set to 'ALL' to retrieve data for all leaderboards for this
+            /// <summary>The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this
             /// application.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
@@ -2220,14 +2235,20 @@ namespace Google.Apis.Games.v1
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
             public enum TimeSpanEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
+                /// <summary>Get the high scores for all time spans. If this is used, maxResults values will be
+                /// ignored.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+                /// <summary>Get the all time high score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+                /// <summary>List the top scores for the current day.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+                /// <summary>List the top scores for the current week.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
             }
@@ -2239,21 +2260,29 @@ namespace Google.Apis.Games.v1
             /// <summary>The types of ranks to return. If the parameter is omitted, no ranks will be returned.</summary>
             public enum IncludeRankTypeEnum
             {
+                /// <summary>Default value. Should be unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_RANK_TYPE_UNSPECIFIED")]
                 INCLUDERANKTYPEUNSPECIFIED,
+                /// <summary>Retrieve all supported ranks. In HTTP, this parameter value can also be specified as
+                /// `ALL`.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+                /// <summary>Retrieve public ranks, if the player is sharing their gameplay activity publicly.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+                /// <summary>(Obsolete) Retrieve the social rank.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+                /// <summary>Retrieve the rank on the friends collection.</summary>
+                [Google.Apis.Util.StringValueAttribute("FRIENDS")]
+                FRIENDS,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response.  For any response, the
+            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
             /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2389,12 +2418,16 @@ namespace Google.Apis.Games.v1
             /// <summary>The collection of scores you're requesting.</summary>
             public enum CollectionEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
                 SCORECOLLECTIONUNSPECIFIED,
+                /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+                /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+                /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
                 FRIENDS,
             }
@@ -2406,12 +2439,16 @@ namespace Google.Apis.Games.v1
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
             public enum TimeSpanEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
+                /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+                /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+                /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
             }
@@ -2420,7 +2457,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response.  For any response, the
+            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
             /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2547,12 +2584,16 @@ namespace Google.Apis.Games.v1
             /// <summary>The collection of scores you're requesting.</summary>
             public enum CollectionEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
                 SCORECOLLECTIONUNSPECIFIED,
+                /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+                /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+                /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
                 FRIENDS,
             }
@@ -2564,12 +2605,16 @@ namespace Google.Apis.Games.v1
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
             public enum TimeSpanEnum
             {
+                /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
+                /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+                /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+                /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
             }
@@ -2578,7 +2623,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response.  For any response, the
+            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
             /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2703,7 +2748,7 @@ namespace Google.Apis.Games.v1
         /// <param name="score">The score you're
         /// submitting. The submitted score is ignored if it is worse than a previously submitted score, where worse depends on
         /// the leaderboard sort order. The meaning of the score value depends on the leaderboard format type. For fixed-point,
-        /// the score represents the raw value.  For time, the score represents elapsed time in milliseconds.  For currency, the
+        /// the score represents the raw value. For time, the score represents elapsed time in milliseconds. For currency, the
         /// score represents a value in micro units.</param>
         public virtual SubmitRequest Submit(string leaderboardId, long score)
         {
@@ -2729,8 +2774,8 @@ namespace Google.Apis.Games.v1
 
             /// <summary>The score you're submitting. The submitted score is ignored if it is worse than a previously
             /// submitted score, where worse depends on the leaderboard sort order. The meaning of the score value
-            /// depends on the leaderboard format type. For fixed-point, the score represents the raw value.  For time,
-            /// the score represents elapsed time in milliseconds.  For currency, the score represents a value in micro
+            /// depends on the leaderboard format type. For fixed-point, the score represents the raw value. For time,
+            /// the score represents elapsed time in milliseconds. For currency, the score represents a value in micro
             /// units.</summary>
             [Google.Apis.Util.RequestParameterAttribute("score", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Score { get; private set; }
@@ -2739,7 +2784,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>Additional information about the score you're submitting.  Values must contain no more than 64
+            /// <summary>Additional information about the score you're submitting. Values must contain no more than 64
             /// URI-safe characters as defined by section 2.3 of RFC 3986.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scoreTag", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ScoreTag { get; set; }
@@ -3998,7 +4043,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scoreRank")]
         public virtual System.Nullable<long> ScoreRank { get; set; } 
 
-        /// <summary>Additional information about the score.  Values must contain no more than 64 URI-safe characters as
+        /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; } 
@@ -4335,6 +4380,10 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>A player leaderboard score object.</summary>
     public class PlayerLeaderboardScore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The rank of the score in the friends collection for this leaderboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendsRank")]
+        public virtual LeaderboardScoreRank FriendsRank { get; set; } 
+
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerLeaderboardScore`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4353,7 +4402,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scoreString")]
         public virtual string ScoreString { get; set; } 
 
-        /// <summary>Additional information about the score.  Values must contain no more than 64 URI-safe characters as
+        /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; } 
@@ -4462,8 +4511,8 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<long> Score { get; set; } 
 
-        /// <summary>Additional information about this score.  Values will contain no more than 64 URI-safe characters
-        /// as defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
+        /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; } 
 
@@ -4512,12 +4561,12 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboardId")]
         public virtual string LeaderboardId { get; set; } 
 
-        /// <summary>Additional information about this score.  Values will contain no more than 64 URI-safe characters
-        /// as defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
+        /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; } 
 
-        /// <summary>The scores in time spans that have not been beaten.  As an example, the submitted score may be
+        /// <summary>The scores in time spans that have not been beaten. As an example, the submitted score may be
         /// better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or
         /// `ALL_TIME` time spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unbeatenScores")]
@@ -4598,8 +4647,8 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<long> Score { get; set; } 
 
-        /// <summary>Additional information about this score.  Values will contain no more than 64 URI-safe characters
-        /// as defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
+        /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; } 
 
@@ -4622,7 +4671,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The ID of the file underlying this snapshot in the Drive API.  Only present if the snapshot is a
+        /// <summary>The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a
         /// view on a Drive file and the file is owned by the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
         public virtual string DriveId { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200721 (2028)
+ *      <tr><th>API Rev<td>20200805 (2043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -769,6 +769,21 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
+            /// <summary>Controls which fields will be populated. Acceptable values are: "merchant" and "css". The
+            /// default value is "merchant".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Controls which fields will be populated. Acceptable values are: "merchant" and "css". The
+            /// default value is "merchant".</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("css")]
+                Css,
+                [Google.Apis.Util.StringValueAttribute("merchant")]
+                Merchant,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -808,6 +823,15 @@ namespace Google.Apis.ShoppingContent.v2_1
                         Name = "accountId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -995,6 +1019,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
+            /// <summary>If view is set to "css", only return accounts that are assigned label with given ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("label", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> Label { get; set; }
+
             /// <summary>The maximum number of accounts to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -1002,6 +1030,21 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Controls which fields will be populated. Acceptable values are: "merchant" and "css". The
+            /// default value is "merchant".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Controls which fields will be populated. Acceptable values are: "merchant" and "css". The
+            /// default value is "merchant".</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("css")]
+                Css,
+                [Google.Apis.Util.StringValueAttribute("merchant")]
+                Merchant,
+            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1037,6 +1080,15 @@ namespace Google.Apis.ShoppingContent.v2_1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "label", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "label",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -1049,6 +1101,15 @@ namespace Google.Apis.ShoppingContent.v2_1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1226,6 +1287,90 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
 
             /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates labels that are assigned to the Merchant Center account by CSS user.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="accountId">The ID of the
+        /// account whose labels are updated.</param>
+        public virtual UpdatelabelsRequest Updatelabels(Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest body, ulong merchantId, ulong accountId)
+        {
+            return new UpdatelabelsRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Updates labels that are assigned to the Merchant Center account by CSS user.</summary>
+        public class UpdatelabelsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsResponse>
+        {
+            /// <summary>Constructs a new Updatelabels request.</summary>
+            public UpdatelabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest body, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account whose labels are updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updatelabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/accounts/{accountId}/updatelabels"; }
+            }
+
+            /// <summary>Initializes Updatelabels parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -9780,6 +9925,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
         public virtual AccountBusinessInformation BusinessInformation { get; set; } 
 
+        /// <summary>ID of CSS the account belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cssId")]
+        public virtual System.Nullable<ulong> CssId { get; set; } 
+
         /// <summary>The GMB account which is linked or in the process of being linked with the Merchant Center
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMyBusinessLink")]
@@ -9792,6 +9941,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#account`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>List of label IDs that are assigned to the account by CSS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
 
         /// <summary>Required. Display name for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10275,6 +10428,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overwrite")]
         public virtual System.Nullable<bool> Overwrite { get; set; } 
 
+        /// <summary>Controls which fields are visible. Only applicable if the method is 'get'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -10414,6 +10571,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<Account> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountsUpdateLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IDs of labels that should be assigned to the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountsUpdateLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#accountsUpdateLabelsResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13088,7 +13266,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderShipmentScheduledDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The phone number of the carrier fulfilling the delivery.</summary>
+        /// <summary>The phone number of the carrier fulfilling the delivery. The phone number is formatted as the
+        /// international notation in ITU-T Recommendation E.123 (e.g., "+41 44 668 1800").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
         public virtual string CarrierPhoneNumber { get; set; } 
 
@@ -15283,9 +15462,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class ProductStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountrys")]
+        public virtual System.Collections.Generic.IList<string> ApprovedCountrys { get; set; } 
+
         /// <summary>The name of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
+
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountrys")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountrys { get; set; } 
+
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountrys")]
+        public virtual System.Collections.Generic.IList<string> PendingCountrys { get; set; } 
 
         /// <summary>Destination approval status in `targetCountry` of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -15297,6 +15488,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class ProductStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableCountrys")]
+        public virtual System.Collections.Generic.IList<string> ApplicableCountrys { get; set; } 
+
         /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
         public virtual string AttributeName { get; set; } 
@@ -15718,7 +15913,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>The ID (name) of the region.</summary>
+        /// <summary>The ID uniquely identifying each region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionId")]
         public virtual string RegionId { get; set; } 
 

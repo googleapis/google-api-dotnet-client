@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -368,7 +368,7 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -376,7 +376,7 @@ namespace Google.Apis.ServiceManagement.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
@@ -447,21 +447,15 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>A string for filtering Operations. The following filter fields are supported
-            ///
-            /// * serviceName Required. Only `=` operator is allowed. * startTime The time this job was started, in ISO
-            /// 8601 format. Allowed operators are `>=`,  `>`, `<=`, and `<`. * status Can be `done`, `in_progress`, or
-            /// `failed`. Allowed operators are `=`, and `!=`.
-            ///
-            /// Filter expression supports conjunction (AND) and disjunction (OR) logical operators. However, the
-            /// serviceName restriction must be at the top-level and can only be combined with other restrictions via
-            /// the AND logical operator.
-            ///
-            /// Examples
-            ///
-            /// * `serviceName={some-service}.googleapis.com` * `serviceName={some-service}.googleapis.com AND
-            /// startTime>="2017-02-01"` * `serviceName={some-service}.googleapis.com AND status=done` * `serviceName
-            /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
+            /// <summary>A string for filtering Operations. The following filter fields are supported: * serviceName:
+            /// Required. Only `=` operator is allowed. * startTime: The time this job was started, in ISO 8601 format.
+            /// Allowed operators are `>=`, `>`, `<=`, and `<`. * status: Can be `done`, `in_progress`, or `failed`.
+            /// Allowed operators are `=`, and `!=`. Filter expression supports conjunction (AND) and disjunction (OR)
+            /// logical operators. However, the serviceName restriction must be at the top-level and can only be
+            /// combined with other restrictions via the AND logical operator. Examples: * `serviceName={some-
+            /// service}.googleapis.com` * `serviceName={some-service}.googleapis.com AND startTime>="2017-02-01"` *
+            /// `serviceName={some-service}.googleapis.com AND status=done` * `serviceName={some-service}.googleapis.com
+            /// AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -587,13 +581,11 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration (version) for a managed service. This method only stores
             /// the service configuration. To roll out the service configuration to backend systems please call
-            /// CreateServiceRollout.
-            ///
-            /// Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for
-            /// each service. The rest will be deleted eventually.</summary>
+            /// CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing
+            /// rollouts are kept for each service. The rest will be deleted eventually.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -601,10 +593,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration (version) for a managed service. This method only stores
             /// the service configuration. To roll out the service configuration to backend systems please call
-            /// CreateServiceRollout.
-            ///
-            /// Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for
-            /// each service. The rest will be deleted eventually.</summary>
+            /// CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing
+            /// rollouts are kept for each service. The rest will be deleted eventually.</summary>
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Service>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -617,8 +607,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -666,12 +656,11 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             /// <param name="configId">Required. The id
-            /// of the service configuration resource.
-            ///
-            /// This field must be specified for the server to return all fields, including `SourceInfo`.</param>
+            /// of the service configuration resource. This field must be specified for the server to return all fields, including
+            /// `SourceInfo`.</param>
             public virtual GetRequest Get(string serviceName, string configId)
             {
                 return new GetRequest(service, serviceName, configId);
@@ -690,14 +679,13 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Required. The id of the service configuration resource.
-                ///
-                /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
+                /// <summary>Required. The id of the service configuration resource. This field must be specified for
+                /// the server to return all fields, including `SourceInfo`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ConfigId { get; private set; }
 
@@ -708,8 +696,12 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Server response includes all fields except SourceInfo.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
                     BASIC,
+                    /// <summary>Server response includes all fields including SourceInfo. SourceFiles are of type
+                    /// 'google.api.servicemanagement.v1.ConfigFile' and are only available for configs created using
+                    /// the SubmitConfigSource method.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
@@ -771,8 +763,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration for a managed service, from the newest to the
             /// oldest.</summary>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -791,8 +783,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -863,15 +855,12 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Creates a new service configuration (version) for a managed service based on user-supplied
             /// configuration source files (for example: OpenAPI Specification). This method stores the source
             /// configurations as well as the generated service configuration. To rollout the service configuration to
-            /// other services, please call CreateServiceRollout.
-            ///
-            /// Only the 100 most recent configuration sources and ones referenced by existing service configurtions are
-            /// kept for each service. The rest will be deleted eventually.
-            ///
-            /// Operation</summary>
+            /// other services, please call CreateServiceRollout. Only the 100 most recent configuration sources and
+            /// ones referenced by existing service configurtions are kept for each service. The rest will be deleted
+            /// eventually. Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             public virtual SubmitRequest Submit(Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
             {
                 return new SubmitRequest(service, body, serviceName);
@@ -880,12 +869,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Creates a new service configuration (version) for a managed service based on user-supplied
             /// configuration source files (for example: OpenAPI Specification). This method stores the source
             /// configurations as well as the generated service configuration. To rollout the service configuration to
-            /// other services, please call CreateServiceRollout.
-            ///
-            /// Only the 100 most recent configuration sources and ones referenced by existing service configurtions are
-            /// kept for each service. The rest will be deleted eventually.
-            ///
-            /// Operation</summary>
+            /// other services, please call CreateServiceRollout. Only the 100 most recent configuration sources and
+            /// ones referenced by existing service configurtions are kept for each service. The rest will be deleted
+            /// eventually. Operation</summary>
             public class SubmitRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Submit request.</summary>
@@ -898,8 +884,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1042,9 +1028,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1053,9 +1038,8 @@ namespace Google.Apis.ServiceManagement.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1117,10 +1101,9 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1130,10 +1113,9 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1220,18 +1202,14 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration rollout. Based on rollout, the Google Service Management
             /// will roll out the service configurations to different backend services. For example, the logging
-            /// configuration will be pushed to Google Cloud Logging.
-            ///
-            /// Please note that any previous pending and running Rollouts and associated Operations will be
-            /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
-            ///
-            /// Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of
-            /// 100 most recent) rollouts are kept for each service. The rest will be deleted eventually.
-            ///
-            /// Operation</summary>
+            /// configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running
+            /// Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not
+            /// be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if
+            /// not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be
+            /// deleted eventually. Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -1239,15 +1217,11 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration rollout. Based on rollout, the Google Service Management
             /// will roll out the service configurations to different backend services. For example, the logging
-            /// configuration will be pushed to Google Cloud Logging.
-            ///
-            /// Please note that any previous pending and running Rollouts and associated Operations will be
-            /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
-            ///
-            /// Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of
-            /// 100 most recent) rollouts are kept for each service. The rest will be deleted eventually.
-            ///
-            /// Operation</summary>
+            /// configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running
+            /// Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not
+            /// be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if
+            /// not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be
+            /// deleted eventually. Operation</summary>
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1260,8 +1234,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1309,10 +1283,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration rollout.</summary>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
-            /// <param name="rolloutId">Required. The
-            /// id of the rollout resource.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
+            /// <param name="rolloutId">Required. The id
+            /// of the rollout resource.</param>
             public virtual GetRequest Get(string serviceName, string rolloutId)
             {
                 return new GetRequest(service, serviceName, rolloutId);
@@ -1331,8 +1305,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1388,8 +1362,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration rollouts for a managed service, from the newest
             /// to the oldest.</summary>
-            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+            /// naming requirements. For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -1408,8 +1382,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
-                /// naming requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for
+                /// naming requirements. For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1495,30 +1469,20 @@ namespace Google.Apis.ServiceManagement.v1
             }
         }
 
-        /// <summary>Creates a new managed service.
-        ///
-        /// A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service
-        /// or recreate it within 30 days after deletion.
-        ///
-        /// One producer project can own no more than 500 services. For security and reliability purposes, a production
-        /// service should be hosted in a dedicated producer project.
-        ///
-        /// Operation</summary>
+        /// <summary>Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day
+        /// data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project
+        /// can own no more than 500 services. For security and reliability purposes, a production service should be
+        /// hosted in a dedicated producer project. Operation</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.ManagedService body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new managed service.
-        ///
-        /// A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service
-        /// or recreate it within 30 days after deletion.
-        ///
-        /// One producer project can own no more than 500 services. For security and reliability purposes, a production
-        /// service should be hosted in a dedicated producer project.
-        ///
-        /// Operation</summary>
+        /// <summary>Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day
+        /// data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project
+        /// can own no more than 500 services. For security and reliability purposes, a production service should be
+        /// hosted in a dedicated producer project. Operation</summary>
         public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1566,11 +1530,9 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30
         /// days. Within this period, service producers may call UndeleteService to restore the service. After 30 days,
-        /// the service will be permanently deleted.
-        ///
-        /// Operation</summary>
-        /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-        /// naming requirements.  For example: `example.googleapis.com`.</param>
+        /// the service will be permanently deleted. Operation</summary>
+        /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+        /// naming requirements. For example: `example.googleapis.com`.</param>
         public virtual DeleteRequest Delete(string serviceName)
         {
             return new DeleteRequest(service, serviceName);
@@ -1578,9 +1540,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30
         /// days. Within this period, service producers may call UndeleteService to restore the service. After 30 days,
-        /// the service will be permanently deleted.
-        ///
-        /// Operation</summary>
+        /// the service will be permanently deleted. Operation</summary>
         public class DeleteRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1592,8 +1552,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</summary>
+            /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for naming
+            /// requirements. For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1635,9 +1595,7 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
-        /// accidental usage that may cause unexpected billing charges or security leaks.
-        ///
-        /// Operation</summary>
+        /// accidental usage that may cause unexpected billing charges or security leaks. Operation</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Required. Name of the service to disable. Specifying an unknown service name will cause
         /// the request to fail.</param>
@@ -1647,9 +1605,7 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
-        /// accidental usage that may cause unexpected billing charges or security leaks.
-        ///
-        /// Operation</summary>
+        /// accidental usage that may cause unexpected billing charges or security leaks. Operation</summary>
         public class DisableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Disable request.</summary>
@@ -1711,9 +1667,7 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Enables a service for a project, so it can be used for the project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information.
-        ///
-        /// Operation</summary>
+        /// Guide](https://cloud.google.com/docs/authentication) for more information. Operation</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Required. Name of the service to enable. Specifying an unknown service name will cause the
         /// request to fail.</param>
@@ -1723,9 +1677,7 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Enables a service for a project, so it can be used for the project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information.
-        ///
-        /// Operation</summary>
+        /// Guide](https://cloud.google.com/docs/authentication) for more information. Operation</summary>
         public class EnableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
@@ -1787,13 +1739,11 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Generates and returns a report (errors, warnings and changes from existing configurations)
-        /// associated with GenerateConfigReportRequest.new_value
-        ///
-        /// If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single
-        /// ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and
-        /// GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this
-        /// method will compare GenerateConfigReportRequest.new_value with the last pushed service
-        /// configuration.</summary>
+        /// associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified,
+        /// GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between
+        /// GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If
+        /// GenerateConfigReportRequest.old_value is not specified, this method will compare
+        /// GenerateConfigReportRequest.new_value with the last pushed service configuration.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual GenerateConfigReportRequest GenerateConfigReport(Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportRequest body)
         {
@@ -1801,13 +1751,11 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Generates and returns a report (errors, warnings and changes from existing configurations)
-        /// associated with GenerateConfigReportRequest.new_value
-        ///
-        /// If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single
-        /// ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and
-        /// GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this
-        /// method will compare GenerateConfigReportRequest.new_value with the last pushed service
-        /// configuration.</summary>
+        /// associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified,
+        /// GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between
+        /// GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If
+        /// GenerateConfigReportRequest.old_value is not specified, this method will compare
+        /// GenerateConfigReportRequest.new_value with the last pushed service configuration.</summary>
         public class GenerateConfigReportRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportResponse>
         {
             /// <summary>Constructs a new GenerateConfigReport request.</summary>
@@ -1854,8 +1802,8 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Gets a managed service. Authentication is required unless the service is public.</summary>
-        /// <param name="serviceName">Required. The name of the service.  See the `ServiceManager` overview for naming
-        /// requirements.  For example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service. See the `ServiceManager` overview for naming
+        /// requirements. For example: `example.googleapis.com`.</param>
         public virtual GetRequest Get(string serviceName)
         {
             return new GetRequest(service, serviceName);
@@ -1873,7 +1821,7 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Required. The name of the service.  See the `ServiceManager` overview for naming requirements.
+            /// <summary>Required. The name of the service. See the `ServiceManager` overview for naming requirements.
             /// For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -1916,8 +1864,8 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Gets a service configuration (version) for a managed service.</summary>
-        /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
-        /// naming requirements.  For example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+        /// naming requirements. For example: `example.googleapis.com`.</param>
         public virtual GetConfigRequest GetConfig(string serviceName)
         {
             return new GetConfigRequest(service, serviceName);
@@ -1935,14 +1883,13 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</summary>
+            /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for naming
+            /// requirements. For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>Required. The id of the service configuration resource.
-            ///
-            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
+            /// <summary>Required. The id of the service configuration resource. This field must be specified for the
+            /// server to return all fields, including `SourceInfo`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConfigId { get; set; }
 
@@ -1953,8 +1900,12 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             public enum ViewEnum
             {
+                /// <summary>Server response includes all fields except SourceInfo.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Server response includes all fields including SourceInfo. SourceFiles are of type
+                /// 'google.api.servicemanagement.v1.ConfigFile' and are only available for configs created using the
+                /// SubmitConfigSource method.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
@@ -2086,25 +2037,19 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Lists managed services.
-        ///
-        /// Returns all public services. For authenticated users, also returns all services the calling user has
-        /// "servicemanagement.services.get" permission for.
-        ///
-        /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
-        /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
+        /// <summary>Lists managed services. Returns all public services. For authenticated users, also returns all
+        /// services the calling user has "servicemanagement.services.get" permission for. **BETA:** If the caller
+        /// specifies the `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must
+        /// have the format of "project:{PROJECT-ID}".</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists managed services.
-        ///
-        /// Returns all public services. For authenticated users, also returns all services the calling user has
-        /// "servicemanagement.services.get" permission for.
-        ///
-        /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
-        /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
+        /// <summary>Lists managed services. Returns all public services. For authenticated users, also returns all
+        /// services the calling user has "servicemanagement.services.get" permission for. **BETA:** If the caller
+        /// specifies the `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must
+        /// have the format of "project:{PROJECT-ID}".</summary>
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2115,9 +2060,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Include services consumed by the specified consumer.
-            ///
-            /// The Google Service Management implementation accepts the following forms: - project:</summary>
+            /// <summary>Include services consumed by the specified consumer. The Google Service Management
+            /// implementation accepts the following forms: - project:</summary>
             [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConsumerId { get; set; }
 
@@ -2198,9 +2142,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-        ///
-        /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2209,9 +2152,8 @@ namespace Google.Apis.ServiceManagement.v1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-        ///
-        /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
         public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2273,10 +2215,9 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
-        /// this will return an empty set of permissions, not a `NOT_FOUND` error.
-        ///
-        /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not
-        /// for authorization checking. This operation may "fail open" without warning.</summary>
+        /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+        /// be used for building permission-aware UIs and command-line tools, not for authorization checking. This
+        /// operation may "fail open" without warning.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2286,10 +2227,9 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
-        /// this will return an empty set of permissions, not a `NOT_FOUND` error.
-        ///
-        /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not
-        /// for authorization checking. This operation may "fail open" without warning.</summary>
+        /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+        /// be used for building permission-aware UIs and command-line tools, not for authorization checking. This
+        /// operation may "fail open" without warning.</summary>
         public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2352,9 +2292,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Revives a previously deleted managed service. The method restores the service using the
         /// configuration at the time the service was deleted. The target service must exist and must have been deleted
-        /// within the last 30 days.
-        ///
-        /// Operation</summary>
+        /// within the last 30 days. Operation</summary>
         /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
         /// naming requirements. For example: `example.googleapis.com`.</param>
         public virtual UndeleteRequest Undelete(string serviceName)
@@ -2364,9 +2302,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Revives a previously deleted managed service. The method restores the service using the
         /// configuration at the time the service was deleted. The target service must exist and must have been deleted
-        /// within the last 30 days.
-        ///
-        /// Operation</summary>
+        /// within the last 30 days. Operation</summary>
         public class UndeleteRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -2438,13 +2374,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Api is a light-weight descriptor for an API Interface.
-    ///
-    /// Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword
-    /// in a .proto file, but they are different from API Services, which represent a concrete implementation of an
-    /// interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to
-    /// as "APIs" in other contexts, such as the name of this message itself. See
-    /// https://cloud.google.com/apis/design/glossary for detailed terminology.</summary>
+    /// <summary>Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol
+    /// buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different
+    /// from API Services, which represent a concrete implementation of an interface as opposed to simply a description
+    /// of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the
+    /// name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed
+    /// terminology.</summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The methods of this interface, in unspecified order.</summary>
@@ -2475,13 +2410,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>A version string for this interface. If specified, must have the form `major-version.minor-
         /// version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is
         /// empty, the major version is derived from the package name, as outlined below. If the field is not empty, the
-        /// version in the package name will be verified to be consistent with what is provided here.
-        ///
-        /// The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates
-        /// a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals
-        /// to users what to expect from different versions, and should be carefully chosen based on the product plan.
-        ///
-        /// The major version is also reflected in the package name of the interface, which must end in `v`, as in
+        /// version in the package name will be verified to be consistent with what is provided here. The versioning
+        /// schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking
+        /// change and the minor version an additive, non-breaking change. Both version numbers are signals to users
+        /// what to expect from different versions, and should be carefully chosen based on the product plan. The major
+        /// version is also reflected in the package name of the interface, which must end in `v`, as in
         /// `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be
         /// used for experimental, non-GA interfaces. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -2493,21 +2426,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -2523,11 +2450,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -2555,11 +2479,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For
         /// example, if no audiences are in the setting, LibraryService API will accept JWTs with the following
         /// audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https
-        /// ://library-example.googleapis.com/
-        ///
-        /// Example:
-        ///
-        /// audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com</summary>
+        /// ://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com,
+        /// bookstore_web.apps.googleusercontent.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual string Audiences { get; set; } 
 
@@ -2569,16 +2490,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string AuthorizationUrl { get; set; } 
 
         /// <summary>The unique identifier of the auth provider. It will be referred to by
-        /// `AuthRequirement.provider_id`.
-        ///
-        /// Example: "bookstore_auth".</summary>
+        /// `AuthRequirement.provider_id`. Example: "bookstore_auth".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
         /// <summary>Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-
-        /// json-web-token-32#section-4.1.1 Usually a URL or an email address.
-        ///
-        /// Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com</summary>
+        /// json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com
+        /// Example: 1234567-compute@developer.gserviceaccount.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
         public virtual string Issuer { get; set; } 
 
@@ -2586,22 +2504,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key
         /// set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-
         /// 1_0.html of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service
-        /// account).
-        ///
-        /// Example: https://www.googleapis.com/oauth2/v1/certs</summary>
+        /// account). Example: https://www.googleapis.com/oauth2/v1/certs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwksUri")]
         public virtual string JwksUri { get; set; } 
 
-        /// <summary>Defines the locations to extract the JWT.
-        ///
-        /// JWT locations can be either from HTTP headers or URL query parameters. The rule is that the first match
-        /// wins. The checking order is: checking all headers first, then URL query parameters.
-        ///
-        /// If not specified,  default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-
-        /// assertion 3) access_token query parameter
-        ///
-        /// Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix:
-        /// "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token</summary>
+        /// <summary>Defines the locations to extract the JWT. JWT locations can be either from HTTP headers or URL
+        /// query parameters. The rule is that the first match wins. The checking order is: checking all headers first,
+        /// then URL query parameters. If not specified, default to use following 3 locations: 1) Authorization: Bearer
+        /// 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as
+        /// followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-
+        /// assertion - query: access_token</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtLocations")]
         public virtual System.Collections.Generic.IList<JwtLocation> JwtLocations { get; set; } 
 
@@ -2614,25 +2526,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class AuthRequirement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all
-        /// the runtime components.
-        ///
-        /// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
-        /// that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is
-        /// absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no
-        /// audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https
-        /// ://library-example.googleapis.com/google.example.library.v1.LibraryService".
-        ///
-        /// Example:
-        ///
-        /// audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com</summary>
+        /// the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
+        /// token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be
+        /// accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be
+        /// accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the
+        /// following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+        /// Example: audiences: bookstore_android.apps.googleusercontent.com,
+        /// bookstore_web.apps.googleusercontent.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual string Audiences { get; set; } 
 
-        /// <summary>id from authentication provider.
-        ///
-        /// Example:
-        ///
-        /// provider_id: bookstore_auth</summary>
+        /// <summary>id from authentication provider. Example: provider_id: bookstore_auth</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
         public virtual string ProviderId { get; set; } 
 
@@ -2640,11 +2544,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Authentication` defines the authentication configuration for an API.
-    ///
-    /// Example for an API targeted for external use:
-    ///
-    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// <summary>`Authentication` defines the authentication configuration for an API. Example for an API targeted for
+    /// external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
     /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
     /// requirements: provider_id: google_calendar_auth</summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
@@ -2653,9 +2554,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providers")]
         public virtual System.Collections.Generic.IList<AuthProvider> Providers { get; set; } 
 
-        /// <summary>A list of authentication rules that apply to individual API methods.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of authentication rules that apply to individual API methods. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<AuthenticationRule> Rules { get; set; } 
 
@@ -2663,12 +2563,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Authentication rules for the service.
-    ///
-    /// By default, if a method has any authentication requirements, every request must include a valid credential
-    /// matching one of the requirements. It's an error to include more than one kind of credential in a single request.
-    ///
-    /// If a method doesn't have any auth requirements, request credentials will be ignored.</summary>
+    /// <summary>Authentication rules for the service. By default, if a method has any authentication requirements,
+    /// every request must include a valid credential matching one of the requirements. It's an error to include more
+    /// than one kind of credential in a single request. If a method doesn't have any auth requirements, request
+    /// credentials will be ignored.</summary>
     public class AuthenticationRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, the service accepts API keys without any other credential.</summary>
@@ -2683,9 +2581,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirements")]
         public virtual System.Collections.Generic.IList<AuthRequirement> Requirements { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -2696,9 +2592,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>`Backend` defines the backend configuration for a service.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of API backend rules that apply to individual API methods.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of API backend rules that apply to individual API methods. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<BackendRule> Rules { get; set; } 
 
@@ -2709,19 +2604,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>A backend rule provides configuration for an individual API element.</summary>
     public class BackendRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The address of the API backend.
-        ///
-        /// The scheme is used to determine the backend protocol and security. The following schemes are accepted:
-        ///
-        /// SCHEME        PROTOCOL    SECURITY http://       HTTP        None https://      HTTP        TLS grpc://
-        /// gRPC        None grpcs://      gRPC        TLS
-        ///
-        /// It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors
-        /// across platforms.
-        ///
-        /// If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS
-        ///
-        /// For HTTP backends, use protocol to specify the protocol version.</summary>
+        /// <summary>The address of the API backend. The scheme is used to determine the backend protocol and security.
+        /// The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc://
+        /// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may
+        /// cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes
+        /// without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol
+        /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
@@ -2755,25 +2643,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string PathTranslation { get; set; } 
 
         /// <summary>The protocol used for sending a request to the backend. The supported values are "http/1.1" and
-        /// "h2".
-        ///
-        /// The default value is inferred from the scheme in the address field:
-        ///
-        /// SCHEME        PROTOCOL http://       http/1.1 https://      http/1.1 grpc://       h2 grpcs://      h2
-        ///
-        /// For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance.
-        ///
-        /// Configuring this field to non-default values is only supported for secure HTTP backends. This field will be
-        /// ignored for all other backends.
-        ///
-        /// See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-
-        /// ids for more details on the supported values.</summary>
+        /// "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1
+        /// https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this
+        /// field to "h2" for improved performance. Configuring this field to non-default values is only supported for
+        /// secure HTTP backends. This field will be ignored for all other backends. See
+        /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
+        /// for more details on the supported values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -2781,19 +2660,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Billing related configuration of the service.
-    ///
-    /// The following example shows how to configure monitored resources and metrics for billing,
-    /// `consumer_destinations` is the only supported destination and the monitored resources need at least one label
-    /// key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored
-    /// resources between monitoring and billing is recommended so they can be evolved independently:
-    ///
-    /// monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location
-    /// description: | Predefined label to support billing location restriction. - key: city description: | Custom label
-    /// to define the city where the library branch is located in. - key: name description: Custom label to define the
-    /// name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA
-    /// value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource:
-    /// library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count</summary>
+    /// <summary>Billing related configuration of the service. The following example shows how to configure monitored
+    /// resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored
+    /// resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing
+    /// usage, using different monitored resources between monitoring and billing is recommended so they can be evolved
+    /// independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key:
+    /// cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key:
+    /// city description: | Custom label to define the city where the library branch is located in. - key: name
+    /// description: Custom label to define the name of the library branch. metrics: - name:
+    /// library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing:
+    /// consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: -
+    /// library.googleapis.com/book/borrowed_count</summary>
     public class Billing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Billing configurations for sending metrics to the consumer project. There can be multiple consumer
@@ -2827,53 +2704,33 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -2886,9 +2743,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Change report associated with a particular service configuration.
-    ///
-    /// It contains a list of ConfigChanges based on the comparison between two service configurations.</summary>
+    /// <summary>Change report associated with a particular service configuration. It contains a list of ConfigChanges
+    /// based on the comparison between two service configurations.</summary>
     public class ChangeReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of changes between two service configurations. The changes will be alphabetically sorted based
@@ -2901,10 +2757,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Output generated from semantically comparing two versions of a service configuration.
-    ///
-    /// Includes detailed information about a field that have changed with applicable advice about potential
-    /// consequences for the change, such as backwards-incompatibility.</summary>
+    /// <summary>Output generated from semantically comparing two versions of a service configuration. Includes detailed
+    /// information about a field that have changed with applicable advice about potential consequences for the change,
+    /// such as backwards-incompatibility.</summary>
     public class ConfigChange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Collection of advice provided for this change, useful for determining the possible impact of this
@@ -2988,33 +2843,19 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Context` defines which contexts an API requests.
-    ///
-    /// Example:
-    ///
-    /// context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext -
-    /// google.rpc.context.OriginContext
-    ///
-    /// The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and
-    /// `google.rpc.context.OriginContext`.
-    ///
-    /// Available context types are defined in package `google.rpc.context`.
-    ///
-    /// This also provides mechanism to whitelist any protobuf message extension that can be sent in grpc metadata using
-    /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can
-    /// appear in grpc metadata as follows in your yaml file:
-    ///
-    /// Example:
-    ///
+    /// <summary>`Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: -
+    /// google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the
+    /// API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types
+    /// are defined in package `google.rpc.context`. This also provides mechanism to whitelist any protobuf message
+    /// extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example,
+    /// list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example:
     /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
-    /// google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension
-    ///
-    /// You can also specify extension ID instead of fully qualified extension name here.</summary>
+    /// google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify
+    /// extension ID instead of fully qualified extension name here.</summary>
     public class Context : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of RPC context rules that apply to individual API methods.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of RPC context rules that apply to individual API methods. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<ContextRule> Rules { get; set; } 
 
@@ -3043,9 +2884,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requested")]
         public virtual System.Collections.Generic.IList<string> Requested { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -3053,7 +2892,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Selects and configures the service controller used by the service.  The service controller handles
+    /// <summary>Selects and configures the service controller used by the service. The service controller handles
     /// features like abuse, quota, billing, logging, monitoring, etc.</summary>
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3066,17 +2905,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Customize service error responses.  For example, list any service specific protobuf types that can
-    /// appear in error detail lists of error responses.
-    ///
-    /// Example:
-    ///
-    /// custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError</summary>
+    /// <summary>Customize service error responses. For example, list any service specific protobuf types that can
+    /// appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError -
+    /// google.foo.v1.AnotherError</summary>
     public class CustomError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of custom error rules that apply to individual API messages.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>The list of custom error rules that apply to individual API messages. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<CustomErrorRule> Rules { get; set; } 
 
@@ -3091,14 +2926,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>A custom error rule.</summary>
     public class CustomErrorRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Mark this message as possible payload in error response.  Otherwise, objects of this type will be
+        /// <summary>Mark this message as possible payload in error response. Otherwise, objects of this type will be
         /// filtered when they appear in error payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isErrorType")]
         public virtual System.Nullable<bool> IsErrorType { get; set; } 
 
-        /// <summary>Selects messages to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects messages to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -3151,11 +2984,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for DisableService method.</summary>
     public class DisableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The identity of consumer resource which service disablement will be applied to.
-        ///
-        /// The Google Service Management implementation accepts the following forms: - "project:"
-        ///
-        /// Note: this is made compatible with google.api.servicecontrol.v1.Operation.consumer_id.</summary>
+        /// <summary>Required. The identity of consumer resource which service disablement will be applied to. The
+        /// Google Service Management implementation accepts the following forms: - "project:" Note: this is made
+        /// compatible with google.api.servicecontrol.v1.Operation.consumer_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
@@ -3170,46 +3001,34 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Documentation` provides the information for describing a service.
-    ///
-    /// Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: -
-    /// name: Overview content: == include google/foo/overview.md == - name: Tutorial content: == include
-    /// google/foo/tutorial.md == subpages; - name: Java content: == include google/foo/tutorial_java.md == rules: -
-    /// selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description:
-    /// > ...
-    ///
-    /// Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists,
-    /// tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the
-    /// section nesting of the context where a documentation fragment is embedded.
-    ///
-    /// Documentation from the IDL is merged with documentation defined via the config at normalization time, where
-    /// documentation provided by config rules overrides IDL provided.
-    ///
-    /// A number of constructs specific to the API platform are supported in documentation text.
-    ///
-    /// In order to reference a proto element, the following notation can be used: fully.qualified.proto.name]] To
-    /// override the display text used for the link, this can be used: display text]fully.qualified.proto.name] Text can
-    /// be excluded from doc using the following notation: -- internal comment --
-    ///
-    /// A few directives are available in documentation. Note that directives must appear on a single line to be
-    /// properly identified. The `include` directive includes a markdown file from an external source: == include
-    /// path/to/file == The `resource_for` directive marks a message to be the resource of a collection in REST view. If
-    /// it is not specified, tools attempt to infer the resource from the operations in a collection: == resource_for
-    /// v1.shelves.books == The directive `suppress_warning` does not directly affect documentation and is documented
-    /// together with service config validation.</summary>
+    /// <summary>`Documentation` provides the information for describing a service. Example: documentation: summary: >
+    /// The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include
+    /// google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name:
+    /// Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get
+    /// description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in
+    /// markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are
+    /// supported. Section headers can be provided and are interpreted relative to the section nesting of the context
+    /// where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via
+    /// the config at normalization time, where documentation provided by config rules overrides IDL provided. A number
+    /// of constructs specific to the API platform are supported in documentation text. In order to reference a proto
+    /// element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used
+    /// for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using
+    /// the following notation: (-- internal comment --) A few directives are available in documentation. Note that
+    /// directives must appear on a single line to be properly identified. The `include` directive includes a markdown
+    /// file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be
+    /// the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the
+    /// operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not
+    /// directly affect documentation and is documented together with service config validation.</summary>
     public class Documentation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The URL to the root of documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationRootUrl")]
         public virtual string DocumentationRootUrl { get; set; } 
 
-        /// <summary>Declares a single overview page. For example: documentation: summary: ... overview: == include
-        /// overview.md ==
-        ///
-        /// This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: -
-        /// name: Overview content: == include overview.md ==
-        ///
-        /// Note: you cannot specify both `overview` field and `pages` field.</summary>
+        /// <summary>Declares a single overview page. For example: documentation: summary: ... overview: (== include
+        /// overview.md ==) This is a shortcut for the following declaration (using pages style): documentation:
+        /// summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both
+        /// `overview` field and `pages` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual string Overview { get; set; } 
 
@@ -3217,9 +3036,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<Page> Pages { get; set; } 
 
-        /// <summary>A list of documentation rules that apply to individual API elements.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of documentation rules that apply to individual API elements. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<DocumentationRule> Rules { get; set; } 
 
@@ -3263,11 +3081,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for EnableService method.</summary>
     public class EnableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The identity of consumer resource which service enablement will be applied to.
-        ///
-        /// The Google Service Management implementation accepts the following forms: - "project:"
-        ///
-        /// Note: this is made compatible with google.api.servicecontrol.v1.Operation.consumer_id.</summary>
+        /// <summary>Required. The identity of consumer resource which service enablement will be applied to. The Google
+        /// Service Management implementation accepts the following forms: - "project:" Note: this is made compatible
+        /// with google.api.servicecontrol.v1.Operation.consumer_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
@@ -3284,20 +3100,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>`Endpoint` describes a network endpoint that serves a set of APIs. A service may expose any number of
     /// endpoints, and all endpoints share the same service configuration, such as quota configuration and monitoring
-    /// configuration.
-    ///
-    /// Example service configuration:
-    ///
-    /// name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
-    /// served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to
-    /// the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name:
-    /// library-example.googleapis.com allow_cors: true</summary>
+    /// configuration. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry
+    /// makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com.
+    /// # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent
+    /// cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
-        /// google.api.Endpoint for each of the intended aliases.
-        ///
-        /// Additional names that this endpoint will be hosted on.</summary>
+        /// google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted
+        /// on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
 
@@ -3370,29 +3181,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -3540,14 +3337,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -3561,15 +3354,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class Http : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>When set to true, URL path parameters will be fully URI-decoded except in cases of single segment
-        /// matches in reserved expansion, where "%2F" will be left encoded.
-        ///
-        /// The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.</summary>
+        /// matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC
+        /// 6570 reserved characters in multi segment matches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyDecodeReservedExpansion")]
         public virtual System.Nullable<bool> FullyDecodeReservedExpansion { get; set; } 
 
-        /// <summary>A list of HTTP configuration rules that apply to individual API methods.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service
+        /// configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<HttpRule> Rules { get; set; } 
 
@@ -3577,166 +3368,97 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary># gRPC Transcoding
-    ///
-    /// gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows
-    /// developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including
-    /// [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints),
-    /// [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy)
-    /// proxy support this feature and use it for large scale production services.
-    ///
-    /// `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC
-    /// request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how
-    /// the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an
-    /// `google.api.http` annotation on the gRPC method.
-    ///
-    /// Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields
-    /// in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type.
-    /// The path template controls how fields of the request message are mapped to the URL path.
-    ///
-    /// Example:
-    ///
-    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:
-    /// "/v1/{name=messages}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message
-    /// Message { string text = 1; // The resource content. }
-    ///
-    /// This enables an HTTP REST to gRPC mapping as below:
-    ///
-    /// HTTP | gRPC -----|----- `GET /v1/messages/123456`  | `GetMessage(name: "messages/123456")`
-    ///
-    /// Any fields in the request message which are not bound by the path template automatically become HTTP query
-    /// parameters if there is no HTTP request body. For example:
-    ///
-    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = {
+    /// <summary># gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP
+    /// REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs.
+    /// Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud
+    /// Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway),
+    /// and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale
+    /// production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different
+    /// portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It
+    /// also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically
+    /// specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and
+    /// an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each
+    /// field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the
+    /// request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest)
+    /// returns (Message) { option (google.api.http) = { get: "/v1/{name=messages}" }; } } message GetMessageRequest {
+    /// string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This
+    /// enables an HTTP REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456` |
+    /// `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template
+    /// automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging {
+    /// rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = {
     /// get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; }
-    /// string message_id = 1; // Mapped to URL path. int64 revision = 2;    // Mapped to URL query parameter
-    /// `revision`. SubMessage sub = 3;    // Mapped to URL query parameter `sub.subfield`. }
-    ///
-    /// This enables a HTTP JSON to RPC mapping as below:
-    ///
-    /// HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2=foo` | `GetMessage(message_id: "123456" revision: 2
-    /// sub: SubMessage(subfield: "foo"))`
-    ///
-    /// Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive
-    /// type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as
-    /// `...?param=A=B`. In the case of a message type, each field of the message is mapped to a separate parameter,
-    /// such as `...?foo.a=A=B=C`.
-    ///
-    /// For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update
-    /// method on the message resource collection:
-    ///
+    /// string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`.
+    /// SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping
+    /// as below: HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2=foo` | `GetMessage(message_id: "123456"
+    /// revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must
+    /// have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated
+    /// type, the parameter can be repeated in the URL as `...?param=A=B`. In the case of a message type, each field of
+    /// the message is mapped to a separate parameter, such as `...?foo.a=A=B=C`. For HTTP methods that allow a request
+    /// body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection:
     /// service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = {
     /// patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1;
-    /// // mapped to the URL Message message = 2;   // mapped to the body }
-    ///
-    /// The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is
-    /// determined by protos JSON encoding:
-    ///
-    /// HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456"
-    /// message { text: "Hi!" })`
-    ///
-    /// The special name `*` can be used in the body mapping to define that every field not bound by the path template
-    /// should be mapped to the request body.  This enables the following alternative definition of the update method:
-    ///
-    /// service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch:
-    /// "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; }
-    ///
-    /// The following HTTP JSON to RPC mapping is enabled:
-    ///
-    /// HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456"
-    /// text: "Hi!")`
-    ///
-    /// Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not
-    /// bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs.
-    /// The common usage of `*` is in custom methods which don't use the URL at all for transferring data.
-    ///
-    /// It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example:
-    ///
-    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:
-    /// "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } }
-    /// message GetMessageRequest { string message_id = 1; string user_id = 2; }
-    ///
-    /// This enables the following two alternative HTTP JSON to RPC mappings:
-    ///
-    /// HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET
-    /// /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "123456")`
-    ///
-    /// ## Rules for HTTP mapping
-    ///
-    /// 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three
-    /// categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the
-    /// HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query
-    /// parameters, and the parameter name is the field path in the request message. A repeated field can be represented
-    /// as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter,
-    /// all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP
-    /// request body, all fields are passed via URL path and URL query parameters.
-    ///
-    /// ### Path template syntax
-    ///
-    /// Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment  = "*" | "**" | LITERAL |
-    /// Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb     = ":"
-    /// LITERAL ;
-    ///
-    /// The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which
-    /// must be the last part of the URL path except the `Verb`.
-    ///
-    /// The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not
-    /// contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}`
-    /// is equivalent to `{var=*}`.
-    ///
-    /// The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character,
-    /// such characters should be percent-encoded before the matching.
-    ///
-    /// If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is
-    /// expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
-    /// server side does the reverse decoding. Such variables show up in the [Discovery
-    /// Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`.
-    ///
-    /// If a variable contains multiple path segments, such as `"{var=foo}"` or `"{var=**}"`, when such a variable is
-    /// expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The
-    /// server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the
-    /// [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`.
-    ///
-    /// ## Using gRPC API Service Configuration
-    ///
-    /// gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to
-    /// become a user-facing product. The service config is simply the YAML representation of the `google.api.Service`
-    /// proto message.
-    ///
-    /// As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML
-    /// files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same
-    /// effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple
-    /// services. Note that any transcoding specified in the service config will override any matching transcoding
-    /// configuration in the proto.
-    ///
-    /// Example:
-    ///
-    /// http: rules: # Selects a gRPC method and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage
-    /// get: /v1/messages/{message_id}/{sub.subfield}
-    ///
-    /// ## Special notes
-    ///
-    /// When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the
-    /// [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
-    ///
-    /// While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570)
-    /// Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3
-    /// Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and
-    /// `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment
-    /// variables.
-    ///
-    /// The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable
-    /// of handling such variable expansion.
-    ///
-    /// The path variables **must not** capture the leading "/" character. The reason is that the most common use case
-    /// "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same
-    /// behavior.
-    ///
-    /// Repeated message fields must not be mapped to URL query parameters, because no client library can support such
-    /// complicated mapping.
-    ///
-    /// If an API needs to use a JSON array for request or response body, it can map the request or response body to a
-    /// repeated field. However, some gRPC Transcoding implementations may not support this feature.</summary>
+    /// // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is
+    /// enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: HTTP |
+    /// gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" message {
+    /// text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the
+    /// path template should be mapped to the request body. This enables the following alternative definition of the
+    /// update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = {
+    /// patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; }
+    /// The following HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text":
+    /// "Hi!" }` | `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is
+    /// not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this
+    /// option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which
+    /// don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by
+    /// using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns
+    /// (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get:
+    /// "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string
+    /// user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|-----
+    /// `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/messages/123456` |
+    /// `GetMessage(user_id: "me" message_id: "123456")` ## Rules for HTTP mapping 1. Leaf request fields (recursive
+    /// expansion nested messages in the request message) are classified into three categories: - Fields referred by the
+    /// path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the
+    /// HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the
+    /// field path in the request message. A repeated field can be represented as multiple query parameters under the
+    /// same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and
+    /// HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL
+    /// path and URL query parameters. ### Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment {
+    /// "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ;
+    /// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The
+    /// syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the
+    /// `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template
+    /// must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g.
+    /// `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL`
+    /// contains any reserved character, such characters should be percent-encoded before the matching. If a variable
+    /// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL
+    /// path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the
+    /// reverse decoding. Such variables show up in the [Discovery
+    /// Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple
+    /// path segments, such as `"{var=foo}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the
+    /// client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse
+    /// decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery
+    /// Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. ## Using gRPC API Service
+    /// Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC
+    /// service to become a user-facing product. The service config is simply the YAML representation of the
+    /// `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC
+    /// transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method
+    /// to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you
+    /// have a proto that is reused in multiple services. Note that any transcoding specified in the service config will
+    /// override any matching transcoding configuration in the proto. Example: http: rules: # Selects a gRPC method and
+    /// applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get:
+    /// /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC Transcoding is used to map a gRPC to JSON
+    /// REST endpoints, the proto to JSON conversion must follow the [proto3
+    /// specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment
+    /// variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
+    /// Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason
+    /// is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid
+    /// URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables
+    /// **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such
+    /// variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the
+    /// most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables
+    /// must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no
+    /// client library can support such complicated mapping. If an API needs to use a JSON array for request or response
+    /// body, it can map the request or response body to a repeated field. However, some gRPC Transcoding
+    /// implementations may not support this feature.</summary>
     public class HttpRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional HTTP bindings for the selector. Nested bindings must not contain an
@@ -3751,9 +3473,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         /// <summary>The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping
         /// all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP
-        /// request body.
-        ///
-        /// NOTE: the referred field must be present at the top-level of the request message type.</summary>
+        /// request body. NOTE: the referred field must be present at the top-level of the request message
+        /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
@@ -3784,15 +3505,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Put { get; set; } 
 
         /// <summary>Optional. The name of the response field whose value is mapped to the HTTP response body. When
-        /// omitted, the entire response message will be used as the HTTP response body.
-        ///
-        /// NOTE: The referred field must be present at the top-level of the response message type.</summary>
+        /// omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must
+        /// be present at the top-level of the response message type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBody")]
         public virtual string ResponseBody { get; set; } 
 
-        /// <summary>Selects a method to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects a method to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -3813,9 +3531,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         /// <summary>The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must
         /// be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If
-        /// not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed.
-        ///
-        /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.</summary>
+        /// not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For
+        /// example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuePrefix")]
         public virtual string ValuePrefix { get; set; } 
 
@@ -3902,11 +3619,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of a log type. Example in YAML format:
-    ///
-    /// - name: library.googleapis.com/activity_history description: The history of borrowing and returning library
-    /// items. display_name: Activity labels: - key: /customer_id description: Identifier of a library
-    /// customer</summary>
+    /// <summary>A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history
+    /// description: The history of borrowing and returning library items. display_name: Activity labels: - key:
+    /// /customer_id description: Identifier of a library customer</summary>
     public class LogDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A human-readable description of this log. This information appears in the documentation and can
@@ -3934,15 +3649,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Logging configuration of the service.
-    ///
-    /// The following example shows how to configure logs to be sent to the producer and consumer projects. In the
-    /// example, the `activity_history` log is sent to both the producer and consumer projects, whereas the
-    /// `purchase_history` log is only sent to the producer project.
-    ///
-    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
-    /// library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history
-    /// labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource:
+    /// <summary>Logging configuration of the service. The following example shows how to configure logs to be sent to
+    /// the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and
+    /// consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources:
+    /// - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is
+    /// located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key:
+    /// /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource:
     /// library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: -
     /// monitored_resource: library.googleapis.com/branch logs: - activity_history</summary>
     public class Logging : Google.Apis.Requests.IDirectResponseSchema
@@ -4034,15 +3746,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
-    /// stops data collection and makes the metric type's existing data unusable.
-    ///
-    /// The following are specific rules for service defined Monitoring metric descriptors:
-    ///
-    /// * `type`, `metric_kind`, `value_type` and `description` fields are all required. The `unit` field must be
-    /// specified if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION. * Maximum of default 500 metric descriptors
-    /// per service is allowed. * Maximum of default 10 labels per metric descriptor is allowed.
-    ///
-    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas</summary>
+    /// stops data collection and makes the metric type's existing data unusable. </summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -4055,16 +3759,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The set of labels that can be used to describe a specific instance of this metric type.
-        ///
-        /// The label key name must follow:
-        ///
-        /// * Only upper and lower-case letters, digits and underscores (_) are allowed. * Label name must start with a
-        /// letter or digit. * The maximum length of a label name is 100 characters.
-        ///
-        /// For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the
-        /// HTTP response code, `response_code`, so you can look at latencies for successful responses or just for
-        /// responses that failed.</summary>
+        /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
+        /// example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP
+        /// response code, `response_code`, so you can look at latencies for successful responses or just for responses
+        /// that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -4091,81 +3789,39 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.
-        ///
-        /// All service defined metrics must be prefixed with the service name, in the format of `{service
-        /// name}/{relative metric name}`, such as `cloudsql.googleapis.com/database/cpu/utilization`. The relative
-        /// metric name must follow:
-        ///
-        /// * Only upper and lower-case letters, digits, '/' and underscores '_' are allowed. * The maximum number of
-        /// characters allowed for the relative_metric_name is 100.
-        ///
-        /// All user-defined metric types have the DNS name `custom.googleapis.com`, `external.googleapis.com`, or
-        /// `logging.googleapis.com/user/`.
-        ///
-        /// Metric types should use a natural hierarchical grouping. For example:
-        ///
-        /// "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
-        /// "appengine.googleapis.com/http/server/response_latencies"</summary>
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
+        /// metric types have the DNS name `custom.googleapis.com` or `external.googleapis.com`. Metric types should use
+        /// a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount"
+        /// "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
         /// <summary>The units in which the metric value is reported. It is only applicable if the `value_type` is
         /// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values.
-        ///
         /// Different systems may scale the values to be more easily displayed (so a value of `0.02KBy` _might_ be
         /// displayed as `20By`, and a value of `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
-        /// `KBy`, then the value of the metric is always in thousands of bytes, no matter how it may be displayed..
-        ///
-        /// If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an
-        /// `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses
-        /// 12,005 CPU-seconds, then the value is written as `12005`.
-        ///
-        /// Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE
-        /// CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or
-        /// use `Kis{CPU}` and write `11.723` (which is `12005/1024`).
-        ///
-        /// The supported units are a subset of [The Unified Code for Units of
-        /// Measure](http://unitsofmeasure.org/ucum.html) standard:
-        ///
-        /// **Basic units (UNIT)**
-        ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day * `1`
-        /// dimensionless
-        ///
-        /// **Prefixes (PREFIX)**
-        ///
-        /// * `k`     kilo    (10^3) * `M`     mega    (10^6) * `G`     giga    (10^9) * `T`     tera    (10^12) * `P`
-        /// peta    (10^15) * `E`     exa     (10^18) * `Z`     zetta   (10^21) * `Y`     yotta   (10^24)
-        ///
-        /// * `m`     milli   (10^-3) * `u`     micro   (10^-6) * `n`     nano    (10^-9) * `p`     pico    (10^-12) *
-        /// `f`     femto   (10^-15) * `a`     atto    (10^-18) * `z`     zepto   (10^-21) * `y`     yocto   (10^-24)
-        ///
-        /// * `Ki`    kibi    (2^10) * `Mi`    mebi    (2^20) * `Gi`    gibi    (2^30) * `Ti`    tebi    (2^40) * `Pi`
-        /// pebi    (2^50)
-        ///
-        /// **Grammar**
-        ///
-        /// The grammar also includes these connectors:
-        ///
-        /// * `/`    division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you
-        /// should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the
-        /// underlying cumulative or delta value). * `.`    multiplication or composition (as an infix operator). For
-        /// examples, `GBy.d` or `k{watt}.h`.
-        ///
-        /// The grammar for a unit is as follows:
-        ///
-        /// Expression = Component { "." Component } { "/" Component } ;
-        ///
-        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ;
-        ///
-        /// Annotation = "{" NAME "}" ;
-        ///
-        /// Notes:
-        ///
-        /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is
-        /// equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence
-        /// of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless
+        /// `KBy`, then the value of the metric is always in thousands of bytes, no matter how it may be displayed.. If
+        /// you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64
+        /// CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005
+        /// CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data
+        /// in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then
+        /// write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is
+        /// `12005/1024`). The supported units are a subset of [The Unified Code for Units of
+        /// Measure](http://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s`
+        /// second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M`
+        /// mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) *
+        /// `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto
+        /// (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20)
+        /// * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these
+        /// connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms`
+        /// (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query
+        /// time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix
+        /// operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression =
+        /// Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+        /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a
+        /// `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s ==
+        /// 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not
+        /// containing `{` or `}`. * `1` represents a unitary [dimensionless
         /// unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used
         /// when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d`
         /// or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views
@@ -4213,16 +3869,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metrics to update when the selected methods are called, and the associated cost applied to each
-        /// metric.
-        ///
-        /// The key of the map is the metric name, and the values are the amount increased for the metric against which
-        /// the quota limits are defined. The value must not be negative.</summary>
+        /// metric. The key of the map is the metric name, and the values are the amount increased for the metric
+        /// against which the quota limits are defined. The value must not be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricCosts")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> MetricCosts { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -4231,49 +3883,26 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>Declares an API Interface to be included in this interface. The including interface must redeclare all
-    /// the methods from the included interface, but documentation and options are inherited as follows:
-    ///
-    /// - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will
-    /// be inherited from the original method.
-    ///
-    /// - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method
-    /// will be inherited.
-    ///
-    /// - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be
-    /// replaced by the version of the including interface plus the root path if specified.
-    ///
-    /// Example of a simple mixin:
-    ///
-    /// package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest)
-    /// returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } }
-    ///
-    /// package google.storage.v2; service Storage { //       rpc GetAcl(GetAclRequest) returns (Acl);
-    ///
-    /// // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get =
-    /// "/v2/{resource=**}"; } }
-    ///
-    /// Example of a mixin configuration:
-    ///
-    /// apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl
-    ///
-    /// The mixin construct implies that all methods in `AccessControl` are also declared with same name and
-    /// request/response types in `Storage`. A documentation generator or annotation processor will see the effective
-    /// `Storage.GetAcl` method after inherting documentation and annotations as follows:
-    ///
-    /// service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
-    /// (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... }
-    ///
-    /// Note how the version in the path pattern changed from `v1` to `v2`.
-    ///
-    /// If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are
-    /// placed. Example:
-    ///
-    /// apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls
-    ///
-    /// This implies the following inherited HTTP annotation:
-    ///
-    /// service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
-    /// (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }</summary>
+    /// the methods from the included interface, but documentation and options are inherited as follows: - If after
+    /// comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be
+    /// inherited from the original method. - Each annotation belonging to the service config (http, visibility) which
+    /// is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern
+    /// will be modified as follows. Any version prefix will be replaced by the version of the including interface plus
+    /// the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the
+    /// underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
+    /// "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest)
+    /// returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get =
+    /// "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: -
+    /// name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also
+    /// declared with same name and request/response types in `Storage`. A documentation generator or annotation
+    /// processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as
+    /// follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
+    /// (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed
+    /// from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which
+    /// inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name:
+    /// google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage {
+    /// // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
+    /// "/v2/acls/{resource=**}:getAcl"; } ... }</summary>
     public class Mixin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fully qualified name of the interface which is included.</summary>
@@ -4289,21 +3918,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
-    /// labels.  For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
+    /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
     /// `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM
-    /// instances.
-    ///
-    /// Different services can support different monitored resource types.
-    ///
-    /// The following are specific rules to service defined monitored resources for Monitoring and Logging:
-    ///
-    /// * The `type`, `display_name`, `description`, `labels` and `launch_stage` fields are all required. * The first
-    /// label of the monitored resource descriptor must be `resource_container`. There are legacy monitored resource
-    /// descritptors start with `project_id`. * It must include a `location` label. * Maximum of default 5 service
-    /// defined monitored resource descriptors is allowed per service. * Maximum of default 10 labels per monitored
-    /// resource is allowed.
-    ///
-    /// The default maximum limit can be overridden. Please follow https://cloud.google.com/monitoring/quotas </summary>
+    /// instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method
+    /// that returns the monitored resource descriptors used by the API. </summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -4317,14 +3935,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
-        /// name must follow:
-        ///
-        /// * Only upper and lower-case letters, digits and underscores (_) are allowed. * Label name must start with a
-        /// letter or digit. * The maximum length of a label name is 100 characters.
-        ///
-        /// For example, an individual Google Cloud SQL database is identified by values for the labels `database_id`
-        /// and `location`.</summary>
+        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
+        /// an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and
+        /// `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -4340,17 +3953,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The monitored resource type. For example, the type `cloudsql_database` represents
-        /// databases in Google Cloud SQL.
-        ///
-        /// All service defined monitored resource types must be prefixed with the service name, in the format of
-        /// `{service name}/{relative resource name}`. The relative resource name must follow:
-        ///
-        /// * Only upper and lower-case letters and digits are allowed. * It must start with upper case character and is
-        /// recommended to use Upper Camel Case style. * The maximum number of characters allowed for the
-        /// relative_resource_name is 100.
-        ///
-        /// Note there are legacy service monitored resources not following this rule.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type `"cloudsql_database"` represents
+        /// databases in Google Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -4358,19 +3962,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Monitoring configuration of the service.
-    ///
-    /// The example below shows how to configure monitored resources and metrics for monitoring. In the example, a
-    /// monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent
-    /// to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only
-    /// sent to the consumer project.
-    ///
-    /// monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch
-    /// of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project
-    /// id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id
-    /// description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name:
-    /// "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA
-    /// value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name:
+    /// <summary>Monitoring configuration of the service. The example below shows how to configure monitored resources
+    /// and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The
+    /// `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the
+    /// `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: -
+    /// type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library."
+    /// launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the
+    /// Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The
+    /// id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned"
+    /// description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64
+    /// unit: "1" labels: - key: customer_id description: "The id of the customer." - name:
     /// library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of
     /// overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id
     /// description: "The id of the customer." monitoring: producer_destinations: - monitored_resource:
@@ -4417,27 +4018,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined
     /// for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an
-    /// application, giving it permission to access that data on their behalf.
-    ///
-    /// OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text
-    /// description of what your scope means.
-    ///
-    /// In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has
-    /// multiple APIs, you should probably be sharing the OAuth scope across all of those APIs.
-    ///
-    /// When you need finer grained OAuth consent screens: talk with your product management about how developers will
-    /// use them in practice.
-    ///
-    /// Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to
-    /// the backend, a request can still fail due to the backend requiring additional scopes or permissions.</summary>
+    /// application, giving it permission to access that data on their behalf. OAuth scope specifications should be
+    /// fairly coarse grained; a user will need to see and understand the text description of what your scope means. In
+    /// most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple
+    /// APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth
+    /// consent screens: talk with your product management about how developers will use them in practice. Please note
+    /// that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend,
+    /// a request can still fail due to the backend requiring additional scopes or permissions.</summary>
     public class OAuthRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any
-        /// of these scopes will be accepted.
-        ///
-        /// Example:
-        ///
-        /// canonical_scopes: https://www.googleapis.com/auth/calendar,
+        /// of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar,
         /// https://www.googleapis.com/auth/calendar.read</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalScopes")]
         public virtual string CanonicalScopes { get; set; } 
@@ -4458,9 +4049,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4470,11 +4061,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4528,7 +4119,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// structure.</summary>
     public class Page : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Markdown content of the page. You can use == include {path} == to include content from a
+        /// <summary>The Markdown content of the page. You can use (== include {path} ==) to include content from a
         /// Markdown file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
@@ -4536,10 +4127,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>The name of the page. It will be used as an identity of the page to generate URI of the page, text
         /// of the link to this page in navigation, etc. The full page name (start from the root page name to this page
         /// concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: -
-        /// name: Tutorial content: == include tutorial.md == subpages: - name: Java content: == include
-        /// tutorial_java.md ==
-        ///
-        /// You can reference `Java` page using Markdown reference link syntax: `Java`.</summary>
+        /// name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include
+        /// tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4553,35 +4142,24 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4598,67 +4176,43 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
     }    
 
-    /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage.
-    ///
-    /// The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For
-    /// API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines
-    /// limits on the metrics, which will be used for quota checks at runtime.
-    ///
-    /// An example quota configuration in yaml format:
-    ///
-    /// quota: limits:
-    ///
-    /// - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}"  # rate limit
-    /// for consumer projects values: STANDARD: 10000
-    ///
-    /// # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook
-    /// methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at
-    /// twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs:
-    /// library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook
-    /// metric_costs: library.googleapis.com/write_calls: 2 - selector:
-    /// google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1
-    ///
-    /// Corresponding Metric definition:
-    ///
-    /// metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type:
-    /// INT64
-    ///
-    /// - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
-    ///
-    /// </summary>
+    /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota
+    /// configuration works this way: - The service configuration defines a set of metrics. - For API calls, the
+    /// quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the
+    /// metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota:
+    /// limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate
+    /// limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls
+    /// metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls
+    /// metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector:
+    /// "*" metric_costs: library.googleapis.com/read_calls: 1 - selector:
+    /// google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 -
+    /// selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls:
+    /// 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read
+    /// requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write
+    /// requests metric_kind: DELTA value_type: INT64 </summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of `QuotaLimit` definitions for the service.</summary>
@@ -4679,13 +4233,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class QuotaLimit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Default number of tokens that can be consumed during the specified duration. This is the number of
-        /// tokens assigned when a client application developer activates the service for his/her project.
-        ///
-        /// Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected
-        /// consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative
-        /// values are allowed.
-        ///
-        /// Used by group-based quotas only.</summary>
+        /// tokens assigned when a client application developer activates the service for his/her project. Specifying a
+        /// value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and
+        /// blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are
+        /// allowed. Used by group-based quotas only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLimit")]
         public virtual System.Nullable<long> DefaultLimit { get; set; } 
 
@@ -4701,28 +4252,24 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Duration of this limit in textual notation. Must be "100s" or "1d".
-        ///
-        /// Used by group-based quotas only.</summary>
+        /// <summary>Duration of this limit in textual notation. Must be "100s" or "1d". Used by group-based quotas
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual string Duration { get; set; } 
 
         /// <summary>Free tier value displayed in the Developers Console for this limit. The free tier is the number of
         /// tokens that will be subtracted from the billed amount when billing is enabled. This field can only be set on
         /// a limit with duration "1d", in a billable group; it is invalid on any other limit. If this field is not set,
-        /// it defaults to 0, indicating that there is no free tier for this service.
-        ///
-        /// Used by group-based quotas only.</summary>
+        /// it defaults to 0, indicating that there is no free tier for this service. Used by group-based quotas
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTier")]
         public virtual System.Nullable<long> FreeTier { get; set; } 
 
         /// <summary>Maximum number of tokens that can be consumed during the specified duration. Client application
         /// developers can override the default limit up to this maximum. If specified, this value cannot be set to a
-        /// value less than the default limit. If not specified, it is set to the default limit.
-        ///
-        /// To allow clients to apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota.
-        ///
-        /// Used by group-based quotas only.</summary>
+        /// value less than the default limit. If not specified, it is set to the default limit. To allow clients to
+        /// apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota. Used by group-based
+        /// quotas only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLimit")]
         public virtual System.Nullable<long> MaxLimit { get; set; } 
 
@@ -4731,22 +4278,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>Name of the quota limit.
-        ///
-        /// The name must be provided, and it must be unique within the service. The name can only include alphanumeric
-        /// characters as well as '-'.
-        ///
-        /// The maximum length of the limit name is 64 characters.</summary>
+        /// <summary>Name of the quota limit. The name must be provided, and it must be unique within the service. The
+        /// name can only include alphanumeric characters as well as '-'. The maximum length of the limit name is 64
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit
-        /// kinds are determined by the quota backend system.
-        ///
-        /// Here are some examples: * "1/min/{project}" for quota per minute per project.
-        ///
-        /// Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the
-        /// metric unit syntax.</summary>
+        /// kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per
+        /// minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is
+        /// required to follow the metric unit syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -4763,29 +4304,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class ResourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource type of a child collection that the annotated field references. This is useful for
-        /// annotating the `parent` field that doesn't have a fixed resource type.
-        ///
-        /// Example:
-        ///
-        /// message ListLogEntriesRequest { string parent = 1 [(google.api.resource_reference) = { child_type:
+        /// annotating the `parent` field that doesn't have a fixed resource type. Example: message
+        /// ListLogEntriesRequest { string parent = 1 [(google.api.resource_reference) = { child_type:
         /// "logging.googleapis.com/LogEntry" }; }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childType")]
         public virtual string ChildType { get; set; } 
 
-        /// <summary>The resource type that the annotated field references.
-        ///
-        /// Example:
-        ///
-        /// message Subscription { string topic = 2 [(google.api.resource_reference) = { type:
-        /// "pubsub.googleapis.com/Topic" }]; }
-        ///
-        /// Occasionally, a field may reference an arbitrary resource. In this case, APIs use the special value * in
-        /// their resource reference.
-        ///
-        /// Example:
-        ///
-        /// message GetIamPolicyRequest { string resource = 2 [(google.api.resource_reference) = { type: "*" }];
-        /// }</summary>
+        /// <summary>The resource type that the annotated field references. Example: message Subscription { string topic
+        /// = 2 [(google.api.resource_reference) = { type: "pubsub.googleapis.com/Topic" }]; } Occasionally, a field may
+        /// reference an arbitrary resource. In this case, APIs use the special value * in their resource reference.
+        /// Example: message GetIamPolicyRequest { string resource = 2 [(google.api.resource_reference) = { type: "*"
+        /// }]; }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -4811,12 +4340,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual DeleteServiceStrategy DeleteServiceStrategy { get; set; } 
 
         /// <summary>Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower
-        /// case letters, digits, '.', '_' and '-' are allowed.
-        ///
-        /// If not specified by client, the server will generate one. The generated id will have the form of , where
-        /// "date" is the create date in ISO 8601 format.  "revision number" is a monotonically increasing positive
-        /// number that is reset every day for each service. An example of the generated rollout_id is
-        /// '2016-02-16r1'</summary>
+        /// case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate
+        /// one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision
+        /// number" is a monotonically increasing positive number that is reset every day for each service. An example
+        /// of the generated rollout_id is '2016-02-16r1'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutId")]
         public virtual string RolloutId { get; set; } 
 
@@ -4840,14 +4367,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>`Service` is the root object of Google service configuration schema. It describes basic information
     /// about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section
     /// is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each
-    /// proto message definition for details.
-    ///
-    /// Example:
-    ///
-    /// type: google.api.Service config_version: 3 name: calendar.googleapis.com title: Google Calendar API apis: -
-    /// name: google.calendar.v3.Calendar authentication: providers: - id: google_calendar_auth jwks_uri:
-    /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
-    /// requirements: provider_id: google_calendar_auth</summary>
+    /// proto message definition for details. Example: type: google.api.Service config_version: 3 name:
+    /// calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar authentication:
+    /// providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer:
+    /// https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api
@@ -4871,7 +4394,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         /// <summary>The semantic version of the service configuration. The config version affects the interpretation of
         /// the service configuration. For example, certain features are enabled by default for certain config versions.
-        ///
         /// The latest config version is `3`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
         public virtual System.Nullable<long> ConfigVersion { get; set; } 
@@ -4892,16 +4414,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
         public virtual Documentation Documentation { get; set; } 
 
-        /// <summary>Configuration for network endpoints.  If this is empty, then an endpoint with the same name as the
+        /// <summary>Configuration for network endpoints. If this is empty, then an endpoint with the same name as the
         /// service is automatically generated to service all defined APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; } 
 
-        /// <summary>A list of all enum types included in this API service.  Enums referenced directly or indirectly by
-        /// the `apis` are automatically included.  Enums which are not referenced but shall be included should be
-        /// listed here by name. Example:
-        ///
-        /// enums: - name: google.someapi.v1.SomeEnum</summary>
+        /// <summary>A list of all enum types included in this API service. Enums referenced directly or indirectly by
+        /// the `apis` are automatically included. Enums which are not referenced but shall be included should be listed
+        /// here by name. Example: enums: - name: google.someapi.v1.SomeEnum</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enums")]
         public virtual System.Collections.Generic.IList<Enum> Enums { get; set; } 
 
@@ -4970,9 +4490,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Title { get; set; } 
 
         /// <summary>A list of all proto message types included in this API service. Types referenced directly or
-        /// indirectly by the `apis` are automatically included.  Messages which are not referenced but shall be
+        /// indirectly by the `apis` are automatically included. Messages which are not referenced but shall be
         /// included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example:
-        ///
         /// types: - name: google.protobuf.Int32</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Type> Types { get; set; } 
@@ -4985,13 +4504,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The per-product per-project service identity for a service.
-    ///
-    /// Use this field to configure per-product per-project service identity. Example of a service identity
-    /// configuration.
-    ///
-    /// usage: service_identity: - service_account_parent: "projects/123456789" display_name: "Cloud XXX Service Agent"
-    /// description: "Used as the identity of Cloud XXX to access resources"</summary>
+    /// <summary>The per-product per-project service identity for a service. Use this field to configure per-product
+    /// per-project service identity. Example of a service identity configuration. usage: service_identity: -
+    /// service_account_parent: "projects/123456789" display_name: "Cloud XXX Service Agent" description: "Used as the
+    /// identity of Cloud XXX to access resources"</summary>
     public class ServiceIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A user-specified opaque description of the service account. Must be less than or equal to
@@ -5004,9 +4520,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>A service account project that hosts the service accounts.
-        ///
-        /// An example name would be: `projects/123456789`</summary>
+        /// <summary>A service account project that hosts the service accounts. An example name would be:
+        /// `projects/123456789`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountParent")]
         public virtual string ServiceAccountParent { get; set; } 
 
@@ -5024,9 +4539,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -5038,7 +4552,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// it is defined.</summary>
     public class SourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element.  For
+        /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element. For
         /// example: `"google/protobuf/source_context.proto"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
@@ -5060,9 +4574,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5070,8 +4583,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -5155,9 +4668,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<SystemParameter> Parameters { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer
+        /// to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -5165,29 +4677,18 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>### System parameter configuration
-    ///
-    /// A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is
-    /// typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods
-    /// change the names of the system parameters.</summary>
+    /// <summary>### System parameter configuration A system parameter is a special kind of parameter defined by the API
+    /// system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This
+    /// configuration specifies which methods change the names of the system parameters.</summary>
     public class SystemParameters : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Define system parameters.
-        ///
-        /// The parameters defined here will override the default parameters implemented by the system. If this field is
-        /// missing from the service config, default system parameters will be used. Default system parameters and names
-        /// is implementation-dependent.
-        ///
-        /// Example: define api key for all methods
-        ///
-        /// system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key
-        ///
-        /// Example: define 2 api key names for a specific method.
-        ///
-        /// system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 -
-        /// name: api_key http_header: Api-Key2
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>Define system parameters. The parameters defined here will override the default parameters
+        /// implemented by the system. If this field is missing from the service config, default system parameters will
+        /// be used. Default system parameters and names is implementation-dependent. Example: define api key for all
+        /// methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key
+        /// Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves"
+        /// parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All
+        /// service configuration rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<SystemParameterRule> Rules { get; set; } 
 
@@ -5221,16 +4722,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>Strategy that specifies how clients of Google Service Controller want to send traffic to use different
     /// config versions. This is generally used by API proxy to split traffic based on your configured percentage for
-    /// each config version.
-    ///
-    /// One example of how to gradually rollout a new service configuration using this strategy: Day 1
-    ///
-    /// Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: {
-    /// "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } }
-    ///
-    /// Day 2
-    ///
-    /// Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: {
+    /// each config version. One example of how to gradually rollout a new service configuration using this strategy:
+    /// Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: {
+    /// "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id:
+    /// "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: {
     /// "example.googleapis.com/20160206": 100.00 } } }</summary>
     public class TrafficPercentStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5289,10 +4784,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Configuration controlling usage of a service.</summary>
     public class Usage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full resource name of a channel used for sending notifications to the service producer.
-        ///
-        /// Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as
-        /// a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub
+        /// <summary>The full resource name of a channel used for sending notifications to the service producer. Google
+        /// Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a
+        /// notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub
         /// topic that uses the Cloud Pub/Sub topic name format documented in
         /// https://cloud.google.com/pubsub/docs/overview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerNotificationChannel")]
@@ -5303,9 +4797,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirements")]
         public virtual System.Collections.Generic.IList<string> Requirements { get; set; } 
 
-        /// <summary>A list of usage rules that apply to individual API methods.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
+        /// <summary>A list of usage rules that apply to individual API methods. **NOTE:** All service configuration
+        /// rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<UsageRule> Rules { get; set; } 
 
@@ -5317,23 +4810,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Usage configuration rules for the service.
-    ///
-    /// NOTE: Under development.
-    ///
-    /// Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain
-    /// consumer project identity. (Example: calls that do not contain an API key). By default, API methods do not allow
-    /// unregistered calls, and each method call must be identified by a consumer project identity. Use this rule to
-    /// allow/disallow unregistered calls.
-    ///
-    /// Example of an API that wants to allow unregistered calls for entire service.
-    ///
-    /// usage: rules: - selector: "*" allow_unregistered_calls: true
-    ///
-    /// Example of a method that wants to allow unregistered calls.
-    ///
-    /// usage: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls:
-    /// true</summary>
+    /// <summary>Usage configuration rules for the service. NOTE: Under development. Use this rule to configure
+    /// unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity.
+    /// (Example: calls that do not contain an API key). By default, API methods do not allow unregistered calls, and
+    /// each method call must be identified by a consumer project identity. Use this rule to allow/disallow unregistered
+    /// calls. Example of an API that wants to allow unregistered calls for entire service. usage: rules: - selector:
+    /// "*" allow_unregistered_calls: true Example of a method that wants to allow unregistered calls. usage: rules: -
+    /// selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls: true</summary>
     public class UsageRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or
@@ -5341,9 +4824,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowUnregisteredCalls")]
         public virtual System.Nullable<bool> AllowUnregisteredCalls { get; set; } 
 
-        /// <summary>Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs.
-        ///
-        /// Refer to selector for syntax details.</summary>
+        /// <summary>Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer
+        /// to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
