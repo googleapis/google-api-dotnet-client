@@ -1,37 +1,6 @@
 {% language csharp %}{% copyright_block %}
 {% call_template _time_stamp %}
 
-/**
- * \brief
- *   {{ api.title }} Version {{ api.version }}
- *
- * \section ApiInfo API Version Information
- *    <table>
- *      <tr><th>API
- *          <td><a href='{{ api.documentationLink }}'>{{ api.title }}</a>
- *      <tr><th>API Version<td>{{ api.version }}
- *      <tr><th>API Rev<td>{{ api.revision }} ({{ api.revisionInt16 }})
- *      <tr><th>API Docs
- *          <td><a href='{{ api.documentationLink }}'>
- *              {{ api.documentationLink }}</a>
- *      <tr><th>Discovery Name<td>{{ api.name }}{% if options.include_timestamp %}
- *      <tr><th>Generated At<td>{{ tool.runDate }} {{ tool.runTime }}
- *      <tr><th>C# Generator<td>{{ tool.name }}
- *      <tr><th>Generator Version
- *          <td>{{ tool.version }} / c#={{ features.releaseVersion }}
- *      <tr><th>Generator Build<td>{{ tool.buildDate }}{% endif %}
- *    </table>
- *
- * \section ForMoreInfo For More Information
- *
- * The complete API documentation for using {{ api.title }} can be found at
- * <a href='{{ api.documentationLink }}'>{{ api.documentationLink }}</a>.
- *
- * For more information about the Google APIs Client Library for .NET, see
- * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
- * https://developers.google.com/api-client-library/dotnet/get_started</a>
- */
-
 namespace {{ api.module.name }}
 {{% indent %}
 /// <summary>The {{ api.className }} Service.</summary>
