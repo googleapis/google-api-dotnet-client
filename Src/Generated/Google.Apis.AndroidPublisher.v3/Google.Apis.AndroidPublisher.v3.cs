@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Android Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200812 (2050)
+ *      <tr><th>API Rev<td>20200813 (2051)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>

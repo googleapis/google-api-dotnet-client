@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20200723 (2030)
+ *      <tr><th>API Rev<td>20200813 (2051)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/about'>
  *              https://developers.google.com/speed/docs/insights/v5/about</a>
@@ -373,16 +373,26 @@ namespace Google.Apis.PagespeedInsights.v5
             /// run</summary>
             public enum CategoryEnum
             {
+                /// <summary>Default UNDEFINED category.</summary>
                 [Google.Apis.Util.StringValueAttribute("CATEGORY_UNSPECIFIED")]
                 CATEGORYUNSPECIFIED,
+                /// <summary>Accessibility (a11y), category pertaining to a website's capacity to be accessible to all
+                /// users.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESSIBILITY")]
                 ACCESSIBILITY,
+                /// <summary>Best Practices, category pertaining to a website's conformance to web best
+                /// practice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BEST_PRACTICES")]
                 BESTPRACTICES,
+                /// <summary>Performance, category pertaining to a website's performance.</summary>
                 [Google.Apis.Util.StringValueAttribute("PERFORMANCE")]
                 PERFORMANCE,
+                /// <summary>Progressive Web App (PWA), category pertaining to a website's ability to be run as a
+                /// PWA.</summary>
                 [Google.Apis.Util.StringValueAttribute("PWA")]
                 PWA,
+                /// <summary>Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed
+                /// by search engines.</summary>
                 [Google.Apis.Util.StringValueAttribute("SEO")]
                 SEO,
             }
@@ -398,15 +408,18 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>The analysis strategy (desktop or mobile) to use, and desktop is the default</summary>
             public enum StrategyEnum
             {
+                /// <summary>UNDEFINED.</summary>
                 [Google.Apis.Util.StringValueAttribute("STRATEGY_UNSPECIFIED")]
                 STRATEGYUNSPECIFIED,
+                /// <summary>Fetch and analyze the URL for desktop browsers.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESKTOP")]
                 DESKTOP,
+                /// <summary>Fetch and analyze the URL for mobile devices.</summary>
                 [Google.Apis.Util.StringValueAttribute("MOBILE")]
                 MOBILE,
             }
 
-            /// <summary>The URL to fetch and analyze</summary>
+            /// <summary>Required. The URL to fetch and analyze</summary>
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; set; }
 
@@ -776,7 +789,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedUrl")]
         public virtual string RequestedUrl { get; set; } 
 
-        /// <summary>List of all run warnings in the LHR.  Will always output to at least `[]`.</summary>
+        /// <summary>List of all run warnings in the LHR. Will always output to at least `[]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runWarnings")]
         public virtual System.Collections.Generic.IList<object> RunWarnings { get; set; } 
 

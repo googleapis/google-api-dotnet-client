@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200814 (2052)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -10113,7 +10113,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
         /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
-        public virtual string Command { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Command { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

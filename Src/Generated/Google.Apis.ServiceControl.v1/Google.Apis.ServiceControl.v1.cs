@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200808 (2046)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -348,33 +348,25 @@ namespace Google.Apis.ServiceControl.v1
 
 
         /// <summary>Attempts to allocate quota for the specified consumer. It should be called before the operation is
-        /// executed.
-        ///
-        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Cloud IAM](https://cloud.google.com/iam).
-        ///
-        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
-        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
-        /// dependency on the quota functionality.</summary>
+        /// executed. This method requires the `servicemanagement.services.quota` permission on the specified service.
+        /// For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open
+        /// on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+        /// reliability, the server may inject these errors to prohibit any hard dependency on the quota
+        /// functionality.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
-        /// `"pubsub.googleapis.com"`.
-        ///
-        /// See google.api.Service for the definition of a service name.</param>
+        /// `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name.</param>
         public virtual AllocateQuotaRequest AllocateQuota(Google.Apis.ServiceControl.v1.Data.AllocateQuotaRequest body, string serviceName)
         {
             return new AllocateQuotaRequest(service, body, serviceName);
         }
 
         /// <summary>Attempts to allocate quota for the specified consumer. It should be called before the operation is
-        /// executed.
-        ///
-        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Cloud IAM](https://cloud.google.com/iam).
-        ///
-        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
-        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
-        /// dependency on the quota functionality.</summary>
+        /// executed. This method requires the `servicemanagement.services.quota` permission on the specified service.
+        /// For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open
+        /// on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+        /// reliability, the server may inject these errors to prohibit any hard dependency on the quota
+        /// functionality.</summary>
         public class AllocateQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.AllocateQuotaResponse>
         {
             /// <summary>Constructs a new AllocateQuota request.</summary>
@@ -388,9 +380,7 @@ namespace Google.Apis.ServiceControl.v1
 
 
             /// <summary>Name of the service as specified in the service configuration. For example,
-            /// `"pubsub.googleapis.com"`.
-            ///
-            /// See google.api.Service for the definition of a service name.</summary>
+            /// `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -438,40 +428,30 @@ namespace Google.Apis.ServiceControl.v1
         }
 
         /// <summary>Checks whether an operation on a service should be allowed to proceed based on the configuration of
-        /// the service and related policies. It must be called before the operation is executed.
-        ///
-        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of any server
-        /// errors, the client should rely on the cached results for much longer time to avoid outage. WARNING: There is
-        /// general 60s delay for the configuration and policy propagation, therefore callers MUST NOT depend on the
-        /// `Check` method having the latest policy information.
-        ///
-        /// NOTE: the CheckRequest has the size limit of 64KB.
-        ///
-        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// the service and related policies. It must be called before the operation is executed. If feasible, the
+        /// client should cache the check results and reuse them for 60 seconds. In case of any server errors, the
+        /// client should rely on the cached results for much longer time to avoid outage. WARNING: There is general 60s
+        /// delay for the configuration and policy propagation, therefore callers MUST NOT depend on the `Check` method
+        /// having the latest policy information. NOTE: the CheckRequest has the size limit of 64KB. This method
+        /// requires the `servicemanagement.services.check` permission on the specified service. For more information,
+        /// see [Cloud IAM](https://cloud.google.com/iam).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
-        /// `"pubsub.googleapis.com"`.
-        ///
-        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
-        /// for the definition of a service name.</param>
+        /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
+        /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</param>
         public virtual CheckRequest Check(Google.Apis.ServiceControl.v1.Data.CheckRequest body, string serviceName)
         {
             return new CheckRequest(service, body, serviceName);
         }
 
         /// <summary>Checks whether an operation on a service should be allowed to proceed based on the configuration of
-        /// the service and related policies. It must be called before the operation is executed.
-        ///
-        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of any server
-        /// errors, the client should rely on the cached results for much longer time to avoid outage. WARNING: There is
-        /// general 60s delay for the configuration and policy propagation, therefore callers MUST NOT depend on the
-        /// `Check` method having the latest policy information.
-        ///
-        /// NOTE: the CheckRequest has the size limit of 64KB.
-        ///
-        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// the service and related policies. It must be called before the operation is executed. If feasible, the
+        /// client should cache the check results and reuse them for 60 seconds. In case of any server errors, the
+        /// client should rely on the cached results for much longer time to avoid outage. WARNING: There is general 60s
+        /// delay for the configuration and policy propagation, therefore callers MUST NOT depend on the `Check` method
+        /// having the latest policy information. NOTE: the CheckRequest has the size limit of 64KB. This method
+        /// requires the `servicemanagement.services.check` permission on the specified service. For more information,
+        /// see [Cloud IAM](https://cloud.google.com/iam).</summary>
         public class CheckRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.CheckResponse>
         {
             /// <summary>Constructs a new Check request.</summary>
@@ -485,9 +465,7 @@ namespace Google.Apis.ServiceControl.v1
 
 
             /// <summary>The service name as specified in its service configuration. For example,
-            /// `"pubsub.googleapis.com"`.
-            ///
-            /// See [google.api.Service](https://cloud.google.com/service-
+            /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
             /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -536,36 +514,26 @@ namespace Google.Apis.ServiceControl.v1
         }
 
         /// <summary>Reports operation results to Google Service Control, such as logs and metrics. It should be called
-        /// after an operation is completed.
-        ///
-        /// If feasible, the client should aggregate reporting data for up to 5 seconds to reduce API traffic. Limiting
-        /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
-        /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
-        ///
-        /// NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
-        ///
+        /// after an operation is completed. If feasible, the client should aggregate reporting data for up to 5 seconds
+        /// to reduce API traffic. Limiting aggregation to 5 seconds is to reduce data loss during client crashes.
+        /// Clients should carefully choose the aggregation time window to avoid data loss risk more than 0.01% for
+        /// business and compliance reasons. NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
-        /// `"pubsub.googleapis.com"`.
-        ///
-        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
-        /// for the definition of a service name.</param>
+        /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
+        /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</param>
         public virtual ReportRequest Report(Google.Apis.ServiceControl.v1.Data.ReportRequest body, string serviceName)
         {
             return new ReportRequest(service, body, serviceName);
         }
 
         /// <summary>Reports operation results to Google Service Control, such as logs and metrics. It should be called
-        /// after an operation is completed.
-        ///
-        /// If feasible, the client should aggregate reporting data for up to 5 seconds to reduce API traffic. Limiting
-        /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
-        /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
-        ///
-        /// NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
-        ///
+        /// after an operation is completed. If feasible, the client should aggregate reporting data for up to 5 seconds
+        /// to reduce API traffic. Limiting aggregation to 5 seconds is to reduce data loss during client crashes.
+        /// Clients should carefully choose the aggregation time window to avoid data loss risk more than 0.01% for
+        /// business and compliance reasons. NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
         public class ReportRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.ReportResponse>
@@ -581,9 +549,7 @@ namespace Google.Apis.ServiceControl.v1
 
 
             /// <summary>The service name as specified in its service configuration. For example,
-            /// `"pubsub.googleapis.com"`.
-            ///
-            /// See [google.api.Service](https://cloud.google.com/service-
+            /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
             /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -682,11 +648,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string OperationId { get; set; } 
 
         /// <summary>Quota metrics to indicate the result of allocation. Depending on the request, one or more of the
-        /// following metrics will be included:
-        ///
-        /// 1. Per quota group or per quota metric incremental usage will be specified using the following delta metric
-        /// : "serviceruntime.googleapis.com/api/consumer/quota_used_count"
-        ///
+        /// following metrics will be included: 1. Per quota group or per quota metric incremental usage will be
+        /// specified using the following delta metric : "serviceruntime.googleapis.com/api/consumer/quota_used_count"
         /// 2. The quota limit reached condition will be specified using the following boolean metric :
         /// "serviceruntime.googleapis.com/quota/exceeded"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
@@ -724,7 +687,6 @@ namespace Google.Apis.ServiceControl.v1.Data
     {
         /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
         /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
-        ///
         /// "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
         /// true</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
@@ -740,9 +702,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Common audit log format for Google Cloud Platform API operations.
-    ///
-    /// </summary>
+    /// <summary>Common audit log format for Google Cloud Platform API operations. </summary>
     public class AuditLog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Authentication information.</summary>
@@ -760,9 +720,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
-        /// method. For example,
-        ///
-        /// "google.cloud.bigquery.v2.TableService.InsertTable" "google.logging.v2.ConfigServiceV2.CreateSink"</summary>
+        /// method. For example, "google.cloud.bigquery.v2.TableService.InsertTable"
+        /// "google.logging.v2.ConfigServiceV2.CreateSink"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
@@ -786,9 +745,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual ResourceLocation ResourceLocation { get; set; } 
 
         /// <summary>The resource or collection that is the target of the operation. The name is a scheme-less URI, not
-        /// including the API service name. For example:
-        ///
-        /// "projects/PROJECT_ID/zones/us-central1-a/instances" "projects/PROJECT_ID/datasets/DATASET_ID"</summary>
+        /// including the API service name. For example: "projects/PROJECT_ID/zones/us-central1-a/instances"
+        /// "projects/PROJECT_ID/datasets/DATASET_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -831,34 +789,27 @@ namespace Google.Apis.ServiceControl.v1.Data
     {
         /// <summary>A list of access level resource names that allow resources to be accessed by authenticated
         /// requester. It is part of Secure GCP processing for the incoming request. An access level string has the
-        /// format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}"
-        ///
-        /// Example: "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"</summary>
+        /// format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}" Example:
+        /// "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
 
         /// <summary>The intended audience(s) for this authentication information. Reflects the audience (`aud`) claim
         /// within a JWT. The audience value(s) depends on the `issuer`, but typically include one or more of the
-        /// following pieces of information:
-        ///
-        /// *  The services intended to receive the credential. For example, ["https://pubsub.googleapis.com/",
-        /// "https://storage.googleapis.com/"]. *  A set of service-based scopes. For example,
-        /// ["https://www.googleapis.com/auth/cloud-platform"]. *  The client id of an app, such as the Firebase project
-        /// id for JWTs from Firebase Auth.
-        ///
-        /// Consult the documentation for the credential issuer to determine the information provided.</summary>
+        /// following pieces of information: * The services intended to receive the credential. For example,
+        /// ["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]. * A set of service-based scopes. For
+        /// example, ["https://www.googleapis.com/auth/cloud-platform"]. * The client id of an app, such as the Firebase
+        /// project id for JWTs from Firebase Auth. Consult the documentation for the credential issuer to determine the
+        /// information provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual System.Collections.Generic.IList<string> Audiences { get; set; } 
 
         /// <summary>Structured claims presented with the credential. JWTs include `{key: value}` pairs for standard and
         /// private claims. The following is a subset of the standard required and optional claims that would typically
-        /// be presented for a Google-based JWT:
-        ///
-        /// {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud': ['123456789012',
-        /// 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com',
-        /// 'iat': 1353601026, 'exp': 1353604926}
-        ///
-        /// SAML assertions are similarly specified, but with an identity provider dependent structure.</summary>
+        /// be presented for a Google-based JWT: {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud':
+        /// ['123456789012', 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email':
+        /// 'jsmith@example.com', 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly specified, but
+        /// with an identity provider dependent structure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IDictionary<string,object> Claims { get; set; } 
 
@@ -906,7 +857,6 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>The name of the service account key used to create or exchange credentials for authenticating the
         /// service account making the request. This is a scheme-less URI full resource name. For example:
-        ///
         /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyName")]
         public virtual string ServiceAccountKeyName { get; set; } 
@@ -933,16 +883,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string Permission { get; set; } 
 
         /// <summary>The resource being accessed, as a REST-style string. For example:
-        ///
         /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; } 
 
         /// <summary>Resource attributes used in IAM condition evaluation. This field contains resource attributes like
-        /// resource type and resource name.
-        ///
-        /// To get the whole view of the attributes used in IAM condition evaluation, the user must also look into
-        /// `AuditLog.request_metadata.request_attributes`.</summary>
+        /// resource type and resource name. To get the whole view of the attributes used in IAM condition evaluation,
+        /// the user must also look into `AuditLog.request_metadata.request_attributes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual Resource ResourceAttributes { get; set; } 
 
@@ -967,9 +914,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual Status Status { get; set; } 
 
         /// <summary>Subject to whom this error applies. See the specific code enum for more details on this field. For
-        /// example:
-        ///
-        /// - "project:" - "folder:" - "organization:"</summary>
+        /// example: - "project:" - "folder:" - "organization:"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual string Subject { get; set; } 
 
@@ -1004,9 +949,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestProjectSettings")]
         public virtual System.Nullable<bool> RequestProjectSettings { get; set; } 
 
-        /// <summary>Specifies which version of service configuration should be used to process the request.
-        ///
-        /// If unspecified or no matching version can be found, the latest one will be used.</summary>
+        /// <summary>Specifies which version of service configuration should be used to process the request. If
+        /// unspecified or no matching version can be found, the latest one will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
 
@@ -1023,10 +967,9 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Response message for the Check method.</summary>
     public class CheckResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicate the decision of the check.
-        ///
-        /// If no check errors are present, the service should process the operation. Otherwise the service should use
-        /// the list of errors to determine the appropriate action.</summary>
+        /// <summary>Indicate the decision of the check. If no check errors are present, the service should process the
+        /// operation. Otherwise the service should use the list of errors to determine the appropriate
+        /// action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkErrors")]
         public virtual System.Collections.Generic.IList<CheckError> CheckErrors { get; set; } 
 
@@ -1064,10 +1007,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Nullable<long> ConsumerNumber { get; set; } 
 
         /// <summary>The Google cloud project number, e.g. 1234567890. A value of 0 indicates no project number is
-        /// found.
-        ///
-        /// NOTE: This field is deprecated after Chemist support flexible consumer id. New code should not depend on
-        /// this field anymore.</summary>
+        /// found. NOTE: This field is deprecated after Chemist support flexible consumer id. New code should not depend
+        /// on this field anymore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
@@ -1081,21 +1022,17 @@ namespace Google.Apis.ServiceControl.v1.Data
     }    
 
     /// <summary>Distribution represents a frequency distribution of double-valued sample points. It contains the size
-    /// of the population of sample points plus additional optional information:
-    ///
-    /// - the arithmetic mean of the samples - the minimum and maximum of the samples - the sum-squared-deviation of the
-    /// samples, used to compute variance - a histogram of the values of the sample points</summary>
+    /// of the population of sample points plus additional optional information: - the arithmetic mean of the samples -
+    /// the minimum and maximum of the samples - the sum-squared-deviation of the samples, used to compute variance - a
+    /// histogram of the values of the sample points</summary>
     public class Distribution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of samples in each histogram bucket. `bucket_counts` are optional. If present, they must
-        /// sum to the `count` value.
-        ///
-        /// The buckets are defined below in `bucket_option`. There are N buckets. `bucket_counts[0]` is the number of
-        /// samples in the underflow bucket. `bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples in
-        /// each of the finite buckets. And `bucket_counts[N] is the number of samples in the overflow bucket. See the
-        /// comments of `bucket_option` below for more details.
-        ///
-        /// Any suffix of trailing zeros may be omitted.</summary>
+        /// sum to the `count` value. The buckets are defined below in `bucket_option`. There are N buckets.
+        /// `bucket_counts[0]` is the number of samples in the underflow bucket. `bucket_counts[1]` to
+        /// `bucket_counts[N-1]` are the numbers of samples in each of the finite buckets. And `bucket_counts[N] is the
+        /// number of samples in the overflow bucket. See the comments of `bucket_option` below for more details. Any
+        /// suffix of trailing zeros may be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; } 
 
@@ -1148,16 +1085,11 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// timestamps, origin, etc.</summary>
     public class Exemplar : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contextual information about the example value. Examples are:
-        ///
-        /// Trace: type.googleapis.com/google.monitoring.v3.SpanContext
-        ///
-        /// Literal string: type.googleapis.com/google.protobuf.StringValue
-        ///
-        /// Labels dropped during aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabels
-        ///
-        /// There may be only a single attachment of any given message type in a single exemplar, and this is enforced
-        /// by the system.</summary>
+        /// <summary>Contextual information about the example value. Examples are: Trace:
+        /// type.googleapis.com/google.monitoring.v3.SpanContext Literal string:
+        /// type.googleapis.com/google.protobuf.StringValue Labels dropped during aggregation:
+        /// type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a single attachment of any given
+        /// message type in a single exemplar, and this is enforced by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Attachments { get; set; } 
 
@@ -1177,15 +1109,12 @@ namespace Google.Apis.ServiceControl.v1.Data
     public class ExplicitBuckets : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>'bound' is a list of strictly increasing boundaries between buckets. Note that a list of length N-1
-        /// defines N buckets because of fenceposting. See comments on `bucket_options` for details.
-        ///
-        /// The i'th finite bucket covers the interval [bound[i-1], bound[i]) where i ranges from 1 to bound_size() - 1.
-        /// Note that there are no finite buckets at all if 'bound' only contains a single element; in that special case
-        /// the single bound defines the boundary between the underflow and overflow buckets.
-        ///
-        /// bucket number                   lower bound    upper bound i == 0 (underflow)              -inf
-        /// bound[i] 0 < i < bound_size()            bound[i-1]     bound[i] i == bound_size() (overflow)    bound[i-1]
-        /// +inf</summary>
+        /// defines N buckets because of fenceposting. See comments on `bucket_options` for details. The i'th finite
+        /// bucket covers the interval [bound[i-1], bound[i]) where i ranges from 1 to bound_size() - 1. Note that there
+        /// are no finite buckets at all if 'bound' only contains a single element; in that special case the single
+        /// bound defines the boundary between the underflow and overflow buckets. bucket number lower bound upper bound
+        /// i == 0 (underflow) -inf bound[i] 0 < i < bound_size() bound[i-1] bound[i] i == bound_size() (overflow)
+        /// bound[i-1] +inf</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; } 
 
@@ -1409,7 +1338,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Nullable<bool> Last { get; set; } 
 
         /// <summary>Optional. An arbitrary producer identifier. The combination of `id` and `producer` must be globally
-        /// unique.  Examples for `producer`: `"MyDivision.MyBigCompany.com"`,
+        /// unique. Examples for `producer`: `"MyDivision.MyBigCompany.com"`,
         /// `"github.com/MyProject/MyApplication"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producer")]
         public virtual string Producer { get; set; } 
@@ -1532,11 +1461,9 @@ namespace Google.Apis.ServiceControl.v1.Data
     {
         /// <summary>Identity of the consumer who is using the service. This field should be filled in for the
         /// operations initiated by a consumer, but not for service-initiated operations that are not related to a
-        /// specific consumer.
-        ///
-        /// - This can be in one of the following formats: - project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
-        /// projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, - organizations/ORGANIZATION_NUMBER, -
-        /// api`_`key:API_KEY.</summary>
+        /// specific consumer. - This can be in one of the following formats: - project:PROJECT_ID, -
+        /// project`_`number:PROJECT_NUMBER, - projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, -
+        /// organizations/ORGANIZATION_NUMBER, - api`_`key:API_KEY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
@@ -1553,15 +1480,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importance")]
         public virtual string Importance { get; set; } 
 
-        /// <summary>Labels describing the operation. Only the following labels are allowed:
-        ///
-        /// - Labels describing monitored resources as defined in the service configuration. - Default labels of metric
-        /// values. When specified, labels defined in the metric value override these default. - The following labels
-        /// defined by Google Cloud Platform: - `cloud.googleapis.com/location` describing the location where the
-        /// operation happened, - `servicecontrol.googleapis.com/user_agent` describing the user agent of the API
-        /// request, - `servicecontrol.googleapis.com/service_agent` describing the service used to handle the API
-        /// request (e.g. ESP), - `servicecontrol.googleapis.com/platform` describing the platform where the API is
-        /// served, such as App Engine, Compute Engine, or Kubernetes Engine.</summary>
+        /// <summary>Labels describing the operation. Only the following labels are allowed: - Labels describing
+        /// monitored resources as defined in the service configuration. - Default labels of metric values. When
+        /// specified, labels defined in the metric value override these default. - The following labels defined by
+        /// Google Cloud Platform: - `cloud.googleapis.com/location` describing the location where the operation
+        /// happened, - `servicecontrol.googleapis.com/user_agent` describing the user agent of the API request, -
+        /// `servicecontrol.googleapis.com/service_agent` describing the service used to handle the API request (e.g.
+        /// ESP), - `servicecontrol.googleapis.com/platform` describing the platform where the API is served, such as
+        /// App Engine, Compute Engine, or Kubernetes Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1571,20 +1497,16 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>Represents information about this operation. Each MetricValueSet corresponds to a metric defined in
         /// the service configuration. The data type used in the MetricValueSet must agree with the data type specified
-        /// in the metric definition.
-        ///
-        /// Within a single operation, it is not allowed to have more than one MetricValue instances that have the same
-        /// metric names and identical label value combinations. If a request has such duplicated MetricValue instances,
-        /// the entire request is rejected with an invalid argument error.</summary>
+        /// in the metric definition. Within a single operation, it is not allowed to have more than one MetricValue
+        /// instances that have the same metric names and identical label value combinations. If a request has such
+        /// duplicated MetricValue instances, the entire request is rejected with an invalid argument error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricValueSets")]
         public virtual System.Collections.Generic.IList<MetricValueSet> MetricValueSets { get; set; } 
 
         /// <summary>Identity of the operation. This must be unique within the scope of the service that generated the
         /// operation. If the service calls Check() and Report() on the same operation, the two calls should carry the
-        /// same id.
-        ///
-        /// UUID version 4 is recommended, though not required. In scenarios where an operation is computed from
-        /// existing information and an idempotent id is desirable for deduplication purpose, UUID version 5 is
+        /// same id. UUID version 4 is recommended, though not required. In scenarios where an operation is computed
+        /// from existing information and an idempotent id is desirable for deduplication purpose, UUID version 5 is
         /// recommended. See RFC 4122 for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
@@ -1682,25 +1604,20 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Collections.Generic.IList<string> LimitExceeded { get; set; } 
 
         /// <summary>Map of quota group name to the actual number of tokens consumed. If the quota check was not
-        /// successful, then this will not be populated due to no quota consumption.
-        ///
-        /// We are not merging this field with 'quota_metrics' field because of the complexity of scaling in Chemist
-        /// client code base. For simplicity, we will keep this field for Castor (that scales quota usage) and
-        /// 'quota_metrics' for SuperQuota (that doesn't scale quota usage). </summary>
+        /// successful, then this will not be populated due to no quota consumption. We are not merging this field with
+        /// 'quota_metrics' field because of the complexity of scaling in Chemist client code base. For simplicity, we
+        /// will keep this field for Castor (that scales quota usage) and 'quota_metrics' for SuperQuota (that doesn't
+        /// scale quota usage). </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaConsumed")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> QuotaConsumed { get; set; } 
 
         /// <summary>Quota metrics to indicate the usage. Depending on the check request, one or more of the following
-        /// metrics will be included:
-        ///
-        /// 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the
-        /// following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count"
-        ///
-        /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
-        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        ///
-        /// 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the
-        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"</summary>
+        /// metrics will be included: 1. For rate quota, per quota group or per quota metric incremental usage will be
+        /// specified using the following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count" 2.
+        /// For allocation quota, per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count" 3. For both rate quota and allocation
+        /// quota, the quota limit reached condition will be specified using the following boolean metric:
+        /// "serviceruntime.googleapis.com/quota/exceeded"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1711,9 +1628,8 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Represents information regarding a quota operation.</summary>
     public class QuotaOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identity of the consumer for whom this quota operation is being performed.
-        ///
-        /// This can be in one of the following formats: project:, project_number:, api_key:.</summary>
+        /// <summary>Identity of the consumer for whom this quota operation is being performed. This can be in one of
+        /// the following formats: project:, project_number:, api_key:.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
@@ -1723,32 +1639,26 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>Fully qualified name of the API method for which this quota operation is requested. This name is
         /// used for matching quota rules or metric rules and billing status rules defined in service configuration.
-        ///
         /// This field should not be set if any of the following is true: (1) the quota operation is performed on non-
-        /// API resources. (2) quota_metrics is set because the caller is doing quota override.
-        ///
-        /// Example of an RPC method name: google.example.library.v1.LibraryService.CreateShelf</summary>
+        /// API resources. (2) quota_metrics is set because the caller is doing quota override. Example of an RPC method
+        /// name: google.example.library.v1.LibraryService.CreateShelf</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
         /// <summary>Identity of the operation. This is expected to be unique within the scope of the service that
-        /// generated the operation, and guarantees idempotency in case of retries.
-        ///
-        /// In order to ensure best performance and latency in the Quota backends, operation_ids are optimally
-        /// associated with time, so that related operations can be accessed fast in storage. For this reason, the
-        /// recommended token for services that intend to operate at a high QPS is Unix time in nanos + UUID</summary>
+        /// generated the operation, and guarantees idempotency in case of retries. In order to ensure best performance
+        /// and latency in the Quota backends, operation_ids are optimally associated with time, so that related
+        /// operations can be accessed fast in storage. For this reason, the recommended token for services that intend
+        /// to operate at a high QPS is Unix time in nanos + UUID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
         /// <summary>Represents information about this operation. Each MetricValueSet corresponds to a metric defined in
         /// the service configuration. The data type used in the MetricValueSet must agree with the data type specified
-        /// in the metric definition.
-        ///
-        /// Within a single operation, it is not allowed to have more than one MetricValue instances that have the same
-        /// metric names and identical label value combinations. If a request has such duplicated MetricValue instances,
-        /// the entire request is rejected with an invalid argument error.
-        ///
-        /// This field is mutually exclusive with method_name.</summary>
+        /// in the metric definition. Within a single operation, it is not allowed to have more than one MetricValue
+        /// instances that have the same metric names and identical label value combinations. If a request has such
+        /// duplicated MetricValue instances, the entire request is rejected with an invalid argument error. This field
+        /// is mutually exclusive with method_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1804,20 +1714,16 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Request message for the Report method.</summary>
     public class ReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Operations to be reported.
-        ///
-        /// Typically the service should report one operation per request. Putting multiple operations into a single
-        /// request is allowed, but should be used only when multiple operations are natually available at the time of
-        /// the report.
-        ///
-        /// There is no limit on the number of operations in the same ReportRequest, however the ReportRequest size
-        /// should be no larger than 1MB. See ReportResponse.report_errors for partial failure behavior.</summary>
+        /// <summary>Operations to be reported. Typically the service should report one operation per request. Putting
+        /// multiple operations into a single request is allowed, but should be used only when multiple operations are
+        /// natually available at the time of the report. There is no limit on the number of operations in the same
+        /// ReportRequest, however the ReportRequest size should be no larger than 1MB. See ReportResponse.report_errors
+        /// for partial failure behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
-        /// <summary>Specifies which version of service config should be used to process the request.
-        ///
-        /// If unspecified or no matching version can be found, the latest one will be used.</summary>
+        /// <summary>Specifies which version of service config should be used to process the request. If unspecified or
+        /// no matching version can be found, the latest one will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
 
@@ -1829,24 +1735,21 @@ namespace Google.Apis.ServiceControl.v1.Data
     public class ReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Partial failures, one for each `Operation` in the request that failed processing. There are three
-        /// possible combinations of the RPC status:
-        ///
-        /// 1. The combination of a successful RPC status and an empty `report_errors` list indicates a complete success
-        /// where all `Operations` in the request are processed successfully. 2. The combination of a successful RPC
-        /// status and a non-empty `report_errors` list indicates a partial success where some `Operations` in the
-        /// request succeeded. Each `Operation` that failed processing has a corresponding item in this list. 3. A
-        /// failed RPC status indicates a general non-deterministic failure. When this happens, it's impossible to know
-        /// which of the 'Operations' in the request succeeded or failed.</summary>
+        /// possible combinations of the RPC status: 1. The combination of a successful RPC status and an empty
+        /// `report_errors` list indicates a complete success where all `Operations` in the request are processed
+        /// successfully. 2. The combination of a successful RPC status and a non-empty `report_errors` list indicates a
+        /// partial success where some `Operations` in the request succeeded. Each `Operation` that failed processing
+        /// has a corresponding item in this list. 3. A failed RPC status indicates a general non-deterministic failure.
+        /// When this happens, it's impossible to know which of the 'Operations' in the request succeeded or
+        /// failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportErrors")]
         public virtual System.Collections.Generic.IList<ReportError> ReportErrors { get; set; } 
 
-        /// <summary>Quota usage for each quota release `Operation` request.
-        ///
-        /// Fully or partially failed quota release request may or may not be present in `report_quota_info`. For
-        /// example, a failed quota release request will have the current quota usage info when precise quota library
-        /// returns the info. A deadline exceeded quota request will not have quota usage info.
-        ///
-        /// If there is no quota release request, report_quota_info will be empty. </summary>
+        /// <summary>Quota usage for each quota release `Operation` request. Fully or partially failed quota release
+        /// request may or may not be present in `report_quota_info`. For example, a failed quota release request will
+        /// have the current quota usage info when precise quota library returns the info. A deadline exceeded quota
+        /// request will not have quota usage info. If there is no quota release request, report_quota_info will be
+        /// empty. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportInfos")]
         public virtual System.Collections.Generic.IList<ReportInfo> ReportInfos { get; set; } 
 
@@ -1940,18 +1843,15 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The network of the caller. Set only if the network host project is part of the same GCP
         /// organization (or project) as the accessed resource. See https://cloud.google.com/compute/docs/vpc/ for more
         /// information. This is a scheme-less URI full resource name. For example:
-        ///
         /// "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerNetwork")]
         public virtual string CallerNetwork { get; set; } 
 
         /// <summary>The user agent of the caller. This information is not authenticated and should be treated
-        /// accordingly. For example:
-        ///
-        /// +   `google-api-python-client/1.4.0`: The request was made by the Google API client for Python. +   `Cloud
-        /// SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the Google Cloud SDK CLI
-        /// (gcloud). +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`: The request was
-        /// made from the `my-project` App Engine app. NOLINT</summary>
+        /// accordingly. For example: + `google-api-python-client/1.4.0`: The request was made by the Google API client
+        /// for Python. + `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the
+        /// Google Cloud SDK CLI (gcloud). + `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-
+        /// project`: The request was made from the `my-project` App Engine app. NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
 
@@ -1963,9 +1863,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual Peer DestinationAttributes { get; set; } 
 
         /// <summary>Request attributes used in IAM condition evaluation. This field contains request attributes like
-        /// request time and access levels associated with the request.
-        ///
-        /// To get the whole view of the attributes used in IAM condition evaluation, the user must also look into
+        /// request time and access levels associated with the request. To get the whole view of the attributes used in
+        /// IAM condition evaluation, the user must also look into
         /// `AuditLog.authentication_info.resource_attributes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
         public virtual Request RequestAttributes { get; set; } 
@@ -1984,14 +1883,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The stable identifier (name) of a resource on the `service`. A resource can be logically identified
-        /// as "//{resource.service}/{resource.name}". The differences between a resource name and a URI are:
-        ///
-        /// *   Resource name is a logical identifier, independent of network protocol and API version. For example,
-        /// `//pubsub.googleapis.com/projects/123/topics/news-feed`. *   URI often includes protocol and version
+        /// as "//{resource.service}/{resource.name}". The differences between a resource name and a URI are: * Resource
+        /// name is a logical identifier, independent of network protocol and API version. For example,
+        /// `//pubsub.googleapis.com/projects/123/topics/news-feed`. * URI often includes protocol and version
         /// information, so it can be used directly by applications. For example,
-        /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
-        ///
-        /// See https://cloud.google.com/apis/design/resource_names for details.</summary>
+        /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`. See
+        /// https://cloud.google.com/apis/design/resource_names for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2001,9 +1898,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string Service { get; set; } 
 
         /// <summary>The type of the resource. The syntax is platform-specific because different platforms define their
-        /// resources differently.
-        ///
-        /// For Google APIs, the type format must be "{service}/{kind}".</summary>
+        /// resources differently. For Google APIs, the type format must be "{service}/{kind}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2038,17 +1933,13 @@ namespace Google.Apis.ServiceControl.v1.Data
     {
         /// <summary>The locations of a resource after the execution of the operation. Requests to create or delete a
         /// location based resource must populate the 'current_locations' field and not the 'original_locations' field.
-        /// For example:
-        ///
-        /// "europe-west1-a" "us-east1" "nam3"</summary>
+        /// For example: "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocations")]
         public virtual System.Collections.Generic.IList<string> CurrentLocations { get; set; } 
 
         /// <summary>The locations of a resource prior to the execution of the operation. Requests that mutate the
         /// resource's location must populate both the 'original_locations' as well as the 'current_locations' fields.
-        /// For example:
-        ///
-        /// "europe-west1-a" "us-east1" "nam3"</summary>
+        /// For example: "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalLocations")]
         public virtual System.Collections.Generic.IList<string> OriginalLocations { get; set; } 
 
@@ -2071,22 +1962,15 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation.
-    ///
-    /// It contains the name of a span with format:
-    ///
-    /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]</summary>
+    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation. It contains the
+    /// name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]</summary>
     public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the span. The format is:
-        ///
-        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        ///
-        /// `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding
-        /// of a 16-byte array.
-        ///
-        /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of
-        /// an 8-byte array.</summary>
+        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] `[TRACE_ID]` is a unique identifier for a
+        /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. `[SPAN_ID]` is a
+        /// unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+        /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
         public virtual string SpanName { get; set; } 
 
@@ -2096,9 +1980,8 @@ namespace Google.Apis.ServiceControl.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2106,8 +1989,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2134,7 +2017,7 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a
     /// trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-
     /// operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be
-    /// contiguousthere may be gaps or overlaps between spans in a trace.</summary>
+    /// contiguous—there may be gaps or overlaps between spans in a trace.</summary>
     public class TraceSpan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of attributes on the span. You can have up to 32 attributes per span.</summary>
@@ -2161,12 +2044,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual object EndTime { get; set; } 
 
         /// <summary>The resource name of the span in the following format:
-        ///
         /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
-        /// it is a 32-character hexadecimal encoding of a 16-byte array.
-        ///
-        /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an
-        /// 8-byte array.</summary>
+        /// it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
+        /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2213,10 +2093,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Nullable<int> TruncatedByteCount { get; set; } 
 
         /// <summary>The shortened string. For example, if the original string is 500 bytes long and the limit of the
-        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string.
-        ///
-        /// Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string,
-        /// then the length of the shortened string might be less than the size limit.</summary>
+        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always
+        /// happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of
+        /// the shortened string might be less than the size limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

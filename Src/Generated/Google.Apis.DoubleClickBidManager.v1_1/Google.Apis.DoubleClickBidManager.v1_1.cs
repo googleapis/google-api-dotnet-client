@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200811 (2049)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -86,16 +86,16 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/doubleclickbidmanager/v1.1/"; }
         #else
-            get { return "https://www.googleapis.com/"; }
+            get { return "https://www.googleapis.com/doubleclickbidmanager/v1.1/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return ""; }
+            get { return "doubleclickbidmanager/v1.1/"; }
         }
 
         #if !NET40
@@ -409,7 +409,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/lineitems/downloadlineitems"; }
+                get { return "lineitems/downloadlineitems"; }
             }
 
             /// <summary>Initializes Downloadlineitems parameter list.</summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/lineitems/uploadlineitems"; }
+                get { return "lineitems/uploadlineitems"; }
             }
 
             /// <summary>Initializes Uploadlineitems parameter list.</summary>
@@ -538,7 +538,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/query"; }
+                get { return "query"; }
             }
 
             /// <summary>Initializes Createquery parameter list.</summary>
@@ -598,7 +598,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/query/{queryId}"; }
+                get { return "query/{queryId}"; }
             }
 
             /// <summary>Initializes Deletequery parameter list.</summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/query/{queryId}"; }
+                get { return "query/{queryId}"; }
             }
 
             /// <summary>Initializes Getquery parameter list.</summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/queries"; }
+                get { return "queries"; }
             }
 
             /// <summary>Initializes Listqueries parameter list.</summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/query/{queryId}"; }
+                get { return "query/{queryId}"; }
             }
 
             /// <summary>Initializes Runquery parameter list.</summary>
@@ -898,7 +898,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/queries/{queryId}/reports"; }
+                get { return "queries/{queryId}/reports"; }
             }
 
             /// <summary>Initializes Listreports parameter list.</summary>
@@ -995,7 +995,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "doubleclickbidmanager/v1.1/sdf/download"; }
+                get { return "sdf/download"; }
             }
 
             /// <summary>Initializes Download parameter list.</summary>
@@ -1087,8 +1087,8 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be
-        /// requested. Acceptable values are: "AD" "AD_GROUP" "CAMPAIGN" "INSERTION_ORDER" "INVENTORY_SOURCE"
-        /// "LINE_ITEM" </summary>
+        /// requested. Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE"
+        /// - "LINE_ITEM" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
 
@@ -1372,10 +1372,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestReportRunTimeMs")]
         public virtual System.Nullable<long> LatestReportRunTimeMs { get; set; } 
 
-        /// <summary>Locale of the generated reports. Valid values are cs      CZECH de GERMAN en      ENGLISH es
-        /// SPANISH fr      FRENCH it      ITALIAN ja JAPANESE ko      KOREAN pl      POLISH pt-BR
-        /// BRAZILIAN_PORTUGUESE ru RUSSIAN tr      TURKISH uk      UKRAINIAN zh-CN   CHINA_CHINESE zh-TW TAIWAN_CHINESE
-        /// An locale string not in the list above will generate reports in English.</summary>
+        /// <summary>Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr
+        /// FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk
+        /// UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE An locale string not in the list above will generate
+        /// reports in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 

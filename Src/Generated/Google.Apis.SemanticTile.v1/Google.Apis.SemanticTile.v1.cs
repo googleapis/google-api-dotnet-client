@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>Semantic Tile API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200812 (2050)
+ *      <tr><th>API Rev<td>20200814 (2052)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/maps/contact-sales/'>
  *              https://developers.google.com/maps/contact-sales/</a>

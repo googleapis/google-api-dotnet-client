@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200811 (2049)
+ *      <tr><th>API Rev<td>20200813 (2051)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -1248,8 +1248,8 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple
                 /// fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges *
                 /// biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events *
-                /// externalIds * genders * imClients * interests * locales * memberships * metadata * miscKeywords *
-                /// names * nicknames * occupations * organizations * phoneNumbers * photos * relations * residences *
+                /// externalIds * genders * imClients * interests * locales * locations * memberships * metadata *
+                /// miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations *
                 /// sipAddresses * skills * urls * userDefined</summary>
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
@@ -1455,9 +1455,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: *
             /// addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos *
-            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * memberships *
-            /// metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos *
-            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
+            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * locations *
+            /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
+            /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1623,8 +1623,8 @@ namespace Google.Apis.PeopleService.v1
             /// be specified by separating them with commas. Defaults to empty if not set, which will skip the post
             /// mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
             /// clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests *
-            /// locales * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations *
-            /// phoneNumbers * photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+            /// locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1741,9 +1741,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on the person are returned. Multiple fields can
             /// be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies *
             /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders *
-            /// imClients * interests * locales * memberships * metadata * miscKeywords * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills *
-            /// urls * userDefined</summary>
+            /// imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames
+            /// * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls *
+            /// userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1863,8 +1863,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
             /// * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders
-            /// * imClients * interests * locales * memberships * metadata * miscKeywords * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills *
+            /// * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names *
+            /// nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills *
             /// urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
@@ -2019,8 +2019,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
             /// * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders
-            /// * imClients * interests * locales * memberships * metadata * miscKeywords * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills *
+            /// * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names *
+            /// nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills *
             /// urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -2201,8 +2201,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies
             /// * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders
-            /// * imClients * interests * locales * memberships * metadata * miscKeywords * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * residences * sipAddresses * skills *
+            /// * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names *
+            /// nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills *
             /// urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -2355,9 +2355,9 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Optional. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: *
             /// addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos *
-            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * memberships *
-            /// metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos *
-            /// relations * residences * sipAddresses * skills * urls * userDefined</summary>
+            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * locations *
+            /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
+            /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -2387,9 +2387,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. A field mask to restrict which fields on the person are updated. Multiple fields can
             /// be specified by separating them with commas. All updated fields will be replaced. Valid values are: *
             /// addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds
-            /// * genders * imClients * interests * locales * memberships * miscKeywords * names * nicknames *
-            /// occupations * organizations * phoneNumbers * relations * residences * sipAddresses * urls *
-            /// userDefined</summary>
+            /// * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames
+            /// * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("updatePersonFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdatePersonFields { get; set; }
 
@@ -2828,9 +2827,9 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
         /// specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if
         /// not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData *
-        /// coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales *
-        /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
-        /// photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+        /// coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations
+        /// * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
+        /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
         public virtual object ReadMask { get; set; } 
 
@@ -3247,6 +3246,46 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A person's location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The building identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
+        public virtual string BuildingId { get; set; } 
+
+        /// <summary>Whether the location is the current location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("current")]
+        public virtual System.Nullable<bool> Current { get; set; } 
+
+        /// <summary>The individual desk location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deskCode")]
+        public virtual string DeskCode { get; set; } 
+
+        /// <summary>The floor name or number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floor")]
+        public virtual string Floor { get; set; } 
+
+        /// <summary>The floor section in `floor_name`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorSection")]
+        public virtual string FloorSection { get; set; } 
+
+        /// <summary>Metadata about the location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual FieldMetadata Metadata { get; set; } 
+
+        /// <summary>The type of the location. The type can be custom or one of these predefined values: * `desk` *
+        /// `grewUp`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The free-form value of the location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A person's membership in a group. Only contact group memberships can be modified.</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3572,6 +3611,10 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<Locale> Locales { get; set; } 
 
+        /// <summary>The person's locations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
         /// <summary>The person's group memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
@@ -3621,7 +3664,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatuses")]
         public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; } 
 
-        /// <summary>The person's residences.</summary>
+        /// <summary>**DEPRECATED**: (Please use `person.locations` instead) The person's residences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("residences")]
         public virtual System.Collections.Generic.IList<Residence> Residences { get; set; } 
 
@@ -3849,7 +3892,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's past or current residence.</summary>
+    /// <summary>**DEPRECATED**: Please use `person.locations` instead. A person's past or current residence.</summary>
     public class Residence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the residence is the person's current residence; false if the residence is a past
@@ -4018,9 +4061,9 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
         /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
         /// Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData *
-        /// coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales *
-        /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
-        /// photos * relations * residences * sipAddresses * skills * urls * userDefined</summary>
+        /// coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations
+        /// * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
+        /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
         public virtual object PersonFields { get; set; } 
 

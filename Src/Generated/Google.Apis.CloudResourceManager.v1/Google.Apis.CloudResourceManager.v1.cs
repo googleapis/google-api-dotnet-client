@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200720 (2027)
+ *      <tr><th>API Rev<td>20200812 (2050)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2553,7 +2553,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and
         /// the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from
         /// an alternate index which provides more consistent results. In future versions of this API, this List method
-        /// will be split into List and Search to properly capture the behavorial difference.</summary>
+        /// will be split into List and Search to properly capture the behavioral difference.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
@@ -2566,7 +2566,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and
         /// the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from
         /// an alternate index which provides more consistent results. In future versions of this API, this List method
-        /// will be split into List and Search to properly capture the behavorial difference.</summary>
+        /// will be split into List and Search to properly capture the behavioral difference.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>

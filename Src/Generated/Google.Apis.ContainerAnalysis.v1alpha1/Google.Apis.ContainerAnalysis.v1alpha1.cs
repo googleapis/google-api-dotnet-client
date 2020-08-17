@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -1217,7 +1217,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The name of the project.  Should be of the form "projects/{project_id}".
+                /// <summary>The name of the project. Should be of the form "projects/{project_id}".
                 /// @Deprecated</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
@@ -1653,22 +1653,31 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 /// <summary>The kind of occurrences to filter on.</summary>
                 public enum KindEnum
                 {
+                    /// <summary>Unknown</summary>
                     [Google.Apis.Util.StringValueAttribute("KIND_UNSPECIFIED")]
                     KINDUNSPECIFIED,
+                    /// <summary>The note and occurrence represent a package vulnerability.</summary>
                     [Google.Apis.Util.StringValueAttribute("PACKAGE_VULNERABILITY")]
                     PACKAGEVULNERABILITY,
+                    /// <summary>The note and occurrence assert build provenance.</summary>
                     [Google.Apis.Util.StringValueAttribute("BUILD_DETAILS")]
                     BUILDDETAILS,
+                    /// <summary>This represents an image basis relationship.</summary>
                     [Google.Apis.Util.StringValueAttribute("IMAGE_BASIS")]
                     IMAGEBASIS,
+                    /// <summary>This represents a package installed via a package manager.</summary>
                     [Google.Apis.Util.StringValueAttribute("PACKAGE_MANAGER")]
                     PACKAGEMANAGER,
+                    /// <summary>The note and occurrence track deployment events.</summary>
                     [Google.Apis.Util.StringValueAttribute("DEPLOYABLE")]
                     DEPLOYABLE,
+                    /// <summary>The note and occurrence track the initial discovery status of a resource.</summary>
                     [Google.Apis.Util.StringValueAttribute("DISCOVERY")]
                     DISCOVERY,
+                    /// <summary>This represents a logical "role" that can attest to artifacts.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTESTATION_AUTHORITY")]
                     ATTESTATIONAUTHORITY,
+                    /// <summary>This represents an available software upgrade.</summary>
                     [Google.Apis.Util.StringValueAttribute("UPGRADE")]
                     UPGRADE,
                 }
@@ -3306,10 +3315,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
         /// <summary>Name of the artifact. This may be the path to a binary or jar file, or in the case of a container
         /// build, the name used to push the container image to Google Container Registry, as presented to `docker
-        /// push`.
-        ///
-        /// This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing
-        /// BuildProvenance serialized to json in
+        /// push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow
+        /// existing BuildProvenance serialized to json in
         /// google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into
         /// proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3326,9 +3333,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Occurrence that represents a single "attestation".  The authenticity of an Attestation can be verified
+    /// <summary>Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified
     /// using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature
-    /// is sufficient to establish trust.  In this circumstance, the AttestationAuthority to which this Attestation is
+    /// is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is
     /// attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and
     /// artifact to be verified) and intent (which authority was this attestation intended to sign for).</summary>
     public class Attestation : Google.Apis.Requests.IDirectResponseSchema
@@ -3340,12 +3347,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Note kind that represents a logical attestation "role" or "authority".  For example, an organization
-    /// might have one `AttestationAuthority` for "QA" and one for "build".  This Note is intended to act strictly as a
-    /// grouping mechanism for the attached Occurrences (Attestations).  This grouping mechanism also provides a
-    /// security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note.  It
-    /// also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live
-    /// in the same project.</summary>
+    /// <summary>Note kind that represents a logical attestation "role" or "authority". For example, an organization
+    /// might have one `AttestationAuthority` for "QA" and one for "build". This Note is intended to act strictly as a
+    /// grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a security
+    /// boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note. It also
+    /// provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live in
+    /// the same project.</summary>
     public class AttestationAuthority : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("hint")]
@@ -3355,9 +3362,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This submessage provides human-readable hints about the purpose of the AttestationAuthority.  Because
+    /// <summary>This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because
     /// the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the
-    /// Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output.  Note
+    /// Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note
     /// that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as
     /// when looking up Attestations to verify.</summary>
     public class AttestationAuthorityHint : Google.Apis.Requests.IDirectResponseSchema
@@ -3370,7 +3377,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Basis describes the base image portion (Note) of the DockerImage relationship.  Linked occurrences are
+    /// <summary>Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are
     /// derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the
     /// resource_url.</summary>
     public class Basis : Google.Apis.Requests.IDirectResponseSchema
@@ -3390,53 +3397,33 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3460,10 +3447,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to
         /// the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance
         /// bytes is used for the signature in order to interoperate with openssl which expects this format for
-        /// signature verification.
-        ///
-        /// The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well
-        /// to prevent incompatibilities with future changes.</summary>
+        /// signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is
+        /// marshalled to json as well to prevent incompatibilities with future changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceBytes")]
         public virtual string ProvenanceBytes { get; set; } 
 
@@ -3548,15 +3533,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string KeyType { get; set; } 
 
         /// <summary>Public key of the builder which can be used to verify that the related findings are valid and
-        /// unchanged. If `key_type` is empty, this defaults to PEM encoded public keys.
-        ///
-        /// This field may be empty if `key_id` references an external key.
-        ///
-        /// For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature,
-        /// place the contents of this field into a file (public.pem). The signature field is base64-decoded into its
-        /// binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into
-        /// a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify
-        /// public.pem -signature signature.bin signed.bin`</summary>
+        /// unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if
+        /// `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To
+        /// verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature
+        /// field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from
+        /// `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the
+        /// signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; } 
 
@@ -3680,7 +3662,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Derived describes the derived image portion (Occurrence) of the DockerImage relationship.  This image
+    /// <summary>Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image
     /// would be produced from a Dockerfile with FROM .</summary>
     public class Derived : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3711,7 +3693,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class Detail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability
-        /// manifests.  Examples include distro or storage location for vulnerable jar. This field can be used as a
+        /// manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a
         /// filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; } 
@@ -3831,11 +3813,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3844,29 +3824,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -3940,14 +3906,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -4402,9 +4364,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4414,11 +4376,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4477,14 +4439,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may
         /// choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is
         /// guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling
-        /// --list-keys with --with-colons.  For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \
+        /// --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \
         /// --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:......
         /// fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is
         /// `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pgpKeyId")]
         public virtual string PgpKeyId { get; set; } 
 
-        /// <summary>The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent.  Since this
+        /// <summary>The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this
         /// message only supports attached signatures, the payload that was signed must be attached. While the signature
         /// format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to
         /// gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign
@@ -4498,35 +4460,24 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4539,33 +4490,23 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -4708,13 +4649,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual GoogleDevtoolsContaineranalysisV1alpha1SourceContext Context { get; set; } 
 
         /// <summary>Hash(es) of the build source, which can be used to verify that the original source integrity was
-        /// maintained in the build.
-        ///
-        /// The keys to this map are file paths used as build source and the values contain the hash values for those
-        /// files.
-        ///
-        /// If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for
-        /// the single path to that file.</summary>
+        /// maintained in the build. The keys to this map are file paths used as build source and the values contain the
+        /// hash values for those files. If the build source came in a single package such as a gzipped tarfile
+        /// (.tar.gz), the FileHash will be for the single path to that file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
 
@@ -4732,9 +4669,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4742,8 +4678,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

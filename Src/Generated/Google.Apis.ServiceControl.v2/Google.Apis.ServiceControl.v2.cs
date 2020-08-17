@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200808 (2046)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -347,49 +347,35 @@ namespace Google.Apis.ServiceControl.v2
         }
 
 
-        /// <summary>Private Preview. This feature is only available for approved services.
-        ///
-        /// This method provides admission control for services that are integrated with [Service Infrastructure
-        /// ](/service-infrastructure). It checks whether an operation should be allowed based on the service
-        /// configuration and relevant policies. It must be called before the operation is executed. For more
-        /// information, see [Admission Control](/service-infrastructure/docs/admission-control).
-        ///
-        /// NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend
-        /// on the most recent policy changes.
-        ///
-        /// NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to
-        /// more than 1 resources, the caller must call the Check method multiple times.
-        ///
-        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs
-        /// /service-control/access-control).</summary>
+        /// <summary>Private Preview. This feature is only available for approved services. This method provides
+        /// admission control for services that are integrated with [Service Infrastructure](/service-infrastructure).
+        /// It checks whether an operation should be allowed based on the service configuration and relevant policies.
+        /// It must be called before the operation is executed. For more information, see [Admission Control](/service-
+        /// infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay
+        /// of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a
+        /// hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller
+        /// must call the Check method multiple times. This method requires the `servicemanagement.services.check`
+        /// permission on the specified service. For more information, see [Service Control API Access
+        /// Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
-        /// `"pubsub.googleapis.com"`.
-        ///
-        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
-        /// for the definition of a service name.</param>
+        /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
+        /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</param>
         public virtual CheckRequest Check(Google.Apis.ServiceControl.v2.Data.CheckRequest body, string serviceName)
         {
             return new CheckRequest(service, body, serviceName);
         }
 
-        /// <summary>Private Preview. This feature is only available for approved services.
-        ///
-        /// This method provides admission control for services that are integrated with [Service Infrastructure
-        /// ](/service-infrastructure). It checks whether an operation should be allowed based on the service
-        /// configuration and relevant policies. It must be called before the operation is executed. For more
-        /// information, see [Admission Control](/service-infrastructure/docs/admission-control).
-        ///
-        /// NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend
-        /// on the most recent policy changes.
-        ///
-        /// NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to
-        /// more than 1 resources, the caller must call the Check method multiple times.
-        ///
-        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs
-        /// /service-control/access-control).</summary>
+        /// <summary>Private Preview. This feature is only available for approved services. This method provides
+        /// admission control for services that are integrated with [Service Infrastructure](/service-infrastructure).
+        /// It checks whether an operation should be allowed based on the service configuration and relevant policies.
+        /// It must be called before the operation is executed. For more information, see [Admission Control](/service-
+        /// infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay
+        /// of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a
+        /// hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller
+        /// must call the Check method multiple times. This method requires the `servicemanagement.services.check`
+        /// permission on the specified service. For more information, see [Service Control API Access
+        /// Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).</summary>
         public class CheckRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v2.Data.CheckResponse>
         {
             /// <summary>Constructs a new Check request.</summary>
@@ -403,9 +389,7 @@ namespace Google.Apis.ServiceControl.v2
 
 
             /// <summary>The service name as specified in its service configuration. For example,
-            /// `"pubsub.googleapis.com"`.
-            ///
-            /// See [google.api.Service](https://cloud.google.com/service-
+            /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
             /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -453,43 +437,33 @@ namespace Google.Apis.ServiceControl.v2
 
         }
 
-        /// <summary>Private Preview. This feature is only available for approved services.
-        ///
-        /// This method provides telemetry reporting for services that are integrated with [Service Infrastructure
-        /// ](/service-infrastructure). It reports a list of operations that have occurred on a service. It must be
-        /// called after the operations have been executed. For more information, see [Telemetry Reporting](/service-
-        /// infrastructure/docs/telemetry-reporting).
-        ///
-        /// NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended
-        /// to have no more than 100 operations per call.
-        ///
-        /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
-        /// information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs
-        /// /service-control/access-control).</summary>
+        /// <summary>Private Preview. This feature is only available for approved services. This method provides
+        /// telemetry reporting for services that are integrated with [Service Infrastructure](/service-infrastructure).
+        /// It reports a list of operations that have occurred on a service. It must be called after the operations have
+        /// been executed. For more information, see [Telemetry Reporting](/service-infrastructure/docs/telemetry-
+        /// reporting). NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is
+        /// recommended to have no more than 100 operations per call. This method requires the
+        /// `servicemanagement.services.report` permission on the specified service. For more information, see [Service
+        /// Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-
+        /// control).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
-        /// `"pubsub.googleapis.com"`.
-        ///
-        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
-        /// for the definition of a service name.</param>
+        /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
+        /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</param>
         public virtual ReportRequest Report(Google.Apis.ServiceControl.v2.Data.ReportRequest body, string serviceName)
         {
             return new ReportRequest(service, body, serviceName);
         }
 
-        /// <summary>Private Preview. This feature is only available for approved services.
-        ///
-        /// This method provides telemetry reporting for services that are integrated with [Service Infrastructure
-        /// ](/service-infrastructure). It reports a list of operations that have occurred on a service. It must be
-        /// called after the operations have been executed. For more information, see [Telemetry Reporting](/service-
-        /// infrastructure/docs/telemetry-reporting).
-        ///
-        /// NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended
-        /// to have no more than 100 operations per call.
-        ///
-        /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
-        /// information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs
-        /// /service-control/access-control).</summary>
+        /// <summary>Private Preview. This feature is only available for approved services. This method provides
+        /// telemetry reporting for services that are integrated with [Service Infrastructure](/service-infrastructure).
+        /// It reports a list of operations that have occurred on a service. It must be called after the operations have
+        /// been executed. For more information, see [Telemetry Reporting](/service-infrastructure/docs/telemetry-
+        /// reporting). NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is
+        /// recommended to have no more than 100 operations per call. This method requires the
+        /// `servicemanagement.services.report` permission on the specified service. For more information, see [Service
+        /// Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-
+        /// control).</summary>
         public class ReportRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v2.Data.ReportResponse>
         {
             /// <summary>Constructs a new Report request.</summary>
@@ -503,9 +477,7 @@ namespace Google.Apis.ServiceControl.v2
 
 
             /// <summary>The service name as specified in its service configuration. For example,
-            /// `"pubsub.googleapis.com"`.
-            ///
-            /// See [google.api.Service](https://cloud.google.com/service-
+            /// `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-
             /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -587,20 +559,14 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This message defines the standard attribute vocabulary for Google APIs.
-    ///
-    /// An attribute is a piece of metadata that describes an activity on a network service. For example, the size of an
-    /// HTTP request, or the status code of an HTTP response.
-    ///
-    /// Each attribute has a type and a name, which is logically defined as a proto message field in `AttributeContext`.
-    /// The field type becomes the attribute type, and the field path becomes the attribute name. For example, the
-    /// attribute `source.ip` maps to field `AttributeContext.source.ip`.
-    ///
-    /// This message definition is guaranteed not to have any wire breaking change. So you can use it directly for
-    /// passing attributes across different systems.
-    ///
-    /// NOTE: Different system may generate different subset of attributes. Please verify the system specification
-    /// before relying on an attribute generated a system.</summary>
+    /// <summary>This message defines the standard attribute vocabulary for Google APIs. An attribute is a piece of
+    /// metadata that describes an activity on a network service. For example, the size of an HTTP request, or the
+    /// status code of an HTTP response. Each attribute has a type and a name, which is logically defined as a proto
+    /// message field in `AttributeContext`. The field type becomes the attribute type, and the field path becomes the
+    /// attribute name. For example, the attribute `source.ip` maps to field `AttributeContext.source.ip`. This message
+    /// definition is guaranteed not to have any wire breaking change. So you can use it directly for passing attributes
+    /// across different systems. NOTE: Different system may generate different subset of attributes. Please verify the
+    /// system specification before relying on an attribute generated a system.</summary>
     public class AttributeContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Represents an API operation that is involved to a network activity.</summary>
@@ -643,9 +609,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Common audit log format for Google Cloud Platform API operations.
-    ///
-    /// </summary>
+    /// <summary>Common audit log format for Google Cloud Platform API operations. </summary>
     public class AuditLog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Authentication information.</summary>
@@ -663,9 +627,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
-        /// method. For example,
-        ///
-        /// "google.cloud.bigquery.v2.TableService.InsertTable" "google.logging.v2.ConfigServiceV2.CreateSink"</summary>
+        /// method. For example, "google.cloud.bigquery.v2.TableService.InsertTable"
+        /// "google.logging.v2.ConfigServiceV2.CreateSink"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
@@ -689,9 +652,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual ResourceLocation ResourceLocation { get; set; } 
 
         /// <summary>The resource or collection that is the target of the operation. The name is a scheme-less URI, not
-        /// including the API service name. For example:
-        ///
-        /// "projects/PROJECT_ID/zones/us-central1-a/instances" "projects/PROJECT_ID/datasets/DATASET_ID"</summary>
+        /// including the API service name. For example: "projects/PROJECT_ID/zones/us-central1-a/instances"
+        /// "projects/PROJECT_ID/datasets/DATASET_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -734,34 +696,27 @@ namespace Google.Apis.ServiceControl.v2.Data
     {
         /// <summary>A list of access level resource names that allow resources to be accessed by authenticated
         /// requester. It is part of Secure GCP processing for the incoming request. An access level string has the
-        /// format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}"
-        ///
-        /// Example: "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"</summary>
+        /// format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}" Example:
+        /// "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
 
         /// <summary>The intended audience(s) for this authentication information. Reflects the audience (`aud`) claim
         /// within a JWT. The audience value(s) depends on the `issuer`, but typically include one or more of the
-        /// following pieces of information:
-        ///
-        /// *  The services intended to receive the credential. For example, ["https://pubsub.googleapis.com/",
-        /// "https://storage.googleapis.com/"]. *  A set of service-based scopes. For example,
-        /// ["https://www.googleapis.com/auth/cloud-platform"]. *  The client id of an app, such as the Firebase project
-        /// id for JWTs from Firebase Auth.
-        ///
-        /// Consult the documentation for the credential issuer to determine the information provided.</summary>
+        /// following pieces of information: * The services intended to receive the credential. For example,
+        /// ["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]. * A set of service-based scopes. For
+        /// example, ["https://www.googleapis.com/auth/cloud-platform"]. * The client id of an app, such as the Firebase
+        /// project id for JWTs from Firebase Auth. Consult the documentation for the credential issuer to determine the
+        /// information provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual System.Collections.Generic.IList<string> Audiences { get; set; } 
 
         /// <summary>Structured claims presented with the credential. JWTs include `{key: value}` pairs for standard and
         /// private claims. The following is a subset of the standard required and optional claims that would typically
-        /// be presented for a Google-based JWT:
-        ///
-        /// {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud': ['123456789012',
-        /// 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com',
-        /// 'iat': 1353601026, 'exp': 1353604926}
-        ///
-        /// SAML assertions are similarly specified, but with an identity provider dependent structure.</summary>
+        /// be presented for a Google-based JWT: {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud':
+        /// ['123456789012', 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email':
+        /// 'jsmith@example.com', 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly specified, but
+        /// with an identity provider dependent structure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IDictionary<string,object> Claims { get; set; } 
 
@@ -809,7 +764,6 @@ namespace Google.Apis.ServiceControl.v2.Data
 
         /// <summary>The name of the service account key used to create or exchange credentials for authenticating the
         /// service account making the request. This is a scheme-less URI full resource name. For example:
-        ///
         /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyName")]
         public virtual string ServiceAccountKeyName { get; set; } 
@@ -836,16 +790,13 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string Permission { get; set; } 
 
         /// <summary>The resource being accessed, as a REST-style string. For example:
-        ///
         /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; } 
 
         /// <summary>Resource attributes used in IAM condition evaluation. This field contains resource attributes like
-        /// resource type and resource name.
-        ///
-        /// To get the whole view of the attributes used in IAM condition evaluation, the user must also look into
-        /// `AuditLog.request_metadata.request_attributes`.</summary>
+        /// resource type and resource name. To get the whole view of the attributes used in IAM condition evaluation,
+        /// the user must also look into `AuditLog.request_metadata.request_attributes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual Resource ResourceAttributes { get; set; } 
 
@@ -1038,18 +989,15 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>The network of the caller. Set only if the network host project is part of the same GCP
         /// organization (or project) as the accessed resource. See https://cloud.google.com/compute/docs/vpc/ for more
         /// information. This is a scheme-less URI full resource name. For example:
-        ///
         /// "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerNetwork")]
         public virtual string CallerNetwork { get; set; } 
 
         /// <summary>The user agent of the caller. This information is not authenticated and should be treated
-        /// accordingly. For example:
-        ///
-        /// +   `google-api-python-client/1.4.0`: The request was made by the Google API client for Python. +   `Cloud
-        /// SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the Google Cloud SDK CLI
-        /// (gcloud). +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`: The request was
-        /// made from the `my-project` App Engine app. NOLINT</summary>
+        /// accordingly. For example: + `google-api-python-client/1.4.0`: The request was made by the Google API client
+        /// for Python. + `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the
+        /// Google Cloud SDK CLI (gcloud). + `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-
+        /// project`: The request was made from the `my-project` App Engine app. NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
 
@@ -1061,9 +1009,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual Peer DestinationAttributes { get; set; } 
 
         /// <summary>Request attributes used in IAM condition evaluation. This field contains request attributes like
-        /// request time and access levels associated with the request.
-        ///
-        /// To get the whole view of the attributes used in IAM condition evaluation, the user must also look into
+        /// request time and access levels associated with the request. To get the whole view of the attributes used in
+        /// IAM condition evaluation, the user must also look into
         /// `AuditLog.authentication_info.resource_attributes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
         public virtual Request RequestAttributes { get; set; } 
@@ -1082,14 +1029,12 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The stable identifier (name) of a resource on the `service`. A resource can be logically identified
-        /// as "//{resource.service}/{resource.name}". The differences between a resource name and a URI are:
-        ///
-        /// *   Resource name is a logical identifier, independent of network protocol and API version. For example,
-        /// `//pubsub.googleapis.com/projects/123/topics/news-feed`. *   URI often includes protocol and version
+        /// as "//{resource.service}/{resource.name}". The differences between a resource name and a URI are: * Resource
+        /// name is a logical identifier, independent of network protocol and API version. For example,
+        /// `//pubsub.googleapis.com/projects/123/topics/news-feed`. * URI often includes protocol and version
         /// information, so it can be used directly by applications. For example,
-        /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
-        ///
-        /// See https://cloud.google.com/apis/design/resource_names for details.</summary>
+        /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`. See
+        /// https://cloud.google.com/apis/design/resource_names for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1099,9 +1044,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string Service { get; set; } 
 
         /// <summary>The type of the resource. The syntax is platform-specific because different platforms define their
-        /// resources differently.
-        ///
-        /// For Google APIs, the type format must be "{service}/{kind}".</summary>
+        /// resources differently. For Google APIs, the type format must be "{service}/{kind}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1134,17 +1077,13 @@ namespace Google.Apis.ServiceControl.v2.Data
     {
         /// <summary>The locations of a resource after the execution of the operation. Requests to create or delete a
         /// location based resource must populate the 'current_locations' field and not the 'original_locations' field.
-        /// For example:
-        ///
-        /// "europe-west1-a" "us-east1" "nam3"</summary>
+        /// For example: "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocations")]
         public virtual System.Collections.Generic.IList<string> CurrentLocations { get; set; } 
 
         /// <summary>The locations of a resource prior to the execution of the operation. Requests that mutate the
         /// resource's location must populate both the 'original_locations' as well as the 'current_locations' fields.
-        /// For example:
-        ///
-        /// "europe-west1-a" "us-east1" "nam3"</summary>
+        /// For example: "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalLocations")]
         public virtual System.Collections.Generic.IList<string> OriginalLocations { get; set; } 
 
@@ -1192,22 +1131,15 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation.
-    ///
-    /// It contains the name of a span with format:
-    ///
-    /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]</summary>
+    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation. It contains the
+    /// name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]</summary>
     public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the span. The format is:
-        ///
-        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        ///
-        /// `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding
-        /// of a 16-byte array.
-        ///
-        /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of
-        /// an 8-byte array.</summary>
+        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] `[TRACE_ID]` is a unique identifier for a
+        /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. `[SPAN_ID]` is a
+        /// unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+        /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
         public virtual string SpanName { get; set; } 
 
@@ -1217,9 +1149,8 @@ namespace Google.Apis.ServiceControl.v2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1227,8 +1158,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

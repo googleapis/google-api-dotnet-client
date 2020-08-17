@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200814 (2052)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
  *              https://cloud.google.com/tpu/</a>
@@ -2007,6 +2007,13 @@ namespace Google.Apis.TPU.v1alpha1.Data
         /// <summary>The version of Tensorflow running in the Node. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tensorflowVersion")]
         public virtual string TensorflowVersion { get; set; } 
+
+        /// <summary>Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering
+        /// should be set up before provisioning the node. If this field is set, cidr_block field should not be
+        /// specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be
+        /// created with this this field enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useServiceNetworking")]
+        public virtual System.Nullable<bool> UseServiceNetworking { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

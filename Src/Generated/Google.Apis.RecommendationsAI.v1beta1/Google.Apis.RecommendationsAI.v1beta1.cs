@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>Recommendations AI</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200803 (2041)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommendations-ai/docs'>
  *              https://cloud.google.com/recommendations-ai/docs</a>
@@ -2347,8 +2347,9 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. Indicates which fields in the provided 'recommendation_model' to update. If
-                    /// not set, will only update the catalog_item_level_config field.</summary>
+                    /// <summary>Optional. Indicates which fields in the provided 'catalog' to update. If not set, will
+                    /// only update the catalog_item_level_config field. Currently only fields that can be updated are
+                    /// catalog_item_level_config.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2487,7 +2488,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// catalog#json (Default for catalogItems.import) 2: "catalog_merchant_center" using https://cloud.google.com
         /// /recommendations-ai/docs/upload-catalog#mc Supported values for user event imports: 1:
         /// "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
-        /// events#import (Default for userEvents.import)</summary>
+        /// events#import (Default for userEvents.import) 2. "user_events_ga360" using
+        /// https://support.google.com/analytics/answer/3437719?hl=en</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; } 
 
@@ -2754,7 +2756,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// catalog#json (Default for catalogItems.import) 2: "catalog_merchant_center" using https://cloud.google.com
         /// /recommendations-ai/docs/upload-catalog#mc Supported values for user events imports: 1:
         /// "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-
-        /// events#import (Default for userEvents.import)</summary>
+        /// events#import (Default for userEvents.import) 2. "user_events_ga360" using
+        /// https://support.google.com/analytics/answer/3437719?hl=en</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual string JsonSchema { get; set; } 
 

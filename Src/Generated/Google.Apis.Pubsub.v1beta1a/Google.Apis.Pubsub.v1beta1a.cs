@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta1a
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -416,10 +416,9 @@ namespace Google.Apis.Pubsub.v1beta1a
         }
 
         /// <summary>Creates a subscription on a given topic for a given subscriber. If the subscription already exists,
-        /// returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND.
-        ///
-        /// If the name is not provided in the request, the server will assign a random name for this subscription on
-        /// the same project as the topic.</summary>
+        /// returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not
+        /// provided in the request, the server will assign a random name for this subscription on the same project as
+        /// the topic.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Pubsub.v1beta1a.Data.Subscription body)
         {
@@ -427,10 +426,9 @@ namespace Google.Apis.Pubsub.v1beta1a
         }
 
         /// <summary>Creates a subscription on a given topic for a given subscriber. If the subscription already exists,
-        /// returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND.
-        ///
-        /// If the name is not provided in the request, the server will assign a random name for this subscription on
-        /// the same project as the topic.</summary>
+        /// returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not
+        /// provided in the request, the server will assign a random name for this subscription on the same project as
+        /// the topic.</summary>
         public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta1a.Data.Subscription>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1188,14 +1186,14 @@ namespace Google.Apis.Pubsub.v1beta1a
 
         }
 
-        /// <summary>Adds a message to the topic.  Returns NOT_FOUND if the topic does not exist.</summary>
+        /// <summary>Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual PublishRequest Publish(Google.Apis.Pubsub.v1beta1a.Data.PublishRequest body)
         {
             return new PublishRequest(service, body);
         }
 
-        /// <summary>Adds a message to the topic.  Returns NOT_FOUND if the topic does not exist.</summary>
+        /// <summary>Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.</summary>
         public class PublishRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta1a.Data.Empty>
         {
             /// <summary>Constructs a new Publish request.</summary>
@@ -1316,13 +1314,10 @@ namespace Google.Apis.Pubsub.v1beta1a.Data
     }    
 
     /// <summary>An empty message that you can re-use to avoid defining duplicated empty messages in your project. A
-    /// typical example is to use it as argument or the return value of a service API. For instance:
-    ///
-    /// service Foo { rpc Bar (proto2.Empty) returns (proto2.Empty) { }; };
-    ///
-    /// BEGIN GOOGLE-INTERNAL The difference between this one and net/rpc/empty-message.proto is that 1) The generated
-    /// message here is in proto2 C++ API. 2) The proto2.Empty has minimum dependencies (no message_set or net/rpc
-    /// dependencies) END GOOGLE-INTERNAL</summary>
+    /// typical example is to use it as argument or the return value of a service API. For instance: service Foo { rpc
+    /// Bar (proto2.Empty) returns (proto2.Empty) { }; }; BEGIN GOOGLE-INTERNAL The difference between this one and
+    /// net/rpc/empty-message.proto is that 1) The generated message here is in proto2 C++ API. 2) The proto2.Empty has
+    /// minimum dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1333,19 +1328,13 @@ namespace Google.Apis.Pubsub.v1beta1a.Data
     public class Label : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The key of a label is a syntactically valid URL (as per RFC 1738) with the "scheme" and initial
-        /// slashes omitted and with the additional restrictions noted below.  Each key should be globally unique.  The
-        /// "host" portion is called the "namespace" and is not necessarily resolvable to a network endpoint.  Instead,
-        /// the namespace indicates what system or entity defines the semantics of the label.  Namespaces do not
-        /// restrict the set of objects to which a label may be associated.
-        ///
-        /// Keys are defined by the following grammar:
-        ///
-        /// key          = hostname "/" kpath kpath        = ksegment *[ "/" ksegment ] ksegment     = alphadigit | *[
-        /// alphadigit | "-" | "_" | "." ]
-        ///
-        /// where "hostname" and "alphadigit" are defined as in RFC 1738.
-        ///
-        /// Example key: spanner.google.com/universe</summary>
+        /// slashes omitted and with the additional restrictions noted below. Each key should be globally unique. The
+        /// "host" portion is called the "namespace" and is not necessarily resolvable to a network endpoint. Instead,
+        /// the namespace indicates what system or entity defines the semantics of the label. Namespaces do not restrict
+        /// the set of objects to which a label may be associated. Keys are defined by the following grammar: key =
+        /// hostname "/" kpath kpath = ksegment *[ "/" ksegment ] ksegment = alphadigit | *[ alphadigit | "-" | "_" |
+        /// "." ] where "hostname" and "alphadigit" are defined as in RFC 1738. Example key:
+        /// spanner.google.com/universe</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -1615,14 +1604,12 @@ namespace Google.Apis.Pubsub.v1beta1a.Data
         /// message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message
         /// passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber
         /// acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message
-        /// has been already delivered again. Multiple Acks to the message are allowed and will succeed.
-        ///
-        /// For push delivery, this value is used to set the request timeout for the call to the push endpoint.
-        ///
-        /// For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for
-        /// each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it
-        /// has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system
-        /// will not deliver that message to another pull subscriber (on a best-effort basis).</summary>
+        /// has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push
+        /// delivery, this value is used to set the request timeout for the call to the push endpoint. For pull
+        /// delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each
+        /// message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has
+        /// been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will
+        /// not deliver that message to another pull subscriber (on a best-effort basis).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 

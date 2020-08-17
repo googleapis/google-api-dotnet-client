@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200731 (2038)
+ *      <tr><th>API Rev<td>20200807 (2045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -373,10 +373,9 @@ namespace Google.Apis.Pubsub.v1beta2
 
 
             /// <summary>Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The
-            /// Pub/Sub system can remove the relevant messages from the subscription.
-            ///
-            /// Acknowledging a message whose ack deadline has expired may succeed, but such a message may be
-            /// redelivered later. Acknowledging a message more than once will not result in an error.</summary>
+            /// Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack
+            /// deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message
+            /// more than once will not result in an error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The subscription whose message is being acknowledged.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest body, string subscription)
@@ -385,10 +384,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The
-            /// Pub/Sub system can remove the relevant messages from the subscription.
-            ///
-            /// Acknowledging a message whose ack deadline has expired may succeed, but such a message may be
-            /// redelivered later. Acknowledging a message more than once will not result in an error.</summary>
+            /// Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack
+            /// deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message
+            /// more than once will not result in an error.</summary>
             public class AcknowledgeRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new Acknowledge request.</summary>
@@ -449,10 +447,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
-            ///
-            /// If the name is not provided in the request, the server will assign a random name for this subscription
-            /// on the same project as the topic. Note that for REST API requests, you must specify a name.</summary>
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
+            /// provided in the request, the server will assign a random name for this subscription on the same project
+            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the subscription. It must have the format
             /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
@@ -465,10 +462,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
-            ///
-            /// If the name is not provided in the request, the server will assign a random name for this subscription
-            /// on the same project as the topic. Note that for REST API requests, you must specify a name.</summary>
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
+            /// provided in the request, the server will assign a random name for this subscription on the same project
+            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Subscription>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -685,15 +681,11 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned.
-                ///
-                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                ///
-                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.
-                ///
-                /// To learn which resources support conditions in their IAM policies, see the [IAM
-                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings
+                /// must specify version 3. Policies without any conditional bindings may specify any valid value or
+                /// leave the field unset. To learn which resources support conditions in their IAM policies, see the
+                /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -905,12 +897,10 @@ namespace Google.Apis.Pubsub.v1beta2
 
             }
 
-            /// <summary>Modifies the `PushConfig` for a specified subscription.
-            ///
-            /// This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or
-            /// vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will
-            /// accumulate for delivery continuously through the call regardless of changes to the
-            /// `PushConfig`.</summary>
+            /// <summary>Modifies the `PushConfig` for a specified subscription. This may be used to change a push
+            /// subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint
+            /// URL and other attributes of a push subscription. Messages will accumulate for delivery continuously
+            /// through the call regardless of changes to the `PushConfig`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The name of the subscription.</param>
             public virtual ModifyPushConfigRequest ModifyPushConfig(Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest body, string subscription)
@@ -918,12 +908,10 @@ namespace Google.Apis.Pubsub.v1beta2
                 return new ModifyPushConfigRequest(service, body, subscription);
             }
 
-            /// <summary>Modifies the `PushConfig` for a specified subscription.
-            ///
-            /// This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or
-            /// vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will
-            /// accumulate for delivery continuously through the call regardless of changes to the
-            /// `PushConfig`.</summary>
+            /// <summary>Modifies the `PushConfig` for a specified subscription. This may be used to change a push
+            /// subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint
+            /// URL and other attributes of a push subscription. Messages will accumulate for delivery continuously
+            /// through the call regardless of changes to the `PushConfig`.</summary>
             public class ModifyPushConfigRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new ModifyPushConfig request.</summary>
@@ -1055,9 +1043,8 @@ namespace Google.Apis.Pubsub.v1beta2
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1066,9 +1053,8 @@ namespace Google.Apis.Pubsub.v1beta2
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1130,10 +1116,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1143,10 +1128,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1571,15 +1555,11 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned.
-                ///
-                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                ///
-                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
-                /// conditional bindings may specify any valid value or leave the field unset.
-                ///
-                /// To learn which resources support conditions in their IAM policies, see the [IAM
-                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+                /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings
+                /// must specify version 3. Policies without any conditional bindings may specify any valid value or
+                /// leave the field unset. To learn which resources support conditions in their IAM policies, see the
+                /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1788,9 +1768,8 @@ namespace Google.Apis.Pubsub.v1beta2
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1799,9 +1778,8 @@ namespace Google.Apis.Pubsub.v1beta2
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-            ///
-            /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
+            /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1863,10 +1841,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1876,10 +1853,9 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-            ///
-            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
-            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+            /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+            /// checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1961,53 +1937,33 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -2021,11 +1977,9 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2034,29 +1988,15 @@ namespace Google.Apis.Pubsub.v1beta2.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -2155,11 +2095,9 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     /// <summary>Request for the ModifyPushConfig method.</summary>
     public class ModifyPushConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The push configuration for future deliveries.
-        ///
-        /// An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given
-        /// subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if
-        /// `Pull` is not called.</summary>
+        /// <summary>The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub
+        /// system should stop pushing messages from the given subscription and allow messages to be pulled and
+        /// acknowledged - effectively pausing the subscription if `Pull` is not called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; } 
 
@@ -2190,35 +2128,24 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2231,33 +2158,23 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -2352,24 +2269,16 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     /// <summary>Configuration for a push delivery endpoint.</summary>
     public class PushConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Endpoint configuration attributes.
-        ///
-        /// Every endpoint has a set of API supported attributes that can be used to control different aspects of the
-        /// message delivery.
-        ///
-        /// The currently supported attribute is `x-goog-version`, which you can use to change the format of the push
-        /// message. This attribute indicates the version of the data expected by the endpoint. This controls the shape
-        /// of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub
-        /// API.
-        ///
-        /// If not present during the `CreateSubscription` call, it will default to the version of the API used to make
-        /// such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
-        /// calls will always return a valid version, even if the subscription was created without this attribute.
-        ///
-        /// The possible values for this attribute are:
-        ///
-        /// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
-        /// format defined in the v1 Pub/Sub API.</summary>
+        /// <summary>Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be
+        /// used to control different aspects of the message delivery. The currently supported attribute is `x-goog-
+        /// version`, which you can use to change the format of the push message. This attribute indicates the version
+        /// of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and
+        /// metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the
+        /// `CreateSubscription` call, it will default to the version of the API used to make such call. If not present
+        /// during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return
+        /// a valid version, even if the subscription was created without this attribute. The possible values for this
+        /// attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`:
+        /// uses the push format defined in the v1 Pub/Sub API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 
@@ -2421,17 +2330,12 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>This value is the maximum time after a subscriber receives a message before the subscriber should
         /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
         /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-
-        /// effort basis).
-        ///
-        /// For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value
-        /// for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using pull. The maximum
-        /// custom deadline you can specify is 600 seconds (10 minutes).
-        ///
-        /// For push delivery, this value is also used to set the request timeout for the call to the push endpoint.
-        ///
-        /// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
-        ///
-        /// If this parameter is 0, a default value of 10 seconds is used.</summary>
+        /// effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
+        /// override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using
+        /// pull. The maximum custom deadline you can specify is 600 seconds (10 minutes). For push delivery, this value
+        /// is also used to set the request timeout for the call to the push endpoint. If the subscriber never
+        /// acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0,
+        /// a default value of 10 seconds is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 

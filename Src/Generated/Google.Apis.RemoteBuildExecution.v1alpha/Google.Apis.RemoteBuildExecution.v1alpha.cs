@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20200728 (2035)
+ *      <tr><th>API Rev<td>20200810 (2048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -622,21 +622,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     /// use for filtering. The value must be a string, a number, or a boolean. String values are case-
                     /// insensitive. The comparison operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The
                     /// `:` operator can be used with string fields to match substrings. For non-string fields it is
-                    /// equivalent to the `=` operator. The `:*` comparison can be used to test  whether a key has been
-                    /// defined.
-                    ///
-                    /// You can also filter on nested fields.
-                    ///
-                    /// To filter on multiple expressions, you can separate expression using `AND` and `OR` operators,
-                    /// using parentheses to specify precedence. If neither operator is specified, `AND` is assumed.
-                    ///
-                    /// Examples:
-                    ///
-                    /// Include only pools with more than 100 reserved workers: `(worker_count > 100)
-                    /// (worker_config.reserved = true)`
-                    ///
-                    /// Include only pools with a certain label or machines of the n1-standard family:
-                    /// `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`</summary>
+                    /// equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been
+                    /// defined. You can also filter on nested fields. To filter on multiple expressions, you can
+                    /// separate expression using `AND` and `OR` operators, using parentheses to specify precedence. If
+                    /// neither operator is specified, `AND` is assumed. Examples: Include only pools with more than 100
+                    /// reserved workers: `(worker_count > 100) (worker_config.reserved = true)` Include only pools with
+                    /// a certain label or machines of the n1-standard family: `worker_config.labels.key1 : * OR
+                    /// worker_config.machine_type: n1-standard`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1024,6 +1016,125 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 }
 
             }
+
+            /// <summary>Updates the specified instance. Returns a long running operation which contains the updated
+            /// instance in the response on completion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Output only. Instance resource name formatted as:
+            /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is
+            /// provided in the `instance_id` field.</param>
+            public virtual PatchRequest Patch(Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified instance. Returns a long running operation which contains the updated
+            /// instance in the response on completion.</summary>
+            public class PatchRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Output only. Instance resource name formatted as:
+                /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an
+                /// instance since it is provided in the `instance_id` field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Deprecated, use instance.logging_enabled instead. Whether to enable Stackdriver logging for
+                /// this instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("loggingEnabled", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> LoggingEnabled { get; set; }
+
+                /// <summary>Deprecated, use instance.Name instead. Name of the instance to update. Format:
+                /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name1", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name1 { get; set; }
+
+                /// <summary>The update mask applies to instance. For the `FieldMask` definition, see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If an empty
+                /// update_mask is provided, only the non-default valued field in the worker pool field will be updated.
+                /// Note that in order to update a field to the default value (zero, false, empty string) an explicit
+                /// update_mask must be provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1alpha/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "loggingEnabled", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "loggingEnabled",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "name1", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name1",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
         private readonly OperationsResource operations;
 
@@ -1049,7 +1160,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             }
 
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
@@ -1057,7 +1168,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             public class GetRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
             {
@@ -1118,17 +1229,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 {    
 
     /// <summary>An `Action` captures all the information about an execution which is required to reproduce it.
-    ///
     /// `Action`s are the core component of the [Execution] service. A single `Action` represents a repeatable action
     /// that can be performed by the execution service. `Action`s can be succinctly identified by the digest of their
     /// wire format encoding and, once an `Action` has been executed, will be cached in the action cache. Future
-    /// requests can then use the cached result rather than needing to run afresh.
-    ///
-    /// When a server completes execution of an Action, it MAY choose to cache the result in the ActionCache unless
-    /// `do_not_cache` is `true`. Clients SHOULD expect the server to do so. By default, future calls to Execute the
-    /// same `Action` will also serve their results from the cache. Clients must take care to understand the caching
-    /// behaviour. Ideally, all `Action`s will be reproducible so that serving a result from cache is always desirable
-    /// and correct.</summary>
+    /// requests can then use the cached result rather than needing to run afresh. When a server completes execution of
+    /// an Action, it MAY choose to cache the result in the ActionCache unless `do_not_cache` is `true`. Clients SHOULD
+    /// expect the server to do so. By default, future calls to Execute the same `Action` will also serve their results
+    /// from the cache. Clients must take care to understand the caching behaviour. Ideally, all `Action`s will be
+    /// reproducible so that serving a result from cache is always desirable and correct.</summary>
     public class BuildBazelRemoteExecutionV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The digest of the Command to run, which MUST be present in the ContentAddressableStorage.</summary>
@@ -1148,24 +1256,21 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
         /// <summary>List of required supported NodeProperty keys. In order to ensure that equivalent `Action`s always
         /// hash to the same value, the supported node properties MUST be lexicographically sorted by name. Sorting of
-        /// strings is done by code point, equivalently, by the UTF-8 bytes.
-        ///
-        /// The interpretation of these properties is server-dependent. If a property is not recognized by the server,
-        /// the server will return an `INVALID_ARGUMENT` error.</summary>
+        /// strings is done by code point, equivalently, by the UTF-8 bytes. The interpretation of these properties is
+        /// server-dependent. If a property is not recognized by the server, the server will return an
+        /// `INVALID_ARGUMENT` error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputNodeProperties")]
         public virtual System.Collections.Generic.IList<string> OutputNodeProperties { get; set; } 
 
         /// <summary>A timeout after which the execution should be killed. If the timeout is absent, then the client is
         /// specifying that the execution should continue as long as the server will let it. The server SHOULD impose a
         /// timeout if the client does not specify one, however, if the client does specify a timeout that is longer
-        /// than the server's maximum timeout, the server MUST reject the request.
-        ///
-        /// The timeout is a part of the Action message, and therefore two `Actions` with different timeouts are
-        /// different, even if they are otherwise identical. This is because, if they were not, running an `Action` with
-        /// a lower timeout than is required might result in a cache hit from an execution run with a longer timeout,
-        /// hiding the fact that the timeout is too short. By encoding it directly in the `Action`, a lower timeout will
-        /// result in a cache miss and the execution timeout will fail immediately, rather than whenever the cache entry
-        /// gets evicted.</summary>
+        /// than the server's maximum timeout, the server MUST reject the request. The timeout is a part of the Action
+        /// message, and therefore two `Actions` with different timeouts are different, even if they are otherwise
+        /// identical. This is because, if they were not, running an `Action` with a lower timeout than is required
+        /// might result in a cache hit from an execution run with a longer timeout, hiding the fact that the timeout is
+        /// too short. By encoding it directly in the `Action`, a lower timeout will result in a cache miss and the
+        /// execution timeout will fail immediately, rather than whenever the cache entry gets evicted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; } 
 
@@ -1188,12 +1293,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// `output_directories` or `output_paths` field of the Action, if the corresponding directory existed after the
         /// action completed, a single entry will be present in the output list, which will contain the digest of a Tree
         /// message containing the directory tree, and the path equal exactly to the corresponding Action
-        /// output_directories member.
-        ///
-        /// As an example, suppose the Action had an output directory `a/b/dir` and the execution produced the following
-        /// contents in `a/b/dir`: a file named `bar` and a directory named `foo` with an executable file named `baz`.
-        /// Then, output_directory will contain (hashes shortened for readability):
-        ///
+        /// output_directories member. As an example, suppose the Action had an output directory `a/b/dir` and the
+        /// execution produced the following contents in `a/b/dir`: a file named `bar` and a directory named `foo` with
+        /// an executable file named `baz`. Then, output_directory will contain (hashes shortened for readability):
         /// ```json // OutputDirectory proto: { path: "a/b/dir" tree_digest: { hash: "4a73bc9d03...", size: 55 } } //
         /// Tree proto with hash "4a73bc9d03..." and size 55: { root: { files: [ { name: "bar", digest: { hash:
         /// "4a73bc9d03...", size: 65534 } } ], directories: [ { name: "foo", digest: { hash: "4cf2eda940...", size: 43
@@ -1209,15 +1311,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// directory, if the server supports SymlinkAbsolutePathStrategy.ALLOWED. For each output directory requested
         /// in the `output_directories` field of the Action, if the directory existed after the action completed, a
         /// single entry will be present either in this field, or in the `output_directories` field, if the directory
-        /// was not a symbolic link.
-        ///
-        /// If an output of the same name was found, but was a symbolic link to a file instead of a directory, the
-        /// server will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that
-        /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
-        /// NOT assume that the output list is sorted.
-        ///
-        /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API should still populate this field in
-        /// addition to `output_symlinks`.</summary>
+        /// was not a symbolic link. If an output of the same name was found, but was a symbolic link to a file instead
+        /// of a directory, the server will return a FAILED_PRECONDITION. If the action does not produce the requested
+        /// output, then that output will be omitted from the list. The server is free to arrange the output list as
+        /// desired; clients MUST NOT assume that the output list is sorted. DEPRECATED as of v2.1. Servers that wish to
+        /// be compatible with v2.0 API should still populate this field in addition to `output_symlinks`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectorySymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputDirectorySymlinks { get; set; } 
 
@@ -1226,27 +1324,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// supports SymlinkAbsolutePathStrategy.ALLOWED. For each output file requested in the `output_files` or
         /// `output_paths` field of the Action, if the corresponding file existed after the action completed, a single
         /// entry will be present either in this field, or in the `output_files` field, if the file was not a symbolic
-        /// link.
-        ///
-        /// If an output symbolic link of the same name as listed in `output_files` of the Command was found, but its
-        /// target type was not a regular file, the server will return a FAILED_PRECONDITION. If the action does not
+        /// link. If an output symbolic link of the same name as listed in `output_files` of the Command was found, but
+        /// its target type was not a regular file, the server will return a FAILED_PRECONDITION. If the action does not
         /// produce the requested output, then that output will be omitted from the list. The server is free to arrange
-        /// the output list as desired; clients MUST NOT assume that the output list is sorted.
-        ///
-        /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API should still populate this field in
-        /// addition to `output_symlinks`.</summary>
+        /// the output list as desired; clients MUST NOT assume that the output list is sorted. DEPRECATED as of v2.1.
+        /// Servers that wish to be compatible with v2.0 API should still populate this field in addition to
+        /// `output_symlinks`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFileSymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputFileSymlinks { get; set; } 
 
         /// <summary>The output files of the action. For each output file requested in the `output_files` or
         /// `output_paths` field of the Action, if the corresponding file existed after the action completed, a single
         /// entry will be present either in this field, or the `output_file_symlinks` field if the file was a symbolic
-        /// link to another file (`output_symlinks` field after v2.1).
-        ///
-        /// If an output listed in `output_files` was found, but was a directory rather than a regular file, the server
-        /// will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that output
-        /// will be omitted from the list. The server is free to arrange the output list as desired; clients MUST NOT
-        /// assume that the output list is sorted.</summary>
+        /// link to another file (`output_symlinks` field after v2.1). If an output listed in `output_files` was found,
+        /// but was a directory rather than a regular file, the server will return a FAILED_PRECONDITION. If the action
+        /// does not produce the requested output, then that output will be omitted from the list. The server is free to
+        /// arrange the output list as desired; clients MUST NOT assume that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputFile> OutputFiles { get; set; } 
 
@@ -1255,11 +1348,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// symbolic links to other paths. Those may be links to other outputs, or inputs, or even absolute paths
         /// outside of the working directory, if the server supports SymlinkAbsolutePathStrategy.ALLOWED. A single entry
         /// for each output requested in `output_paths` field of the Action, if the corresponding path existed after the
-        /// action completed and was a symbolic link.
-        ///
-        /// If the action does not produce a requested output, then that output will be omitted from the list. The
-        /// server is free to arrange the output list as desired; clients MUST NOT assume that the output list is
-        /// sorted.</summary>
+        /// action completed and was a symbolic link. If the action does not produce a requested output, then that
+        /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
+        /// NOT assume that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputSymlinks { get; set; } 
 
@@ -1290,11 +1381,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     }    
 
     /// <summary>A `Command` is the actual command executed by a worker running an Action and specifications of its
-    /// environment.
-    ///
-    /// Except as otherwise required, the environment (such as which system libraries or binaries are available, and
-    /// what filesystems are mounted where) is defined by and specific to the implementation of the remote execution
-    /// API.</summary>
+    /// environment. Except as otherwise required, the environment (such as which system libraries or binaries are
+    /// available, and what filesystems are mounted where) is defined by and specific to the implementation of the
+    /// remote execution API.</summary>
     public class BuildBazelRemoteExecutionV2Command : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The arguments to the command. The first argument must be the path to the executable, which must be
@@ -1305,56 +1394,40 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
         /// <summary>The environment variables to set when running the program. The worker may provide its own default
         /// environment variables; these defaults can be overridden using this field. Additional variables can also be
-        /// specified.
-        ///
-        /// In order to ensure that equivalent Commands always hash to the same value, the environment variables MUST be
-        /// lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8
-        /// bytes.</summary>
+        /// specified. In order to ensure that equivalent Commands always hash to the same value, the environment
+        /// variables MUST be lexicographically sorted by name. Sorting of strings is done by code point, equivalently,
+        /// by the UTF-8 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2CommandEnvironmentVariable> EnvironmentVariables { get; set; } 
 
         /// <summary>A list of the output directories that the client expects to retrieve from the action. Only the
         /// listed directories will be returned (an entire directory structure will be returned as a Tree message
         /// digest, see OutputDirectory), as well as files listed in `output_files`. Other files or directories that may
-        /// be created during command execution are discarded.
-        ///
-        /// The paths are relative to the working directory of the action execution. The paths are specified using a
-        /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
-        /// separator. The path MUST NOT include a trailing slash, nor a leading slash, being a relative path. The
-        /// special value of empty string is allowed, although not recommended, and can be used to capture the entire
-        /// working directory tree, including inputs.
-        ///
-        /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
-        /// by code point (or, equivalently, by UTF-8 bytes).
-        ///
-        /// An output directory cannot be duplicated or have the same path as any of the listed output files. An output
-        /// directory is allowed to be a parent of another output directory.
-        ///
+        /// be created during command execution are discarded. The paths are relative to the working directory of the
+        /// action execution. The paths are specified using a single forward slash (`/`) as a path separator, even if
+        /// the execution platform natively uses a different separator. The path MUST NOT include a trailing slash, nor
+        /// a leading slash, being a relative path. The special value of empty string is allowed, although not
+        /// recommended, and can be used to capture the entire working directory tree, including inputs. In order to
+        /// ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically by code
+        /// point (or, equivalently, by UTF-8 bytes). An output directory cannot be duplicated or have the same path as
+        /// any of the listed output files. An output directory is allowed to be a parent of another output directory.
         /// Directories leading up to the output directories (but not the output directories themselves) are created by
-        /// the worker prior to execution, even if they are not explicitly part of the input root.
-        ///
-        /// DEPRECATED since 2.1: Use `output_paths` instead.</summary>
+        /// the worker prior to execution, even if they are not explicitly part of the input root. DEPRECATED since 2.1:
+        /// Use `output_paths` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<string> OutputDirectories { get; set; } 
 
         /// <summary>A list of the output files that the client expects to retrieve from the action. Only the listed
         /// files, as well as directories listed in `output_directories`, will be returned to the client as output.
-        /// Other files or directories that may be created during command execution are discarded.
-        ///
-        /// The paths are relative to the working directory of the action execution. The paths are specified using a
-        /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
-        /// separator. The path MUST NOT include a trailing slash, nor a leading slash, being a relative path.
-        ///
-        /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
-        /// by code point (or, equivalently, by UTF-8 bytes).
-        ///
-        /// An output file cannot be duplicated, be a parent of another output file, or have the same path as any of the
-        /// listed output directories.
-        ///
-        /// Directories leading up to the output files are created by the worker prior to execution, even if they are
-        /// not explicitly part of the input root.
-        ///
-        /// DEPRECATED since v2.1: Use `output_paths` instead.</summary>
+        /// Other files or directories that may be created during command execution are discarded. The paths are
+        /// relative to the working directory of the action execution. The paths are specified using a single forward
+        /// slash (`/`) as a path separator, even if the execution platform natively uses a different separator. The
+        /// path MUST NOT include a trailing slash, nor a leading slash, being a relative path. In order to ensure
+        /// consistent hashing of the same Action, the output paths MUST be sorted lexicographically by code point (or,
+        /// equivalently, by UTF-8 bytes). An output file cannot be duplicated, be a parent of another output file, or
+        /// have the same path as any of the listed output directories. Directories leading up to the output files are
+        /// created by the worker prior to execution, even if they are not explicitly part of the input root. DEPRECATED
+        /// since v2.1: Use `output_paths` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<string> OutputFiles { get; set; } 
 
@@ -1363,20 +1436,15 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// and will be determined by the server after action execution. If the resulting path is a file, it will be
         /// returned in an OutputFile) typed field. If the path is a directory, the entire directory structure will be
         /// returned as a Tree message digest, see OutputDirectory) Other files or directories that may be created
-        /// during command execution are discarded.
-        ///
-        /// The paths are relative to the working directory of the action execution. The paths are specified using a
-        /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
-        /// separator. The path MUST NOT include a trailing slash, nor a leading slash, being a relative path.
-        ///
-        /// In order to ensure consistent hashing of the same Action, the output paths MUST be deduplicated and sorted
-        /// lexicographically by code point (or, equivalently, by UTF-8 bytes).
-        ///
+        /// during command execution are discarded. The paths are relative to the working directory of the action
+        /// execution. The paths are specified using a single forward slash (`/`) as a path separator, even if the
+        /// execution platform natively uses a different separator. The path MUST NOT include a trailing slash, nor a
+        /// leading slash, being a relative path. In order to ensure consistent hashing of the same Action, the output
+        /// paths MUST be deduplicated and sorted lexicographically by code point (or, equivalently, by UTF-8 bytes).
         /// Directories leading up to the output paths are created by the worker prior to execution, even if they are
-        /// not explicitly part of the input root.
-        ///
-        /// New in v2.1: this field supersedes the DEPRECATED `output_files` and `output_directories` fields. If
-        /// `output_paths` is used, `output_files` and `output_directories` will be ignored!</summary>
+        /// not explicitly part of the input root. New in v2.1: this field supersedes the DEPRECATED `output_files` and
+        /// `output_directories` fields. If `output_paths` is used, `output_files` and `output_directories` will be
+        /// ignored!</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPaths")]
         public virtual System.Collections.Generic.IList<string> OutputPaths { get; set; } 
 
@@ -1413,29 +1481,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     }    
 
     /// <summary>A content digest. A digest for a given blob consists of the size of the blob and its hash. The hash
-    /// algorithm to use is defined by the server.
-    ///
-    /// The size is considered to be an integral part of the digest and cannot be separated. That is, even if the `hash`
-    /// field is correctly specified but `size_bytes` is not, the server MUST reject the request.
-    ///
-    /// The reason for including the size in the digest is as follows: in a great many cases, the server needs to know
-    /// the size of the blob it is about to work with prior to starting an operation with it, such as flattening Merkle
-    /// tree structures or streaming it to a worker. Technically, the server could implement a separate metadata store,
-    /// but this results in a significantly more complicated implementation as opposed to having the client specify the
-    /// size up-front (or storing the size along with the digest in every message where digests are embedded). This does
-    /// mean that the API leaks some implementation details of (what we consider to be) a reasonable server
-    /// implementation, but we consider this to be a worthwhile tradeoff.
-    ///
-    /// When a `Digest` is used to refer to a proto message, it always refers to the message in binary encoded form. To
-    /// ensure consistent hashing, clients and servers MUST ensure that they serialize messages according to the
-    /// following rules, even if there are alternate valid encodings for the same message:
-    ///
-    /// * Fields are serialized in tag order. * There are no unknown fields. * There are no duplicate fields. * Fields
-    /// are serialized according to the default semantics for their type.
-    ///
-    /// Most protocol buffer implementations will always follow these rules when serializing, but care should be taken
-    /// to avoid shortcuts. For instance, concatenating two messages to merge them may produce duplicate
-    /// fields.</summary>
+    /// algorithm to use is defined by the server. The size is considered to be an integral part of the digest and
+    /// cannot be separated. That is, even if the `hash` field is correctly specified but `size_bytes` is not, the
+    /// server MUST reject the request. The reason for including the size in the digest is as follows: in a great many
+    /// cases, the server needs to know the size of the blob it is about to work with prior to starting an operation
+    /// with it, such as flattening Merkle tree structures or streaming it to a worker. Technically, the server could
+    /// implement a separate metadata store, but this results in a significantly more complicated implementation as
+    /// opposed to having the client specify the size up-front (or storing the size along with the digest in every
+    /// message where digests are embedded). This does mean that the API leaks some implementation details of (what we
+    /// consider to be) a reasonable server implementation, but we consider this to be a worthwhile tradeoff. When a
+    /// `Digest` is used to refer to a proto message, it always refers to the message in binary encoded form. To ensure
+    /// consistent hashing, clients and servers MUST ensure that they serialize messages according to the following
+    /// rules, even if there are alternate valid encodings for the same message: * Fields are serialized in tag order. *
+    /// There are no unknown fields. * There are no duplicate fields. * Fields are serialized according to the default
+    /// semantics for their type. Most protocol buffer implementations will always follow these rules when serializing,
+    /// but care should be taken to avoid shortcuts. For instance, concatenating two messages to merge them may produce
+    /// duplicate fields.</summary>
     public class BuildBazelRemoteExecutionV2Digest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The hash. In the case of SHA-256, it will always be a lowercase hex string exactly 64 characters
@@ -1454,31 +1515,21 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>A `Directory` represents a directory node in a file tree, containing zero or more children FileNodes,
     /// DirectoryNodes and SymlinkNodes. Each `Node` contains its name in the directory, either the digest of its
     /// content (either a file blob or a `Directory` proto) or a symlink target, as well as possibly some metadata about
-    /// the file or directory.
-    ///
-    /// In order to ensure that two equivalent directory trees hash to the same value, the following restrictions MUST
-    /// be obeyed when constructing a a `Directory`:
-    ///
-    /// * Every child in the directory must have a path of exactly one segment. Multiple levels of directory hierarchy
-    /// may not be collapsed. * Each child in the directory must have a unique path segment (file name). Note that while
-    /// the API itself is case-sensitive, the environment where the Action is executed may or may not be case-sensitive.
-    /// That is, it is legal to call the API with a Directory that has both "Foo" and "foo" as children, but the Action
-    /// may be rejected by the remote system upon execution. * The files, directories and symlinks in the directory must
-    /// each be sorted in lexicographical order by path. The path strings must be sorted by code point, equivalently, by
-    /// UTF-8 bytes. * The NodeProperties of files, directories, and symlinks must be sorted in lexicographical order by
-    /// property name.
-    ///
-    /// A `Directory` that obeys the restrictions is said to be in canonical form.
-    ///
-    /// As an example, the following could be used for a file named `bar` and a directory named `foo` with an executable
-    /// file named `baz` (hashes shortened for readability):
-    ///
+    /// the file or directory. In order to ensure that two equivalent directory trees hash to the same value, the
+    /// following restrictions MUST be obeyed when constructing a a `Directory`: * Every child in the directory must
+    /// have a path of exactly one segment. Multiple levels of directory hierarchy may not be collapsed. * Each child in
+    /// the directory must have a unique path segment (file name). Note that while the API itself is case-sensitive, the
+    /// environment where the Action is executed may or may not be case-sensitive. That is, it is legal to call the API
+    /// with a Directory that has both "Foo" and "foo" as children, but the Action may be rejected by the remote system
+    /// upon execution. * The files, directories and symlinks in the directory must each be sorted in lexicographical
+    /// order by path. The path strings must be sorted by code point, equivalently, by UTF-8 bytes. * The NodeProperties
+    /// of files, directories, and symlinks must be sorted in lexicographical order by property name. A `Directory` that
+    /// obeys the restrictions is said to be in canonical form. As an example, the following could be used for a file
+    /// named `bar` and a directory named `foo` with an executable file named `baz` (hashes shortened for readability):
     /// ```json // (Directory proto) { files: [ { name: "bar", digest: { hash: "4a73bc9d03...", size: 65534 },
     /// node_properties: [ { "name": "MTime", "value": "2017-01-15T01:30:15.01Z" } ] } ], directories: [ { name: "foo",
-    /// digest: { hash: "4cf2eda940...", size: 43 } } ] }
-    ///
-    /// // (Directory proto with hash "4cf2eda940..." and size 43) { files: [ { name: "baz", digest: { hash:
-    /// "b2c941073e...", size: 1294, }, is_executable: true } ] } ```</summary>
+    /// digest: { hash: "4cf2eda940...", size: 43 } } ] } // (Directory proto with hash "4cf2eda940..." and size 43) {
+    /// files: [ { name: "baz", digest: { hash: "b2c941073e...", size: 1294, }, is_executable: true } ] } ```</summary>
     public class BuildBazelRemoteExecutionV2Directory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The subdirectories in the directory.</summary>
@@ -1570,7 +1621,6 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// <summary>If the status has a code other than `OK`, it indicates that the action did not finish execution.
         /// For example, if the operation times out during execution, the status will have a `DEADLINE_EXCEEDED` code.
         /// Servers MUST use this field for errors in execution, rather than the error field on the `Operation` object.
-        ///
         /// If the status code is other than `OK`, then the result MUST NOT be cached. For an error status, the `result`
         /// field is optional; the server may populate the output-, stdout-, and stderr-related fields if it has any
         /// information available, such as the stdout and stderr of a timed-out action.</summary>
@@ -1737,7 +1787,6 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     }    
 
     /// <summary>An `OutputSymlink` is similar to a Symlink, but it is used as an output in an `ActionResult`.
-    ///
     /// `OutputSymlink` is binary-compatible with `SymlinkNode`.</summary>
     public class BuildBazelRemoteExecutionV2OutputSymlink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1779,15 +1828,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
     /// <summary>A single property for the environment. The server is responsible for specifying the property `name`s
     /// that it accepts. If an unknown `name` is provided in the requirements for an Action, the server SHOULD reject
-    /// the execution request. If permitted by the server, the same `name` may occur multiple times.
-    ///
-    /// The server is also responsible for specifying the interpretation of property `value`s. For instance, a property
-    /// describing how much RAM must be available may be interpreted as allowing a worker with 16GB to fulfill a request
-    /// for 8GB, while a property describing the OS environment on which the action must be performed may require an
-    /// exact match with the worker's OS.
-    ///
-    /// The server MAY use the `value` of one or more properties to determine how it sets up the execution environment,
-    /// such as by making specific system files available to the worker.</summary>
+    /// the execution request. If permitted by the server, the same `name` may occur multiple times. The server is also
+    /// responsible for specifying the interpretation of property `value`s. For instance, a property describing how much
+    /// RAM must be available may be interpreted as allowing a worker with 16GB to fulfill a request for 8GB, while a
+    /// property describing the OS environment on which the action must be performed may require an exact match with the
+    /// worker's OS. The server MAY use the `value` of one or more properties to determine how it sets up the execution
+    /// environment, such as by making specific system files available to the worker.</summary>
     public class BuildBazelRemoteExecutionV2PlatformProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The property name.</summary>
@@ -1804,13 +1850,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
     /// <summary>An optional Metadata to attach to any RPC request to tell the server about an external context of the
     /// request. The server may use this for logging or other purposes. To use it, the client attaches the header to the
-    /// call using the canonical proto serialization:
-    ///
-    /// * name: `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the base64 encoded binary
-    /// `RequestMetadata` message. Note: the gRPC library serializes binary headers encoded in base 64 by default
-    /// (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests). Therefore, if the gRPC library is
-    /// used to pass/retrieve this metadata, the user may ignore the base64 encoding and assume it is simply serialized
-    /// as a binary message.</summary>
+    /// call using the canonical proto serialization: * name: `build.bazel.remote.execution.v2.requestmetadata-bin` *
+    /// contents: the base64 encoded binary `RequestMetadata` message. Note: the gRPC library serializes binary headers
+    /// encoded in base 64 by default (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests).
+    /// Therefore, if the gRPC library is used to pass/retrieve this metadata, the user may ignore the base64 encoding
+    /// and assume it is simply serialized as a binary message.</summary>
     public class BuildBazelRemoteExecutionV2RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An identifier that ties multiple requests to the same action. For example, multiple requests to the
@@ -2110,6 +2154,73 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior
+    /// changes that take effect without opt-in or opt-out at usage time.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is
+        /// allowed. One can allow all repositories under a project or one specific repository only. E.g.
+        /// container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar
+        /// /repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-
+        /// bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImageSources")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature ContainerImageSources { get; set; } 
+
+        /// <summary>Whether dockerAddCapabilities can be used or what capabilities are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerAddCapabilities")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerAddCapabilities { get; set; } 
+
+        /// <summary>Whether dockerChrootPath can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerChrootPath")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerChrootPath { get; set; } 
+
+        /// <summary>Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value
+        /// only via `allowed_values`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerNetwork")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerNetwork { get; set; } 
+
+        /// <summary>Whether dockerPrivileged can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerPrivileged")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerPrivileged { get; set; } 
+
+        /// <summary>Whether dockerRunAsRoot can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerRunAsRoot")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerRunAsRoot { get; set; } 
+
+        /// <summary>Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes
+        /// precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected
+        /// isolation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerRuntime")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerRuntime { get; set; } 
+
+        /// <summary>Whether dockerSiblingContainers can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerSiblingContainers")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature DockerSiblingContainers { get; set; } 
+
+        /// <summary>linux_isolation allows overriding the docker runtime used for containers started on
+        /// Linux.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linuxIsolation")]
+        public virtual string LinuxIsolation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines whether a feature can be used or what values are accepted.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of acceptable values. Only effective when the policy is `RESTRICTED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
+
+        /// <summary>The policy of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request used for `GetInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2140,6 +2251,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// instance.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The policy to define whether or not RBE features can be used or how they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicy")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy FeaturePolicy { get; set; } 
+
         /// <summary>The location is a GCP region. Currently only `us-central1` is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
@@ -2189,20 +2304,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// must be a string, a number, or a boolean. String values are case-insensitive. The comparison operator must
         /// be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:` operator can be used with string fields to match
         /// substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to
-        /// test  whether a key has been defined.
-        ///
-        /// You can also filter on nested fields.
-        ///
-        /// To filter on multiple expressions, you can separate expression using `AND` and `OR` operators, using
-        /// parentheses to specify precedence. If neither operator is specified, `AND` is assumed.
-        ///
-        /// Examples:
-        ///
-        /// Include only pools with more than 100 reserved workers: `(worker_count > 100) (worker_config.reserved =
-        /// true)`
-        ///
-        /// Include only pools with a certain label or machines of the n1-standard family: `worker_config.labels.key1 :
-        /// * OR worker_config.machine_type: n1-standard`</summary>
+        /// test whether a key has been defined. You can also filter on nested fields. To filter on multiple
+        /// expressions, you can separate expression using `AND` and `OR` operators, using parentheses to specify
+        /// precedence. If neither operator is specified, `AND` is assumed. Examples: Include only pools with more than
+        /// 100 reserved workers: `(worker_count > 100) (worker_config.reserved = true)` Include only pools with a
+        /// certain label or machines of the n1-standard family: `worker_config.labels.key1 : * OR
+        /// worker_config.machine_type: n1-standard`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2312,10 +2419,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
-        /// <summary>Determines the type of network access granted to workers. Possible values:
-        ///
-        /// - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs
-        /// and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through
+        /// <summary>Determines the type of network access granted to workers. Possible values: - "public": Workers can
+        /// connect to the public internet. - "private": Workers can only connect to Google APIs and services. -
+        /// "restricted-private": Workers can only connect to Google APIs that are reachable through
         /// `restricted.googleapis.com` (`199.36.153.4/30`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAccess")]
         public virtual string NetworkAccess { get; set; } 
@@ -2371,12 +2477,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>AdminTemp is a prelimiary set of administration tasks. It's called "Temp" because we do not yet know
     /// the best way to represent admin tasks; it's possible that this will be entirely replaced in later versions of
     /// this API. If this message proves to be sufficient, it will be renamed in the alpha or beta release of this API.
-    ///
     /// This message (suitably marshalled into a protobuf.Any) can be used as the inline_assignment field in a lease;
-    /// the lease assignment field should simply be `"admin"` in these cases.
-    ///
-    /// This message is heavily based on Swarming administration tasks from the LUCI project (http://github.com/luci
-    /// /luci-py/appengine/swarming).</summary>
+    /// the lease assignment field should simply be `"admin"` in these cases. This message is heavily based on Swarming
+    /// administration tasks from the LUCI project (http://github.com/luci/luci-py/appengine/swarming).</summary>
     public class GoogleDevtoolsRemoteworkersV1test2AdminTemp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The argument to the admin action; see `Command` for semantics.</summary>
@@ -2506,15 +2609,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>Describes the inputs to a shell-style task.</summary>
     public class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The command itself to run (e.g., argv).
-        ///
-        /// This field should be passed directly to the underlying operating system, and so it must be sensible to that
-        /// operating system. For example, on Windows, the first argument might be "C:\Windows\System32\ping.exe" - that
-        /// is, using drive letters and backslashes. A command for a *nix system, on the other hand, would use forward
-        /// slashes.
-        ///
-        /// All other fields in the RWAPI must consistently use forward slashes, since those fields may be interpretted
-        /// by both the service and the bot.</summary>
+        /// <summary>The command itself to run (e.g., argv). This field should be passed directly to the underlying
+        /// operating system, and so it must be sensible to that operating system. For example, on Windows, the first
+        /// argument might be "C:\Windows\System32\ping.exe" - that is, using drive letters and backslashes. A command
+        /// for a *nix system, on the other hand, would use forward slashes. All other fields in the RWAPI must
+        /// consistently use forward slashes, since those fields may be interpretted by both the service and the
+        /// bot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
         public virtual System.Collections.Generic.IList<string> Arguments { get; set; } 
 
@@ -2524,19 +2624,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
         /// <summary>The input filesystem to be set up prior to the task beginning. The contents should be a repeated
         /// set of FileMetadata messages though other formats are allowed if better for the implementation (eg, a LUCI-
-        /// style .isolated file).
-        ///
-        /// This field is repeated since implementations might want to cache the metadata, in which case it may be
-        /// useful to break up portions of the filesystem that change frequently (eg, specific input files) from those
-        /// that don't (eg, standard header files).</summary>
+        /// style .isolated file). This field is repeated since implementations might want to cache the metadata, in
+        /// which case it may be useful to break up portions of the filesystem that change frequently (eg, specific
+        /// input files) from those that don't (eg, standard header files).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsRemoteworkersV1test2Digest> Files { get; set; } 
 
         /// <summary>Inline contents for blobs expected to be needed by the bot to execute the task. For example,
-        /// contents of entries in `files` or blobs that are indirectly referenced by an entry there.
-        ///
-        /// The bot should check against this list before downloading required task inputs to reduce the number of
-        /// communications between itself and the remote CAS server.</summary>
+        /// contents of entries in `files` or blobs that are indirectly referenced by an entry there. The bot should
+        /// check against this list before downloading required task inputs to reduce the number of communications
+        /// between itself and the remote CAS server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineBlobs")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsRemoteworkersV1test2Blob> InlineBlobs { get; set; } 
 
@@ -2624,10 +2721,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>The CommandTask and CommandResult messages assume the existence of a service that can serve blobs of
     /// content, identified by a hash and size known as a "digest." The method by which these blobs may be retrieved is
     /// not specified here, but a model implementation is in the Remote Execution API's "ContentAddressibleStorage"
-    /// interface.
-    ///
-    /// In the context of the RWAPI, a Digest will virtually always refer to the contents of a file or a directory. The
-    /// latter is represented by the byte-encoded Directory message.</summary>
+    /// interface. In the context of the RWAPI, a Digest will virtually always refer to the contents of a file or a
+    /// directory. The latter is represented by the byte-encoded Directory message.</summary>
     public class GoogleDevtoolsRemoteworkersV1test2Digest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A string-encoded hash (eg "1a2b3c", not the byte array [0x1a, 0x2b, 0x3c]) using an implementation-
@@ -2715,9 +2810,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2727,11 +2822,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2741,9 +2836,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2751,8 +2845,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

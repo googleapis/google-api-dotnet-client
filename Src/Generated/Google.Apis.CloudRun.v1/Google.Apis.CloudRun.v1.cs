@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200727 (2034)
+ *      <tr><th>API Rev<td>20200814 (2052)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -5967,7 +5967,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit
         /// status of 0 is treated as live/healthy and non-zero is unhealthy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
-        public virtual string Command { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Command { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6502,8 +6502,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
         /// and the watch operation on a resource or set of resources. Clients must treat these values as opaque and
         /// passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
-        /// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-
+        /// Populated by the system. Read-only. Value must be treated as opaque by clients. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-
         /// consistency</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; } 
