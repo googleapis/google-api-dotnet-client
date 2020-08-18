@@ -10,7 +10,7 @@ private readonly Google.Apis.Services.IClientService service;
 public {{ resource.className }}Resource(Google.Apis.Services.IClientService service)
 {
 {% indent %}this.service = service;
-{% for subr in resource.resources %}{{ subr.codeName }} = new {{ subr.className }}Resource(service);{% eol %}{% endfor %}{% endindent %}
+{% for subr in resource.resources %}{{ subr.className }} = new {{ subr.className }}Resource(service);{% eol %}{% endfor %}{% endindent %}
 }
 {% for subr in resource.resources %}{% eol %}{% call_template _get_resource resource=subr %}{% eol %}
 {% call_template _resource resource=subr %}{% endfor %}

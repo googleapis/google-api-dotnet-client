@@ -24,7 +24,7 @@ public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initial
 {
 {% filter noblanklines %}
 {% for resource in api.resources %}
-{% indent %}{{ resource.codeName }} = new {{ resource.className }}Resource(this);{% endindent %}
+{% indent %}{{ resource.className }} = new {{ resource.className }}Resource(this);{% endindent %}
 {% endfor %}
 {% endfilter %}
 }
