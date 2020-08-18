@@ -30,65 +30,37 @@ public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initial
 }
 
 /// <summary>Gets the service supported features.</summary>
-public override System.Collections.Generic.IList<string> Features
-{
-    get { return {% noeol %}
-
-        {% if api.features %}
-
+public override System.Collections.Generic.IList<string> Features => {% noeol %}
+{% if api.features %}
 new string[] {{% parameter_list %}
 {% for feature in api.features %}
 {% parameter %}"{{ feature }}"{% end_parameter %}
 {% endfor %}{% end_parameter_list %}};
-
-        {% else %}
-
+{% else %}
 new string[0];
-
-        {% endif %} }
-        {% endnoeol %}
-}
+{% endif %}
+{% endnoeol %}
 
 /// <summary>Gets the service name.</summary>
-public override string Name
-{
-    get { return {% literal api.name %}; }
-}
+public override string Name => {% literal api.name %};
 
 /// <summary>Gets the service base URI.</summary>
-public override string BaseUri
-{
+public override string BaseUri =>
 #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-    get { return BaseUriOverride ?? "{{ api.rootUrl }}{{ api.servicePath }}"; }
+    BaseUriOverride ?? "{{ api.rootUrl }}{{ api.servicePath }}";
 #else
-    get { return "{{ api.rootUrl }}{{ api.servicePath }}"; }
+    "{{ api.rootUrl }}{{ api.servicePath }}";
 #endif
-}
 
 /// <summary>Gets the service base path.</summary>
-public override string BasePath
-{
-    get { return "{{ api.servicePath }}"; }
-}
+public override string BasePath => "{{ api.servicePath }}";
 
 #if !NET40
 /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-public override string BatchUri
-{
-{% noblank %}{% if api.batchPath %}
-    get { return "{{ api.rootUrl }}{{ api.batchPath }}"; }
-{% else %}
-    get { return null; }
-{% endif %}{% endnoblank %}}
+public override string BatchUri => {% if api.batchPath %}"{{ api.rootUrl }}{{ api.batchPath }}"{% else %}null{% endif %};
 
 /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-public override string BatchPath
-{
-{% noblank %}{% if api.batchPath %}
-    get { return "{{ api.batchPath }}"; }
-{% else %}
-    get { return null; }
-{% endif %}{% endnoblank %}}
+public override string BatchPath => {% if api.batchPath %}"{{ api.batchPath }}"{% else %} null{% endif %};
 #endif
 
 {% if api.authscopes %}/// <summary>Available OAuth 2.0 scopes for use with the {{ api.title }}.</summary>
