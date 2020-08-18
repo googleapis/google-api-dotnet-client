@@ -115,7 +115,7 @@ fi
 if [ -z ${SKIPBUILD+x} ]; then
   rm -f Generated.sln
   dotnet new sln --name Generated
-  dotnet sln Generated.sln add $CODE_GENERATION_DIR/*/*.csproj
+  echo $CODE_GENERATION_DIR/*/*.csproj | xargs dotnet sln Generated.sln add
   dotnet restore Generated.sln
   dotnet build Generated.sln --configuration $BUILD_CONFIGURATION --no-restore
 fi
