@@ -107,25 +107,16 @@ InitParameters();
 {{ method.requestType.fullClassName }} Body { get; set; }
 
 ///<summary>Returns the body of the request.</summary>
-protected override object GetBody() { return Body; }
+protected override object GetBody() => Body;
 {% endif %}
 ///<summary>Gets the method name.</summary>
-public override string MethodName
-{
-    get { return "{{ method.wireName }}"; }
-}
+public override string MethodName => "{{ method.wireName }}";
 
 ///<summary>Gets the HTTP method.</summary>
-public override string HttpMethod
-{
-    get { return "{{ method.httpMethod }}"; }
-}
+public override string HttpMethod => "{{ method.httpMethod }}";
 
 ///<summary>Gets the REST path.</summary>
-public override string RestPath
-{
-    get { return "{{ method.path }}"; }
-}
+public override string RestPath => "{{ method.path }}";
 
 /// <summary>Initializes {{ method.className }} parameter list.</summary>
 {% call_template _init_parameters parameters=method.parameters %}
