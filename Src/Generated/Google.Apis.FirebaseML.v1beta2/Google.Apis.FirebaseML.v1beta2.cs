@@ -894,11 +894,6 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTfliteUri")]
         public virtual string GcsTfliteUri { get; set; } 
 
-        /// <summary>Output only. A boolean indicating that this model was uploaded from the console. Read
-        /// only</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("managedUpload")]
-        public virtual System.Nullable<bool> ManagedUpload { get; set; } 
-
         /// <summary>Output only. The size of the TFLite model</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual string SizeBytes { get; set; } 

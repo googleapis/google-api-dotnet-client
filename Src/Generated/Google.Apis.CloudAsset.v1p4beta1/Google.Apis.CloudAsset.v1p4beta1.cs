@@ -287,9 +287,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
         /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
-        /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
-        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder id, visit
+        /// parent will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+        /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+        /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
+        /// /creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit
         /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual AnalyzeIamPolicyRequest AnalyzeIamPolicy(string parent)
@@ -310,12 +311,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
-            /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123"). To know how to get organization id, visit [here
-            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
-            /// organization#retrieving_your_organization_id). To know how to get folder id, visit [here
-            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
-            /// folders#viewing_or_listing_folders_and_projects).</summary>
+            /// parent will be analyzed. This can only be an organization number (such as "organizations/123"), a folder
+            /// number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number
+            /// (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com
+            /// /resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to
+            /// get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -531,9 +532,10 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         /// result. The metadata contains the request to help callers to map responses to requests.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. Only resources and IAM policies within the
-        /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
-        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder id, visit
+        /// parent will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+        /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+        /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs
+        /// /creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit
         /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</param>
         public virtual ExportIamPolicyAnalysisRequest ExportIamPolicyAnalysis(Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest body, string parent)
@@ -559,12 +561,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1
 
 
             /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the
-            /// parent will be analyzed. This can only be an organization number (such as "organizations/123") or a
-            /// folder number (such as "folders/123"). To know how to get organization id, visit [here
-            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
-            /// organization#retrieving_your_organization_id). To know how to get folder id, visit [here
-            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
-            /// folders#viewing_or_listing_folders_and_projects).</summary>
+            /// parent will be analyzed. This can only be an organization number (such as "organizations/123"), a folder
+            /// number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number
+            /// (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com
+            /// /resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to
+            /// get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+            /// managing-folders#viewing_or_listing_folders_and_projects).</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -939,10 +941,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         public virtual IdentitySelector IdentitySelector { get; set; } 
 
         /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the parent
-        /// will be analyzed. This can only be an organization number (such as "organizations/123") or a folder number
-        /// (such as "folders/123"). To know how to get organization id, visit [here ](https://cloud.google.com
-        /// /resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get
-        /// folder id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+        /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+        /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or
+        /// project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 

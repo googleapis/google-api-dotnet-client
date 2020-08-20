@@ -966,7 +966,8 @@ namespace Google.Apis.Tasks.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>Flag indicating whether completed tasks are returned in the result. Optional. The default is
-            /// True.</summary>
+            /// True. Note that showHidden must also be True to show tasks completed in first party clients, such as the
+            /// web UI and Google's mobile apps.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showCompleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowCompleted { get; set; }
 
@@ -1352,6 +1353,7 @@ namespace Google.Apis.Tasks.v1
 namespace Google.Apis.Tasks.v1.Data
 {    
 
+    /// <summary>LINT.IfChange</summary>
     public class Task : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not

@@ -372,7 +372,7 @@
    }
   }
  }, 
- "revision": "20200809", 
+ "revision": "20200812", 
  "rootUrl": "https://chat.googleapis.com/", 
  "schemas": {
   "ActionParameter": {

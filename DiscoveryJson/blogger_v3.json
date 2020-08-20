@@ -1677,7 +1677,7 @@
    }
   }
  }, 
- "revision": "20200814", 
+ "revision": "20200819", 
  "rootUrl": "https://blogger.googleapis.com/", 
  "schemas": {
   "Blog": {

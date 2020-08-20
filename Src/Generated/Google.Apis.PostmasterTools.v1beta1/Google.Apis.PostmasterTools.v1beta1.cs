@@ -58,7 +58,7 @@ namespace Google.Apis.PostmasterTools.v1beta1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Postmaster Tools API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Gmail Postmaster Tools API.</summary>
         public class Scope
         {
             /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
@@ -67,7 +67,7 @@ namespace Google.Apis.PostmasterTools.v1beta1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Postmaster Tools API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Gmail Postmaster Tools API.</summary>
         public static class ScopeConstants
         {
             /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster

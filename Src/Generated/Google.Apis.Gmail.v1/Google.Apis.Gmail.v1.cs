@@ -42,9 +42,9 @@ namespace Google.Apis.Gmail.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/";
+            BaseUriOverride ?? "https://gmail.googleapis.com/";
         #else
-            "https://www.googleapis.com/";
+            "https://gmail.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
@@ -52,10 +52,10 @@ namespace Google.Apis.Gmail.v1
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/gmail/v1";
+        public override string BatchUri => "https://gmail.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-        public override string BatchPath => "batch/gmail/v1";
+        public override string BatchPath => "batch";
         #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Gmail API.</summary>

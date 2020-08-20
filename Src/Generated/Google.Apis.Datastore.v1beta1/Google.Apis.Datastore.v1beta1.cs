@@ -459,17 +459,11 @@ namespace Google.Apis.Datastore.v1beta1.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -477,10 +471,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -624,17 +616,11 @@ namespace Google.Apis.Datastore.v1beta1.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1beta1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -642,10 +628,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -694,20 +678,16 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Location for the export metadata and data files.
-        ///
-        /// The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported.
-        /// So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
-        /// name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is
-        /// not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name
-        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
-        ///
-        /// The resulting files will be nested deeper than the specified URL prefix. The final output URL will be
-        /// provided in the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be
-        /// used for subsequent ImportEntities operations.
-        ///
-        /// By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities
-        /// operations without conflict.</summary>
+        /// <summary>Location for the export metadata and data files. The full resource URL of the external storage
+        /// location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the form:
+        /// `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and
+        /// `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For
+        /// more information about Cloud Storage namespace paths, see [Object name
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files
+        /// will be nested deeper than the specified URL prefix. The final output URL will be provided in the
+        /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be used for
+        /// subsequent ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be
+        /// used in multiple ExportEntities operations without conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
         public virtual string OutputUrlPrefix { get; set; } 
 
@@ -771,9 +751,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         /// Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud
         /// Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities
         /// operation. For more information about Cloud Storage namespace paths, see [Object name
-        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
-        ///
-        /// For more information, see google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.</summary>
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information,
+        /// see google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
         public virtual string InputUrl { get; set; } 
 
@@ -814,9 +793,9 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -826,11 +805,11 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -840,9 +819,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -850,8 +828,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

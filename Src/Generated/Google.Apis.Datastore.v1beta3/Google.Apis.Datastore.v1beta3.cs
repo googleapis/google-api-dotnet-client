@@ -776,15 +776,11 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; } 
 
-        /// <summary>The mutations to perform.
-        ///
-        /// When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following
-        /// sequences of mutations affecting a single entity are not permitted in a single `Commit` request:
-        ///
-        /// - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete`
-        /// followed by `update`
-        ///
-        /// When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity.</summary>
+        /// <summary>The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+        /// applied in order. The following sequences of mutations affecting a single entity are not permitted in a
+        /// single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed
+        /// by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a
+        /// single entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; } 
 
@@ -828,16 +824,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Datastore data object.
-    ///
-    /// An entity is limited to 1 megabyte when stored. That _roughly_ corresponds to a limit of 1 megabyte for the
-    /// serialized form of this message.</summary>
+    /// <summary>A Datastore data object. An entity is limited to 1 megabyte when stored. That _roughly_ corresponds to
+    /// a limit of 1 megabyte for the serialized form of this message.</summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The entity's key.
-        ///
-        /// An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may
-        /// have no key). An entity's kind is its key path's last element's kind, or null if it has no key.</summary>
+        /// <summary>The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in
+        /// `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it
+        /// has no key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual Key Key { get; set; } 
 
@@ -864,12 +857,9 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual Entity Entity { get; set; } 
 
         /// <summary>The version of the entity, a strictly positive number that monotonically increases with changes to
-        /// the entity.
-        ///
-        /// This field is set for `FULL` entity results.
-        ///
-        /// For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the
-        /// entity, and it is always set except for eventually consistent reads.</summary>
+        /// the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is
+        /// the version of the snapshot that was used to look up the entity, and it is always set except for eventually
+        /// consistent reads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; } 
 
@@ -921,17 +911,11 @@ namespace Google.Apis.Datastore.v1beta3.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -939,10 +923,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -1086,17 +1068,11 @@ namespace Google.Apis.Datastore.v1beta3.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1beta1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -1104,10 +1080,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -1213,17 +1187,14 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Nullable<bool> AllowLiterals { get; set; } 
 
         /// <summary>For each non-reserved named binding site in the query string, there must be a named parameter with
-        /// that name, but not necessarily the inverse.
-        ///
-        /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`.</summary>
+        /// that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`,
+        /// and must not be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedBindings")]
         public virtual System.Collections.Generic.IDictionary<string,GqlQueryParameter> NamedBindings { get; set; } 
 
         /// <summary>Numbered binding site @1 references the first numbered parameter, effectively using 1-based
-        /// indexing, rather than the usual 0.
-        ///
-        /// For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse
-        /// must also be true.</summary>
+        /// indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th
+        /// numbered parameter. The inverse must also be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionalBindings")]
         public virtual System.Collections.Generic.IList<GqlQueryParameter> PositionalBindings { get; set; } 
 
@@ -1264,14 +1235,12 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
         /// element identifies a _child_ of the root entity, the third element identifies a child of the second entity,
-        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_.
-        ///
-        /// An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path
-        /// along with the entity identifier itself. The only exception is that in some documented cases, the identifier
-        /// in the last path element (for the entity) itself may be omitted. For example, the last path element of the
-        /// key of `Mutation.insert` may have no identifier.
-        ///
-        /// A path can never be empty, and a path can have at most 100 elements.</summary>
+        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. An
+        /// entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along
+        /// with the entity identifier itself. The only exception is that in some documented cases, the identifier in
+        /// the last path element (for the entity) itself may be omitted. For example, the last path element of the key
+        /// of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100
+        /// elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual System.Collections.Generic.IList<PathElement> Path { get; set; } 
 
@@ -1399,18 +1368,12 @@ namespace Google.Apis.Datastore.v1beta3.Data
     }    
 
     /// <summary>A partition ID identifies a grouping of entities. The grouping is always by project and namespace,
-    /// however the namespace ID may be empty.
-    ///
-    /// A partition ID contains several dimensions: project ID and namespace ID.
-    ///
-    /// Partition dimensions:
-    ///
-    /// - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the
-    /// value of any dimension matches regex `__.*__`, the partition is reserved/read-only. A reserved/read-only
-    /// partition ID is forbidden in certain documented contexts.
-    ///
-    /// Foreign partition IDs (in which the project ID does not match the context project ID ) are discouraged. Reads
-    /// and writes of foreign partition IDs may fail if the project is not in an active state.</summary>
+    /// however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
+    /// Partition dimensions: - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex
+    /// `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension matches regex `__.*__`, the partition is reserved/read-
+    /// only. A reserved/read-only partition ID is forbidden in certain documented contexts. Foreign partition IDs (in
+    /// which the project ID does not match the context project ID ) are discouraged. Reads and writes of foreign
+    /// partition IDs may fail if the project is not in an active state.</summary>
     public class PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
@@ -1425,9 +1388,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A (kind, ID/name) pair used to construct a key path.
-    ///
-    /// If either name or ID is set, the element is complete. If neither is set, the element is incomplete.</summary>
+    /// <summary>A (kind, ID/name) pair used to construct a key path. If either name or ID is set, the element is
+    /// complete. If neither is set, the element is incomplete.</summary>
     public class PathElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
@@ -1587,11 +1549,9 @@ namespace Google.Apis.Datastore.v1beta3.Data
 
         /// <summary>The version number of the snapshot this batch was returned from. This applies to the range of
         /// results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this
-        /// batch's `end_cursor` (not the query's `end_cursor`).
-        ///
-        /// In a single transaction, subsequent query result batches for the same query can have a greater snapshot
-        /// version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for
-        /// eventually consistent queries.</summary>
+        /// batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result
+        /// batches for the same query can have a greater snapshot version number. Each batch's snapshot version is
+        /// valid for all preceding batches. The value will be zero for eventually consistent queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotVersion")]
         public virtual System.Nullable<long> SnapshotVersion { get; set; } 
 
@@ -1714,10 +1674,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for beginning a new transaction.
-    ///
-    /// Transactions can be created explicitly with calls to Datastore.BeginTransaction or implicitly by setting
-    /// ReadOptions.new_transaction in read requests.</summary>
+    /// <summary>Options for beginning a new transaction. Transactions can be created explicitly with calls to
+    /// Datastore.BeginTransaction or implicitly by setting ReadOptions.new_transaction in read requests.</summary>
     public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The transaction should only allow reads.</summary>
@@ -1753,10 +1711,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; } 
 
-        /// <summary>An entity value.
-        ///
-        /// - May have no key. - May have a key with an incomplete key path. - May have a reserved/read-only
-        /// key.</summary>
+        /// <summary>An entity value. - May have no key. - May have a key with an incomplete key path. - May have a
+        /// reserved/read-only key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityValue")]
         public virtual Entity EntityValue { get; set; } 
 

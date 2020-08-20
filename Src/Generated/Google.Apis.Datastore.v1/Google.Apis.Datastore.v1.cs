@@ -313,12 +313,9 @@ namespace Google.Apis.Datastore.v1
 
             /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On completion
             /// of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists,
-            /// the call will return an `ALREADY_EXISTS` status.
-            ///
-            /// During index creation, the process could result in an error, in which case the index will move to the
-            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index
-            /// with delete, then re-creating the index with create.
-            ///
+            /// the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an
+            /// error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing
+            /// the data that caused the error, removing the index with delete, then re-creating the index with create.
             /// Indexes with a single property cannot be created.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Project ID against which to make the request.</param>
@@ -329,12 +326,9 @@ namespace Google.Apis.Datastore.v1
 
             /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On completion
             /// of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists,
-            /// the call will return an `ALREADY_EXISTS` status.
-            ///
-            /// During index creation, the process could result in an error, in which case the index will move to the
-            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index
-            /// with delete, then re-creating the index with create.
-            ///
+            /// the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an
+            /// error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing
+            /// the data that caused the error, removing the index with delete, then re-creating the index with create.
             /// Indexes with a single property cannot be created.</summary>
             public class CreateRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
@@ -388,11 +382,9 @@ namespace Google.Apis.Datastore.v1
 
             /// <summary>Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state.
             /// On successful execution of the request, the index will be in a `DELETING` state. And on completion of
-            /// the returned google.longrunning.Operation, the index will be removed.
-            ///
-            /// During index deletion, the process could result in an error, in which case the index will move to the
-            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by
-            /// calling delete again.</summary>
+            /// the returned google.longrunning.Operation, the index will be removed. During index deletion, the process
+            /// could result in an error, in which case the index will move to the `ERROR` state. The process can be
+            /// recovered by fixing the data that caused the error, followed by calling delete again.</summary>
             /// <param name="projectId">Project ID against which to make the request.</param>
             /// <param name="indexId">The
             /// resource ID of the index to delete.</param>
@@ -403,11 +395,9 @@ namespace Google.Apis.Datastore.v1
 
             /// <summary>Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state.
             /// On successful execution of the request, the index will be in a `DELETING` state. And on completion of
-            /// the returned google.longrunning.Operation, the index will be removed.
-            ///
-            /// During index deletion, the process could result in an error, in which case the index will move to the
-            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by
-            /// calling delete again.</summary>
+            /// the returned google.longrunning.Operation, the index will be removed. During index deletion, the process
+            /// could result in an error, in which case the index will move to the `ERROR` state. The process can be
+            /// recovered by fixing the data that caused the error, followed by calling delete again.</summary>
             public class DeleteRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -532,7 +522,7 @@ namespace Google.Apis.Datastore.v1
 
             }
 
-            /// <summary>Lists the indexes that match the specified filters.  Datastore uses an eventually consistent
+            /// <summary>Lists the indexes that match the specified filters. Datastore uses an eventually consistent
             /// query to fetch the list of indexes and may occasionally return stale results.</summary>
             /// <param name="projectId">Project ID against which to make the request.</param>
             public virtual ListRequest List(string projectId)
@@ -540,7 +530,7 @@ namespace Google.Apis.Datastore.v1
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>Lists the indexes that match the specified filters.  Datastore uses an eventually consistent
+            /// <summary>Lists the indexes that match the specified filters. Datastore uses an eventually consistent
             /// query to fetch the list of indexes and may occasionally return stale results.</summary>
             public class ListRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ListIndexesResponse>
             {
@@ -561,7 +551,7 @@ namespace Google.Apis.Datastore.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The maximum number of items to return.  If zero, then all results will be
+                /// <summary>The maximum number of items to return. If zero, then all results will be
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -644,9 +634,9 @@ namespace Google.Apis.Datastore.v1
             }
 
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -656,9 +646,9 @@ namespace Google.Apis.Datastore.v1
                 return new CancelRequest(service, name);
             }
 
-            /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
-            /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+            /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+            /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -760,7 +750,7 @@ namespace Google.Apis.Datastore.v1
 
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
@@ -768,7 +758,7 @@ namespace Google.Apis.Datastore.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
             public class GetRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
@@ -814,13 +804,12 @@ namespace Google.Apis.Datastore.v1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
@@ -828,13 +817,12 @@ namespace Google.Apis.Datastore.v1
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
             public class ListRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1537,15 +1525,11 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; } 
 
-        /// <summary>The mutations to perform.
-        ///
-        /// When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following
-        /// sequences of mutations affecting a single entity are not permitted in a single `Commit` request:
-        ///
-        /// - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete`
-        /// followed by `update`
-        ///
-        /// When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity.</summary>
+        /// <summary>The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+        /// applied in order. The following sequences of mutations affecting a single entity are not permitted in a
+        /// single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed
+        /// by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a
+        /// single entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; } 
 
@@ -1590,27 +1574,22 @@ namespace Google.Apis.Datastore.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Datastore data object.
-    ///
-    /// An entity is limited to 1 megabyte when stored. That _roughly_ corresponds to a limit of 1 megabyte for the
-    /// serialized form of this message.</summary>
+    /// <summary>A Datastore data object. An entity is limited to 1 megabyte when stored. That _roughly_ corresponds to
+    /// a limit of 1 megabyte for the serialized form of this message.</summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The entity's key.
-        ///
-        /// An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may
-        /// have no key). An entity's kind is its key path's last element's kind, or null if it has no key.</summary>
+        /// <summary>The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in
+        /// `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it
+        /// has no key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual Key Key { get; set; } 
 
@@ -1637,12 +1616,9 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual Entity Entity { get; set; } 
 
         /// <summary>The version of the entity, a strictly positive number that monotonically increases with changes to
-        /// the entity.
-        ///
-        /// This field is set for `FULL` entity results.
-        ///
-        /// For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the
-        /// entity, and it is always set except for eventually consistent reads.</summary>
+        /// the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is
+        /// the version of the snapshot that was used to look up the entity, and it is always set except for eventually
+        /// consistent reads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; } 
 
@@ -1694,17 +1670,11 @@ namespace Google.Apis.Datastore.v1.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -1712,10 +1682,8 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -1764,20 +1732,16 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Required. Location for the export metadata and data files.
-        ///
-        /// The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported.
-        /// So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
-        /// name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is
-        /// not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name
-        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
-        ///
-        /// The resulting files will be nested deeper than the specified URL prefix. The final output URL will be
-        /// provided in the google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That value should be used
-        /// for subsequent ImportEntities operations.
-        ///
-        /// By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities
-        /// operations without conflict.</summary>
+        /// <summary>Required. Location for the export metadata and data files. The full resource URL of the external
+        /// storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the
+        /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and
+        /// `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For
+        /// more information about Cloud Storage namespace paths, see [Object name
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files
+        /// will be nested deeper than the specified URL prefix. The final output URL will be provided in the
+        /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That value should be used for subsequent
+        /// ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in
+        /// multiple ExportEntities operations without conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
         public virtual string OutputUrlPrefix { get; set; } 
 
@@ -1841,9 +1805,8 @@ namespace Google.Apis.Datastore.v1.Data
         /// Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud
         /// Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities
         /// operation. For more information about Cloud Storage namespace paths, see [Object name
-        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
-        ///
-        /// For more information, see google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information,
+        /// see google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
         public virtual string InputUrl { get; set; } 
 
@@ -1858,7 +1821,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>Datastore composite index definition.</summary>
     public class GoogleDatastoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.</summary>
+        /// <summary>Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestor")]
         public virtual string Ancestor { get; set; } 
 
@@ -1908,7 +1871,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>A property of an index.</summary>
     public class GoogleDatastoreAdminV1IndexedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.</summary>
+        /// <summary>Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
@@ -1981,17 +1944,11 @@ namespace Google.Apis.Datastore.v1.Data
     }    
 
     /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
-    /// (either or both of which may be all, as described in the following examples). Example usage:
-    ///
-    /// Entire project: kinds=[], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
-    ///
-    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
-    ///
-    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-    ///
-    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    /// (either or both of which may be all, as described in the following examples). Example usage: Entire project:
+    /// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo
+    /// and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the
+    /// default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
+    /// namespace_ids=['Baz']</summary>
     public class GoogleDatastoreAdminV1beta1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If empty, then this represents all kinds.</summary>
@@ -1999,10 +1956,8 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
-        /// namespaces.
-        ///
-        /// An empty string element represents the default namespace. This should be used if the project has data in
-        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// namespaces. An empty string element represents the default namespace. This should be used if the project has
+        /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
@@ -2125,9 +2080,9 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2137,11 +2092,11 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2159,17 +2114,14 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual System.Nullable<bool> AllowLiterals { get; set; } 
 
         /// <summary>For each non-reserved named binding site in the query string, there must be a named parameter with
-        /// that name, but not necessarily the inverse.
-        ///
-        /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`.</summary>
+        /// that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`,
+        /// and must not be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedBindings")]
         public virtual System.Collections.Generic.IDictionary<string,GqlQueryParameter> NamedBindings { get; set; } 
 
         /// <summary>Numbered binding site @1 references the first numbered parameter, effectively using 1-based
-        /// indexing, rather than the usual 0.
-        ///
-        /// For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse
-        /// must also be true.</summary>
+        /// indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th
+        /// numbered parameter. The inverse must also be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionalBindings")]
         public virtual System.Collections.Generic.IList<GqlQueryParameter> PositionalBindings { get; set; } 
 
@@ -2210,14 +2162,12 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
         /// element identifies a _child_ of the root entity, the third element identifies a child of the second entity,
-        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_.
-        ///
-        /// An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path
-        /// along with the entity identifier itself. The only exception is that in some documented cases, the identifier
-        /// in the last path element (for the entity) itself may be omitted. For example, the last path element of the
-        /// key of `Mutation.insert` may have no identifier.
-        ///
-        /// A path can never be empty, and a path can have at most 100 elements.</summary>
+        /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. An
+        /// entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along
+        /// with the entity identifier itself. The only exception is that in some documented cases, the identifier in
+        /// the last path element (for the entity) itself may be omitted. For example, the last path element of the key
+        /// of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100
+        /// elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual System.Collections.Generic.IList<PathElement> Path { get; set; } 
 
@@ -2345,18 +2295,12 @@ namespace Google.Apis.Datastore.v1.Data
     }    
 
     /// <summary>A partition ID identifies a grouping of entities. The grouping is always by project and namespace,
-    /// however the namespace ID may be empty.
-    ///
-    /// A partition ID contains several dimensions: project ID and namespace ID.
-    ///
-    /// Partition dimensions:
-    ///
-    /// - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the
-    /// value of any dimension matches regex `__.*__`, the partition is reserved/read-only. A reserved/read-only
-    /// partition ID is forbidden in certain documented contexts.
-    ///
-    /// Foreign partition IDs (in which the project ID does not match the context project ID ) are discouraged. Reads
-    /// and writes of foreign partition IDs may fail if the project is not in an active state.</summary>
+    /// however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
+    /// Partition dimensions: - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex
+    /// `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension matches regex `__.*__`, the partition is reserved/read-
+    /// only. A reserved/read-only partition ID is forbidden in certain documented contexts. Foreign partition IDs (in
+    /// which the project ID does not match the context project ID ) are discouraged. Reads and writes of foreign
+    /// partition IDs may fail if the project is not in an active state.</summary>
     public class PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
@@ -2371,9 +2315,8 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A (kind, ID/name) pair used to construct a key path.
-    ///
-    /// If either name or ID is set, the element is complete. If neither is set, the element is incomplete.</summary>
+    /// <summary>A (kind, ID/name) pair used to construct a key path. If either name or ID is set, the element is
+    /// complete. If neither is set, the element is incomplete.</summary>
     public class PathElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
@@ -2533,11 +2476,9 @@ namespace Google.Apis.Datastore.v1.Data
 
         /// <summary>The version number of the snapshot this batch was returned from. This applies to the range of
         /// results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this
-        /// batch's `end_cursor` (not the query's `end_cursor`).
-        ///
-        /// In a single transaction, subsequent query result batches for the same query can have a greater snapshot
-        /// version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for
-        /// eventually consistent queries.</summary>
+        /// batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result
+        /// batches for the same query can have a greater snapshot version number. Each batch's snapshot version is
+        /// valid for all preceding batches. The value will be zero for eventually consistent queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotVersion")]
         public virtual System.Nullable<long> SnapshotVersion { get; set; } 
 
@@ -2662,9 +2603,8 @@ namespace Google.Apis.Datastore.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2672,8 +2612,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2686,10 +2626,8 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for beginning a new transaction.
-    ///
-    /// Transactions can be created explicitly with calls to Datastore.BeginTransaction or implicitly by setting
-    /// ReadOptions.new_transaction in read requests.</summary>
+    /// <summary>Options for beginning a new transaction. Transactions can be created explicitly with calls to
+    /// Datastore.BeginTransaction or implicitly by setting ReadOptions.new_transaction in read requests.</summary>
     public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The transaction should only allow reads.</summary>
@@ -2725,10 +2663,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; } 
 
-        /// <summary>An entity value.
-        ///
-        /// - May have no key. - May have a key with an incomplete key path. - May have a reserved/read-only
-        /// key.</summary>
+        /// <summary>An entity value. - May have no key. - May have a key with an incomplete key path. - May have a
+        /// reserved/read-only key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityValue")]
         public virtual Entity EntityValue { get; set; } 
 

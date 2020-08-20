@@ -409,7 +409,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CompareDuration { get; set; }
 
-                /// <summary> A field mask to specify the ListAssetsResult fields to be listed in the response. An empty
+                /// <summary>A field mask to specify the ListAssetsResult fields to be listed in the response. An empty
                 /// field mask will list all fields.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object FieldMask { get; set; }
@@ -563,9 +563,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. // This API can
-            /// only be called with limited frequency for an organization. If it is called too frequently the caller
-            /// will receive a TOO_MANY_REQUESTS error.</summary>
+            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. This API can only
+            /// be called with limited frequency for an organization. If it is called too frequently the caller will
+            /// receive a TOO_MANY_REQUESTS error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Name of the organization to run asset discovery for. Its format is
             /// "organizations/[organization_id]".</param>
@@ -574,9 +574,9 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new RunDiscoveryRequest(service, body, parent);
             }
 
-            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. // This API can
-            /// only be called with limited frequency for an organization. If it is called too frequently the caller
-            /// will receive a TOO_MANY_REQUESTS error.</summary>
+            /// <summary>Runs asset discovery. The discovery is tracked with a long-running operation. This API can only
+            /// be called with limited frequency for an organization. If it is called too frequently the caller will
+            /// receive a TOO_MANY_REQUESTS error.</summary>
             public class RunDiscoveryRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new RunDiscovery request.</summary>
@@ -628,7 +628,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary> Updates security marks.</summary>
+            /// <summary>Updates security marks.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The relative resource name of the SecurityMarks. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
@@ -639,7 +639,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new UpdateSecurityMarksRequest(service, body, name);
             }
 
-            /// <summary> Updates security marks.</summary>
+            /// <summary>Updates security marks.</summary>
             public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1SecurityMarks>
             {
                 /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
@@ -1006,7 +1006,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary> Updates a notification config. The following update fields are allowed: description,
+            /// <summary>Updates a notification config. The following update fields are allowed: description,
             /// pubsub_topic, streaming_config.filter</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The relative resource name of this notification config. See:
@@ -1017,7 +1017,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary> Updates a notification config. The following update fields are allowed: description,
+            /// <summary>Updates a notification config. The following update fields are allowed: description,
             /// pubsub_topic, streaming_config.filter</summary>
             public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.NotificationConfig>
             {
@@ -1413,7 +1413,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 }
 
 
-                /// <summary> Creates a finding. The corresponding source must exist for finding creation to
+                /// <summary>Creates a finding. The corresponding source must exist for finding creation to
                 /// succeed.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Resource name of the new finding's parent. Its format should be
@@ -1423,7 +1423,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary> Creates a finding. The corresponding source must exist for finding creation to
+                /// <summary>Creates a finding. The corresponding source must exist for finding creation to
                 /// succeed.</summary>
                 public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1Finding>
                 {
@@ -1604,8 +1604,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CompareDuration { get; set; }
 
-                    /// <summary> A field mask to specify the Finding fields to be listed in the response. An empty
-                    /// field mask will list all fields.</summary>
+                    /// <summary>A field mask to specify the Finding fields to be listed in the response. An empty field
+                    /// mask will list all fields.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object FieldMask { get; set; }
 
@@ -1747,8 +1747,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary> Creates or updates a finding. The corresponding source must exist for a finding creation
-                /// to succeed.</summary>
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The relative resource name of this finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -1758,8 +1758,8 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary> Creates or updates a finding. The corresponding source must exist for a finding creation
-                /// to succeed.</summary>
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
                 public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1Finding>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1828,7 +1828,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary> Updates the state of a finding.</summary>
+                /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -1838,7 +1838,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new SetStateRequest(service, body, name);
                 }
 
-                /// <summary> Updates the state of a finding.</summary>
+                /// <summary>Updates the state of a finding.</summary>
                 public class SetStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1Finding>
                 {
                     /// <summary>Constructs a new SetState request.</summary>
@@ -1891,7 +1891,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
                 }
 
-                /// <summary> Updates security marks.</summary>
+                /// <summary>Updates security marks.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The relative resource name of the SecurityMarks. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
@@ -1902,7 +1902,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                     return new UpdateSecurityMarksRequest(service, body, name);
                 }
 
-                /// <summary> Updates security marks.</summary>
+                /// <summary>Updates security marks.</summary>
                 public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.GoogleCloudSecuritycenterV1p1beta1SecurityMarks>
                 {
                     /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
@@ -2243,7 +2243,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
             }
 
-            /// <summary> Updates a source.</summary>
+            /// <summary>Updates a source.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The relative resource name of this source. See:
             /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -2253,7 +2253,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary> Updates a source.</summary>
+            /// <summary>Updates a source.</summary>
             public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Source>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -2496,7 +2496,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 
         }
 
-        /// <summary> Updates an organization's settings.</summary>
+        /// <summary>Updates an organization's settings.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The relative resource name of the settings. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -2506,7 +2506,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1
             return new UpdateOrganizationSettingsRequest(service, body, name);
         }
 
-        /// <summary> Updates an organization's settings.</summary>
+        /// <summary>Updates an organization's settings.</summary>
         public class UpdateOrganizationSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.OrganizationSettings>
         {
             /// <summary>Constructs a new UpdateOrganizationSettings request.</summary>
@@ -3655,8 +3655,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
 
     }    
 
-    /// <summary>Information related to the Google Cloud resource that is associated with this finding.
-    /// LINT.IfChange</summary>
+    /// <summary>Information related to the Google Cloud resource that is associated with this finding.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full resource name of the resource. See:

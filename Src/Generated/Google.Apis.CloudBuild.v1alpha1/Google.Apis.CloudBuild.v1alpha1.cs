@@ -885,6 +885,12 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
         public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; } 
 
+        /// <summary>IAM service account whose credentials will be used at build runtime. Must be of the format
+        /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service
+        /// account. This field is in alpha and is not publicly available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
+
         /// <summary>The location of the source files to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 

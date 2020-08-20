@@ -419,7 +419,7 @@
        "type": "string"
       }, 
       "showCompleted": {
-       "description": "Flag indicating whether completed tasks are returned in the result. Optional. The default is True.", 
+       "description": "Flag indicating whether completed tasks are returned in the result. Optional. The default is True. Note that showHidden must also be True to show tasks completed in first party clients, such as the web UI and Google's mobile apps.", 
        "location": "query", 
        "type": "boolean"
       }, 
@@ -566,10 +566,11 @@
    }
   }
  }, 
- "revision": "20200811", 
+ "revision": "20200814", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Task": {
+   "description": "LINT.IfChange", 
    "id": "Task", 
    "properties": {
     "completed": {

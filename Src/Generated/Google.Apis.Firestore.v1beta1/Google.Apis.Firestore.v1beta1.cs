@@ -330,10 +330,8 @@ namespace Google.Apis.Firestore.v1beta1
                 }
 
 
-                /// <summary>Gets multiple documents.
-                ///
-                /// Documents returned by this method are not guaranteed to be returned in the same order that they were
-                /// requested.</summary>
+                /// <summary>Gets multiple documents. Documents returned by this method are not guaranteed to be
+                /// returned in the same order that they were requested.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">Required. The database name. In the format:
                 /// `projects/{project_id}/databases/{database_id}`.</param>
@@ -342,10 +340,8 @@ namespace Google.Apis.Firestore.v1beta1
                     return new BatchGetRequest(service, body, database);
                 }
 
-                /// <summary>Gets multiple documents.
-                ///
-                /// Documents returned by this method are not guaranteed to be returned in the same order that they were
-                /// requested.</summary>
+                /// <summary>Gets multiple documents. Documents returned by this method are not guaranteed to be
+                /// returned in the same order that they were requested.</summary>
                 public class BatchGetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.BatchGetDocumentsResponse>
                 {
                     /// <summary>Constructs a new BatchGet request.</summary>
@@ -397,13 +393,11 @@ namespace Google.Apis.Firestore.v1beta1
 
                 }
 
-                /// <summary>Applies a batch of write operations.
-                ///
-                /// The BatchWrite method does not apply the write operations atomically and can apply them out of
-                /// order. Method does not allow more than one write per document. Each write succeeds or fails
-                /// independently. See the BatchWriteResponse for the success status of each write.
-                ///
-                /// If you require an atomically applied set of writes, use Commit instead.</summary>
+                /// <summary>Applies a batch of write operations. The BatchWrite method does not apply the write
+                /// operations atomically and can apply them out of order. Method does not allow more than one write per
+                /// document. Each write succeeds or fails independently. See the BatchWriteResponse for the success
+                /// status of each write. If you require an atomically applied set of writes, use Commit
+                /// instead.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">Required. The database name. In the format:
                 /// `projects/{project_id}/databases/{database_id}`.</param>
@@ -412,13 +406,11 @@ namespace Google.Apis.Firestore.v1beta1
                     return new BatchWriteRequest(service, body, database);
                 }
 
-                /// <summary>Applies a batch of write operations.
-                ///
-                /// The BatchWrite method does not apply the write operations atomically and can apply them out of
-                /// order. Method does not allow more than one write per document. Each write succeeds or fails
-                /// independently. See the BatchWriteResponse for the success status of each write.
-                ///
-                /// If you require an atomically applied set of writes, use Commit instead.</summary>
+                /// <summary>Applies a batch of write operations. The BatchWrite method does not apply the write
+                /// operations atomically and can apply them out of order. Method does not allow more than one write per
+                /// document. Each write succeeds or fails independently. See the BatchWriteResponse for the success
+                /// status of each write. If you require an atomically applied set of writes, use Commit
+                /// instead.</summary>
                 public class BatchWriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.BatchWriteResponse>
                 {
                     /// <summary>Constructs a new BatchWrite request.</summary>
@@ -630,9 +622,8 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
 
-                    /// <summary>The client-assigned document ID to use for this document.
-                    ///
-                    /// Optional. If not specified, an ID will be assigned by the service.</summary>
+                    /// <summary>The client-assigned document ID to use for this document. Optional. If not specified,
+                    /// an ID will be assigned by the service.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DocumentId { get; set; }
 
@@ -940,9 +931,8 @@ namespace Google.Apis.Firestore.v1beta1
 
                     /// <summary>If the list should show missing documents. A missing document is a document that does
                     /// not exist but has sub-documents. These documents will be returned with a key but will not have
-                    /// fields, Document.create_time, or Document.update_time set.
-                    ///
-                    /// Requests with `show_missing` may not specify `where` or `order_by`.</summary>
+                    /// fields, Document.create_time, or Document.update_time set. Requests with `show_missing` may not
+                    /// specify `where` or `order_by`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ShowMissing { get; set; }
 
@@ -1569,13 +1559,10 @@ namespace Google.Apis.Firestore.v1beta1
 
                 /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On
                 /// completion of the returned google.longrunning.Operation, the state will be `READY`. If the index
-                /// already exists, the call will return an `ALREADY_EXISTS` status.
-                ///
-                /// During creation, the process could result in an error, in which case the index will move to the
-                /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the
-                /// index with delete, then re-creating the index with create.
-                ///
-                /// Indexes with a single field cannot be created.</summary>
+                /// already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could
+                /// result in an error, in which case the index will move to the `ERROR` state. The process can be
+                /// recovered by fixing the data that caused the error, removing the index with delete, then re-creating
+                /// the index with create. Indexes with a single field cannot be created.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The name of the database this index will apply to. For example:
                 /// `projects/{project_id}/databases/{database_id}`</param>
@@ -1586,13 +1573,10 @@ namespace Google.Apis.Firestore.v1beta1
 
                 /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On
                 /// completion of the returned google.longrunning.Operation, the state will be `READY`. If the index
-                /// already exists, the call will return an `ALREADY_EXISTS` status.
-                ///
-                /// During creation, the process could result in an error, in which case the index will move to the
-                /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the
-                /// index with delete, then re-creating the index with create.
-                ///
-                /// Indexes with a single field cannot be created.</summary>
+                /// already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could
+                /// result in an error, in which case the index will move to the `ERROR` state. The process can be
+                /// recovered by fixing the data that caused the error, removing the index with delete, then re-creating
+                /// the index with create. Indexes with a single field cannot be created.</summary>
                 public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2006,10 +1990,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documents")]
         public virtual System.Collections.Generic.IList<string> Documents { get; set; } 
 
-        /// <summary>The fields to return. If not set, returns all fields.
-        ///
-        /// If a document has a field that is not present in this mask, that field will not be returned in the
-        /// response.</summary>
+        /// <summary>The fields to return. If not set, returns all fields. If a document has a field that is not present
+        /// in this mask, that field will not be returned in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mask")]
         public virtual DocumentMask Mask { get; set; } 
 
@@ -2064,10 +2046,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The writes to apply.
-        ///
-        /// Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails
-        /// independently. You cannot write to the same document more than once per request.</summary>
+        /// <summary>The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each
+        /// write succeeds or fails independently. You cannot write to the same document more than once per
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writes")]
         public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
 
@@ -2078,15 +2059,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The response from Firestore.BatchWrite.</summary>
     public class BatchWriteResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of applying the writes.
-        ///
-        /// This i-th write status corresponds to the i-th write in the request.</summary>
+        /// <summary>The status of applying the writes. This i-th write status corresponds to the i-th write in the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Collections.Generic.IList<Status> Status { get; set; } 
 
-        /// <summary>The result of applying the writes.
-        ///
-        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        /// <summary>The result of applying the writes. This i-th write result corresponds to the i-th write in the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
         public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
 
@@ -2139,9 +2118,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
 
-        /// <summary>The writes to apply.
-        ///
-        /// Always executed atomically and in order.</summary>
+        /// <summary>The writes to apply. Always executed atomically and in order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writes")]
         public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
 
@@ -2157,9 +2134,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
         public virtual object CommitTime { get; set; } 
 
-        /// <summary>The result of applying the writes.
-        ///
-        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        /// <summary>The result of applying the writes. This i-th write result corresponds to the i-th write in the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
         public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
 
@@ -2191,7 +2167,6 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual System.Nullable<bool> Before { get; set; } 
 
         /// <summary>The values that represent a position, in the order they appear in the order by clause of a query.
-        ///
         /// Can contain fewer values than specified in the order by clause.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
@@ -2200,37 +2175,25 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Firestore document.
-    ///
-    /// Must not exceed 1 MiB - 4 bytes.</summary>
+    /// <summary>A Firestore document. Must not exceed 1 MiB - 4 bytes.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time at which the document was created.
-        ///
-        /// This value increases monotonically when a document is deleted then recreated. It can also be compared to
-        /// values from other documents and the `read_time` of a query.</summary>
+        /// <summary>Output only. The time at which the document was created. This value increases monotonically when a
+        /// document is deleted then recreated. It can also be compared to values from other documents and the
+        /// `read_time` of a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The document's fields.
-        ///
-        /// The map keys represent field names.
-        ///
-        /// A simple field name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start
-        /// with `0` to `9`. For example, `foo_bar_17`.
-        ///
-        /// Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except
-        /// in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot
-        /// be empty.
-        ///
-        /// Field paths may be used in other contexts to refer to structured fields defined here. For `map_value`, the
-        /// field path is represented by the simple or quoted field names of the containing fields, delimited by `.`.
-        /// For example, the structured field `"foo" : { map_value: { "x" : { string_value: "hello" }}}` would be
-        /// represented by the field path `foo.x`.
-        ///
-        /// Within a field path, a quoted field name starts and ends with `` ` `` and may contain any character. Some
-        /// characters, including `` ` ``, must be escaped using a `\`. For example, `` `x` `` represents `x` and ``
-        /// `bak\`tik` `` represents `` bak`tik ``.</summary>
+        /// <summary>The document's fields. The map keys represent field names. A simple field name contains only
+        /// characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example,
+        /// `foo_bar_17`. Field names matching the regular expression `__.*__` are reserved. Reserved field names are
+        /// forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500
+        /// bytes and cannot be empty. Field paths may be used in other contexts to refer to structured fields defined
+        /// here. For `map_value`, the field path is represented by the simple or quoted field names of the containing
+        /// fields, delimited by `.`. For example, the structured field `"foo" : { map_value: { "x" : { string_value:
+        /// "hello" }}}` would be represented by the field path `foo.x`. Within a field path, a quoted field name starts
+        /// and ends with `` ` `` and may contain any character. Some characters, including `` ` ``, must be escaped
+        /// using a `\`. For example, `` `x` `` represents `x` and `` `bak\`tik` `` represents `` bak`tik ``.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
 
@@ -2239,10 +2202,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The time at which the document was last changed.
-        ///
-        /// This value is initially set to the `create_time` then increases monotonically with each change to the
-        /// document. It can also be compared to values from other documents and the `read_time` of a query.</summary>
+        /// <summary>Output only. The time at which the document was last changed. This value is initially set to the
+        /// `create_time` then increases monotonically with each change to the document. It can also be compared to
+        /// values from other documents and the `read_time` of a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -2250,18 +2212,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Document has changed.
-    ///
-    /// May be the result of multiple writes, including deletes, that ultimately resulted in a new value for the
-    /// Document.
-    ///
-    /// Multiple DocumentChange messages may be returned for the same logical change, if multiple targets are
-    /// affected.</summary>
+    /// <summary>A Document has changed. May be the result of multiple writes, including deletes, that ultimately
+    /// resulted in a new value for the Document. Multiple DocumentChange messages may be returned for the same logical
+    /// change, if multiple targets are affected.</summary>
     public class DocumentChange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new state of the Document.
-        ///
-        /// If `mask` is set, contains only fields that were updated or added.</summary>
+        /// <summary>The new state of the Document. If `mask` is set, contains only fields that were updated or
+        /// added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -2277,21 +2234,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Document has been deleted.
-    ///
-    /// May be the result of multiple writes, including updates, the last of which deleted the Document.
-    ///
-    /// Multiple DocumentDelete messages may be returned for the same logical delete, if multiple targets are
-    /// affected.</summary>
+    /// <summary>A Document has been deleted. May be the result of multiple writes, including updates, the last of which
+    /// deleted the Document. Multiple DocumentDelete messages may be returned for the same logical delete, if multiple
+    /// targets are affected.</summary>
     public class DocumentDelete : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the Document that was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual string Document { get; set; } 
 
-        /// <summary>The read timestamp at which the delete was observed.
-        ///
-        /// Greater or equal to the `commit_time` of the delete.</summary>
+        /// <summary>The read timestamp at which the delete was observed. Greater or equal to the `commit_time` of the
+        /// delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; } 
 
@@ -2317,22 +2270,18 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Document has been removed from the view of the targets.
-    ///
-    /// Sent if the document is no longer relevant to a target and is out of view. Can be sent instead of a
-    /// DocumentDelete or a DocumentChange if the server can not send the new value of the document.
-    ///
-    /// Multiple DocumentRemove messages may be returned for the same logical write or delete, if multiple targets are
-    /// affected.</summary>
+    /// <summary>A Document has been removed from the view of the targets. Sent if the document is no longer relevant to
+    /// a target and is out of view. Can be sent instead of a DocumentDelete or a DocumentChange if the server can not
+    /// send the new value of the document. Multiple DocumentRemove messages may be returned for the same logical write
+    /// or delete, if multiple targets are affected.</summary>
     public class DocumentRemove : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the Document that has gone out of view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual string Document { get; set; } 
 
-        /// <summary>The read timestamp at which the remove was observed.
-        ///
-        /// Greater or equal to the `commit_time` of the change/delete/remove.</summary>
+        /// <summary>The read timestamp at which the remove was observed. Greater or equal to the `commit_time` of the
+        /// change/delete/remove.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; } 
 
@@ -2374,11 +2323,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2388,10 +2335,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>A digest of all the documents that match a given target.</summary>
     public class ExistenceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The total count of documents that match target_id.
-        ///
-        /// If different from the count of documents in the client that match, the client must manually determine which
-        /// documents no longer match the target.</summary>
+        /// <summary>The total count of documents that match target_id. If different from the count of documents in the
+        /// client that match, the client must manually determine which documents no longer match the target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; } 
 
@@ -2437,12 +2382,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
     {
         /// <summary>Append the given elements in order if they are not already present in the current field value. If
         /// the field is not an array, or if the field does not yet exist, it is first set to the empty array.
-        ///
         /// Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is
         /// missing. NaN is equal to NaN, and Null is equal to Null. If the input contains multiple equivalent values,
-        /// only the first will be considered.
-        ///
-        /// The corresponding transform_result will be the null value.</summary>
+        /// only the first will be considered. The corresponding transform_result will be the null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendMissingElements")]
         public virtual ArrayValue AppendMissingElements { get; set; } 
 
@@ -2450,46 +2392,40 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; } 
 
-        /// <summary>Adds the given value to the field's current value.
-        ///
-        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
-        /// not yet exist, the transformation will set the field to the given value. If either of the given value or the
-        /// current field value are doubles, both values will be interpreted as doubles. Double arithmetic and
-        /// representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow,
-        /// the field is resolved to the largest magnitude positive/negative integer.</summary>
+        /// <summary>Adds the given value to the field's current value. This must be an integer or a double value. If
+        /// the field is not an integer or double, or if the field does not yet exist, the transformation will set the
+        /// field to the given value. If either of the given value or the current field value are doubles, both values
+        /// will be interpreted as doubles. Double arithmetic and representation of double values follow IEEE 754
+        /// semantics. If there is positive/negative integer overflow, the field is resolved to the largest magnitude
+        /// positive/negative integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("increment")]
         public virtual Value Increment { get; set; } 
 
-        /// <summary>Sets the field to the maximum of its current value and the given value.
-        ///
-        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
-        /// not yet exist, the transformation will set the field to the given value. If a maximum operation is applied
-        /// where the field and the input value are of mixed types (that is - one is an integer and one is a double) the
-        /// field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field
-        /// does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is
-        /// always the stored value. The maximum of any numeric value x and NaN is NaN.</summary>
+        /// <summary>Sets the field to the maximum of its current value and the given value. This must be an integer or
+        /// a double value. If the field is not an integer or double, or if the field does not yet exist, the
+        /// transformation will set the field to the given value. If a maximum operation is applied where the field and
+        /// the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the
+        /// type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0,
+        /// 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored
+        /// value. The maximum of any numeric value x and NaN is NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
         public virtual Value Maximum { get; set; } 
 
-        /// <summary>Sets the field to the minimum of its current value and the given value.
-        ///
-        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
-        /// not yet exist, the transformation will set the field to the input value. If a minimum operation is applied
-        /// where the field and the input value are of mixed types (that is - one is an integer and one is a double) the
-        /// field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field
-        /// does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is
-        /// always the stored value. The minimum of any numeric value x and NaN is NaN.</summary>
+        /// <summary>Sets the field to the minimum of its current value and the given value. This must be an integer or
+        /// a double value. If the field is not an integer or double, or if the field does not yet exist, the
+        /// transformation will set the field to the input value. If a minimum operation is applied where the field and
+        /// the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the
+        /// type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0,
+        /// 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored
+        /// value. The minimum of any numeric value x and NaN is NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
         public virtual Value Minimum { get; set; } 
 
         /// <summary>Remove all of the given elements from the array in the field. If the field is not an array, or if
-        /// the field does not yet exist, it is set to the empty array.
-        ///
-        /// Equivalent numbers of the different types (e.g. 3L and 3.0) are considered equal when deciding whether an
-        /// element should be removed. NaN is equal to NaN, and Null is equal to Null. This will remove all equivalent
-        /// values if there are duplicates.
-        ///
-        /// The corresponding transform_result will be the null value.</summary>
+        /// the field does not yet exist, it is set to the empty array. Equivalent numbers of the different types (e.g.
+        /// 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN,
+        /// and Null is equal to Null. This will remove all equivalent values if there are duplicates. The corresponding
+        /// transform_result will be the null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeAllFromArray")]
         public virtual ArrayValue RemoveAllFromArray { get; set; } 
 
@@ -2766,9 +2702,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2778,11 +2714,11 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2887,10 +2823,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentRemove")]
         public virtual DocumentRemove DocumentRemove { get; set; } 
 
-        /// <summary>A filter to apply to the set of documents previously returned for the given target.
-        ///
-        /// Returned when documents may have been removed from the given target, but the exact documents are
-        /// unknown.</summary>
+        /// <summary>A filter to apply to the set of documents previously returned for the given target. Returned when
+        /// documents may have been removed from the given target, but the exact documents are unknown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual ExistenceFilter Filter { get; set; } 
 
@@ -2905,11 +2839,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>A map value.</summary>
     public class MapValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The map's fields.
-        ///
-        /// The map keys represent field names. Field names matching the regular expression `__.*__` are reserved.
-        /// Reserved field names are forbidden except in certain documented contexts. The map keys, represented as
-        /// UTF-8, must not exceed 1,500 bytes and cannot be empty.</summary>
+        /// <summary>The map's fields. The map keys represent field names. Field names matching the regular expression
+        /// `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map
+        /// keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
 
@@ -2935,38 +2867,31 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The request for Firestore.PartitionQuery.</summary>
     public class PartitionQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of partitions to return in this call, subject to `partition_count`.
-        ///
-        /// For example, if `partition_count` = 10 and `page_size` = 8, the first call to PartitionQuery will return up
-        /// to 8 partitions and a `next_page_token` if more results exist. A second call to PartitionQuery will return
-        /// up to 2 partitions, to complete the total of 10 specified in `partition_count`.</summary>
+        /// <summary>The maximum number of partitions to return in this call, subject to `partition_count`. For example,
+        /// if `partition_count` = 10 and `page_size` = 8, the first call to PartitionQuery will return up to 8
+        /// partitions and a `next_page_token` if more results exist. A second call to PartitionQuery will return up to
+        /// 2 partitions, to complete the total of 10 specified in `partition_count`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
         /// <summary>The `next_page_token` value returned from a previous call to PartitionQuery that may be used to get
         /// an additional set of results. There are no ordering guarantees between sets of results. Thus, using multiple
-        /// sets of results will require merging the different result sets.
-        ///
-        /// For example, two subsequent calls using a page_token may return:
-        ///
-        /// * cursor B, cursor M, cursor Q * cursor A, cursor U, cursor W
-        ///
-        /// To obtain a complete result set ordered with respect to the results of the query supplied to PartitionQuery,
-        /// the results sets should be merged: cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W</summary>
+        /// sets of results will require merging the different result sets. For example, two subsequent calls using a
+        /// page_token may return: * cursor B, cursor M, cursor Q * cursor A, cursor U, cursor W To obtain a complete
+        /// result set ordered with respect to the results of the query supplied to PartitionQuery, the results sets
+        /// should be merged: cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
         /// <summary>The desired maximum number of partition points. The partitions may be returned across multiple
-        /// pages of results. The number must be strictly positive. The actual number of partitions returned may be
-        /// fewer.
-        ///
-        /// For example, this may be set to one fewer than the number of parallel queries to be run, or in running a
-        /// data pipeline job, one fewer than the number of workers or compute instances available.</summary>
+        /// pages of results. The number must be positive. The actual number of partitions returned may be fewer. For
+        /// example, this may be set to one fewer than the number of parallel queries to be run, or in running a data
+        /// pipeline job, one fewer than the number of workers or compute instances available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionCount")]
         public virtual System.Nullable<long> PartitionCount { get; set; } 
 
-        /// <summary>A structured query. Filters, order bys, limits, offsets, and start/end cursors are not
-        /// supported.</summary>
+        /// <summary>A structured query. Query must specify collection with all descendants and be ordered by name
+        /// ascending. Other filters, order bys, limits, offsets, and start/end cursors are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
         public virtual StructuredQuery StructuredQuery { get; set; } 
 
@@ -2985,12 +2910,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>Partition results. Each partition is a split point that can be used by RunQuery as a starting or
         /// end point for the query results. The RunQuery requests must be made with the same query supplied to this
         /// PartitionQuery request. The partition cursors will be ordered according to same ordering as the results of
-        /// the query supplied to PartitionQuery.
-        ///
-        /// For example, if a PartitionQuery request returns partition cursors A and B, running the following three
-        /// queries will return the entire result set of the original query:
-        ///
-        /// * query, end_at A * query, start_at A, end_at B * query, start_at B</summary>
+        /// the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A
+        /// and B, running the following three queries will return the entire result set of the original query: * query,
+        /// end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has
+        /// too few results to be partitioned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
         public virtual System.Collections.Generic.IList<Cursor> Partitions { get; set; } 
 
@@ -3017,9 +2940,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The projection of document's fields to return.</summary>
     public class Projection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields to return.
-        ///
-        /// If empty, all fields are returned. To only return the name of the document, use `['__name__']`.</summary>
+        /// <summary>The fields to return. If empty, all fields are returned. To only return the name of the document,
+        /// use `['__name__']`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<FieldReference> Fields { get; set; } 
 
@@ -3111,10 +3033,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
 
         /// <summary>The time at which the document was read. This may be monotonically increasing; in this case, the
         /// previous documents in the result stream are guaranteed not to have changed between their `read_time` and
-        /// this one.
-        ///
-        /// If the query returns no results, a response with `read_time` and no `document` will be sent, and this
-        /// represents the time at which the query was run.</summary>
+        /// this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and
+        /// this represents the time at which the query was run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; } 
 
@@ -3135,9 +3055,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3145,8 +3064,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -3170,32 +3089,24 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("from")]
         public virtual System.Collections.Generic.IList<CollectionSelector> From { get; set; } 
 
-        /// <summary>The maximum number of results to return.
-        ///
-        /// Applies after all other constraints. Must be >= 0 if specified.</summary>
+        /// <summary>The maximum number of results to return. Applies after all other constraints. Must be >= 0 if
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; } 
 
-        /// <summary>The number of results to skip.
-        ///
-        /// Applies before limit, but after all other constraints. Must be >= 0 if specified.</summary>
+        /// <summary>The number of results to skip. Applies before limit, but after all other constraints. Must be >= 0
+        /// if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; } 
 
-        /// <summary>The order to apply to the query results.
-        ///
-        /// Firestore guarantees a stable ordering through the following rules:
-        ///
-        /// * Any field required to appear in `order_by`, that is not already specified in `order_by`, is appended to
-        /// the order in field name order by default. * If an order on `__name__` is not specified, it is appended by
-        /// default.
-        ///
-        /// Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was
-        /// specified. For example:
-        ///
-        /// * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER
-        /// BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT * FROM Foo WHERE A > 1`
-        /// becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`</summary>
+        /// <summary>The order to apply to the query results. Firestore guarantees a stable ordering through the
+        /// following rules: * Any field required to appear in `order_by`, that is not already specified in `order_by`,
+        /// is appended to the order in field name order by default. * If an order on `__name__` is not specified, it is
+        /// appended by default. Fields are appended with the same sort direction as the last order specified, or
+        /// 'ASCENDING' if no order was specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM
+        /// Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC,
+        /// __name__ DESC` * `SELECT * FROM Foo WHERE A > 1` becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A,
+        /// __name__`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<Order> OrderBy { get; set; } 
 
@@ -3230,15 +3141,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual QueryTarget Query { get; set; } 
 
-        /// <summary>Start listening after a specific `read_time`.
-        ///
-        /// The client must know the state of matching documents at this time.</summary>
+        /// <summary>Start listening after a specific `read_time`. The client must know the state of matching documents
+        /// at this time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; } 
 
-        /// <summary>A resume token from a prior TargetChange for an identical target.
-        ///
-        /// Using a resume token with a different target is unsupported and may fail.</summary>
+        /// <summary>A resume token from a prior TargetChange for an identical target. Using a resume token with a
+        /// different target is unsupported and may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
         public virtual string ResumeToken { get; set; } 
 
@@ -3259,20 +3168,15 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual Status Cause { get; set; } 
 
         /// <summary>The consistent `read_time` for the given `target_ids` (omitted when the target_ids are not at a
-        /// consistent snapshot).
-        ///
-        /// The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a
-        /// new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new
-        /// consistent snapshot (while NO_CHANGE and REMOVE messages are not).
-        ///
-        /// For a given stream, `read_time` is guaranteed to be monotonically increasing.</summary>
+        /// consistent snapshot). The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the
+        /// entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to
+        /// (eventually) result in a new consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a given
+        /// stream, `read_time` is guaranteed to be monotonically increasing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; } 
 
         /// <summary>A token that can be used to resume the stream for the given `target_ids`, or all targets if
-        /// `target_ids` is empty.
-        ///
-        /// Not set on every target change.</summary>
+        /// `target_ids` is empty. Not set on every target change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
         public virtual string ResumeToken { get; set; } 
 
@@ -3280,11 +3184,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetChangeType")]
         public virtual string TargetChangeType { get; set; } 
 
-        /// <summary>The target IDs of targets that have changed.
-        ///
-        /// If empty, the change applies to all targets.
-        ///
-        /// The order of the target IDs is not defined.</summary>
+        /// <summary>The target IDs of targets that have changed. If empty, the change applies to all targets. The order
+        /// of the target IDs is not defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> TargetIds { get; set; } 
 
@@ -3325,10 +3226,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>A message that can hold any of the supported value types.</summary>
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array value.
-        ///
-        /// Cannot directly contain another array value, though can contain an map which contains another
-        /// array.</summary>
+        /// <summary>An array value. Cannot directly contain another array value, though can contain an map which
+        /// contains another array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
         public virtual ArrayValue ArrayValue { get; set; } 
 
@@ -3336,9 +3235,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
         public virtual System.Nullable<bool> BooleanValue { get; set; } 
 
-        /// <summary>A bytes value.
-        ///
-        /// Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are considered by queries.</summary>
+        /// <summary>A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are considered by
+        /// queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
         public virtual string BytesValue { get; set; } 
 
@@ -3367,16 +3265,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referenceValue")]
         public virtual string ReferenceValue { get; set; } 
 
-        /// <summary>A string value.
-        ///
-        /// The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes of the UTF-8
-        /// representation are considered by queries.</summary>
+        /// <summary>A string value. The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first
+        /// 1,500 bytes of the UTF-8 representation are considered by queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; } 
 
-        /// <summary>A timestamp value.
-        ///
-        /// Precise only to microseconds. When stored, any additional precision is rounded down.</summary>
+        /// <summary>A timestamp value. Precise only to microseconds. When stored, any additional precision is rounded
+        /// down.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
         public virtual object TimestampValue { get; set; } 
 
@@ -3387,9 +3282,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>A write on a document.</summary>
     public class Write : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional precondition on the document.
-        ///
-        /// The write will fail if this is set and not met by the target document.</summary>
+        /// <summary>An optional precondition on the document. The write will fail if this is set and not met by the
+        /// target document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentDocument")]
         public virtual Precondition CurrentDocument { get; set; } 
 
@@ -3406,20 +3300,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual Document Update { get; set; } 
 
-        /// <summary>The fields to update in this write.
-        ///
-        /// This field can be set only when the operation is `update`. If the mask is not set for an `update` and the
-        /// document exists, any existing data will be overwritten. If the mask is set and the document on the server
-        /// has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present
-        /// in the input document, are deleted from the document on the server. The field paths in this mask must not
-        /// contain a reserved field name.</summary>
+        /// <summary>The fields to update in this write. This field can be set only when the operation is `update`. If
+        /// the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the
+        /// mask is set and the document on the server has fields not covered by the mask, they are left unchanged.
+        /// Fields referenced in the mask, but not present in the input document, are deleted from the document on the
+        /// server. The field paths in this mask must not contain a reserved field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual DocumentMask UpdateMask { get; set; } 
 
-        /// <summary>The transforms to perform after update.
-        ///
-        /// This field can be set only when the operation is `update`. If present, this write is equivalent to
-        /// performing `update` and `transform` to the same document atomically and in order.</summary>
+        /// <summary>The transforms to perform after update. This field can be set only when the operation is `update`.
+        /// If present, this write is equivalent to performing `update` and `transform` to the same document atomically
+        /// and in order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransforms")]
         public virtual System.Collections.Generic.IList<FieldTransform> UpdateTransforms { get; set; } 
 
@@ -3427,15 +3318,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for Firestore.Write.
-    ///
-    /// The first request creates a stream, or resumes an existing one from a token.
-    ///
-    /// When creating a new stream, the server replies with a response containing only an ID and a token, to use in the
-    /// next request.
-    ///
-    /// When resuming a stream, the server first streams any responses later than the given token, then a response
-    /// containing only an up-to-date token, to use in the next request.</summary>
+    /// <summary>The request for Firestore.Write. The first request creates a stream, or resumes an existing one from a
+    /// token. When creating a new stream, the server replies with a response containing only an ID and a token, to use
+    /// in the next request. When resuming a stream, the server first streams any responses later than the given token,
+    /// then a response containing only an up-to-date token, to use in the next request.</summary>
     public class WriteRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Labels associated with this write request.</summary>
@@ -3447,25 +3333,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
         public virtual string StreamId { get; set; } 
 
-        /// <summary>A stream token that was previously sent by the server.
-        ///
-        /// The client should set this field to the token from the most recent WriteResponse it has received. This
-        /// acknowledges that the client has received responses up to this token. After sending this token, earlier
-        /// tokens may not be used anymore.
-        ///
-        /// The server may close the stream if there are too many unacknowledged responses.
-        ///
-        /// Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field
-        /// and the `stream_id` field.
-        ///
-        /// Leave this field unset when creating a new stream.</summary>
+        /// <summary>A stream token that was previously sent by the server. The client should set this field to the
+        /// token from the most recent WriteResponse it has received. This acknowledges that the client has received
+        /// responses up to this token. After sending this token, earlier tokens may not be used anymore. The server may
+        /// close the stream if there are too many unacknowledged responses. Leave this field unset when creating a new
+        /// stream. To resume a stream at a specific point, set this field and the `stream_id` field. Leave this field
+        /// unset when creating a new stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamToken")]
         public virtual string StreamToken { get; set; } 
 
-        /// <summary>The writes to apply.
-        ///
-        /// Always executed atomically and in order. This must be empty on the first request. This may be empty on the
-        /// last request. This must not be empty on all other requests.</summary>
+        /// <summary>The writes to apply. Always executed atomically and in order. This must be empty on the first
+        /// request. This may be empty on the last request. This must not be empty on all other requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writes")]
         public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
 
@@ -3486,15 +3364,12 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string StreamId { get; set; } 
 
         /// <summary>A token that represents the position of this response in the stream. This can be used by a client
-        /// to resume the stream at this point.
-        ///
-        /// This field is always set.</summary>
+        /// to resume the stream at this point. This field is always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamToken")]
         public virtual string StreamToken { get; set; } 
 
-        /// <summary>The result of applying the writes.
-        ///
-        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        /// <summary>The result of applying the writes. This i-th write result corresponds to the i-th write in the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
         public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
 
@@ -3509,9 +3384,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformResults")]
         public virtual System.Collections.Generic.IList<Value> TransformResults { get; set; } 
 
-        /// <summary>The last update time of the document after applying the write. Not set after a `delete`.
-        ///
-        /// If the write did not actually change the document, this will be the previous update_time.</summary>
+        /// <summary>The last update time of the document after applying the write. Not set after a `delete`. If the
+        /// write did not actually change the document, this will be the previous update_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 

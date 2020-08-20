@@ -3065,6 +3065,26 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are
+    /// ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.</summary>
+    public class CertificateChains : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cavium certificate chain corresponding to the attestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caviumCerts")]
+        public virtual System.Collections.Generic.IList<string> CaviumCerts { get; set; } 
+
+        /// <summary>Google card certificate chain corresponding to the attestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCardCerts")]
+        public virtual System.Collections.Generic.IList<string> GoogleCardCerts { get; set; } 
+
+        /// <summary>Google partition certificate chain corresponding to the attestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googlePartitionCerts")]
+        public virtual System.Collections.Generic.IList<string> GooglePartitionCerts { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made
     /// up of zero or more versions, which represent the actual key material used in cryptographic operations.</summary>
     public class CryptoKey : Google.Apis.Requests.IDirectResponseSchema
@@ -3530,6 +3550,10 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// attestations] (https://cloud.google.com/kms/docs/attest-key).</summary>
     public class KeyOperationAttestation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The certificate chains needed to validate the attestation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certChains")]
+        public virtual CertificateChains CertChains { get; set; } 
+
         /// <summary>Output only. The attestation data provided by the HSM when the key operation was
         /// performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]

@@ -1310,16 +1310,11 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances.
-                ///
-                /// By default, the cluster is created in the project's [default
-                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
-                ///
-                /// One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each
-                /// node to allow the containers on that node to communicate with all other instances in the cluster.
-                ///
-                /// Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster
-                /// is using.</summary>
+                /// instances. By default, the cluster is created in the project's [default
+                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is
+                /// added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the
+                /// containers on that node to communicate with all other instances in the cluster. Finally, an entry is
+                /// added to the project's global metadata indicating which CIDR range the cluster is using.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent (project and location) where the cluster will be created. Specified in the format
                 /// `projects/locations`.</param>
@@ -1329,16 +1324,11 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances.
-                ///
-                /// By default, the cluster is created in the project's [default
-                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
-                ///
-                /// One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each
-                /// node to allow the containers on that node to communicate with all other instances in the cluster.
-                ///
-                /// Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster
-                /// is using.</summary>
+                /// instances. By default, the cluster is created in the project's [default
+                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is
+                /// added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the
+                /// containers on that node to communicate with all other instances in the cluster. Finally, an entry is
+                /// added to the project's global metadata indicating which CIDR range the cluster is using.</summary>
                 public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1390,12 +1380,10 @@ namespace Google.Apis.Container.v1beta1
 
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
-                ///
-                /// Firewalls and routes that were configured during cluster creation are also deleted.
-                ///
-                /// Other Google Compute Engine resources that might be in use by the cluster, such as load balancer
-                /// resources, are not deleted if they weren't present when the cluster was initially created.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
+                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
+                /// resources that might be in use by the cluster, such as load balancer resources, are not deleted if
+                /// they weren't present when the cluster was initially created.</summary>
                 /// <param name="name">The name (project, location, cluster) of the cluster to delete. Specified in the format
                 /// `projects/locations/clusters`.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -1403,12 +1391,10 @@ namespace Google.Apis.Container.v1beta1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
-                ///
-                /// Firewalls and routes that were configured during cluster creation are also deleted.
-                ///
-                /// Other Google Compute Engine resources that might be in use by the cluster, such as load balancer
-                /// resources, are not deleted if they weren't present when the cluster was initially created.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
+                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
+                /// resources that might be in use by the cluster, such as load balancer resources, are not deleted if
+                /// they weren't present when the cluster was initially created.</summary>
                 public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4162,16 +4148,11 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances.
-                ///
-                /// By default, the cluster is created in the project's [default
-                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
-                ///
-                /// One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each
-                /// node to allow the containers on that node to communicate with all other instances in the cluster.
-                ///
-                /// Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster
-                /// is using.</summary>
+                /// instances. By default, the cluster is created in the project's [default
+                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is
+                /// added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the
+                /// containers on that node to communicate with all other instances in the cluster. Finally, an entry is
+                /// added to the project's global metadata indicating which CIDR range the cluster is using.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent
@@ -4185,16 +4166,11 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances.
-                ///
-                /// By default, the cluster is created in the project's [default
-                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
-                ///
-                /// One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each
-                /// node to allow the containers on that node to communicate with all other instances in the cluster.
-                ///
-                /// Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster
-                /// is using.</summary>
+                /// instances. By default, the cluster is created in the project's [default
+                /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is
+                /// added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the
+                /// containers on that node to communicate with all other instances in the cluster. Finally, an entry is
+                /// added to the project's global metadata indicating which CIDR range the cluster is using.</summary>
                 public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4263,12 +4239,10 @@ namespace Google.Apis.Container.v1beta1
 
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
-                ///
-                /// Firewalls and routes that were configured during cluster creation are also deleted.
-                ///
-                /// Other Google Compute Engine resources that might be in use by the cluster, such as load balancer
-                /// resources, are not deleted if they weren't present when the cluster was initially created.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
+                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
+                /// resources that might be in use by the cluster, such as load balancer resources, are not deleted if
+                /// they weren't present when the cluster was initially created.</summary>
                 /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
@@ -4282,12 +4256,10 @@ namespace Google.Apis.Container.v1beta1
                     return new DeleteRequest(service, projectId, zone, clusterId);
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
-                ///
-                /// Firewalls and routes that were configured during cluster creation are also deleted.
-                ///
-                /// Other Google Compute Engine resources that might be in use by the cluster, such as load balancer
-                /// resources, are not deleted if they weren't present when the cluster was initially created.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
+                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
+                /// resources that might be in use by the cluster, such as load balancer resources, are not deleted if
+                /// they weren't present when the cluster was initially created.</summary>
                 public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6190,16 +6162,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
-        /// service account.
-        ///
-        /// The following scopes are recommended, but not required, and by default are not included:
-        ///
-        /// * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
+        /// service account. The following scopes are recommended, but not required, and by default are not included: *
+        /// `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
         /// `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the
-        /// [Google Container Registry](https://cloud.google.com/container-registry/)).
-        ///
-        /// If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
-        /// their required scopes will be added.</summary>
+        /// [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are
+        /// added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be
+        /// added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
@@ -6363,7 +6331,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentMasterVersion")]
         public virtual string CurrentMasterVersion { get; set; } 
 
-        /// <summary>[Output only]  The number of nodes currently in the cluster. Deprecated. Call Kubernetes API
+        /// <summary>[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API
         /// directly to retrieve node information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeCount")]
         public virtual System.Nullable<int> CurrentNodeCount { get; set; } 
@@ -6401,9 +6369,8 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<bool> EnableTpu { get; set; } 
 
         /// <summary>[Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from
-        /// the internet at `https://username:password@endpoint/`.
-        ///
-        /// See the `masterAuth` property of this resource for username and password information.</summary>
+        /// the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for
+        /// username and password information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; } 
 
@@ -6412,16 +6379,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTime { get; set; } 
 
-        /// <summary>The initial Kubernetes version for this cluster.  Valid versions are those found in
-        /// validMasterVersions returned by getServerConfig.  The version can be upgraded over time; such upgrades are
-        /// reflected in currentMasterVersion and currentNodeVersion.
-        ///
-        /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
-        /// following behavior:
-        ///
-        /// - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
-        /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
-        /// an explicit Kubernetes version - "","-": picks the default Kubernetes version</summary>
+        /// <summary>The initial Kubernetes version for this cluster. Valid versions are those found in
+        /// validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are
+        /// reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered
+        /// by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest
+        /// valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y":
+        /// picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes
+        /// version - "","-": picks the default Kubernetes version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialClusterVersion")]
         public virtual string InitialClusterVersion { get; set; } 
 
@@ -6429,9 +6393,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also
         /// have available firewall and routes quota. For requests, this field should only be used in lieu of a
         /// "node_pool" object, since this configuration (along with the "node_config") will be used to create a
-        /// "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time.
-        ///
-        /// This field is deprecated, use node_pool.initial_node_count instead.</summary>
+        /// "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field
+        /// is deprecated, use node_pool.initial_node_count instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialNodeCount")]
         public virtual System.Nullable<int> InitialNodeCount { get; set; } 
 
@@ -6462,14 +6425,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
 
-        /// <summary>The logging service the cluster should use to write logs. Currently available options:
-        ///
-        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
+        /// <summary>The logging service the cluster should use to write logs. Currently available options: *
+        /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
         /// `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` -
-        /// no logs will be exported from the cluster.
-        ///
-        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `logging.googleapis.com` for earlier versions.</summary>
+        /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
+        /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
 
@@ -6497,22 +6457,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; } 
 
-        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
-        ///
-        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
+        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
+        /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
         /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
-        /// 1.15). * `none` - No metrics will be exported from the cluster.
-        ///
-        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `monitoring.googleapis.com` for earlier versions.</summary>
+        /// 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
+        /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
+        /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
         public virtual string MonitoringService { get; set; } 
 
         /// <summary>The name of this cluster. The name must be unique within this project and location (e.g. zone or
-        /// region), and can be up to 40 characters with the following restrictions:
-        ///
-        /// * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a
-        /// letter.</summary>
+        /// region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and
+        /// hyphens only. * Must start with a letter. * Must end with a number or a letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6534,9 +6490,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to
         /// create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time.
         /// For responses, this field will be populated with the node configuration of the first node pool. (For
-        /// configuration of each node pool, see `node_pool.config`)
-        ///
-        /// If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.</summary>
+        /// configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field
+        /// is deprecated, use node_pool.config instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; } 
 
@@ -6550,6 +6505,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// "initial_node_count" are specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
+
+        /// <summary>Notification configuration of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
+        public virtual NotificationConfig NotificationConfig { get; set; } 
 
         /// <summary>Configuration for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podSecurityPolicyConfig")]
@@ -6700,6 +6659,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
         public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; } 
 
+        /// <summary>The desired datapath provider for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDatapathProvider")]
+        public virtual string DesiredDatapathProvider { get; set; } 
+
         /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
         public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; } 
@@ -6716,20 +6679,16 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be
         /// located. Changing the locations a cluster is in will result in nodes being either created or removed from
-        /// the cluster, depending on whether locations are being added or removed.
-        ///
-        /// This list must always include the cluster's primary zone.</summary>
+        /// the cluster, depending on whether locations are being added or removed. This list must always include the
+        /// cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
 
-        /// <summary>The logging service the cluster should use to write logs. Currently available options:
-        ///
-        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
+        /// <summary>The logging service the cluster should use to write logs. Currently available options: *
+        /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
         /// `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` -
-        /// no logs will be exported from the cluster.
-        ///
-        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `logging.googleapis.com` for earlier versions.</summary>
+        /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
+        /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
         public virtual string DesiredLoggingService { get; set; } 
 
@@ -6742,25 +6701,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; } 
 
         /// <summary>The Kubernetes version to change the master to. The only valid value is the latest supported
-        /// version.
-        ///
-        /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
-        /// following behavior:
-        ///
-        /// - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
-        /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
-        /// an explicit Kubernetes version - "-": picks the default Kubernetes version</summary>
+        /// version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which
+        /// have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the
+        /// highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the
+        /// 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes
+        /// version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
         public virtual string DesiredMasterVersion { get; set; } 
 
-        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
-        ///
-        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
+        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
+        /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
         /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
-        /// 1.15). * `none` - No metrics will be exported from the cluster.
-        ///
-        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `monitoring.googleapis.com` for earlier versions.</summary>
+        /// 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
+        /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
+        /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; } 
 
@@ -6776,16 +6730,17 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolId")]
         public virtual string DesiredNodePoolId { get; set; } 
 
-        /// <summary>The Kubernetes version to change the nodes to (typically an upgrade).
-        ///
-        /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
-        /// following behavior:
-        ///
-        /// - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
+        /// <summary>The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either
+        /// explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: -
+        /// "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
         /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
         /// an explicit Kubernetes version - "-": picks the Kubernetes master version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeVersion")]
         public virtual string DesiredNodeVersion { get; set; } 
+
+        /// <summary>The desired notification configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNotificationConfig")]
+        public virtual NotificationConfig DesiredNotificationConfig { get; set; } 
 
         /// <summary>The desired configuration options for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
@@ -6994,11 +6949,9 @@ namespace Google.Apis.Container.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -7125,10 +7078,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes.
         /// By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With
         /// allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR
-        /// range.
-        ///
-        /// If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`,
-        /// but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and
+        /// range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g.
+        /// `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and
         /// `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false,
         /// `cluster.cluster_ipv4_cidr` muse be fully-specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowRouteOverlap")]
@@ -7139,30 +7090,22 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ClusterIpv4Cidr { get; set; } 
 
         /// <summary>The IP address range for the cluster pod IPs. If this field is set, then
-        /// `cluster.cluster_ipv4_cidr` must be left blank.
-        ///
-        /// This field is only applicable when `use_ip_aliases` is true.
-        ///
-        /// Set to blank to have a range chosen with the default size.
-        ///
-        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
-        ///
-        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
-        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
-        /// range to use.</summary>
+        /// `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true.
+        /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range
+        /// chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
+        /// `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
         public virtual string ClusterIpv4CidrBlock { get; set; } 
 
-        /// <summary>The name of the secondary range to be used for the cluster CIDR block.  The secondary range will be
+        /// <summary>The name of the secondary range to be used for the cluster CIDR block. The secondary range will be
         /// used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork.
-        ///
         /// This field is only applicable with use_ip_aliases and create_subnetwork is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
         public virtual string ClusterSecondaryRangeName { get; set; } 
 
-        /// <summary>Whether a new subnetwork will be created automatically for the cluster.
-        ///
-        /// This field is only applicable when `use_ip_aliases` is true.</summary>
+        /// <summary>Whether a new subnetwork will be created automatically for the cluster. This field is only
+        /// applicable when `use_ip_aliases` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; } 
 
@@ -7170,17 +7113,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
         public virtual string NodeIpv4Cidr { get; set; } 
 
-        /// <summary>The IP address range of the instance IPs in this cluster.
-        ///
-        /// This is applicable only if `create_subnetwork` is true.
-        ///
-        /// Set to blank to have a range chosen with the default size.
-        ///
-        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
-        ///
-        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
-        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
-        /// range to use.</summary>
+        /// <summary>The IP address range of the instance IPs in this cluster. This is applicable only if
+        /// `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask
+        /// (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki
+        /// /Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrBlock")]
         public virtual string NodeIpv4CidrBlock { get; set; } 
 
@@ -7189,45 +7126,32 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ServicesIpv4Cidr { get; set; } 
 
         /// <summary>The IP address range of the services IPs in this cluster. If blank, a range will be automatically
-        /// chosen with the default size.
-        ///
-        /// This field is only applicable when `use_ip_aliases` is true.
-        ///
-        /// Set to blank to have a range chosen with the default size.
-        ///
-        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
-        ///
-        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
-        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
-        /// range to use.</summary>
+        /// chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to
+        /// have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
+        /// specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
+        /// (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
+        /// `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
         public virtual string ServicesIpv4CidrBlock { get; set; } 
 
-        /// <summary>The name of the secondary range to be used as for the services CIDR block.  The secondary range
-        /// will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster
-        /// subnetwork.
-        ///
-        /// This field is only applicable with use_ip_aliases and create_subnetwork is false.</summary>
+        /// <summary>The name of the secondary range to be used as for the services CIDR block. The secondary range will
+        /// be used for service ClusterIPs. This must be an existing secondary range associated with the cluster
+        /// subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; } 
 
-        /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true.  If this field is empty, then
-        /// an automatic name will be chosen for the new subnetwork.</summary>
+        /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an
+        /// automatic name will be chosen for the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
         public virtual string SubnetworkName { get; set; } 
 
         /// <summary>The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be
-        /// automatically chosen with the default size.
-        ///
-        /// This field is only applicable when `use_ip_aliases` is true.
-        ///
-        /// If unspecified, the range will use the default size.
-        ///
-        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
-        ///
-        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
-        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
-        /// range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.</summary>
+        /// automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If
+        /// unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
+        /// specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
+        /// (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
+        /// `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use
+        /// cluster.tpu_config.ipv4_cidr_block instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; } 
 
@@ -7355,12 +7279,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Parameters that can be configured on Linux nodes.</summary>
     public class LinuxNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
-        ///
-        /// The following parameters are supported.
-        ///
-        /// net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse</summary>
+        /// <summary>The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The
+        /// following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
+        /// net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
+        /// net.ipv4.tcp_tw_reuse</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string,string> Sysctls { get; set; } 
 
@@ -7534,8 +7456,8 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ClusterCaCertificate { get; set; } 
 
         /// <summary>The password to use for HTTP basic authentication to the master endpoint. Because the master
-        /// endpoint is open to the Internet, you should create a strong password.  If a password is provided for
-        /// cluster creation, username must be non-empty.</summary>
+        /// endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster
+        /// creation, username must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
@@ -7604,6 +7526,11 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>NetworkConfig reports the relative names of network & subnetwork.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy
+        /// implementation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
+        public virtual string DatapathProvider { get; set; } 
+
         /// <summary>Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when
         /// default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied
         /// to the nodes to prevent sNAT on cluster internal traffic.</summary>
@@ -7675,15 +7602,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
         public virtual string BootDiskKmsKey { get; set; } 
 
-        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
-        ///
-        /// If unspecified, the default disk size is 100GB.</summary>
+        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
+        /// unspecified, the default disk size is 100GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; } 
 
-        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')
-        ///
-        /// If unspecified, the default disk type is 'pd-standard'</summary>
+        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
+        /// disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
@@ -7708,34 +7633,28 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
         public virtual LinuxNodeConfig LinuxNodeConfig { get; set; } 
 
-        /// <summary>The number of local SSD disks to be attached to the node.
-        ///
-        /// The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See:
+        /// <summary>The number of local SSD disks to be attached to the node. The limit for this value is dependent
+        /// upon the maximum number of disks available on a machine per zone. See:
         /// https://cloud.google.com/compute/docs/disks/local-ssd for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; } 
 
         /// <summary>The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-
-        /// types) (e.g. `n1-standard-1`).
-        ///
-        /// If unspecified, the default machine type is `n1-standard-1`.</summary>
+        /// types). If unspecified, the default machine type is `e2-medium`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
-        /// <summary>The metadata key/value pairs assigned to instances in the cluster.
-        ///
-        /// Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected
-        /// as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
-        /// other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" -
-        /// "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" -
-        /// "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-
-        /// data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" -
-        /// "install-ssh-psm1" - "user-profile-psm1" - "serial-port-logging-enable"
-        ///
-        /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
-        /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
-        ///
-        /// The total size of all keys and values must be less than 512 KB.</summary>
+        /// <summary>The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp
+        /// `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata
+        /// server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the
+        /// project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-
+        /// sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-
+        /// update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-
+        /// manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" -
+        /// "user-profile-psm1" - "serial-port-logging-enable" Values are free-form strings, and only have meaning as
+        /// interpreted by the image running in the instance. The only restriction placed on them is that each value's
+        /// size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512
+        /// KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
@@ -7753,16 +7672,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string NodeGroup { get; set; } 
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
-        /// service account.
-        ///
-        /// The following scopes are recommended, but not required, and by default are not included:
-        ///
-        /// * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
+        /// service account. The following scopes are recommended, but not required, and by default are not included: *
+        /// `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
         /// `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the
-        /// [Google Container Registry](https://cloud.google.com/container-registry/)).
-        ///
-        /// If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
-        /// their required scopes will be added.</summary>
+        /// [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are
+        /// added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be
+        /// added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
@@ -7798,10 +7713,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>List of kubernetes taints to be applied to each node.
-        ///
-        /// For more information, including usage and the valid values, see:
-        /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</summary>
+        /// <summary>List of kubernetes taints to be applied to each node. For more information, including usage and the
+        /// valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
         public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; } 
 
@@ -7816,32 +7729,24 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Node kubelet configs.</summary>
     public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enable CPU CFS quota enforcement for containers that specify CPU limits.
-        ///
-        /// If this option is enabled, kubelet uses CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-
-        /// bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all.
-        ///
-        /// Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS
-        /// class by specifying the CPU limits.
-        ///
+        /// <summary>Enable CPU CFS quota enforcement for containers that specify CPU limits. If this option is enabled,
+        /// kubelet uses CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce
+        /// container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU
+        /// throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits.
         /// The default value is 'true' if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuota")]
         public virtual System.Nullable<bool> CpuCfsQuota { get; set; } 
 
-        /// <summary>Set the CPU CFS quota period value 'cpu.cfs_period_us'.
-        ///
-        /// The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as
-        /// "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive
-        /// duration.</summary>
+        /// <summary>Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal
+        /// numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or
+        /// "µs"), "ms", "s", "m", "h". The value must be a positive duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuotaPeriod")]
         public virtual string CpuCfsQuotaPeriod { get; set; } 
 
         /// <summary>Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-
-        /// cluster/cpu-management-policies/
-        ///
-        /// The following values are allowed. - "none": the default, which represents the existing scheduling behavior.
-        /// - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and
-        /// exclusivity on the node.</summary>
+        /// cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents
+        /// the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be
+        /// granted increased CPU affinity and exclusivity on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; } 
 
@@ -7972,10 +7877,8 @@ namespace Google.Apis.Container.v1beta1.Data
     }    
 
     /// <summary>Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three
-    /// types:  NoSchedule, PreferNoSchedule or NoExecute.
-    ///
-    /// See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information,
-    /// including usage and the valid values.</summary>
+    /// types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration
+    /// /taint-and-toleration) for more information, including usage and the valid values.</summary>
     public class NodeTaint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Effect for taint.</summary>
@@ -7994,11 +7897,22 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>NotificationConfig is the configuration of notifications.</summary>
+    public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Notification config for Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
+        public virtual PubSub Pubsub { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This operation resource represents operations that may have happened or are happening on the cluster.
     /// All fields are output only.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which conditions caused the current cluster state.</summary>
+        /// <summary>Which conditions caused the current cluster state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterConditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> ClusterConditions { get; set; } 
 
@@ -8011,6 +7925,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
+        /// <summary>The error result of the operation in case of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs
         /// /regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones
         /// /regions-zones#available) in which the cluster resides.</summary>
@@ -8021,7 +7939,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Which conditions caused the current node pool state.</summary>
+        /// <summary>Which conditions caused the current node pool state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodepoolConditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> NodepoolConditions { get; set; } 
 
@@ -8046,7 +7964,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>Output only. If an error has occurred, a textual description of the error.</summary>
+        /// <summary>Output only. If an error has occurred, a textual description of the error. Deprecated. Use field
+        /// error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
@@ -8066,9 +7985,9 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Information about operation (or operation stage) progress.</summary>
     public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Progress metric bundle, for example: metrics: [{name: "nodes done",     int_value: 15}, {name:
-        /// "nodes total",    int_value: 32}] or metrics: [{name: "progress",       double_value: 0.56}, {name:
-        /// "progress scale", double_value: 1.0}]</summary>
+        /// <summary>Progress metric bundle, for example: metrics: [{name: "nodes done", int_value: 15}, {name: "nodes
+        /// total", int_value: 32}] or metrics: [{name: "progress", double_value: 0.56}, {name: "progress scale",
+        /// double_value: 1.0}]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
@@ -8150,28 +8069,37 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Pub/Sub specific notification config.</summary>
+    public class PubSub : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable notifications for Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The desired Pub/Sub topic to which notifications will be sent by GKE. Format is
+        /// `projects/{project}/topics/{topic}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an arbitrary window of time that recurs.</summary>
     public class RecurringTimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go
-        /// on for the span of time between the start and end time.
-        ///
-        /// For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`
-        ///
-        /// To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY`
-        ///
-        /// For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU`
-        ///
-        /// This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday,
-        /// you'd use something like: ``` start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400
-        /// recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR ```
-        ///
-        /// Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till
-        /// the last minute of Sunday UTC: ``` start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z
-        /// recurrence = FREQ=WEEKLY;BYDAY=SA ```
-        ///
-        /// Note the start and end time's specific dates are largely arbitrary except to specify duration of the window
-        /// and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.</summary>
+        /// on for the span of time between the start and end time. For example, to have something repeat every weekday,
+        /// you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the
+        /// DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month:
+        /// `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` This specifies how frequently the window starts. Eg, if you wanted to
+        /// have a 9-5 UTC-4 window every weekday, you'd use something like: ``` start time = 2019-01-01T09:00:00-0400
+        /// end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR ``` Windows can span
+        /// multiple days. Eg, to make the window encompass every weekend from midnight Saturday till the last minute of
+        /// Sunday UTC: ``` start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence =
+        /// FREQ=WEEKLY;BYDAY=SA ``` Note the start and end time's specific dates are largely arbitrary except to
+        /// specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY
+        /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
         public virtual string Recurrence { get; set; } 
 
@@ -8184,10 +8112,8 @@ namespace Google.Apis.Container.v1beta1.Data
     }    
 
     /// <summary>ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are
-    /// arranged in order of risk.
-    ///
-    /// When a cluster is subscribed to a release channel, Google maintains both the master version and the node
-    /// version. Node auto-upgrade defaults to true and cannot be disabled.</summary>
+    /// arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master
+    /// version and the node version. Node auto-upgrade defaults to true and cannot be disabled.</summary>
     public class ReleaseChannel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>channel specifies which release channel the cluster is subscribed to.</summary>
@@ -8483,9 +8409,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. The desired list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be
         /// located. Changing the locations a cluster is in will result in nodes being either created or removed from
-        /// the cluster, depending on whether locations are being added or removed.
-        ///
-        /// This list must always include the cluster's primary zone.</summary>
+        /// the cluster, depending on whether locations are being added or removed. This list must always include the
+        /// cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
 
@@ -8518,14 +8443,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>Required. The logging service the cluster should use to write logs. Currently available options:
-        ///
-        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
+        /// <summary>Required. The logging service the cluster should use to write logs. Currently available options: *
+        /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
         /// `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` -
-        /// no logs will be exported from the cluster.
-        ///
-        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `logging.googleapis.com` for earlier versions.</summary>
+        /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
+        /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
 
@@ -8627,14 +8549,11 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ClusterId { get; set; } 
 
         /// <summary>Required. The monitoring service the cluster should use to write metrics. Currently available
-        /// options:
-        ///
-        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
-        /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
-        /// 1.15). * `none` - No metrics will be exported from the cluster.
-        ///
-        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or
-        /// `monitoring.googleapis.com` for earlier versions.</summary>
+        /// options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native
+        /// resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as
+        /// of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
+        /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
+        /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
         public virtual string MonitoringService { get; set; } 
 
@@ -8809,18 +8728,16 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>A set of Shielded Instance options.</summary>
     public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines whether the instance has integrity monitoring enabled.
-        ///
-        /// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed
-        /// against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot
-        /// image when the instance is created.</summary>
+        /// <summary>Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation
+        /// of the boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+        /// This baseline is initially derived from the implicitly trusted boot image when the instance is
+        /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
         public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
 
-        /// <summary>Defines whether the instance has Secure Boot enabled.
-        ///
-        /// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of
-        /// all boot components, and halting the boot process if signature verification fails.</summary>
+        /// <summary>Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only
+        /// runs authentic software by verifying the digital signature of all boot components, and halting the boot
+        /// process if signature verification fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
 
@@ -8873,11 +8790,40 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or
     /// DEGRADED).</summary>
     public class StatusCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Machine-friendly representation of the condition</summary>
+        /// <summary>Canonical code of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual string CanonicalCode { get; set; } 
+
+        /// <summary>Machine-friendly representation of the condition Deprecated. Use canonical_code instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
@@ -8964,14 +8910,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>Required. The Kubernetes version to change the master to.
-        ///
-        /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
-        /// following behavior:
-        ///
-        /// - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
-        /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
-        /// an explicit Kubernetes version - "-": picks the default Kubernetes version</summary>
+        /// <summary>Required. The Kubernetes version to change the master to. Users may specify either explicit
+        /// versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest":
+        /// picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X
+        /// version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an
+        /// explicit Kubernetes version - "-": picks the default Kubernetes version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterVersion")]
         public virtual string MasterVersion { get; set; } 
 
@@ -9033,11 +8976,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>Required. The Kubernetes version to change the nodes to (typically an upgrade).
-        ///
-        /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
-        /// following behavior:
-        ///
+        /// <summary>Required. The Kubernetes version to change the nodes to (typically an upgrade). Users may specify
+        /// either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior:
         /// - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in
         /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
         /// an explicit Kubernetes version - "-": picks the Kubernetes master version</summary>
@@ -9068,25 +9008,49 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>UpgradeEvent is a notification sent to customers by the cluster server when a resource is
+    /// upgrading.</summary>
+    public class UpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The current version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
+        public virtual string CurrentVersion { get; set; } 
+
+        /// <summary>Required. The operation associated with this upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; } 
+
+        /// <summary>Required. The time when the operation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationStartTime")]
+        public virtual object OperationStartTime { get; set; } 
+
+        /// <summary>Optional. Optional relative path to the resource. For example in node pool upgrades, the relative
+        /// path of the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; } 
+
+        /// <summary>Required. The resource type that is upgrading.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
+
+        /// <summary>Required. The target version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>These upgrade settings control the level of parallelism and the level of disruption caused by an
-    /// upgrade.
-    ///
-    /// maxUnavailable controls the number of nodes that can be simultaneously unavailable.
-    ///
-    /// maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of
-    /// the upgrade to increase the number of available nodes.
-    ///
-    /// (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same
-    /// time).
-    ///
-    /// Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new,
-    /// upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of
-    /// PodDisruptionBudget, if it is configured.)
-    ///
-    /// Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade
-    /// process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old
-    /// (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes
-    /// available.</summary>
+    /// upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls
+    /// the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to
+    /// increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how
+    /// many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since
+    /// workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true.
+    /// (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node
+    /// pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+    /// simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at
+    /// the same time. This ensures that there are always at least 4 nodes available.</summary>
     public class UpgradeSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum number of nodes that can be created beyond the current size of the node pool during the

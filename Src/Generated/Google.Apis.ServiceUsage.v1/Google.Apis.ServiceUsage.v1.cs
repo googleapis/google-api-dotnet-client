@@ -919,7 +919,9 @@ namespace Google.Apis.ServiceUsage.v1
         /// respect to the project. The list includes all public services, all services for which the calling user has
         /// the `servicemanagement.services.bind` permission, and all services that have already been enabled on the
         /// project. The list can be filtered to only include services in a specific state, for example to only include
-        /// services enabled on the project.</summary>
+        /// services enabled on the project. WARNING: If you need to query enabled services frequently or across an
+        /// organization, you should use [Cloud Asset Inventory API](https://cloud.google.com/asset-
+        /// inventory/docs/apis), which provides higher throughput and richer filtering capability.</summary>
         /// <param name="parent">Parent to search for services on. An example name would be: `projects/123` where `123` is the
         /// project number.</param>
         public virtual ListRequest List(string parent)
@@ -931,7 +933,9 @@ namespace Google.Apis.ServiceUsage.v1
         /// respect to the project. The list includes all public services, all services for which the calling user has
         /// the `servicemanagement.services.bind` permission, and all services that have already been enabled on the
         /// project. The list can be filtered to only include services in a specific state, for example to only include
-        /// services enabled on the project.</summary>
+        /// services enabled on the project. WARNING: If you need to query enabled services frequently or across an
+        /// organization, you should use [Cloud Asset Inventory API](https://cloud.google.com/asset-
+        /// inventory/docs/apis), which provides higher throughput and richer filtering capability.</summary>
         public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2638,7 +2642,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
     /// "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: -
     /// name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also
     /// declared with same name and request/response types in `Storage`. A documentation generator or annotation
-    /// processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as
+    /// processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as
     /// follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
     /// (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed
     /// from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which

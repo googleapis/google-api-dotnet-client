@@ -457,7 +457,7 @@
    }
   }
  }, 
- "revision": "20200810", 
+ "revision": "20200819", 
  "rootUrl": "https://cloudasset.googleapis.com/", 
  "schemas": {
   "Asset": {

@@ -2569,7 +2569,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: -
     /// name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also
     /// declared with same name and request/response types in `Storage`. A documentation generator or annotation
-    /// processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as
+    /// processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as
     /// follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
     /// (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed
     /// from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which

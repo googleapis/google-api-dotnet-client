@@ -149,7 +149,7 @@
    }
   }
  }, 
- "revision": "20200804", 
+ "revision": "20200815", 
  "rootUrl": "https://indexing.googleapis.com/", 
  "schemas": {
   "PublishUrlNotificationResponse": {

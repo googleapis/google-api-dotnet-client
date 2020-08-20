@@ -4914,10 +4914,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; } 
 
         /// <summary>Hands off conversation to a human agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentHandoff")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff HumanAgentHandoff { get; set; } 
-
-        /// <summary>Hands off conversation to a human agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; } 
 
@@ -4970,22 +4966,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// only and not supposed to be defined by the user.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Indicates that the conversation should be handed off to a human agent. Dialogflow only uses this to
-    /// determine which conversations were handed off to a human agent for measurement purposes. What else to do with
-    /// this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment
-    /// of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook
-    /// response when you determine that the customer issue can only be handled by a human.</summary>
-    public class GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on
-        /// this.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

@@ -402,10 +402,9 @@ namespace Google.Apis.Firestore.v1beta2
 
                     }
 
-                    /// <summary>Lists the field configuration and metadata for this database.
-                    ///
-                    /// Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly
-                    /// overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to
+                    /// <summary>Lists the field configuration and metadata for this database. Currently,
+                    /// FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To
+                    /// issue this query, call FirestoreAdmin.ListFields with the filter set to
                     /// `indexConfig.usesAncestorConfig:false`.</summary>
                     /// <param name="parent">A parent name of the form
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</param>
@@ -414,10 +413,9 @@ namespace Google.Apis.Firestore.v1beta2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists the field configuration and metadata for this database.
-                    ///
-                    /// Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly
-                    /// overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to
+                    /// <summary>Lists the field configuration and metadata for this database. Currently,
+                    /// FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To
+                    /// issue this query, call FirestoreAdmin.ListFields with the filter set to
                     /// `indexConfig.usesAncestorConfig:false`.</summary>
                     public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta2.Data.GoogleFirestoreAdminV1beta2ListFieldsResponse>
                     {
@@ -509,29 +507,21 @@ namespace Google.Apis.Firestore.v1beta2
                     /// <summary>Updates a field configuration. Currently, field updates apply only to single field
                     /// index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to
                     /// avoid changing any configuration that the caller isn't aware of. The field mask should be
-                    /// specified as: `{ paths: "index_config" }`.
-                    ///
-                    /// This call returns a google.longrunning.Operation which may be used to track the status of the
-                    /// field update. The metadata for the operation will be the type FieldOperationMetadata.
-                    ///
-                    /// To configure the default field settings for the database, use the special `Field` with resource
-                    /// name:
+                    /// specified as: `{ paths: "index_config" }`. This call returns a google.longrunning.Operation
+                    /// which may be used to track the status of the field update. The metadata for the operation will
+                    /// be the type FieldOperationMetadata. To configure the default field settings for the database,
+                    /// use the special `Field` with resource name:
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">A field name of the form
-                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-                    ///
-                    /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`,
-                    /// or a special field path. The only valid special field is `*`, which represents any field.
-                    ///
-                    /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path
-                    /// is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted
-                    /// include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
-                    ///
-                    /// Examples: (Note: Comments here are written in markdown syntax, so there is an  additional layer of backticks to
-                    /// represent a code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the
-                    /// field `address`. `\`*\`` represents a field named `*`, not any field.
-                    ///
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path
+                    /// may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special
+                    /// field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using `
+                    /// (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself,
+                    /// escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick),
+                    /// `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax,
+                    /// so there is an additional layer of backticks to represent a code block) `\`address.city\`` represents a field named
+                    /// `address.city`, not the map key `city` in the field `address`. `\`*\`` represents a field named `*`, not any field.
                     /// A special `Field` contains the default indexing settings for all fields. This field's resource name is:
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes defined on this `Field`
                     /// will be applied to all fields which do not have their own `Field` index configuration.</param>
@@ -543,13 +533,10 @@ namespace Google.Apis.Firestore.v1beta2
                     /// <summary>Updates a field configuration. Currently, field updates apply only to single field
                     /// index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to
                     /// avoid changing any configuration that the caller isn't aware of. The field mask should be
-                    /// specified as: `{ paths: "index_config" }`.
-                    ///
-                    /// This call returns a google.longrunning.Operation which may be used to track the status of the
-                    /// field update. The metadata for the operation will be the type FieldOperationMetadata.
-                    ///
-                    /// To configure the default field settings for the database, use the special `Field` with resource
-                    /// name:
+                    /// specified as: `{ paths: "index_config" }`. This call returns a google.longrunning.Operation
+                    /// which may be used to track the status of the field update. The metadata for the operation will
+                    /// be the type FieldOperationMetadata. To configure the default field settings for the database,
+                    /// use the special `Field` with resource name:
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields`.</summary>
                     public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta2.Data.GoogleLongrunningOperation>
                     {
@@ -564,24 +551,17 @@ namespace Google.Apis.Firestore.v1beta2
 
 
                         /// <summary>A field name of the form `projects/{project_id}/databases/{database_id}/collectionG
-                        /// roups/{collection_id}/fields/{field_path}`
-                        ///
-                        /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value
-                        /// , e.g. `address.city`, or a special field path. The only valid special field is `*`, which
-                        /// represents any field.
-                        ///
-                        /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped
-                        /// within a quoted field path is the backtick character itself, escaped using a backslash.
-                        /// Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick),
-                        /// `[`, `]`, as well as any ascii symbolic characters.
-                        ///
-                        /// Examples: (Note: Comments here are written in markdown syntax, so there is an additional
-                        /// layer of backticks to represent a code block) `\`address.city\`` represents a field named
-                        /// `address.city`, not the map key `city` in the field `address`. `\`*\`` represents a field
-                        /// named `*`, not any field.
-                        ///
-                        /// A special `Field` contains the default indexing settings for all fields. This field's
-                        /// resource name is:
+                        /// roups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g.
+                        /// `address` or a path to fields within map_value , e.g. `address.city`, or a special field
+                        /// path. The only valid special field is `*`, which represents any field. Field paths may be
+                        /// quoted using ` (backtick). The only character that needs to be escaped within a quoted field
+                        /// path is the backtick character itself, escaped using a backslash. Special characters in
+                        /// field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any
+                        /// ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so
+                        /// there is an additional layer of backticks to represent a code block) `\`address.city\``
+                        /// represents a field named `address.city`, not the map key `city` in the field `address`.
+                        /// `\`*\`` represents a field named `*`, not any field. A special `Field` contains the default
+                        /// indexing settings for all fields. This field's resource name is:
                         /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes
                         /// defined on this `Field` will be applied to all fields which do not have their own `Field`
                         /// index configuration.</summary>
@@ -1066,11 +1046,9 @@ namespace Google.Apis.Firestore.v1beta2.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1143,10 +1121,8 @@ namespace Google.Apis.Firestore.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a single field in the database.
-    ///
-    /// Fields are grouped by their "Collection Group", which represent all collections in the database with the same
-    /// id.</summary>
+    /// <summary>Represents a single field in the database. Fields are grouped by their "Collection Group", which
+    /// represent all collections in the database with the same id.</summary>
     public class GoogleFirestoreAdminV1beta2Field : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The index configuration for this field. If unset, field indexing will revert to the configuration
@@ -1156,20 +1132,16 @@ namespace Google.Apis.Firestore.v1beta2.Data
         public virtual GoogleFirestoreAdminV1beta2IndexConfig IndexConfig { get; set; } 
 
         /// <summary>A field name of the form
-        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-        ///
-        /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g.
-        /// `address.city`, or a special field path. The only valid special field is `*`, which represents any field.
-        ///
-        /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted
-        /// field path is the backtick character itself, escaped using a backslash. Special characters in field paths
-        /// that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
-        ///
-        /// Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks
-        /// to represent a code block) `\`address.city\`` represents a field named `address.city`, not the map key
-        /// `city` in the field `address`. `\`*\`` represents a field named `*`, not any field.
-        ///
-        /// A special `Field` contains the default indexing settings for all fields. This field's resource name is:
+        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field
+        /// path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`,
+        /// or a special field path. The only valid special field is `*`, which represents any field. Field paths may be
+        /// quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the
+        /// backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted
+        /// include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
+        /// Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a
+        /// code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the field
+        /// `address`. `\`*\`` represents a field named `*`, not any field. A special `Field` contains the default
+        /// indexing settings for all fields. This field's resource name is:
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes defined on this
         /// `Field` will be applied to all fields which do not have their own `Field` index configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1270,15 +1242,12 @@ namespace Google.Apis.Firestore.v1beta2.Data
     /// <summary>Cloud Firestore indexes enable simple and complex queries against documents in a database.</summary>
     public class GoogleFirestoreAdminV1beta2Index : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields supported by this index.
-        ///
-        /// For composite indexes, this is always 2 or more fields. The last field entry is always for the field path
-        /// `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically
-        /// with the same direction as that of the last field defined. If the final field in a composite index is not
-        /// directional, the `__name__` will be ordered ASCENDING (unless explicitly specified).
-        ///
-        /// For single field indexes, this will always be exactly one entry with a field path equal to the field path of
-        /// the associated field.</summary>
+        /// <summary>The fields supported by this index. For composite indexes, this is always 2 or more fields. The
+        /// last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as
+        /// the last field, it will be added automatically with the same direction as that of the last field defined. If
+        /// the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless
+        /// explicitly specified). For single field indexes, this will always be exactly one entry with a field path
+        /// equal to the field path of the associated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2IndexField> Fields { get; set; } 
 
@@ -1289,10 +1258,9 @@ namespace Google.Apis.Firestore.v1beta2.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Indexes with a collection query scope specified allow queries against a collection that is the
-        /// child of a specific document, specified at query time, and that has the same collection id.
-        ///
-        /// Indexes with a collection group query scope specified allow queries against all collections descended from a
-        /// specific document, specified at query time, and that have the same collection id as this index.</summary>
+        /// child of a specific document, specified at query time, and that has the same collection id. Indexes with a
+        /// collection group query scope specified allow queries against all collections descended from a specific
+        /// document, specified at query time, and that have the same collection id as this index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
         public virtual string QueryScope { get; set; } 
 
@@ -1461,9 +1429,9 @@ namespace Google.Apis.Firestore.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -1473,11 +1441,11 @@ namespace Google.Apis.Firestore.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1487,9 +1455,8 @@ namespace Google.Apis.Firestore.v1beta2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1497,8 +1464,8 @@ namespace Google.Apis.Firestore.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

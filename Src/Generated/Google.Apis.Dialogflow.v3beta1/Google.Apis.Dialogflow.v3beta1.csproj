@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.DoubleClickBidManager.v1_1 Client Library</Title>
-    <Version>1.49.0.2049</Version>
+    <Title>Google.Apis.Dialogflow.v3beta1 Client Library</Title>
+    <Version>1.49.0.2055</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Doubleclickbidmanager v1.1.
+      Google APIs Client Library for working with Dialogflow v3beta1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -32,7 +32,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/doubleclickbidmanager/v1.1
+      https://developers.google.com/api-client-library/dotnet/apis/dialogflow/v3beta1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
