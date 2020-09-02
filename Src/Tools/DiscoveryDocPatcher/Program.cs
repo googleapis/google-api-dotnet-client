@@ -63,14 +63,14 @@ namespace DiscoveryDocPatcher
                 return;
             }
             // Strongly-type properties that are defined without typing.
-            patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' } }");
-            patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' } }");
-            patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' } }");
-            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' } }");
-            patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' } }");
-            patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' } }");
-            patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' } }");
-            patcher.Replace("schemas.User.properties.websites", "{ 'type': 'any' }", "{ 'type': 'array', 'items': { '$ref': 'UserWebsite' } }");
+            patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any', 'description': 'Addresses of User'}", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' }, 'description': 'Addresses of User' }");
+            patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any', 'description': 'Emails of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' }, 'description': 'Emails of User' }");
+            patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any', 'description': 'The external Ids of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' }, 'description': 'The external Ids of User *' }");
+            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'User_s Instant Messenger' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'User_s Instant Messenger' }");
+            patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any', 'description': 'Organizations of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' }, 'description': 'Organizations of User' }");
+            patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any', 'description': 'Phone numbers of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' }, 'description': 'Phone numbers of User' }");
+            patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any', 'description': 'The Relations of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' }, 'description': 'The Relations of User *' }");
+            patcher.Replace("schemas.User.properties.websites", "{ 'type': 'any', 'description': 'Websites of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserWebsite' }, 'description': 'Websites of User' }");
             patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
             patcher.SaveWithBackup();
 
