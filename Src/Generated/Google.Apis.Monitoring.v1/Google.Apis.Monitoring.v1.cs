@@ -451,7 +451,7 @@ namespace Google.Apis.Monitoring.v1
             /// the specified dashboard. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
             /// <param name="name">Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID]
-            /// (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]  (for custom
+            /// (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] (for custom
             /// dashboards).</param>
             public virtual GetRequest Get(string name)
             {
@@ -474,7 +474,7 @@ namespace Google.Apis.Monitoring.v1
 
                 /// <summary>Required. The resource name of the Dashboard. The format is one of:
                 /// dashboards/[DASHBOARD_ID] (for system dashboards)
-                /// projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]  (for custom dashboards).</summary>
+                /// projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] (for custom dashboards).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -805,6 +805,11 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
         public virtual GridLayout GridLayout { get; set; } 
 
+        /// <summary>The content is arranged as a grid of tiles, with each content widget occupying one or more
+        /// tiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mosaicLayout")]
+        public virtual MosaicLayout MosaicLayout { get; set; } 
+
         /// <summary>Immutable. The resource name of the dashboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -971,6 +976,23 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A mosaic layout divides the available space into a grid of squares, and overlays the grid with tiles.
+    /// Unlike GridLayout, tiles may span multiple grid squares and can be placed at arbitrary locations in the
+    /// grid.</summary>
+    public class MosaicLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of columns in the mosaic grid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Nullable<int> Columns { get; set; } 
+
+        /// <summary>The tiles to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tiles")]
+        public virtual System.Collections.Generic.IList<Tile> Tiles { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1076,12 +1098,12 @@ namespace Google.Apis.Monitoring.v1.Data
         /// that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is
         /// above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless
         /// x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the
-        /// following four thresholds: {  value: 90,  category: 'DANGER',  trigger: 'ABOVE', }, {  value: 70,  category:
-        /// 'WARNING',  trigger: 'ABOVE', }, {  value: 10,  category: 'DANGER',  trigger: 'BELOW', }, {  value: 20,
-        /// category: 'WARNING',  trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a
-        /// DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between
-        /// 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values
-        /// greater than or equal to 90 a DANGER state.</summary>
+        /// following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category:
+        /// 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category:
+        /// 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER
+        /// state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and
+        /// 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than
+        /// or equal to 90 a DANGER state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
         public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
 
@@ -1194,6 +1216,35 @@ namespace Google.Apis.Monitoring.v1.Data
         /// metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single tile in the mosaic. The placement and size of the tile are configurable.</summary>
+    public class Tile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The height of the tile, measured in grid squares.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>The informational widget contained in the tile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widget")]
+        public virtual Widget Widget { get; set; } 
+
+        /// <summary>The width of the tile, measured in grid squares.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The zero-indexed position of the tile in grid squares relative to the left edge of the
+        /// grid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xPos")]
+        public virtual System.Nullable<int> XPos { get; set; } 
+
+        /// <summary>The zero-indexed position of the tile in grid squares relative to the top edge of the
+        /// grid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yPos")]
+        public virtual System.Nullable<int> YPos { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

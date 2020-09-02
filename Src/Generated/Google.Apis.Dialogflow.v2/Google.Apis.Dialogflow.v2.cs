@@ -4829,6 +4829,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Agents.ImportAgent.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents page information communicated to and from the webhook.</summary>
     public class GoogleCloudDialogflowCxV3beta1PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9027,6 +9038,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// specified in ExportAgentRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Agents.ImportAgent.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

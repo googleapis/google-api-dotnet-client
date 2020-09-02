@@ -61,6 +61,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Billing Budget API.</summary>
         public class Scope
         {
+            /// <summary>View and manage your Google Cloud Platform billing accounts</summary>
+            public static string CloudBilling = "https://www.googleapis.com/auth/cloud-billing";
+
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -69,6 +72,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Billing Budget API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>View and manage your Google Cloud Platform billing accounts</summary>
+            public const string CloudBilling = "https://www.googleapis.com/auth/cloud-billing";
+
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 

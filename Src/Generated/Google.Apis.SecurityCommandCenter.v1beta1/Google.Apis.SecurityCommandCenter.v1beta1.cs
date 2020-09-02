@@ -2367,9 +2367,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
-        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
-        /// detector.</summary>
+        /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
+        /// the finding represents an open firewall it would capture the time the detector believes the firewall became
+        /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
+        /// would reflect when the finding was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 
@@ -2519,9 +2520,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
-        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
-        /// detector.</summary>
+        /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
+        /// the finding represents an open firewall it would capture the time the detector believes the firewall became
+        /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
+        /// would reflect when the finding was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 
@@ -2666,9 +2668,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
-        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
-        /// detector.</summary>
+        /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
+        /// the finding represents an open firewall it would capture the time the detector believes the firewall became
+        /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
+        /// would reflect when the finding was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 

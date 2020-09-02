@@ -1541,6 +1541,10 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of how to set up an iOS device prior to running the test.</summary>
     public class IosTestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>iOS apps to install in addition to those being directly tested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalIpas")]
+        public virtual System.Collections.Generic.IList<FileReference> AdditionalIpas { get; set; } 
+
         /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
         /// using the NETWORK_CONFIGURATION environment type when calling
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>

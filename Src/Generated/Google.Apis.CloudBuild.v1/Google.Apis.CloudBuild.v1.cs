@@ -553,6 +553,11 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The parent resource where this build will be created. Format:
+                /// `projects/{project}/locations/{location}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Parent { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudBuild.v1.Data.Build Body { get; set; }
@@ -580,6 +585,15 @@ namespace Google.Apis.CloudBuild.v1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -619,6 +633,11 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 
+                /// <summary>The name of the `Build` to retrieve. Format:
+                /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -649,6 +668,15 @@ namespace Google.Apis.CloudBuild.v1
                             Name = "id",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -692,6 +720,11 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The parent of the collection of `Builds`. Format:
+                /// `projects/{project}/locations/location`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Parent { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -739,6 +772,15 @@ namespace Google.Apis.CloudBuild.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -860,10 +902,427 @@ namespace Google.Apis.CloudBuild.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Builds = new BuildsResource(service);
                 Operations = new OperationsResource(service);
 
             }
 
+            /// <summary>Gets the Builds resource.</summary>
+            public virtual BuildsResource Builds { get; }
+
+            /// <summary>The "builds" collection of methods.</summary>
+            public class BuildsResource
+            {
+                private const string Resource = "builds";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BuildsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Cancels a build in progress.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the `Build` to retrieve. Format:
+                /// `projects/{project}/locations/{location}/builds/{build}`</param>
+                public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string name)
+                {
+                    return new CancelRequest(service, body, name);
+                }
+
+                /// <summary>Cancels a build in progress.</summary>
+                public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the `Build` to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.CancelBuildRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Starts a build with the specified configuration. This method returns a long-running
+                /// `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build
+                /// status (such as `SUCCESS` or `FAILURE`).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource where this build will be created. Format:
+                /// `projects/{project}/locations/{location}`</param>
+                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.CreateBuildRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Starts a build with the specified configuration. This method returns a long-running
+                /// `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build
+                /// status (such as `SUCCESS` or `FAILURE`).</summary>
+                public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CreateBuildRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource where this build will be created. Format:
+                    /// `projects/{project}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.CreateBuildRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/builds";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns information about a previously requested build. The `Build` that is returned
+                /// includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.</summary>
+                /// <param name="name">The name of the `Build` to retrieve. Format:
+                /// `projects/{project}/locations/{location}/builds/{build}`</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns information about a previously requested build. The `Build` that is returned
+                /// includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.</summary>
+                public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the `Build` to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. ID of the build.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Id { get; set; }
+
+                    /// <summary>Required. ID of the project.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists previously requested builds. Previously requested builds may still be in-progress, or
+                /// may have finished successfully or unsuccessfully.</summary>
+                /// <param name="parent">The parent of the collection of `Builds`. Format:
+                /// `projects/{project}/locations/location`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists previously requested builds. Previously requested builds may still be in-progress, or
+                /// may have finished successfully or unsuccessfully.</summary>
+                public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent of the collection of `Builds`. Format:
+                    /// `projects/{project}/locations/location`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The raw filter text to constrain the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Number of results to return in the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. ID of the project.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/builds";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a new build based on the specified build. This method creates a new build using the
+                /// original build request, which may or may not result in an identical build. For triggered builds: *
+                /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result
+                /// in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the
+                /// original build built from the tip of a branch, the retried build will build from the tip of that
+                /// branch, which may not be the same revision as the original build. * If the original build specified
+                /// a commit sha or revision ID, the retried build will use the identical source. For builds that
+                /// specify `StorageSource`: * If the original build pulled source from Google Cloud Storage without
+                /// specifying the generation of the object, the new build will use the current object, which may be
+                /// different from the original build source. * If the original build pulled source from Cloud Storage
+                /// and specified the generation of the object, the new build will attempt to use the same object, which
+                /// may or may not be available depending on the bucket's lifecycle management settings.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the `Build` to retry. Format:
+                /// `projects/{project}/locations/{location}/builds/{build}`</param>
+                public virtual RetryRequest Retry(Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string name)
+                {
+                    return new RetryRequest(service, body, name);
+                }
+
+                /// <summary>Creates a new build based on the specified build. This method creates a new build using the
+                /// original build request, which may or may not result in an identical build. For triggered builds: *
+                /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result
+                /// in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the
+                /// original build built from the tip of a branch, the retried build will build from the tip of that
+                /// branch, which may not be the same revision as the original build. * If the original build specified
+                /// a commit sha or revision ID, the retried build will use the identical source. For builds that
+                /// specify `StorageSource`: * If the original build pulled source from Google Cloud Storage without
+                /// specifying the generation of the object, the new build will use the current object, which may be
+                /// different from the original build source. * If the original build pulled source from Cloud Storage
+                /// and specified the generation of the object, the new build will attempt to use the same object, which
+                /// may or may not be available depending on the bucket's lifecycle management settings.</summary>
+                public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Retry request.</summary>
+                    public RetryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the `Build` to retry. Format:
+                    /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.RetryBuildRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName => "retry";
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:retry";
+
+                    /// <summary>Initializes Retry parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1566,6 +2025,12 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logsBucket")]
         public virtual string LogsBucket { get; set; } 
 
+        /// <summary>Output only. The 'Build' name with format:
+        /// `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by
+        /// the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>Special options for this build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual BuildOptions Options { get; set; } 
@@ -1905,6 +2370,19 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Request to cancel an ongoing build.</summary>
     public class CancelBuildRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. ID of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The name of the `Build` to retrieve. Format:
+        /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. ID of the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1912,6 +2390,21 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to create a new build.</summary>
+    public class CreateBuildRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Build resource to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual Build Build { get; set; } 
+
+        /// <summary>Required. ID of the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2297,6 +2790,19 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Specifies a build to retry.</summary>
     public class RetryBuildRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Build ID of the original build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The name of the `Build` to retry. Format:
+        /// `projects/{project}/locations/{location}/builds/{build}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. ID of the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

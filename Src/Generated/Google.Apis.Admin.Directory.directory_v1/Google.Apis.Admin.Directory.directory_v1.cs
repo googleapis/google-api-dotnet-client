@@ -39,7 +39,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             Groups = new GroupsResource(this);
             Members = new MembersResource(this);
             Mobiledevices = new MobiledevicesResource(this);
-            Notifications = new NotificationsResource(this);
             Orgunits = new OrgunitsResource(this);
             Privileges = new PrivilegesResource(this);
             Resources = new ResourcesResource(this);
@@ -60,13 +59,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/admin/directory/v1/";
+            BaseUriOverride ?? "https://www.googleapis.com/";
         #else
-            "https://www.googleapis.com/admin/directory/v1/";
+            "https://www.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "admin/directory/v1/";
+        public override string BasePath => "";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
@@ -76,7 +75,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public override string BatchPath => "batch/admin/directory_v1";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Admin Directory API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Admin SDK.</summary>
         public class Scope
         {
             /// <summary>View and manage customer related information</summary>
@@ -117,9 +116,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>View groups on your domain</summary>
             public static string AdminDirectoryGroupReadonly = "https://www.googleapis.com/auth/admin.directory.group.readonly";
-
-            /// <summary>View and manage notifications received on your domain</summary>
-            public static string AdminDirectoryNotifications = "https://www.googleapis.com/auth/admin.directory.notifications";
 
             /// <summary>View and manage organization units on your domain</summary>
             public static string AdminDirectoryOrgunit = "https://www.googleapis.com/auth/admin.directory.orgunit";
@@ -165,7 +161,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Admin Directory API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Admin SDK.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage customer related information</summary>
@@ -206,9 +202,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>View groups on your domain</summary>
             public const string AdminDirectoryGroupReadonly = "https://www.googleapis.com/auth/admin.directory.group.readonly";
-
-            /// <summary>View and manage notifications received on your domain</summary>
-            public const string AdminDirectoryNotifications = "https://www.googleapis.com/auth/admin.directory.notifications";
 
             /// <summary>View and manage organization units on your domain</summary>
             public const string AdminDirectoryOrgunit = "https://www.googleapis.com/auth/admin.directory.orgunit";
@@ -283,9 +276,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Gets the Mobiledevices resource.</summary>
         public virtual MobiledevicesResource Mobiledevices { get; }
 
-        /// <summary>Gets the Notifications resource.</summary>
-        public virtual NotificationsResource Notifications { get; }
-
         /// <summary>Gets the Orgunits resource.</summary>
         public virtual OrgunitsResource Orgunits { get; }
 
@@ -323,18 +313,47 @@ namespace Google.Apis.Admin.Directory.directory_v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -354,14 +373,18 @@ namespace Google.Apis.Admin.Directory.directory_v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Directory parameter list.</summary>
         protected override void InitParameters()
@@ -369,12 +392,39 @@ namespace Google.Apis.Admin.Directory.directory_v1
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -423,9 +473,18 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -490,7 +549,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/asps/{codeId}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/asps/{codeId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -558,7 +617,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/asps/{codeId}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/asps/{codeId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -620,7 +679,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/asps";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/asps";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -657,14 +716,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
 
-        /// <summary>Stop watching resources through this channel</summary>
+        /// <summary>Stop watching resources through this channel.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
             return new StopRequest(service, body);
         }
 
-        /// <summary>Stop watching resources through this channel</summary>
+        /// <summary>Stop watching resources through this channel.</summary>
         public class StopRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -690,7 +749,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "/admin/directory_v1/channels/stop";
+            public override string RestPath => "admin/directory_v1/channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
             protected override void InitParameters()
@@ -764,7 +823,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos/{resourceId}/action";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos/{resourceId}/action";
 
             /// <summary>Initializes Action parameter list.</summary>
             protected override void InitParameters()
@@ -830,6 +889,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and
                 /// user)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -847,7 +908,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos/{deviceId}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -908,7 +969,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
+            /// <summary>Maximum number of results to return.</summary>
             /// [default: 100]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -921,6 +982,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Column to use for sorting results</summary>
             public enum OrderByEnum
             {
+                [Google.Apis.Util.StringValueAttribute("orderByUndefined")]
+                OrderByUndefined,
                 /// <summary>Chromebook location as annotated by the administrator.</summary>
                 [Google.Apis.Util.StringValueAttribute("annotatedLocation")]
                 AnnotatedLocation,
@@ -959,6 +1022,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and
                 /// user)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -968,7 +1033,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 FULL,
             }
 
-            /// <summary>Search string in the format provided by this Help Center article.</summary>
+            /// <summary>Search string in the format given at
+            /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -981,6 +1047,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// used</summary>
             public enum SortOrderEnum
             {
+                [Google.Apis.Util.StringValueAttribute("SORT_ORDER_UNDEFINED")]
+                SORTORDERUNDEFINED,
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING,
@@ -997,7 +1065,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1126,7 +1194,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos/moveDevicesToOu";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos/moveDevicesToOu";
 
             /// <summary>Initializes MoveDevicesToOu parameter list.</summary>
             protected override void InitParameters()
@@ -1155,7 +1223,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update Chrome OS Device. This method supports patch semantics.</summary>
+        /// <summary>Patch Chrome OS Device</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="deviceId">Immutable ID of
@@ -1165,7 +1233,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customerId, deviceId);
         }
 
-        /// <summary>Update Chrome OS Device. This method supports patch semantics.</summary>
+        /// <summary>Patch Chrome OS Device</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1194,6 +1262,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and
                 /// user)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1217,7 +1287,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos/{deviceId}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1294,6 +1364,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and
                 /// user)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1317,7 +1389,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/chromeos/{deviceId}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1403,7 +1475,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customers/{customerKey}";
+            public override string RestPath => "admin/directory/v1/customers/{customerKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1423,7 +1495,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Updates a customer. This method supports patch semantics.</summary>
+        /// <summary>Patch Customers via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerKey">Id of the customer to be updated</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
@@ -1431,7 +1503,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customerKey);
         }
 
-        /// <summary>Updates a customer. This method supports patch semantics.</summary>
+        /// <summary>Patch Customers via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1462,7 +1534,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customers/{customerKey}";
+            public override string RestPath => "admin/directory/v1/customers/{customerKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1521,7 +1593,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customers/{customerKey}";
+            public override string RestPath => "admin/directory/v1/customers/{customerKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1558,7 +1630,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
 
-        /// <summary>Deletes a Domain Alias of the customer.</summary>
+        /// <summary>Deletes a domain Alias of the customer.</summary>
         /// <param name="customer">Immutable ID of the G Suite account.</param>
         /// <param name="domainAliasName">Name of
         /// domain alias to be retrieved.</param>
@@ -1567,7 +1639,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new DeleteRequest(service, customer, domainAliasName);
         }
 
-        /// <summary>Deletes a Domain Alias of the customer.</summary>
+        /// <summary>Deletes a domain Alias of the customer.</summary>
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1596,7 +1668,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domainaliases/{domainAliasName}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1663,7 +1735,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domainaliases/{domainAliasName}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1692,7 +1764,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Inserts a Domain alias of the customer.</summary>
+        /// <summary>Inserts a domain alias of the customer.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias body, string customer)
@@ -1700,7 +1772,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new InsertRequest(service, body, customer);
         }
 
-        /// <summary>Inserts a Domain alias of the customer.</summary>
+        /// <summary>Inserts a domain alias of the customer.</summary>
         public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -1731,7 +1803,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domainaliases";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domainaliases";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1786,7 +1858,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domainaliases";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domainaliases";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1870,7 +1942,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domains/{domainName}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domains/{domainName}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1937,7 +2009,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domains/{domainName}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domains/{domainName}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2005,7 +2077,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domains";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domains";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2056,7 +2128,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/domains";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/domains";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2150,7 +2222,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "groups/{groupKey}/aliases/{alias}";
+                public override string RestPath => "admin/directory/v1/groups/{groupKey}/aliases/{alias}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -2218,7 +2290,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "groups/{groupKey}/aliases";
+                public override string RestPath => "admin/directory/v1/groups/{groupKey}/aliases";
 
                 /// <summary>Initializes Insert parameter list.</summary>
                 protected override void InitParameters()
@@ -2269,7 +2341,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "groups/{groupKey}/aliases";
+                public override string RestPath => "admin/directory/v1/groups/{groupKey}/aliases";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -2321,7 +2393,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2372,7 +2444,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2425,7 +2497,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups";
+            public override string RestPath => "admin/directory/v1/groups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2476,6 +2548,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Column to use for sorting results</summary>
             public enum OrderByEnum
             {
+                [Google.Apis.Util.StringValueAttribute("orderByUndefined")]
+                OrderByUndefined,
                 /// <summary>Email of the group.</summary>
                 [Google.Apis.Util.StringValueAttribute("email")]
                 Email,
@@ -2485,8 +2559,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Query string search. Should be of the form "". Complete documentation is at
-            /// https://developers.google.com/admin-sdk/directory/v1/guides/search-groups</summary>
+            /// <summary>Query string search. Should be of the form "". Complete documentation is at https:
+            /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -2499,6 +2573,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// used</summary>
             public enum SortOrderEnum
             {
+                [Google.Apis.Util.StringValueAttribute("SORT_ORDER_UNDEFINED")]
+                SORTORDERUNDEFINED,
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING,
@@ -2520,7 +2596,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups";
+            public override string RestPath => "admin/directory/v1/groups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2603,7 +2679,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update Group. This method supports patch semantics.</summary>
+        /// <summary>Patch Groups via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
@@ -2612,7 +2688,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, groupKey);
         }
 
-        /// <summary>Update Group. This method supports patch semantics.</summary>
+        /// <summary>Patch Groups via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2643,7 +2719,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2703,7 +2779,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2778,7 +2854,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members/{memberKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members/{memberKey}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2845,7 +2921,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members/{memberKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members/{memberKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2917,7 +2993,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/hasMember/{memberKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/hasMember/{memberKey}";
 
             /// <summary>Initializes HasMember parameter list.</summary>
             protected override void InitParameters()
@@ -2985,7 +3061,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3054,7 +3130,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3110,7 +3186,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update membership of a user in the specified group. This method supports patch semantics.</summary>
+        /// <summary>Patch Member via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
@@ -3121,7 +3197,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, groupKey, memberKey);
         }
 
-        /// <summary>Update membership of a user in the specified group. This method supports patch semantics.</summary>
+        /// <summary>Patch Member via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3157,7 +3233,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members/{memberKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members/{memberKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3233,7 +3309,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "groups/{groupKey}/members/{memberKey}";
+            public override string RestPath => "admin/directory/v1/groups/{groupKey}/members/{memberKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3325,7 +3401,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/mobile/{resourceId}/action";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}/action";
 
             /// <summary>Initializes Action parameter list.</summary>
             protected override void InitParameters()
@@ -3392,7 +3468,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/mobile/{resourceId}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -3458,6 +3534,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, model, status, type, and
                 /// status)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -3475,7 +3553,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/mobile/{resourceId}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3536,7 +3614,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of results to return.</summary>
+            /// <summary>Maximum number of results to return. Max allowed value is 100.</summary>
             /// [default: 100]
             /// [minimum: 1]
             /// [maximum: 100]
@@ -3550,6 +3628,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Column to use for sorting results</summary>
             public enum OrderByEnum
             {
+                [Google.Apis.Util.StringValueAttribute("orderByUndefined")]
+                OrderByUndefined,
                 /// <summary>Mobile Device serial number.</summary>
                 [Google.Apis.Util.StringValueAttribute("deviceId")]
                 DeviceId,
@@ -3587,6 +3667,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Restrict information returned to a set of selected fields.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
+                PROJECTIONUNDEFINED,
                 /// <summary>Includes only the basic metadata fields (e.g., deviceId, model, status, type, and
                 /// status)</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -3596,7 +3678,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 FULL,
             }
 
-            /// <summary>Search string in the format provided by this Help Center article.</summary>
+            /// <summary>Search string in the format given at
+            /// http://support.google.com/a/bin/answer.py?answer=1408863#search</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -3609,6 +3692,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// used</summary>
             public enum SortOrderEnum
             {
+                [Google.Apis.Util.StringValueAttribute("SORT_ORDER_UNDEFINED")]
+                SORTORDERUNDEFINED,
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING,
@@ -3625,7 +3710,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/devices/mobile";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/mobile";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3700,400 +3785,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
     }
 
-    /// <summary>The "notifications" collection of methods.</summary>
-    public class NotificationsResource
-    {
-        private const string Resource = "notifications";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public NotificationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Deletes a notification</summary>
-        /// <param name="customer">The unique ID for the customer's G Suite account. The customerId is also returned as part of
-        /// the Users resource.</param>
-        /// <param name="notificationId">The unique ID of the notification.</param>
-        public virtual DeleteRequest Delete(string customer, string notificationId)
-        {
-            return new DeleteRequest(service, customer, notificationId);
-        }
-
-        /// <summary>Deletes a notification</summary>
-        public class DeleteRequest : DirectoryBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string customer, string notificationId)
-                : base(service)
-            {
-                Customer = customer;
-                NotificationId = notificationId;
-                InitParameters();
-            }
-
-
-            /// <summary>The unique ID for the customer's G Suite account. The customerId is also returned as part of
-            /// the Users resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Customer { get; private set; }
-
-            /// <summary>The unique ID of the notification.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("notificationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string NotificationId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName => "delete";
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "DELETE";
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/notifications/{notificationId}";
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "customer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customer",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notificationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notificationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Retrieves a notification.</summary>
-        /// <param name="customer">The unique ID for the customer's G Suite account. The customerId is also returned as part of
-        /// the Users resource.</param>
-        /// <param name="notificationId">The unique ID of the notification.</param>
-        public virtual GetRequest Get(string customer, string notificationId)
-        {
-            return new GetRequest(service, customer, notificationId);
-        }
-
-        /// <summary>Retrieves a notification.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string customer, string notificationId)
-                : base(service)
-            {
-                Customer = customer;
-                NotificationId = notificationId;
-                InitParameters();
-            }
-
-
-            /// <summary>The unique ID for the customer's G Suite account. The customerId is also returned as part of
-            /// the Users resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Customer { get; private set; }
-
-            /// <summary>The unique ID of the notification.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("notificationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string NotificationId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/notifications/{notificationId}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "customer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customer",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notificationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notificationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Retrieves a list of notifications.</summary>
-        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
-        public virtual ListRequest List(string customer)
-        {
-            return new ListRequest(service, customer);
-        }
-
-        /// <summary>Retrieves a list of notifications.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notifications>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string customer)
-                : base(service)
-            {
-                Customer = customer;
-                InitParameters();
-            }
-
-
-            /// <summary>The unique ID for the customer's G Suite account.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Customer { get; private set; }
-
-            /// <summary>The ISO 639-1 code of the language notifications are returned in. The default is English
-            /// (en).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Language { get; set; }
-
-            /// <summary>Maximum number of notifications to return per page. The default is 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>The token to specify the page of results to retrieve.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/notifications";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "customer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customer",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Updates a notification. This method supports patch semantics.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
-        /// <param
-        /// name="notificationId">The unique ID of the notification.</param>
-        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
-        {
-            return new PatchRequest(service, body, customer, notificationId);
-        }
-
-        /// <summary>Updates a notification. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
-                : base(service)
-            {
-                Customer = customer;
-                NotificationId = notificationId;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The unique ID for the customer's G Suite account.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Customer { get; private set; }
-
-            /// <summary>The unique ID of the notification.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("notificationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string NotificationId { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Admin.Directory.directory_v1.Data.Notification Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName => "patch";
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/notifications/{notificationId}";
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "customer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customer",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notificationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notificationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Updates a notification.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
-        /// <param
-        /// name="notificationId">The unique ID of the notification.</param>
-        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
-        {
-            return new UpdateRequest(service, body, customer, notificationId);
-        }
-
-        /// <summary>Updates a notification.</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
-        {
-            /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
-                : base(service)
-            {
-                Customer = customer;
-                NotificationId = notificationId;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The unique ID for the customer's G Suite account.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Customer { get; private set; }
-
-            /// <summary>The unique ID of the notification.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("notificationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string NotificationId { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Admin.Directory.directory_v1.Data.Notification Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName => "update";
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PUT";
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/notifications/{notificationId}";
-
-            /// <summary>Initializes Update parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "customer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customer",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notificationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notificationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
-
     /// <summary>The "orgunits" collection of methods.</summary>
     public class OrgunitsResource
     {
@@ -4114,7 +3805,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
         /// the organizational unit or its ID</param>
-        public virtual DeleteRequest Delete(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual DeleteRequest Delete(string customerId, string orgUnitPath)
         {
             return new DeleteRequest(service, customerId, orgUnitPath);
         }
@@ -4123,7 +3814,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, string orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4138,7 +3829,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
+            public virtual string OrgUnitPath { get; private set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4148,7 +3839,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits{/orgUnitPath*}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -4171,7 +3862,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -4181,7 +3872,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
         /// the organizational unit or its ID</param>
-        public virtual GetRequest Get(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual GetRequest Get(string customerId, string orgUnitPath)
         {
             return new GetRequest(service, customerId, orgUnitPath);
         }
@@ -4190,7 +3881,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public GetRequest(Google.Apis.Services.IClientService service, string customerId, string orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4205,7 +3896,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
+            public virtual string OrgUnitPath { get; private set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4215,7 +3906,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits{/orgUnitPath*}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -4238,7 +3929,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -4283,7 +3974,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4337,6 +4028,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Whether to return all sub-organizations or just immediate children</summary>
             public enum TypeEnum
             {
+                [Google.Apis.Util.StringValueAttribute("typeUndefined")]
+                TypeUndefined,
                 /// <summary>All sub-organizational units.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
@@ -4353,7 +4046,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4391,21 +4084,21 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update organizational unit. This method supports patch semantics.</summary>
+        /// <summary>Patch organization unit via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
         /// the organizational unit or its ID</param>
-        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
             return new PatchRequest(service, body, customerId, orgUnitPath);
         }
 
-        /// <summary>Update organizational unit. This method supports patch semantics.</summary>
+        /// <summary>Patch organization unit via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4421,7 +4114,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
+            public virtual string OrgUnitPath { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4437,7 +4130,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits{/orgUnitPath*}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -4460,7 +4153,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -4471,7 +4164,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
         /// the organizational unit or its ID</param>
-        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
             return new UpdateRequest(service, body, customerId, orgUnitPath);
         }
@@ -4480,7 +4173,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4496,7 +4189,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
+            public virtual string OrgUnitPath { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4512,7 +4205,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/orgunits{/orgUnitPath*}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -4535,7 +4228,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^.*$",
                     });
             }
 
@@ -4589,7 +4282,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles/ALL/privileges";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles/ALL/privileges";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4650,7 +4343,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Deletes a building.</summary>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
-            /// <param name="buildingId">The ID
+            /// <param name="buildingId">The id
             /// of the building to delete.</param>
             public virtual DeleteRequest Delete(string customer, string buildingId)
             {
@@ -4675,7 +4368,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
-                /// <summary>The ID of the building to delete.</summary>
+                /// <summary>The id of the building to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BuildingId { get; private set; }
 
@@ -4687,7 +4380,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings/{buildingId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -4756,7 +4449,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings/{buildingId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -4820,6 +4513,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Source from which Building.coordinates are derived.</summary>
                 public enum CoordinatesSourceEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("COORDINATES_SOURCE_UNDEFINED")]
+                    COORDINATESSOURCEUNDEFINED,
                     /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
                     [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
                     CLIENTSPECIFIED,
@@ -4846,7 +4541,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings";
 
                 /// <summary>Initializes Insert parameter list.</summary>
                 protected override void InitParameters()
@@ -4918,7 +4613,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -4956,18 +4651,18 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a building. This method supports patch semantics.</summary>
+            /// <summary>Patches a building via Apiary Patch Orchestration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
-            /// <param name="buildingId">The ID
+            /// <param name="buildingId">The id
             /// of the building to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
             {
                 return new PatchRequest(service, body, customer, buildingId);
             }
 
-            /// <summary>Updates a building. This method supports patch semantics.</summary>
+            /// <summary>Patches a building via Apiary Patch Orchestration.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -4986,7 +4681,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
-                /// <summary>The ID of the building to update.</summary>
+                /// <summary>The id of the building to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BuildingId { get; private set; }
 
@@ -4998,6 +4693,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Source from which Building.coordinates are derived.</summary>
                 public enum CoordinatesSourceEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("COORDINATES_SOURCE_UNDEFINED")]
+                    COORDINATESSOURCEUNDEFINED,
                     /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
                     [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
                     CLIENTSPECIFIED,
@@ -5024,7 +4721,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PATCH";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings/{buildingId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -5066,7 +4763,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
-            /// <param name="buildingId">The ID
+            /// <param name="buildingId">The id
             /// of the building to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
             {
@@ -5092,7 +4789,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
-                /// <summary>The ID of the building to update.</summary>
+                /// <summary>The id of the building to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BuildingId { get; private set; }
 
@@ -5104,6 +4801,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Source from which Building.coordinates are derived.</summary>
                 public enum CoordinatesSourceEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("COORDINATES_SOURCE_UNDEFINED")]
+                    COORDINATESSOURCEUNDEFINED,
                     /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
                     [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
                     CLIENTSPECIFIED,
@@ -5130,7 +4829,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PUT";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/buildings/{buildingId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
                 protected override void InitParameters()
@@ -5227,7 +4926,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars/{calendarResourceId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -5296,7 +4995,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars/{calendarResourceId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -5366,7 +5065,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars";
 
                 /// <summary>Initializes Insert parameter list.</summary>
                 protected override void InitParameters()
@@ -5431,10 +5130,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                 /// <summary>String query used to filter results. Should be of the form "field operator value" where
                 /// field can be any of supported fields and operators can be any of supported operations. Operators
-                /// include '=' for exact match and ':' for prefix match or HAS match where applicable. For prefix
-                /// match, the value should always be followed by a *. Supported fields include generatedResourceName,
-                /// name, buildingId, featureInstances.feature.name. For example buildingId=US-NYC-9TH AND
-                /// featureInstances.feature.name:Phone.</summary>
+                /// include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where
+                /// applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and
+                /// AND are supported (in this order of precedence). Supported fields include generatedResourceName,
+                /// name, buildingId, floor_name, capacity, featureInstances.feature.name. For example buildingId=US-
+                /// NYC-9TH AND featureInstances.feature.name:Phone.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -5446,7 +5146,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -5502,11 +5202,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a calendar resource.
-            ///
-            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
-            /// Fields that are not present in the request will be preserved. This method supports patch
-            /// semantics.</summary>
+            /// <summary>Patches a calendar resource via Apiary Patch Orchestration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
@@ -5517,11 +5213,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, calendarResourceId);
             }
 
-            /// <summary>Updates a calendar resource.
-            ///
-            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
-            /// Fields that are not present in the request will be preserved. This method supports patch
-            /// semantics.</summary>
+            /// <summary>Patches a calendar resource via Apiary Patch Orchestration.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -5558,7 +5250,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PATCH";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars/{calendarResourceId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -5587,10 +5279,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a calendar resource.
-            ///
-            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
-            /// Fields that are not present in the request will be preserved.</summary>
+            /// <summary>Updates a calendar resource. This method supports patch semantics, meaning you only need to
+            /// include the fields you wish to update. Fields that are not present in the request will be
+            /// preserved.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
@@ -5601,10 +5292,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new UpdateRequest(service, body, customer, calendarResourceId);
             }
 
-            /// <summary>Updates a calendar resource.
-            ///
-            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
-            /// Fields that are not present in the request will be preserved.</summary>
+            /// <summary>Updates a calendar resource. This method supports patch semantics, meaning you only need to
+            /// include the fields you wish to update. Fields that are not present in the request will be
+            /// preserved.</summary>
             public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -5641,7 +5331,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PUT";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/calendars/{calendarResourceId}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
                 protected override void InitParameters()
@@ -5729,7 +5419,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features/{featureKey}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features/{featureKey}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -5798,7 +5488,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features/{featureKey}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features/{featureKey}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -5868,7 +5558,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features";
 
                 /// <summary>Initializes Insert parameter list.</summary>
                 protected override void InitParameters()
@@ -5931,7 +5621,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -5969,7 +5659,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a feature. This method supports patch semantics.</summary>
+            /// <summary>Patches a feature via Apiary Patch Orchestration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
@@ -5980,7 +5670,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, featureKey);
             }
 
-            /// <summary>Updates a feature. This method supports patch semantics.</summary>
+            /// <summary>Patches a feature via Apiary Patch Orchestration.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6017,7 +5707,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PATCH";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features/{featureKey}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features/{featureKey}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -6094,7 +5784,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features/{oldName}/rename";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features/{oldName}/rename";
 
                 /// <summary>Initializes Rename parameter list.</summary>
                 protected override void InitParameters()
@@ -6171,7 +5861,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PUT";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "customer/{customer}/resources/features/{featureKey}";
+                public override string RestPath => "admin/directory/v1/customer/{customer}/resources/features/{featureKey}";
 
                 /// <summary>Initializes Update parameter list.</summary>
                 protected override void InitParameters()
@@ -6256,7 +5946,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roleassignments/{roleAssignmentId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6323,7 +6013,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roleassignments/{roleAssignmentId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6391,7 +6081,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roleassignments";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roleassignments";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6462,7 +6152,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roleassignments";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roleassignments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6573,7 +6263,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles/{roleId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles/{roleId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6640,7 +6330,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles/{roleId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles/{roleId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6708,7 +6398,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6769,7 +6459,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6807,7 +6497,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Updates a role. This method supports patch semantics.</summary>
+        /// <summary>Patch role via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable ID of the G Suite account.</param>
         /// <param name="roleId">Immutable ID of the
@@ -6817,7 +6507,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customer, roleId);
         }
 
-        /// <summary>Updates a role. This method supports patch semantics.</summary>
+        /// <summary>Patch role via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -6853,7 +6543,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles/{roleId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles/{roleId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6928,7 +6618,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customer}/roles/{roleId}";
+            public override string RestPath => "admin/directory/v1/customer/{customer}/roles/{roleId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7012,7 +6702,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas/{schemaKey}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7079,7 +6769,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas/{schemaKey}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7147,7 +6837,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7198,7 +6888,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7218,7 +6908,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update schema. This method supports patch semantics.</summary>
+        /// <summary>Patch Schema via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
@@ -7228,7 +6918,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customerId, schemaKey);
         }
 
-        /// <summary>Update schema. This method supports patch semantics.</summary>
+        /// <summary>Patch Schema via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -7264,7 +6954,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas/{schemaKey}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7339,7 +7029,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "customer/{customerId}/schemas/{schemaKey}";
+            public override string RestPath => "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7425,7 +7115,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/tokens/{clientId}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/tokens/{clientId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7494,7 +7184,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/tokens/{clientId}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/tokens/{clientId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7556,7 +7246,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/tokens";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/tokens";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7651,7 +7341,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/aliases/{alias}";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/aliases/{alias}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -7719,7 +7409,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/aliases";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/aliases";
 
                 /// <summary>Initializes Insert parameter list.</summary>
                 protected override void InitParameters()
@@ -7762,21 +7452,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
-                /// <summary>Event on which subscription is intended (if subscribing)</summary>
-                [Google.Apis.Util.RequestParameterAttribute("event", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<EventEnum> Event { get; set; }
-
-                /// <summary>Event on which subscription is intended (if subscribing)</summary>
-                public enum EventEnum
-                {
-                    /// <summary>Alias Created Event</summary>
-                    [Google.Apis.Util.StringValueAttribute("add")]
-                    Add,
-                    /// <summary>Alias Deleted Event</summary>
-                    [Google.Apis.Util.StringValueAttribute("delete")]
-                    Delete,
-                }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -7785,7 +7460,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/aliases";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/aliases";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -7801,20 +7476,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "event", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "event",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
 
-            /// <summary>Watch for changes in user aliases list</summary>
+            /// <summary>Watch for changes in users list</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
@@ -7822,7 +7488,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new WatchRequest(service, body, userKey);
             }
 
-            /// <summary>Watch for changes in user aliases list</summary>
+            /// <summary>Watch for changes in users list</summary>
             public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Channel>
             {
                 /// <summary>Constructs a new Watch request.</summary>
@@ -7846,6 +7512,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Event on which subscription is intended (if subscribing)</summary>
                 public enum EventEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("eventUndefined")]
+                    EventUndefined,
                     /// <summary>Alias Created Event</summary>
                     [Google.Apis.Util.StringValueAttribute("add")]
                     Add,
@@ -7868,7 +7536,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "POST";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/aliases/watch";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/aliases/watch";
 
                 /// <summary>Initializes Watch parameter list.</summary>
                 protected override void InitParameters()
@@ -7947,7 +7615,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "DELETE";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/photos/thumbnail";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/photos/thumbnail";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -7998,7 +7666,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "GET";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/photos/thumbnail";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/photos/thumbnail";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -8018,7 +7686,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Add a photo for the user. This method supports patch semantics.</summary>
+            /// <summary>Patch Photo via Apiary Patch Orchestration</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
@@ -8026,7 +7694,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, userKey);
             }
 
-            /// <summary>Add a photo for the user. This method supports patch semantics.</summary>
+            /// <summary>Patch Photo via Apiary Patch Orchestration</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -8057,7 +7725,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PATCH";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/photos/thumbnail";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/photos/thumbnail";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -8116,7 +7784,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public override string HttpMethod => "PUT";
 
                 ///<summary>Gets the REST path.</summary>
-                public override string RestPath => "users/{userKey}/photos/thumbnail";
+                public override string RestPath => "admin/directory/v1/users/{userKey}/photos/thumbnail";
 
                 /// <summary>Initializes Update parameter list.</summary>
                 protected override void InitParameters()
@@ -8168,7 +7836,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "DELETE";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8224,6 +7892,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>What subset of fields to fetch for this user.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("projectionUndefined")]
+                ProjectionUndefined,
                 /// <summary>Do not include any custom fields for the user.</summary>
                 [Google.Apis.Util.StringValueAttribute("basic")]
                 Basic,
@@ -8243,6 +7913,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
             public enum ViewTypeEnum
             {
+                [Google.Apis.Util.StringValueAttribute("view_type_undefined")]
+                ViewTypeUndefined,
                 /// <summary>Fetches the ADMIN_VIEW of the user.</summary>
                 [Google.Apis.Util.StringValueAttribute("admin_view")]
                 AdminView,
@@ -8259,7 +7931,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8339,7 +8011,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users";
+            public override string RestPath => "admin/directory/v1/users";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8382,30 +8054,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Domain { get; set; }
 
-            /// <summary>Event on which subscription is intended (if subscribing)</summary>
-            [Google.Apis.Util.RequestParameterAttribute("event", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<EventEnum> Event { get; set; }
-
-            /// <summary>Event on which subscription is intended (if subscribing)</summary>
-            public enum EventEnum
-            {
-                /// <summary>User Created Event</summary>
-                [Google.Apis.Util.StringValueAttribute("add")]
-                Add,
-                /// <summary>User Deleted Event</summary>
-                [Google.Apis.Util.StringValueAttribute("delete")]
-                Delete,
-                /// <summary>User Admin Status Change Event</summary>
-                [Google.Apis.Util.StringValueAttribute("makeAdmin")]
-                MakeAdmin,
-                /// <summary>User Undeleted Event</summary>
-                [Google.Apis.Util.StringValueAttribute("undelete")]
-                Undelete,
-                /// <summary>User Updated Event</summary>
-                [Google.Apis.Util.StringValueAttribute("update")]
-                Update,
-            }
-
             /// <summary>Maximum number of results to return.</summary>
             /// [default: 100]
             /// [minimum: 1]
@@ -8420,6 +8068,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Column to use for sorting results</summary>
             public enum OrderByEnum
             {
+                [Google.Apis.Util.StringValueAttribute("orderByUndefined")]
+                OrderByUndefined,
                 /// <summary>Primary email of the user.</summary>
                 [Google.Apis.Util.StringValueAttribute("email")]
                 Email,
@@ -8443,6 +8093,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>What subset of fields to fetch for this user.</summary>
             public enum ProjectionEnum
             {
+                [Google.Apis.Util.StringValueAttribute("projectionUndefined")]
+                ProjectionUndefined,
                 /// <summary>Do not include any custom fields for the user.</summary>
                 [Google.Apis.Util.StringValueAttribute("basic")]
                 Basic,
@@ -8454,8 +8106,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 Full,
             }
 
-            /// <summary>Query string search. Should be of the form "". Complete documentation is at
-            /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users</summary>
+            /// <summary>Query string search. Should be of the form "". Complete documentation is at https:
+            /// //developers.google.com/admin-sdk/directory/v1/guides/search-users</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -8470,6 +8122,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Whether to return results in ascending or descending order.</summary>
             public enum SortOrderEnum
             {
+                [Google.Apis.Util.StringValueAttribute("SORT_ORDER_UNDEFINED")]
+                SORTORDERUNDEFINED,
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING,
@@ -8486,6 +8140,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
             public enum ViewTypeEnum
             {
+                [Google.Apis.Util.StringValueAttribute("view_type_undefined")]
+                ViewTypeUndefined,
                 /// <summary>Fetches the ADMIN_VIEW of the user.</summary>
                 [Google.Apis.Util.StringValueAttribute("admin_view")]
                 AdminView,
@@ -8502,7 +8158,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users";
+            public override string RestPath => "admin/directory/v1/users";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8531,15 +8187,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     "domain", new Google.Apis.Discovery.Parameter
                     {
                         Name = "domain",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "event", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "event",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -8660,7 +8307,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/makeAdmin";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/makeAdmin";
 
             /// <summary>Initializes MakeAdmin parameter list.</summary>
             protected override void InitParameters()
@@ -8680,7 +8327,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>update user. This method supports patch semantics.</summary>
+        /// <summary>Patch Users via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">Email or immutable ID of the user. If ID, it should match with id of user object</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
@@ -8688,7 +8335,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, userKey);
         }
 
-        /// <summary>update user. This method supports patch semantics.</summary>
+        /// <summary>Patch Users via Apiary Patch Orchestration</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -8719,7 +8366,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PATCH";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8778,7 +8425,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/undelete";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/undelete";
 
             /// <summary>Initializes Undelete parameter list.</summary>
             protected override void InitParameters()
@@ -8837,7 +8484,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "PUT";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}";
+            public override string RestPath => "admin/directory/v1/users/{userKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8876,28 +8523,25 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Comma-separated list of schema names. All fields from these schemas are fetched. This should
-            /// only be set when projection=custom.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customFieldMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomFieldMask { get; set; }
-
             /// <summary>Immutable ID of the G Suite account. In case of multi-domain, to fetch all users for a
             /// customer, fill this field instead of domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
 
             /// <summary>Name of the domain. Fill this field to get users from only this domain. To return all users in
-            /// a multi-domain fill customer field instead.</summary>
+            /// a multi-domain fill customer field instead."</summary>
             [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Domain { get; set; }
 
-            /// <summary>Event on which subscription is intended (if subscribing)</summary>
+            /// <summary>Event on which subscription is intended</summary>
             [Google.Apis.Util.RequestParameterAttribute("event", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<EventEnum> Event { get; set; }
 
-            /// <summary>Event on which subscription is intended (if subscribing)</summary>
+            /// <summary>Event on which subscription is intended</summary>
             public enum EventEnum
             {
+                [Google.Apis.Util.StringValueAttribute("eventTypeUnspecified")]
+                EventTypeUnspecified,
                 /// <summary>User Created Event</summary>
                 [Google.Apis.Util.StringValueAttribute("add")]
                 Add,
@@ -8915,94 +8559,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 Update,
             }
 
-            /// <summary>Maximum number of results to return.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 500]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
-
-            /// <summary>Column to use for sorting results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
-
-            /// <summary>Column to use for sorting results</summary>
-            public enum OrderByEnum
-            {
-                /// <summary>Primary email of the user.</summary>
-                [Google.Apis.Util.StringValueAttribute("email")]
-                Email,
-                /// <summary>User's family name.</summary>
-                [Google.Apis.Util.StringValueAttribute("familyName")]
-                FamilyName,
-                /// <summary>User's given name.</summary>
-                [Google.Apis.Util.StringValueAttribute("givenName")]
-                GivenName,
-            }
-
-            /// <summary>Token to specify next page in the list</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>What subset of fields to fetch for this user.</summary>
-            /// [default: basic]
-            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
-
-            /// <summary>What subset of fields to fetch for this user.</summary>
-            public enum ProjectionEnum
-            {
-                /// <summary>Do not include any custom fields for the user.</summary>
-                [Google.Apis.Util.StringValueAttribute("basic")]
-                Basic,
-                /// <summary>Include custom fields from schemas mentioned in customFieldMask.</summary>
-                [Google.Apis.Util.StringValueAttribute("custom")]
-                Custom,
-                /// <summary>Include all fields associated with this user.</summary>
-                [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
-            }
-
-            /// <summary>Query string search. Should be of the form "". Complete documentation is at
-            /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>If set to true, retrieves the list of deleted users. (Default: false)</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ShowDeleted { get; set; }
-
-            /// <summary>Whether to return results in ascending or descending order.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-            /// <summary>Whether to return results in ascending or descending order.</summary>
-            public enum SortOrderEnum
-            {
-                /// <summary>Ascending order.</summary>
-                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
-                /// <summary>Descending order.</summary>
-                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
-            }
-
-            /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
-            /// [default: admin_view]
-            [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
-
-            /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
-            public enum ViewTypeEnum
-            {
-                /// <summary>Fetches the ADMIN_VIEW of the user.</summary>
-                [Google.Apis.Util.StringValueAttribute("admin_view")]
-                AdminView,
-                /// <summary>Fetches the DOMAIN_PUBLIC view of the user.</summary>
-                [Google.Apis.Util.StringValueAttribute("domain_public")]
-                DomainPublic,
-            }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Admin.Directory.directory_v1.Data.Channel Body { get; set; }
@@ -9017,22 +8573,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/watch";
+            public override string RestPath => "admin/directory/v1/users/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customFieldMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customFieldMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "customer", new Google.Apis.Discovery.Parameter
                     {
@@ -9058,78 +8605,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "basic",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "viewType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "viewType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "admin_view",
                         Pattern = null,
                     });
             }
@@ -9184,7 +8659,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/verificationCodes/generate";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/verificationCodes/generate";
 
             /// <summary>Initializes Generate parameter list.</summary>
             protected override void InitParameters()
@@ -9235,7 +8710,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "POST";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/verificationCodes/invalidate";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/verificationCodes/invalidate";
 
             /// <summary>Initializes Invalidate parameter list.</summary>
             protected override void InitParameters()
@@ -9288,7 +8763,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public override string HttpMethod => "GET";
 
             ///<summary>Gets the REST path.</summary>
-            public override string RestPath => "users/{userKey}/verificationCodes";
+            public override string RestPath => "admin/directory/v1/users/{userKey}/verificationCodes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9316,23 +8791,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Alias object in Directory API.</summary>
     public class Alias : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A alias email</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
         public virtual string AliasValue { get; set; } 
 
-        /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Unique id of the group (Read-only) Unique id of the user (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Kind of resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Group's primary email (Read-only) User's primary email (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; } 
 
@@ -9341,21 +8811,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON response template to list aliases in Directory API.</summary>
     public class Aliases : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of alias objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<Alias> AliasesValue { get; set; } 
 
-        /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Kind of resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
     }    
 
-    /// <summary>The template that returns individual ASP (Access Code) data.</summary>
+    /// <summary>The template that returns individual ASP (Access Code) data. STEPLADDER: Generated unstable field
+    /// number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number
+    /// for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class Asp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique ID of the ASP.</summary>
@@ -9389,6 +8858,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class Asps : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -9405,7 +8877,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Building object in Directory API.</summary>
+    /// <summary>Public API: Resources.buildings</summary>
     public class Building : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The postal address of the building. See PostalAddress for details. Note that only a single address
@@ -9449,7 +8921,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for the postal address of a building in Directory API.</summary>
+    /// <summary>Public API: Resources.buildings</summary>
     public class BuildingAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unstructured address lines describing the lower levels of an address.</summary>
@@ -9487,7 +8959,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for coordinates of a building in Directory API.</summary>
+    /// <summary>Public API: Resources.buildings</summary>
     public class BuildingCoordinates : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Latitude in decimal degrees.</summary>
@@ -9502,7 +8974,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Building List Response object in Directory API.</summary>
+    /// <summary>Public API: Resources.buildings</summary>
     public class Buildings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Buildings in this page of results.</summary>
@@ -9524,7 +8996,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Calendar Resource object in Directory API.</summary>
+    /// <summary>Public API: Resources.calendars</summary>
     public class CalendarResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unique ID for the building a resource is located in.</summary>
@@ -9539,6 +9011,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etags")]
         public virtual string Etags { get; set; } 
 
+        /// <summary>Instances of features for the calendar resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureInstances")]
         public virtual object FeatureInstances { get; set; } 
 
@@ -9594,7 +9067,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Calendar Resource List Response object in Directory API.</summary>
+    /// <summary>Public API: Resources.calendars</summary>
     public class CalendarResources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -9668,7 +9141,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Chrome Os Device resource in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class ChromeOsDevice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of active time ranges (Read-only)</summary>
@@ -9713,10 +9188,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Collections.Generic.IList<ChromeOsDevice.DiskVolumeReportsData> DiskVolumeReports { get; set; } 
 
         /// <summary>(Read-only) Built-in MAC address for the docking station that the device connected to. Factory sets
-        /// Media access control address (MAC address) assigned for use by a dock. Currently this is only supported on
-        /// the Dell Arcada / Sarien devices and the Dell WD19 / WD19TB Docking Station. It is reserved specifically for
-        /// MAC pass through device policy. The format is twelve (12) hexadecimal digits without any delimiter
-        /// (uppercase letters). This is only relevant for Dell devices.</summary>
+        /// Media access control address (MAC address) assigned for use by a dock. It is reserved specifically for MAC
+        /// pass through device policy. The format is twelve (12) hexadecimal digits without any delimiter (uppercase
+        /// letters). This is only relevant for some devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockMacAddress")]
         public virtual string DockMacAddress { get; set; } 
 
@@ -9760,7 +9234,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
-        /// <summary>Contains last used network (Read-only)</summary>
+        /// <summary>Contains last known network (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastKnownNetwork")]
         public virtual System.Collections.Generic.IList<ChromeOsDevice.LastKnownNetworkData> LastKnownNetwork { get; set; } 
 
@@ -9981,13 +9455,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }    
 
+        /// <summary>Information for an ip address.</summary>
         public class LastKnownNetworkData
         {
-            /// <summary>The IP address</summary>
+            /// <summary>The IP address.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
             public virtual string IpAddress { get; set; } 
 
-            /// <summary>The WAN IP address</summary>
+            /// <summary>The WAN IP address.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("wanIpAddress")]
             public virtual string WanIpAddress { get; set; } 
 
@@ -10060,7 +9535,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }    
 
-    /// <summary>JSON request template for firing actions on ChromeOs Device in Directory Devices API.</summary>
     public class ChromeOsDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action to be taken on the ChromeOs Device</summary>
@@ -10074,7 +9548,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON response template for List Chrome OS Devices operation in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class ChromeOsDevices : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of Chrome OS Device objects.</summary>
@@ -10095,7 +9571,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON request template for moving ChromeOs Device to given OU in Directory Devices API.</summary>
     public class ChromeOsMoveDevicesToOu : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ChromeOs Devices to be moved to OU</summary>
@@ -10106,7 +9581,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Customer Resource object in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class Customer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The customer's secondary contact email address. This email address cannot be on the same domain as
@@ -10163,7 +9640,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for postal address of a customer.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'address_line2' to avoid collision. (See
+    /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field 'address_line3' to
+    /// avoid collision. (See http://go/stepladder-help#fieldNumber)</summary>
     public class CustomerPostalAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A customer's physical address. The address can be composed of one to three lines.</summary>
@@ -10196,7 +9675,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string OrganizationName { get; set; } 
 
         /// <summary>The postal code. A postalCode example is a postal zip code such as 10009. This is in accordance
-        /// with - http://portablecontacts.net/draft-spec.html#address_element.</summary>
+        /// with - http: //portablecontacts.net/draft-spec.html#address_element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; } 
 
@@ -10208,7 +9687,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Domain Alias object in Directory API.</summary>
     public class DomainAlias : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The creation time of the domain alias. (Read-only).</summary>
@@ -10238,7 +9716,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template to list domain aliases in Directory API.</summary>
     public class DomainAliases : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of domain alias objects.</summary>
@@ -10255,7 +9732,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Domain object in Directory API.</summary>
     public class Domains : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Creation time of the domain. (Read-only).</summary>
@@ -10288,7 +9764,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template to list Domains in Directory API.</summary>
     public class Domains2 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of domain objects.</summary>
@@ -10324,7 +9799,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for a "feature instance".</summary>
+    /// <summary>JSON template for a feature instance.</summary>
     public class FeatureInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The feature that this is an instance of. A calendar resource may have multiple instances of a
@@ -10336,7 +9811,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON request template for renaming a feature.</summary>
     public class FeatureRename : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>New name of the feature.</summary>
@@ -10347,7 +9821,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Feature List Response object in Directory API.</summary>
+    /// <summary>Public API: Resources.features</summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10369,7 +9843,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Group resource in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Is the group created by admin (Read-only) *</summary>
@@ -10414,7 +9890,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List Groups operation in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class Groups : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10435,7 +9913,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Member resource in Directory API.</summary>
     public class Member : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Delivery settings of member</summary>
@@ -10450,8 +9927,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The unique ID of the group member. A member id can be used as a member request URI's memberKey.
-        /// Unique identifier of group (Read-only) Unique identifier of member (Read-only)</summary>
+        /// <summary>Unique identifier of group (Read-only) Unique identifier of member (Read-only) The unique ID of the
+        /// group member. A member id can be used as a member request URI's memberKey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -10473,7 +9950,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List Members operation in Directory API.</summary>
     public class Members : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10497,8 +9973,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Has Member response in Directory API.</summary>
     public class MembersHasMember : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies whether the given user is a member of the group. Membership can be direct or
-        /// nested.</summary>
+        /// <summary>Output only. Identifies whether the given user is a member of the group. Membership can be direct
+        /// or nested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMember")]
         public virtual System.Nullable<bool> IsMember { get; set; } 
 
@@ -10506,7 +9982,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Mobile Device resource in Directory API.</summary>
     public class MobileDevice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Adb (USB debugging) enabled or disabled on device (Read-only)</summary>
@@ -10726,7 +10201,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }    
 
-    /// <summary>JSON request template for firing commands on Mobile Device in Directory Devices API.</summary>
     public class MobileDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action to be taken on the Mobile Device</summary>
@@ -10737,7 +10211,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON response template for List Mobile Devices operation in Directory API.</summary>
     public class MobileDevices : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10758,82 +10231,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>Template for a notification resource.</summary>
-    public class Notification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Body of the notification (Read-only)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
-
-        /// <summary>ETag of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>Address from which the notification is received (Read-only)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromAddress")]
-        public virtual string FromAddress { get; set; } 
-
-        /// <summary>Boolean indicating whether the notification is unread or not.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isUnread")]
-        public virtual System.Nullable<bool> IsUnread { get; set; } 
-
-        /// <summary>The type of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationId")]
-        public virtual string NotificationId { get; set; } 
-
-        /// <summary>Time at which notification was sent (Read-only)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
-        public virtual string SendTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> SendTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(SendTimeRaw);
-            }
-            set
-            {
-                SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
-
-        /// <summary>Subject of the notification (Read-only)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
-        public virtual string Subject { get; set; } 
-
-    }    
-
-    /// <summary>Template for notifications list response.</summary>
-    public class Notifications : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ETag of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>List of notifications in this page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Notification> Items { get; set; } 
-
-        /// <summary>The type of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Token for fetching the next page of notifications.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>Number of unread notification for the domain.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreadNotificationsCount")]
-        public virtual System.Nullable<int> UnreadNotificationsCount { get; set; } 
-
-    }    
-
-    /// <summary>JSON template for Org Unit resource in Directory API.</summary>
+    /// <summary>JSON template for Org Unit resource in Directory API. STEPLADDER: Generated unstable field number for
+    /// field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
+    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class OrgUnit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Should block inheritance</summary>
@@ -10874,7 +10274,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List Organization Units operation in Directory API.</summary>
+    /// <summary>JSON response template for List Organization Units operation in Directory API. STEPLADDER: Generated
+    /// unstable field number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+    /// unstable field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class OrgUnits : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10891,7 +10293,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for privilege resource in Directory API.</summary>
     public class Privilege : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of child privileges. Privileges for a service form a tree. Each privilege can have a list of
@@ -10926,7 +10327,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List privileges operation in Directory API.</summary>
     public class Privileges : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10943,7 +10343,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for role resource in Directory API.</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -10994,7 +10393,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }    
 
-    /// <summary>JSON template for roleAssignment resource in Directory API.</summary>
     public class RoleAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique ID of the user this role is assigned to.</summary>
@@ -11022,13 +10420,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roleId")]
         public virtual System.Nullable<long> RoleId { get; set; } 
 
-        /// <summary>The scope in which this role is assigned. Possible values are: - CUSTOMER - ORG_UNIT</summary>
+        /// <summary>The scope in which this role is assigned. Possible values are: - CUSTOMER - ORG_UNIT </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopeType")]
         public virtual string ScopeType { get; set; } 
 
     }    
 
-    /// <summary>JSON response template for List roleAssignments operation in Directory API.</summary>
     public class RoleAssignments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -11039,7 +10436,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<RoleAssignment> Items { get; set; } 
 
-        /// <summary>The type of the API resource. This is always admin#directory#roleAssignments.</summary>
+        /// <summary>The type of the API resource. This is always admin#directory#roleAssignments .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -11048,7 +10445,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List roles operation in Directory API.</summary>
     public class Roles : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -11068,7 +10464,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for Schema resource in Directory API.</summary>
+    /// <summary>JSON template for Schema resource in Directory API. STEPLADDER: Generated unstable field number for
+    /// field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
+    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class Schema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Display name for the schema.</summary>
@@ -11097,7 +10495,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for FieldSpec resource for Schemas in Directory API.</summary>
+    /// <summary>JSON template for FieldSpec resource for Schemas in Directory API. STEPLADDER: Generated unstable field
+    /// number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number
+    /// for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class SchemaFieldSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Display Name of the field.</summary>
@@ -11161,7 +10561,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
     }    
 
-    /// <summary>JSON response template for List Schema operation in Directory API.</summary>
+    /// <summary>JSON response template for List Schema operation in Directory API. STEPLADDER: Generated unstable field
+    /// number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number
+    /// for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class Schemas : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -11178,7 +10580,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for token resource in Directory API.</summary>
+    /// <summary>JSON template for token resource in Directory API. STEPLADDER: Generated unstable field number for
+    /// field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
+    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class Token : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the application is registered with Google. The value is true if the application has an
@@ -11217,7 +10621,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List tokens operation in Directory API.</summary>
+    /// <summary>JSON response template for List tokens operation in Directory API. STEPLADDER: Generated unstable field
+    /// number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number
+    /// for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class Tokens : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -11234,17 +10640,37 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for User object in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'external_ids' to avoid collision. (See
+    /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field 'relations' to
+    /// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+    /// field 'addresses' to avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+    /// field number for field 'organizations' to avoid collision. (See http://go/stepladder-help#fieldNumber)
+    /// STEPLADDER: Generated unstable field number for field 'phones' to avoid collision. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'languages' to avoid collision. (See
+    /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field 'posix_accounts' to
+    /// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+    /// field 'ssh_public_keys' to avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+    /// unstable field number for field 'notes' to avoid collision. (See http://go/stepladder-help#fieldNumber)
+    /// STEPLADDER: Generated unstable field number for field 'websites' to avoid collision. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'locations' to avoid collision. (See
+    /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field 'keywords' to avoid
+    /// collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
+    /// 'gender' to avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+    /// number for field 'thumbnail_photo_etag' to avoid collision. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Addresses of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<UserAddress> Addresses { get; set; } 
 
-        /// <summary>Indicates if user has agreed to terms (Read-only)</summary>
+        /// <summary>Output only. Indicates if user has agreed to terms (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agreedToTerms")]
         public virtual System.Nullable<bool> AgreedToTerms { get; set; } 
 
-        /// <summary>List of aliases (Read-only)</summary>
+        /// <summary>Output only. List of aliases (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
 
@@ -11276,9 +10702,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>Custom fields of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSchemas")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IDictionary<string,object>> CustomSchemas { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,UserCustomProperties> CustomSchemas { get; set; } 
 
-        /// <summary>CustomerId of User (Read-only)</summary>
+        /// <summary>Output only. CustomerId of User (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
@@ -11299,16 +10725,19 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
+        /// <summary>Emails of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<UserEmail> Emails { get; set; } 
 
-        /// <summary>ETag of the resource.</summary>
+        /// <summary>Output only. ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
+        /// <summary>The external Ids of User *</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
         public virtual System.Collections.Generic.IList<UserExternalId> ExternalIds { get; set; } 
 
+        /// <summary>Gender of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual object Gender { get; set; } 
 
@@ -11320,6 +10749,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
+        /// <summary>User's Instant Messenger</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ims")]
         public virtual System.Collections.Generic.IList<UserIm> Ims { get; set; } 
 
@@ -11331,33 +10761,35 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipWhitelisted")]
         public virtual System.Nullable<bool> IpWhitelisted { get; set; } 
 
-        /// <summary>Boolean indicating if the user is admin (Read-only)</summary>
+        /// <summary>Output only. Boolean indicating if the user is admin (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAdmin")]
         public virtual System.Nullable<bool> IsAdmin { get; set; } 
 
-        /// <summary>Boolean indicating if the user is delegated admin (Read-only)</summary>
+        /// <summary>Output only. Boolean indicating if the user is delegated admin (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDelegatedAdmin")]
         public virtual System.Nullable<bool> IsDelegatedAdmin { get; set; } 
 
-        /// <summary>Is 2-step verification enforced (Read-only)</summary>
+        /// <summary>Output only. Is 2-step verification enforced (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEnforcedIn2Sv")]
         public virtual System.Nullable<bool> IsEnforcedIn2Sv { get; set; } 
 
-        /// <summary>Is enrolled in 2-step verification (Read-only)</summary>
+        /// <summary>Output only. Is enrolled in 2-step verification (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEnrolledIn2Sv")]
         public virtual System.Nullable<bool> IsEnrolledIn2Sv { get; set; } 
 
-        /// <summary>Is mailbox setup (Read-only)</summary>
+        /// <summary>Output only. Is mailbox setup (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMailboxSetup")]
         public virtual System.Nullable<bool> IsMailboxSetup { get; set; } 
 
+        /// <summary>Keywords of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
         public virtual object Keywords { get; set; } 
 
-        /// <summary>Kind of resource this is.</summary>
+        /// <summary>Output only. Kind of resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Languages of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual object Languages { get; set; } 
 
@@ -11379,6 +10811,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
+        /// <summary>Locations of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual object Locations { get; set; } 
 
@@ -11386,10 +10819,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual UserName Name { get; set; } 
 
-        /// <summary>List of non editable aliases (Read-only)</summary>
+        /// <summary>Output only. List of non editable aliases (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonEditableAliases")]
         public virtual System.Collections.Generic.IList<string> NonEditableAliases { get; set; } 
 
+        /// <summary>Notes of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual object Notes { get; set; } 
 
@@ -11397,6 +10831,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitPath")]
         public virtual string OrgUnitPath { get; set; } 
 
+        /// <summary>Organizations of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
         public virtual System.Collections.Generic.IList<UserOrganization> Organizations { get; set; } 
 
@@ -11404,9 +10839,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
+        /// <summary>Phone numbers of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
         public virtual System.Collections.Generic.IList<UserPhone> Phones { get; set; } 
 
+        /// <summary>The POSIX accounts of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
         public virtual object PosixAccounts { get; set; } 
 
@@ -11419,13 +10856,15 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string RecoveryEmail { get; set; } 
 
         /// <summary>Recovery phone of the user. The phone number must be in the E.164 format, starting with the plus
-        /// sign (+). Example: +16506661212.</summary>
+        /// sign (+). Example: *+16506661212*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recoveryPhone")]
         public virtual string RecoveryPhone { get; set; } 
 
+        /// <summary>The Relations of User *</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; } 
 
+        /// <summary>The SSH public keys of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
         public virtual object SshPublicKeys { get; set; } 
 
@@ -11433,18 +10872,19 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; } 
 
-        /// <summary>Suspension reason if user is suspended (Read-only)</summary>
+        /// <summary>Output only. Suspension reason if user is suspended (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual string SuspensionReason { get; set; } 
 
-        /// <summary>ETag of the user's photo (Read-only)</summary>
+        /// <summary>Output only. ETag of the user's photo (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoEtag")]
         public virtual string ThumbnailPhotoEtag { get; set; } 
 
-        /// <summary>Photo Url of the user (Read-only)</summary>
+        /// <summary>Output only. Photo Url of the user (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoUrl")]
         public virtual string ThumbnailPhotoUrl { get; set; } 
 
+        /// <summary>Websites of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websites")]
         public virtual System.Collections.Generic.IList<UserWebsite> Websites { get; set; } 
 
@@ -11510,7 +10950,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Region { get; set; } 
 
         /// <summary>User supplied address was structured. Structured addresses are NOT supported at this time. You
-        /// might be able to write structured addresses, but any values will eventually be clobbered.</summary>
+        /// might be able to write structured addresses but any values will eventually be clobbered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIsStructured")]
         public virtual System.Nullable<bool> SourceIsStructured { get; set; } 
 
@@ -11519,11 +10959,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string StreetAddress { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard values of that entry. For example address could
-        /// be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any
+        /// be of home work etc. In addition to the standard type an entry can have a custom type and can take any
         /// value. Such type should have the CUSTOM value as type and also have a customType value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a set of custom properties (i.e. all fields in a particular schema)</summary>
+    public class UserCustomProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -11575,7 +11022,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class UserGender : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>AddressMeAs. A human-readable string containing the proper way to refer to the profile owner by
-        /// humans, for example "he/him/his" or "they/them/their".</summary>
+        /// humans for example he/him/his or they/them/their.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressMeAs")]
         public virtual string AddressMeAs { get; set; } 
 
@@ -11611,12 +11058,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> Primary { get; set; } 
 
         /// <summary>Protocol used in the instant messenger. It should be one of the values from ImProtocolTypes map.
-        /// Similar to type, it can take a CUSTOM value and specify the custom name in customProtocol field.</summary>
+        /// Similar to type it can take a CUSTOM value and specify the custom name in customProtocol field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard types of that entry. For example instant
-        /// messengers could be of home, work etc. In addition to the standard type, an entry can have a custom type and
+        /// messengers could be of home work etc. In addition to the standard type an entry can have a custom type and
         /// can take any value. Such types should have the CUSTOM value as type and also have a customType
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -11633,8 +11080,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customType")]
         public virtual string CustomType { get; set; } 
 
-        /// <summary>Each entry can have a type which indicates standard type of that entry. For example, keyword could
-        /// be of type occupation or outlook. In addition to the standard type, an entry can have a custom type and can
+        /// <summary>Each entry can have a type which indicates standard type of that entry. For example keyword could
+        /// be of type occupation or outlook. In addition to the standard type an entry can have a custom type and can
         /// give it any name. Such types should have the CUSTOM value as type and also have a customType
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -11669,7 +11116,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class UserLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Textual location. This is most useful for display purposes to concisely describe the location. For
-        /// example, "Mountain View, CA", "Near Seattle", "US-NYC-9TH 9A209A".</summary>
+        /// example 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH 9A209A.''</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("area")]
         public virtual string Area { get; set; } 
 
@@ -11689,14 +11136,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("floorName")]
         public virtual string FloorName { get; set; } 
 
-        /// <summary>Floor section. More specific location within the floor. For example, if a floor is divided into
-        /// sections "A", "B", and "C", this field would identify one of those values.</summary>
+        /// <summary>Floor section. More specific location within the floor. For example if a floor is divided into
+        /// sections 'A', 'B' and 'C' this field would identify one of those values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floorSection")]
         public virtual string FloorSection { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard types of that entry. For example location could
-        /// be of types default and desk. In addition to standard type, an entry can have a custom type and can give it
-        /// any name. Such types should have "custom" as type and also have a customType value.</summary>
+        /// be of types default and desk. In addition to standard type an entry can have a custom type and can give it
+        /// any name. Such types should have 'custom' as type and also have a customType value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11704,7 +11151,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON request template for setting/revoking admin status of a user in Directory API.</summary>
     public class UserMakeAdmin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Boolean indicating new admin status of the user</summary>
@@ -11715,7 +11161,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for name of a user in Directory API.</summary>
     public class UserName : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Last Name</summary>
@@ -11782,7 +11227,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Title { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard types of that entry. For example organization
-        /// could be of school, work etc. In addition to the standard type, an entry can have a custom type and can give
+        /// could be of school work etc. In addition to the standard type an entry can have a custom type and can give
         /// it any name. Such types should have the CUSTOM value as type and also have a CustomType value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -11803,9 +11248,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> Primary { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard types of that entry. For example phone could be
-        /// of home_fax, work, mobile etc. In addition to the standard type, an entry can have a custom type and can
-        /// give it any name. Such types should have the CUSTOM value as type and also have a customType
-        /// value.</summary>
+        /// of home_fax work mobile etc. In addition to the standard type an entry can have a custom type and can give
+        /// it any name. Such types should have the CUSTOM value as type and also have a customType value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11817,7 +11261,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Photo object in Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class UserPhoto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -11908,8 +11354,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customType")]
         public virtual string CustomType { get; set; } 
 
-        /// <summary>The relation of the user. Some of the possible values are mother, father, sister, brother, manager,
-        /// assistant, partner.</summary>
+        /// <summary>The relation of the user. Some of the possible values are mother father sister brother manager
+        /// assistant partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11940,7 +11386,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON request template to undelete a user in Directory API.</summary>
     public class UserUndelete : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>OrgUnit of User</summary>
@@ -11963,8 +11408,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> Primary { get; set; } 
 
         /// <summary>Each entry can have a type which indicates standard types of that entry. For example website could
-        /// be of home, work, blog etc. In addition to the standard type, an entry can have a custom type and can give
-        /// it any name. Such types should have the CUSTOM value as type and also have a customType value.</summary>
+        /// be of home work blog etc. In addition to the standard type an entry can have a custom type and can give it
+        /// any name. Such types should have the CUSTOM value as type and also have a customType value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11976,7 +11421,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON response template for List Users operation in Apps Directory API.</summary>
+    /// <summary>STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/stepladder-
+    /// help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/stepladder-
+    /// help#fieldNumber)</summary>
     public class Users : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -12001,7 +11448,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for verification codes in Directory API.</summary>
+    /// <summary>JSON template for verification codes in Directory API. STEPLADDER: Generated unstable field number for
+    /// field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
+    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class VerificationCode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -12023,7 +11472,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON response template for List verification codes operation in Directory API.</summary>
+    /// <summary>JSON response template for List verification codes operation in Directory API. STEPLADDER: Generated
+    /// unstable field number for field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+    /// unstable field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
     public class VerificationCodes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>

@@ -59,7 +59,21 @@ namespace Google.Apis.HomeGraphService.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the HomeGraph API.</summary>
+        public class Scope
+        {
+            /// <summary>New Service: https://www.googleapis.com/auth/homegraph</summary>
+            public static string Homegraph = "https://www.googleapis.com/auth/homegraph";
 
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the HomeGraph API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>New Service: https://www.googleapis.com/auth/homegraph</summary>
+            public const string Homegraph = "https://www.googleapis.com/auth/homegraph";
+
+        }
 
 
 

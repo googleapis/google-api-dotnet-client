@@ -2819,7 +2819,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
         public virtual string AdditionalData { get; set; } 
 
-        /// <summary>Controls personal usage on devices provisioned using this enrollment token.</summary>
+        /// <summary>Controls whether personal usage is allowed on a device provisioned with this enrollment token.For
+        /// company-owned devices: Enabling personal usage allows the user to set up a work profile on the device.
+        /// Disabling personal usage requires the user provision the device as a fully managed device.For personally-
+        /// owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling
+        /// personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-
+        /// owned device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPersonalUsage")]
         public virtual string AllowPersonalUsage { get; set; } 
 
@@ -3557,7 +3562,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Policies for apps on the personal profile of a Corporate Owned Personally Enabled device.</summary>
+    /// <summary>Policies for apps in the personal profile of a company-owned device with a work profile.</summary>
     public class PersonalApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of installation to perform.</summary>
@@ -3572,7 +3577,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Policies controlling personal usage on a Corporate Owned Personally Enabled device.</summary>
+    /// <summary>Policies controlling personal usage on a company-owned device with a work profile.</summary>
     public class PersonalUsagePolicies : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account types that can't be managed by the user.</summary>
@@ -3587,11 +3592,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxDaysWithWorkOff")]
         public virtual System.Nullable<int> MaxDaysWithWorkOff { get; set; } 
 
-        /// <summary>Policy applied to applications on the personal profile.</summary>
+        /// <summary>Policy applied to applications in the personal profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalApplications")]
         public virtual System.Collections.Generic.IList<PersonalApplicationPolicy> PersonalApplications { get; set; } 
 
-        /// <summary>Controls how apps on the personal profile are allowed or blocked.</summary>
+        /// <summary>Used together with personal_applications to control how apps in the personal profile are allowed or
+        /// blocked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalPlayStoreMode")]
         public virtual string PersonalPlayStoreMode { get; set; } 
 
@@ -4198,6 +4204,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityPatchLevel")]
         public virtual string SecurityPatchLevel { get; set; } 
 
+        /// <summary>Information about a potential pending system update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemUpdateInfo")]
+        public virtual SystemUpdateInfo SystemUpdateInfo { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4300,6 +4310,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The type of system update to configure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a potential pending system update.</summary>
+    public class SystemUpdateInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the update was first available. A zero value indicates that this field is not set.
+        /// This field is set only if an update is available (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor
+        /// UP_TO_DATE).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateReceivedTime")]
+        public virtual object UpdateReceivedTime { get; set; } 
+
+        /// <summary>The status of an update: whether an update exists and what type it is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateStatus")]
+        public virtual string UpdateStatus { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7301,8 +7301,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
         public virtual MetricValue BidCount { get; set; } 
 
-        /// <summary>The ID of the detail. The associated value can be looked up in the dictionary file corresponding to
-        /// the DetailType in the response message.</summary>
+        /// <summary>The ID of the detail, can be numeric or text. The associated value can be looked up in the
+        /// dictionary file corresponding to the DetailType in the response message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
+        /// <summary>Note: this field will be deprecated, use "detail" field instead. When "detail" field represents an
+        /// integer value, this field is populated as the same integer value "detail" field represents, otherwise this
+        /// field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file
+        /// corresponding to the DetailType in the response message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailId")]
         public virtual System.Nullable<int> DetailId { get; set; } 
 
@@ -8296,9 +8303,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }    
 
     /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
-    /// Marketplace resources. Represents a publisher profile
-    /// (https://support.google.com/admanager/answer/6035806?hl=en) in Marketplace. All fields are read only. All string
-    /// fields are free-form text entered by the publisher unless noted otherwise.</summary>
+    /// Marketplace resources. Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in
+    /// Marketplace. All fields are read only. All string fields are free-form text entered by the publisher unless
+    /// noted otherwise.</summary>
     public class PublisherProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description on the publisher's audience.</summary>
@@ -8334,7 +8341,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// seller should have only one parent publisher profile, and can have multiple child profiles. Publisher
         /// profiles for the same seller will have same value of field
         /// google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See
-        /// https://support.google.com/admanager/answer/6035806?hl=en for details.</summary>
+        /// https://support.google.com/admanager/answer/6035806 for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isParent")]
         public virtual System.Nullable<bool> IsParent { get; set; } 
 

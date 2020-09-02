@@ -14129,6 +14129,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingWidth")]
         public virtual ProductShippingDimension ShippingWidth { get; set; } 
 
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping Ads destination.
+        /// Countries from this list are removed from countries configured in MC feed settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shoppingAdsExcludedCountries")]
+        public virtual System.Collections.Generic.IList<string> ShoppingAdsExcludedCountries { get; set; } 
+
         /// <summary>System in which the size is specified. Recommended for apparel items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeSystem")]
         public virtual string SizeSystem { get; set; } 
@@ -14335,20 +14340,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ProductStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is approved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountrys")]
-        public virtual System.Collections.Generic.IList<string> ApprovedCountrys { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
+        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; } 
 
         /// <summary>The name of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountrys")]
-        public virtual System.Collections.Generic.IList<string> DisapprovedCountrys { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; } 
 
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountrys")]
-        public virtual System.Collections.Generic.IList<string> PendingCountrys { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
+        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; } 
 
         /// <summary>Destination approval status in `targetCountry` of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -14361,8 +14366,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ProductStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicableCountrys")]
-        public virtual System.Collections.Generic.IList<string> ApplicableCountrys { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableCountries")]
+        public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; } 
 
         /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]

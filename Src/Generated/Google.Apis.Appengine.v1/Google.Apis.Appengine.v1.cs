@@ -5408,6 +5408,11 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betaSettings")]
         public virtual System.Collections.Generic.IDictionary<string,string> BetaSettings { get; set; } 
 
+        /// <summary>Environment variables available to the build environment.Only returned in GET requests if view=FULL
+        /// is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildEnvVariables")]
+        public virtual System.Collections.Generic.IDictionary<string,string> BuildEnvVariables { get; set; } 
+
         /// <summary>Time that this version was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 

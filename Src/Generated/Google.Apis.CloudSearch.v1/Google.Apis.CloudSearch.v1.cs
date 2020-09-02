@@ -1978,11 +1978,11 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
         /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
         /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
-        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
-        /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
-        /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        /// For additional information, see [Create a content connector using the REST
+        /// Call indexing.datasources.items.upload with the item name to begin an upload session and retrieve the
+        /// UploadItemRef. 1. Call media.upload to upload the content, as a streaming request, using the same resource
+        /// name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to index the item.
+        /// Populate the [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with
+        /// the UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
         /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
         /// requires a service account to execute.</summary>
         /// <param name="body">The body of the request.</param>
@@ -1995,11 +1995,11 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
         /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
         /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
-        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
-        /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
-        /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        /// For additional information, see [Create a content connector using the REST
+        /// Call indexing.datasources.items.upload with the item name to begin an upload session and retrieve the
+        /// UploadItemRef. 1. Call media.upload to upload the content, as a streaming request, using the same resource
+        /// name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to index the item.
+        /// Populate the [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with
+        /// the UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
         /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
         /// requires a service account to execute.</summary>
         public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Media>
@@ -2055,11 +2055,11 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and
         /// is intended for large items that can not be [inlined during index requests](https://developers.google.com
         /// /cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1.
-        /// Call indexing.datasources.items.upload with the resource name to begin an upload session and retrieve the
-        /// UploadItemRef. 1. Call media.upload to upload the content using the same resource name from step 1. 1. Call
-        /// indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-
-        /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
-        /// For additional information, see [Create a content connector using the REST
+        /// Call indexing.datasources.items.upload with the item name to begin an upload session and retrieve the
+        /// UploadItemRef. 1. Call media.upload to upload the content, as a streaming request, using the same resource
+        /// name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to index the item.
+        /// Populate the [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with
+        /// the UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
         /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
         /// requires a service account to execute.</summary>
         /// <remarks>
@@ -2210,9 +2210,131 @@ namespace Google.Apis.CloudSearch.v1
         public OperationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Lro = new LroResource(service);
 
         }
 
+        /// <summary>Gets the Lro resource.</summary>
+        public virtual LroResource Lro { get; }
+
+        /// <summary>The "lro" collection of methods.</summary>
+        public class LroResource
+        {
+            private const string Resource = "lro";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LroResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
+            /// <param name="name">The name of the operation's parent resource.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
+            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+            /// binding to use different resource name schemes, such as `users/operations`. To override the binding, API
+            /// services can add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For
+            /// backwards compatibility, the default name includes the operations collection id, however overriding
+            /// users must ensure the name binding is the parent resource, without the operations collection
+            /// id.</summary>
+            public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListOperationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation's parent resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}/lro";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^operations/.*$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
 
         /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
@@ -5667,6 +5789,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

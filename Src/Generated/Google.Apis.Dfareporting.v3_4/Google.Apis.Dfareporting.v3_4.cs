@@ -20634,10 +20634,10 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// for USD - "2" for GBP - "3" for ESP - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD -
         /// "9" for FRF - "10" for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for IEP - "16"
         /// for NLG - "17" for EUR - "18" for KRW - "19" for TWD - "20" for SGD - "21" for CNY - "22" for HKD - "23" for
-        /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS
-        /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
-        /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP </summary>
+        /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "28" for CLP - "29" for TRY - "30" for ARS - "31" for PEN
+        /// - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN - "39" for INR -
+        /// "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED -
+        /// "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -22177,9 +22177,15 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IList<CustomFloodlightVariable> CustomVariables { get; set; } 
 
-        /// <summary>The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field
-        /// is mutually exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or
+        /// <summary>The display click ID. This field is mutually exclusive with encryptedUserId,
+        /// encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or encryptedUserId or
         /// encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid is a required field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dclid")]
+        public virtual string Dclid { get; set; } 
+
+        /// <summary>The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field
+        /// is mutually exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid and dclid. This or
+        /// encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid or dclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserId")]
         public virtual string EncryptedUserId { get; set; } 
 
@@ -22187,8 +22193,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be
         /// rejected with INVALID_ARGUMENT error. When set, encryptionInfo should also be specified. This field may only
         /// be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with
-        /// encryptedUserId, matchId, mobileDeviceId and gclid. This or encryptedUserId or matchId or mobileDeviceId or
-        /// gclid is a required field.</summary>
+        /// encryptedUserId, matchId, mobileDeviceId, gclid and dclid. This or encryptedUserId or matchId or
+        /// mobileDeviceId or gclid or dclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIdCandidates")]
         public virtual System.Collections.Generic.IList<string> EncryptedUserIdCandidates { get; set; } 
 
@@ -22201,8 +22207,8 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
 
         /// <summary>The Google click ID. This field is mutually exclusive with encryptedUserId,
-        /// encryptedUserIdCandidates[], matchId and mobileDeviceId. This or encryptedUserId or
-        /// encryptedUserIdCandidates[] or matchId or mobileDeviceId is a required field.</summary>
+        /// encryptedUserIdCandidates[], matchId, mobileDeviceId and dclid. This or encryptedUserId or
+        /// encryptedUserIdCandidates[] or matchId or mobileDeviceId or dclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
         public virtual string Gclid { get; set; } 
 
@@ -22218,14 +22224,14 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>The match ID field. A match ID is your own first-party identifier that has been synced with Google
         /// using the match ID feature in Floodlight. This field is mutually exclusive with encryptedUserId,
-        /// encryptedUserIdCandidates[],mobileDeviceId and gclid. This or encryptedUserId or encryptedUserIdCandidates[]
-        /// or mobileDeviceId or gclid is a required field.</summary>
+        /// encryptedUserIdCandidates[],mobileDeviceId, gclid and dclid. This or encryptedUserId or
+        /// encryptedUserIdCandidates[] or mobileDeviceId or gclid or dclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
         public virtual string MatchId { get; set; } 
 
         /// <summary>The mobile device ID. This field is mutually exclusive with encryptedUserId,
-        /// encryptedUserIdCandidates[], matchId and gclid. This or encryptedUserId or encryptedUserIdCandidates[] or
-        /// matchId or gclid is a required field.</summary>
+        /// encryptedUserIdCandidates[], matchId, gclid and dclid. This or encryptedUserId or
+        /// encryptedUserIdCandidates[] or matchId or gclid or dclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
         public virtual string MobileDeviceId { get; set; } 
 

@@ -1828,7 +1828,7 @@
    }
   }
  }, 
- "revision": "20200805", 
+ "revision": "20200828", 
  "rootUrl": "https://sqladmin.googleapis.com/", 
  "schemas": {
   "AclEntry": {
@@ -2162,7 +2162,7 @@
    "type": "object"
   }, 
   "DatabaseInstance": {
-   "description": "A Cloud SQL instance resource. Next field: 34", 
+   "description": "A Cloud SQL instance resource. Next field: 35", 
    "id": "DatabaseInstance", 
    "properties": {
     "backendType": {
@@ -2371,13 +2371,6 @@
     }, 
     "suspensionReason": {
      "description": "If the instance state is SUSPENDED, the reason for the suspension.", 
-     "enumDescriptions": [
-      "This is an unknown suspension reason.", 
-      "The instance is suspended due to billing issues (for example:, GCP account issue)", 
-      "The instance is suspended due to illegal content (for example:, child pornography, copyrighted material, etc.).", 
-      "The instance is causing operational issues (for example:, causing the database to crash).", 
-      "The KMS key used by the instance is either revoked or denied access to"
-     ], 
      "items": {
       "enum": [
        "SQL_SUSPENSION_REASON_UNSPECIFIED", 
@@ -2634,22 +2627,6 @@
     }, 
     "appliesTo": {
      "description": "The database version this flag applies to. Can be *MYSQL_5_5*, *MYSQL_5_6*, or *MYSQL_5_7*. *MYSQL_5_7* is applicable only to Second Generation instances.", 
-     "enumDescriptions": [
-      "This is an unknown database version.", 
-      "The database version is MySQL 5.1.", 
-      "The database version is MySQL 5.5.", 
-      "The database version is MySQL 5.6.", 
-      "The database version is MySQL 5.7.", 
-      "The database version is PostgreSQL 9.6.", 
-      "The database version is PostgreSQL 11.", 
-      "The database version is SQL Server 2017 Standard.", 
-      "The database version is SQL Server 2017 Enterprise.", 
-      "The database version is SQL Server 2017 Express.", 
-      "The database version is SQL Server 2017 Web.", 
-      "The database version is PostgreSQL 10.", 
-      "The database version is PostgreSQL 12.", 
-      "The database version is MySQL 8."
-     ], 
      "items": {
       "enum": [
        "SQL_DATABASE_VERSION_UNSPECIFIED", 

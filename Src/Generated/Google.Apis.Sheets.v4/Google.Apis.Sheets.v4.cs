@@ -2088,6 +2088,34 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Adds a data source. After the data source is added successfully, an associated DataSource sheet is
+    /// created and an execution is triggered to refresh the sheet to read data from the data source. The request
+    /// requires an additional bigquery.readonly OAuth scope.</summary>
+    public class AddDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data source to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual DataSource DataSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of adding a data source.</summary>
+    public class AddDataSourceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>The data source that was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual DataSource DataSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Creates a group over the specified range. If the requested range is a superset of the range of an
     /// existing group G, then the depth of G is incremented and this new group G' has the depth of that group. For
     /// example, a group [C:D, depth 1] + [B:E] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested
@@ -2324,6 +2352,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// dimension.</summary>
     public class AutoResizeDimensionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The dimensions on a data source sheet to automatically resize.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetDimensions")]
+        public virtual DataSourceSheetDimensionRange DataSourceSheetDimensions { get; set; } 
+
         /// <summary>The dimensions to automatically resize.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual DimensionRange Dimensions { get; set; } 
@@ -2607,6 +2639,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// is the criteria for that column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string,FilterCriteria> Criteria { get; set; } 
+
+        /// <summary>The filter criteria per column. Both criteria and filter_specs are populated in responses. If both
+        /// fields are specified in an update request, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
 
         /// <summary>The range the filter covers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
@@ -2917,6 +2954,57 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The specification of a BigQuery data source.</summary>
+    public class BigQueryDataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery enabled GCP project with a billing account attached. For any queries executed
+        /// against the data source, the project is charged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>A BigQueryQuerySpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySpec")]
+        public virtual BigQueryQuerySpec QuerySpec { get; set; } 
+
+        /// <summary>A BigQueryTableSpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSpec")]
+        public virtual BigQueryTableSpec TableSpec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies a custom BigQuery query.</summary>
+    public class BigQueryQuerySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw query string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawQuery")]
+        public virtual string RawQuery { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies a BigQuery table definition. Only native tables is allowed.</summary>
+    public class BigQueryTableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery dataset id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>The BigQuery table id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; } 
+
+        /// <summary>The ID of a BigQuery project the table belongs to. If not specified, the project_id is
+        /// assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableProjectId")]
+        public virtual string TableProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A condition that can evaluate to true or false. BooleanConditions are used by conditional formatting,
     /// data validation, and the criteria in filters.</summary>
     public class BooleanCondition : Google.Apis.Requests.IDirectResponseSchema
@@ -3136,6 +3224,19 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Data about a specific cell.</summary>
     public class CellData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Information about a data source formula on the cell. The field is set if
+        /// user_entered_value is a formula referencing some [SheetType.DATA_SOURCE] sheet, e.g
+        /// `=SUM(DataSheet!Column)`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormula")]
+        public virtual DataSourceFormula DataSourceFormula { get; set; } 
+
+        /// <summary>A data source table anchored at this cell. The size of data source table itself is computed
+        /// dynamically based on its configuration. Only the first cell of the data source table contains the data
+        /// source table definition. The other cells will contain the display values of the data source table result in
+        /// their effective_value fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceTable")]
+        public virtual DataSourceTable DataSourceTable { get; set; } 
+
         /// <summary>A data validation rule on the cell, if any. When writing, the new data validation rule will
         /// overwrite any prior rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataValidation")]
@@ -3290,9 +3391,75 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The data included in a domain or series.</summary>
     public class ChartData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The aggregation type for the series of a data source chart. Not supported for regular
+        /// charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
+        public virtual string AggregateType { get; set; } 
+
+        /// <summary>The reference to the data source column that the data reads from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnReference")]
+        public virtual DataSourceColumnReference ColumnReference { get; set; } 
+
+        /// <summary>The rule to group the data by if the ChartData backs the domain of a data source chart. Not
+        /// supported for regular charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupRule")]
+        public virtual ChartGroupRule GroupRule { get; set; } 
+
         /// <summary>The source ranges of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRange")]
         public virtual ChartSourceRange SourceRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Allows you to organize the date-time values in a source data column into buckets based on selected
+    /// parts of their date or time values.</summary>
+    public class ChartDateTimeRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of date-time grouping to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An optional setting on the ChartData of the domain of a data source chart that defines buckets for the
+    /// values in the domain rather than breaking out each individual value. For example, when plotting a data source
+    /// chart, you can specify a histogram rule on the domain (it should only contain numeric values), grouping its
+    /// values into buckets. Any values of a chart series that fall into the same bucket are aggregated based on the
+    /// aggregate_type.</summary>
+    public class ChartGroupRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A ChartDateTimeRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRule")]
+        public virtual ChartDateTimeRule DateTimeRule { get; set; } 
+
+        /// <summary>A ChartHistogramRule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("histogramRule")]
+        public virtual ChartHistogramRule HistogramRule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Allows you to organize numeric values in a source data column into buckets of constant size.</summary>
+    public class ChartHistogramRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The size of the buckets that are created. Must be positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervalSize")]
+        public virtual System.Nullable<double> IntervalSize { get; set; } 
+
+        /// <summary>The maximum value at which items are placed into buckets. Values greater than the maximum are
+        /// grouped into a single bucket. If omitted, it is determined by the maximum item value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<double> MaxValue { get; set; } 
+
+        /// <summary>The minimum value at which items are placed into buckets. Values that are less than the minimum are
+        /// grouped into a single bucket. If omitted, it is determined by the minimum item value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
+        public virtual System.Nullable<double> MinValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3343,6 +3510,15 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candlestickChart")]
         public virtual CandlestickChartSpec CandlestickChart { get; set; } 
 
+        /// <summary>If present, the field contains data source chart specific properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceChartProperties")]
+        public virtual DataSourceChartProperties DataSourceChartProperties { get; set; } 
+
+        /// <summary>The filters applied to the source data of the chart. Only supported for data source
+        /// charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+
         /// <summary>The name of the font to use by default for all chart text (e.g. title, axis labels, legend). If a
         /// font is specified for a specific part of the chart it will override this font name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontName")]
@@ -3372,6 +3548,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A scorecard chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorecardChart")]
         public virtual ScorecardChartSpec ScorecardChart { get; set; } 
+
+        /// <summary>The order to sort the chart data by. Only a single sort spec is supported. Only supported for data
+        /// source charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
 
         /// <summary>The subtitle of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
@@ -3635,6 +3816,29 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The data execution status.</summary>
+    public class DataExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; } 
+
+        /// <summary>The error message, which may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        /// <summary>Gets the time the data last successfully refreshed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual object LastRefreshTime { get; set; } 
+
+        /// <summary>The state of the data execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Filter that describes what data should be selected or returned from a request.</summary>
     public class DataFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3671,6 +3875,312 @@ namespace Google.Apis.Sheets.v4.Data
         /// are written, existing values in the matched ranges remain unaffected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about an external data source in the spreadsheet.</summary>
+    public class DataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All calculated columns in the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatedColumns")]
+        public virtual System.Collections.Generic.IList<DataSourceColumn> CalculatedColumns { get; set; } 
+
+        /// <summary>The spreadsheet-scoped unique ID that identifies the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>The ID of the Sheet connected with the data source. The field cannot be changed once set. When
+        /// creating a data source, an associated SheetType.DATA_SOURCE sheet is also created, if the field is not
+        /// specified, the ID of the created sheet will be randomly generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
+        public virtual System.Nullable<int> SheetId { get; set; } 
+
+        /// <summary>The DataSourceSpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual DataSourceSpec Spec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Properties of a data source chart.</summary>
+    public class DataSourceChartProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>ID of the data source that the chart is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A data source column.</summary>
+    public class DataSourceColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The formula of the calculated column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formula")]
+        public virtual string Formula { get; set; } 
+
+        /// <summary>The column reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reference")]
+        public virtual DataSourceColumnReference Reference { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An unique identifier that references to a data source column.</summary>
+    public class DataSourceColumnReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the column. It should be unique within a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A data source formula.</summary>
+    public class DataSourceFormula : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>The ID of the data source the formula is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Reference to a data source object.</summary>
+    public class DataSourceObjectReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References to a DataSourceChart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
+        public virtual System.Nullable<int> ChartId { get; set; } 
+
+        /// <summary>References to a cell containing DataSourceFormula.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormulaCell")]
+        public virtual GridCoordinate DataSourceFormulaCell { get; set; } 
+
+        /// <summary>References to a data source PivotTable anchored at the cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourcePivotTableAnchorCell")]
+        public virtual GridCoordinate DataSourcePivotTableAnchorCell { get; set; } 
+
+        /// <summary>References to a DataSourceTable anchored at the cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceTableAnchorCell")]
+        public virtual GridCoordinate DataSourceTableAnchorCell { get; set; } 
+
+        /// <summary>References to a SheetType.DATA_SOURCE sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
+        public virtual string SheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of references to data source objects.</summary>
+    public class DataSourceObjectReferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<DataSourceObjectReference> References { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A parameter in a data source's query. The parameter allows user to pass in values from the spreadsheet
+    /// into a query.</summary>
+    public class DataSourceParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Named parameter. Must be a legitimate identifier for the DataSource that supports it. For example,
+        /// BigQuery identifier</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>ID of a NamedRange. Its size must be 1x1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
+        public virtual string NamedRangeId { get; set; } 
+
+        /// <summary>A range that contains the value of the parameter. Its size must be 1x1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Schedule refreshes in a time interval everyday.</summary>
+    public class DataSourceRefreshDailySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
+        /// used. The time interval size defaults to that in the Sheets editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Schedule refreshes in a time interval on specified days in a month and repeats monthly.</summary>
+    public class DataSourceRefreshMonthlySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat
+        /// one day must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysOfMonth")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DaysOfMonth { get; set; } 
+
+        /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
+        /// used. The time interval size defaults to that in the Sheets editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The data source refresh schedule. All data sources in the spreadsheet are scheduled to refresh in a
+    /// future time interval. The time interval size defaults to the one defined in the Sheets editor. For example, if a
+    /// daily schedule at start time of 8am is scheduled, and the time interval is 4 hours, the scheduled refresh will
+    /// happen between 8am and 12pm every day.</summary>
+    public class DataSourceRefreshSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Daily refresh schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailySchedule")]
+        public virtual DataSourceRefreshDailySchedule DailySchedule { get; set; } 
+
+        /// <summary>True if the refresh schedule is enabled, or false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>Monthly refresh schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlySchedule")]
+        public virtual DataSourceRefreshMonthlySchedule MonthlySchedule { get; set; } 
+
+        /// <summary>Output only. The time interval of the next run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextRun")]
+        public virtual Interval NextRun { get; set; } 
+
+        /// <summary>The scope of the refresh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshScope")]
+        public virtual string RefreshScope { get; set; } 
+
+        /// <summary>Weekly refresh schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklySchedule")]
+        public virtual DataSourceRefreshWeeklySchedule WeeklySchedule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Schedule refreshes in a time interval on specified days in a week and repeats weekly.</summary>
+    public class DataSourceRefreshWeeklySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Days of the week to refresh. At least one day must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; } 
+
+        /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
+        /// used. The time interval size defaults to that in the Sheets editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A range along a single dimension on a DataSource sheet.</summary>
+    public class DataSourceSheetDimensionRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns on the data source sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnReferences")]
+        public virtual System.Collections.Generic.IList<DataSourceColumnReference> ColumnReferences { get; set; } 
+
+        /// <summary>The ID of the data source sheet the range is on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
+        public virtual System.Nullable<int> SheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional properties of a SheetType.DATA_SOURCE sheet.</summary>
+    public class DataSourceSheetProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns displayed on the sheet, corresponding to the values in RowData.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<DataSourceColumn> Columns { get; set; } 
+
+        /// <summary>The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>ID of the DataSource the sheet connected with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The specification of a data source.</summary>
+    public class DataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A BigQueryDataSourceSpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
+        public virtual BigQueryDataSourceSpec BigQuery { get; set; } 
+
+        /// <summary>The parameters of the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A data source table, allowing to import a static table of data from the DataSource into Sheets. This is
+    /// also known as "Extract" in the Sheets editor.</summary>
+    public class DataSourceTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type to select columns for the data source table. Defaults to SELECTED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnSelectionType")]
+        public virtual string ColumnSelectionType { get; set; } 
+
+        /// <summary>Columns selected for the data source table. The column_selection_type must be SELECTED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<DataSourceColumnReference> Columns { get; set; } 
+
+        /// <summary>Output only. The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>The ID of the data source the data source table is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>Filter specifications in the data source table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+
+        /// <summary>The limit of rows to return. If not set, a default limit is applied. Please refer to the Sheets
+        /// editor for the default and max limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
+        public virtual System.Nullable<int> RowLimit { get; set; } 
+
+        /// <summary>Sort specifications in the data source table. The result of the data source table is sorted based
+        /// on the sort specifications in order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3750,6 +4260,18 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The rule that was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual ConditionalFormatRule Rule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Deletes a data source. The request also deletes the associated data source sheet, and unlinks all
+    /// associated data source objects.</summary>
+    public class DeleteDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the data source to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4060,6 +4582,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Properties about a dimension.</summary>
     public class DimensionProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. If set, this is a column in a data source sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+
         /// <summary>The developer metadata associated with a single row or column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
         public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
@@ -4305,6 +4831,25 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The filter criteria associated with a specific column.</summary>
+    public class FilterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
+        public virtual System.Nullable<int> ColumnIndex { get; set; } 
+
+        /// <summary>Reference to a data source column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+
+        /// <summary>The criteria for the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
+        public virtual FilterCriteria FilterCriteria { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A filter view.</summary>
     public class FilterView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4312,6 +4857,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// is the criteria for that column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string,FilterCriteria> Criteria { get; set; } 
+
+        /// <summary>The filter criteria for showing/hiding values per column. Both criteria and filter_specs are
+        /// populated in responses. If both fields are specified in an update request, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
 
         /// <summary>The ID of the filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterViewId")]
@@ -4721,6 +5272,25 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).
+    /// The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches
+    /// no time). When both start and end are unspecified, the interval matches any time.</summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have
+        /// to be before the end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will
+        /// have to be the same or after the start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Settings to control how circular dependencies are resolved with iterative calculation.</summary>
     public class IterativeCalculationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5074,9 +5644,36 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The pivot table filter criteria associated with a specific source column offset.</summary>
+    public class PivotFilterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column offset of the source range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnOffsetIndex")]
+        public virtual System.Nullable<int> ColumnOffsetIndex { get; set; } 
+
+        /// <summary>The reference to the data source column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+
+        /// <summary>The criteria for the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
+        public virtual PivotFilterCriteria FilterCriteria { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single grouping (either row or column) in a pivot table.</summary>
     public class PivotGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The reference to the data source column this grouping is based on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+
+        /// <summary>The count limit on rows or columns to apply to this pivot group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupLimit")]
+        public virtual PivotGroupLimit GroupLimit { get; set; } 
+
         /// <summary>The group rule to apply to this row/column group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupRule")]
         public virtual PivotGroupRule GroupRule { get; set; } 
@@ -5123,6 +5720,25 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Metadata about values in the grouping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMetadata")]
         public virtual System.Collections.Generic.IList<PivotGroupValueMetadata> ValueMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The count limit on rows or columns in the pivot group.</summary>
+    public class PivotGroupLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The order in which the group limit is applied to the pivot table. Pivot group limits are applied
+        /// from lower to higher order number. Order numbers are normalized to consecutive integers from 0. For write
+        /// request, to fully customize the applying orders, all pivot group limits should have this field set with an
+        /// unique number. Otherwise, the order is determined by the index in the PivotTable.rows list and then the
+        /// PivotTable.columns list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyOrder")]
+        public virtual System.Nullable<int> ApplyOrder { get; set; } 
+
+        /// <summary>The count limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countLimit")]
+        public virtual System.Nullable<int> CountLimit { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5201,6 +5817,20 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string,PivotFilterCriteria> Criteria { get; set; } 
 
+        /// <summary>Output only. The data execution status for data source pivot tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>The ID of the data source the pivot table is reading data from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>The filters applied to the source columns before aggregating data for the pivot table. Both
+        /// criteria and filter_specs are populated in responses. If both fields are specified in an update request,
+        /// this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<PivotFilterSpec> FilterSpecs { get; set; } 
+
         /// <summary>Each row grouping in the pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<PivotGroup> Rows { get; set; } 
@@ -5226,10 +5856,14 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>If specified, indicates that pivot values should be displayed as the result of a calculation with
         /// another pivot value. For example, if calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
-        /// pivot values are displayed as the percentage of the grand total. In the Sheets UI, this is referred to as
-        /// "Show As" in the value section of a pivot table.</summary>
+        /// pivot values are displayed as the percentage of the grand total. In the Sheets editor, this is referred to
+        /// as "Show As" in the value section of a pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculatedDisplayType")]
         public virtual string CalculatedDisplayType { get; set; } 
+
+        /// <summary>The reference to the data source column that this value reads from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
 
         /// <summary>A custom formula to calculate the value. The formula must start with an `=` character.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formula")]
@@ -5314,6 +5948,61 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The execution status of refreshing one data source object.</summary>
+    public class RefreshDataSourceObjectExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>Reference to a data source object being refreshed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reference")]
+        public virtual DataSourceObjectReference Reference { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Refreshes one or multiple data source objects in the spreadsheet by the specified references. The
+    /// request requires an additional bigquery.readonly OAuth scope. If there're multiple refresh requests referencing
+    /// the same data source objects in one batch, only the last refresh request is processed, and all those requests
+    /// will have the same response accordingly.</summary>
+    public class RefreshDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference to a DataSource. If specified, refreshes all associated data source objects for the data
+        /// source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; } 
+
+        /// <summary>Refreshes the data source objects regardless of the current state. If not set and a referenced data
+        /// source object was in error state, the refresh will fail immediately.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>Refreshes all existing data source objects in the spreadsheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAll")]
+        public virtual System.Nullable<bool> IsAll { get; set; } 
+
+        /// <summary>References to data source objects to refresh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual DataSourceObjectReferences References { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from refreshing one or multiple data source objects.</summary>
+    public class RefreshDataSourceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the refresh status for the data source object references specified in the request. If is_all is
+        /// specified, the field contains only those in failure status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<RefreshDataSourceObjectExecutionStatus> Statuses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Updates all cells in the range to the values in the given Cell object. Only the fields listed in the
     /// fields field are updated; others are unchanged. If writing a cell with a formula, the formula's ranges will
     /// automatically increment for each field in the range. For example, if writing a cell with formula `=A1` into
@@ -5353,6 +6042,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Adds a new conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addConditionalFormatRule")]
         public virtual AddConditionalFormatRuleRequest AddConditionalFormatRule { get; set; } 
+
+        /// <summary>Adds a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDataSource")]
+        public virtual AddDataSourceRequest AddDataSource { get; set; } 
 
         /// <summary>Creates a group over the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
@@ -5418,6 +6111,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Deletes an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteConditionalFormatRule")]
         public virtual DeleteConditionalFormatRuleRequest DeleteConditionalFormatRule { get; set; } 
+
+        /// <summary>Deletes a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteDataSource")]
+        public virtual DeleteDataSourceRequest DeleteDataSource { get; set; } 
 
         /// <summary>Deletes developer metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDeveloperMetadata")]
@@ -5495,6 +6192,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("randomizeRange")]
         public virtual RandomizeRangeRequest RandomizeRange { get; set; } 
 
+        /// <summary>Refreshs one or multiple data sources and associated dbobjects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
+        public virtual RefreshDataSourceRequest RefreshDataSource { get; set; } 
+
         /// <summary>Repeats a single cell across a range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatCell")]
         public virtual RepeatCellRequest RepeatCell { get; set; } 
@@ -5542,6 +6243,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Updates an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateConditionalFormatRule")]
         public virtual UpdateConditionalFormatRuleRequest UpdateConditionalFormatRule { get; set; } 
+
+        /// <summary>Updates a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDataSource")]
+        public virtual UpdateDataSourceRequest UpdateDataSource { get; set; } 
 
         /// <summary>Updates an existing developer metadata entry</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeveloperMetadata")]
@@ -5597,6 +6302,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from adding a chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartResponse AddChart { get; set; } 
+
+        /// <summary>A reply from adding a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDataSource")]
+        public virtual AddDataSourceResponse AddDataSource { get; set; } 
 
         /// <summary>A reply from adding a dimension group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
@@ -5654,6 +6363,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
         public virtual FindReplaceResponse FindReplace { get; set; } 
 
+        /// <summary>A reply from refreshing data source objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
+        public virtual RefreshDataSourceResponse RefreshDataSource { get; set; } 
+
         /// <summary>A reply from trimming whitespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trimWhitespace")]
         public virtual TrimWhitespaceResponse TrimWhitespace { get; set; } 
@@ -5661,6 +6374,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from updating a conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateConditionalFormatRule")]
         public virtual UpdateConditionalFormatRuleResponse UpdateConditionalFormatRule { get; set; } 
+
+        /// <summary>A reply from updating a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDataSource")]
+        public virtual UpdateDataSourceResponse UpdateDataSource { get; set; } 
 
         /// <summary>A reply from updating a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeveloperMetadata")]
@@ -5850,6 +6567,11 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Properties of a sheet.</summary>
     public class SheetProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. If present, the field contains SheetType.DATA_SOURCE sheet specific
+        /// properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetProperties")]
+        public virtual DataSourceSheetProperties DataSourceSheetProperties { get; set; } 
+
         /// <summary>Additional properties of the sheet if this sheet is a grid. (If the sheet is an object sheet,
         /// containing a chart or image, then this field will be absent.) When writing it is an error to set any grid
         /// properties on non-grid sheets.</summary>
@@ -5991,6 +6713,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
         public virtual ColorStyle BackgroundColorStyle { get; set; } 
 
+        /// <summary>Reference to a data source column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+
         /// <summary>The dimension the sort should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionIndex")]
         public virtual System.Nullable<int> DimensionIndex { get; set; } 
@@ -6038,6 +6764,14 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Resource that represents a spreadsheet.</summary>
     public class Spreadsheet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A list of data source refresh schedules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSchedules")]
+        public virtual System.Collections.Generic.IList<DataSourceRefreshSchedule> DataSourceSchedules { get; set; } 
+
+        /// <summary>A list of external data sources connected with the spreadsheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSources")]
+        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; } 
+
         /// <summary>The developer metadata associated with a spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
         public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
@@ -6237,6 +6971,33 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The type of the spreadsheet theme color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorType")]
         public virtual string ColorType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
+    /// An API may choose to allow leap seconds. Related types are google.type.Date and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
+        /// "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; } 
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; } 
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
+        /// allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6551,6 +7312,40 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Updates a data source. After the data source is updated successfully, an execution is triggered to
+    /// refresh the associated DataSource sheet to read data from the updated data source. The request requires an
+    /// additional bigquery.readonly OAuth scope.</summary>
+    public class UpdateDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data source to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual DataSource DataSource { get; set; } 
+
+        /// <summary>The fields that should be updated. At least one field must be specified. The root 'dataSource' is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from updating data source.</summary>
+    public class UpdateDataSourceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data execution status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+
+        /// <summary>The updated data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual DataSource DataSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A request to update properties of developer metadata. Updates the properties of the developer metadata
     /// selected by the filters to the values provided in the DeveloperMetadata resource. Callers must specify the
     /// properties they wish to update in the fields parameter, as well as specify at least one DataFilter matching the
@@ -6607,6 +7402,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Updates properties of dimensions within the specified range.</summary>
     public class UpdateDimensionPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The columns on a data source sheet to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetRange")]
+        public virtual DataSourceSheetDimensionRange DataSourceSheetRange { get; set; } 
+
         /// <summary>The fields that should be updated. At least one field must be specified. The root `properties` is
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>

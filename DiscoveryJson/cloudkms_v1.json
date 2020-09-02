@@ -1259,7 +1259,7 @@
    }
   }
  }, 
- "revision": "20200814", 
+ "revision": "20200821", 
  "rootUrl": "https://cloudkms.googleapis.com/", 
  "schemas": {
   "AsymmetricDecryptRequest": {

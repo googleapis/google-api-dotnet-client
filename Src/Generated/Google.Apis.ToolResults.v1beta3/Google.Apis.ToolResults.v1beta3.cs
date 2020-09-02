@@ -4026,6 +4026,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crashed")]
         public virtual System.Nullable<bool> Crashed { get; set; } 
 
+        /// <summary>If the device ran out of memory during a test, causing the test to crash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceOutOfMemory")]
+        public virtual System.Nullable<bool> DeviceOutOfMemory { get; set; } 
+
         /// <summary>If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion
         /// failed or a Roboscript action could not be matched during the entire crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedRoboscript")]

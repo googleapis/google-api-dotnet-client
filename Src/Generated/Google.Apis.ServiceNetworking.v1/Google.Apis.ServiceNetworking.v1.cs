@@ -588,6 +588,7 @@ namespace Google.Apis.ServiceNetworking.v1
             Connections = new ConnectionsResource(service);
             DnsRecordSets = new DnsRecordSetsResource(service);
             DnsZones = new DnsZonesResource(service);
+            Projects = new ProjectsResource(service);
             Roles = new RolesResource(service);
 
         }
@@ -1211,6 +1212,285 @@ namespace Google.Apis.ServiceNetworking.v1
                         });
                 }
 
+            }
+        }
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Global = new GlobalResource(service);
+
+            }
+
+            /// <summary>Gets the Global resource.</summary>
+            public virtual GlobalResource Global { get; }
+
+            /// <summary>The "global" collection of methods.</summary>
+            public class GlobalResource
+            {
+                private const string Resource = "global";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GlobalResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Networks = new NetworksResource(service);
+
+                }
+
+                /// <summary>Gets the Networks resource.</summary>
+                public virtual NetworksResource Networks { get; }
+
+                /// <summary>The "networks" collection of methods.</summary>
+                public class NetworksResource
+                {
+                    private const string Resource = "networks";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public NetworksResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        PeeredDnsDomains = new PeeredDnsDomainsResource(service);
+
+                    }
+
+                    /// <summary>Gets the PeeredDnsDomains resource.</summary>
+                    public virtual PeeredDnsDomainsResource PeeredDnsDomains { get; }
+
+                    /// <summary>The "peeredDnsDomains" collection of methods.</summary>
+                    public class PeeredDnsDomainsResource
+                    {
+                        private const string Resource = "peeredDnsDomains";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public PeeredDnsDomainsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Creates a peered DNS domain which sends requests for records in given namespace
+                        /// originating in the service producer VPC network to the consumer VPC network to be
+                        /// resolved.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. Parent resource identifying the connection for which the peered DNS domain will be
+                        /// created in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering
+                        /// service that is managing connectivity for the service producer's organization. For Google services that support this
+                        /// functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that
+                        /// contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC
+                        /// network.</param>
+                        public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1.Data.PeeredDnsDomain body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a peered DNS domain which sends requests for records in given namespace
+                        /// originating in the service producer VPC network to the consumer VPC network to be
+                        /// resolved.</summary>
+                        public class CreateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.PeeredDnsDomain body, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Parent resource identifying the connection for which the peered DNS
+                            /// domain will be created in the format:
+                            /// `services/{service}/projects/{project}/global/networks/{network}` {service} is the
+                            /// peering service that is managing connectivity for the service producer's organization.
+                            /// For Google services that support this functionality, this value is
+                            /// `servicenetworking.googleapis.com`. {project} is the number of the project that contains
+                            /// the service consumer's VPC network e.g. `12345`. {network} is the name of the service
+                            /// consumer's VPC network.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ServiceNetworking.v1.Data.PeeredDnsDomain Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/peeredDnsDomains";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Deletes a peered DNS domain.</summary>
+                        /// <param name="name">Required. The name of the peered DNS domain to delete in the format:
+                        /// `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`. {service} is the peering
+                        /// service that is managing connectivity for the service producer's organization. For Google services that support this
+                        /// functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that
+                        /// contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC
+                        /// network. {name} is the name of the peered DNS domain.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes a peered DNS domain.</summary>
+                        public class DeleteRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the peered DNS domain to delete in the format: `services/
+                            /// {service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`.
+                            /// {service} is the peering service that is managing connectivity for the service
+                            /// producer's organization. For Google services that support this functionality, this value
+                            /// is `servicenetworking.googleapis.com`. {project} is the number of the project that
+                            /// contains the service consumer's VPC network e.g. `12345`. {network} is the name of the
+                            /// service consumer's VPC network. {name} is the name of the peered DNS domain.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+/peeredDnsDomains/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Lists peered DNS domains for a connection.</summary>
+                        /// <param name="parent">Required. Parent resource identifying the connection which owns this collection of peered DNS
+                        /// domains in the format: `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering
+                        /// service that is managing connectivity for the service producer's organization. For Google services that support this
+                        /// functionality, this value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that
+                        /// contains the service consumer's VPC network. {network} is the name of the service consumer's VPC
+                        /// network.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists peered DNS domains for a connection.</summary>
+                        public class ListRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ListPeeredDnsDomainsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Parent resource identifying the connection which owns this collection
+                            /// of peered DNS domains in the format:
+                            /// `services/{service}/projects/{project}/global/networks/{network}`. {service} is the
+                            /// peering service that is managing connectivity for the service producer's organization.
+                            /// For Google services that support this functionality, this value is
+                            /// `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that
+                            /// contains the service consumer's VPC network. {network} is the name of the service
+                            /// consumer's VPC network.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/peeredDnsDomains";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                                    });
+                            }
+
+                        }
+                    }
+                }
             }
         }
         /// <summary>Gets the Roles resource.</summary>
@@ -2255,6 +2535,14 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by DeletePeeredDnsDomain
+    /// API.</summary>
+    public class DeletePeeredDnsDomainMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to disable VPC service controls.</summary>
     public class DisableVpcServiceControlsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2800,6 +3088,17 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response to list peered DNS domains for a given connection.</summary>
+    public class ListPeeredDnsDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of peered DNS domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeredDnsDomains")]
+        public virtual System.Collections.Generic.IList<PeeredDnsDomain> PeeredDnsDomains { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history
     /// description: The history of borrowing and returning library items. display_name: Activity labels: - key:
     /// /customer_id description: Identifier of a library customer</summary>
@@ -3279,6 +3578,32 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subpages")]
         public virtual System.Collections.Generic.IList<Page> Subpages { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>DNS domain suffix for which requests originating in the producer VPC network are resolved in the
+    /// associated consumer VPC network.</summary>
+    public class PeeredDnsDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DNS domain name suffix e.g. `example.com.`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
+        public virtual string DnsSuffix { get; set; } 
+
+        /// <summary>User assigned name for this resource. Must be unique within the consumer network. The name must be
+        /// 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase
+        /// letters, digits or dashes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by CreatePeeredDnsDomain
+    /// API.</summary>
+    public class PeeredDnsDomainMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

@@ -2328,7 +2328,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Imports a message into only this user's mailbox, with standard email delivery scanning and
-            /// classification similar to receiving via SMTP. Does not send a message.</summary>
+            /// classification similar to receiving via SMTP. Does not send a message. Note: This function doesn't
+            /// trigger forwarding rules or filters set up by the user.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value `me` can be used to indicate the authenticated
             /// user.</param>
@@ -2338,7 +2339,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Imports a message into only this user's mailbox, with standard email delivery scanning and
-            /// classification similar to receiving via SMTP. Does not send a message.</summary>
+            /// classification similar to receiving via SMTP. Does not send a message. Note: This function doesn't
+            /// trigger forwarding rules or filters set up by the user.</summary>
             public class ImportRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Import request.</summary>
@@ -2462,7 +2464,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Imports a message into only this user's mailbox, with standard email delivery scanning and
-            /// classification similar to receiving via SMTP. Does not send a message.</summary>
+            /// classification similar to receiving via SMTP. Does not send a message. Note: This function doesn't
+            /// trigger forwarding rules or filters set up by the user.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">

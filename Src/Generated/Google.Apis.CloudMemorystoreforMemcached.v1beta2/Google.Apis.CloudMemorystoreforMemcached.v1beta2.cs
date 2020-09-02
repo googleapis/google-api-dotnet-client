@@ -1881,43 +1881,6 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the metadata of a long-running operation.</summary>
-    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
-        /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
-        /// corresponding to `Code.CANCELLED`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
-
-        /// <summary>Output only. Time when the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
-        /// <summary>Output only. Time when the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details. You can find out more about

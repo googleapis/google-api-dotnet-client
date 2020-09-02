@@ -2722,6 +2722,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>A query string compatible with Google's [AIP-160](https://google.aip.dev/160) standard. Use any
+            /// of the following fields in a query: * [`appId`](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
+            /// [`namespace`](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
+            /// [`platform`](../projects.apps#FirebaseProjectInfo.FIELDS.platform)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The maximum number of Apps to return in the response. The server may return fewer than this
             /// value at its discretion. If no value is specified (or too large a value is specified), then the server
             /// will impose its own limit. This value cannot be negative.</summary>
@@ -2756,6 +2763,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
@@ -3009,8 +3025,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>A high-level summary of an App.</summary>
     public class FirebaseAppInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
-        /// should be treated as an opaque token, as the data format is not specified.</summary>
+        /// <summary>Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This
+        /// identifier should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
@@ -3022,6 +3038,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// projects/PROJECT_ID/androidApps/APP_ID or projects/ PROJECT_ID/webApps/APP_ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Immutable. The platform-specific identifier of the App. *Note:* For most use cases,
+        /// use `appId`, which is the canonical, globally unique identifier for referencing an App. This string is
+        /// derived from a native identifier for each platform: `packageName` for an `AndroidApp`, `bundleId` for an
+        /// `IosApp`, and `webId` for a `WebApp`. Its contents should be treated as opaque, as the native identifier
+        /// format may change as platforms evolve. This string is only unique within a `FirebaseProject` and its
+        /// associated Apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; } 
 
         /// <summary>The platform of the Firebase App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
@@ -3437,19 +3462,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
         public virtual MessageSet MessageSet { get; set; } 
 
-        /// <summary>DEPRECATED. This field was deprecated in 2011 with cl/20297133. Java support for the field was
-        /// moved to a proto1 backward compatibility class in April 2017 with cl/142615857 and cl/154123203. There was
-        /// never support for this field in Go; if set Go will ignore it. C++ stopped setting StatusProto::payload in
-        /// October 2015 with cl/106347055, and stopped reading the field in October 2017 with cl/173324114. In general,
-        /// newly written code should use only "message_set". If you need to maintain backward compatibility with code
-        /// written before 3/25/2011, do the following: - During the transition period, either (1) set both "payload"
-        /// and "message_set", or (2) write the consumer of StatusProto so that it can forge a MessageSet object from
-        /// "payload" if "message_set" is missing. The C++ util::Status implementation does (2). - Once all the
-        /// consumers are converted to accept "message_set", then remove the use of "payload" on the producer
-        /// side.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual TypedMessage Payload { get; set; } 
-
         /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; } 
@@ -3486,26 +3498,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message that groups a protocol type_id (as defined by MessageSet), with an encoded message of that
-    /// type. Its use is similar to MessageSet, except it represents a single (type, encoded message) instead of a set.
-    /// To embed "proto" inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg;
-    /// typed_msg.set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.mutable_message()); Error
-    /// handling is omitted from the sample code above. GetTypeId() will return 0 for messages that don't have a TypeId
-    /// specified.</summary>
-    public class TypedMessage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Message bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>Identifier for the type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("typeId")]
-        public virtual System.Nullable<int> TypeId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Details of a Firebase App for the web.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3536,6 +3528,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// `WebApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
+
+        /// <summary>Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is
+        /// only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or
+        /// reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated
+        /// Apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webId")]
+        public virtual string WebId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

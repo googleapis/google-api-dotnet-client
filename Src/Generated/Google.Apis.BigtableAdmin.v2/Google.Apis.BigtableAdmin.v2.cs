@@ -4145,6 +4145,31 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Added to the error payload.</summary>
+    public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<Frame> Frames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Frame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("targetName")]
+        public virtual string TargetName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowGuid")]
+        public virtual string WorkflowGuid { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
+        public virtual string ZoneId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Rule for determining which cells to delete during garbage collection.</summary>
     public class GcRule : Google.Apis.Requests.IDirectResponseSchema
     {

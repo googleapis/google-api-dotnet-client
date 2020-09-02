@@ -2762,32 +2762,73 @@ namespace Google.Apis.Monitoring.v3
                 /// returned.</summary>
                 public enum AggregationCrossSeriesReducerEnum
                 {
+                    /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
                     REDUCENONE,
+                    /// <summary>Reduce by computing the mean value across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type
+                    /// of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
                     REDUCEMEAN,
+                    /// <summary>Reduce by computing the minimum value across time series for each alignment period.
+                    /// This reducer is valid for DELTA and GAUGE metrics with numeric values. The value_type of the
+                    /// output is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
                     REDUCEMIN,
+                    /// <summary>Reduce by computing the maximum value across time series for each alignment period.
+                    /// This reducer is valid for DELTA and GAUGE metrics with numeric values. The value_type of the
+                    /// output is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
                     REDUCEMAX,
+                    /// <summary>Reduce by computing the sum across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the
+                    /// output is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
                     REDUCESUM,
+                    /// <summary>Reduce by computing the standard deviation across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics with numeric or distribution values.
+                    /// The value_type of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
                     REDUCESTDDEV,
+                    /// <summary>Reduce by computing the number of data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and
+                    /// string value_type. The value_type of the output is INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
                     REDUCECOUNT,
+                    /// <summary>Reduce by computing the number of True-valued data points across time series for each
+                    /// alignment period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The
+                    /// value_type of the output is INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
                     REDUCECOUNTTRUE,
+                    /// <summary>Reduce by computing the number of False-valued data points across time series for each
+                    /// alignment period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The
+                    /// value_type of the output is INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
                     REDUCECOUNTFALSE,
+                    /// <summary>Reduce by computing the ratio of the number of True-valued data points to the total
+                    /// number of data points for each alignment period. This reducer is valid for DELTA and GAUGE
+                    /// metrics of Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type
+                    /// DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
                     REDUCEFRACTIONTRUE,
+                    /// <summary>Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of
+                    /// data points across time series for each alignment period. This reducer is valid for GAUGE and
+                    /// DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
                     REDUCEPERCENTILE99,
+                    /// <summary>Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of
+                    /// data points across time series for each alignment period. This reducer is valid for GAUGE and
+                    /// DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
                     REDUCEPERCENTILE95,
+                    /// <summary>Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of
+                    /// data points across time series for each alignment period. This reducer is valid for GAUGE and
+                    /// DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
                     REDUCEPERCENTILE50,
+                    /// <summary>Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of
+                    /// data points across time series for each alignment period. This reducer is valid for GAUGE and
+                    /// DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
                     REDUCEPERCENTILE05,
                 }
@@ -2827,42 +2868,114 @@ namespace Google.Apis.Monitoring.v3
                 /// specified; otherwise, an error is returned.</summary>
                 public enum AggregationPerSeriesAlignerEnum
                 {
+                    /// <summary>No alignment. Raw data is returned. Not valid if cross-series reduction is requested.
+                    /// The value_type of the result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
                     ALIGNNONE,
+                    /// <summary>Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for
+                    /// CUMULATIVE and DELTA metrics. If the selected alignment period results in periods with no data,
+                    /// then the aligned value for such a period is created by interpolation. The value_type of the
+                    /// aligned result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
                     ALIGNDELTA,
+                    /// <summary>Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or
+                    /// "delta over time". Think of this aligner as providing the slope of the line that passes through
+                    /// the value at the start and at the end of the alignment_period.This aligner is valid for
+                    /// CUMULATIVE and DELTA metrics with numeric values. If the selected alignment period results in
+                    /// periods with no data, then the aligned value for such a period is created by interpolation. The
+                    /// output is a GAUGE metric with value_type DOUBLE.If, by "rate", you mean "percentage change", see
+                    /// the ALIGN_PERCENT_CHANGE aligner instead.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
                     ALIGNRATE,
+                    /// <summary>Align by interpolating between adjacent points around the alignment period boundary.
+                    /// This aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned
+                    /// result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
                     ALIGNINTERPOLATE,
+                    /// <summary>Align by moving the most recent data point before the end of the alignment period to
+                    /// the boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The
+                    /// value_type of the aligned result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
                     ALIGNNEXTOLDER,
+                    /// <summary>Align the time series by returning the minimum value in each alignment period. This
+                    /// aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned
+                    /// result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
                     ALIGNMIN,
+                    /// <summary>Align the time series by returning the maximum value in each alignment period. This
+                    /// aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned
+                    /// result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
                     ALIGNMAX,
+                    /// <summary>Align the time series by returning the mean value in each alignment period. This
+                    /// aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned
+                    /// result is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
                     ALIGNMEAN,
+                    /// <summary>Align the time series by returning the number of values in each alignment period. This
+                    /// aligner is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of
+                    /// the aligned result is INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
                     ALIGNCOUNT,
+                    /// <summary>Align the time series by returning the sum of the values in each alignment period. This
+                    /// aligner is valid for GAUGE and DELTA metrics with numeric and distribution values. The
+                    /// value_type of the aligned result is the same as the value_type of the input.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
                     ALIGNSUM,
+                    /// <summary>Align the time series by returning the standard deviation of the values in each
+                    /// alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The
+                    /// value_type of the output is DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
                     ALIGNSTDDEV,
+                    /// <summary>Align the time series by returning the number of True values in each alignment period.
+                    /// This aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is
+                    /// INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
                     ALIGNCOUNTTRUE,
+                    /// <summary>Align the time series by returning the number of False values in each alignment period.
+                    /// This aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is
+                    /// INT64.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
                     ALIGNCOUNTFALSE,
+                    /// <summary>Align the time series by returning the ratio of the number of True values to the total
+                    /// number of values in each alignment period. This aligner is valid for GAUGE metrics with Boolean
+                    /// values. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
                     ALIGNFRACTIONTRUE,
+                    /// <summary>Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
                     ALIGNPERCENTILE99,
+                    /// <summary>Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
                     ALIGNPERCENTILE95,
+                    /// <summary>Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
                     ALIGNPERCENTILE50,
+                    /// <summary>Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
                     ALIGNPERCENTILE05,
+                    /// <summary>Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA
+                    /// metrics with numeric values. This alignment returns ((current - previous)/previous) * 100, where
+                    /// the value of previous is determined based on the alignment_period.If the values of current and
+                    /// previous are both 0, then the returned value is 0. If only previous is 0, the returned value is
+                    /// infinity.A 10-minute moving mean is computed at each point of the alignment period prior to the
+                    /// above calculation to smooth the metric and prevent false positives from very short-lived spikes.
+                    /// The moving mean is only applicable for data whose values are >= 0. Any values < 0 are treated as
+                    /// a missing datapoint, and are ignored. While DELTA metrics are accepted by this alignment,
+                    /// special care should be taken that the values for the metric will always be positive. The output
+                    /// is a GAUGE metric with value_type DOUBLE.</summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
                     ALIGNPERCENTCHANGE,
                 }
@@ -2909,8 +3022,12 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>Required. Specifies which information is returned about the time series.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Returns the identity of the metric(s), the time series, and the time series
+                    /// data.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
+                    /// <summary>Returns the identity of the metric and the time series resource, but not the time
+                    /// series data.</summary>
                     [Google.Apis.Util.StringValueAttribute("HEADERS")]
                     HEADERS,
                 }
@@ -3665,10 +3782,17 @@ namespace Google.Apis.Monitoring.v3
                 /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Same as FULL.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+                    /// <summary>Return the embedded ServiceLevelIndicator in the form in which it was defined. If it
+                    /// was defined using a BasicSli, return that BasicSli.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
+                    /// <summary>For ServiceLevelIndicators using BasicSli articulation, instead return the
+                    /// ServiceLevelIndicator with its mode of computation fully spelled out as a RequestBasedSli. For
+                    /// ServiceLevelIndicators using RequestBasedSli or WindowsBasedSli, return the
+                    /// ServiceLevelIndicator as it was provided.</summary>
                     [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
                     EXPLICIT__,
                 }
@@ -3763,10 +3887,17 @@ namespace Google.Apis.Monitoring.v3
                 /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>Same as FULL.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+                    /// <summary>Return the embedded ServiceLevelIndicator in the form in which it was defined. If it
+                    /// was defined using a BasicSli, return that BasicSli.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
+                    /// <summary>For ServiceLevelIndicators using BasicSli articulation, instead return the
+                    /// ServiceLevelIndicator with its mode of computation fully spelled out as a RequestBasedSli. For
+                    /// ServiceLevelIndicators using RequestBasedSli or WindowsBasedSli, return the
+                    /// ServiceLevelIndicator as it was provided.</summary>
                     [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
                     EXPLICIT__,
                 }
@@ -4119,13 +4250,14 @@ namespace Google.Apis.Monitoring.v3
             public virtual string Parent { get; private set; }
 
             /// <summary>A filter specifying what Services to return. The filter currently supports the following
-            /// fields: - `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` - `mesh_istio.mesh_uid`
-            /// - `mesh_istio.service_namespace` - `mesh_istio.service_name` - `cluster_istio.location` (deprecated) -
-            /// `cluster_istio.cluster_name` (deprecated) - `cluster_istio.service_namespace` (deprecated) -
-            /// `cluster_istio.service_name` (deprecated) identifier_case refers to which option in the identifier oneof
-            /// is populated. For example, the filter identifier_case = "CUSTOM" would match all services with a value
-            /// for the custom field. Valid options are "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", "MESH_ISTIO", and
-            /// "CLUSTER_ISTIO" (deprecated),</summary>
+            /// fields: - `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` (reserved for future
+            /// use) - `mesh_istio.mesh_uid` - `mesh_istio.service_namespace` - `mesh_istio.service_name` -
+            /// `cluster_istio.location` (deprecated) - `cluster_istio.cluster_name` (deprecated) -
+            /// `cluster_istio.service_namespace` (deprecated) - `cluster_istio.service_name` (deprecated)
+            /// identifier_case refers to which option in the identifier oneof is populated. For example, the filter
+            /// identifier_case = "CUSTOM" would match all services with a value for the custom field. Valid options are
+            /// "CUSTOM", "APP_ENGINE", "MESH_ISTIO", plus "CLUSTER_ISTIO" (deprecated) and "CLOUD_ENDPOINTS" (reserved
+            /// for future use).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4777,8 +4909,8 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Optional. Used to perform content matching. This allows matching based on substrings and regular
-    /// expressions, together with their negations. Only the first 4MB of an HTTP or HTTPS check's response (and the
-    /// first 1MB of a TCP check's response) are examined for purposes of content matching.</summary>
+    /// expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the
+    /// first 1 MB of a TCP check's response) are examined for purposes of content matching.</summary>
     public class ContentMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content
@@ -4918,7 +5050,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual Range Range { get; set; } 
 
         /// <summary>The sum of squared deviations from the mean of the values in the population. For values x_i this
-        /// is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
+        /// is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition
         /// describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
@@ -5037,7 +5169,7 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has
-    /// the following boundaries:Upper bound (0 <= i < N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds
+    /// the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds
     /// field must contain at least one element. If bounds has only one element, then there are no finite buckets, and
     /// that single element is the common boundary of the overflow and underflow buckets.</summary>
     public class Explicit : Google.Apis.Requests.IDirectResponseSchema
@@ -5053,7 +5185,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>Specifies an exponential sequence of buckets that have a width that is proportional to the value of the
     /// lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale *
-    /// (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
+    /// (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 1.</summary>
@@ -5377,7 +5509,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
     /// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset +
-    /// (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1)).</summary>
+    /// (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).</summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 0.</summary>
@@ -5709,12 +5841,7 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
-    /// stops data collection and makes the metric type's existing data unusable.The following are specific rules for
-    /// service defined Monitoring metric descriptors: type, metric_kind, value_type and description  fields are all
-    /// required. The unit field must be specified  if the value_type is any of DOUBLE, INT64, DISTRIBUTION. Maximum of
-    /// default 500 metric descriptors per service is allowed. Maximum of default 10 labels per metric descriptor is
-    /// allowed.The default maximum limit can be overridden. Please follow
-    /// https://cloud.google.com/monitoring/quotas</summary>
+    /// stops data collection and makes the metric type's existing data unusable.</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -5727,12 +5854,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The set of labels that can be used to describe a specific instance of this metric type.The label
-        /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
-        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, the
-        /// appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code,
-        /// response_code, so you can look at latencies for successful responses or just for responses that
-        /// failed.</summary>
+        /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
+        /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
+        /// response code, response_code, so you can look at latencies for successful responses or just for responses
+        /// that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -5759,14 +5884,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.All service defined
-        /// metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such
-        /// as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must follow: Only upper and
-        /// lower-case letters, digits, '/' and underscores '_' are  allowed. The maximum number of characters allowed
-        /// for the relative_metric_name is  100.All user-defined metric types have the DNS name custom.googleapis.com,
-        /// external.googleapis.com, or logging.googleapis.com/user/.Metric types should use a natural hierarchical
-        /// grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
-        /// "appengine.googleapis.com/http/server/response_latencies" </summary>
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
+        /// metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a
+        /// natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount"
+        /// "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -5785,24 +5906,22 @@ namespace Google.Apis.Monitoring.v3.Data
         /// (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano
         /// (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi
         /// mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: /
-        /// division or ratio (as an infix operator). For examples,  kBy/{email} or MiBy/10ms (although you should
-        /// almost never  have /s in a metric unit; rates should always be computed at  query time from the underlying
-        /// cumulative or delta value). . multiplication or composition (as an infix operator). For  examples, GBy.d or
+        /// division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost
+        /// never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative
+        /// or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or
         /// k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ;
-        ///
-        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ;
-        ///
-        /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation  is
-        /// used alone, then the unit is equivalent to 1. For examples,  {request}/s == 1/s, By{transmitted}/s == By/s.
-        /// NAME is a sequence of non-blank printable ASCII characters not  containing { or }. 1 represents a unitary
-        /// dimensionless  unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in 1/s. It is
-        /// typically used when none of the basic units are  appropriate. For example, "new users per day" can be
-        /// represented as  1/d or {new-users}/d (and a metric value 5 would mean "5 new  users). Alternatively,
-        /// "thousands of page views per day" would be  represented as 1000/d or k1/d or k{page_views}/d (and a metric
-        /// value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates
-        /// values giving  a percentage (so the metric values are typically in the range of 0..100,  and a metric value
-        /// 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range  0..1, that will be
-        /// multiplied by 100 and displayed as a percentage  (so a metric value 0.03 means "3 percent").</summary>
+        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes:
+        /// Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is
+        /// equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-
+        /// blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit
+        /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none
+        /// of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-
+        /// users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day"
+        /// would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page
+        /// views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the
+        /// metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.%
+        /// indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and
+        /// displayed as a percentage (so a metric value 0.03 means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -5951,13 +6070,8 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
     /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
     /// "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM
-    /// instances.Different services can support different monitored resource types.The following are specific rules to
-    /// service defined monitored resources for Monitoring and Logging: The type, display_name, description, labels and
-    /// launch_stage  fields are all required. The first label of the monitored resource descriptor must be
-    /// resource_container. There are legacy monitored resource descritptors  start with project_id. It must include a
-    /// location label. Maximum of default 5 service defined monitored resource descriptors  is allowed per service.
-    /// Maximum of default 10 labels per monitored resource is allowed.The default maximum limit can be overridden.
-    /// Please follow https://cloud.google.com/monitoring/quotas</summary>
+    /// instances.Different APIs can support different monitored resource types. APIs generally provide a list method
+    /// that returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -5971,11 +6085,9 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
-        /// name must follow: Only upper and lower-case letters, digits and underscores (_) are  allowed. Label name
-        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, an
-        /// individual Google Cloud SQL database is identified by values for the labels database_id and
-        /// location.</summary>
+        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
+        /// an individual Google Cloud SQL database is identified by values for the labels "database_id" and
+        /// "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -5991,12 +6103,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
-        /// in Google Cloud SQL.All service defined monitored resource types must be prefixed with the service name, in
-        /// the format of {service name}/{relative resource name}. The relative resource name must follow: Only upper
-        /// and lower-case letters and digits are allowed. It must start with upper case character and is recommended to
-        /// use Upper  Camel Case style. The maximum number of characters allowed for the relative_resource_name  is
-        /// 100.Note there are legacy service monitored resources not following this rule.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type "cloudsql_database" represents
+        /// databases in Google Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -6512,20 +6620,20 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>A closed time interval. It extends from the start time to the end time, and includes both: [startTime,
     /// endTime]. Valid time intervals depend on the MetricKind of the metric value. In no case can the end time be
-    /// earlier than the start time. For GAUGE metrics, the startTime value is technically optional; if  no value is
-    /// specified, the start time defaults to the value of the  end time, and the interval represents a single point in
-    /// time. If both  start and end times are specified, they must be identical. Such an  interval is valid only for
-    /// GAUGE metrics, which are point-in-time  measurements. The end time of a new interval must be at least a
+    /// earlier than the start time. For GAUGE metrics, the startTime value is technically optional; if no value is
+    /// specified, the start time defaults to the value of the end time, and the interval represents a single point in
+    /// time. If both start and end times are specified, they must be identical. Such an interval is valid only for
+    /// GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a
     /// millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must
-    /// specify a  non-zero interval, with subsequent points specifying contiguous and  non-overlapping intervals. For
-    /// DELTA metrics, the start time of  the next interval must be at least a millisecond after the end time  of the
-    /// previous interval. For CUMULATIVE metrics, the start time and end time must specify a  a non-zero interval, with
-    /// subsequent points specifying the same  start time and increasing end times, until an event resets the
-    /// cumulative value to zero and sets a new start time for the following  points. The new start time must be at
-    /// least a millisecond after the  end time of the previous interval. The start time of a new interval must be at
-    /// least a millisecond after the  end time of the previous interval because intervals are closed. If the  start
-    /// time of a new interval is the same as the end time of the previous  interval, then data written at the new start
-    /// time could overwrite data  written at the previous end time.</summary>
+    /// specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For
+    /// DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the
+    /// previous interval. For CUMULATIVE metrics, the start time and end time must specify a a non-zero interval, with
+    /// subsequent points specifying the same start time and increasing end times, until an event resets the cumulative
+    /// value to zero and sets a new start time for the following points. The new start time must be at least a
+    /// millisecond after the end time of the previous interval. The start time of a new interval must be at least a
+    /// millisecond after the end time of the previous interval because intervals are closed. If the start time of a new
+    /// interval is the same as the end time of the previous interval, then data written at the new start time could
+    /// overwrite data written at the previous end time.</summary>
     public class TimeInterval : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The end of the time interval.</summary>
@@ -6715,12 +6823,12 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("distributionValue")]
         public virtual Distribution DistributionValue { get; set; } 
 
-        /// <summary>A 64-bit double-precision floating-point number. Its magnitude is approximately 10300 and it has 16
-        /// significant digits of precision.</summary>
+        /// <summary>A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has
+        /// 16 significant digits of precision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; } 
 
-        /// <summary>A 64-bit integer. Its range is approximately 9.2x1018.</summary>
+        /// <summary>A 64-bit integer. Its range is approximately ±9.2x1018.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
         public virtual System.Nullable<long> Int64Value { get; set; } 
 
@@ -6765,8 +6873,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Nullable<bool> IsInternal { get; set; } 
 
         /// <summary>The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
-        /// configuration. The following monitored resource types are supported for Uptime checks:  uptime_url,
-        /// gce_instance,  gae_app,  aws_ec2_instance,  aws_elb_load_balancer</summary>
+        /// configuration. The following monitored resource types are supported for Uptime checks: uptime_url,
+        /// gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual MonitoredResource MonitoredResource { get; set; } 
 

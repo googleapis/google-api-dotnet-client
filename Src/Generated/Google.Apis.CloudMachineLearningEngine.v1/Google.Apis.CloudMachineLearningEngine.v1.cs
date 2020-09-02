@@ -3622,6 +3622,59 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ContainerPort represents a network port in a single container.</summary>
+    public class GoogleCloudMlV1ContainerPort : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x <
+        /// 65536.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
+        public virtual System.Nullable<int> ContainerPort { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specify a custom container to deploy. Our ContainerSpec is a subset of the Kubernetes Container
+    /// specification. https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#container-v1-core</summary>
+    public class GoogleCloudMlV1ContainerSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        /// Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be
+        /// resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable
+        /// exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
+        /// container/#running-a-command-in-a-shell</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+
+        /// <summary>Immutable. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if
+        /// this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
+        /// variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can
+        /// be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of
+        /// whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application
+        /// /define-command-argument-container/#running-a-command-in-a-shell</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; } 
+
+        /// <summary>Immutable. List of environment variables to set in the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1EnvVar> Env { get; set; } 
+
+        /// <summary>Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>Immutable. List of ports to expose from the container. Exposing a port here gives the system
+        /// additional information about the network connections a container uses, but is primarily informational. Not
+        /// specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the
+        /// default "0.0.0.0" address inside a container will be accessible from the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1ContainerPort> Ports { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a custom encryption key configuration that can be applied to a resource.</summary>
     public class GoogleCloudMlV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3635,23 +3688,20 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> EndpointMap is used to provide paths for predict/explain/healthcheck to customers. It's an output only
-    /// field in the version proto which can be only set on the server side. Public endpoints follow the format
-    /// specified on the user facing doc, and private endpoints are customized for each privately deploymed
-    /// model/version.</summary>
-    public class GoogleCloudMlV1EndpointMap : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>EnvVar represents an environment variable present in a Container.</summary>
+    public class GoogleCloudMlV1EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Http(s) path to send explain requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explain")]
-        public virtual string Explain { get; set; } 
+        /// <summary>Name of the environment variable. Must be a C_IDENTIFIER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
-        /// <summary>Http(s) path to send health check requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("health")]
-        public virtual string Health { get; set; } 
-
-        /// <summary>Http(s) path to send prediction requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predict")]
-        public virtual string Predict { get; set; } 
+        /// <summary>Variable references $(VAR_NAME) are expanded using the previous defined environment variables in
+        /// the container and any service environment variables. If a variable cannot be resolved, the reference in the
+        /// input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME).
+        /// Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to
+        /// "".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3668,9 +3718,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message holding configuration options for explaining model predictions. There are two feature
-    /// attribution methods supported for TensorFlow models: integrated gradients and sampled Shapley. [Learn more about
-    /// feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview)</summary>
+    /// <summary>Message holding configuration options for explaining model predictions. There are three feature
+    /// attribution methods supported for TensorFlow models: integrated gradients, sampled Shapley, and XRAI. [Learn
+    /// more about feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview)</summary>
     public class GoogleCloudMlV1ExplanationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully
@@ -4364,6 +4414,23 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>RouteMap is used to override HTTP paths sent to a Custom Container. If specified, the HTTP server
+    /// implemented in the ContainerSpec must support the route. If unspecified, standard HTTP paths will be
+    /// used.</summary>
+    public class GoogleCloudMlV1RouteMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>HTTP path to send health check requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("health")]
+        public virtual string Health { get; set; } 
+
+        /// <summary>HTTP path to send prediction requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predict")]
+        public virtual string Predict { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An attribution method that approximates Shapley values for features that contribute to the label being
     /// predicted. A sampling strategy is used to approximate the value rather than considering all subsets of
     /// features.</summary>
@@ -4382,15 +4449,31 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Optional. The maximum job running time, expressed in seconds. The field can contain up to nine
         /// fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If
-        /// the training job is still running after this duration, AI Platform Training cancels it. For example, if you
-        /// want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes /
-        /// hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [provide this
-        /// field in a `config.yaml` file](/ai-platform/training/docs/training-
-        /// jobs#formatting_your_configuration_parameters). For example: ```yaml trainingInput: ... scheduling:
-        /// maxRunningTime: 7200s ... ```</summary>
+        /// the training job is still running after this duration, AI Platform Training cancels it. The duration is
+        /// measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration
+        /// limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2
+        /// hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your
+        /// training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-
+        /// platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ```yaml
+        /// trainingInput: scheduling: maxRunningTime: 7200s ```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunningTime")]
         public virtual object MaxRunningTime { get; set; } 
 
+        /// <summary>Optional. The maximum job wait time, expressed in seconds. The field can contain up to nine
+        /// fractional digits, terminated by `s`. If not specified, there is no limit to the wait time. The minimum for
+        /// this field is `1800s` (30 minutes). If the training job has not entered the `RUNNING` state after this
+        /// duration, AI Platform Training cancels it. After the job begins running, it can no longer be cancelled due
+        /// to the maximum wait time. Therefore the duration limited by this field does not overlap with the duration
+        /// limited by Scheduling.max_running_time. For example, if the job temporarily stops running and retries due to
+        /// a [VM restart](/ai-platform/training/docs/overview#restarts), this cannot lead to a maximum wait time
+        /// cancellation. However, independently of this constraint, AI Platform Training might stop a job if there are
+        /// too many retries due to exhausted resources in a region. The following example describes how you might use
+        /// this field: To cancel your job if it doesn't start running within 1 hour, set this field to `3600s` (1 hour
+        /// * 60 minutes / hour * 60 seconds / minute). If the job is still in the `QUEUED` or `PREPARING` state after
+        /// an hour of waiting, AI Platform Training cancels the job. If you submit your training job using the `gcloud`
+        /// tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-
+        /// jobs#formatting_your_configuration_parameters). For example: ```yaml trainingInput: scheduling: maxWaitTime:
+        /// 3600s ```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWaitTime")]
         public virtual object MaxWaitTime { get; set; } 
 
@@ -5003,6 +5086,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoScaling")]
         public virtual GoogleCloudMlV1AutoScaling AutoScaling { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual GoogleCloudMlV1ContainerSpec Container { get; set; } 
+
         /// <summary>Output only. The time the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
@@ -5018,12 +5104,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. The description specified for the version when it was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
-
-        /// <summary>Optional. Output only. If set by server, the http(s) endpoints returned to user after the
-        /// public/private deployment is successful.
-        /// https://cloud.google.com/apis/design/design_patterns#output_fields.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
-        public virtual GoogleCloudMlV1EndpointMap Endpoints { get; set; } 
 
         /// <summary>Output only. The details of a failure or a cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
@@ -5134,6 +5214,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// predictions from this Version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestLoggingConfig")]
         public virtual GoogleCloudMlV1RequestLoggingConfig RequestLoggingConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("routes")]
+        public virtual GoogleCloudMlV1RouteMap Routes { get; set; } 
 
         /// <summary>Required. The AI Platform runtime version to use for this deployment. For more information, see the
         /// [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-

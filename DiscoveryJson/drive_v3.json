@@ -35,7 +35,7 @@
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/drive/", 
- "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/NTo0tX-aprtnuYL-8aTRdweYwcQ\"", 
+ "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/LDecsMry_Rq8CqkKz71x_-idf3Y\"", 
  "icons": {
   "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png", 
   "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -932,6 +932,12 @@
       "fileId"
      ], 
      "parameters": {
+      "enforceSingleParent": {
+       "default": "false", 
+       "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter will only take effect if the item is not in a shared drive. If an item's last parent is deleted but the item itself is not, the item will be placed under its owner's root.", 
+       "location": "query", 
+       "type": "boolean"
+      }, 
       "fileId": {
        "description": "The ID of the file.", 
        "location": "path", 
@@ -962,6 +968,14 @@
      "description": "Permanently deletes all of the user's trashed files.", 
      "httpMethod": "DELETE", 
      "id": "drive.files.emptyTrash", 
+     "parameters": {
+      "enforceSingleParent": {
+       "default": "false", 
+       "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter will only take effect if the item is not in a shared drive. If an item's last parent is deleted but the item itself is not, the item will be placed under its owner's root.", 
+       "location": "query", 
+       "type": "boolean"
+      }
+     }, 
      "path": "files/trash", 
      "scopes": [
       "https://www.googleapis.com/auth/drive"
@@ -2171,7 +2185,7 @@
    }
   }
  }, 
- "revision": "20200723", 
+ "revision": "20200822", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "About": {
@@ -2839,7 +2853,7 @@
        "type": "boolean"
       }, 
       "canMoveChildrenWithinDrive": {
-       "description": "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives.", 
+       "description": "Whether the current user can move children of this folder within this drive. This is false when the item is not a folder. Note that a request to move the child may still fail depending on the current user's access to the child and to the destination folder.", 
        "type": "boolean"
       }, 
       "canMoveChildrenWithinTeamDrive": {
@@ -2859,7 +2873,7 @@
        "type": "boolean"
       }, 
       "canMoveItemWithinDrive": {
-       "description": "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives.", 
+       "description": "Whether the current user can move this item within this drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added and the parent that is being removed.", 
        "type": "boolean"
       }, 
       "canMoveItemWithinTeamDrive": {

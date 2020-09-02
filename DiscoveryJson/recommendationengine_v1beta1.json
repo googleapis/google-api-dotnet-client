@@ -842,7 +842,7 @@
    }
   }
  }, 
- "revision": "20200810", 
+ "revision": "20200821", 
  "rootUrl": "https://recommendationengine.googleapis.com/", 
  "schemas": {
   "GoogleApiHttpBody": {

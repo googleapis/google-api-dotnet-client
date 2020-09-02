@@ -2053,6 +2053,15 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; } 
 
+        /// <summary>Defines the monitored resources used by this service. This is required by the Service.monitoring
+        /// and Service.logging configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResources")]
+        public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> MonitoredResources { get; set; } 
+
+        /// <summary>Monitoring configuration. This should not include the 'producer_destinations' field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
+        public virtual Monitoring Monitoring { get; set; } 
+
         /// <summary>The DNS address at which this service is available. An example DNS address would be:
         /// `calendar.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

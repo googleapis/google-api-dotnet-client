@@ -1689,6 +1689,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<MembershipRole> Roles { get; set; } 
 
+        /// <summary>Output only. The type of the membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
         /// <summary>Output only. Last updated timestamp of the Membership. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 

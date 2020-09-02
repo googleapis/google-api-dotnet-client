@@ -4407,7 +4407,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud SQL instance resource. Next field: 34</summary>
+    /// <summary>A Cloud SQL instance resource. Next field: 35</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary> *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by

@@ -479,6 +479,31 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Added to the error payload.</summary>
+    public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<Frame> Frames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Frame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("targetName")]
+        public virtual string TargetName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowGuid")]
+        public virtual string WorkflowGuid { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
+        public virtual string ZoneId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served
     /// from all Clusters in the instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema

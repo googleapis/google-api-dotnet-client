@@ -293,7 +293,7 @@ namespace Google.Apis.Speech.v1p1beta1
         }
 
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -301,7 +301,7 @@ namespace Google.Apis.Speech.v1p1beta1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.Operation>
         {
@@ -347,26 +347,22 @@ namespace Google.Apis.Speech.v1p1beta1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`.
-        ///
-        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
-        /// such as `users/operations`. To override the binding, API services can add a binding such as
-        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-        /// name includes the operations collection id, however overriding users must ensure the name binding is the
-        /// parent resource, without the operations collection id.</summary>
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
         public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -503,7 +499,7 @@ namespace Google.Apis.Speech.v1p1beta1
                 }
 
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -511,7 +507,7 @@ namespace Google.Apis.Speech.v1p1beta1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.Operation>
                 {
@@ -557,13 +553,12 @@ namespace Google.Apis.Speech.v1p1beta1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -571,13 +566,12 @@ namespace Google.Apis.Speech.v1p1beta1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -896,9 +890,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -908,11 +902,11 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -923,11 +917,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>A phrases containing words and phrase "hints" so that the speech recognition is more likely to
     /// recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if
     /// specific commands are typically spoken by the user. This can also be used to add additional words to the
-    /// vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
-    ///
-    /// List items can also include pre-built or custom classes containing groups of words that represent common
-    /// concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the
-    /// year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the
+    /// vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List
+    /// items can also include pre-built or custom classes containing groups of words that represent common concepts
+    /// that occur in natural language. For example, rather than providing a phrase hint for every month of the year
+    /// (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the
     /// likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-
     /// built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were
     /// defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and
@@ -1097,21 +1090,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>Which model to select for the given request. Select the model best suited to your domain to get
         /// best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in
-        /// the RecognitionConfig.
-        ///
-        /// Model Description
-        ///
-        /// command_and_search Best for short queries such as voice commands or voice search.
-        ///
-        /// phone_call Best for audio that originated from a phone call (typically recorded at an 8khz sampling rate).
-        ///
-        /// video Best for audio that originated from from video or includes multiple speakers. Ideally the audio is
-        /// recorded at a 16khz or greater sampling rate. This is a premium model that costs more than the standard
-        /// rate.
-        ///
-        /// default Best for audio that is not one of the specific audio models. For example, long-form audio. Ideally
-        /// the audio is high-fidelity, recorded at a 16khz or greater sampling rate.
-        ///
+        /// the RecognitionConfig. *Model* *Description* command_and_search Best for short queries such as voice
+        /// commands or voice search. phone_call Best for audio that originated from a phone call (typically recorded at
+        /// an 8khz sampling rate). video Best for audio that originated from from video or includes multiple speakers.
+        /// Ideally the audio is recorded at a 16khz or greater sampling rate. This is a premium model that costs more
+        /// than the standard rate. default Best for audio that is not one of the specific audio models. For example,
+        /// long-form audio. Ideally the audio is high-fidelity, recorded at a 16khz or greater sampling rate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; } 
@@ -1138,10 +1122,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and
         /// the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for
-        /// the audio.
-        ///
-        /// If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the speech is
-        /// recognized using the standard version of the specified model.</summary>
+        /// the audio. If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the
+        /// speech is recognized using the standard version of the specified model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEnhanced")]
         public virtual System.Nullable<bool> UseEnhanced { get; set; } 
 
@@ -1157,7 +1139,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string AudioTopic { get; set; } 
 
         /// <summary>The industry vertical to which this speech recognition request most closely applies. This is most
-        /// indicative of the topics contained in the audio.  Use the 6-digit NAICS code to identify the industry
+        /// indicative of the topics contained in the audio. Use the 6-digit NAICS code to identify the industry
         /// vertical - see https://www.naics.com/search/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryNaicsCodeOfAudio")]
         public virtual System.Nullable<long> IndustryNaicsCodeOfAudio { get; set; } 
@@ -1179,13 +1161,13 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalMediaType")]
         public virtual string OriginalMediaType { get; set; } 
 
-        /// <summary>Mime type of the original audio file.  For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`,
+        /// <summary>Mime type of the original audio file. For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`,
         /// `audio/3gpp`. A list of possible audio mime types is maintained at http://www.iana.org/assignments/media-
         /// types/media-types.xhtml#audio</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalMimeType")]
         public virtual string OriginalMimeType { get; set; } 
 
-        /// <summary>The device used to make the recording.  Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or
+        /// <summary>The device used to make the recording. Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or
         /// 'POTS' or 'VoIP' or 'Cardioid Microphone'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDeviceName")]
         public virtual string RecordingDeviceName { get; set; } 
@@ -1288,11 +1270,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
         /// words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-
-        /// text/quotas#content).
-        ///
-        /// List items can also be set to classes for groups of words that represent common concepts that occur in
-        /// natural language. For example, rather than providing phrase hints for every month of the year, using the
-        /// $MONTH class improves the likelihood of correctly transcribing audio that includes months.</summary>
+        /// text/quotas#content). List items can also be set to classes for groups of words that represent common
+        /// concepts that occur in natural language. For example, rather than providing phrase hints for every month of
+        /// the year, using the $MONTH class improves the likelihood of correctly transcribing audio that includes
+        /// months.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
         public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
 
@@ -1350,9 +1331,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1360,8 +1340,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

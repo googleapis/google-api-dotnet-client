@@ -757,6 +757,10 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
     /// <summary>A response message for importing an SSH public key.</summary>
     public class ImportSshPublicKeyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Detailed information about import results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; } 
+
         /// <summary>The login profile information for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginProfile")]
         public virtual LoginProfile LoginProfile { get; set; } 

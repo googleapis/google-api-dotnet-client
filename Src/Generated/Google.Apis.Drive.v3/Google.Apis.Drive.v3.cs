@@ -2355,6 +2355,13 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
+            /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
@@ -2387,6 +2394,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2428,6 +2444,13 @@ namespace Google.Apis.Drive.v3
             }
 
 
+            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
+            /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
+            /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName => "emptyTrash";
@@ -2443,6 +2466,15 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enforceSingleParent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -6593,8 +6625,9 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfTeamDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move children of this folder within the shared drive. This is
-            /// false when the item is not a folder. Only populated for items in shared drives.</summary>
+            /// <summary>Whether the current user can move children of this folder within this drive. This is false when
+            /// the item is not a folder. Note that a request to move the child may still fail depending on the current
+            /// user's access to the child and to the destination folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; } 
 
@@ -6616,9 +6649,9 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move this item within this shared drive. Note that a request to
-            /// change the parent of the item may still fail depending on the new parent that is being added. Only
-            /// populated for items in shared drives.</summary>
+            /// <summary>Whether the current user can move this item within this drive. Note that a request to change
+            /// the parent of the item may still fail depending on the new parent that is being added and the parent
+            /// that is being removed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinDrive")]
             public virtual System.Nullable<bool> CanMoveItemWithinDrive { get; set; } 
 

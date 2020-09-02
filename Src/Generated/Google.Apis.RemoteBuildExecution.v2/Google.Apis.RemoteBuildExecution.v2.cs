@@ -2684,6 +2684,21 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>SoleTenancyConfig specifies information required to host a pool on STNs.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sole-tenant node type to host the pool's workers on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
+        public virtual string NodeType { get; set; } 
+
+        /// <summary>Zone in which STNs are reserved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodesZone")]
+        public virtual string NodesZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request used for `UpdateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2732,7 +2747,7 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines the configuration to be used for a creating workers in the worker pool.</summary>
+    /// <summary>Defines the configuration to be used for creating workers in the worker pool.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The accelerator card attached to each VM.</summary>
@@ -2784,6 +2799,10 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; } 
+
+        /// <summary>Sole-tenant node information for pools hosted on STNs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenancy")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig SoleTenancy { get; set; } 
 
         /// <summary>The name of the image used by each VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]

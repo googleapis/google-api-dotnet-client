@@ -563,12 +563,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
     /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
-    /// text is horizontal it might look like: 0----1 |    | 3----2
-    ///
-    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
-    ///
-    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
-    /// trignometric calculations for location of the box.</summary>
+    /// text is horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated 180 degrees around the top-
+    /// left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). Note that values can
+    /// be less than 0, or greater than 1 due to trignometric calculations for location of the box.</summary>
     public class GoogleCloudVideointelligenceV1NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Normalized vertices of the bounding polygon.</summary>
@@ -1270,12 +1267,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
     /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
-    /// text is horizontal it might look like: 0----1 |    | 3----2
-    ///
-    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
-    ///
-    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
-    /// trignometric calculations for location of the box.</summary>
+    /// text is horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated 180 degrees around the top-
+    /// left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). Note that values can
+    /// be less than 0, or greater than 1 due to trignometric calculations for location of the box.</summary>
     public class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Normalized vertices of the bounding polygon.</summary>
@@ -1523,9 +1517,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     public class GoogleCloudVideointelligenceV1beta2TextDetectionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Language hint can be specified if the language to be detected is known a priori. It can increase
-        /// the accuracy of the detection. Language hint must be language code in BCP-47 format.
-        ///
-        /// Automatic language detection is performed if no hint is provided.</summary>
+        /// the accuracy of the detection. Language hint must be language code in BCP-47 format. Automatic language
+        /// detection is performed if no hint is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 
@@ -2041,12 +2034,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
     /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
-    /// text is horizontal it might look like: 0----1 |    | 3----2
-    ///
-    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
-    ///
-    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
-    /// trignometric calculations for location of the box.</summary>
+    /// text is horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated 180 degrees around the top-
+    /// left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). Note that values can
+    /// be less than 0, or greater than 1 due to trignometric calculations for location of the box.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Normalized vertices of the bounding polygon.</summary>
@@ -2656,12 +2646,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
     /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
-    /// text is horizontal it might look like: 0----1 |    | 3----2
-    ///
-    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
-    ///
-    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
-    /// trignometric calculations for location of the box.</summary>
+    /// text is horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated 180 degrees around the top-
+    /// left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). Note that values can
+    /// be less than 0, or greater than 1 due to trignometric calculations for location of the box.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Normalized vertices of the bounding polygon.</summary>
@@ -3343,12 +3330,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
     /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
-    /// text is horizontal it might look like: 0----1 |    | 3----2
-    ///
-    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
-    ///
-    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
-    /// trignometric calculations for location of the box.</summary>
+    /// text is horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated 180 degrees around the top-
+    /// left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). Note that values can
+    /// be less than 0, or greater than 1 due to trignometric calculations for location of the box.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Normalized vertices of the bounding polygon.</summary>
@@ -3834,9 +3818,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -3846,11 +3830,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -3860,9 +3844,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3870,8 +3853,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

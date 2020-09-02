@@ -344,12 +344,10 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
 
                     /// <summary>Creates a new Connectivity Test. After you create a test, the reachability analysis is
-                    /// performed as part of the long running operation, which completes when the analysis completes.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-
+                    /// performed as part of the long running operation, which completes when the analysis completes. If
+                    /// the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-
                     /// existent resources in the network, or you don't have read permissions to the network
                     /// configurations of listed projects), then the reachability result returns a value of `UNKNOWN`.
-                    ///
                     /// If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result
                     /// returns a value of AMBIGUOUS. For more information, see the Connectivity Test
                     /// documentation.</summary>
@@ -362,12 +360,10 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Creates a new Connectivity Test. After you create a test, the reachability analysis is
-                    /// performed as part of the long running operation, which completes when the analysis completes.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-
+                    /// performed as part of the long running operation, which completes when the analysis completes. If
+                    /// the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-
                     /// existent resources in the network, or you don't have read permissions to the network
                     /// configurations of listed projects), then the reachability result returns a value of `UNKNOWN`.
-                    ///
                     /// If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result
                     /// returns a value of AMBIGUOUS. For more information, see the Connectivity Test
                     /// documentation.</summary>
@@ -389,11 +385,9 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>Required. The logical name of the Connectivity Test in your project with the
-                        /// following restrictions:
-                        ///
-                        /// * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. *
-                        /// Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique
-                        /// within the customer project</summary>
+                        /// following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must
+                        /// start with a letter. * Must be between 1-40 characters. * Must end with a number or a
+                        /// letter. * Must be unique within the customer project</summary>
                         [Google.Apis.Util.RequestParameterAttribute("testId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TestId { get; set; }
 
@@ -573,14 +567,11 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
 
-                        /// <summary>Optional. The policy format version to be returned.
-                        ///
-                        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-                        ///
-                        /// Requests for policies with any conditional bindings must specify version 3. Policies without
-                        /// any conditional bindings may specify any valid value or leave the field unset.
-                        ///
-                        /// To learn which resources support conditions in their IAM policies, see the [IAM
+                        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
+                        /// Requests specifying an invalid value will be rejected. Requests for policies with any
+                        /// conditional bindings must specify version 3. Policies without any conditional bindings may
+                        /// specify any valid value or leave the field unset. To learn which resources support
+                        /// conditions in their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
@@ -648,16 +639,13 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>Lists the `ConnectivityTests` that match the filter expression. A filter expression
-                        /// filters the resources listed in the response. The expression must be of the form `  ` where
+                        /// filters the resources listed in the response. The expression must be of the form ` ` where
                         /// operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS
-                        /// operator which is roughly synonymous with equality).  can refer to a proto or JSON field, or
-                        /// a synthetic field. Field names can be camelCase or snake_case.
-                        ///
-                        /// Examples: - Filter by name: name =
-                        /// "projects/proj-1/locations/global/connectivityTests/test-1
-                        ///
-                        /// - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that
-                        /// have a key called `foo` whose value is `bar` labels.foo = bar</summary>
+                        /// operator which is roughly synonymous with equality). can refer to a proto or JSON field, or
+                        /// a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name:
+                        /// name = "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: -
+                        /// Resources that have a key called `foo` labels.foo:* - Resources that have a key called `foo`
+                        /// whose value is `bar` labels.foo = bar</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -740,14 +728,11 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// <summary>Updates the configuration of an existing `ConnectivityTest`. After you update a test,
                     /// the reachability analysis is performed as part of the long running operation, which completes
                     /// when the analysis completes. The Reachability state in the test resource is updated with the new
-                    /// result.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-
-                    /// existent resources in the network, or the user does not have read permissions to the network
-                    /// configurations of listed projects), then the reachability result returns a value of UNKNOWN.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result
-                    /// returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
+                    /// result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they
+                    /// contain non-existent resources in the network, or the user does not have read permissions to the
+                    /// network configurations of listed projects), then the reachability result returns a value of
+                    /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
+                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
                     /// details.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Unique name of the resource using the form:
@@ -760,14 +745,11 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// <summary>Updates the configuration of an existing `ConnectivityTest`. After you update a test,
                     /// the reachability analysis is performed as part of the long running operation, which completes
                     /// when the analysis completes. The Reachability state in the test resource is updated with the new
-                    /// result.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-
-                    /// existent resources in the network, or the user does not have read permissions to the network
-                    /// configurations of listed projects), then the reachability result returns a value of UNKNOWN.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result
-                    /// returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
+                    /// result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they
+                    /// contain non-existent resources in the network, or the user does not have read permissions to the
+                    /// network configurations of listed projects), then the reachability result returns a value of
+                    /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
+                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
                     /// details.</summary>
                     public class PatchRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Operation>
                     {
@@ -836,14 +818,11 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the
                     /// reachability analysis is performed as part of the long running operation, which completes when
-                    /// the analysis completes.
-                    ///
-                    /// Even though the test configuration remains the same, the reachability result may change due to
-                    /// underlying network configuration changes.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified
-                    /// resources are deleted in the network, or you lost read permissions to the network configurations
-                    /// of listed projects), then the reachability result returns a value of `UNKNOWN`.</summary>
+                    /// the analysis completes. Even though the test configuration remains the same, the reachability
+                    /// result may change due to underlying network configuration changes. If the endpoint
+                    /// specifications in `ConnectivityTest` become invalid (for example, specified resources are
+                    /// deleted in the network, or you lost read permissions to the network configurations of listed
+                    /// projects), then the reachability result returns a value of `UNKNOWN`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Connectivity Test resource name using the form:
                     /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</param>
@@ -854,14 +833,11 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the
                     /// reachability analysis is performed as part of the long running operation, which completes when
-                    /// the analysis completes.
-                    ///
-                    /// Even though the test configuration remains the same, the reachability result may change due to
-                    /// underlying network configuration changes.
-                    ///
-                    /// If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified
-                    /// resources are deleted in the network, or you lost read permissions to the network configurations
-                    /// of listed projects), then the reachability result returns a value of `UNKNOWN`.</summary>
+                    /// the analysis completes. Even though the test configuration remains the same, the reachability
+                    /// result may change due to underlying network configuration changes. If the endpoint
+                    /// specifications in `ConnectivityTest` become invalid (for example, specified resources are
+                    /// deleted in the network, or you lost read permissions to the network configurations of listed
+                    /// projects), then the reachability result returns a value of `UNKNOWN`.</summary>
                     public class RerunRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Rerun request.</summary>
@@ -914,7 +890,6 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -925,7 +900,6 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
-                    ///
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
                     public class SetIamPolicyRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Policy>
                     {
@@ -979,10 +953,9 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                     /// documentation for the appropriate value for this field.</param>
@@ -992,10 +965,9 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
-                    ///
-                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                    /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                    /// operation is designed to be used for building permission-aware UIs and command-line tools, not
+                    /// for authorization checking. This operation may "fail open" without warning.</summary>
                     public class TestIamPermissionsRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1066,13 +1038,13 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
 
-                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
-                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
-                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
-                    /// deleted; instead, it becomes an operation with an Operation.error value with a
-                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                    /// or other methods to check whether the cancellation succeeded or whether the operation completed
+                    /// despite cancellation. On successful cancellation, the operation is not deleted; instead, it
+                    /// becomes an operation with an Operation.error value with a google.rpc.Status.code of 1,
+                    /// corresponding to `Code.CANCELLED`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(Google.Apis.NetworkManagement.v1beta1.Data.CancelOperationRequest body, string name)
@@ -1080,13 +1052,13 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         return new CancelRequest(service, body, name);
                     }
 
-                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
-                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
-                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
-                    /// deleted; instead, it becomes an operation with an Operation.error value with a
-                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                    /// or other methods to check whether the cancellation succeeded or whether the operation completed
+                    /// despite cancellation. On successful cancellation, the operation is not deleted; instead, it
+                    /// becomes an operation with an Operation.error value with a google.rpc.Status.code of 1,
+                    /// corresponding to `Code.CANCELLED`.</summary>
                     public class CancelRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Empty>
                     {
                         /// <summary>Constructs a new Cancel request.</summary>
@@ -1192,7 +1164,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     }
 
-                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll
                     /// the operation result at intervals as recommended by the API service.</summary>
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
@@ -1200,7 +1172,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll
                     /// the operation result at intervals as recommended by the API service.</summary>
                     public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Operation>
                     {
@@ -1246,14 +1218,12 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                    /// support this method, it returns `UNIMPLEMENTED`.
-                    ///
-                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
-                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
-                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
-                    /// compatibility, the default name includes the operations collection id, however overriding users
-                    /// must ensure the name binding is the parent resource, without the operations collection
-                    /// id.</summary>
+                    /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to
+                    /// their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.</summary>
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
@@ -1261,14 +1231,12 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     }
 
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                    /// support this method, it returns `UNIMPLEMENTED`.
-                    ///
-                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
-                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
-                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
-                    /// compatibility, the default name includes the operations collection id, however overriding users
-                    /// must ensure the name binding is the parent resource, without the operations collection
-                    /// id.</summary>
+                    /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to
+                    /// their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.</summary>
                     public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.ListOperationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1517,21 +1485,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -1547,11 +1509,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1572,53 +1531,33 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1638,6 +1577,37 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>For display only. Metadata associated with a Cloud SQL instance.</summary>
+    public class CloudSQLInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>External IP address of Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual string ExternalIp { get; set; } 
+
+        /// <summary>Internal IP address of Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; } 
+
+        /// <summary>URI of a Cloud SQL instance network or empty string if instance does not have one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; } 
+
+        /// <summary>Region in which the Cloud SQL instance is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>URI of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Connectivity Test for a network reachability analysis.</summary>
     public class ConnectivityTest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1649,19 +1619,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Required. Destination specification of the Connectivity Test.
-        ///
-        /// You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely
-        /// identify the destination location.
-        ///
-        /// Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis
-        /// can infer the destination endpoint from route information.
-        ///
-        /// If the destination you specify is a VM instance and the instance has multiple network interfaces, then you
-        /// must also specify either a destination IP address  or VPC network to identify the destination interface.
-        ///
-        /// A reachability analysis proceeds even if the destination location is ambiguous. However, the result can
-        /// include endpoints that you don't intend to test.</summary>
+        /// <summary>Required. Destination specification of the Connectivity Test. You can use a combination of
+        /// destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination
+        /// location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the
+        /// analysis can infer the destination endpoint from route information. If the destination you specify is a VM
+        /// instance and the instance has multiple network interfaces, then you must also specify either a destination
+        /// IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if
+        /// the destination location is ambiguous. However, the result can include endpoints that you don't intend to
+        /// test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual Endpoint Destination { get; set; } 
 
@@ -1693,23 +1658,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relatedProjects")]
         public virtual System.Collections.Generic.IList<string> RelatedProjects { get; set; } 
 
-        /// <summary>Required. Source specification of the Connectivity Test.
-        ///
-        /// You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to
-        /// uniquely identify the source location.
-        ///
+        /// <summary>Required. Source specification of the Connectivity Test. You can use a combination of source IP
+        /// address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location.
         /// Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud
         /// (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already
-        /// contains its internal IP address and VPC network information.
-        ///
-        /// If the source of the test is within an on-premises network, then you must provide the destination VPC
-        /// network.
-        ///
-        /// If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself
-        /// is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network.
-        ///
-        /// A reachability analysis proceeds even if the source location is ambiguous. However, the test result may
-        /// include endpoints that you don't intend to test.</summary>
+        /// contains its internal IP address and VPC network information. If the source of the test is within an on-
+        /// premises network, then you must provide the destination VPC network. If the source endpoint is a Compute
+        /// Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the
+        /// endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds
+        /// even if the source location is ambiguous. However, the test result may include endpoints that you don't
+        /// intend to test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Endpoint Source { get; set; } 
 
@@ -1752,11 +1710,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1766,13 +1722,22 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
+        public virtual string CloudSqlInstance { get; set; } 
+
+        /// <summary>A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-
+        /// engine/docs/concepts/cluster-architecture).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeMasterCluster")]
+        public virtual string GkeMasterCluster { get; set; } 
+
         /// <summary>A Compute Engine instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
         /// <summary>The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only
-        /// allowed when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-
-        /// overview).</summary>
+        /// allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-
+        /// balancing/docs/load-balancing-overview).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
@@ -1839,29 +1804,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -1971,6 +1922,29 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>VIP of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vip")]
         public virtual string Vip { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>For display only. Metadata associated with a Google Kubernetes Engine cluster master.</summary>
+    public class GKEMasterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of a Google Kubernetes Engine cluster network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterNetworkUri")]
+        public virtual string ClusterNetworkUri { get; set; } 
+
+        /// <summary>URI of a Google Kubernetes Engine cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUri")]
+        public virtual string ClusterUri { get; set; } 
+
+        /// <summary>External IP address of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual string ExternalIp { get; set; } 
+
+        /// <summary>Internal IP address of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2125,9 +2099,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2179,9 +2152,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -2191,11 +2164,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2240,35 +2213,24 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2285,33 +2247,23 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -2403,9 +2355,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -2415,9 +2366,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2425,8 +2375,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2450,6 +2400,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>This is a step that leads to the final state Drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; } 
+
+        /// <summary>Display info of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
+        public virtual CloudSQLInstanceInfo CloudSqlInstance { get; set; } 
 
         /// <summary>Display info of the final state "deliver" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliver")]
@@ -2480,6 +2434,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display info of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual ForwardingRuleInfo ForwardingRule { get; set; } 
+
+        /// <summary>Display info of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
+        public virtual GKEMasterInfo GkeMaster { get; set; } 
 
         /// <summary>Display info of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
@@ -2541,13 +2499,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Trace represents one simulated packet forwarding path.
-    ///
-    /// Each trace contains multiple ordered steps. Each step is in a particular state and has an associated
-    /// configuration. State is categorized as a final or non-final state. Each final state has a reason associated with
-    /// it. Each trace must end with a final state (the last step).
-    ///
-    /// |---------------------Trace----------------------| Step1(State) Step2(State) ---  StepN(State(final)) </summary>
+    /// <summary>Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. -
+    /// Each step is in a particular state and has an associated configuration. - State is categorized as a final or
+    /// non-final state. - Each final state has a reason associated with it. - Each trace must end with a final state
+    /// (the last step). |---------------------Trace----------------------| Step1(State) Step2(State) ---
+    /// StepN(State(final)) </summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Derived from the source and destination endpoints definition, and validated by the data plane
@@ -2557,10 +2513,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual EndpointInfo EndpointInfo { get; set; } 
 
         /// <summary>A trace of a test contains multiple steps from the initial state to the final state (delivered,
-        /// dropped, forwarded, or aborted).
-        ///
-        /// The steps are ordered by the processing sequence within the simulated network state machine. It is critical
-        /// to preserve the order of the steps and avoid reordering or sorting them.</summary>
+        /// dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated
+        /// network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting
+        /// them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
 

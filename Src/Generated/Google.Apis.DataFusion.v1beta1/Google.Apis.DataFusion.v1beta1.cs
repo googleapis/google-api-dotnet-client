@@ -1657,6 +1657,11 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
+        /// bindings-by-ID API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; } 
+
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1767,6 +1772,12 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Output only. The time the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data
+        /// processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocServiceAccount")]
+        public virtual string DataprocServiceAccount { get; set; } 
 
         /// <summary>A description of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
