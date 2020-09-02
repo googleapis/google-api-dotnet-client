@@ -97,8 +97,10 @@ namespace DiscoveryDocPatcher
         public void Replace(string jPath, string oldContent, string newContent)
         {
             // Single quotes replaced with double quotes, to ease caller string literals.
-            JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"'));
-            JToken newToken = JToken.Parse(newContent.Replace('\'', '"'));
+            // And underscore replaced with single quote for string literals that contain a single quote.
+            JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"').Replace('_', '\''));
+            JToken newToken = JToken.Parse(newContent.Replace('\'', '"').Replace('_', '\''));
+            
             Replace(jPath, oldToken, newToken);
         }
     }
