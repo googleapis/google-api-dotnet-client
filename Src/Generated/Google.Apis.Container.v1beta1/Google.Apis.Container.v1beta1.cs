@@ -6149,6 +6149,24 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
     public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary> The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the
+        /// node pool. This should be of the form
+        /// projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more
+        /// information about protecting resources with Cloud KMS Keys please see:
+        /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
+        public virtual string BootDiskKmsKey { get; set; } 
+
+        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
+        /// unspecified, the default disk size is 100GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; } 
+
+        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
+        /// disk type is 'pd-standard'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; } 
+
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
@@ -6176,6 +6194,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>Shielded Instance options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
@@ -7729,11 +7751,11 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Node kubelet configs.</summary>
     public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enable CPU CFS quota enforcement for containers that specify CPU limits. If this option is enabled,
-        /// kubelet uses CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce
-        /// container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU
-        /// throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits.
-        /// The default value is 'true' if unspecified.</summary>
+        /// <summary>Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by
+        /// default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt)
+        /// to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to
+        /// mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying
+        /// the CPU limits. The default value is 'true' if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuota")]
         public virtual System.Nullable<bool> CpuCfsQuota { get; set; } 
 
@@ -7746,7 +7768,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-
         /// cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents
         /// the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be
-        /// granted increased CPU affinity and exclusivity on the node.</summary>
+        /// granted increased CPU affinity and exclusivity on the node. The default value is 'none' if
+        /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; } 
 

@@ -2231,19 +2231,20 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive. Some
-            /// eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) +
-            /// `parent.type` + `parent.id` + `lifecycleState` Some examples of filter strings: | Filter | Description |
-            /// |------------------|-----------------------------------------------------| | name:how* | The project's
-            /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
-            /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
-            /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
-            /// labels.size:big | The project's label `color` | : : has the value `red` and its : : : label`size` has
-            /// the value : : : `big`. : | lifecycleState:DELETE_REQUESTED | Only show projects that are | : : pending
-            /// deletion. : If no filter is specified, the call will return projects for which the user has the
-            /// `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are
-            /// directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent
-            /// and the filter must contain both a `parent.type` and a `parent.id` restriction (example:
+            /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive. If
+            /// multiple fields are included in a filter query, the query will return results that match any of the
+            /// fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of
+            /// a label) + `parent.type` + `parent.id` + `lifecycleState` Some examples of filter strings: | Filter |
+            /// Description | |------------------|-----------------------------------------------------| | name:how* |
+            /// The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | |
+            /// name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project
+            /// has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | |
+            /// labels.color:red labels.size:big | The project's label `color` | : : has the value `red` and its : : :
+            /// label`size` has the value : : : `big`. : | lifecycleState:DELETE_REQUESTED | Only show projects that are
+            /// | : : pending deletion. : If no filter is specified, the call will return projects for which the user
+            /// has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what
+            /// projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission
+            /// on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example:
             /// "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more
             /// consistent results. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -2844,6 +2845,11 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
+        /// bindings-by-ID API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; } 
+
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

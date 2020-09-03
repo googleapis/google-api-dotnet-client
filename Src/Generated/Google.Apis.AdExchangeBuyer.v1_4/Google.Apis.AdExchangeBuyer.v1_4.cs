@@ -3286,7 +3286,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; } 
 
-        /// <summary>The name of the company being advertised in the creative. The value provided must exist in the
+        /// <summary>The name of the company being advertised in the creative. A list of advertisers is provided in the
         /// advertisers.txt file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
         public virtual string AdvertiserName { get; set; } 
@@ -4192,6 +4192,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTimeMs")]
         public virtual System.Nullable<long> LastUpdateTimeMs { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("makegoodRequestedReason")]
+        public virtual string MakegoodRequestedReason { get; set; } 
+
         /// <summary>The name of the deal. (updatable)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4312,6 +4315,18 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>The timestamp (ms since epoch) that this note was created. (readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMs")]
         public virtual System.Nullable<long> TimestampMs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MobileApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("appStore")]
+        public virtual string AppStore { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAppId")]
+        public virtual string ExternalAppId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4996,6 +5011,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Programmatic contact for the publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticContact")]
         public virtual string ProgrammaticContact { get; set; } 
+
+        /// <summary>The list of app IDs represented in this pubisher profile. Empty if this is a parent profile.
+        /// Deprecated in favor of publisher_app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherAppIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> PublisherAppIds { get; set; } 
+
+        /// <summary>The list of apps represented in this pubisher profile. Empty if this is a parent profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherApps")]
+        public virtual System.Collections.Generic.IList<MobileApplication> PublisherApps { get; set; } 
 
         /// <summary>The list of domains represented in this publisher profile. Empty if this is a parent
         /// profile.</summary>

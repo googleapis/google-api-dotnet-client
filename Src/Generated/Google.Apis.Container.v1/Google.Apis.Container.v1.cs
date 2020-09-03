@@ -6084,9 +6084,35 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
     public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node
+        /// pool. This should be of the form
+        /// projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more
+        /// information about protecting resources with Cloud KMS Keys please see:
+        /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
+        public virtual string BootDiskKmsKey { get; set; } 
+
+        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
+        /// unspecified, the default disk size is 100GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; } 
+
+        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
+        /// disk type is 'pd-standard'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; } 
+
         /// <summary>Specifies the node management options for NAP created node-pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
+
+        /// <summary>Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
+        /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
+        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset
+        /// the min cpu platform field pass "automatic" as field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>Scopes that are used by NAP when creating node pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
@@ -6095,6 +6121,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The Google Cloud Platform Service Account to be used by the node VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>Shielded Instance options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
 
         /// <summary>Specifies the upgrade settings for NAP created node pools</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
