@@ -1758,6 +1758,11 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
 
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is
+        /// audit logs disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogsEnabled")]
+        public virtual System.Nullable<bool> AuditLogsEnabled { get; set; } 
+
         /// <summary>Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-
         /// firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later.
         /// Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets

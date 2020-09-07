@@ -1090,10 +1090,14 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Specifies which parts of the Hold to return.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED,
+                    /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD,
+                    /// <summary>Full representation of a Hold. Response includes all fields of 'BASIC' and the entities
+                    /// the Hold applies to, such as accounts, or OU.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD,
                 }
@@ -1186,10 +1190,14 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Specifies which parts of the Hold to return.</summary>
                 public enum ViewEnum
                 {
+                    /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED,
+                    /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD,
+                    /// <summary>Full representation of a Hold. Response includes all fields of 'BASIC' and the entities
+                    /// the Hold applies to, such as accounts, or OU.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD,
                 }
@@ -1945,10 +1953,14 @@ namespace Google.Apis.Vault.v1
             /// <summary>Specifies which parts of the Matter to return in the response.</summary>
             public enum ViewEnum
             {
+                /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED,
+                /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Full representation of matter is returned. Everything above and including MatterPermissions
+                /// list.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
@@ -2024,12 +2036,16 @@ namespace Google.Apis.Vault.v1
             /// states.</summary>
             public enum StateEnum
             {
+                /// <summary>The matter has no specified state.</summary>
                 [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
                 STATEUNSPECIFIED,
+                /// <summary>This matter is open.</summary>
                 [Google.Apis.Util.StringValueAttribute("OPEN")]
                 OPEN,
+                /// <summary>This matter is closed.</summary>
                 [Google.Apis.Util.StringValueAttribute("CLOSED")]
                 CLOSED,
+                /// <summary>This matter is deleted.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
                 DELETED,
             }
@@ -2041,10 +2057,14 @@ namespace Google.Apis.Vault.v1
             /// <summary>Specifies which parts of the matter to return in response.</summary>
             public enum ViewEnum
             {
+                /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED,
+                /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
+                /// <summary>Full representation of matter is returned. Everything above and including MatterPermissions
+                /// list.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
@@ -2604,11 +2624,9 @@ namespace Google.Apis.Vault.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3226,9 +3244,8 @@ namespace Google.Apis.Vault.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3236,8 +3253,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

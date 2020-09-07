@@ -5692,6 +5692,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
+        /// bindings-by-ID API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; } 
+
         /// <summary>The condition that is associated with this binding.If the condition evaluates to true, then this
         /// binding applies to the current request.If the condition evaluates to false, then this binding does not apply
         /// to the current request. However, a different role binding might grant the same role to one or more of the
@@ -7243,8 +7248,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A list of queries to run on a cluster.</summary>
     public class QueryList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple
-        /// queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud
+        /// <summary>Required. The queries to execute. You do not need to end a query expression with a semicolon.
+        /// Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a
         /// Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
         /// "query1", "query2", "query3;query4", ] } } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
@@ -7738,8 +7743,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for
         /// second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes
         /// ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is
-        /// running at the end of the timeout period, any remaining jobs are cancelled, the workflow is terminated, and
-        /// if the workflow was running on a managed cluster, the cluster is deleted.</summary>
+        /// running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if
+        /// the workflow was running on a managed cluster, the cluster is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
         public virtual object DagTimeout { get; set; } 
 

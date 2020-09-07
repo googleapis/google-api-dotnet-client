@@ -1055,8 +1055,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
         public virtual string Frequency { get; set; } 
 
-        /// <summary>Time of day at which a new report will be generated, represented as minutes past midnight. Range is
-        /// 0 to 1439. Only applies to scheduled reports.</summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunMinuteOfDay")]
         public virtual System.Nullable<int> NextRunMinuteOfDay { get; set; } 
 

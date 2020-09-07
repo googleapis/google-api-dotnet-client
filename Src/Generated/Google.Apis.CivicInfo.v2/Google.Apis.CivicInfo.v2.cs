@@ -1319,15 +1319,13 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot
-        /// drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the
-        /// Google Maps API to resolve the address to a geographic point.</summary>
+        /// <summary>Latitude of the location, in degrees north of the equator. Note this field may not be available for
+        /// some locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
         public virtual System.Nullable<double> Latitude { get; set; } 
 
-        /// <summary>Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally,
-        /// ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like
-        /// the Google Maps API to resolve the address to a geographic point.</summary>
+        /// <summary>Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be
+        /// available for some locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
         public virtual System.Nullable<double> Longitude { get; set; } 
 

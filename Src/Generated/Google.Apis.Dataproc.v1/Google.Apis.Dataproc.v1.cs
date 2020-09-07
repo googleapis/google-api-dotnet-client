@@ -5421,6 +5421,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
+        /// bindings-by-ID API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; } 
+
         /// <summary>The condition that is associated with this binding.If the condition evaluates to true, then this
         /// binding applies to the current request.If the condition evaluates to false, then this binding does not apply
         /// to the current request. However, a different role binding might grant the same role to one or more of the
@@ -6325,9 +6330,9 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Job scheduling options.</summary>
     public class JobScheduling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Maximum number of times per hour a driver may be restarted as a result of driver
-        /// terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver
-        /// exits with non-zero code 4 times within 10 minute window.Maximum value is 10.</summary>
+        /// <summary>Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting
+        /// with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with
+        /// non-zero code 4 times within 10 minute window.Maximum value is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresPerHour")]
         public virtual System.Nullable<int> MaxFailuresPerHour { get; set; } 
 
@@ -6915,8 +6920,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A list of queries to run on a cluster.</summary>
     public class QueryList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple
-        /// queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud
+        /// <summary>Required. The queries to execute. You do not need to end a query expression with a semicolon.
+        /// Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a
         /// Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
         /// "query1", "query2", "query3;query4", ] } } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]

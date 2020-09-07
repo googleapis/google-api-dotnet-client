@@ -3231,7 +3231,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The Health score of the resource</summary>
+        /// <summary>The Health score of the resource. The Health score is the callers specification of the condition of
+        /// the device from a usability point of view. For example, a third-party device management provider may specify
+        /// a health score based on its compliance with organizational policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthScore")]
         public virtual string HealthScore { get; set; } 
 
@@ -3250,7 +3252,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
         /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where
-        /// partner_id corresponds to the partner storing the data.</summary>
+        /// partner_id corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance",
+        /// this is the partner ID specified to you by Google. For all other callers, this is a string of the form:
+        /// `{customer_id}-suffix`, where `customer_id` is your customer id. The suffix is any string the caller
+        /// specifies. This string will be displayed verbatim in the administration console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3283,7 +3288,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent
+    /// <summary> A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent
     /// of the device ownership, type, and whether it is assigned or in use by a user.</summary>
     public class GoogleAppsCloudidentityDevicesV1Device : Google.Apis.Requests.IDirectResponseSchema
     {

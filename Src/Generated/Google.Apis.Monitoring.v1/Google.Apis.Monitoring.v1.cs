@@ -805,8 +805,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
         public virtual GridLayout GridLayout { get; set; } 
 
-        /// <summary>The content is arranged as a grid of tiles, with each content widget occupying one or more
-        /// tiles.</summary>
+        /// <summary>The content is arranged as a grid of tiles, with each content widget occupying one or more grid
+        /// squares.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mosaicLayout")]
         public virtual MosaicLayout MosaicLayout { get; set; } 
 
@@ -981,7 +981,8 @@ namespace Google.Apis.Monitoring.v1.Data
     /// grid.</summary>
     public class MosaicLayout : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of columns in the mosaic grid.</summary>
+        /// <summary>The number of columns in the mosaic grid. The number of columns must be between 1 and 12,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; } 
 
@@ -1224,25 +1225,25 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>A single tile in the mosaic. The placement and size of the tile are configurable.</summary>
     public class Tile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The height of the tile, measured in grid squares.</summary>
+        /// <summary>The height of the tile, measured in grid squares. Tiles must have a minimum height of 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; } 
 
-        /// <summary>The informational widget contained in the tile.</summary>
+        /// <summary>The informational widget contained in the tile. For example an XyChart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widget")]
         public virtual Widget Widget { get; set; } 
 
-        /// <summary>The width of the tile, measured in grid squares.</summary>
+        /// <summary>The width of the tile, measured in grid squares. Tiles must have a minimum width of 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
 
-        /// <summary>The zero-indexed position of the tile in grid squares relative to the left edge of the
-        /// grid.</summary>
+        /// <summary>The zero-indexed position of the tile in grid squares relative to the left edge of the grid. Tiles
+        /// must be contained within the specified number of columns. x_pos cannot be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xPos")]
         public virtual System.Nullable<int> XPos { get; set; } 
 
-        /// <summary>The zero-indexed position of the tile in grid squares relative to the top edge of the
-        /// grid.</summary>
+        /// <summary>The zero-indexed position of the tile in grid squares relative to the top edge of the grid. y_pos
+        /// cannot be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yPos")]
         public virtual System.Nullable<int> YPos { get; set; } 
 

@@ -376,13 +376,12 @@ namespace Google.Apis.BigtableAdmin.v2
 
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -390,13 +389,12 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                /// override the binding to use different resource name schemes, such as `users/operations`. To override
+                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -481,9 +479,9 @@ namespace Google.Apis.BigtableAdmin.v2
             }
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -493,9 +491,9 @@ namespace Google.Apis.BigtableAdmin.v2
             return new CancelRequest(service, name);
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
@@ -597,7 +595,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -605,7 +603,7 @@ namespace Google.Apis.BigtableAdmin.v2
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
         {
@@ -944,14 +942,11 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of results per page.
-                    ///
-                    /// A page_size of zero lets the server choose the number of items to return. A page_size which is
-                    /// strictly positive will return at most that many items. A negative page_size will cause an error.
-                    ///
-                    /// Following the first request, subsequent paginated calls are not required to pass a page_size. If
-                    /// a page_size is set in subsequent calls, it must match the page_size given in the first
-                    /// request.</summary>
+                    /// <summary>Maximum number of results per page. A page_size of zero lets the server choose the
+                    /// number of items to return. A page_size which is strictly positive will return at most that many
+                    /// items. A negative page_size will cause an error. Following the first request, subsequent
+                    /// paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls,
+                    /// it must match the page_size given in the first request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1131,10 +1126,10 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
 
-                    /// <summary>Starts creating a new Cloud Bigtable Backup.  The returned backup long-running
-                    /// operation can be used to track creation of the backup. The metadata field type is
-                    /// CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
-                    /// operation will stop the creation and delete the backup.</summary>
+                    /// <summary>Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation
+                    /// can be used to track creation of the backup. The metadata field type is CreateBackupMetadata.
+                    /// The response field type is Backup, if successful. Cancelling the returned operation will stop
+                    /// the creation and delete the backup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. This must be one of the clusters in the instance in which this table is located. The
                     /// backup will be stored in this cluster. Values are of the form
@@ -1144,10 +1139,10 @@ namespace Google.Apis.BigtableAdmin.v2
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Starts creating a new Cloud Bigtable Backup.  The returned backup long-running
-                    /// operation can be used to track creation of the backup. The metadata field type is
-                    /// CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
-                    /// operation will stop the creation and delete the backup.</summary>
+                    /// <summary>Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation
+                    /// can be used to track creation of the backup. The metadata field type is CreateBackupMetadata.
+                    /// The response field type is Backup, if successful. Cancelling the returned operation will stop
+                    /// the creation and delete the backup.</summary>
                     public class CreateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1387,7 +1382,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>Lists Cloud Bigtable backups. Returns both completed and pending backups.</summary>
-                    /// <param name="parent">Required. The cluster to list backups from.  Values are of the form
+                    /// <param name="parent">Required. The cluster to list backups from. Values are of the form
                     /// `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list backups for all clusters
                     /// in an instance, e.g., `projects/{project}/instances/{instance}/clusters/-`.</param>
                     public virtual ListRequest List(string parent)
@@ -1407,7 +1402,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         }
 
 
-                        /// <summary>Required. The cluster to list backups from.  Values are of the form
+                        /// <summary>Required. The cluster to list backups from. Values are of the form
                         /// `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list
                         /// backups for all clusters in an instance, e.g.,
                         /// `projects/{project}/instances/{instance}/clusters/-`.</summary>
@@ -1418,42 +1413,31 @@ namespace Google.Apis.BigtableAdmin.v2
                         /// must specify the field name, a comparison operator, and the value that you want to use for
                         /// filtering. The value must be a string, a number, or a boolean. The comparison operator must
                         /// be <, >, <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly
-                        /// synonymous with equality. Filter rules are case insensitive.
-                        ///
-                        /// The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time`
-                        /// (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the
-                        /// format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-
-                        /// DDTHH:MM:SSZ) * `size_bytes`
-                        ///
-                        /// To filter on multiple expressions, provide each separate expression within parentheses. By
-                        /// default, each expression is an AND expression. However, you can include AND, OR, and NOT
-                        /// expressions explicitly.
-                        ///
-                        /// Some examples of using filters are:
-                        ///
-                        /// * `name:"exact"` --> The backup's name is the string "exact". * `name:howl` --> The backup's
-                        /// name contains the string "howl". * `source_table:prod` --> The source_table's name contains
-                        /// the string "prod". * `state:CREATING` --> The backup is pending creation. * `state:READY`
-                        /// --> The backup is fully created and ready for use. * `(name:howl) AND (start_time <
-                        /// \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and start_time of
-                        /// the backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's
-                        /// size is greater than 10GB</summary>
+                        /// synonymous with equality. Filter rules are case insensitive. The fields eligible for
+                        /// filtering are: * `name` * `source_table` * `state` * `start_time` (and values are of the
+                        /// format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the format YYYY-MM-
+                        /// DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
+                        /// `size_bytes` To filter on multiple expressions, provide each separate expression within
+                        /// parentheses. By default, each expression is an AND expression. However, you can include AND,
+                        /// OR, and NOT expressions explicitly. Some examples of using filters are: * `name:"exact"` -->
+                        /// The backup's name is the string "exact". * `name:howl` --> The backup's name contains the
+                        /// string "howl". * `source_table:prod` --> The source_table's name contains the string "prod".
+                        /// * `state:CREATING` --> The backup is pending creation. * `state:READY` --> The backup is
+                        /// fully created and ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")`
+                        /// --> The backup name contains the string "howl" and start_time of the backup is before
+                        /// 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's size is greater than
+                        /// 10GB</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>An expression for specifying the sort order of the results of the request. The
                         /// string value should specify one or more fields in Backup. The full syntax is described at
-                        /// https://aip.dev/132#ordering.
-                        ///
-                        /// Fields supported are: * name * source_table * expire_time * start_time * end_time *
-                        /// size_bytes * state
-                        ///
-                        /// For example, "start_time". The default sorting order is ascending. To specify descending
-                        /// order for the field, a suffix " desc" should be appended to the field name. For example,
-                        /// "start_time desc". Redundant space characters in the syntax are insigificant.
-                        ///
-                        /// If order_by is empty, results will be sorted by `start_time` in descending order starting
-                        /// from the most recently created backup.</summary>
+                        /// https://aip.dev/132#ordering. Fields supported are: * name * source_table * expire_time *
+                        /// start_time * end_time * size_bytes * state For example, "start_time". The default sorting
+                        /// order is ascending. To specify descending order for the field, a suffix " desc" should be
+                        /// appended to the field name. For example, "start_time desc". Redundant space characters in
+                        /// the syntax are insigificant. If order_by is empty, results will be sorted by `start_time` in
+                        /// descending order starting from the most recently created backup.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1534,11 +1518,9 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// <summary>Updates a pending or completed Cloud Bigtable Backup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">A globally unique identifier for the backup which cannot be changed. Values are of the form
-                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/    backups/_a-zA-Z0-9*` The final segment of the name
-                    /// must be between 1 and 50 characters in length.
-                    ///
-                    /// The backup is stored in the cluster identified by the prefix of the backup name of the form
-                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</param>
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must
+                    /// be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup
+                    /// name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.</param>
                     public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.Backup body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -1559,9 +1541,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                         /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of
                         /// the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*`
-                        /// The final segment of the name must be between 1 and 50 characters in length.
-                        ///
-                        /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+                        /// The final segment of the name must be between 1 and 50 characters in length. The backup is
+                        /// stored in the cluster identified by the prefix of the backup name of the form
                         /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2412,14 +2393,20 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// unspecified.</summary>
                     public enum ViewEnum
                     {
+                        /// <summary>Uses the default view for each method as documented in its request.</summary>
                         [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                         VIEWUNSPECIFIED,
+                        /// <summary>Only populates `name`.</summary>
                         [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
                         NAMEONLY,
+                        /// <summary>Only populates `name` and fields related to the table's schema.</summary>
                         [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
                         SCHEMAVIEW,
+                        /// <summary>Only populates `name` and fields related to the table's replication
+                        /// state.</summary>
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW,
+                        /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
@@ -2549,14 +2536,11 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of results per page.
-                    ///
-                    /// A page_size of zero lets the server choose the number of items to return. A page_size which is
-                    /// strictly positive will return at most that many items. A negative page_size will cause an error.
-                    ///
-                    /// Following the first request, subsequent paginated calls are not required to pass a page_size. If
-                    /// a page_size is set in subsequent calls, it must match the page_size given in the first
-                    /// request.</summary>
+                    /// <summary>Maximum number of results per page. A page_size of zero lets the server choose the
+                    /// number of items to return. A page_size which is strictly positive will return at most that many
+                    /// items. A negative page_size will cause an error. Following the first request, subsequent
+                    /// paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls,
+                    /// it must match the page_size given in the first request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2573,14 +2557,20 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// and REPLICATION_VIEW are supported.</summary>
                     public enum ViewEnum
                     {
+                        /// <summary>Uses the default view for each method as documented in its request.</summary>
                         [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                         VIEWUNSPECIFIED,
+                        /// <summary>Only populates `name`.</summary>
                         [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
                         NAMEONLY,
+                        /// <summary>Only populates `name` and fields related to the table's schema.</summary>
                         [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
                         SCHEMAVIEW,
+                        /// <summary>Only populates `name` and fields related to the table's replication
+                        /// state.</summary>
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW,
+                        /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
@@ -2706,9 +2696,9 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>Create a new table by restoring from a completed backup. The new table must be in the same
-                /// instance as the instance containing the backup.  The returned table long-running operation can be
-                /// used to track the progress of the operation, and to cancel it.  The metadata field type is
-                /// RestoreTableMetadata.  The response type is Table, if successful.</summary>
+                /// instance as the instance containing the backup. The returned table long-running operation can be
+                /// used to track the progress of the operation, and to cancel it. The metadata field type is
+                /// RestoreTableMetadata. The response type is Table, if successful.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the instance in which to create the restored table. This instance must be
                 /// the parent of the source backup. Values are of the form `projects//instances/`.</param>
@@ -2718,9 +2708,9 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>Create a new table by restoring from a completed backup. The new table must be in the same
-                /// instance as the instance containing the backup.  The returned table long-running operation can be
-                /// used to track the progress of the operation, and to cancel it.  The metadata field type is
-                /// RestoreTableMetadata.  The response type is Table, if successful.</summary>
+                /// instance as the instance containing the backup. The returned table long-running operation can be
+                /// used to track the progress of the operation, and to cancel it. The metadata field type is
+                /// RestoreTableMetadata. The response type is Table, if successful.</summary>
                 public class RestoreRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
@@ -3653,21 +3643,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
     /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3683,11 +3667,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE" } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3721,9 +3702,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the
-        /// name must be between 1 and 50 characters in length.
-        ///
-        /// The backup is stored in the cluster identified by the prefix of the backup name of the form
+        /// name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the
+        /// prefix of the backup name of the form
         /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -3739,7 +3719,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string SourceTable { get; set; } 
 
         /// <summary>Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
-        /// CreateBackup request is received).  The row data in this backup will be no older than this
+        /// CreateBackup request is received). The row data in this backup will be no older than this
         /// timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
@@ -3780,53 +3760,33 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.
-        ///
-        /// </summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -3909,10 +3869,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A set of columns within a table which share a common configuration.</summary>
     public class ColumnFamily : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes.
-        ///
-        /// NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to
-        /// return a cell even if it matches the active GC expression for its family.</summary>
+        /// <summary>Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage
+        /// collection executes opportunistically in the background, and so it's possible for reads to return a cell
+        /// even if it matches the active GC expression for its family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
         public virtual GcRule GcRule { get; set; } 
 
@@ -3960,10 +3919,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>Keys: the full `name` of each table that existed in the instance when CreateCluster was first
         /// called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be
-        /// created in the new cluster by that API call, not this one.
-        ///
-        /// Values: information on how much of a table's data has been copied to the newly-created cluster so
-        /// far.</summary>
+        /// created in the new cluster by that API call, not this one. Values: information on how much of a table's data
+        /// has been copied to the newly-created cluster so far.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IDictionary<string,TableProgress> Tables { get; set; } 
 
@@ -4043,15 +4000,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The optional list of row keys that will be used to initially split the table into several tablets
         /// (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created,
-        /// spanning the key ranges: `[, s1), [s1, s2), [s2, )`.
-        ///
-        /// Example:
-        ///
-        /// * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys
-        /// := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple)
-        /// => {"a"}.` - Tablet 2 `[apple, customer_1)      => {"apple", "custom"}.` - Tablet 3 `[customer_1,
-        /// customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other)      => {"customer_2"}.` - Tablet 5 `[other,
-        /// )                => {"other", "zz"}.`</summary>
+        /// spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom",
+        /// "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2",
+        /// "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple",
+        /// "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) =>
+        /// {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSplits")]
         public virtual System.Collections.Generic.IList<Split> InitialSplits { get; set; } 
 
@@ -4084,11 +4037,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -4097,29 +4048,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -4226,14 +4163,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
@@ -4253,12 +4186,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into
         /// groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter
-        /// resources and aggregate metrics.
-        ///
-        /// * Label keys must be between 1 and 63 characters long and must conform to the regular expression:
-        /// `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the
-        /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given
-        /// resource. * Keys and values must both be under 128 bytes.</summary>
+        /// resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to
+        /// the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and
+        /// must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be
+        /// associated with a given resource. * Keys and values must both be under 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4424,9 +4355,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4507,9 +4437,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
@@ -4519,11 +4449,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -4583,35 +4513,24 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4628,33 +4547,23 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -4710,7 +4619,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>The request for RestoreTable.</summary>
     public class RestoreTableRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the backup from which to restore.  Values are of the form
+        /// <summary>Name of the backup from which to restore. Values are of the form
         /// `projects//instances//clusters//backups/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; } 
@@ -4735,9 +4644,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used:
-        ///
-        /// `paths: "bindings, etag"`</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
+        /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -4775,9 +4683,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
+    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
+    /// this error model and how to work with it in the [API Design
     /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4785,8 +4692,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
