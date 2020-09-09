@@ -1,7 +1,4 @@
-{% noblank %}{% doc_comment_if parameter.description %}
-{% if parameter.default %}{% eol %}/// [default: {{ parameter.default }}]{% endif %}
-{% if parameter.minimum %}{% eol %}/// [minimum: {{ parameter.minimum }}]{% endif %}
-{% if parameter.maximum %}{% eol %}/// [maximum: {{ parameter.maximum }}]{% endif %} {% endnoblank %}
+{% noblank %}{% doc_comment_if parameter.description %}{% endnoblank %}
 [Google.Apis.Util.RequestParameterAttribute({% literal parameter.wireName %}, Google.Apis.Util.RequestParameterType.{% camel_case parameter.location %})]
 {% noeol %}
 public virtual
