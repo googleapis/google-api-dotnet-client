@@ -142,7 +142,6 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -168,7 +167,6 @@ namespace Google.Apis.Storage.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -1108,7 +1106,6 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>The IAM policy format version to be returned. If the optionsRequestedPolicyVersion is for an
             /// older version that doesn't support part of the requested IAM policy, the request fails.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1384,8 +1381,6 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>Maximum number of buckets to return in a single response. The service will use this parameter
             /// or 1,000 items, whichever is smaller.</summary>
-            /// [default: 1000]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -5373,7 +5368,6 @@ namespace Google.Apis.Storage.v1
         {
 
             /// <summary>Data format for the response.</summary>
-            /// [default: json]
             [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -5399,7 +5393,6 @@ namespace Google.Apis.Storage.v1
             public virtual string OauthToken { get; set; }
 
             /// <summary>Returns response with indentations and line breaks.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -5584,8 +5577,6 @@ namespace Google.Apis.Storage.v1
             /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
             /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
             /// parameter or 1,000 items, whichever is smaller.</summary>
-            /// [default: 1000]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -6905,8 +6896,6 @@ namespace Google.Apis.Storage.v1
             /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
             /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
             /// parameter or 1,000 items, whichever is smaller.</summary>
-            /// [default: 1000]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -7392,8 +7381,6 @@ namespace Google.Apis.Storage.v1
                 /// by the number of distinct service accounts in the response. If the number of service accounts in a
                 /// single response is too high, the page will truncated and a next page token will be
                 /// returned.</summary>
-                /// [default: 250]
-                /// [minimum: 0]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 

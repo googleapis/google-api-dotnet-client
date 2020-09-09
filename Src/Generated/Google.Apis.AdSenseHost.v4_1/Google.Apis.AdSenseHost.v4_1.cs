@@ -110,7 +110,6 @@ namespace Google.Apis.AdSenseHost.v4_1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -139,7 +138,6 @@ namespace Google.Apis.AdSenseHost.v4_1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -353,8 +351,6 @@ namespace Google.Apis.AdSenseHost.v4_1
                 public virtual string AccountId { get; private set; }
 
                 /// <summary>The maximum number of ad clients to include in the response, used for paging.</summary>
-                /// [minimum: 0]
-                /// [maximum: 10000]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -797,8 +793,6 @@ namespace Google.Apis.AdSenseHost.v4_1
                 public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
                 /// <summary>The maximum number of ad units to include in the response, used for paging.</summary>
-                /// [minimum: 0]
-                /// [maximum: 10000]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1110,8 +1104,6 @@ namespace Google.Apis.AdSenseHost.v4_1
                 public virtual string Locale { get; set; }
 
                 /// <summary>The maximum number of rows of report data to return.</summary>
-                /// [minimum: 0]
-                /// [maximum: 50000]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1126,8 +1118,6 @@ namespace Google.Apis.AdSenseHost.v4_1
                 public virtual Google.Apis.Util.Repeatable<string> Sort { get; set; }
 
                 /// <summary>Index of the first row of report data to return.</summary>
-                /// [minimum: 0]
-                /// [maximum: 5000]
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -1429,8 +1419,6 @@ namespace Google.Apis.AdSenseHost.v4_1
 
 
             /// <summary>The maximum number of ad clients to include in the response, used for paging.</summary>
-            /// [minimum: 0]
-            /// [maximum: 10000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1905,8 +1893,6 @@ namespace Google.Apis.AdSenseHost.v4_1
             public virtual string AdClientId { get; private set; }
 
             /// <summary>The maximum number of custom channels to include in the response, used for paging.</summary>
-            /// [minimum: 0]
-            /// [maximum: 10000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2160,8 +2146,6 @@ namespace Google.Apis.AdSenseHost.v4_1
             public virtual string Locale { get; set; }
 
             /// <summary>The maximum number of rows of report data to return.</summary>
-            /// [minimum: 0]
-            /// [maximum: 50000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2176,8 +2160,6 @@ namespace Google.Apis.AdSenseHost.v4_1
             public virtual Google.Apis.Util.Repeatable<string> Sort { get; set; }
 
             /// <summary>Index of the first row of report data to return.</summary>
-            /// [minimum: 0]
-            /// [maximum: 5000]
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -2448,8 +2430,6 @@ namespace Google.Apis.AdSenseHost.v4_1
             public virtual string AdClientId { get; private set; }
 
             /// <summary>The maximum number of URL channels to include in the response, used for paging.</summary>
-            /// [minimum: 0]
-            /// [maximum: 10000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

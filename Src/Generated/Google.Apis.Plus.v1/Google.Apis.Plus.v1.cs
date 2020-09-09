@@ -116,7 +116,6 @@ namespace Google.Apis.Plus.v1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -142,7 +141,6 @@ namespace Google.Apis.Plus.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -334,9 +332,6 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>The maximum number of activities to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 20]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -425,20 +420,15 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>Specify the preferred language to search with. See search language codes for available
             /// values.</summary>
-            /// [default: en-US]
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
             /// <summary>The maximum number of activities to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 10]
-            /// [minimum: 1]
-            /// [maximum: 20]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Specifies how to order search results.</summary>
-            /// [default: recent]
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
@@ -616,9 +606,6 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>The maximum number of comments to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 20]
-            /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -628,7 +615,6 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>The order in which to sort the list of comments.</summary>
-            /// [default: ascending]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
@@ -817,9 +803,6 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>The maximum number of people to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -950,9 +933,6 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>The maximum number of people to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 20]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1041,15 +1021,11 @@ namespace Google.Apis.Plus.v1
 
             /// <summary>Specify the preferred language to search with. See search language codes for available
             /// values.</summary>
-            /// [default: en-US]
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
             /// <summary>The maximum number of people to include in the response, which is used for paging. For any
             /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 25]
-            /// [minimum: 1]
-            /// [maximum: 50]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

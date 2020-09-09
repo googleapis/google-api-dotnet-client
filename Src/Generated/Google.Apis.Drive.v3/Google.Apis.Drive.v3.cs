@@ -170,7 +170,6 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -196,7 +195,6 @@ namespace Google.Apis.Drive.v3
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -372,12 +370,10 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -475,12 +471,10 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
             /// the time of the request, even when a file was removed from the list of changes and there will be no
             /// further change entries for this file.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
             /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
@@ -491,42 +485,33 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
             /// for example by deletion or loss of access.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
 
             /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>The maximum number of changes to return per page.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Whether to restrict the results to changes inside the My Drive hierarchy. This omits changes to
             /// files such as those in the Application Data folder or shared files which have not been added to My
             /// Drive.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("restrictToMyDrive", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RestrictToMyDrive { get; set; }
 
             /// <summary>A comma-separated list of spaces to query within the user corpus. Supported values are 'drive',
             /// 'appDataFolder' and 'photos'.</summary>
-            /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -707,12 +692,10 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
             /// the time of the request, even when a file was removed from the list of changes and there will be no
             /// further change entries for this file.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
             /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
@@ -723,42 +706,33 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
             /// for example by deletion or loss of access.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
 
             /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>The maximum number of changes to return per page.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Whether to restrict the results to changes inside the My Drive hierarchy. This omits changes to
             /// files such as those in the Application Data folder or shared files which have not been added to My
             /// Drive.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("restrictToMyDrive", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RestrictToMyDrive { get; set; }
 
             /// <summary>A comma-separated list of spaces to query within the user corpus. Supported values are 'drive',
             /// 'appDataFolder' and 'photos'.</summary>
-            /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -1142,7 +1116,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to return deleted comments. Deleted comments will not include their original
             /// content.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
@@ -1217,14 +1190,10 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to include deleted comments. Deleted comments will not include their original
             /// content.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
             /// <summary>The maximum number of comments to return per page.</summary>
-            /// [default: 20]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1535,7 +1504,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if they are an administrator of the domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -1645,9 +1613,6 @@ namespace Google.Apis.Drive.v3
 
 
             /// <summary>Maximum number of shared drives to return.</summary>
-            /// [default: 10]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1661,7 +1626,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then all shared drives of the
             /// domain in which the requester is an administrator are returned.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -1798,7 +1762,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if they are an administrator of the domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -1892,14 +1855,12 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
             /// parent fail.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
             /// bypasses that behavior for the request. Permissions are still inherited from parent folders.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ignoreDefaultVisibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
@@ -1911,7 +1872,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
 
@@ -1920,12 +1880,10 @@ namespace Google.Apis.Drive.v3
             public virtual string OcrLanguage { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -2048,14 +2006,12 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
             /// parent fail.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
             /// bypasses that behavior for the request. Permissions are still inherited from parent folders.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ignoreDefaultVisibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
@@ -2067,7 +2023,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
 
@@ -2076,17 +2031,14 @@ namespace Google.Apis.Drive.v3
             public virtual string OcrLanguage { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
@@ -2218,7 +2170,6 @@ namespace Google.Apis.Drive.v3
         {
 
             /// <summary>Data format for the response.</summary>
-            /// [default: json]
             [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -2244,7 +2195,6 @@ namespace Google.Apis.Drive.v3
             public virtual string OauthToken { get; set; }
 
             /// <summary>Returns response with indentations and line breaks.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -2261,14 +2211,12 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
             /// parent fail.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether to ignore the domain's default visibility settings for the created file. Domain
             /// administrators can choose to make all uploaded files visible to the domain by default; this parameter
             /// bypasses that behavior for the request. Permissions are still inherited from parent folders.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("ignoreDefaultVisibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
@@ -2280,7 +2228,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
 
@@ -2289,17 +2236,14 @@ namespace Google.Apis.Drive.v3
             public virtual string OcrLanguage { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
@@ -2358,17 +2302,14 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
             /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -2447,7 +2388,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
             /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2619,15 +2559,11 @@ namespace Google.Apis.Drive.v3
 
 
             /// <summary>The number of IDs to return.</summary>
-            /// [default: 10]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("count", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Count { get; set; }
 
             /// <summary>The space in which the IDs can be used to create new files. Supported values are 'drive' and
             /// 'appDataFolder'.</summary>
-            /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("space", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Space { get; set; }
 
@@ -2694,7 +2630,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether the user is acknowledging the risk of downloading known malware or other abusive files.
             /// This is only applicable when alt=media.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
@@ -2704,12 +2639,10 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -2876,7 +2809,6 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; set; }
 
             /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
 
@@ -2886,7 +2818,6 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
@@ -2901,9 +2832,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>The maximum number of files to return per page. Partial or empty result pages are possible even
             /// before the end of the files list has been reached.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2919,17 +2847,14 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>A comma-separated list of spaces to query within the corpus. Supported values are 'drive',
             /// 'appDataFolder' and 'photos'.</summary>
-            /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -3116,7 +3041,6 @@ namespace Google.Apis.Drive.v3
             /// add a single parent, the item is removed from all current folders and placed in the requested folder.
             /// Other requests that increase the number of parents fail, except when the canAddMyDriveParent file
             /// capability is true and a single parent is being added.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3128,7 +3052,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
 
@@ -3141,17 +3064,14 @@ namespace Google.Apis.Drive.v3
             public virtual string RemoveParents { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
@@ -3302,7 +3222,6 @@ namespace Google.Apis.Drive.v3
         {
 
             /// <summary>Data format for the response.</summary>
-            /// [default: json]
             [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -3328,7 +3247,6 @@ namespace Google.Apis.Drive.v3
             public virtual string OauthToken { get; set; }
 
             /// <summary>Returns response with indentations and line breaks.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -3355,7 +3273,6 @@ namespace Google.Apis.Drive.v3
             /// add a single parent, the item is removed from all current folders and placed in the requested folder.
             /// Other requests that increase the number of parents fail, except when the canAddMyDriveParent file
             /// capability is true and a single parent is being added.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3367,7 +3284,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
             /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
             /// limit is reached, try deleting pinned revisions.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
 
@@ -3380,17 +3296,14 @@ namespace Google.Apis.Drive.v3
             public virtual string RemoveParents { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
@@ -3449,7 +3362,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether the user is acknowledging the risk of downloading known malware or other abusive files.
             /// This is only applicable when alt=media.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
@@ -3459,12 +3371,10 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
@@ -3639,7 +3549,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
             /// parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for
             /// details.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3649,7 +3558,6 @@ namespace Google.Apis.Drive.v3
             /// parents are not changed. If set to false, when enforceSingleParent=false, existing parents are not
             /// changed; however, the file will be added to the new owner's My Drive root folder, unless it is already
             /// in the new owner's My Drive.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("moveToNewOwnersRoot", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
 
@@ -3660,25 +3568,21 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SendNotificationEmail { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to transfer ownership to the specified user and downgrade the current owner to a
             /// writer. This parameter is required as an acknowledgement of the side effect.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
             /// domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -3819,19 +3723,16 @@ namespace Google.Apis.Drive.v3
             public virtual string PermissionId { get; private set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
             /// domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -3930,19 +3831,16 @@ namespace Google.Apis.Drive.v3
             public virtual string PermissionId { get; private set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
             /// domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -4041,8 +3939,6 @@ namespace Google.Apis.Drive.v3
             /// <summary>The maximum number of permissions to return per page. When not set for files in a shared drive,
             /// at most 100 results will be returned. When not set for files that are not in a shared drive, the entire
             /// list will be returned.</summary>
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4052,19 +3948,16 @@ namespace Google.Apis.Drive.v3
             public virtual string PageToken { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
             /// domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -4183,30 +4076,25 @@ namespace Google.Apis.Drive.v3
             public virtual string PermissionId { get; private set; }
 
             /// <summary>Whether to remove the expiration date.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RemoveExpiration { get; set; }
 
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
 
             /// <summary>Deprecated use supportsAllDrives instead.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to transfer ownership to the specified user and downgrade the current owner to a
             /// writer. This parameter is required as an acknowledgement of the side effect.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
             /// domain to which the shared drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -4509,7 +4397,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to return deleted replies. Deleted replies will not include their original
             /// content.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
@@ -4599,14 +4486,10 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether to include deleted replies. Deleted replies will not include their original
             /// content.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
             /// <summary>The maximum number of replies to return per page.</summary>
-            /// [default: 20]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4890,7 +4773,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Whether the user is acknowledging the risk of downloading known malware or other abusive files.
             /// This is only applicable when alt=media.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
@@ -5016,9 +4898,6 @@ namespace Google.Apis.Drive.v3
             public virtual string FileId { get; private set; }
 
             /// <summary>The maximum number of revisions to return per page.</summary>
-            /// [default: 200]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -5306,7 +5185,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if they are an administrator of the domain to which the Team Drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -5365,9 +5243,6 @@ namespace Google.Apis.Drive.v3
 
 
             /// <summary>Maximum number of Team Drives to return.</summary>
-            /// [default: 10]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -5381,7 +5256,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then all Team Drives of the domain
             /// in which the requester is an administrator are returned.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
@@ -5467,7 +5341,6 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
             /// access if they are an administrator of the domain to which the Team Drive belongs.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 

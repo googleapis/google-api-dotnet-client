@@ -90,7 +90,6 @@ namespace Google.Apis.Licensing.v1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -116,7 +115,6 @@ namespace Google.Apis.Licensing.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -514,9 +512,6 @@ namespace Google.Apis.Licensing.v1
 
             /// <summary>The maxResults query string determines how many entries are returned on each page of a large
             /// response. This is an optional parameter. The value must be a positive number.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -625,9 +620,6 @@ namespace Google.Apis.Licensing.v1
 
             /// <summary>The maxResults query string determines how many entries are returned on each page of a large
             /// response. This is an optional parameter. The value must be a positive number.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

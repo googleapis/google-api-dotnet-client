@@ -134,7 +134,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -160,7 +159,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -1096,8 +1094,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
 
             /// <summary>Maximum number of entries returned on one result page. If not set, the default is 100.
             /// Optional.</summary>
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1885,8 +1881,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
 
             /// <summary>Maximum number of entries returned on one result page. If not set, the default is 100.
             /// Optional.</summary>
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

@@ -117,7 +117,6 @@ namespace Google.Apis.Doubleclicksearch.v2
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -153,7 +152,6 @@ namespace Google.Apis.Doubleclicksearch.v2
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -342,20 +340,14 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual long EngineAccountId { get; private set; }
 
             /// <summary>Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
-            /// [minimum: 20091101]
-            /// [maximum: 99991231]
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int EndDate { get; private set; }
 
             /// <summary>The number of conversions to return per call.</summary>
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("rowCount", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int RowCount { get; private set; }
 
             /// <summary>First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.</summary>
-            /// [minimum: 20091101]
-            /// [maximum: 99991231]
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int StartDate { get; private set; }
 
@@ -769,7 +761,6 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual string ReportId { get; private set; }
 
             /// <summary>The index of the report fragment to download.</summary>
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("reportFragment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int ReportFragment { get; private set; }
 

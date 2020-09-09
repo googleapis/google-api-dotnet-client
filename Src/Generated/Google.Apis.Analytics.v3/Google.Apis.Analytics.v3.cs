@@ -142,7 +142,6 @@ namespace Google.Apis.Analytics.v3
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -168,7 +167,6 @@ namespace Google.Apis.Analytics.v3
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: false]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -406,7 +404,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -659,7 +656,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -997,7 +993,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1212,7 +1207,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first account-user link to retrieve. Use this parameter as a pagination
                 /// mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1379,7 +1373,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first account to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1533,13 +1526,11 @@ namespace Google.Apis.Analytics.v3
                 public virtual string WebPropertyId { get; private set; }
 
                 /// <summary>The maximum number of custom data sources to include in this response.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("max-results", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
                 /// <summary>A 1-based index of the first custom data source to retrieve. Use this parameter as a
                 /// pagination mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1811,7 +1802,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1911,7 +1901,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>Force the update and ignore any warnings related to the custom dimension being linked to a
                 /// custom data source / data set.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("ignoreCustomDataSourceLinks", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IgnoreCustomDataSourceLinks { get; set; }
 
@@ -2017,7 +2006,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>Force the update and ignore any warnings related to the custom dimension being linked to a
                 /// custom data source / data set.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("ignoreCustomDataSourceLinks", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IgnoreCustomDataSourceLinks { get; set; }
 
@@ -2295,7 +2283,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -2395,7 +2382,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>Force the update and ignore any warnings related to the custom metric being linked to a
                 /// custom data source / data set.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("ignoreCustomDataSourceLinks", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IgnoreCustomDataSourceLinks { get; set; }
 
@@ -2501,7 +2487,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>Force the update and ignore any warnings related to the custom metric being linked to a
                 /// custom data source / data set.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("ignoreCustomDataSourceLinks", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IgnoreCustomDataSourceLinks { get; set; }
 
@@ -2916,7 +2901,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first experiment to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -3437,7 +3421,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -3893,7 +3876,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first goal to retrieve. Use this parameter as a pagination mechanism along
                 /// with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -4528,7 +4510,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -5065,7 +5046,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first profile-user link to retrieve. Use this parameter as a pagination
                 /// mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -5539,7 +5519,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -6076,12 +6055,10 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                /// [default: all]
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Type { get; set; }
 
@@ -6373,7 +6350,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first segment to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -6769,7 +6745,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first unsampled report to retrieve. Use this parameter as a pagination
                 /// mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -7083,13 +7058,11 @@ namespace Google.Apis.Analytics.v3
                 public virtual string CustomDataSourceId { get; private set; }
 
                 /// <summary>The maximum number of uploads to include in this response.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("max-results", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
                 /// <summary>A 1-based index of the first upload to retrieve. Use this parameter as a pagination
                 /// mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -7276,7 +7249,6 @@ namespace Google.Apis.Analytics.v3
             {
 
                 /// <summary>Data format for the response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -7302,7 +7274,6 @@ namespace Google.Apis.Analytics.v3
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -7654,7 +7625,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a
                 /// pagination mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -8075,7 +8045,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
                 /// along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -8490,7 +8459,6 @@ namespace Google.Apis.Analytics.v3
 
                 /// <summary>An index of the first webProperty-user link to retrieve. Use this parameter as a pagination
                 /// mechanism along with the max-results parameter.</summary>
-                /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 

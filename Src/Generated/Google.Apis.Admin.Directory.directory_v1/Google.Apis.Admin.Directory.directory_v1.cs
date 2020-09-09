@@ -333,7 +333,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -369,7 +368,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -970,8 +968,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string CustomerId { get; private set; }
 
             /// <summary>Maximum number of results to return.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2536,8 +2532,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Domain { get; set; }
 
             /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
-            /// [default: 200]
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -3109,8 +3103,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual System.Nullable<bool> IncludeDerivedMembership { get; set; }
 
             /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
-            /// [default: 200]
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -3615,9 +3607,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string CustomerId { get; private set; }
 
             /// <summary>Maximum number of results to return. Max allowed value is 100.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4506,7 +4495,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>Source from which Building.coordinates are derived.</summary>
-                /// [default: SOURCE_UNSPECIFIED]
                 [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
 
@@ -4596,8 +4584,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>Maximum number of results to return.</summary>
-                /// [minimum: 1]
-                /// [maximum: 500]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4686,7 +4672,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string BuildingId { get; private set; }
 
                 /// <summary>Source from which Building.coordinates are derived.</summary>
-                /// [default: SOURCE_UNSPECIFIED]
                 [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
 
@@ -4794,7 +4779,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string BuildingId { get; private set; }
 
                 /// <summary>Source from which Building.coordinates are derived.</summary>
-                /// [default: SOURCE_UNSPECIFIED]
                 [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
 
@@ -5111,8 +5095,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>Maximum number of results to return.</summary>
-                /// [minimum: 1]
-                /// [maximum: 500]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -5604,8 +5586,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>Maximum number of results to return.</summary>
-                /// [minimum: 1]
-                /// [maximum: 500]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -6125,8 +6105,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Customer { get; private set; }
 
             /// <summary>Maximum number of results to return.</summary>
-            /// [minimum: 1]
-            /// [maximum: 200]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -6442,8 +6420,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Customer { get; private set; }
 
             /// <summary>Maximum number of results to return.</summary>
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -7885,7 +7861,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string CustomFieldMask { get; set; }
 
             /// <summary>What subset of fields to fetch for this user.</summary>
-            /// [default: basic]
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
 
@@ -7906,7 +7881,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
-            /// [default: admin_view]
             [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
 
@@ -8055,9 +8029,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Domain { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
-            /// [default: 100]
-            /// [minimum: 1]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -8086,7 +8057,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string PageToken { get; set; }
 
             /// <summary>What subset of fields to fetch for this user.</summary>
-            /// [default: basic]
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
 
@@ -8133,7 +8103,6 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.</summary>
-            /// [default: admin_view]
             [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
 

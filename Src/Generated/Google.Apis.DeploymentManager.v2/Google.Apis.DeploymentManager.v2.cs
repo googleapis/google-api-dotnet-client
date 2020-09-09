@@ -128,7 +128,6 @@ namespace Google.Apis.DeploymentManager.v2
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -154,7 +153,6 @@ namespace Google.Apis.DeploymentManager.v2
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -360,7 +358,6 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Deployment { get; private set; }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
-            /// [default: DELETE]
             [Google.Apis.Util.RequestParameterAttribute("deletePolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DeletePolicyEnum> DeletePolicy { get; set; }
 
@@ -581,7 +578,6 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Project { get; private set; }
 
             /// <summary>Sets the policy to use for creating new resources.</summary>
-            /// [default: CREATE_OR_ACQUIRE]
             [Google.Apis.Util.RequestParameterAttribute("createPolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CreatePolicyEnum> CreatePolicy { get; set; }
 
@@ -701,8 +697,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
             /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
             /// (Default: `500`)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -820,7 +814,6 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Deployment { get; private set; }
 
             /// <summary>Sets the policy to use for creating new resources.</summary>
-            /// [default: CREATE_OR_ACQUIRE]
             [Google.Apis.Util.RequestParameterAttribute("createPolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CreatePolicyEnum> CreatePolicy { get; set; }
 
@@ -834,7 +827,6 @@ namespace Google.Apis.DeploymentManager.v2
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
-            /// [default: DELETE]
             [Google.Apis.Util.RequestParameterAttribute("deletePolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DeletePolicyEnum> DeletePolicy { get; set; }
 
@@ -854,7 +846,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to
             /// remove the preview altogether. Note that the deployment will still exist after you cancel the preview
             /// and you must separately delete this deployment if you want to remove it.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preview { get; set; }
 
@@ -1188,7 +1179,6 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Deployment { get; private set; }
 
             /// <summary>Sets the policy to use for creating new resources.</summary>
-            /// [default: CREATE_OR_ACQUIRE]
             [Google.Apis.Util.RequestParameterAttribute("createPolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CreatePolicyEnum> CreatePolicy { get; set; }
 
@@ -1202,7 +1192,6 @@ namespace Google.Apis.DeploymentManager.v2
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
-            /// [default: DELETE]
             [Google.Apis.Util.RequestParameterAttribute("deletePolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DeletePolicyEnum> DeletePolicy { get; set; }
 
@@ -1222,7 +1211,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to
             /// remove the preview altogether. Note that the deployment will still exist after you cancel the preview
             /// and you must separately delete this deployment if you want to remove it.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preview { get; set; }
 
@@ -1449,8 +1437,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
             /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
             /// (Default: `500`)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1674,8 +1660,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
             /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
             /// (Default: `500`)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1913,8 +1897,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
             /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
             /// (Default: `500`)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2071,8 +2053,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
             /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
             /// (Default: `500`)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
