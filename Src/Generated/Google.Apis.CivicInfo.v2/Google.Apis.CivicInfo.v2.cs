@@ -103,7 +103,6 @@ namespace Google.Apis.CivicInfo.v2
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -139,7 +138,6 @@ namespace Google.Apis.CivicInfo.v2
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -411,19 +409,16 @@ namespace Google.Apis.CivicInfo.v2
             /// https://www.googleapis.com/civicinfo/{version}/elections. If no election ID is specified in the query
             /// and there is more than one election with data for the given voter, the additional elections are provided
             /// in the otherElections response field.</summary>
-            /// [default: 0]
             [Google.Apis.Util.RequestParameterAttribute("electionId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> ElectionId { get; set; }
 
             /// <summary>If set to true, only data from official state sources will be returned.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("officialOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OfficialOnly { get; set; }
 
             /// <summary>If set to true, the query will return the success code and include any partial information when
             /// it is unable to determine a matching address or unable to determine the election for electionId=0
             /// queries.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("returnAllAvailableData", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ReturnAllAvailableData { get; set; }
 
@@ -523,7 +518,6 @@ namespace Google.Apis.CivicInfo.v2
 
             /// <summary>Whether to return information about offices and officials. If false, only the top-level
             /// district information will be returned.</summary>
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeOffices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeOffices { get; set; }
 

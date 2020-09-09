@@ -146,7 +146,6 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -172,7 +171,6 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -489,7 +487,6 @@ namespace Google.Apis.ShoppingContent.v2
             public virtual System.Nullable<bool> DryRun { get; set; }
 
             /// <summary>Flag to delete sub-accounts with products. The default value is false.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Force { get; set; }
 

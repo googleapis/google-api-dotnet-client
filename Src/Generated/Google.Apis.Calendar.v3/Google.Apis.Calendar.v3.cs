@@ -144,7 +144,6 @@ namespace Google.Apis.Calendar.v3
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -170,7 +169,6 @@ namespace Google.Apis.Calendar.v3
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -510,7 +508,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -809,7 +806,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1104,7 +1100,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1404,7 +1399,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2165,7 +2159,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -2271,8 +2264,6 @@ namespace Google.Apis.Calendar.v3
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
             /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
             /// The default is 0.</summary>
-            /// [minimum: 0]
-            /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
@@ -2364,14 +2355,11 @@ namespace Google.Apis.Calendar.v3
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
             /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
             /// The default is 0.</summary>
-            /// [minimum: 0]
-            /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -2527,13 +2515,11 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
             /// <summary>Maximum number of events returned on one result page. By default the value is 250 events. The
             /// page size can never be larger than 2500 events. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2721,7 +2707,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -2729,8 +2714,6 @@ namespace Google.Apis.Calendar.v3
             /// page may be less than this value, or none at all, even if there are more events matching the query.
             /// Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the
             /// value is 250 events. The page size can never be larger than 2500 events. Optional.</summary>
-            /// [default: 250]
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -3181,14 +3164,11 @@ namespace Google.Apis.Calendar.v3
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
             /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
             /// The default is 0.</summary>
-            /// [minimum: 0]
-            /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -3479,14 +3459,11 @@ namespace Google.Apis.Calendar.v3
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
             /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
             /// The default is 0.</summary>
-            /// [minimum: 0]
-            /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -3659,7 +3636,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
@@ -3667,8 +3643,6 @@ namespace Google.Apis.Calendar.v3
             /// page may be less than this value, or none at all, even if there are more events matching the query.
             /// Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the
             /// value is 250 events. The page size can never be larger than 2500 events. Optional.</summary>
-            /// [default: 250]
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4102,7 +4076,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4185,7 +4158,6 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Maximum number of entries returned on one result page. By default the value is 100 entries. The
             /// page size can never be larger than 250 entries. Optional.</summary>
-            /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 

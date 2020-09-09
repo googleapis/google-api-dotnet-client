@@ -147,7 +147,6 @@ namespace Google.Apis.TagManager.v1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -183,7 +182,6 @@ namespace Google.Apis.TagManager.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -3145,12 +3143,10 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
                     /// <summary>Retrieve headers only when true.</summary>
-                    /// [default: false]
                     [Google.Apis.Util.RequestParameterAttribute("headers", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Headers { get; set; }
 
                     /// <summary>Also retrieve deleted (archived) versions when true.</summary>
-                    /// [default: false]
                     [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 

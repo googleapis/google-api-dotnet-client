@@ -90,7 +90,6 @@ namespace Google.Apis.Appsactivity.v1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -116,7 +115,6 @@ namespace Google.Apis.Appsactivity.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -249,7 +247,6 @@ namespace Google.Apis.Appsactivity.v1
 
             /// <summary>Indicates the strategy to use when grouping singleEvents items in the associated combinedEvent
             /// object.</summary>
-            /// [default: driveUi]
             [Google.Apis.Util.RequestParameterAttribute("groupingStrategy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<GroupingStrategyEnum> GroupingStrategy { get; set; }
 
@@ -265,7 +262,6 @@ namespace Google.Apis.Appsactivity.v1
 
             /// <summary>The maximum number of events to return on a page. The response includes a continuation token if
             /// there are more events.</summary>
-            /// [default: 50]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -280,7 +276,6 @@ namespace Google.Apis.Appsactivity.v1
 
             /// <summary>The ID used for ACL checks (does not filter the resulting event list by the assigned value).
             /// Use the special value me to indicate the currently authenticated user.</summary>
-            /// [default: me]
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserId { get; set; }
 

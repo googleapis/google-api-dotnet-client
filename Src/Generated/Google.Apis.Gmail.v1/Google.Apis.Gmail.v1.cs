@@ -187,7 +187,6 @@ namespace Google.Apis.Gmail.v1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -223,7 +222,6 @@ namespace Google.Apis.Gmail.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -411,7 +409,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -501,7 +498,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -537,7 +533,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -557,7 +552,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -612,7 +606,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -681,7 +674,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -690,7 +682,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
                 /// <summary>The format to return the draft in.</summary>
-                /// [default: full]
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FormatEnum> Format { get; set; }
 
@@ -784,17 +775,14 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Include drafts from `SPAM` and `TRASH` in the results.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
 
                 /// <summary>Maximum number of drafts to return.</summary>
-                /// [default: 100]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -897,7 +885,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -988,7 +975,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -1024,7 +1010,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -1044,7 +1029,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1101,7 +1085,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1205,7 +1188,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -1241,7 +1223,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -1261,7 +1242,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1341,7 +1321,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1367,7 +1346,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string LabelId { get; set; }
 
                 /// <summary>The maximum number of history records to return.</summary>
-                /// [default: 100]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1502,7 +1480,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1566,7 +1543,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1635,7 +1611,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1702,7 +1677,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1760,7 +1734,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1837,7 +1810,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -1953,7 +1925,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>The user's email address. The special value `me` can be used to indicate the
                     /// authenticated user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -2038,7 +2009,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -2100,7 +2070,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -2164,7 +2133,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -2233,7 +2201,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -2242,7 +2209,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
                 /// <summary>The format to return the message in.</summary>
-                /// [default: full]
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FormatEnum> Format { get; set; }
 
@@ -2355,18 +2321,15 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
                 /// Vault administrator. Only used for G Suite accounts.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
 
                 /// <summary>Source for Gmail's internal date of the message.</summary>
-                /// [default: dateHeader]
                 [Google.Apis.Util.RequestParameterAttribute("internalDateSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<InternalDateSourceEnum> InternalDateSource { get; set; }
 
@@ -2383,13 +2346,11 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>Ignore the Gmail spam classifier decision and never mark this email as SPAM in the
                 /// mailbox.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("neverMarkSpam", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NeverMarkSpam { get; set; }
 
                 /// <summary>Process calendar invites in the email and add any extracted meetings to the Google Calendar
                 /// for this user.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("processForCalendar", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ProcessForCalendar { get; set; }
 
@@ -2517,7 +2478,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -2553,7 +2513,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -2573,18 +2532,15 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
                 /// Vault administrator. Only used for G Suite accounts.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
 
                 /// <summary>Source for Gmail's internal date of the message.</summary>
-                /// [default: dateHeader]
                 [Google.Apis.Util.RequestParameterAttribute("internalDateSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<InternalDateSourceEnum> InternalDateSource { get; set; }
 
@@ -2601,13 +2557,11 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>Ignore the Gmail spam classifier decision and never mark this email as SPAM in the
                 /// mailbox.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("neverMarkSpam", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NeverMarkSpam { get; set; }
 
                 /// <summary>Process calendar invites in the email and add any extracted meetings to the Google Calendar
                 /// for this user.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("processForCalendar", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ProcessForCalendar { get; set; }
 
@@ -2664,18 +2618,15 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
                 /// Vault administrator. Only used for G Suite accounts.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
 
                 /// <summary>Source for Gmail's internal date of the message.</summary>
-                /// [default: receivedTime]
                 [Google.Apis.Util.RequestParameterAttribute("internalDateSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<InternalDateSourceEnum> InternalDateSource { get; set; }
 
@@ -2795,7 +2746,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -2831,7 +2781,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -2851,18 +2800,15 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
                 /// Vault administrator. Only used for G Suite accounts.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
 
                 /// <summary>Source for Gmail's internal date of the message.</summary>
-                /// [default: receivedTime]
                 [Google.Apis.Util.RequestParameterAttribute("internalDateSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<InternalDateSourceEnum> InternalDateSource { get; set; }
 
@@ -2926,12 +2872,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Include messages from `SPAM` and `TRASH` in the results.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
 
@@ -2940,7 +2884,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual Google.Apis.Util.Repeatable<string> LabelIds { get; set; }
 
                 /// <summary>Maximum number of messages to return.</summary>
-                /// [default: 100]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -3053,7 +2996,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -3128,7 +3070,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -3218,7 +3159,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string AccessToken { get; set; }
 
                 /// <summary>Data format for response.</summary>
-                /// [default: json]
                 [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -3254,7 +3194,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string OauthToken { get; set; }
 
                 /// <summary>Returns response with indentations and line breaks.</summary>
-                /// [default: true]
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -3274,7 +3213,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -3329,7 +3267,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -3398,7 +3335,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -3522,7 +3458,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3591,7 +3526,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3665,7 +3599,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3734,7 +3667,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3809,7 +3741,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3871,7 +3802,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -3940,7 +3870,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4007,7 +3936,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4088,7 +4016,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4154,7 +4081,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4223,7 +4149,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4290,7 +4215,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4387,7 +4311,6 @@ namespace Google.Apis.Gmail.v1
 
                         /// <summary>The user's email address. The special value `me` can be used to indicate the
                         /// authenticated user.</summary>
-                        /// [default: me]
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
@@ -4473,7 +4396,6 @@ namespace Google.Apis.Gmail.v1
 
                         /// <summary>The user's email address. The special value `me` can be used to indicate the
                         /// authenticated user.</summary>
-                        /// [default: me]
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
@@ -4561,7 +4483,6 @@ namespace Google.Apis.Gmail.v1
 
                         /// <summary>The user's email address. The special value `me` can be used to indicate the
                         /// authenticated user.</summary>
-                        /// [default: me]
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
@@ -4638,7 +4559,6 @@ namespace Google.Apis.Gmail.v1
 
                         /// <summary>The user's email address. The special value `me` can be used to indicate the
                         /// authenticated user.</summary>
-                        /// [default: me]
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
@@ -4711,7 +4631,6 @@ namespace Google.Apis.Gmail.v1
 
                         /// <summary>The user's email address. The special value `me` can be used to indicate the
                         /// authenticated user.</summary>
-                        /// [default: me]
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
@@ -4807,7 +4726,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4873,7 +4791,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -4944,7 +4861,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -5013,7 +4929,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -5071,7 +4986,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -5152,7 +5066,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -5231,7 +5144,6 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                     /// user.</summary>
-                    /// [default: me]
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -5299,7 +5211,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5353,7 +5264,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5407,7 +5317,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5461,7 +5370,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5515,7 +5423,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5575,7 +5482,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5637,7 +5543,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5705,7 +5610,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5767,7 +5671,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5829,7 +5732,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5912,7 +5814,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5981,7 +5882,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -5990,7 +5890,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
                 /// <summary>The format to return the messages in.</summary>
-                /// [default: full]
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FormatEnum> Format { get; set; }
 
@@ -6092,12 +5991,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Include threads from `SPAM` and `TRASH` in the results.</summary>
-                /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
 
@@ -6106,7 +6003,6 @@ namespace Google.Apis.Gmail.v1
                 public virtual Google.Apis.Util.Repeatable<string> LabelIds { get; set; }
 
                 /// <summary>Maximum number of threads to return.</summary>
-                /// [default: 100]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -6221,7 +6117,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -6296,7 +6191,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -6365,7 +6259,6 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
                 /// user.</summary>
-                /// [default: me]
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
@@ -6433,7 +6326,6 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
             /// user.</summary>
-            /// [default: me]
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -6487,7 +6379,6 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
             /// user.</summary>
-            /// [default: me]
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -6543,7 +6434,6 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>The user's email address. The special value `me` can be used to indicate the authenticated
             /// user.</summary>
-            /// [default: me]
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 

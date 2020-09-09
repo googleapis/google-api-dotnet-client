@@ -143,7 +143,6 @@ namespace Google.Apis.Blogger.v3
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -179,7 +178,6 @@ namespace Google.Apis.Blogger.v3
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -2447,7 +2445,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string EndDate { get; set; }
 
 
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
@@ -2460,7 +2457,6 @@ namespace Google.Apis.Blogger.v3
             public virtual System.Nullable<long> MaxResults { get; set; }
 
 
-            /// [default: PUBLISHED]
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
@@ -2746,7 +2742,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string PostId { get; private set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
 
@@ -2979,7 +2974,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string BlogId { get; private set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
 
@@ -3080,7 +3074,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string EndDate { get; set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
@@ -3097,7 +3090,6 @@ namespace Google.Apis.Blogger.v3
             public virtual System.Nullable<long> MaxResults { get; set; }
 
 
-            /// [default: PUBLISHED]
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
@@ -3302,7 +3294,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string PostId { get; private set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
 
@@ -3585,12 +3576,10 @@ namespace Google.Apis.Blogger.v3
             public virtual string Q { get; private set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
 
-            /// [default: PUBLISHED]
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
@@ -3692,7 +3681,6 @@ namespace Google.Apis.Blogger.v3
             public virtual string PostId { get; private set; }
 
 
-            /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
 

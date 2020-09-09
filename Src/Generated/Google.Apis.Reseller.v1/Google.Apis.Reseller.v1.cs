@@ -104,7 +104,6 @@ namespace Google.Apis.Reseller.v1
         }
 
         /// <summary>Data format for the response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -130,7 +129,6 @@ namespace Google.Apis.Reseller.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -1278,8 +1276,6 @@ namespace Google.Apis.Reseller.v1
 
             /// <summary>When retrieving a large list, the maxResults is the maximum number of results per page. The
             /// nextPageToken value takes you to the next page. The default is 20.</summary>
-            /// [minimum: 1]
-            /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

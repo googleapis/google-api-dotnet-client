@@ -151,7 +151,6 @@ namespace Google.Apis.Dns.v1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -187,7 +186,6 @@ namespace Google.Apis.Dns.v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -561,7 +559,6 @@ namespace Google.Apis.Dns.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>Sorting criterion. The only supported value is change sequence.</summary>
-            /// [default: changeSequence]
             [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortByEnum> SortBy { get; set; }
 
@@ -1044,7 +1041,6 @@ namespace Google.Apis.Dns.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>Sorting criterion. The only supported values are START_TIME and ID.</summary>
-            /// [default: startTime]
             [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortByEnum> SortBy { get; set; }
 

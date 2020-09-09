@@ -131,7 +131,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -167,7 +166,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -493,9 +491,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is optional in the
             /// request. The default value is 1000.</summary>
-            /// [default: 1000]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -820,9 +815,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is optional in the
             /// request. The default value is 1000.</summary>
-            /// [default: 1000]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1260,9 +1252,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Determines how many activity records are shown on each response page. For example, if the
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page.</summary>
-            /// [default: 1000]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1453,9 +1442,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is
             /// optional.</summary>
-            /// [default: 1000]
-            /// [minimum: 1]
-            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

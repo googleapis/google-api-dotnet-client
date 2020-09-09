@@ -121,7 +121,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public virtual string AccessToken { get; set; }
 
         /// <summary>Data format for response.</summary>
-        /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
@@ -157,7 +156,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public virtual string OauthToken { get; set; }
 
         /// <summary>Returns response with indentations and line breaks.</summary>
-        /// [default: true]
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
@@ -423,7 +421,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
 
             /// <summary>If true, tries to run the query asynchronously. Only applicable when the frequency is
             /// ONE_TIME.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("asynchronous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Asynchronous { get; set; }
 
@@ -652,7 +649,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             public virtual long QueryId { get; private set; }
 
             /// <summary>If true, tries to run the query asynchronously.</summary>
-            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("asynchronous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Asynchronous { get; set; }
 
