@@ -2327,7 +2327,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Substitutions for Build resource. The keys must match the following regular expression:
-        /// `^_[A-Z0-9_]+$`.The keys cannot conflict with the keys in bindings.</summary>
+        /// `^_[A-Z0-9_]+$`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
 

@@ -6915,10 +6915,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("classificationThreshold")]
         public virtual System.Nullable<float> ClassificationThreshold { get; set; } 
 
-        /// <summary>Indicates if automatic spell correction is enabled in detect intent requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSpellCorrection")]
-        public virtual System.Nullable<bool> EnableSpellCorrection { get; set; } 
-
         /// <summary>Indicates NLU model training mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingMode")]
         public virtual string ModelTrainingMode { get; set; } 
@@ -7350,6 +7346,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// comment on the ResponseMessage message.</summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
+
         /// <summary>The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-
         /// speech/docs/ssml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
@@ -8867,9 +8868,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
         /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
-        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
-        /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
-        /// Enterprise Edition agents.</summary>
+        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Trial Edition
+        /// agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
+        /// Essentials Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -9227,9 +9228,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
-        /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to
-        /// lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
+        /// <summary>Required. The unique identifier of the context. Supported formats: -
+        /// `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, -
+        /// `projects//agent/environments//users//sessions//contexts/`, -
+        /// `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted
+        /// to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
         /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
         /// default '-' user. The following context names are reserved for internal use by Dialogflow. You should not
         /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
@@ -9279,7 +9282,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
-        /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</summary>
+        /// EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` -
+        /// `projects//locations//agent/entityTypes/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -9390,8 +9394,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
 
-        /// <summary>Optional. The list of context names required for this intent to be triggered. Format:
-        /// `projects//agent/sessions/-/contexts/`.</summary>
+        /// <summary>Optional. The list of context names required for this intent to be triggered. Formats: -
+        /// `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputContextNames")]
         public virtual System.Collections.Generic.IList<string> InputContextNames { get; set; } 
 
@@ -9420,7 +9424,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> MlEnabled { get; set; } 
 
         /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
-        /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
+        /// Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` -
+        /// `projects//locations//agent/intents/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10484,9 +10489,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. This field is set to the value of the `QueryParameters.payload` field passed in the
         /// request. Some integrations that query a Dialogflow agent may provide additional information in the payload.
         /// In particular, for the Dialogflow Phone Gateway integration, this field has the form: { "telephony": {
-        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Standard
-        /// Edition agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
-        /// Enterprise Edition agents.</summary>
+        /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`) will be redacted for Trial Edition
+        /// agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
+        /// Essentials Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -10653,11 +10658,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
         public virtual string EntityOverrideMode { get; set; } 
 
-        /// <summary>Required. The unique identifier of this session entity type. Format:
-        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`.
-        /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user. `` must be the display name of an existing entity type in the same agent that
-        /// will be overridden or supplemented.</summary>
+        /// <summary>Required. The unique identifier of this session entity type. Supported formats: -
+        /// `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` -
+        /// `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/
+        /// /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If
+        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we
+        /// assume default '-' user. `` must be the display name of an existing entity type in the same agent that will
+        /// be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10688,8 +10695,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ResponseId { get; set; } 
 
         /// <summary>The unique identifier of detectIntent request session. Can be used to identify end-user inside
-        /// webhook implementation. Format: `projects//agent/sessions/`, or
-        /// `projects//agent/environments//users//sessions/`.</summary>
+        /// webhook implementation. Supported formats: - `projects//agent/sessions/, -
+        /// `projects//locations//agent/sessions/`, - `projects//agent/environments//users//sessions/`, -
+        /// `projects//locations//agent/environments//users//sessions/`,</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; } 
 

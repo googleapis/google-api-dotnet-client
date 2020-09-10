@@ -6946,6 +6946,147 @@ namespace Google.Apis.CloudHealthcare.v1
 
                 }
             }
+
+            /// <summary>Gets information about a location.</summary>
+            /// <param name="name">Resource name for the location.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets information about a location.</summary>
+            public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Location>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name for the location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
     }
 }
@@ -7921,6 +8062,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Lists the messages in the specified HL7v2 store.</summary>
     public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7948,6 +8104,35 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
+        /// /example-project/locations/us-east1"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

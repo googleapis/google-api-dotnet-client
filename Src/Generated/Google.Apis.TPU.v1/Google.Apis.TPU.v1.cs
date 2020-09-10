@@ -1768,6 +1768,10 @@ namespace Google.Apis.TPU.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>Output only. The Symptoms that have occurred to the TPU Node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symptoms")]
+        public virtual System.Collections.Generic.IList<Symptom> Symptoms { get; set; } 
+
         /// <summary>The version of Tensorflow running in the Node. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tensorflowVersion")]
         public virtual string TensorflowVersion { get; set; } 
@@ -1917,6 +1921,29 @@ namespace Google.Apis.TPU.v1.Data
     /// <summary>Request for StopNode.</summary>
     public class StopNodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Symptom instance.</summary>
+    public class Symptom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when the Symptom is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Detailed information of the current Symptom.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; } 
+
+        /// <summary>Type of the Symptom.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symptomType")]
+        public virtual string SymptomType { get; set; } 
+
+        /// <summary>A string used to uniquely distinguish a worker within a TPU node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
+        public virtual string WorkerId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

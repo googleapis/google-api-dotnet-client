@@ -348,7 +348,7 @@
    }
   }
  }, 
- "revision": "20200903", 
+ "revision": "20200909", 
  "rootUrl": "https://civicinfo.googleapis.com/", 
  "schemas": {
   "AdministrationRegion": {
@@ -399,6 +399,14 @@
     }, 
     "electionInfoUrl": {
      "description": "A URL provided by this administrative body for looking up general election information.", 
+     "type": "string"
+    }, 
+    "electionNoticeText": {
+     "description": "A last minute or emergency notification text provided by this administrative body.", 
+     "type": "string"
+    }, 
+    "electionNoticeUrl": {
+     "description": "A URL provided by this administrative body for additional information related to the last minute or emergency notification.", 
      "type": "string"
     }, 
     "electionOfficials": {

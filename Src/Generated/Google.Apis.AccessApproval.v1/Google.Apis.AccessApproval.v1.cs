@@ -1978,9 +1978,11 @@ namespace Google.Apis.AccessApproval.v1.Data
     public class EnrolledService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The product for which Access Approval will be enrolled. Allowed values are listed below (case-
-        /// sensitive): 1. all 2. appengine.googleapis.com 3. bigquery.googleapis.com 4. bigtable.googleapis.com 5.
-        /// cloudkms.googleapis.com 6. compute.googleapis.com 7. dataflow.googleapis.com 8. iam.googleapis.com 9.
-        /// pubsub.googleapis.com 10. storage.googleapis.com </summary>
+        /// sensitive): 1. all 2. ga-only 3. appengine.googleapis.com 4. bigquery.googleapis.com 5.
+        /// bigtable.googleapis.com 6. cloudkms.googleapis.com 7. compute.googleapis.com 8. dataflow.googleapis.com 9.
+        /// iam.googleapis.com 10. pubsub.googleapis.com 11. storage.googleapis.com Note: 'all' will enroll the resource
+        /// in all products supported at both 'GA' and 'Preview' levels. 'ga-only' will only enroll the resource in
+        /// products supported at 'GA' level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
         public virtual string CloudProduct { get; set; } 
 

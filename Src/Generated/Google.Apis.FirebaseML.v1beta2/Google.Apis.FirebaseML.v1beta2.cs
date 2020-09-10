@@ -886,6 +886,12 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     /// <summary>Information that is specific to TfLite models.</summary>
     public class TfLiteModel : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The AutoML model id referencing a model you created with the AutoML API. The name should have
+        /// format 'projects//locations//models/' (This is the model resource name returned from the AutoML
+        /// API)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automlModel")]
+        public virtual string AutomlModel { get; set; } 
+
         /// <summary>The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have
         /// form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is
         /// necessary to call UpdateModel for ML to pick up and validate the updated file.</summary>

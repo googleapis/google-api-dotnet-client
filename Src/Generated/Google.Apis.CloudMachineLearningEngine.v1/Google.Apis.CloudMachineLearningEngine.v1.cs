@@ -1508,7 +1508,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     }
 
                     /// <summary>Adds one or more trials to a study, with parameter values suggested by AI Platform
-                    /// Optimizer. Returns a long-running operation associated with the generation of trial suggestions.
+                    /// Vizier. Returns a long-running operation associated with the generation of trial suggestions.
                     /// When this long-running operation succeeds, it will contain a SuggestTrialsResponse.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
@@ -1518,7 +1518,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     }
 
                     /// <summary>Adds one or more trials to a study, with parameter values suggested by AI Platform
-                    /// Optimizer. Returns a long-running operation associated with the generation of trial suggestions.
+                    /// Vizier. Returns a long-running operation associated with the generation of trial suggestions.
                     /// When this long-running operation succeeds, it will contain a SuggestTrialsResponse.</summary>
                     public class SuggestRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                     {

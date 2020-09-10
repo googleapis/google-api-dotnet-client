@@ -8803,7 +8803,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; } 
@@ -8821,7 +8821,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
 
         /// <summary>The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
@@ -8850,7 +8850,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; } 
@@ -8871,7 +8871,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; } 
@@ -8892,8 +8892,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is,
-        /// it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty
-        /// to allow the system to generate one.</summary>
+        /// it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to
+        /// allow the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypeId")]
         public virtual string StoredInfoTypeId { get; set; } 
 

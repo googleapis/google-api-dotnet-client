@@ -984,6 +984,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPage> Pages { get; set; } 
 
+        /// <summary>Revision history of this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentRevision> Revisions { get; set; } 
+
         /// <summary>Information about the sharding if this document is sharded part of a larger document. If the
         /// document is not sharded, this message is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardInfo")]
@@ -992,6 +996,11 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>UTF-8 encoded text in reading order from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>A list of text corrections made to [Document.text]. This is usually used for annotating corrections
+        /// to OCR mistakes. Text changes for a given revision may not overlap with each other.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTextChange> TextChanges { get; set; } 
 
         /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
@@ -1020,6 +1029,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
+        /// <summary>Optional. Canonical id. This will be a unique value in the entity list for this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
         /// <summary>Deprecated. Use `id` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; } 
@@ -1033,6 +1046,20 @@ namespace Google.Apis.Document.v1beta2.Data
         /// document types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedValue")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue NormalizedValue { get; set; } 
+
+        /// <summary>Optional. Represents the provenance of this entity wrt. the location on the page where it was
+        /// found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageAnchor")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageAnchor PageAnchor { get; set; } 
+
+        /// <summary>Optional. Entities can be nested to form a hierarchical data structure representing the content in
+        /// the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentEntity> Properties { get; set; } 
+
+        /// <summary>Optional. The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; } 
 
         /// <summary>Optional. Whether the entity will be redacted for de-identification purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redacted")]
@@ -1053,6 +1080,11 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Parsed and normalized entity value.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Postal address. See also: https: //github.com/googleapis/googleapis/blob/ //
+        /// master/google/type/postal_address.proto</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
+        public virtual GoogleTypePostalAddress AddressValue { get; set; } 
+
         /// <summary>Date value. Includes year, month, day. See also: https:
         /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
@@ -1118,6 +1150,11 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formFields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageFormField> FormFields { get; set; } 
 
+        /// <summary>Rendered image for this page. This image is preprocessed to remove any skew, rotation, and
+        /// distortions such that the annotation bounding boxes can be upright and axis-aligned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageImage Image { get; set; } 
+
         /// <summary>Layout for the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; } 
@@ -1145,9 +1182,49 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageToken> Tokens { get; set; } 
 
+        /// <summary>Transformation matrices that were applied to the original document image to produce
+        /// Page.image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageMatrix> Transforms { get; set; } 
+
         /// <summary>A list of detected non-text visual elements e.g. checkbox, signature etc. on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visualElements")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageVisualElement> VisualElements { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Referencing the visual context of the entity in the Document.pages. Page anchors can be cross-page,
+    /// consist of multiple bounding polygons and optionally reference specific layout element types.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One or more references to visual page elements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageRefs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef> PageRefs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a weak reference to a page element within a document.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudDocumentaiV1beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>Optional. Deprecated. Use PageRef.bounding_poly instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutId")]
+        public virtual string LayoutId { get; set; } 
+
+        /// <summary>Optional. The type of the layout element that is being referenced if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutType")]
+        public virtual string LayoutType { get; set; } 
+
+        /// <summary>Required. Index into the Document.pages element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("page")]
+        public virtual System.Nullable<long> Page { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1164,6 +1241,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Layout for Block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1224,6 +1305,34 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("valueDetectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage> ValueDetectedLanguages { get; set; } 
 
+        /// <summary>If the value is non-textual, this field represents the type. Current valid values are: - blank
+        /// (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Rendered image contents for this page.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Raw byte content of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
+        /// <summary>Height of the image in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>Encoding mime type for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
+
+        /// <summary>Width of the image in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1264,6 +1373,36 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; } 
 
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation for transformation matrix, intended to be compatible and used with OpenCV format for
+    /// image manipulation.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of columns in the matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cols")]
+        public virtual System.Nullable<int> Cols { get; set; } 
+
+        /// <summary>The matrix data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>Number of rows in the matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Nullable<int> Rows { get; set; } 
+
+        /// <summary>This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an
+        /// unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to
+        /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Nullable<int> Type { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1278,6 +1417,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Layout for Paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1355,6 +1498,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; } 
 
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1384,6 +1531,93 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Type of the VisualElement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structure to identify provenance relationships between annotations in different revisions.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Id of this operation. Needs to be unique within the scope of the revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>References to the original elements that are replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentProvenanceParent> Parents { get; set; } 
+
+        /// <summary>The index of the revision that produced this element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; } 
+
+        /// <summary>The type of provenance operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structure for referencing parent provenances. When an element replaces one of more other elements
+    /// parent references identify the elements that are replaced.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the parent provenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains past or forward revisions of this document.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the change was made by a person specify the name or id of that person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; } 
+
+        /// <summary>The time that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Human Review information of this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReview")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview HumanReview { get; set; } 
+
+        /// <summary>Id of the revision. Unique within the context of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The revisions that this revision is based on. This can include one or more parent (when documents
+        /// are merged.) This field represents the index into the `revisions` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Parent { get; set; } 
+
+        /// <summary>If the annotation was made by processor identify the processor by its resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processor")]
+        public virtual string Processor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Human Review information of the document.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human review state. e.g. `requested`, `succeeded`, `rejected`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>A message providing more details about the current state of processing. For example, the rejection
+        /// reason when the state is `rejected`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1466,6 +1700,11 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Text reference indexing into the Document.text.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentTextAnchor : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains the content of the text span so that users do not have to look it up in the
+        /// text_segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
         /// <summary>The text segments from the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textSegments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment> TextSegments { get; set; } 
@@ -1490,6 +1729,27 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This message is used for text changes aka. OCR corrections.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentTextChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text that replaces the text identified in the `text_anchor`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changedText")]
+        public virtual string ChangedText { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentProvenance> Provenance { get; set; } 
+
+        /// <summary>Provenance of the correction. Text anchor indexing into the Document.text. There can only be a
+        /// single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the
+        /// text change is inserted before that index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A translation of the text segment.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentTranslation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1497,6 +1757,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentProvenance> Provenance { get; set; } 
 
         /// <summary>Provenance of the translation. Text anchor indexing into the Document.text. There can only be a
         /// single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the
@@ -1729,6 +1993,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPage> Pages { get; set; } 
 
+        /// <summary>Revision history of this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentRevision> Revisions { get; set; } 
+
         /// <summary>Information about the sharding if this document is sharded part of a larger document. If the
         /// document is not sharded, this message is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardInfo")]
@@ -1737,6 +2005,11 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>UTF-8 encoded text in reading order from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>A list of text corrections made to [Document.text]. This is usually used for annotating corrections
+        /// to OCR mistakes. Text changes for a given revision may not overlap with each other.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTextChange> TextChanges { get; set; } 
 
         /// <summary>Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
@@ -1765,6 +2038,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
+        /// <summary>Optional. Canonical id. This will be a unique value in the entity list for this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
         /// <summary>Deprecated. Use `id` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; } 
@@ -1778,6 +2055,20 @@ namespace Google.Apis.Document.v1beta2.Data
         /// document types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedValue")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue NormalizedValue { get; set; } 
+
+        /// <summary>Optional. Represents the provenance of this entity wrt. the location on the page where it was
+        /// found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageAnchor")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageAnchor PageAnchor { get; set; } 
+
+        /// <summary>Optional. Entities can be nested to form a hierarchical data structure representing the content in
+        /// the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentEntity> Properties { get; set; } 
+
+        /// <summary>Optional. The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; } 
 
         /// <summary>Optional. Whether the entity will be redacted for de-identification purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redacted")]
@@ -1798,6 +2089,11 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Parsed and normalized entity value.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Postal address. See also: https: //github.com/googleapis/googleapis/blob/ //
+        /// master/google/type/postal_address.proto</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
+        public virtual GoogleTypePostalAddress AddressValue { get; set; } 
+
         /// <summary>Date value. Includes year, month, day. See also: https:
         /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
@@ -1886,6 +2182,11 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formFields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageFormField> FormFields { get; set; } 
 
+        /// <summary>Rendered image for this page. This image is preprocessed to remove any skew, rotation, and
+        /// distortions such that the annotation bounding boxes can be upright and axis-aligned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageImage Image { get; set; } 
+
         /// <summary>Layout for the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; } 
@@ -1913,9 +2214,49 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageToken> Tokens { get; set; } 
 
+        /// <summary>Transformation matrices that were applied to the original document image to produce
+        /// Page.image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageMatrix> Transforms { get; set; } 
+
         /// <summary>A list of detected non-text visual elements e.g. checkbox, signature etc. on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visualElements")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageVisualElement> VisualElements { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Referencing the visual context of the entity in the Document.pages. Page anchors can be cross-page,
+    /// consist of multiple bounding polygons and optionally reference specific layout element types.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One or more references to visual page elements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageRefs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef> PageRefs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a weak reference to a page element within a document.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudDocumentaiV1beta2BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>Optional. Deprecated. Use PageRef.bounding_poly instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutId")]
+        public virtual string LayoutId { get; set; } 
+
+        /// <summary>Optional. The type of the layout element that is being referenced if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutType")]
+        public virtual string LayoutType { get; set; } 
+
+        /// <summary>Required. Index into the Document.pages element</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("page")]
+        public virtual System.Nullable<long> Page { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1932,6 +2273,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Layout for Block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2001,6 +2346,29 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Rendered image contents for this page.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Raw byte content of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
+        /// <summary>Height of the image in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>Encoding mime type for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
+
+        /// <summary>Width of the image in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Visual element describing a layout unit on a page.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageLayout : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2037,6 +2405,36 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; } 
 
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation for transformation matrix, intended to be compatible and used with OpenCV format for
+    /// image manipulation.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of columns in the matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cols")]
+        public virtual System.Nullable<int> Cols { get; set; } 
+
+        /// <summary>The matrix data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>Number of rows in the matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Nullable<int> Rows { get; set; } 
+
+        /// <summary>This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an
+        /// unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to
+        /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Nullable<int> Type { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2051,6 +2449,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Layout for Paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2128,6 +2530,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; } 
 
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2157,6 +2563,93 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>Type of the VisualElement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structure to identify provenance relationships between annotations in different revisions.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Id of this operation. Needs to be unique within the scope of the revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>References to the original elements that are replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentProvenanceParent> Parents { get; set; } 
+
+        /// <summary>The index of the revision that produced this element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; } 
+
+        /// <summary>The type of provenance operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structure for referencing parent provenances. When an element replaces one of more other elements
+    /// parent references identify the elements that are replaced.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the parent provenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains past or forward revisions of this document.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the change was made by a person specify the name or id of that person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; } 
+
+        /// <summary>The time that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Human Review information of this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReview")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview HumanReview { get; set; } 
+
+        /// <summary>Id of the revision. Unique within the context of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The revisions that this revision is based on. This can include one or more parent (when documents
+        /// are merged.) This field represents the index into the `revisions` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Parent { get; set; } 
+
+        /// <summary>If the annotation was made by processor identify the processor by its resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processor")]
+        public virtual string Processor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Human Review information of the document.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human review state. e.g. `requested`, `succeeded`, `rejected`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>A message providing more details about the current state of processing. For example, the rejection
+        /// reason when the state is `rejected`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2239,6 +2732,11 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Text reference indexing into the Document.text.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentTextAnchor : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains the content of the text span so that users do not have to look it up in the
+        /// text_segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
         /// <summary>The text segments from the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textSegments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment> TextSegments { get; set; } 
@@ -2263,6 +2761,27 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This message is used for text changes aka. OCR corrections.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentTextChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text that replaces the text identified in the `text_anchor`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changedText")]
+        public virtual string ChangedText { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentProvenance> Provenance { get; set; } 
+
+        /// <summary>Provenance of the correction. Text anchor indexing into the Document.text. There can only be a
+        /// single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the
+        /// text change is inserted before that index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A translation of the text segment.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentTranslation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2270,6 +2789,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentProvenance> Provenance { get; set; } 
 
         /// <summary>Provenance of the translation. Text anchor indexing into the Document.text. There can only be a
         /// single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the
@@ -2615,6 +3138,12 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>The status of a each individual document in the batch process.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the operation triggered by the processed document. If the human review process is not
+        /// triggered, this field will be empty. It has the same response type and metadata as the long running
+        /// operation returned by ReviewDocument method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
+        public virtual string HumanReviewOperation { get; set; } 
+
         /// <summary>The source of the document, same as the [input_gcs_source] field in the request when the batch
         /// process started. The batch process is started by take snapshot of that document, since a user can move or
         /// change that document during the process.</summary>
@@ -2637,6 +3166,41 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Response message for batch process document method.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The long running operation metadata for review document method.</summary>
+    public class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Used only when Operation.done is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>A message providing more details about the current state of processing. For example, the error
+        /// message if the operation is failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; } 
+
+        /// <summary>The last update time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for review document method.</summary>
+    public class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual string GcsDestination { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2867,6 +3431,96 @@ namespace Google.Apis.Document.v1beta2.Data
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a
+    /// postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical
+    /// locations (roads, towns, mountains). In typical usage an address would be created via user input or from
+    /// importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-
+    /// ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI
+    /// elements for input or editing of fields outside countries where that field is used. For more guidance on how to
+    /// use this schema, please see: https://support.google.com/business/answer/6397478</summary>
+    public class GoogleTypePostalAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unstructured address lines describing the lower levels of an address. Because values in
+        /// address_lines do not have type information and may sometimes contain multiple values in a single field (e.g.
+        /// "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope
+        /// order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+        /// is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-
+        /// large). This way, the most specific line of an address can be selected based on the language. The minimum
+        /// permitted structural representation of an address consists of a region_code with all remaining information
+        /// placed in the address_lines. It would be possible to format such an address very approximately without
+        /// geocoding, but no semantic reasoning could be made about any of the address components until it was at least
+        /// partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding
+        /// is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of
+        /// the address should be localities or administrative areas).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLines")]
+        public virtual System.Collections.Generic.IList<string> AddressLines { get; set; } 
+
+        /// <summary>Optional. Highest administrative subdivision which is used for postal addresses of a country or
+        /// region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain
+        /// this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries
+        /// don't use an administrative area in postal addresses. E.g. in Switzerland this should be left
+        /// unpopulated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; } 
+
+        /// <summary>Optional. BCP-47 language code of the contents of this address (if known). This is often the UI
+        /// language of the input form or is expected to match one of the languages used in the address' country/region,
+        /// or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to
+        /// the correctness of the data and will never affect any validation or other non-formatting related operations.
+        /// If this value is not known, it should be omitted (rather than specifying a possibly incorrect default).
+        /// Examples: "zh-Hant", "ja", "ja-Latn", "en".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune,
+        /// UK post town. In regions of the world where localities are not well defined or do not fit into this
+        /// structure well, leave locality empty and use address_lines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; } 
+
+        /// <summary>Optional. The name of the organization at the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; } 
+
+        /// <summary>Optional. Postal code of the address. Not all countries use or require postal codes to be present,
+        /// but where they are used, they may trigger additional validation with other parts of the address (e.g.
+        /// state/zip validation in the U.S.A.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; } 
+
+        /// <summary>Optional. The recipient at the address. This field may, under certain circumstances, contain
+        /// multiline information. For example, it might contain "care of" information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual System.Collections.Generic.IList<string> Recipients { get; set; } 
+
+        /// <summary>Required. CLDR region code of the country/region of the address. This is never inferred and it is
+        /// up to the user to ensure the value is correct. See http://cldr.unicode.org/ and
+        /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for
+        /// Switzerland.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision.
+        /// All new revisions **must** be backward compatible with old revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; } 
+
+        /// <summary>Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is
+        /// used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a
+        /// number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office
+        /// indicator" (e.g. Côte d'Ivoire).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortingCode")]
+        public virtual string SortingCode { get; set; } 
+
+        /// <summary>Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs,
+        /// districts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sublocality")]
+        public virtual string Sublocality { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

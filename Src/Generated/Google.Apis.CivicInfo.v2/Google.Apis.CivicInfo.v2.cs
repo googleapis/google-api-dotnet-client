@@ -838,6 +838,15 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electionInfoUrl")]
         public virtual string ElectionInfoUrl { get; set; } 
 
+        /// <summary>A last minute or emergency notification text provided by this administrative body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeText")]
+        public virtual string ElectionNoticeText { get; set; } 
+
+        /// <summary>A URL provided by this administrative body for additional information related to the last minute or
+        /// emergency notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeUrl")]
+        public virtual string ElectionNoticeUrl { get; set; } 
+
         /// <summary>The election officials for this election administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionOfficials")]
         public virtual System.Collections.Generic.IList<ElectionOfficial> ElectionOfficials { get; set; } 

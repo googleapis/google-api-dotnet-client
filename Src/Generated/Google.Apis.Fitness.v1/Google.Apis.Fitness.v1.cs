@@ -118,11 +118,11 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessOxygenSaturationWrite = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
             /// <summary>See info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reporductive health information with this app.</summary>
+            /// reproductive health information with this app.</summary>
             public static string FitnessReproductiveHealthRead = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
             /// <summary>See and add info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reporductive health information with this app.</summary>
+            /// reproductive health information with this app.</summary>
             public static string FitnessReproductiveHealthWrite = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
         }
@@ -187,11 +187,11 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessOxygenSaturationWrite = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
             /// <summary>See info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reporductive health information with this app.</summary>
+            /// reproductive health information with this app.</summary>
             public const string FitnessReproductiveHealthRead = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
             /// <summary>See and add info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reporductive health information with this app.</summary>
+            /// reproductive health information with this app.</summary>
             public const string FitnessReproductiveHealthWrite = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
         }

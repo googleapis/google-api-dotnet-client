@@ -1889,7 +1889,7 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
         /// caller must have read permissions for this Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetRequest Get(string projectId)
         {
             return new GetRequest(service, projectId);
@@ -1908,7 +1908,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>Required. The Project ID (for example, `my-project-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1944,7 +1944,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
         /// Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest body, string projectId)
         {
             return new GetAncestryRequest(service, body, projectId);
@@ -1965,7 +1965,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>Required. The Project ID (for example, `my-project-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -2071,7 +2071,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist. Authorization requires the Google IAM permission
         /// `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g.
-        /// my-project-id) structure and identification, see [Resource Names](/apis/design/resource_names).</summary>
+        /// my-project-id) structure and identification, see [Resource
+        /// Names](https://cloud.google.com/apis/design/resource_names).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2083,7 +2084,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist. Authorization requires the Google IAM permission
         /// `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g.
-        /// my-project-id) structure and identification, see [Resource Names](/apis/design/resource_names).</summary>
+        /// my-project-id) structure and identification, see [Resource
+        /// Names](https://cloud.google.com/apis/design/resource_names).</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2229,32 +2231,32 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive. If
-            /// multiple fields are included in a filter query, the query will return results that match any of the
-            /// fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of
-            /// a label) + `parent.type` + `parent.id` + `lifecycleState` Some examples of filter strings: | Filter |
-            /// Description | |------------------|-----------------------------------------------------| | name:how* |
-            /// The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | |
-            /// name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project
-            /// has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | |
-            /// labels.color:red labels.size:big | The project's label `color` | : : has the value `red` and its : : :
-            /// label`size` has the value : : : `big`. : | lifecycleState:DELETE_REQUESTED | Only show projects that are
-            /// | : : pending deletion. : If no filter is specified, the call will return projects for which the user
-            /// has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what
-            /// projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission
-            /// on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example:
-            /// "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more
-            /// consistent results. Optional.</summary>
+            /// <summary>Optional. An expression for filtering the results of the request. Filter rules are case
+            /// insensitive. If multiple fields are included in a filter query, the query will return results that match
+            /// any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is
+            /// the name of a label) + `parent.type` + `parent.id` + `lifecycleState` Some examples of filter strings: |
+            /// Filter | Description | |------------------|-----------------------------------------------------| |
+            /// name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or
+            /// `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* |
+            /// The project has the label `color`. | | labels.color:red | The project's label `color` has the value
+            /// `red`. | | labels.color:red labels.size:big | The project's label `color` | : : has the value `red` and
+            /// its : : : label`size` has the value : : : `big`. : | lifecycleState:DELETE_REQUESTED | Only show
+            /// projects that are | : : pending deletion. : If no filter is specified, the call will return projects for
+            /// which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query
+            /// (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list`
+            /// permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction
+            /// (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which
+            /// provides more consistent results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default. Optional.</summary>
+            /// <summary>Optional. The maximum number of Projects to return in the response. The server can return fewer
+            /// Projects than requested. If unspecified, server picks an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue. Optional.</summary>
+            /// <summary>Optional. A pagination token returned from a previous call to ListProjects that indicates from
+            /// where listing should continue.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2427,24 +2429,24 @@ namespace Google.Apis.CloudResourceManager.v1
         /// policies or changing their roles can render services completely inoperable. It is important to understand
         /// how the service account is being used before removing or updating its roles. For additional information
         /// about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project
-        /// does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
-        /// owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
-        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
-        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
-        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
-        /// be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner
-        /// role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and
-        /// must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the
-        /// GCP Console. Inviting a member will deliver an invitation email that they must accept. An invitation email
-        /// is not generated if you are granting a role other than owner, or if both the member you are inviting and the
-        /// project are part of your organization. + Membership changes that leave the project without any owners that
-        /// have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization,
-        /// there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
-        /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction
-        /// also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies
-        /// will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM
-        /// permission `resourcemanager.projects.setIamPolicy` on the project</summary>
+        /// Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using
+        /// `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
+        /// `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is
+        /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
+        /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
+        /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
+        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
+        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
+        /// Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a
+        /// member by using the GCP Console. Inviting a member will deliver an invitation email that they must accept.
+        /// An invitation email is not generated if you are granting a role other than owner, or if both the member you
+        /// are inviting and the project are part of your organization. + Membership changes that leave the project
+        /// without any owners that have accepted the Terms of Service (ToS) will be rejected. + If the project is not
+        /// part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS)
+        /// agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will
+        /// fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS.
+        /// Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. Authorization
+        /// requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2458,24 +2460,24 @@ namespace Google.Apis.CloudResourceManager.v1
         /// policies or changing their roles can render services completely inoperable. It is important to understand
         /// how the service account is being used before removing or updating its roles. For additional information
         /// about `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project
-        /// does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
-        /// owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
-        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
-        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
-        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
-        /// be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner
-        /// role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and
-        /// must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the
-        /// GCP Console. Inviting a member will deliver an invitation email that they must accept. An invitation email
-        /// is not generated if you are granting a role other than owner, or if both the member you are inviting and the
-        /// project are part of your organization. + Membership changes that leave the project without any owners that
-        /// have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization,
-        /// there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
-        /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction
-        /// also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies
-        /// will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM
-        /// permission `resourcemanager.projects.setIamPolicy` on the project</summary>
+        /// Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using
+        /// `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
+        /// `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is
+        /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
+        /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
+        /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
+        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
+        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
+        /// Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a
+        /// member by using the GCP Console. Inviting a member will deliver an invitation email that they must accept.
+        /// An invitation email is not generated if you are granting a role other than owner, or if both the member you
+        /// are inviting and the project are part of your organization. + Membership changes that leave the project
+        /// without any owners that have accepted the Terms of Service (ToS) will be rejected. + If the project is not
+        /// part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS)
+        /// agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will
+        /// fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS.
+        /// Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. Authorization
+        /// requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2592,7 +2594,8 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Returns permissions that a caller has on the specified Project. For additional information about
         /// `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names). There are no permissions required for making this API call.</summary>
+        /// Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making
+        /// this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2603,7 +2606,8 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Returns permissions that a caller has on the specified Project. For additional information about
         /// `resource` (e.g. my-project-id) structure and identification, see [Resource
-        /// Names](/apis/design/resource_names). There are no permissions required for making this API call.</summary>
+        /// Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making
+        /// this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2659,7 +2663,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
         /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
+        /// <param name="projectId">Required. The project ID (for example, `foo-bar-123`).</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId)
         {
             return new UndeleteRequest(service, body, projectId);
@@ -2680,7 +2684,7 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The project ID (for example, `foo-bar-123`). Required.</summary>
+            /// <summary>Required. The project ID (for example, `foo-bar-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -3580,24 +3584,24 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
         /// <summary>The optional user-assigned display name of the Project. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-
-        /// quote, space, and exclamation point. Example: My Project Read-write.</summary>
+        /// quote, space, and exclamation point. Example: `My Project` Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>An optional reference to a parent Resource. Supported parent types include "organization" and
         /// "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the
         /// `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the
-        /// parent. Read-write.</summary>
+        /// parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual ResourceId Parent { get; set; } 
 
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
-        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: tokyo-rain-123 Read-only
+        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only
         /// after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The number uniquely identifying the project. Example: 415104041262 Read-only.</summary>
+        /// <summary>The number uniquely identifying the project. Example: `415104041262` Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
@@ -3631,13 +3635,12 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
     public class ResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required field for the type-specific id. This should correspond to the id used in the type-specific
-        /// API's.</summary>
+        /// <summary>The type-specific id. This should correspond to the id used in the type-specific API's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Required field representing the resource type this id is for. At present, the valid types are:
-        /// "organization", "folder", and "project".</summary>
+        /// <summary>The resource type this id is for. At present, the valid types are: "organization", "folder", and
+        /// "project".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

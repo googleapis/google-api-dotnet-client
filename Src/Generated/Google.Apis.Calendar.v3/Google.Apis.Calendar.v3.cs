@@ -4909,7 +4909,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
         public virtual Event.ExtendedPropertiesData ExtendedProperties { get; set; } 
 
-        /// <summary>A gadget that extends this event.</summary>
+        /// <summary>A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for
+        /// returning birthday calendar metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gadget")]
         public virtual Event.GadgetData Gadget { get; set; } 
 
@@ -5114,25 +5115,26 @@ namespace Google.Apis.Calendar.v3.Data
 
         }    
 
-        /// <summary>A gadget that extends this event.</summary>
+        /// <summary>A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for
+        /// returning birthday calendar metadata.</summary>
         public class GadgetData
         {
-            /// <summary>The gadget's display mode. Optional. Possible values are: - "icon" - The gadget displays next
+            /// <summary>The gadget's display mode. Deprecated. Possible values are: - "icon" - The gadget displays next
             /// to the event's title in the calendar view. - "chip" - The gadget displays when the event is
             /// clicked.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("display")]
             public virtual string Display { get; set; } 
 
-            /// <summary>The gadget's height in pixels. The height must be an integer greater than 0.
-            /// Optional.</summary>
+            /// <summary>The gadget's height in pixels. The height must be an integer greater than 0. Optional.
+            /// Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
             public virtual System.Nullable<int> Height { get; set; } 
 
-            /// <summary>The gadget's icon URL. The URL scheme must be HTTPS.</summary>
+            /// <summary>The gadget's icon URL. The URL scheme must be HTTPS. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
             public virtual string IconLink { get; set; } 
 
-            /// <summary>The gadget's URL. The URL scheme must be HTTPS.</summary>
+            /// <summary>The gadget's URL. The URL scheme must be HTTPS. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
             public virtual string Link { get; set; } 
 
@@ -5140,15 +5142,16 @@ namespace Google.Apis.Calendar.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("preferences")]
             public virtual System.Collections.Generic.IDictionary<string,string> Preferences { get; set; } 
 
-            /// <summary>The gadget's title.</summary>
+            /// <summary>The gadget's title. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
             public virtual string Title { get; set; } 
 
-            /// <summary>The gadget's type.</summary>
+            /// <summary>The gadget's type. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
 
-            /// <summary>The gadget's width in pixels. The width must be an integer greater than 0. Optional.</summary>
+            /// <summary>The gadget's width in pixels. The width must be an integer greater than 0. Optional.
+            /// Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
             public virtual System.Nullable<int> Width { get; set; } 
 

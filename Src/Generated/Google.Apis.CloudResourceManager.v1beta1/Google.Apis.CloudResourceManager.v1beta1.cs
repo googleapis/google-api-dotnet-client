@@ -792,7 +792,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
         /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
         /// Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
+        /// <param name="projectId">The Project ID (for example, `foo-bar-123`).</param>
         public virtual DeleteRequest Delete(string projectId)
         {
             return new DeleteRequest(service, projectId);
@@ -817,7 +817,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `foo-bar-123`). Required.</summary>
+            /// <summary>The Project ID (for example, `foo-bar-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -851,7 +851,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
         /// caller must have read permissions for this Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetRequest Get(string projectId)
         {
             return new GetRequest(service, projectId);
@@ -870,7 +870,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>Required. The Project ID (for example, `my-project-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -906,7 +906,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
         /// Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest body, string projectId)
         {
             return new GetAncestryRequest(service, body, projectId);
@@ -927,7 +927,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>Required. The Project ID (for example, `my-project-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1299,7 +1299,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
         /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
+        /// <param name="projectId">Required. The project ID (for example, `foo-bar-123`).</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
         {
             return new UndeleteRequest(service, body, projectId);
@@ -1320,7 +1320,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The project ID (for example, `foo-bar-123`). Required.</summary>
+            /// <summary>Required. The project ID (for example, `foo-bar-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1361,7 +1361,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Updates the attributes of the Project identified by the specified `project_id` (for example, `my-
         /// project-123`). The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">The project ID (for example, `my-project-123`).</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Project body, string projectId)
         {
             return new UpdateRequest(service, body, projectId);
@@ -1381,7 +1381,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>The project ID (for example, `my-project-123`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1815,7 +1815,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No
         /// more than 256 labels can be associated with a given resource. Clients should store labels in a
         /// representation such as JSON that does not depend on specific characters being disallowed. Example:
-        /// "environment" : "dev" Read-write.</summary>
+        /// `"environment" : "dev"` Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1825,7 +1825,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
 
         /// <summary>The optional user-assigned display name of the Project. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-
-        /// quote, space, and exclamation point. Example: My Project Read-write.</summary>
+        /// quote, space, and exclamation point. Example: `My Project` Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1837,12 +1837,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         public virtual ResourceId Parent { get; set; } 
 
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
-        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: tokyo-rain-123 Read-only
+        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only
         /// after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The number uniquely identifying the project. Example: 415104041262 Read-only.</summary>
+        /// <summary>The number uniquely identifying the project. Example: `415104041262` Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
