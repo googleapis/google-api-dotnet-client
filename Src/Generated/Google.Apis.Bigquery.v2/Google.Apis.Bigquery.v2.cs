@@ -5703,6 +5703,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
         public virtual System.Nullable<long> TotalSlotMs { get; set; } 
 
+        /// <summary>[Output-only] [Alpha] Information of the multi-statement transaction if this job is part of
+        /// one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionInfoTemplate")]
+        public virtual TransactionInfo TransactionInfoTemplate { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
@@ -7620,6 +7625,16 @@ namespace Google.Apis.Bigquery.v2.Data
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptions TrainingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TransactionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] // [Alpha] Id of the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
+        public virtual string TransactionId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

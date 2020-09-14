@@ -7525,7 +7525,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class AccountAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CLDR country code (e.g. "US").</summary>
+        /// <summary>CLDR country code (e.g. "US"). This value cannot be set for a sub-account of an MCA. All MCA sub-
+        /// accounts inherit the country of their parent MCA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 

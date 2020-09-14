@@ -6305,6 +6305,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
+        /// <summary>Which load balancer type is installed for Cloud Run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
+        public virtual string LoadBalancerType { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7477,13 +7481,17 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>The password to use for HTTP basic authentication to the master endpoint. Because the master
         /// endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster
-        /// creation, username must be non-empty.</summary>
+        /// creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in
+        /// GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see:
+        /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
         /// <summary>The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and
         /// later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty
-        /// string).</summary>
+        /// string). Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19
+        /// and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-
+        /// engine/docs/how-to/api-server-authentication</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
 

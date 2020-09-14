@@ -1282,7 +1282,7 @@
    }
   }
  }, 
- "revision": "20200828", 
+ "revision": "20200903", 
  "rootUrl": "https://vision.googleapis.com/", 
  "schemas": {
   "AddProductToProductSetRequest": {

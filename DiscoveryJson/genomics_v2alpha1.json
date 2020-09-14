@@ -301,7 +301,7 @@
    }
   }
  }, 
- "revision": "20200901", 
+ "revision": "20200909", 
  "rootUrl": "https://genomics.googleapis.com/", 
  "schemas": {
   "Accelerator": {

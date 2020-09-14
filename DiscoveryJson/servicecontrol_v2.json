@@ -169,7 +169,7 @@
    }
   }
  }, 
- "revision": "20200821", 
+ "revision": "20200910", 
  "rootUrl": "https://servicecontrol.googleapis.com/", 
  "schemas": {
   "Api": {

@@ -539,8 +539,12 @@ namespace Google.Apis.CloudIdentity.v1
                 /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
                 /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the
                 /// partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer_id}-suffix`,
-                /// where `customer_id` is your customer id. The suffix is any string the caller specifies. This string will be
-                /// displayed verbatim in the administration console.</param>
+                /// where `customer_id` is your customer ID. The *suffix* is any string the caller specifies. This string will be
+                /// displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-
+                /// Aware Access. Your organization's customer ID can be obtained from the URL: `GET
+                /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the
+                /// customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C'
+                /// (not including 'C')</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1ClientState body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -564,9 +568,13 @@ namespace Google.Apis.CloudIdentity.v1
                     /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
                     /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp
                     /// Alliance", this is the partner ID specified to you by Google. For all other callers, this is a
-                    /// string of the form: `{customer_id}-suffix`, where `customer_id` is your customer id. The suffix
-                    /// is any string the caller specifies. This string will be displayed verbatim in the administration
-                    /// console.</summary>
+                    /// string of the form: `{customer_id}-suffix`, where `customer_id` is your customer ID. The
+                    /// *suffix* is any string the caller specifies. This string will be displayed verbatim in the
+                    /// administration console. This suffix is used in setting up Custom Access Levels in Context-Aware
+                    /// Access. Your organization's customer ID can be obtained from the URL: `GET
+                    /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the
+                    /// response contains the customer ID starting with the letter 'C'. The customer ID to be used in
+                    /// this API is the string after the letter 'C' (not including 'C')</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2892,8 +2900,12 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where
         /// partner_id corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance",
         /// this is the partner ID specified to you by Google. For all other callers, this is a string of the form:
-        /// `{customer_id}-suffix`, where `customer_id` is your customer id. The suffix is any string the caller
-        /// specifies. This string will be displayed verbatim in the administration console.</summary>
+        /// `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is any string the caller
+        /// specifies. This string will be displayed verbatim in the administration console. This suffix is used in
+        /// setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained
+        /// from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in
+        /// the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API
+        /// is the string after the letter 'C' (not including 'C')</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

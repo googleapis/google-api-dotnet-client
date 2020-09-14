@@ -8845,7 +8845,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class AccountAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CLDR country code (e.g. "US").</summary>
+        /// <summary>CLDR country code (e.g. "US"). This value cannot be set for a sub-account of an MCA. All MCA sub-
+        /// accounts inherit the country of their parent MCA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
@@ -12424,13 +12425,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderreturnsRefundOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the item will be fully refunded.</summary>
+        /// <summary>If true, the item will be fully refunded. // Allowed only when payment_type is FOP. Merchant can
+        /// choose this refund option to indicate the full remaining amount of corresponding object to be refunded to
+        /// the customer via FOP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
         public virtual System.Nullable<bool> FullRefund { get; set; } 
 
-        /// <summary>If this is set, the item will be partially refunded.</summary>
+        /// <summary>If this is set, the item will be partially refunded. Merchant can choose this refund option to
+        /// specify the customized amount that to be refunded to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialRefund")]
         public virtual OrderreturnsPartialRefund PartialRefund { get; set; } 
+
+        /// <summary>The payment way of issuing refund. Default value is ORIGINAL_FOP if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentType")]
+        public virtual string PaymentType { get; set; } 
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]

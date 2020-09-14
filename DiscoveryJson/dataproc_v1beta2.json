@@ -2247,7 +2247,7 @@
    }
   }
  }, 
- "revision": "20200828", 
+ "revision": "20200902", 
  "rootUrl": "https://dataproc.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {
@@ -2809,7 +2809,7 @@
    "type": "object"
   }, 
   "GceClusterConfig": {
-   "description": "Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.", 
+   "description": "Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster. NEXT ID: 14", 
    "id": "GceClusterConfig", 
    "properties": {
     "internalIpOnly": {
@@ -2825,6 +2825,22 @@
     }, 
     "networkUri": {
      "description": "Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the \"default\" network of the project is used, if it exists. Cannot be a \"Custom Subnet Network\" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default", 
+     "type": "string"
+    }, 
+    "privateIpv6GoogleAccess": {
+     "description": "Optional. The type of IPv6 access for a cluster.", 
+     "enum": [
+      "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED", 
+      "INHERIT_FROM_SUBNETWORK", 
+      "OUTBOUND", 
+      "BIDIRECTIONAL"
+     ], 
+     "enumDescriptions": [
+      "Default value. Same as INHERIT_FROM_SUBNETWORK", 
+      "Private access to or from Google Services configuration inherited from subnetowrk configuration", 
+      "Enables outbound private IPv6 access to Google Services from Dataproc cluster", 
+      "Enables bidirectionl private IPv6 access between Google Services and Dataproc cluster"
+     ], 
      "type": "string"
     }, 
     "reservationAffinity": {

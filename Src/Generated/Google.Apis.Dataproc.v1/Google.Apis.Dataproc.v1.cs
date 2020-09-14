@@ -5846,7 +5846,7 @@ namespace Google.Apis.Dataproc.v1.Data
     }    
 
     /// <summary>Common config settings for resources of Compute Engine cluster instances, applicable to all instances
-    /// in the cluster.</summary>
+    /// in the cluster. NEXT ID: 13</summary>
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. If true, all instances in the cluster will only have internal IP addresses. By default,
@@ -5870,6 +5870,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
+
+        /// <summary>Optional. The type of IPv6 access for a cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; } 
 
         /// <summary>Optional. Reservation Affinity for consuming Zonal reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]

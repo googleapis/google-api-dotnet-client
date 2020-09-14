@@ -4526,74 +4526,79 @@ namespace Google.Apis.Appengine.v1beta.Data
     /// application.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App Engine release this instance is running on.@OutputOnly</summary>
+        /// <summary>Output only. App Engine release this instance is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRelease")]
         public virtual string AppEngineRelease { get; set; } 
 
-        /// <summary>Availability of the instance.@OutputOnly</summary>
+        /// <summary>Output only. Availability of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
-        /// <summary>Average latency (ms) over the last minute.@OutputOnly</summary>
+        /// <summary>Output only. Average latency (ms) over the last minute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageLatency")]
         public virtual System.Nullable<int> AverageLatency { get; set; } 
 
-        /// <summary>Number of errors since this instance was started.@OutputOnly</summary>
+        /// <summary>Output only. Number of errors since this instance was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Nullable<int> Errors { get; set; } 
 
-        /// <summary>Relative name of the instance within the version. Example: instance-1.@OutputOnly</summary>
+        /// <summary>Output only. Relative name of the instance within the version. Example: instance-1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Total memory in use (bytes).@OutputOnly</summary>
+        /// <summary>Output only. Total memory in use (bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
         public virtual System.Nullable<long> MemoryUsage { get; set; } 
 
-        /// <summary>Full path to the Instance resource in the API. Example:
-        /// apps/myapp/services/default/versions/v1/instances/instance-1.@OutputOnly</summary>
+        /// <summary>Output only. Full path to the Instance resource in the API. Example:
+        /// apps/myapp/services/default/versions/v1/instances/instance-1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Average queries per second (QPS) over the last minute.@OutputOnly</summary>
+        /// <summary>Output only. Average queries per second (QPS) over the last minute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qps")]
         public virtual System.Nullable<float> Qps { get; set; } 
 
-        /// <summary>Number of requests since this instance was started.@OutputOnly</summary>
+        /// <summary>Output only. Number of requests since this instance was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Nullable<int> Requests { get; set; } 
 
-        /// <summary>Time that this instance was started.@OutputOnly</summary>
+        /// <summary>Output only. Time that this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Whether this instance is in debug mode. Only applicable for instances in App Engine flexible
-        /// environment.@OutputOnly</summary>
+        /// <summary>Output only. Whether this instance is in debug mode. Only applicable for instances in App Engine
+        /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmDebugEnabled")]
         public virtual System.Nullable<bool> VmDebugEnabled { get; set; } 
 
-        /// <summary>Virtual machine ID of this instance. Only applicable for instances in App Engine flexible
-        /// environment.@OutputOnly</summary>
+        /// <summary>Output only. Virtual machine ID of this instance. Only applicable for instances in App Engine
+        /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
         public virtual string VmId { get; set; } 
 
-        /// <summary>The IP address of this instance. Only applicable for instances in App Engine flexible
-        /// environment.@OutputOnly</summary>
+        /// <summary>Output only. The IP address of this instance. Only applicable for instances in App Engine flexible
+        /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmIp")]
         public virtual string VmIp { get; set; } 
 
-        /// <summary>Name of the virtual machine where this instance lives. Only applicable for instances in App Engine
-        /// flexible environment.@OutputOnly</summary>
+        /// <summary>Output only. The liveness health check of this instance. Only applicable for instances in App
+        /// Engine flexible environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmLiveness")]
+        public virtual string VmLiveness { get; set; } 
+
+        /// <summary>Output only. Name of the virtual machine where this instance lives. Only applicable for instances
+        /// in App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
         public virtual string VmName { get; set; } 
 
-        /// <summary>Status of the virtual machine where this instance lives. Only applicable for instances in App
-        /// Engine flexible environment.@OutputOnly</summary>
+        /// <summary>Output only. Status of the virtual machine where this instance lives. Only applicable for instances
+        /// in App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmStatus")]
         public virtual string VmStatus { get; set; } 
 
-        /// <summary>Zone where the virtual machine is located. Only applicable for instances in App Engine flexible
-        /// environment.@OutputOnly</summary>
+        /// <summary>Output only. Zone where the virtual machine is located. Only applicable for instances in App Engine
+        /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmZoneName")]
         public virtual string VmZoneName { get; set; } 
 
@@ -4896,6 +4901,17 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// must exist in the same region as the App Engine flexible environment application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
         public virtual string SubnetworkName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A NetworkSettings resource is a container for ingress settings for a version or service.</summary>
+    public class NetworkSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ingress settings for version or service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressTrafficAllowed")]
+        public virtual string IngressTrafficAllowed { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5215,6 +5231,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Ingress settings for this service. Will apply to all versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkSettings")]
+        public virtual NetworkSettings NetworkSettings { get; set; } 
 
         /// <summary>Mapping that defines fractional HTTP traffic diversion to different versions within the
         /// service.</summary>

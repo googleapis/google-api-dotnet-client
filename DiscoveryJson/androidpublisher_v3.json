@@ -2679,7 +2679,7 @@
    }
   }
  }, 
- "revision": "20200909", 
+ "revision": "20200910", 
  "rootUrl": "https://androidpublisher.googleapis.com/", 
  "schemas": {
   "Apk": {

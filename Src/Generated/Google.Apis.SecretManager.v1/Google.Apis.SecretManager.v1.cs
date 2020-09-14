@@ -1542,6 +1542,25 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>A replication policy that replicates the Secret payload without any restrictions.</summary>
     public class Automatic : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The customer-managed encryption configuration of the Secret. If no configuration is
+        /// provided, Google-managed default encryption is used. Updates to the Secret encryption configuration do not
+        /// apply retroactively to existing SecretVersions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryption CustomerManagedEncryption { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The replication status of a SecretVersion using automatic replication. Only populated if the parent
+    /// Secret has an automatic replication policy.</summary>
+    public class AutomaticStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The customer-managed encryption status of the SecretVersion. Only populated if
+        /// customer-managed encryption is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryptionStatus CustomerManagedEncryption { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1588,6 +1607,32 @@ namespace Google.Apis.SecretManager.v1.Data
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).</summary>
+    public class CustomerManagedEncryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets
+        /// using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the
+        /// replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside
+        /// in `global`. The expected format is `projects/locations/keyRings/cryptoKeys`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes the status of customer-managed encryption.</summary>
+    public class CustomerManagedEncryptionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the secret payload,
+        /// in the following format: `projects/locations/keyRings/cryptoKeys/versions`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1805,6 +1850,12 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>Represents a Replica for this Secret.</summary>
     public class Replica : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The customer-managed encryption configuration of the User-Managed Replica. If no
+        /// configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption
+        /// configuration do not apply retroactively to existing SecretVersions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryption CustomerManagedEncryption { get; set; } 
+
         /// <summary>The canonical IDs of the location to replicate data. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
@@ -1813,7 +1864,23 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A policy that defines the replication configuration of data. </summary>
+    /// <summary>Describes the status of a user-managed replica for the SecretVersion.</summary>
+    public class ReplicaStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The customer-managed encryption status of the SecretVersion. Only populated if
+        /// customer-managed encryption is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryptionStatus CustomerManagedEncryption { get; set; } 
+
+        /// <summary>Output only. The canonical ID of the replica location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A policy that defines the replication and encryption configuration of data.</summary>
     public class Replication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Secret will automatically be replicated without any restrictions.</summary>
@@ -1823,6 +1890,23 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>The Secret will only be replicated into the locations specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userManaged")]
         public virtual UserManaged UserManaged { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The replication status of a SecretVersion.</summary>
+    public class ReplicationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes the replication status of a SecretVersion with automatic replication. Only populated if
+        /// the parent Secret has an automatic replication policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatic")]
+        public virtual AutomaticStatus Automatic { get; set; } 
+
+        /// <summary>Describes the replication status of a SecretVersion with user-managed replication. Only populated
+        /// if the parent Secret has a user-managed replication policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userManaged")]
+        public virtual UserManagedStatus UserManaged { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1887,6 +1971,10 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The replication status of the SecretVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationStatus")]
+        public virtual ReplicationStatus ReplicationStatus { get; set; } 
+
         /// <summary>Output only. The current state of the SecretVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
@@ -1945,6 +2033,18 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>Required. The list of Replicas for this Secret. Cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<Replica> Replicas { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The replication status of a SecretVersion using user-managed replication. Only populated if the parent
+    /// Secret has a user-managed replication policy.</summary>
+    public class UserManagedStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of replica statuses for the SecretVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
+        public virtual System.Collections.Generic.IList<ReplicaStatus> Replicas { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
