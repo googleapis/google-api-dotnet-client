@@ -18,17 +18,16 @@ namespace Google.Apis.Appengine.v1beta
         public const string Version = "v1beta";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AppengineService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AppengineService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AppengineService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AppengineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Apps = new AppsResource(this);
         }
@@ -92,12 +91,11 @@ namespace Google.Apis.Appengine.v1beta
         public virtual AppsResource Apps { get; }
     }
 
-    ///<summary>A base abstract class for Appengine requests.</summary>
+    /// <summary>A base abstract class for Appengine requests.</summary>
     public abstract class AppengineBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AppengineBaseServiceRequest instance.</summary>
-        protected AppengineBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AppengineBaseServiceRequest instance.</summary>
+        protected AppengineBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -177,105 +175,94 @@ namespace Google.Apis.Appengine.v1beta
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -332,8 +319,7 @@ namespace Google.Apis.Appengine.v1beta
             public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     Body = body;
@@ -349,16 +335,16 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedCertificates";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -366,15 +352,14 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -393,8 +378,7 @@ namespace Google.Apis.Appengine.v1beta
             public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string authorizedCertificatesId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string authorizedCertificatesId) : base(service)
                 {
                     AppsId = appsId;
                     AuthorizedCertificatesId = authorizedCertificatesId;
@@ -412,13 +396,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string AuthorizedCertificatesId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -426,24 +410,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "authorizedCertificatesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "authorizedCertificatesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "authorizedCertificatesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -462,8 +444,7 @@ namespace Google.Apis.Appengine.v1beta
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string authorizedCertificatesId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string authorizedCertificatesId) : base(service)
                 {
                     AppsId = appsId;
                     AuthorizedCertificatesId = authorizedCertificatesId;
@@ -498,13 +479,13 @@ namespace Google.Apis.Appengine.v1beta
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -512,33 +493,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "authorizedCertificatesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "authorizedCertificatesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "authorizedCertificatesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -554,8 +532,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListAuthorizedCertificatesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -592,13 +569,13 @@ namespace Google.Apis.Appengine.v1beta
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedCertificates";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -606,42 +583,38 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -665,8 +638,7 @@ namespace Google.Apis.Appengine.v1beta
             public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId, string authorizedCertificatesId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId, string authorizedCertificatesId) : base(service)
                 {
                     AppsId = appsId;
                     AuthorizedCertificatesId = authorizedCertificatesId;
@@ -693,16 +665,16 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -710,33 +682,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "authorizedCertificatesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "authorizedCertificatesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "authorizedCertificatesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -771,8 +740,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListAuthorizedDomainsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -792,13 +760,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/authorizedDomains";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -806,33 +774,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -872,8 +837,7 @@ namespace Google.Apis.Appengine.v1beta
             public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     Body = body;
@@ -913,16 +877,16 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1beta.Data.DomainMapping Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/domainMappings";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -930,24 +894,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "overrideStrategy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "overrideStrategy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("overrideStrategy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "overrideStrategy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -968,8 +930,7 @@ namespace Google.Apis.Appengine.v1beta
             public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string domainMappingsId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string domainMappingsId) : base(service)
                 {
                     AppsId = appsId;
                     DomainMappingsId = domainMappingsId;
@@ -987,13 +948,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string DomainMappingsId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1001,24 +962,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "domainMappingsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "domainMappingsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "domainMappingsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1037,8 +996,7 @@ namespace Google.Apis.Appengine.v1beta
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.DomainMapping>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string domainMappingsId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string domainMappingsId) : base(service)
                 {
                     AppsId = appsId;
                     DomainMappingsId = domainMappingsId;
@@ -1056,13 +1014,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string DomainMappingsId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1070,24 +1028,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "domainMappingsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "domainMappingsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "domainMappingsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1103,8 +1059,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListDomainMappingsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -1124,13 +1079,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/domainMappings";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1138,33 +1093,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1188,8 +1140,7 @@ namespace Google.Apis.Appengine.v1beta
             public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId, string domainMappingsId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId, string domainMappingsId) : base(service)
                 {
                     AppsId = appsId;
                     DomainMappingsId = domainMappingsId;
@@ -1215,16 +1166,16 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1beta.Data.DomainMapping Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1232,33 +1183,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "domainMappingsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "domainMappingsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "domainMappingsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1320,8 +1268,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class BatchUpdateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.BatchUpdateIngressRulesResponse>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
-                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.BatchUpdateIngressRulesRequest body, string appsId)
-                        : base(service)
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.BatchUpdateIngressRulesRequest body, string appsId) : base(service)
                     {
                         AppsId = appsId;
                         Body = body;
@@ -1338,16 +1285,16 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Appengine.v1beta.Data.BatchUpdateIngressRulesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchUpdate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate";
 
                     /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -1355,15 +1302,14 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1381,8 +1327,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.FirewallRule>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId) : base(service)
                     {
                         AppsId = appsId;
                         Body = body;
@@ -1399,16 +1344,16 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Appengine.v1beta.Data.FirewallRule Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1416,15 +1361,14 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1443,8 +1387,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string ingressRulesId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string ingressRulesId) : base(service)
                     {
                         AppsId = appsId;
                         IngressRulesId = ingressRulesId;
@@ -1462,13 +1405,13 @@ namespace Google.Apis.Appengine.v1beta
                     public virtual string IngressRulesId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1476,24 +1419,22 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "ingressRulesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ingressRulesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ingressRulesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ingressRulesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1512,8 +1453,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.FirewallRule>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string appsId, string ingressRulesId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string appsId, string ingressRulesId) : base(service)
                     {
                         AppsId = appsId;
                         IngressRulesId = ingressRulesId;
@@ -1531,13 +1471,13 @@ namespace Google.Apis.Appengine.v1beta
                     public virtual string IngressRulesId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1545,24 +1485,22 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "ingressRulesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ingressRulesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ingressRulesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ingressRulesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1579,8 +1517,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListIngressRulesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                     {
                         AppsId = appsId;
                         InitParameters();
@@ -1606,13 +1543,13 @@ namespace Google.Apis.Appengine.v1beta
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1620,42 +1557,38 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "matchingAddress", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matchingAddress",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("matchingAddress", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matchingAddress",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1675,8 +1608,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.FirewallRule>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId, string ingressRulesId)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId, string ingressRulesId) : base(service)
                     {
                         AppsId = appsId;
                         IngressRulesId = ingressRulesId;
@@ -1702,16 +1634,16 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Appengine.v1beta.Data.FirewallRule Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1719,33 +1651,30 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "ingressRulesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ingressRulesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ingressRulesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ingressRulesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1783,8 +1712,7 @@ namespace Google.Apis.Appengine.v1beta
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string locationsId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string locationsId) : base(service)
                 {
                     AppsId = appsId;
                     LocationsId = locationsId;
@@ -1801,13 +1729,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string LocationsId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/locations/{locationsId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1815,24 +1743,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1848,8 +1774,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -1873,13 +1798,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1887,42 +1812,38 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1961,8 +1882,7 @@ namespace Google.Apis.Appengine.v1beta
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string operationsId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string operationsId) : base(service)
                 {
                     AppsId = appsId;
                     OperationsId = operationsId;
@@ -1979,13 +1899,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string OperationsId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/operations/{operationsId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1993,24 +1913,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "operationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "operationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("operationsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "operationsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2036,8 +1954,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -2061,13 +1978,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/operations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2075,42 +1992,38 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2198,8 +2111,7 @@ namespace Google.Apis.Appengine.v1beta
                     public class DebugRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
                     {
                         /// <summary>Constructs a new Debug request.</summary>
-                        public DebugRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DebugInstanceRequest body, string appsId, string servicesId, string versionsId, string instancesId)
-                            : base(service)
+                        public DebugRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.DebugInstanceRequest body, string appsId, string servicesId, string versionsId, string instancesId) : base(service)
                         {
                             AppsId = appsId;
                             ServicesId = servicesId;
@@ -2231,16 +2143,16 @@ namespace Google.Apis.Appengine.v1beta
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Appengine.v1beta.Data.DebugInstanceRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "debug";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug";
 
                         /// <summary>Initializes Debug parameter list.</summary>
@@ -2248,42 +2160,38 @@ namespace Google.Apis.Appengine.v1beta
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "appsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "appsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "servicesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "servicesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "instancesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "instancesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("instancesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instancesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2319,8 +2227,7 @@ namespace Google.Apis.Appengine.v1beta
                     public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId) : base(service)
                         {
                             AppsId = appsId;
                             ServicesId = servicesId;
@@ -2348,13 +2255,13 @@ namespace Google.Apis.Appengine.v1beta
                         public virtual string InstancesId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -2362,42 +2269,38 @@ namespace Google.Apis.Appengine.v1beta
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "appsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "appsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "servicesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "servicesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "instancesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "instancesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("instancesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instancesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2419,8 +2322,7 @@ namespace Google.Apis.Appengine.v1beta
                     public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Instance>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId) : base(service)
                         {
                             AppsId = appsId;
                             ServicesId = servicesId;
@@ -2448,13 +2350,13 @@ namespace Google.Apis.Appengine.v1beta
                         public virtual string InstancesId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -2462,42 +2364,38 @@ namespace Google.Apis.Appengine.v1beta
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "appsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "appsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "servicesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "servicesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "instancesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "instancesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("instancesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instancesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2522,8 +2420,7 @@ namespace Google.Apis.Appengine.v1beta
                     public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListInstancesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId) : base(service)
                         {
                             AppsId = appsId;
                             ServicesId = servicesId;
@@ -2554,13 +2451,13 @@ namespace Google.Apis.Appengine.v1beta
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2568,51 +2465,46 @@ namespace Google.Apis.Appengine.v1beta
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "appsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "appsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "servicesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "servicesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2633,8 +2525,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId) : base(service)
                     {
                         AppsId = appsId;
                         ServicesId = servicesId;
@@ -2656,16 +2547,16 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Appengine.v1beta.Data.Version Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2673,24 +2564,22 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "servicesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2710,8 +2599,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId) : base(service)
                     {
                         AppsId = appsId;
                         ServicesId = servicesId;
@@ -2734,13 +2622,13 @@ namespace Google.Apis.Appengine.v1beta
                     public virtual string VersionsId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2748,33 +2636,30 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "versionsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "versionsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "servicesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2796,8 +2681,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Version>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId) : base(service)
                     {
                         AppsId = appsId;
                         ServicesId = servicesId;
@@ -2838,13 +2722,13 @@ namespace Google.Apis.Appengine.v1beta
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2852,42 +2736,38 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "versionsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "versionsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "servicesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2906,8 +2786,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId) : base(service)
                     {
                         AppsId = appsId;
                         ServicesId = servicesId;
@@ -2951,13 +2830,13 @@ namespace Google.Apis.Appengine.v1beta
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2965,51 +2844,46 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "servicesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3100,8 +2974,7 @@ namespace Google.Apis.Appengine.v1beta
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId, string versionsId)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId, string versionsId) : base(service)
                     {
                         AppsId = appsId;
                         ServicesId = servicesId;
@@ -3132,16 +3005,16 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Appengine.v1beta.Data.Version Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3149,42 +3022,38 @@ namespace Google.Apis.Appengine.v1beta
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "appsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "appsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "versionsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "versionsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "servicesId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3204,8 +3073,7 @@ namespace Google.Apis.Appengine.v1beta
             public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId) : base(service)
                 {
                     AppsId = appsId;
                     ServicesId = servicesId;
@@ -3223,13 +3091,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string ServicesId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3237,24 +3105,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "servicesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "servicesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "servicesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3273,8 +3139,7 @@ namespace Google.Apis.Appengine.v1beta
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Service>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId) : base(service)
                 {
                     AppsId = appsId;
                     ServicesId = servicesId;
@@ -3292,13 +3157,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string ServicesId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3306,24 +3171,22 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "servicesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "servicesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "servicesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3339,8 +3202,7 @@ namespace Google.Apis.Appengine.v1beta
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListServicesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
                 {
                     AppsId = appsId;
                     InitParameters();
@@ -3360,13 +3222,13 @@ namespace Google.Apis.Appengine.v1beta
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/services";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3374,33 +3236,30 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3420,8 +3279,7 @@ namespace Google.Apis.Appengine.v1beta
             public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Service body, string appsId, string servicesId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Service body, string appsId, string servicesId) : base(service)
                 {
                     AppsId = appsId;
                     ServicesId = servicesId;
@@ -3461,16 +3319,16 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1beta.Data.Service Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta/apps/{appsId}/services/{servicesId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3478,42 +3336,38 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "servicesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "servicesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "migrateTraffic", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "migrateTraffic",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "servicesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("migrateTraffic", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "migrateTraffic",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3538,8 +3392,7 @@ namespace Google.Apis.Appengine.v1beta
         public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Application body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Application body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -3550,16 +3403,16 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Appengine.v1beta.Data.Application Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta/apps";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -3582,8 +3435,7 @@ namespace Google.Apis.Appengine.v1beta
         public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Application>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string appsId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
             {
                 AppsId = appsId;
                 InitParameters();
@@ -3595,13 +3447,13 @@ namespace Google.Apis.Appengine.v1beta
             public virtual string AppsId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta/apps/{appsId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3609,15 +3461,14 @@ namespace Google.Apis.Appengine.v1beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "appsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "appsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appsId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3638,8 +3489,7 @@ namespace Google.Apis.Appengine.v1beta
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Application body, string appsId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Application body, string appsId) : base(service)
             {
                 AppsId = appsId;
                 Body = body;
@@ -3659,16 +3509,16 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Appengine.v1beta.Data.Application Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta/apps/{appsId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3676,24 +3526,22 @@ namespace Google.Apis.Appengine.v1beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "appsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "appsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appsId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3722,8 +3570,7 @@ namespace Google.Apis.Appengine.v1beta
         public class RepairRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new Repair request.</summary>
-            public RepairRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.RepairApplicationRequest body, string appsId)
-                : base(service)
+            public RepairRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.RepairApplicationRequest body, string appsId) : base(service)
             {
                 AppsId = appsId;
                 Body = body;
@@ -3739,16 +3586,16 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Appengine.v1beta.Data.RepairApplicationRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "repair";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta/apps/{appsId}:repair";
 
             /// <summary>Initializes Repair parameter list.</summary>
@@ -3756,15 +3603,14 @@ namespace Google.Apis.Appengine.v1beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "appsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "appsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appsId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

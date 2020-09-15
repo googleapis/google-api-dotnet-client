@@ -18,17 +18,16 @@ namespace Google.Apis.Datastore.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DatastoreService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DatastoreService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DatastoreService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DatastoreService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.Datastore.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Datastore requests.</summary>
+    /// <summary>A base abstract class for Datastore requests.</summary>
     public abstract class DatastoreBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DatastoreBaseServiceRequest instance.</summary>
-        protected DatastoreBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DatastoreBaseServiceRequest instance.</summary>
+        protected DatastoreBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.Datastore.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -331,8 +318,7 @@ namespace Google.Apis.Datastore.v1
             public class CreateRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index body, string projectId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index body, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     Body = body;
@@ -348,16 +334,16 @@ namespace Google.Apis.Datastore.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{projectId}/indexes";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -365,15 +351,14 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -399,8 +384,7 @@ namespace Google.Apis.Datastore.v1
             public class DeleteRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string indexId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string indexId) : base(service)
                 {
                     ProjectId = projectId;
                     IndexId = indexId;
@@ -417,13 +401,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string IndexId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{projectId}/indexes/{indexId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -431,24 +415,22 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "indexId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "indexId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("indexId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "indexId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -466,8 +448,7 @@ namespace Google.Apis.Datastore.v1
             public class GetRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string indexId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string indexId) : base(service)
                 {
                     ProjectId = projectId;
                     IndexId = indexId;
@@ -484,13 +465,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string IndexId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{projectId}/indexes/{indexId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -498,24 +479,22 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "indexId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "indexId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("indexId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "indexId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -533,8 +512,7 @@ namespace Google.Apis.Datastore.v1
             public class ListRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ListIndexesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -559,13 +537,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{projectId}/indexes";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -573,42 +551,38 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -653,8 +627,7 @@ namespace Google.Apis.Datastore.v1
             public class CancelRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -666,13 +639,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -680,15 +653,14 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -708,8 +680,7 @@ namespace Google.Apis.Datastore.v1
             public class DeleteRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -721,13 +692,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -735,15 +706,14 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -761,8 +731,7 @@ namespace Google.Apis.Datastore.v1
             public class GetRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -774,13 +743,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -788,15 +757,14 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -824,8 +792,7 @@ namespace Google.Apis.Datastore.v1
             public class ListRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -849,13 +816,13 @@ namespace Google.Apis.Datastore.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/operations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -863,42 +830,38 @@ namespace Google.Apis.Datastore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -918,8 +881,7 @@ namespace Google.Apis.Datastore.v1
         public class AllocateIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.AllocateIdsResponse>
         {
             /// <summary>Constructs a new AllocateIds request.</summary>
-            public AllocateIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.AllocateIdsRequest body, string projectId)
-                : base(service)
+            public AllocateIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.AllocateIdsRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -935,16 +897,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.AllocateIdsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "allocateIds";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:allocateIds";
 
             /// <summary>Initializes AllocateIds parameter list.</summary>
@@ -952,15 +914,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -977,8 +938,7 @@ namespace Google.Apis.Datastore.v1
         public class BeginTransactionRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.BeginTransactionResponse>
         {
             /// <summary>Constructs a new BeginTransaction request.</summary>
-            public BeginTransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.BeginTransactionRequest body, string projectId)
-                : base(service)
+            public BeginTransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.BeginTransactionRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -994,16 +954,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.BeginTransactionRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "beginTransaction";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:beginTransaction";
 
             /// <summary>Initializes BeginTransaction parameter list.</summary>
@@ -1011,15 +971,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1036,8 +995,7 @@ namespace Google.Apis.Datastore.v1
         public class CommitRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.CommitResponse>
         {
             /// <summary>Constructs a new Commit request.</summary>
-            public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.CommitRequest body, string projectId)
-                : base(service)
+            public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.CommitRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1053,16 +1011,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.CommitRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:commit";
 
             /// <summary>Initializes Commit parameter list.</summary>
@@ -1070,15 +1028,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1105,8 +1062,7 @@ namespace Google.Apis.Datastore.v1
         public class ExportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
         {
             /// <summary>Constructs a new Export request.</summary>
-            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest body, string projectId)
-                : base(service)
+            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1122,16 +1078,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "export";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:export";
 
             /// <summary>Initializes Export parameter list.</summary>
@@ -1139,15 +1095,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1170,8 +1125,7 @@ namespace Google.Apis.Datastore.v1
         public class ImportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
         {
             /// <summary>Constructs a new Import request.</summary>
-            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest body, string projectId)
-                : base(service)
+            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1187,16 +1141,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "import";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:import";
 
             /// <summary>Initializes Import parameter list.</summary>
@@ -1204,15 +1158,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1229,8 +1182,7 @@ namespace Google.Apis.Datastore.v1
         public class LookupRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.LookupResponse>
         {
             /// <summary>Constructs a new Lookup request.</summary>
-            public LookupRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.LookupRequest body, string projectId)
-                : base(service)
+            public LookupRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.LookupRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1246,16 +1198,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.LookupRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "lookup";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:lookup";
 
             /// <summary>Initializes Lookup parameter list.</summary>
@@ -1263,15 +1215,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1288,8 +1239,7 @@ namespace Google.Apis.Datastore.v1
         public class ReserveIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.ReserveIdsResponse>
         {
             /// <summary>Constructs a new ReserveIds request.</summary>
-            public ReserveIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId)
-                : base(service)
+            public ReserveIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1305,16 +1255,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.ReserveIdsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reserveIds";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:reserveIds";
 
             /// <summary>Initializes ReserveIds parameter list.</summary>
@@ -1322,15 +1272,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1347,8 +1296,7 @@ namespace Google.Apis.Datastore.v1
         public class RollbackRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.RollbackResponse>
         {
             /// <summary>Constructs a new Rollback request.</summary>
-            public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.RollbackRequest body, string projectId)
-                : base(service)
+            public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.RollbackRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1364,16 +1312,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.RollbackRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "rollback";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:rollback";
 
             /// <summary>Initializes Rollback parameter list.</summary>
@@ -1381,15 +1329,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1406,8 +1353,7 @@ namespace Google.Apis.Datastore.v1
         public class RunQueryRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.RunQueryResponse>
         {
             /// <summary>Constructs a new RunQuery request.</summary>
-            public RunQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.RunQueryRequest body, string projectId)
-                : base(service)
+            public RunQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.RunQueryRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1423,16 +1369,16 @@ namespace Google.Apis.Datastore.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1.Data.RunQueryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "runQuery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:runQuery";
 
             /// <summary>Initializes RunQuery parameter list.</summary>
@@ -1440,15 +1386,14 @@ namespace Google.Apis.Datastore.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

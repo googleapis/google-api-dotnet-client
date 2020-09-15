@@ -18,17 +18,16 @@ namespace Google.Apis.Datastore.v1beta1
         public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DatastoreService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DatastoreService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DatastoreService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DatastoreService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.Datastore.v1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Datastore requests.</summary>
+    /// <summary>A base abstract class for Datastore requests.</summary>
     public abstract class DatastoreBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DatastoreBaseServiceRequest instance.</summary>
-        protected DatastoreBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DatastoreBaseServiceRequest instance.</summary>
+        protected DatastoreBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.Datastore.v1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -311,8 +298,7 @@ namespace Google.Apis.Datastore.v1beta1
         public class ExportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1beta1.Data.GoogleLongrunningOperation>
         {
             /// <summary>Constructs a new Export request.</summary>
-            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ExportEntitiesRequest body, string projectId)
-                : base(service)
+            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ExportEntitiesRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -328,16 +314,16 @@ namespace Google.Apis.Datastore.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ExportEntitiesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "export";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/projects/{projectId}:export";
 
             /// <summary>Initializes Export parameter list.</summary>
@@ -345,15 +331,14 @@ namespace Google.Apis.Datastore.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -376,8 +361,7 @@ namespace Google.Apis.Datastore.v1beta1
         public class ImportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1beta1.Data.GoogleLongrunningOperation>
         {
             /// <summary>Constructs a new Import request.</summary>
-            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ImportEntitiesRequest body, string projectId)
-                : base(service)
+            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ImportEntitiesRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -393,16 +377,16 @@ namespace Google.Apis.Datastore.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ImportEntitiesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "import";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/projects/{projectId}:import";
 
             /// <summary>Initializes Import parameter list.</summary>
@@ -410,15 +394,14 @@ namespace Google.Apis.Datastore.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

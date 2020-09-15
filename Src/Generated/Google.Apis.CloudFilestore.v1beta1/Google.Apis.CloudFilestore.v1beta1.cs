@@ -18,17 +18,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
         public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudFilestoreService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudFilestoreService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudFilestoreService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudFilestoreService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.CloudFilestore.v1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for CloudFilestore requests.</summary>
+    /// <summary>A base abstract class for CloudFilestore requests.</summary>
     public abstract class CloudFilestoreBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudFilestoreBaseServiceRequest instance.</summary>
-        protected CloudFilestoreBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudFilestoreBaseServiceRequest instance.</summary>
+        protected CloudFilestoreBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.CloudFilestore.v1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -337,8 +324,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -362,16 +348,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.Backup Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+parent}/backups";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -379,24 +365,22 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "backupId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "backupId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("backupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "backupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -413,8 +397,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -427,13 +410,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -441,15 +424,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
                     }
 
                 }
@@ -466,8 +448,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Backup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -480,13 +461,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -494,15 +475,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
                     }
 
                 }
@@ -522,8 +502,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListBackupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -555,13 +534,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+parent}/backups";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -569,51 +548,46 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -631,8 +605,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -654,16 +627,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.Backup Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -671,24 +644,22 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -726,8 +697,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -751,16 +721,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.Instance Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+parent}/instances";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -768,24 +738,22 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "instanceId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "instanceId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("instanceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instanceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -802,8 +770,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -816,13 +783,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -830,15 +797,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
                     }
 
                 }
@@ -855,8 +821,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Instance>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -869,13 +834,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -883,15 +848,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
                     }
 
                 }
@@ -911,8 +875,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListInstancesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -944,13 +907,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+parent}/instances";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -958,51 +921,46 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1020,8 +978,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1044,16 +1001,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.Instance Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1061,24 +1018,22 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1096,8 +1051,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class RestoreRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
-                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.RestoreInstanceRequest body, string name)
-                        : base(service)
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.RestoreInstanceRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1114,16 +1068,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.RestoreInstanceRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "restore";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}:restore";
 
                     /// <summary>Initializes Restore parameter list.</summary>
@@ -1131,15 +1085,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
                     }
 
                 }
@@ -1187,8 +1140,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class CancelRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.CancelOperationRequest body, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.CancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1204,16 +1156,16 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudFilestore.v1beta1.Data.CancelOperationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -1221,15 +1173,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1249,8 +1200,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1262,13 +1212,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1276,15 +1226,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1302,8 +1251,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1315,13 +1263,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1329,15 +1277,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1365,8 +1312,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1390,13 +1336,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1404,42 +1350,38 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1456,8 +1398,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
             public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1469,13 +1410,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1483,15 +1424,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
 
             }
@@ -1507,8 +1447,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
             public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1536,13 +1475,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1550,51 +1489,46 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUnrevealedLocations",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUnrevealedLocations",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

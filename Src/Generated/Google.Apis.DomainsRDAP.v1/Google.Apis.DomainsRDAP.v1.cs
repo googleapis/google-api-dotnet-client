@@ -18,17 +18,16 @@ namespace Google.Apis.DomainsRDAP.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DomainsRDAPService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DomainsRDAPService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DomainsRDAPService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DomainsRDAPService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Autnum = new AutnumResource(this);
             Domain = new DomainResource(this);
@@ -86,12 +85,11 @@ namespace Google.Apis.DomainsRDAP.v1
         public virtual V1Resource V1 { get; }
     }
 
-    ///<summary>A base abstract class for DomainsRDAP requests.</summary>
+    /// <summary>A base abstract class for DomainsRDAP requests.</summary>
     public abstract class DomainsRDAPBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DomainsRDAPBaseServiceRequest instance.</summary>
-        protected DomainsRDAPBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DomainsRDAPBaseServiceRequest instance.</summary>
+        protected DomainsRDAPBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.DomainsRDAP.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -302,8 +289,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string autnumId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string autnumId) : base(service)
             {
                 AutnumId = autnumId;
                 InitParameters();
@@ -315,13 +301,13 @@ namespace Google.Apis.DomainsRDAP.v1
             public virtual string AutnumId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/autnum/{autnumId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -329,15 +315,14 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "autnumId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "autnumId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("autnumId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autnumId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -370,8 +355,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.HttpBody>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string domainName)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string domainName) : base(service)
             {
                 DomainName = domainName;
                 InitParameters();
@@ -383,13 +367,13 @@ namespace Google.Apis.DomainsRDAP.v1
             public virtual string DomainName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/domain/{+domainName}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -397,15 +381,14 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "domainName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "domainName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("domainName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "domainName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -440,8 +423,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string entityId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string entityId) : base(service)
             {
                 EntityId = entityId;
                 InitParameters();
@@ -453,13 +435,13 @@ namespace Google.Apis.DomainsRDAP.v1
             public virtual string EntityId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/entity/{entityId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -467,15 +449,14 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "entityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entityId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("entityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entityId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -511,8 +492,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string ipId, string ipId1)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string ipId, string ipId1) : base(service)
             {
                 IpId = ipId;
                 IpId1 = ipId1;
@@ -529,13 +509,13 @@ namespace Google.Apis.DomainsRDAP.v1
             public virtual string IpId1 { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/ip/{ipId}/{ipId1}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -543,24 +523,22 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "ipId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ipId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ipId1", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ipId1",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("ipId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ipId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ipId1", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ipId1",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -595,8 +573,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string nameserverId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string nameserverId) : base(service)
             {
                 NameserverId = nameserverId;
                 InitParameters();
@@ -608,13 +585,13 @@ namespace Google.Apis.DomainsRDAP.v1
             public virtual string NameserverId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/nameserver/{nameserverId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -622,15 +599,14 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "nameserverId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "nameserverId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("nameserverId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "nameserverId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -664,21 +640,20 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetDomainsRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetDomains request.</summary>
-            public GetDomainsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetDomainsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getDomains";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/domains";
 
             /// <summary>Initializes GetDomains parameter list.</summary>
@@ -702,21 +677,20 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetEntitiesRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetEntities request.</summary>
-            public GetEntitiesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetEntitiesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEntities";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/entities";
 
             /// <summary>Initializes GetEntities parameter list.</summary>
@@ -738,21 +712,20 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetHelpRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.HttpBody>
         {
             /// <summary>Constructs a new GetHelp request.</summary>
-            public GetHelpRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetHelpRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getHelp";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/help";
 
             /// <summary>Initializes GetHelp parameter list.</summary>
@@ -776,21 +749,20 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetIpRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.HttpBody>
         {
             /// <summary>Constructs a new GetIp request.</summary>
-            public GetIpRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetIpRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIp";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/ip";
 
             /// <summary>Initializes GetIp parameter list.</summary>
@@ -814,21 +786,20 @@ namespace Google.Apis.DomainsRDAP.v1
         public class GetNameserversRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetNameservers request.</summary>
-            public GetNameserversRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetNameserversRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getNameservers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/nameservers";
 
             /// <summary>Initializes GetNameservers parameter list.</summary>

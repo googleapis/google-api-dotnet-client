@@ -18,17 +18,16 @@ namespace Google.Apis.Discovery.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DiscoveryService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DiscoveryService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DiscoveryService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DiscoveryService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Apis = new ApisResource(this);
         }
@@ -66,12 +65,11 @@ namespace Google.Apis.Discovery.v1
         public virtual ApisResource Apis { get; }
     }
 
-    ///<summary>A base abstract class for Discovery requests.</summary>
+    /// <summary>A base abstract class for Discovery requests.</summary>
     public abstract class DiscoveryBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DiscoveryBaseServiceRequest instance.</summary>
-        protected DiscoveryBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DiscoveryBaseServiceRequest instance.</summary>
+        protected DiscoveryBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -118,69 +116,62 @@ namespace Google.Apis.Discovery.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -212,8 +203,7 @@ namespace Google.Apis.Discovery.v1
         public class GetRestRequest : DiscoveryBaseServiceRequest<Google.Apis.Discovery.v1.Data.RestDescription>
         {
             /// <summary>Constructs a new GetRest request.</summary>
-            public GetRestRequest(Google.Apis.Services.IClientService service, string api, string version)
-                : base(service)
+            public GetRestRequest(Google.Apis.Services.IClientService service, string api, string version) : base(service)
             {
                 Api = api;
                 Version = version;
@@ -230,13 +220,13 @@ namespace Google.Apis.Discovery.v1
             public virtual string Version { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getRest";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "apis/{api}/{version}/rest";
 
             /// <summary>Initializes GetRest parameter list.</summary>
@@ -244,24 +234,22 @@ namespace Google.Apis.Discovery.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "api", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "api",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "version", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "version",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("api", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "api",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "version",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -276,8 +264,7 @@ namespace Google.Apis.Discovery.v1
         public class ListRequest : DiscoveryBaseServiceRequest<Google.Apis.Discovery.v1.Data.DirectoryList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -292,13 +279,13 @@ namespace Google.Apis.Discovery.v1
             public virtual System.Nullable<bool> Preferred { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "apis";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -306,24 +293,22 @@ namespace Google.Apis.Discovery.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "preferred", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "preferred",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("preferred", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "preferred",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.Licensing.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public LicensingService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public LicensingService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public LicensingService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public LicensingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             LicenseAssignments = new LicenseAssignmentsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Licensing.v1
         public virtual LicenseAssignmentsResource LicenseAssignments { get; }
     }
 
-    ///<summary>A base abstract class for Licensing requests.</summary>
+    /// <summary>A base abstract class for Licensing requests.</summary>
     public abstract class LicensingBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new LicensingBaseServiceRequest instance.</summary>
-        protected LicensingBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new LicensingBaseServiceRequest instance.</summary>
+        protected LicensingBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -132,69 +130,62 @@ namespace Google.Apis.Licensing.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -233,8 +224,7 @@ namespace Google.Apis.Licensing.v1
         public class DeleteRequest : LicensingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string userId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string userId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -261,13 +251,13 @@ namespace Google.Apis.Licensing.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -275,33 +265,30 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -325,8 +312,7 @@ namespace Google.Apis.Licensing.v1
         public class GetRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string userId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -353,13 +339,13 @@ namespace Google.Apis.Licensing.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -367,33 +353,30 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -413,8 +396,7 @@ namespace Google.Apis.Licensing.v1
         public class InsertRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignmentInsert body, string productId, string skuId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignmentInsert body, string productId, string skuId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -437,16 +419,16 @@ namespace Google.Apis.Licensing.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Licensing.v1.Data.LicenseAssignmentInsert Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/user";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -454,24 +436,22 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -491,8 +471,7 @@ namespace Google.Apis.Licensing.v1
         public class ListForProductRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignmentList>
         {
             /// <summary>Constructs a new ListForProduct request.</summary>
-            public ListForProductRequest(Google.Apis.Services.IClientService service, string productId, string customerId)
-                : base(service)
+            public ListForProductRequest(Google.Apis.Services.IClientService service, string productId, string customerId) : base(service)
             {
                 ProductId = productId;
                 CustomerId = customerId;
@@ -522,13 +501,13 @@ namespace Google.Apis.Licensing.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listForProduct";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/users";
 
             /// <summary>Initializes ListForProduct parameter list.</summary>
@@ -536,42 +515,38 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -593,8 +568,7 @@ namespace Google.Apis.Licensing.v1
         public class ListForProductAndSkuRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignmentList>
         {
             /// <summary>Constructs a new ListForProductAndSku request.</summary>
-            public ListForProductAndSkuRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string customerId)
-                : base(service)
+            public ListForProductAndSkuRequest(Google.Apis.Services.IClientService service, string productId, string skuId, string customerId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -630,13 +604,13 @@ namespace Google.Apis.Licensing.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listForProductAndSku";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/users";
 
             /// <summary>Initializes ListForProductAndSku parameter list.</summary>
@@ -644,51 +618,46 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -715,8 +684,7 @@ namespace Google.Apis.Licensing.v1
         public class PatchRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -747,16 +715,16 @@ namespace Google.Apis.Licensing.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Licensing.v1.Data.LicenseAssignment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -764,33 +732,30 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -815,8 +780,7 @@ namespace Google.Apis.Licensing.v1
         public class UpdateRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId) : base(service)
             {
                 ProductId = productId;
                 SkuId = skuId;
@@ -847,16 +811,16 @@ namespace Google.Apis.Licensing.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Licensing.v1.Data.LicenseAssignment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -864,33 +828,30 @@ namespace Google.Apis.Licensing.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "skuId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skuId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("skuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "skuId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

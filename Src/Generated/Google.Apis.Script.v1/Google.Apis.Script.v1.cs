@@ -18,17 +18,16 @@ namespace Google.Apis.Script.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ScriptService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ScriptService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ScriptService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ScriptService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Processes = new ProcessesResource(this);
             Projects = new ProjectsResource(this);
@@ -192,12 +191,11 @@ namespace Google.Apis.Script.v1
         public virtual ScriptsResource Scripts { get; }
     }
 
-    ///<summary>A base abstract class for Script requests.</summary>
+    /// <summary>A base abstract class for Script requests.</summary>
     public abstract class ScriptBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ScriptBaseServiceRequest instance.</summary>
-        protected ScriptBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ScriptBaseServiceRequest instance.</summary>
+        protected ScriptBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -277,105 +275,94 @@ namespace Google.Apis.Script.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -407,8 +394,7 @@ namespace Google.Apis.Script.v1
         public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListUserProcessesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -559,13 +545,13 @@ namespace Google.Apis.Script.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/processes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -573,105 +559,94 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.deploymentId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.functionName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.functionName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.projectName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.projectName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.scriptId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.statuses", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.statuses",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.types",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProcessFilter.userAccessLevels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.deploymentId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.endTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.endTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.functionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.functionName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.projectName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.projectName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.scriptId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.startTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.statuses", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.statuses",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.types", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.types",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProcessFilter.userAccessLevels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -688,8 +663,7 @@ namespace Google.Apis.Script.v1
         public class ListScriptProcessesRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListScriptProcessesResponse>
         {
             /// <summary>Constructs a new ListScriptProcesses request.</summary>
-            public ListScriptProcessesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListScriptProcessesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -834,13 +808,13 @@ namespace Google.Apis.Script.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listScriptProcesses";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/processes:listScriptProcesses";
 
             /// <summary>Initializes ListScriptProcesses parameter list.</summary>
@@ -848,96 +822,86 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.deploymentId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.functionName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.functionName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.statuses", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.statuses",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.types",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.userAccessLevels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.deploymentId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.endTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.endTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.functionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.functionName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.startTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.statuses", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.statuses",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.types", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.types",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scriptProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptProcessFilter.userAccessLevels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -991,8 +955,7 @@ namespace Google.Apis.Script.v1
             public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.DeploymentConfig body, string scriptId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.DeploymentConfig body, string scriptId) : base(service)
                 {
                     ScriptId = scriptId;
                     Body = body;
@@ -1008,16 +971,16 @@ namespace Google.Apis.Script.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Script.v1.Data.DeploymentConfig Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/deployments";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1025,15 +988,14 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1051,8 +1013,7 @@ namespace Google.Apis.Script.v1
             public class DeleteRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId) : base(service)
                 {
                     ScriptId = scriptId;
                     DeploymentId = deploymentId;
@@ -1069,13 +1030,13 @@ namespace Google.Apis.Script.v1
                 public virtual string DeploymentId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/deployments/{deploymentId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1083,24 +1044,22 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deploymentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deploymentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deploymentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1118,8 +1077,7 @@ namespace Google.Apis.Script.v1
             public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId) : base(service)
                 {
                     ScriptId = scriptId;
                     DeploymentId = deploymentId;
@@ -1136,13 +1094,13 @@ namespace Google.Apis.Script.v1
                 public virtual string DeploymentId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/deployments/{deploymentId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1150,24 +1108,22 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deploymentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deploymentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deploymentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1183,8 +1139,7 @@ namespace Google.Apis.Script.v1
             public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListDeploymentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string scriptId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string scriptId) : base(service)
                 {
                     ScriptId = scriptId;
                     InitParameters();
@@ -1205,13 +1160,13 @@ namespace Google.Apis.Script.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/deployments";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1219,33 +1174,30 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1264,8 +1216,7 @@ namespace Google.Apis.Script.v1
             public class UpdateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.UpdateDeploymentRequest body, string scriptId, string deploymentId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.UpdateDeploymentRequest body, string scriptId, string deploymentId) : base(service)
                 {
                     ScriptId = scriptId;
                     DeploymentId = deploymentId;
@@ -1286,16 +1237,16 @@ namespace Google.Apis.Script.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Script.v1.Data.UpdateDeploymentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/deployments/{deploymentId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1303,24 +1254,22 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deploymentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deploymentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deploymentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1356,8 +1305,7 @@ namespace Google.Apis.Script.v1
             public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Version>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Version body, string scriptId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Version body, string scriptId) : base(service)
                 {
                     ScriptId = scriptId;
                     Body = body;
@@ -1373,16 +1321,16 @@ namespace Google.Apis.Script.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Script.v1.Data.Version Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/versions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1390,15 +1338,14 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1416,8 +1363,7 @@ namespace Google.Apis.Script.v1
             public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Version>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, int versionNumber)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, int versionNumber) : base(service)
                 {
                     ScriptId = scriptId;
                     VersionNumber = versionNumber;
@@ -1434,13 +1380,13 @@ namespace Google.Apis.Script.v1
                 public virtual int VersionNumber { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/versions/{versionNumber}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1448,24 +1394,22 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "versionNumber", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionNumber",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("versionNumber", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionNumber",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1481,8 +1425,7 @@ namespace Google.Apis.Script.v1
             public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListVersionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string scriptId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string scriptId) : base(service)
                 {
                     ScriptId = scriptId;
                     InitParameters();
@@ -1503,13 +1446,13 @@ namespace Google.Apis.Script.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{scriptId}/versions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1517,33 +1460,30 @@ namespace Google.Apis.Script.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "scriptId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scriptId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1560,8 +1500,7 @@ namespace Google.Apis.Script.v1
         public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Project>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.CreateProjectRequest body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.CreateProjectRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1572,16 +1511,16 @@ namespace Google.Apis.Script.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Script.v1.Data.CreateProjectRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1604,8 +1543,7 @@ namespace Google.Apis.Script.v1
         public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string scriptId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string scriptId) : base(service)
             {
                 ScriptId = scriptId;
                 InitParameters();
@@ -1617,13 +1555,13 @@ namespace Google.Apis.Script.v1
             public virtual string ScriptId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{scriptId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1631,15 +1569,14 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1657,8 +1594,7 @@ namespace Google.Apis.Script.v1
         public class GetContentRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Content>
         {
             /// <summary>Constructs a new GetContent request.</summary>
-            public GetContentRequest(Google.Apis.Services.IClientService service, string scriptId)
-                : base(service)
+            public GetContentRequest(Google.Apis.Services.IClientService service, string scriptId) : base(service)
             {
                 ScriptId = scriptId;
                 InitParameters();
@@ -1675,13 +1611,13 @@ namespace Google.Apis.Script.v1
             public virtual System.Nullable<int> VersionNumber { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getContent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{scriptId}/content";
 
             /// <summary>Initializes GetContent parameter list.</summary>
@@ -1689,24 +1625,22 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "versionNumber", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "versionNumber",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versionNumber", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versionNumber",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1722,8 +1656,7 @@ namespace Google.Apis.Script.v1
         public class GetMetricsRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Metrics>
         {
             /// <summary>Constructs a new GetMetrics request.</summary>
-            public GetMetricsRequest(Google.Apis.Services.IClientService service, string scriptId)
-                : base(service)
+            public GetMetricsRequest(Google.Apis.Services.IClientService service, string scriptId) : base(service)
             {
                 ScriptId = scriptId;
                 InitParameters();
@@ -1757,13 +1690,13 @@ namespace Google.Apis.Script.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getMetrics";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{scriptId}/metrics";
 
             /// <summary>Initializes GetMetrics parameter list.</summary>
@@ -1771,33 +1704,30 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metricsFilter.deploymentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metricsFilter.deploymentId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metricsGranularity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metricsGranularity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("metricsFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "metricsFilter.deploymentId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("metricsGranularity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "metricsGranularity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1818,8 +1748,7 @@ namespace Google.Apis.Script.v1
         public class UpdateContentRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Content>
         {
             /// <summary>Constructs a new UpdateContent request.</summary>
-            public UpdateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Content body, string scriptId)
-                : base(service)
+            public UpdateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Content body, string scriptId) : base(service)
             {
                 ScriptId = scriptId;
                 Body = body;
@@ -1835,16 +1764,16 @@ namespace Google.Apis.Script.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Script.v1.Data.Content Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateContent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{scriptId}/content";
 
             /// <summary>Initializes UpdateContent parameter list.</summary>
@@ -1852,15 +1781,14 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1909,8 +1837,7 @@ namespace Google.Apis.Script.v1
         public class RunRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
-            public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.ExecutionRequest body, string scriptId)
-                : base(service)
+            public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.ExecutionRequest body, string scriptId) : base(service)
             {
                 ScriptId = scriptId;
                 Body = body;
@@ -1927,16 +1854,16 @@ namespace Google.Apis.Script.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Script.v1.Data.ExecutionRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "run";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/scripts/{scriptId}:run";
 
             /// <summary>Initializes Run parameter list.</summary>
@@ -1944,15 +1871,14 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scriptId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scriptId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

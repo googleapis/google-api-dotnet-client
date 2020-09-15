@@ -18,17 +18,16 @@ namespace Google.Apis.Dialogflow.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DialogflowService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DialogflowService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DialogflowService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DialogflowService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.Dialogflow.v2
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Dialogflow requests.</summary>
+    /// <summary>A base abstract class for Dialogflow requests.</summary>
     public abstract class DialogflowBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DialogflowBaseServiceRequest instance.</summary>
-        protected DialogflowBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DialogflowBaseServiceRequest instance.</summary>
+        protected DialogflowBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.Dialogflow.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -364,8 +351,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchCreate request.</summary>
-                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
-                            : base(service)
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -382,16 +368,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "batchCreate";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/entities:batchCreate";
 
                         /// <summary>Initializes BatchCreate parameter list.</summary>
@@ -399,15 +385,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                            });
                         }
 
                     }
@@ -425,8 +410,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchDelete request.</summary>
-                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
-                            : base(service)
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -443,16 +427,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "batchDelete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/entities:batchDelete";
 
                         /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -460,15 +444,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                            });
                         }
 
                     }
@@ -490,8 +473,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchUpdate request.</summary>
-                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
-                            : base(service)
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -508,16 +490,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "batchUpdate";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/entities:batchUpdate";
 
                         /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -525,15 +507,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                            });
                         }
 
                     }
@@ -552,8 +533,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
-                        : base(service)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -570,16 +550,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchDelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/entityTypes:batchDelete";
 
                     /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -587,15 +567,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
                     }
 
                 }
@@ -613,8 +592,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
-                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
-                        : base(service)
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -631,16 +609,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchUpdate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/entityTypes:batchUpdate";
 
                     /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -648,15 +626,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
                     }
 
                 }
@@ -673,8 +650,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -696,16 +672,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/entityTypes";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -713,24 +689,22 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -747,8 +721,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -761,13 +734,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -775,15 +748,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                        });
                     }
 
                 }
@@ -799,8 +771,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -819,13 +790,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string LanguageCode { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -833,24 +804,22 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -866,8 +835,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEntityTypesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -894,13 +862,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/entityTypes";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -908,42 +876,38 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -961,8 +925,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -989,16 +952,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1006,33 +969,30 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/entityTypes/[^/]+$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1130,8 +1090,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
-                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
-                                    : base(service)
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent) : base(service)
                                 {
                                     Parent = parent;
                                     Body = body;
@@ -1150,16 +1109,16 @@ namespace Google.Apis.Dialogflow.v2
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
-                                ///<summary>Returns the body of the request.</summary>
+                                /// <summary>Returns the body of the request.</summary>
                                 protected override object GetBody() => Body;
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "create";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "POST";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+parent}/contexts";
 
                                 /// <summary>Initializes Create parameter list.</summary>
@@ -1167,15 +1126,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1193,8 +1151,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
-                                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                    : base(service)
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                                 {
                                     Name = name;
                                     InitParameters();
@@ -1210,13 +1167,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string Name { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "delete";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "DELETE";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1224,15 +1181,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1250,8 +1206,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                             {
                                 /// <summary>Constructs a new Get request.</summary>
-                                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                    : base(service)
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                                 {
                                     Name = name;
                                     InitParameters();
@@ -1267,13 +1222,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string Name { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "get";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Get parameter list.</summary>
@@ -1281,15 +1236,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1307,8 +1261,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                    : base(service)
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                                 {
                                     Parent = parent;
                                     InitParameters();
@@ -1333,13 +1286,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string PageToken { get; set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+parent}/contexts";
 
                                 /// <summary>Initializes List parameter list.</summary>
@@ -1347,33 +1300,30 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageSize",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageToken",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1395,8 +1345,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                             {
                                 /// <summary>Constructs a new Patch request.</summary>
-                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
-                                    : base(service)
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name) : base(service)
                                 {
                                     Name = name;
                                     Body = body;
@@ -1424,16 +1373,16 @@ namespace Google.Apis.Dialogflow.v2
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
-                                ///<summary>Returns the body of the request.</summary>
+                                /// <summary>Returns the body of the request.</summary>
                                 protected override object GetBody() => Body;
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "patch";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "PATCH";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1441,24 +1390,22 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "updateMask", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "updateMask",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1502,8 +1449,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
-                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
-                                    : base(service)
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent) : base(service)
                                 {
                                     Parent = parent;
                                     Body = body;
@@ -1522,16 +1468,16 @@ namespace Google.Apis.Dialogflow.v2
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
-                                ///<summary>Returns the body of the request.</summary>
+                                /// <summary>Returns the body of the request.</summary>
                                 protected override object GetBody() => Body;
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "create";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "POST";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+parent}/entityTypes";
 
                                 /// <summary>Initializes Create parameter list.</summary>
@@ -1539,15 +1485,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1569,8 +1514,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
-                                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                    : base(service)
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                                 {
                                     Name = name;
                                     InitParameters();
@@ -1586,13 +1530,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string Name { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "delete";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "DELETE";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1600,15 +1544,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1630,8 +1573,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Get request.</summary>
-                                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                    : base(service)
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                                 {
                                     Name = name;
                                     InitParameters();
@@ -1647,13 +1589,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string Name { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "get";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Get parameter list.</summary>
@@ -1661,15 +1603,14 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1692,8 +1633,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                    : base(service)
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                                 {
                                     Parent = parent;
                                     InitParameters();
@@ -1718,13 +1658,13 @@ namespace Google.Apis.Dialogflow.v2
                                 public virtual string PageToken { get; set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+parent}/entityTypes";
 
                                 /// <summary>Initializes List parameter list.</summary>
@@ -1732,33 +1672,30 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageSize",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageToken",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1783,8 +1720,7 @@ namespace Google.Apis.Dialogflow.v2
                             public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                             {
                                 /// <summary>Constructs a new Patch request.</summary>
-                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
-                                    : base(service)
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name) : base(service)
                                 {
                                     Name = name;
                                     Body = body;
@@ -1809,16 +1745,16 @@ namespace Google.Apis.Dialogflow.v2
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
-                                ///<summary>Returns the body of the request.</summary>
+                                /// <summary>Returns the body of the request.</summary>
                                 protected override object GetBody() => Body;
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "patch";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "PATCH";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v2/{+name}";
 
                                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1826,24 +1762,22 @@ namespace Google.Apis.Dialogflow.v2
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "updateMask", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "updateMask",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1863,8 +1797,7 @@ namespace Google.Apis.Dialogflow.v2
                         public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new DeleteContexts request.</summary>
-                            public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
+                            public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                             {
                                 Parent = parent;
                                 InitParameters();
@@ -1879,13 +1812,13 @@ namespace Google.Apis.Dialogflow.v2
                             public virtual string Parent { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "deleteContexts";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v2/{+parent}/contexts";
 
                             /// <summary>Initializes DeleteContexts parameter list.</summary>
@@ -1893,15 +1826,14 @@ namespace Google.Apis.Dialogflow.v2
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                });
                             }
 
                         }
@@ -1927,8 +1859,7 @@ namespace Google.Apis.Dialogflow.v2
                         public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
                         {
                             /// <summary>Constructs a new DetectIntent request.</summary>
-                            public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
-                                : base(service)
+                            public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session) : base(service)
                             {
                                 Session = session;
                                 Body = body;
@@ -1951,16 +1882,16 @@ namespace Google.Apis.Dialogflow.v2
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "detectIntent";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v2/{+session}:detectIntent";
 
                             /// <summary>Initializes DetectIntent parameter list.</summary>
@@ -1968,15 +1899,14 @@ namespace Google.Apis.Dialogflow.v2
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "session", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "session",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
-                                    });
+                                RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "session",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                });
                             }
 
                         }
@@ -1994,8 +1924,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEnvironmentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2016,13 +1945,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/environments";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2030,33 +1959,30 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2093,8 +2019,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
-                        : base(service)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2111,16 +2036,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchDelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/intents:batchDelete";
 
                     /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -2128,15 +2053,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
                     }
 
                 }
@@ -2154,8 +2078,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
-                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
-                        : base(service)
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2172,16 +2095,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchUpdate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/intents:batchUpdate";
 
                     /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -2189,15 +2112,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
                     }
 
                 }
@@ -2214,8 +2136,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2252,16 +2173,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/intents";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2269,33 +2190,30 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "intentView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2312,8 +2230,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2326,13 +2243,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2340,15 +2257,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
+                        });
                     }
 
                 }
@@ -2364,8 +2280,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2398,13 +2313,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string LanguageCode { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2412,33 +2327,30 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
+                        });
+                        RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "intentView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2454,8 +2366,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListIntentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2497,13 +2408,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/intents";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2511,51 +2422,46 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent$",
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "intentView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2573,8 +2479,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2616,16 +2521,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -2633,42 +2538,38 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
+                        });
+                        RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "intentView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2728,8 +2629,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -2748,16 +2648,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/contexts";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -2765,15 +2665,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                            });
                         }
 
                     }
@@ -2791,8 +2690,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -2808,13 +2706,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -2822,15 +2720,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                            });
                         }
 
                     }
@@ -2848,8 +2745,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -2864,13 +2760,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -2878,15 +2774,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                            });
                         }
 
                     }
@@ -2904,8 +2799,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -2930,13 +2824,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/contexts";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2944,33 +2838,30 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2992,8 +2883,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -3021,16 +2911,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -3038,24 +2928,22 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3099,8 +2987,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -3119,16 +3006,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/entityTypes";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3136,15 +3023,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                            });
                         }
 
                     }
@@ -3166,8 +3052,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -3183,13 +3068,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3197,15 +3082,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                            });
                         }
 
                     }
@@ -3227,8 +3111,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -3244,13 +3127,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3258,15 +3141,14 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                            });
                         }
 
                     }
@@ -3289,8 +3171,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -3315,13 +3196,13 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/entityTypes";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3329,33 +3210,30 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3380,8 +3258,7 @@ namespace Google.Apis.Dialogflow.v2
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -3406,16 +3283,16 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -3423,24 +3300,22 @@ namespace Google.Apis.Dialogflow.v2
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3460,8 +3335,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new DeleteContexts request.</summary>
-                    public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -3476,13 +3350,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "deleteContexts";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/contexts";
 
                     /// <summary>Initializes DeleteContexts parameter list.</summary>
@@ -3490,15 +3364,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                        });
                     }
 
                 }
@@ -3524,8 +3397,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
                 {
                     /// <summary>Constructs a new DetectIntent request.</summary>
-                    public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
-                        : base(service)
+                    public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session) : base(service)
                     {
                         Session = session;
                         Body = body;
@@ -3548,16 +3420,16 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "detectIntent";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+session}:detectIntent";
 
                     /// <summary>Initializes DetectIntent parameter list.</summary>
@@ -3565,15 +3437,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "session", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "session",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
-                            });
+                        RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "session",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
+                        });
                     }
 
                 }
@@ -3592,8 +3463,7 @@ namespace Google.Apis.Dialogflow.v2
             public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Export request.</summary>
-                public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
-                    : base(service)
+                public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -3610,16 +3480,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "export";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent:export";
 
                 /// <summary>Initializes Export parameter list.</summary>
@@ -3627,15 +3497,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -3651,8 +3520,7 @@ namespace Google.Apis.Dialogflow.v2
             public class GetFulfillmentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment>
             {
                 /// <summary>Constructs a new GetFulfillment request.</summary>
-                public GetFulfillmentRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetFulfillmentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3664,13 +3532,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getFulfillment";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes GetFulfillment parameter list.</summary>
@@ -3678,15 +3546,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/agent/fulfillment$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/agent/fulfillment$",
+                    });
                 }
 
             }
@@ -3704,8 +3571,7 @@ namespace Google.Apis.Dialogflow.v2
             public class GetValidationResultRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ValidationResult>
             {
                 /// <summary>Constructs a new GetValidationResult request.</summary>
-                public GetValidationResultRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public GetValidationResultRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -3724,13 +3590,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string LanguageCode { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getValidationResult";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent/validationResult";
 
                 /// <summary>Initializes GetValidationResult parameter list.</summary>
@@ -3738,24 +3604,22 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "languageCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "languageCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3785,8 +3649,7 @@ namespace Google.Apis.Dialogflow.v2
             public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Import request.</summary>
-                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
-                    : base(service)
+                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -3803,16 +3666,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "import";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent:import";
 
                 /// <summary>Initializes Import parameter list.</summary>
@@ -3820,15 +3683,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -3856,8 +3718,7 @@ namespace Google.Apis.Dialogflow.v2
             public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Restore request.</summary>
-                public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
-                    : base(service)
+                public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -3874,16 +3735,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "restore";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent:restore";
 
                 /// <summary>Initializes Restore parameter list.</summary>
@@ -3891,15 +3752,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -3921,8 +3781,7 @@ namespace Google.Apis.Dialogflow.v2
             public class SearchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchAgentsResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
-                public SearchRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -3943,13 +3802,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "search";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent:search";
 
                 /// <summary>Initializes Search parameter list.</summary>
@@ -3957,33 +3816,30 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4001,8 +3857,7 @@ namespace Google.Apis.Dialogflow.v2
             public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Train request.</summary>
-                public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
-                    : base(service)
+                public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -4019,16 +3874,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "train";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/agent:train";
 
                 /// <summary>Initializes Train parameter list.</summary>
@@ -4036,15 +3891,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -4062,8 +3916,7 @@ namespace Google.Apis.Dialogflow.v2
             public class UpdateFulfillmentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment>
             {
                 /// <summary>Constructs a new UpdateFulfillment request.</summary>
-                public UpdateFulfillmentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name)
-                    : base(service)
+                public UpdateFulfillmentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -4085,16 +3938,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateFulfillment";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes UpdateFulfillment parameter list.</summary>
@@ -4102,24 +3955,22 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/agent/fulfillment$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/agent/fulfillment$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4185,8 +4036,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class CancelRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4198,13 +4048,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -4212,15 +4062,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4238,8 +4087,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4251,13 +4099,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4265,15 +4113,14 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4301,8 +4148,7 @@ namespace Google.Apis.Dialogflow.v2
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4326,13 +4172,13 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4340,42 +4186,38 @@ namespace Google.Apis.Dialogflow.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4421,8 +4263,7 @@ namespace Google.Apis.Dialogflow.v2
             public class CancelRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4434,13 +4275,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -4448,15 +4289,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -4474,8 +4314,7 @@ namespace Google.Apis.Dialogflow.v2
             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4487,13 +4326,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4501,15 +4340,14 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -4537,8 +4375,7 @@ namespace Google.Apis.Dialogflow.v2
             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4562,13 +4399,13 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}/operations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4576,42 +4413,38 @@ namespace Google.Apis.Dialogflow.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4629,8 +4462,7 @@ namespace Google.Apis.Dialogflow.v2
         public class DeleteAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
         {
             /// <summary>Constructs a new DeleteAgent request.</summary>
-            public DeleteAgentRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public DeleteAgentRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -4643,13 +4475,13 @@ namespace Google.Apis.Dialogflow.v2
             public virtual string Parent { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteAgent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/agent";
 
             /// <summary>Initializes DeleteAgent parameter list.</summary>
@@ -4657,15 +4489,14 @@ namespace Google.Apis.Dialogflow.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -4682,8 +4513,7 @@ namespace Google.Apis.Dialogflow.v2
         public class GetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent>
         {
             /// <summary>Constructs a new GetAgent request.</summary>
-            public GetAgentRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public GetAgentRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -4696,13 +4526,13 @@ namespace Google.Apis.Dialogflow.v2
             public virtual string Parent { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAgent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/agent";
 
             /// <summary>Initializes GetAgent parameter list.</summary>
@@ -4710,15 +4540,14 @@ namespace Google.Apis.Dialogflow.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -4735,8 +4564,7 @@ namespace Google.Apis.Dialogflow.v2
         public class SetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent>
         {
             /// <summary>Constructs a new SetAgent request.</summary>
-            public SetAgentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent)
-                : base(service)
+            public SetAgentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -4756,16 +4584,16 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setAgent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/agent";
 
             /// <summary>Initializes SetAgent parameter list.</summary>
@@ -4773,24 +4601,22 @@ namespace Google.Apis.Dialogflow.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

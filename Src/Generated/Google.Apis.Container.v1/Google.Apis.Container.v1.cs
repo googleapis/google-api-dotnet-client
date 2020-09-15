@@ -18,17 +18,16 @@ namespace Google.Apis.Container.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ContainerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ContainerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ContainerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ContainerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Container.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Container requests.</summary>
+    /// <summary>A base abstract class for Container requests.</summary>
     public abstract class ContainerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ContainerBaseServiceRequest instance.</summary>
-        protected ContainerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ContainerBaseServiceRequest instance.</summary>
+        protected ContainerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.Container.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -335,8 +322,7 @@ namespace Google.Apis.Container.v1
                 public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListUsableSubnetworksResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -367,13 +353,13 @@ namespace Google.Apis.Container.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/aggregated/usableSubnetworks";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -381,42 +367,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -494,8 +476,7 @@ namespace Google.Apis.Container.v1
                     public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -512,16 +493,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.CreateNodePoolRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/nodePools";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -529,15 +510,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
                         }
 
                     }
@@ -554,8 +534,7 @@ namespace Google.Apis.Container.v1
                     public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -590,13 +569,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Zone { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -604,51 +583,46 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -665,8 +639,7 @@ namespace Google.Apis.Container.v1
                     public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.NodePool>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -701,13 +674,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Zone { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -715,51 +688,46 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -776,8 +744,7 @@ namespace Google.Apis.Container.v1
                     public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListNodePoolsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -807,13 +774,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Zone { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/nodePools";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -821,42 +788,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -876,8 +839,7 @@ namespace Google.Apis.Container.v1
                     public class RollbackRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Rollback request.</summary>
-                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string name)
-                            : base(service)
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -894,16 +856,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "rollback";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:rollback";
 
                         /// <summary>Initializes Rollback parameter list.</summary>
@@ -911,15 +873,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
                         }
 
                     }
@@ -937,8 +898,7 @@ namespace Google.Apis.Container.v1
                     public class SetAutoscalingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetAutoscaling request.</summary>
-                        public SetAutoscalingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string name)
-                            : base(service)
+                        public SetAutoscalingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -955,16 +915,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setAutoscaling";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:setAutoscaling";
 
                         /// <summary>Initializes SetAutoscaling parameter list.</summary>
@@ -972,15 +932,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
                         }
 
                     }
@@ -998,8 +957,7 @@ namespace Google.Apis.Container.v1
                     public class SetManagementRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetManagement request.</summary>
-                        public SetManagementRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string name)
-                            : base(service)
+                        public SetManagementRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1017,16 +975,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolManagementRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setManagement";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:setManagement";
 
                         /// <summary>Initializes SetManagement parameter list.</summary>
@@ -1034,15 +992,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
                         }
 
                     }
@@ -1060,8 +1017,7 @@ namespace Google.Apis.Container.v1
                     public class SetSizeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetSize request.</summary>
-                        public SetSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string name)
-                            : base(service)
+                        public SetSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1078,16 +1034,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolSizeRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setSize";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:setSize";
 
                         /// <summary>Initializes SetSize parameter list.</summary>
@@ -1095,15 +1051,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
                         }
 
                     }
@@ -1121,8 +1076,7 @@ namespace Google.Apis.Container.v1
                     public class UpdateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Update request.</summary>
-                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string name)
-                            : base(service)
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1139,16 +1093,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.UpdateNodePoolRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "update";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PUT";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -1156,15 +1110,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
                         }
 
                     }
@@ -1204,8 +1157,7 @@ namespace Google.Apis.Container.v1
                     public class GetOpenidConfigurationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.GetOpenIDConfigResponse>
                     {
                         /// <summary>Constructs a new GetOpenidConfiguration request.</summary>
-                        public GetOpenidConfigurationRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public GetOpenidConfigurationRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -1218,13 +1170,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Parent { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getOpenid-configuration";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/.well-known/openid-configuration";
 
                         /// <summary>Initializes GetOpenidConfiguration parameter list.</summary>
@@ -1232,15 +1184,14 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
                         }
 
                     }
@@ -1259,8 +1210,7 @@ namespace Google.Apis.Container.v1
                 public class CompleteIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new CompleteIpRotation request.</summary>
-                    public CompleteIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string name)
-                        : base(service)
+                    public CompleteIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1277,16 +1227,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CompleteIPRotationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "completeIpRotation";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:completeIpRotation";
 
                     /// <summary>Initializes CompleteIpRotation parameter list.</summary>
@@ -1294,15 +1244,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1330,8 +1279,7 @@ namespace Google.Apis.Container.v1
                 public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateClusterRequest body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateClusterRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1348,16 +1296,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CreateClusterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/clusters";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1365,15 +1313,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1396,8 +1343,7 @@ namespace Google.Apis.Container.v1
                 public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1427,13 +1373,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Zone { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1441,42 +1387,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1493,8 +1435,7 @@ namespace Google.Apis.Container.v1
                 public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Cluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1524,13 +1465,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Zone { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1538,42 +1479,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1592,8 +1529,7 @@ namespace Google.Apis.Container.v1
                 public class GetJwksRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.GetJSONWebKeysResponse>
                 {
                     /// <summary>Constructs a new GetJwks request.</summary>
-                    public GetJwksRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public GetJwksRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1606,13 +1542,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Parent { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getJwks";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/jwks";
 
                     /// <summary>Initializes GetJwks parameter list.</summary>
@@ -1620,15 +1556,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1645,8 +1580,7 @@ namespace Google.Apis.Container.v1
                 public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1671,13 +1605,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Zone { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/clusters";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1685,33 +1619,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1729,8 +1660,7 @@ namespace Google.Apis.Container.v1
                 public class SetAddonsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetAddons request.</summary>
-                    public SetAddonsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string name)
-                        : base(service)
+                    public SetAddonsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1747,16 +1677,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetAddonsConfigRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setAddons";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setAddons";
 
                     /// <summary>Initializes SetAddons parameter list.</summary>
@@ -1764,15 +1694,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1790,8 +1719,7 @@ namespace Google.Apis.Container.v1
                 public class SetLegacyAbacRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetLegacyAbac request.</summary>
-                    public SetLegacyAbacRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string name)
-                        : base(service)
+                    public SetLegacyAbacRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1808,16 +1736,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLegacyAbacRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setLegacyAbac";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setLegacyAbac";
 
                     /// <summary>Initializes SetLegacyAbac parameter list.</summary>
@@ -1825,15 +1753,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1855,8 +1782,7 @@ namespace Google.Apis.Container.v1
                 public class SetLocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetLocations request.</summary>
-                    public SetLocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLocationsRequest body, string name)
-                        : base(service)
+                    public SetLocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLocationsRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1873,16 +1799,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLocationsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setLocations";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setLocations";
 
                     /// <summary>Initializes SetLocations parameter list.</summary>
@@ -1890,15 +1816,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1916,8 +1841,7 @@ namespace Google.Apis.Container.v1
                 public class SetLoggingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetLogging request.</summary>
-                    public SetLoggingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string name)
-                        : base(service)
+                    public SetLoggingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1934,16 +1858,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLoggingServiceRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setLogging";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setLogging";
 
                     /// <summary>Initializes SetLogging parameter list.</summary>
@@ -1951,15 +1875,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -1977,8 +1900,7 @@ namespace Google.Apis.Container.v1
                 public class SetMaintenancePolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetMaintenancePolicy request.</summary>
-                    public SetMaintenancePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string name)
-                        : base(service)
+                    public SetMaintenancePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1995,16 +1917,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setMaintenancePolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setMaintenancePolicy";
 
                     /// <summary>Initializes SetMaintenancePolicy parameter list.</summary>
@@ -2012,15 +1934,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2040,8 +1961,7 @@ namespace Google.Apis.Container.v1
                 public class SetMasterAuthRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetMasterAuth request.</summary>
-                    public SetMasterAuthRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string name)
-                        : base(service)
+                    public SetMasterAuthRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2058,16 +1978,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMasterAuthRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setMasterAuth";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setMasterAuth";
 
                     /// <summary>Initializes SetMasterAuth parameter list.</summary>
@@ -2075,15 +1995,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2101,8 +2020,7 @@ namespace Google.Apis.Container.v1
                 public class SetMonitoringRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetMonitoring request.</summary>
-                    public SetMonitoringRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string name)
-                        : base(service)
+                    public SetMonitoringRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2119,16 +2037,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMonitoringServiceRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setMonitoring";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setMonitoring";
 
                     /// <summary>Initializes SetMonitoring parameter list.</summary>
@@ -2136,15 +2054,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2162,8 +2079,7 @@ namespace Google.Apis.Container.v1
                 public class SetNetworkPolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetNetworkPolicy request.</summary>
-                    public SetNetworkPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string name)
-                        : base(service)
+                    public SetNetworkPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2180,16 +2096,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetNetworkPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setNetworkPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setNetworkPolicy";
 
                     /// <summary>Initializes SetNetworkPolicy parameter list.</summary>
@@ -2197,15 +2113,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2223,8 +2138,7 @@ namespace Google.Apis.Container.v1
                 public class SetResourceLabelsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetResourceLabels request.</summary>
-                    public SetResourceLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLabelsRequest body, string name)
-                        : base(service)
+                    public SetResourceLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLabelsRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2241,16 +2155,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLabelsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setResourceLabels";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setResourceLabels";
 
                     /// <summary>Initializes SetResourceLabels parameter list.</summary>
@@ -2258,15 +2172,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2284,8 +2197,7 @@ namespace Google.Apis.Container.v1
                 public class StartIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new StartIpRotation request.</summary>
-                    public StartIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.StartIPRotationRequest body, string name)
-                        : base(service)
+                    public StartIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.StartIPRotationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2302,16 +2214,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.StartIPRotationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "startIpRotation";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:startIpRotation";
 
                     /// <summary>Initializes StartIpRotation parameter list.</summary>
@@ -2319,15 +2231,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2345,8 +2256,7 @@ namespace Google.Apis.Container.v1
                 public class UpdateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateClusterRequest body, string name)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateClusterRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2363,16 +2273,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.UpdateClusterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -2380,15 +2290,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2406,8 +2315,7 @@ namespace Google.Apis.Container.v1
                 public class UpdateMasterRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new UpdateMaster request.</summary>
-                    public UpdateMasterRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateMasterRequest body, string name)
-                        : base(service)
+                    public UpdateMasterRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateMasterRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2424,16 +2332,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.UpdateMasterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "updateMaster";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:updateMaster";
 
                     /// <summary>Initializes UpdateMaster parameter list.</summary>
@@ -2441,15 +2349,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2486,8 +2393,7 @@ namespace Google.Apis.Container.v1
                 public class CancelRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CancelOperationRequest body, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2504,16 +2410,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CancelOperationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -2521,15 +2427,14 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2546,8 +2451,7 @@ namespace Google.Apis.Container.v1
                 public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2577,13 +2481,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Zone { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2591,42 +2495,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                        RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "operationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2643,8 +2543,7 @@ namespace Google.Apis.Container.v1
                 public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2669,13 +2568,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Zone { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2683,33 +2582,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2727,8 +2623,7 @@ namespace Google.Apis.Container.v1
             public class GetServerConfigRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ServerConfig>
             {
                 /// <summary>Constructs a new GetServerConfig request.</summary>
-                public GetServerConfigRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetServerConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2753,13 +2648,13 @@ namespace Google.Apis.Container.v1
                 public virtual string Zone { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getServerConfig";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/serverConfig";
 
                 /// <summary>Initializes GetServerConfig parameter list.</summary>
@@ -2767,33 +2662,30 @@ namespace Google.Apis.Container.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "zone", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "zone",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2878,8 +2770,7 @@ namespace Google.Apis.Container.v1
                     public class AutoscalingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Autoscaling request.</summary>
-                        public AutoscalingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public AutoscalingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -2916,16 +2807,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "autoscaling";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling";
 
                         /// <summary>Initializes Autoscaling parameter list.</summary>
@@ -2933,42 +2824,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2992,8 +2879,7 @@ namespace Google.Apis.Container.v1
                     public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string projectId, string zone, string clusterId)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string projectId, string zone, string clusterId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3024,16 +2910,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.CreateNodePoolRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3041,33 +2927,30 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3093,8 +2976,7 @@ namespace Google.Apis.Container.v1
                     public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3132,13 +3014,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Name { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3146,51 +3028,46 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3216,8 +3093,7 @@ namespace Google.Apis.Container.v1
                     public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.NodePool>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3255,13 +3131,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Name { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3269,51 +3145,46 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3336,8 +3207,7 @@ namespace Google.Apis.Container.v1
                     public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListNodePoolsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3369,13 +3239,13 @@ namespace Google.Apis.Container.v1
                         public virtual string Parent { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3383,42 +3253,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3447,8 +3313,7 @@ namespace Google.Apis.Container.v1
                     public class RollbackRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Rollback request.</summary>
-                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3485,16 +3350,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "rollback";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback";
 
                         /// <summary>Initializes Rollback parameter list.</summary>
@@ -3502,42 +3367,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3564,8 +3425,7 @@ namespace Google.Apis.Container.v1
                     public class SetManagementRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetManagement request.</summary>
-                        public SetManagementRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public SetManagementRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3602,16 +3462,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolManagementRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setManagement";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement";
 
                         /// <summary>Initializes SetManagement parameter list.</summary>
@@ -3619,42 +3479,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3681,8 +3537,7 @@ namespace Google.Apis.Container.v1
                     public class SetSizeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetSize request.</summary>
-                        public SetSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public SetSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3719,16 +3574,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.SetNodePoolSizeRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setSize";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize";
 
                         /// <summary>Initializes SetSize parameter list.</summary>
@@ -3736,42 +3591,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3798,8 +3649,7 @@ namespace Google.Apis.Container.v1
                     public class UpdateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Update request.</summary>
-                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId)
-                            : base(service)
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId) : base(service)
                         {
                             ProjectId = projectId;
                             Zone = zone;
@@ -3836,16 +3686,16 @@ namespace Google.Apis.Container.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Container.v1.Data.UpdateNodePoolRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "update";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update";
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -3853,42 +3703,38 @@ namespace Google.Apis.Container.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("nodePoolId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nodePoolId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3913,8 +3759,7 @@ namespace Google.Apis.Container.v1
                 public class AddonsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Addons request.</summary>
-                    public AddonsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public AddonsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -3945,16 +3790,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetAddonsConfigRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "addons";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons";
 
                     /// <summary>Initializes Addons parameter list.</summary>
@@ -3962,33 +3807,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4012,8 +3854,7 @@ namespace Google.Apis.Container.v1
                 public class CompleteIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new CompleteIpRotation request.</summary>
-                    public CompleteIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public CompleteIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4044,16 +3885,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CompleteIPRotationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "completeIpRotation";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation";
 
                     /// <summary>Initializes CompleteIpRotation parameter list.</summary>
@@ -4061,33 +3902,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4119,8 +3957,7 @@ namespace Google.Apis.Container.v1
                 public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateClusterRequest body, string projectId, string zone)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CreateClusterRequest body, string projectId, string zone) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4145,16 +3982,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CreateClusterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4162,24 +3999,22 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4208,8 +4043,7 @@ namespace Google.Apis.Container.v1
                 public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4241,13 +4075,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Name { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4255,42 +4089,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4313,8 +4143,7 @@ namespace Google.Apis.Container.v1
                 public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Cluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4346,13 +4175,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Name { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4360,42 +4189,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4419,8 +4244,7 @@ namespace Google.Apis.Container.v1
                 public class LegacyAbacRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new LegacyAbac request.</summary>
-                    public LegacyAbacRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public LegacyAbacRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4451,16 +4275,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLegacyAbacRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "legacyAbac";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac";
 
                     /// <summary>Initializes LegacyAbac parameter list.</summary>
@@ -4468,33 +4292,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4515,8 +4336,7 @@ namespace Google.Apis.Container.v1
                 public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4542,13 +4362,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Parent { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4556,33 +4376,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4610,8 +4427,7 @@ namespace Google.Apis.Container.v1
                 public class LocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Locations request.</summary>
-                    public LocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public LocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4642,16 +4458,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLocationsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "locations";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations";
 
                     /// <summary>Initializes Locations parameter list.</summary>
@@ -4659,33 +4475,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4709,8 +4522,7 @@ namespace Google.Apis.Container.v1
                 public class LoggingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Logging request.</summary>
-                    public LoggingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public LoggingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4741,16 +4553,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLoggingServiceRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "logging";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging";
 
                     /// <summary>Initializes Logging parameter list.</summary>
@@ -4758,33 +4570,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4808,8 +4617,7 @@ namespace Google.Apis.Container.v1
                 public class MasterRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Master request.</summary>
-                    public MasterRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public MasterRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4840,16 +4648,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.UpdateMasterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "master";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master";
 
                     /// <summary>Initializes Master parameter list.</summary>
@@ -4857,33 +4665,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4907,8 +4712,7 @@ namespace Google.Apis.Container.v1
                 public class MonitoringRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Monitoring request.</summary>
-                    public MonitoringRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public MonitoringRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -4939,16 +4743,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMonitoringServiceRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "monitoring";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring";
 
                     /// <summary>Initializes Monitoring parameter list.</summary>
@@ -4956,33 +4760,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5006,8 +4807,7 @@ namespace Google.Apis.Container.v1
                 public class ResourceLabelsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new ResourceLabels request.</summary>
-                    public ResourceLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public ResourceLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5038,16 +4838,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetLabelsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "resourceLabels";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels";
 
                     /// <summary>Initializes ResourceLabels parameter list.</summary>
@@ -5055,33 +4855,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5103,8 +4900,7 @@ namespace Google.Apis.Container.v1
                 public class SetMaintenancePolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetMaintenancePolicy request.</summary>
-                    public SetMaintenancePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public SetMaintenancePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5133,16 +4929,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setMaintenancePolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy";
 
                     /// <summary>Initializes SetMaintenancePolicy parameter list.</summary>
@@ -5150,33 +4946,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5202,8 +4995,7 @@ namespace Google.Apis.Container.v1
                 public class SetMasterAuthRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetMasterAuth request.</summary>
-                    public SetMasterAuthRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public SetMasterAuthRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5234,16 +5026,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetMasterAuthRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setMasterAuth";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth";
 
                     /// <summary>Initializes SetMasterAuth parameter list.</summary>
@@ -5251,33 +5043,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5301,8 +5090,7 @@ namespace Google.Apis.Container.v1
                 public class SetNetworkPolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetNetworkPolicy request.</summary>
-                    public SetNetworkPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public SetNetworkPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5333,16 +5121,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.SetNetworkPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setNetworkPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy";
 
                     /// <summary>Initializes SetNetworkPolicy parameter list.</summary>
@@ -5350,33 +5138,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5400,8 +5185,7 @@ namespace Google.Apis.Container.v1
                 public class StartIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new StartIpRotation request.</summary>
-                    public StartIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public StartIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5432,16 +5216,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.StartIPRotationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "startIpRotation";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation";
 
                     /// <summary>Initializes StartIpRotation parameter list.</summary>
@@ -5449,33 +5233,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5499,8 +5280,7 @@ namespace Google.Apis.Container.v1
                 public class UpdateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateClusterRequest body, string projectId, string zone, string clusterId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateClusterRequest body, string projectId, string zone, string clusterId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5531,16 +5311,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.UpdateClusterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -5548,33 +5328,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5617,8 +5394,7 @@ namespace Google.Apis.Container.v1
                 public class CancelRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CancelOperationRequest body, string projectId, string zone, string operationId)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CancelOperationRequest body, string projectId, string zone, string operationId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5649,16 +5425,16 @@ namespace Google.Apis.Container.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Container.v1.Data.CancelOperationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -5666,33 +5442,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "operationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5715,8 +5488,7 @@ namespace Google.Apis.Container.v1
                 public class GetRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string operationId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string zone, string operationId) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5748,13 +5520,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Name { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/operations/{operationId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -5762,42 +5534,38 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "operationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5818,8 +5586,7 @@ namespace Google.Apis.Container.v1
                 public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string zone) : base(service)
                     {
                         ProjectId = projectId;
                         Zone = zone;
@@ -5845,13 +5612,13 @@ namespace Google.Apis.Container.v1
                     public virtual string Parent { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/zones/{zone}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5859,33 +5626,30 @@ namespace Google.Apis.Container.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "zone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5907,8 +5671,7 @@ namespace Google.Apis.Container.v1
             public class GetServerconfigRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.ServerConfig>
             {
                 /// <summary>Constructs a new GetServerconfig request.</summary>
-                public GetServerconfigRequest(Google.Apis.Services.IClientService service, string projectId, string zone)
-                    : base(service)
+                public GetServerconfigRequest(Google.Apis.Services.IClientService service, string projectId, string zone) : base(service)
                 {
                     ProjectId = projectId;
                     Zone = zone;
@@ -5934,13 +5697,13 @@ namespace Google.Apis.Container.v1
                 public virtual string Name { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getServerconfig";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/projects/{projectId}/zones/{zone}/serverconfig";
 
                 /// <summary>Initializes GetServerconfig parameter list.</summary>
@@ -5948,33 +5711,30 @@ namespace Google.Apis.Container.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "zone", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "zone",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

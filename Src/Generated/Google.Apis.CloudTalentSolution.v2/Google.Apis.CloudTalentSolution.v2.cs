@@ -18,17 +18,16 @@ namespace Google.Apis.CloudTalentSolution.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudTalentSolutionService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudTalentSolutionService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudTalentSolutionService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudTalentSolutionService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Companies = new CompaniesResource(this);
             Jobs = new JobsResource(this);
@@ -94,12 +93,11 @@ namespace Google.Apis.CloudTalentSolution.v2
         public virtual V2Resource V2 { get; }
     }
 
-    ///<summary>A base abstract class for CloudTalentSolution requests.</summary>
+    /// <summary>A base abstract class for CloudTalentSolution requests.</summary>
     public abstract class CloudTalentSolutionBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudTalentSolutionBaseServiceRequest instance.</summary>
-        protected CloudTalentSolutionBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudTalentSolutionBaseServiceRequest instance.</summary>
+        protected CloudTalentSolutionBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -179,105 +177,94 @@ namespace Google.Apis.CloudTalentSolution.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -328,8 +315,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListCompanyJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string companyName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string companyName) : base(service)
                 {
                     CompanyName = companyName;
                     InitParameters();
@@ -368,13 +354,13 @@ namespace Google.Apis.CloudTalentSolution.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+companyName}/jobs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -382,60 +368,54 @@ namespace Google.Apis.CloudTalentSolution.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "companyName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "companyName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^companies/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "idsOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeJobsCount", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeJobsCount",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobRequisitionId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("companyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "companyName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^companies/[^/]+$",
+                    });
+                    RequestParameters.Add("idsOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeJobsCount", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeJobsCount",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobRequisitionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobRequisitionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -452,8 +432,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class CreateRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -464,16 +443,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.Company Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/companies";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -497,8 +476,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class DeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -511,13 +489,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -525,15 +503,14 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^companies/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^companies/[^/]+$",
+                });
             }
 
         }
@@ -550,8 +527,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class GetRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -564,13 +540,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -578,15 +554,14 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^companies/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^companies/[^/]+$",
+                });
             }
 
         }
@@ -601,8 +576,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListCompaniesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -624,13 +598,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/companies";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -638,33 +612,30 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mustHaveOpenJobs",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -684,8 +655,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class PatchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body, string name)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -712,16 +682,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.Company Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -729,24 +699,22 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^companies/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateCompanyFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateCompanyFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^companies/[^/]+$",
+                });
+                RequestParameters.Add("updateCompanyFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateCompanyFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -779,8 +747,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class BatchDeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
-            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest body)
-                : base(service)
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -791,16 +758,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchDelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs:batchDelete";
 
             /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -825,8 +792,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class CreateRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -837,16 +803,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -871,8 +837,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class DeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -890,13 +855,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual System.Nullable<bool> DisableFastProcess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -904,24 +869,22 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^jobs/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "disableFastProcess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "disableFastProcess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^jobs/[^/]+$",
+                });
+                RequestParameters.Add("disableFastProcess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "disableFastProcess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -941,8 +904,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class DeleteByFilterRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new DeleteByFilter request.</summary>
-            public DeleteByFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest body)
-                : base(service)
+            public DeleteByFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -953,16 +915,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteByFilter";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs:deleteByFilter";
 
             /// <summary>Initializes DeleteByFilter parameter list.</summary>
@@ -987,8 +949,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class GetRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -1000,13 +961,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1014,15 +975,14 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^jobs/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^jobs/[^/]+$",
+                });
             }
 
         }
@@ -1046,8 +1006,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class HistogramRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.GetHistogramResponse>
         {
             /// <summary>Constructs a new Histogram request.</summary>
-            public HistogramRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest body)
-                : base(service)
+            public HistogramRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1058,16 +1017,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "histogram";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs:histogram";
 
             /// <summary>Initializes Histogram parameter list.</summary>
@@ -1089,8 +1048,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListJobsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1118,13 +1076,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1132,42 +1090,38 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "idsOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "idsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("idsOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "idsOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1188,8 +1142,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class PatchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest body, string name)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -1207,16 +1160,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1224,15 +1177,14 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^jobs/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^jobs/[^/]+$",
+                });
             }
 
         }
@@ -1250,8 +1202,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class SearchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.SearchJobsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1262,16 +1213,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs:search";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -1302,8 +1253,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class SearchForAlertRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.SearchJobsResponse>
         {
             /// <summary>Constructs a new SearchForAlert request.</summary>
-            public SearchForAlertRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
-                : base(service)
+            public SearchForAlertRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1314,16 +1264,16 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchForAlert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/jobs:searchForAlert";
 
             /// <summary>Initializes SearchForAlert parameter list.</summary>
@@ -1364,8 +1314,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         public class CompleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.CompleteQueryResponse>
         {
             /// <summary>Constructs a new Complete request.</summary>
-            public CompleteRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public CompleteRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1432,13 +1381,13 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "complete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2:complete";
 
             /// <summary>Initializes Complete parameter list.</summary>
@@ -1446,60 +1395,54 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "companyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("companyName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "companyName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

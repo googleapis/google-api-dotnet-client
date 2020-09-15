@@ -18,17 +18,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DoubleClickBidManagerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DoubleClickBidManagerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DoubleClickBidManagerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DoubleClickBidManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Lineitems = new LineitemsResource(this);
             Queries = new QueriesResource(this);
@@ -92,12 +91,11 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public virtual SdfResource Sdf { get; }
     }
 
-    ///<summary>A base abstract class for DoubleClickBidManager requests.</summary>
+    /// <summary>A base abstract class for DoubleClickBidManager requests.</summary>
     public abstract class DoubleClickBidManagerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DoubleClickBidManagerBaseServiceRequest instance.</summary>
-        protected DoubleClickBidManagerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DoubleClickBidManagerBaseServiceRequest instance.</summary>
+        protected DoubleClickBidManagerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -177,105 +175,94 @@ namespace Google.Apis.DoubleClickBidManager.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -306,8 +293,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsResponse>
         {
             /// <summary>Constructs a new Downloadlineitems request.</summary>
-            public DownloadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsRequest body)
-                : base(service)
+            public DownloadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -318,16 +304,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "downloadlineitems";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "lineitems/downloadlineitems";
 
             /// <summary>Initializes Downloadlineitems parameter list.</summary>
@@ -350,8 +336,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsResponse>
         {
             /// <summary>Constructs a new Uploadlineitems request.</summary>
-            public UploadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsRequest body)
-                : base(service)
+            public UploadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -362,16 +347,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "uploadlineitems";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "lineitems/uploadlineitems";
 
             /// <summary>Initializes Uploadlineitems parameter list.</summary>
@@ -411,8 +396,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class CreatequeryRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.Query>
         {
             /// <summary>Constructs a new Createquery request.</summary>
-            public CreatequeryRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.Query body)
-                : base(service)
+            public CreatequeryRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.Query body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -423,16 +407,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1.Data.Query Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createquery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "query";
 
             /// <summary>Initializes Createquery parameter list.</summary>
@@ -455,8 +439,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class DeletequeryRequest : DoubleClickBidManagerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Deletequery request.</summary>
-            public DeletequeryRequest(Google.Apis.Services.IClientService service, long queryId)
-                : base(service)
+            public DeletequeryRequest(Google.Apis.Services.IClientService service, long queryId) : base(service)
             {
                 QueryId = queryId;
                 InitParameters();
@@ -468,13 +451,13 @@ namespace Google.Apis.DoubleClickBidManager.v1
             public virtual long QueryId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deletequery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "query/{queryId}";
 
             /// <summary>Initializes Deletequery parameter list.</summary>
@@ -482,15 +465,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "queryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "queryId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "queryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -506,8 +488,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class GetqueryRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.Query>
         {
             /// <summary>Constructs a new Getquery request.</summary>
-            public GetqueryRequest(Google.Apis.Services.IClientService service, long queryId)
-                : base(service)
+            public GetqueryRequest(Google.Apis.Services.IClientService service, long queryId) : base(service)
             {
                 QueryId = queryId;
                 InitParameters();
@@ -519,13 +500,13 @@ namespace Google.Apis.DoubleClickBidManager.v1
             public virtual long QueryId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getquery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "query/{queryId}";
 
             /// <summary>Initializes Getquery parameter list.</summary>
@@ -533,15 +514,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "queryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "queryId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "queryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -556,21 +536,20 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class ListqueriesRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.ListQueriesResponse>
         {
             /// <summary>Constructs a new Listqueries request.</summary>
-            public ListqueriesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListqueriesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listqueries";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "queries";
 
             /// <summary>Initializes Listqueries parameter list.</summary>
@@ -594,8 +573,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class RunqueryRequest : DoubleClickBidManagerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Runquery request.</summary>
-            public RunqueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.RunQueryRequest body, long queryId)
-                : base(service)
+            public RunqueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.RunQueryRequest body, long queryId) : base(service)
             {
                 QueryId = queryId;
                 Body = body;
@@ -611,16 +589,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1.Data.RunQueryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "runquery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "query/{queryId}";
 
             /// <summary>Initializes Runquery parameter list.</summary>
@@ -628,15 +606,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "queryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "queryId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "queryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -669,8 +646,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class ListreportsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.ListReportsResponse>
         {
             /// <summary>Constructs a new Listreports request.</summary>
-            public ListreportsRequest(Google.Apis.Services.IClientService service, long queryId)
-                : base(service)
+            public ListreportsRequest(Google.Apis.Services.IClientService service, long queryId) : base(service)
             {
                 QueryId = queryId;
                 InitParameters();
@@ -682,13 +658,13 @@ namespace Google.Apis.DoubleClickBidManager.v1
             public virtual long QueryId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listreports";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "queries/{queryId}/reports";
 
             /// <summary>Initializes Listreports parameter list.</summary>
@@ -696,15 +672,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "queryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "queryId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "queryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -737,8 +712,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
         public class DownloadRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.DownloadResponse>
         {
             /// <summary>Constructs a new Download request.</summary>
-            public DownloadRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest body)
-                : base(service)
+            public DownloadRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -749,16 +723,16 @@ namespace Google.Apis.DoubleClickBidManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "download";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sdf/download";
 
             /// <summary>Initializes Download parameter list.</summary>

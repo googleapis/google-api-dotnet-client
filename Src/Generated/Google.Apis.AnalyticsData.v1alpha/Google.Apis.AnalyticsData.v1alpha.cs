@@ -18,17 +18,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public const string Version = "v1alpha";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AnalyticsDataService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AnalyticsDataService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AnalyticsDataService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AnalyticsDataService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             V1alpha = new V1alphaResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public virtual V1alphaResource V1alpha { get; }
     }
 
-    ///<summary>A base abstract class for AnalyticsData requests.</summary>
+    /// <summary>A base abstract class for AnalyticsData requests.</summary>
     public abstract class AnalyticsDataBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AnalyticsDataBaseServiceRequest instance.</summary>
-        protected AnalyticsDataBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AnalyticsDataBaseServiceRequest instance.</summary>
+        protected AnalyticsDataBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.AnalyticsData.v1alpha
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -300,8 +287,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public class BatchRunPivotReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsResponse>
         {
             /// <summary>Constructs a new BatchRunPivotReports request.</summary>
-            public BatchRunPivotReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest body)
-                : base(service)
+            public BatchRunPivotReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -312,16 +298,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchRunPivotReports";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1alpha:batchRunPivotReports";
 
             /// <summary>Initializes BatchRunPivotReports parameter list.</summary>
@@ -344,8 +330,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public class BatchRunReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsResponse>
         {
             /// <summary>Constructs a new BatchRunReports request.</summary>
-            public BatchRunReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest body)
-                : base(service)
+            public BatchRunReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -356,16 +341,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchRunReports";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1alpha:batchRunReports";
 
             /// <summary>Initializes BatchRunReports parameter list.</summary>
@@ -393,21 +378,20 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public class GetUniversalMetadataRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.UniversalMetadata>
         {
             /// <summary>Constructs a new GetUniversalMetadata request.</summary>
-            public GetUniversalMetadataRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetUniversalMetadataRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getUniversalMetadata";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1alpha/universalMetadata";
 
             /// <summary>Initializes GetUniversalMetadata parameter list.</summary>
@@ -434,8 +418,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public class RunPivotReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportResponse>
         {
             /// <summary>Constructs a new RunPivotReport request.</summary>
-            public RunPivotReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest body)
-                : base(service)
+            public RunPivotReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -446,16 +429,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "runPivotReport";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1alpha:runPivotReport";
 
             /// <summary>Initializes RunPivotReport parameter list.</summary>
@@ -486,8 +469,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public class RunReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunReportResponse>
         {
             /// <summary>Constructs a new RunReport request.</summary>
-            public RunReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest body)
-                : base(service)
+            public RunReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -498,16 +480,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "runReport";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1alpha:runReport";
 
             /// <summary>Initializes RunReport parameter list.</summary>

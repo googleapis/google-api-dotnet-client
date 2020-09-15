@@ -18,17 +18,16 @@ namespace Google.Apis.AdSense.v1_4
         public const string Version = "v1.4";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AdSenseService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AdSenseService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AdSenseService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AdSenseService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
             Adclients = new AdclientsResource(this);
@@ -122,12 +121,11 @@ namespace Google.Apis.AdSense.v1_4
         public virtual UrlchannelsResource Urlchannels { get; }
     }
 
-    ///<summary>A base abstract class for AdSense requests.</summary>
+    /// <summary>A base abstract class for AdSense requests.</summary>
     public abstract class AdSenseBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AdSenseBaseServiceRequest instance.</summary>
-        protected AdSenseBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AdSenseBaseServiceRequest instance.</summary>
+        protected AdSenseBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -177,69 +175,62 @@ namespace Google.Apis.AdSense.v1_4
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -298,8 +289,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GetAdCodeRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdCode>
             {
                 /// <summary>Constructs a new GetAdCode request.</summary>
-                public GetAdCodeRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId)
-                    : base(service)
+                public GetAdCodeRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -316,13 +306,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string AdClientId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAdCode";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/adcode";
 
                 /// <summary>Initializes GetAdCode parameter list.</summary>
@@ -330,24 +320,22 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -363,8 +351,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdClients>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -385,13 +372,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -399,33 +386,30 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -483,8 +467,7 @@ namespace Google.Apis.AdSense.v1_4
                 public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannels>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId) : base(service)
                     {
                         AccountId = accountId;
                         AdClientId = adClientId;
@@ -516,13 +499,13 @@ namespace Google.Apis.AdSense.v1_4
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/customchannels";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -530,51 +513,46 @@ namespace Google.Apis.AdSense.v1_4
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "adClientId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "adClientId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "adUnitId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "adUnitId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "maxResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "maxResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "adClientId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "adUnitId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -594,8 +572,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnit>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -617,13 +594,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string AdUnitId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -631,33 +608,30 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adUnitId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adUnitId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adUnitId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -676,8 +650,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GetAdCodeRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdCode>
             {
                 /// <summary>Constructs a new GetAdCode request.</summary>
-                public GetAdCodeRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId)
-                    : base(service)
+                public GetAdCodeRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string adUnitId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -699,13 +672,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string AdUnitId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAdCode";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode";
 
                 /// <summary>Initializes GetAdCode parameter list.</summary>
@@ -713,33 +686,30 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adUnitId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adUnitId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adUnitId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -757,8 +727,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnits>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -788,13 +757,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/adunits";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -802,51 +771,46 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeInactive", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeInactive",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeInactive",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -883,8 +847,7 @@ namespace Google.Apis.AdSense.v1_4
             public class DeleteRequest : AdSenseBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string alertId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string alertId) : base(service)
                 {
                     AccountId = accountId;
                     AlertId = alertId;
@@ -901,13 +864,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string AlertId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/alerts/{alertId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -915,24 +878,22 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "alertId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alertId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alertId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -948,8 +909,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Alerts>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -967,13 +927,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string Locale { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/alerts";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -981,24 +941,22 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1056,8 +1014,7 @@ namespace Google.Apis.AdSense.v1_4
                 public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnits>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string customChannelId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string customChannelId) : base(service)
                     {
                         AccountId = accountId;
                         AdClientId = adClientId;
@@ -1092,13 +1049,13 @@ namespace Google.Apis.AdSense.v1_4
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}/adunits";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1106,60 +1063,54 @@ namespace Google.Apis.AdSense.v1_4
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "adClientId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "adClientId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "customChannelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "customChannelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "maxResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "maxResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "adClientId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("customChannelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customChannelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeInactive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1182,8 +1133,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannel>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string customChannelId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId, string customChannelId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -1205,13 +1155,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string CustomChannelId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1219,33 +1169,30 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customChannelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customChannelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customChannelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customChannelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1263,8 +1210,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannels>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -1291,13 +1237,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/customchannels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1305,42 +1251,38 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1375,8 +1317,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Payments>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -1388,13 +1329,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string AccountId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/payments";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1402,15 +1343,14 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1468,8 +1408,7 @@ namespace Google.Apis.AdSense.v1_4
                 public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
                 {
                     /// <summary>Constructs a new Generate request.</summary>
-                    public GenerateRequest(Google.Apis.Services.IClientService service, string accountId, string savedReportId)
-                        : base(service)
+                    public GenerateRequest(Google.Apis.Services.IClientService service, string accountId, string savedReportId) : base(service)
                     {
                         AccountId = accountId;
                         SavedReportId = savedReportId;
@@ -1499,13 +1438,13 @@ namespace Google.Apis.AdSense.v1_4
                     public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "generate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "accounts/{accountId}/reports/{savedReportId}";
 
                     /// <summary>Initializes Generate parameter list.</summary>
@@ -1513,51 +1452,46 @@ namespace Google.Apis.AdSense.v1_4
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "savedReportId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "savedReportId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "locale", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locale",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = @"[a-zA-Z_]+",
-                            });
-                        RequestParameters.Add(
-                            "maxResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "maxResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "startIndex", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "startIndex",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("savedReportId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedReportId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locale",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = @"[a-zA-Z_]+",
+                        });
+                        RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startIndex",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1573,8 +1507,7 @@ namespace Google.Apis.AdSense.v1_4
                 public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedReports>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                     {
                         AccountId = accountId;
                         InitParameters();
@@ -1596,13 +1529,13 @@ namespace Google.Apis.AdSense.v1_4
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "accounts/{accountId}/reports/saved";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1610,33 +1543,30 @@ namespace Google.Apis.AdSense.v1_4
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "maxResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "maxResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1659,8 +1589,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
-                public GenerateRequest(Google.Apis.Services.IClientService service, string accountId, string startDate, string endDate)
-                    : base(service)
+                public GenerateRequest(Google.Apis.Services.IClientService service, string accountId, string startDate, string endDate) : base(service)
                 {
                     AccountId = accountId;
                     StartDate = startDate;
@@ -1724,13 +1653,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual System.Nullable<bool> UseTimezoneReporting { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/reports";
 
                 /// <summary>Initializes Generate parameter list.</summary>
@@ -1738,114 +1667,102 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startDate", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startDate",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
-                        });
-                    RequestParameters.Add(
-                        "endDate", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endDate",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
-                        });
-                    RequestParameters.Add(
-                        "currency", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "currency",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z]+",
-                        });
-                    RequestParameters.Add(
-                        "dimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z_]+",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z_]+(==|=@).+",
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z_]+",
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "metric", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metric",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z_]+",
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(\+|-)?[a-zA-Z_]+",
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "useTimezoneReporting", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "useTimezoneReporting",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startDate",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
+                    });
+                    RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endDate",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
+                    });
+                    RequestParameters.Add("currency", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "currency",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z]+",
+                    });
+                    RequestParameters.Add("dimension", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimension",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z_]+",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z_]+(==|=@).+",
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z_]+",
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("metric", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metric",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z_]+",
+                    });
+                    RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(\+|-)?[a-zA-Z_]+",
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("useTimezoneReporting", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useTimezoneReporting",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
                 /// <summary>Gets the media downloader.</summary>
@@ -1934,8 +1851,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedAdStyle>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string savedAdStyleId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string savedAdStyleId) : base(service)
                 {
                     AccountId = accountId;
                     SavedAdStyleId = savedAdStyleId;
@@ -1952,13 +1868,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string SavedAdStyleId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/savedadstyles/{savedAdStyleId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1966,24 +1882,22 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "savedAdStyleId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "savedAdStyleId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("savedAdStyleId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "savedAdStyleId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1999,8 +1913,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedAdStyles>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -2022,13 +1935,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/savedadstyles";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2036,33 +1949,30 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2099,8 +2009,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.UrlChannels>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string adClientId) : base(service)
                 {
                     AccountId = accountId;
                     AdClientId = adClientId;
@@ -2126,13 +2035,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "accounts/{accountId}/adclients/{adClientId}/urlchannels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2140,42 +2049,38 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2192,8 +2097,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
             {
                 AccountId = accountId;
                 InitParameters();
@@ -2209,13 +2113,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual System.Nullable<bool> Tree { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounts/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2223,24 +2127,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tree", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tree",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tree", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tree",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2255,8 +2157,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Accounts>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2272,13 +2173,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2286,24 +2187,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2335,8 +2234,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdClients>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2352,13 +2250,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2366,24 +2264,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2437,8 +2333,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannels>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId) : base(service)
                 {
                     AdClientId = adClientId;
                     AdUnitId = adUnitId;
@@ -2465,13 +2360,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "adclients/{adClientId}/adunits/{adUnitId}/customchannels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2479,42 +2374,38 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "adUnitId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adUnitId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adUnitId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2533,8 +2424,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnit>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId) : base(service)
             {
                 AdClientId = adClientId;
                 AdUnitId = adUnitId;
@@ -2551,13 +2441,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string AdUnitId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/adunits/{adUnitId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2565,24 +2455,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adUnitId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adUnitId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adUnitId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2600,8 +2488,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GetAdCodeRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdCode>
         {
             /// <summary>Constructs a new GetAdCode request.</summary>
-            public GetAdCodeRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId)
-                : base(service)
+            public GetAdCodeRequest(Google.Apis.Services.IClientService service, string adClientId, string adUnitId) : base(service)
             {
                 AdClientId = adClientId;
                 AdUnitId = adUnitId;
@@ -2618,13 +2505,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string AdUnitId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAdCode";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/adunits/{adUnitId}/adcode";
 
             /// <summary>Initializes GetAdCode parameter list.</summary>
@@ -2632,24 +2519,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adUnitId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adUnitId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adUnitId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adUnitId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2665,8 +2550,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnits>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string adClientId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string adClientId) : base(service)
             {
                 AdClientId = adClientId;
                 InitParameters();
@@ -2691,13 +2575,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/adunits";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2705,42 +2589,38 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeInactive", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeInactive",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeInactive",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2773,8 +2653,7 @@ namespace Google.Apis.AdSense.v1_4
         public class DeleteRequest : AdSenseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string alertId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
             {
                 AlertId = alertId;
                 InitParameters();
@@ -2786,13 +2665,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string AlertId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "alerts/{alertId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2800,15 +2679,14 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "alertId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alertId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alertId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2823,8 +2701,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Alerts>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2837,13 +2714,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string Locale { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "alerts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2851,15 +2728,14 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2913,8 +2789,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdUnits>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string adClientId, string customChannelId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string adClientId, string customChannelId) : base(service)
                 {
                     AdClientId = adClientId;
                     CustomChannelId = customChannelId;
@@ -2944,13 +2819,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "adclients/{adClientId}/customchannels/{customChannelId}/adunits";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2958,51 +2833,46 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "adClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "adClientId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customChannelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customChannelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeInactive", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeInactive",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adClientId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customChannelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customChannelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeInactive",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3021,8 +2891,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannel>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string adClientId, string customChannelId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string adClientId, string customChannelId) : base(service)
             {
                 AdClientId = adClientId;
                 CustomChannelId = customChannelId;
@@ -3039,13 +2908,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string CustomChannelId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/customchannels/{customChannelId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3053,24 +2922,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customChannelId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customChannelId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customChannelId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3086,8 +2953,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannels>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string adClientId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string adClientId) : base(service)
             {
                 AdClientId = adClientId;
                 InitParameters();
@@ -3108,13 +2974,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/customchannels";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3122,33 +2988,30 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3200,21 +3063,20 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Metadata>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
 
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "metadata/dimensions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3255,21 +3117,20 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Metadata>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
 
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "metadata/metrics";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3309,21 +3170,20 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.Payments>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "payments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3382,8 +3242,7 @@ namespace Google.Apis.AdSense.v1_4
             public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
-                public GenerateRequest(Google.Apis.Services.IClientService service, string savedReportId)
-                    : base(service)
+                public GenerateRequest(Google.Apis.Services.IClientService service, string savedReportId) : base(service)
                 {
                     SavedReportId = savedReportId;
                     InitParameters();
@@ -3408,13 +3267,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "reports/{savedReportId}";
 
                 /// <summary>Initializes Generate parameter list.</summary>
@@ -3422,42 +3281,38 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "savedReportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "savedReportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[a-zA-Z_]+",
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("savedReportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "savedReportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[a-zA-Z_]+",
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3472,8 +3327,7 @@ namespace Google.Apis.AdSense.v1_4
             public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedReports>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -3489,13 +3343,13 @@ namespace Google.Apis.AdSense.v1_4
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "reports/saved";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3503,24 +3357,22 @@ namespace Google.Apis.AdSense.v1_4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3541,8 +3393,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
         {
             /// <summary>Constructs a new Generate request.</summary>
-            public GenerateRequest(Google.Apis.Services.IClientService service, string startDate, string endDate)
-                : base(service)
+            public GenerateRequest(Google.Apis.Services.IClientService service, string startDate, string endDate) : base(service)
             {
                 StartDate = startDate;
                 EndDate = endDate;
@@ -3605,13 +3456,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual System.Nullable<bool> UseTimezoneReporting { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "reports";
 
             /// <summary>Initializes Generate parameter list.</summary>
@@ -3619,114 +3470,102 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "currency", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currency",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z]+",
-                    });
-                RequestParameters.Add(
-                    "dimension", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dimension",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z_]+",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z_]+(==|=@).+",
-                    });
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z_]+",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metric", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metric",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z_]+",
-                    });
-                RequestParameters.Add(
-                    "sort", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sort",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(\+|-)?[a-zA-Z_]+",
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useTimezoneReporting", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useTimezoneReporting",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)",
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("currency", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "currency",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z]+",
+                });
+                RequestParameters.Add("dimension", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dimension",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z_]+",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z_]+(==|=@).+",
+                });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z_]+",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("metric", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "metric",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z_]+",
+                });
+                RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sort",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(\+|-)?[a-zA-Z_]+",
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useTimezoneReporting", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useTimezoneReporting",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -3811,8 +3650,7 @@ namespace Google.Apis.AdSense.v1_4
         public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedAdStyle>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string savedAdStyleId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string savedAdStyleId) : base(service)
             {
                 SavedAdStyleId = savedAdStyleId;
                 InitParameters();
@@ -3824,13 +3662,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string SavedAdStyleId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "savedadstyles/{savedAdStyleId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3838,15 +3676,14 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "savedAdStyleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "savedAdStyleId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("savedAdStyleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "savedAdStyleId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3861,8 +3698,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.SavedAdStyles>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -3878,13 +3714,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "savedadstyles";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3892,24 +3728,22 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3942,8 +3776,7 @@ namespace Google.Apis.AdSense.v1_4
         public class ListRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.UrlChannels>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string adClientId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string adClientId) : base(service)
             {
                 AdClientId = adClientId;
                 InitParameters();
@@ -3964,13 +3797,13 @@ namespace Google.Apis.AdSense.v1_4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "adclients/{adClientId}/urlchannels";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3978,33 +3811,30 @@ namespace Google.Apis.AdSense.v1_4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "adClientId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adClientId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adClientId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

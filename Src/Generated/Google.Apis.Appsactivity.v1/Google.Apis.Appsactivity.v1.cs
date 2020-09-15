@@ -18,17 +18,16 @@ namespace Google.Apis.Appsactivity.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AppsactivityService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AppsactivityService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AppsactivityService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AppsactivityService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Activities = new ActivitiesResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Appsactivity.v1
         public virtual ActivitiesResource Activities { get; }
     }
 
-    ///<summary>A base abstract class for Appsactivity requests.</summary>
+    /// <summary>A base abstract class for Appsactivity requests.</summary>
     public abstract class AppsactivityBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AppsactivityBaseServiceRequest instance.</summary>
-        protected AppsactivityBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AppsactivityBaseServiceRequest instance.</summary>
+        protected AppsactivityBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -132,69 +130,62 @@ namespace Google.Apis.Appsactivity.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -230,8 +221,7 @@ namespace Google.Apis.Appsactivity.v1
         public class ListRequest : AppsactivityBaseServiceRequest<Google.Apis.Appsactivity.v1.Data.ListActivitiesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -280,13 +270,13 @@ namespace Google.Apis.Appsactivity.v1
             public virtual string UserId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "activities";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -294,69 +284,62 @@ namespace Google.Apis.Appsactivity.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "drive.ancestorId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "drive.ancestorId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "drive.fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "drive.fileId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "groupingStrategy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupingStrategy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "driveUi",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "50",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "me",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("drive.ancestorId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "drive.ancestorId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("drive.fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "drive.fileId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("groupingStrategy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupingStrategy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "driveUi",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "50",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "me",
+                    Pattern = null,
+                });
             }
 
         }

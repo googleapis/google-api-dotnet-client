@@ -18,17 +18,16 @@ namespace Google.Apis.ShoppingContent.v2_1
         public const string Version = "v2.1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ShoppingContentService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ShoppingContentService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ShoppingContentService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ShoppingContentService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
             Accountstatuses = new AccountstatusesResource(this);
@@ -160,12 +159,11 @@ namespace Google.Apis.ShoppingContent.v2_1
         public virtual ShippingsettingsResource Shippingsettings { get; }
     }
 
-    ///<summary>A base abstract class for ShoppingContent requests.</summary>
+    /// <summary>A base abstract class for ShoppingContent requests.</summary>
     public abstract class ShoppingContentBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ShoppingContentBaseServiceRequest instance.</summary>
-        protected ShoppingContentBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ShoppingContentBaseServiceRequest instance.</summary>
+        protected ShoppingContentBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -212,69 +210,62 @@ namespace Google.Apis.ShoppingContent.v2_1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -304,21 +295,20 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class AuthinfoRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsAuthInfoResponse>
         {
             /// <summary>Constructs a new Authinfo request.</summary>
-            public AuthinfoRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public AuthinfoRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "authinfo";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounts/authinfo";
 
             /// <summary>Initializes Authinfo parameter list.</summary>
@@ -344,8 +334,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ClaimwebsiteRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsClaimWebsiteResponse>
         {
             /// <summary>Constructs a new Claimwebsite request.</summary>
-            public ClaimwebsiteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public ClaimwebsiteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -369,13 +358,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual System.Nullable<bool> Overwrite { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "claimwebsite";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}/claimwebsite";
 
             /// <summary>Initializes Claimwebsite parameter list.</summary>
@@ -383,33 +372,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "overwrite", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "overwrite",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("overwrite", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "overwrite",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -427,8 +413,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -439,16 +424,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccountsCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounts/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -473,8 +458,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -496,13 +480,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual System.Nullable<bool> Force { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -510,33 +494,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "force", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "force",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "force",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -555,8 +536,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -590,13 +570,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -604,33 +584,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -647,8 +624,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -664,16 +640,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Account Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -681,15 +657,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -711,8 +686,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class LinkRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsLinkResponse>
         {
             /// <summary>Constructs a new Link request.</summary>
-            public LinkRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsLinkRequest body, ulong merchantId, ulong accountId)
-                : base(service)
+            public LinkRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsLinkRequest body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -735,16 +709,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccountsLinkRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "link";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}/link";
 
             /// <summary>Initializes Link parameter list.</summary>
@@ -752,24 +726,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -785,8 +757,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -825,13 +796,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -839,51 +810,46 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "label", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "label",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("label", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "label",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -902,8 +868,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListlinksRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsListLinksResponse>
         {
             /// <summary>Constructs a new Listlinks request.</summary>
-            public ListlinksRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public ListlinksRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -930,13 +895,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listlinks";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}/listlinks";
 
             /// <summary>Initializes Listlinks parameter list.</summary>
@@ -944,42 +909,38 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1001,8 +962,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId, ulong accountId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -1025,16 +985,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Account Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1042,24 +1002,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1078,8 +1036,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdatelabelsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsResponse>
         {
             /// <summary>Constructs a new Updatelabels request.</summary>
-            public UpdatelabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest body, ulong merchantId, ulong accountId)
-                : base(service)
+            public UpdatelabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -1100,16 +1057,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updatelabels";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounts/{accountId}/updatelabels";
 
             /// <summary>Initializes Updatelabels parameter list.</summary>
@@ -1117,24 +1074,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1167,8 +1122,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1179,16 +1133,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accountstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -1216,8 +1170,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -1241,13 +1194,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accountstatuses/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1255,33 +1208,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1297,8 +1247,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -1323,13 +1272,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accountstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1337,42 +1286,38 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1405,8 +1350,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccounttaxCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccounttaxCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccounttaxCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1417,16 +1361,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccounttaxCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounttax/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -1453,8 +1397,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountTax>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -1473,13 +1416,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong AccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounttax/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1487,24 +1430,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1520,8 +1461,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccounttaxListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -1541,13 +1481,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounttax";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1555,33 +1495,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1604,8 +1541,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountTax body, ulong merchantId, ulong accountId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountTax body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -1628,16 +1564,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.AccountTax Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/accounttax/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1645,24 +1581,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1695,8 +1629,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.DatafeedsCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.DatafeedsCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1707,16 +1640,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.DatafeedsCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "datafeeds/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -1741,8 +1674,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId) : base(service)
             {
                 MerchantId = merchantId;
                 DatafeedId = datafeedId;
@@ -1760,13 +1692,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong DatafeedId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1774,24 +1706,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datafeedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datafeedId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datafeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datafeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1809,8 +1739,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class FetchnowRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedsFetchNowResponse>
         {
             /// <summary>Constructs a new Fetchnow request.</summary>
-            public FetchnowRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId)
-                : base(service)
+            public FetchnowRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId) : base(service)
             {
                 MerchantId = merchantId;
                 DatafeedId = datafeedId;
@@ -1828,13 +1757,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong DatafeedId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "fetchnow";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds/{datafeedId}/fetchNow";
 
             /// <summary>Initializes Fetchnow parameter list.</summary>
@@ -1842,24 +1771,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datafeedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datafeedId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datafeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datafeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1877,8 +1804,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Datafeed>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId) : base(service)
             {
                 MerchantId = merchantId;
                 DatafeedId = datafeedId;
@@ -1896,13 +1822,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong DatafeedId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1910,24 +1836,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datafeedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datafeedId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datafeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datafeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1945,8 +1869,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Datafeed>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -1963,16 +1886,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Datafeed Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1980,15 +1903,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2005,8 +1927,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -2027,13 +1948,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2041,33 +1962,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2088,8 +2006,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId, ulong datafeedId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId, ulong datafeedId) : base(service)
             {
                 MerchantId = merchantId;
                 DatafeedId = datafeedId;
@@ -2111,16 +2028,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Datafeed Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2128,24 +2045,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datafeedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datafeedId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datafeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datafeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2178,8 +2093,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2190,16 +2104,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "datafeedstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -2224,8 +2138,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId) : base(service)
             {
                 MerchantId = merchantId;
                 DatafeedId = datafeedId;
@@ -2255,13 +2168,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeedstatuses/{datafeedId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2269,42 +2182,38 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datafeedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datafeedId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datafeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datafeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2321,8 +2230,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -2343,13 +2251,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/datafeedstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2357,33 +2265,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2416,8 +2321,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LiasettingsCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LiasettingsCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2428,16 +2332,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.LiasettingsCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "liasettings/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -2464,8 +2368,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiaSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -2484,13 +2387,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong AccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2498,24 +2401,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2535,8 +2436,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetaccessiblegmbaccountsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsGetAccessibleGmbAccountsResponse>
         {
             /// <summary>Constructs a new Getaccessiblegmbaccounts request.</summary>
-            public GetaccessiblegmbaccountsRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetaccessiblegmbaccountsRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -2555,13 +2455,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong AccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getaccessiblegmbaccounts";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts";
 
             /// <summary>Initializes Getaccessiblegmbaccounts parameter list.</summary>
@@ -2569,24 +2469,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2602,8 +2500,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -2623,13 +2520,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2637,33 +2534,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2680,21 +2574,20 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListposdataprovidersRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsListPosDataProvidersResponse>
         {
             /// <summary>Constructs a new Listposdataproviders request.</summary>
-            public ListposdataprovidersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListposdataprovidersRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listposdataproviders";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "liasettings/posdataproviders";
 
             /// <summary>Initializes Listposdataproviders parameter list.</summary>
@@ -2722,8 +2615,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsRequestGmbAccessResponse>
         {
             /// <summary>Constructs a new Requestgmbaccess request.</summary>
-            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string gmbEmail)
-                : base(service)
+            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string gmbEmail) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -2747,13 +2639,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string GmbEmail { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "requestgmbaccess";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}/requestgmbaccess";
 
             /// <summary>Initializes Requestgmbaccess parameter list.</summary>
@@ -2761,33 +2653,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "gmbEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "gmbEmail",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("gmbEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "gmbEmail",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2809,8 +2698,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class RequestinventoryverificationRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsRequestInventoryVerificationResponse>
         {
             /// <summary>Constructs a new Requestinventoryverification request.</summary>
-            public RequestinventoryverificationRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country)
-                : base(service)
+            public RequestinventoryverificationRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -2834,13 +2722,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string Country { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "requestinventoryverification";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}";
 
             /// <summary>Initializes Requestinventoryverification parameter list.</summary>
@@ -2848,33 +2736,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2901,8 +2786,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsSetInventoryVerificationContactResponse>
         {
             /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
-            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string contactEmail, string contactName, string country, string language)
-                : base(service)
+            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string contactEmail, string contactName, string country, string language) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -2941,13 +2825,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string Language { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setinventoryverificationcontact";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact";
 
             /// <summary>Initializes Setinventoryverificationcontact parameter list.</summary>
@@ -2955,60 +2839,54 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contactEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contactEmail",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contactName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contactName",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactEmail",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactName",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3030,8 +2908,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class SetposdataproviderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsSetPosDataProviderResponse>
         {
             /// <summary>Constructs a new Setposdataprovider request.</summary>
-            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country)
-                : base(service)
+            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -3063,13 +2940,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PosExternalAccountId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setposdataprovider";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}/setposdataprovider";
 
             /// <summary>Initializes Setposdataprovider parameter list.</summary>
@@ -3077,51 +2954,46 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "posDataProviderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "posDataProviderId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "posExternalAccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "posExternalAccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("posDataProviderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "posDataProviderId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("posExternalAccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "posExternalAccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3144,8 +3016,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiaSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LiaSettings body, ulong merchantId, ulong accountId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LiaSettings body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -3168,16 +3039,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.LiaSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/liasettings/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3185,24 +3056,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3235,8 +3104,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LocalinventoryCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LocalinventoryCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LocalinventoryCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -3247,16 +3115,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.LocalinventoryCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "localinventory/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -3283,8 +3151,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LocalInventory>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LocalInventory body, ulong merchantId, string productId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.LocalInventory body, ulong merchantId, string productId) : base(service)
             {
                 MerchantId = merchantId;
                 ProductId = productId;
@@ -3306,16 +3173,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.LocalInventory Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products/{productId}/localinventory";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3323,24 +3190,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3378,8 +3243,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CreatechargeinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateChargeInvoiceResponse>
         {
             /// <summary>Constructs a new Createchargeinvoice request.</summary>
-            public CreatechargeinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateChargeInvoiceRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CreatechargeinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateChargeInvoiceRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -3400,16 +3264,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateChargeInvoiceRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createchargeinvoice";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderinvoices/{orderId}/createChargeInvoice";
 
             /// <summary>Initializes Createchargeinvoice parameter list.</summary>
@@ -3417,24 +3281,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3459,8 +3321,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateRefundInvoiceResponse>
         {
             /// <summary>Constructs a new Createrefundinvoice request.</summary>
-            public CreaterefundinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateRefundInvoiceRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CreaterefundinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateRefundInvoiceRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -3481,16 +3342,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateRefundInvoiceRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createrefundinvoice";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderinvoices/{orderId}/createRefundInvoice";
 
             /// <summary>Initializes Createrefundinvoice parameter list.</summary>
@@ -3498,24 +3359,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3551,8 +3410,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListdisbursementsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreportsListDisbursementsResponse>
         {
             /// <summary>Constructs a new Listdisbursements request.</summary>
-            public ListdisbursementsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementStartDate)
-                : base(service)
+            public ListdisbursementsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementStartDate) : base(service)
             {
                 MerchantId = merchantId;
                 DisbursementStartDate = disbursementStartDate;
@@ -3582,13 +3440,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listdisbursements";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreports/disbursements";
 
             /// <summary>Initializes Listdisbursements parameter list.</summary>
@@ -3596,51 +3454,46 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "disbursementStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "disbursementStartDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "disbursementEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "disbursementEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("disbursementStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "disbursementStartDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("disbursementEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "disbursementEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3661,8 +3514,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListtransactionsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreportsListTransactionsResponse>
         {
             /// <summary>Constructs a new Listtransactions request.</summary>
-            public ListtransactionsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementId, string transactionStartDate)
-                : base(service)
+            public ListtransactionsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementId, string transactionStartDate) : base(service)
             {
                 MerchantId = merchantId;
                 DisbursementId = disbursementId;
@@ -3697,13 +3549,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string TransactionEndDate { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listtransactions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreports/disbursements/{disbursementId}/transactions";
 
             /// <summary>Initializes Listtransactions parameter list.</summary>
@@ -3711,60 +3563,54 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "disbursementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "disbursementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transactionStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transactionStartDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transactionEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transactionEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("disbursementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "disbursementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("transactionStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transactionStartDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("transactionEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transactionEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3800,8 +3646,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class AcknowledgeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsAcknowledgeResponse>
         {
             /// <summary>Constructs a new Acknowledge request.</summary>
-            public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsAcknowledgeRequest body, ulong merchantId, string returnId)
-                : base(service)
+            public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsAcknowledgeRequest body, ulong merchantId, string returnId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnId = returnId;
@@ -3822,16 +3667,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsAcknowledgeRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "acknowledge";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreturns/{returnId}/acknowledge";
 
             /// <summary>Initializes Acknowledge parameter list.</summary>
@@ -3839,24 +3684,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3874,8 +3717,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.MerchantOrderReturn>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnId = returnId;
@@ -3892,13 +3734,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ReturnId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreturns/{returnId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3906,24 +3748,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3940,8 +3780,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -4060,13 +3899,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreturns";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4074,114 +3913,102 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acknowledged", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acknowledged",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "createdEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "createdEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "createdStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "createdStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "googleOrderIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "googleOrderIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "shipmentStates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "shipmentStates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "shipmentStatus", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "shipmentStatus",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "shipmentTrackingNumbers", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "shipmentTrackingNumbers",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "shipmentTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "shipmentTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acknowledged", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acknowledged",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("createdEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "createdEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("createdStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "createdStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("googleOrderIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "googleOrderIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("shipmentStates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "shipmentStates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("shipmentStatus", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "shipmentStatus",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("shipmentTrackingNumbers", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "shipmentTrackingNumbers",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("shipmentTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "shipmentTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4200,8 +4027,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ProcessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsProcessResponse>
         {
             /// <summary>Constructs a new Process request.</summary>
-            public ProcessRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsProcessRequest body, ulong merchantId, string returnId)
-                : base(service)
+            public ProcessRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsProcessRequest body, ulong merchantId, string returnId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnId = returnId;
@@ -4222,16 +4048,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsProcessRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "process";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orderreturns/{returnId}/process";
 
             /// <summary>Initializes Process parameter list.</summary>
@@ -4239,24 +4065,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4292,8 +4116,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class AcknowledgeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersAcknowledgeResponse>
         {
             /// <summary>Constructs a new Acknowledge request.</summary>
-            public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersAcknowledgeRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersAcknowledgeRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4314,16 +4137,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersAcknowledgeRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "acknowledge";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/acknowledge";
 
             /// <summary>Initializes Acknowledge parameter list.</summary>
@@ -4331,24 +4154,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4366,8 +4187,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class AdvancetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersAdvanceTestOrderResponse>
         {
             /// <summary>Constructs a new Advancetestorder request.</summary>
-            public AdvancetestorderRequest(Google.Apis.Services.IClientService service, ulong merchantId, string orderId)
-                : base(service)
+            public AdvancetestorderRequest(Google.Apis.Services.IClientService service, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4384,13 +4204,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string OrderId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "advancetestorder";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/testorders/{orderId}/advance";
 
             /// <summary>Initializes Advancetestorder parameter list.</summary>
@@ -4398,24 +4218,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4434,8 +4252,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CancelRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4456,16 +4273,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancel";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/cancel";
 
             /// <summary>Initializes Cancel parameter list.</summary>
@@ -4473,24 +4290,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4509,8 +4324,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CancellineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelLineItemResponse>
         {
             /// <summary>Constructs a new Cancellineitem request.</summary>
-            public CancellineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelLineItemRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CancellineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelLineItemRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4531,16 +4345,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelLineItemRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancellineitem";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/cancelLineItem";
 
             /// <summary>Initializes Cancellineitem parameter list.</summary>
@@ -4548,24 +4362,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4584,8 +4396,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CanceltestorderbycustomerRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelTestOrderByCustomerResponse>
         {
             /// <summary>Constructs a new Canceltestorderbycustomer request.</summary>
-            public CanceltestorderbycustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CanceltestorderbycustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4606,16 +4417,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelTestOrderByCustomerRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "canceltestorderbycustomer";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/testorders/{orderId}/cancelByCustomer";
 
             /// <summary>Initializes Canceltestorderbycustomer parameter list.</summary>
@@ -4623,24 +4434,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4658,8 +4467,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CreatetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestOrderResponse>
         {
             /// <summary>Constructs a new Createtestorder request.</summary>
-            public CreatetestorderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestOrderRequest body, ulong merchantId)
-                : base(service)
+            public CreatetestorderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestOrderRequest body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -4676,16 +4484,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestOrderRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createtestorder";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/testorders";
 
             /// <summary>Initializes Createtestorder parameter list.</summary>
@@ -4693,15 +4501,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4720,8 +4527,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CreatetestreturnRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestReturnResponse>
         {
             /// <summary>Constructs a new Createtestreturn request.</summary>
-            public CreatetestreturnRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestReturnRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public CreatetestreturnRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestReturnRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4742,16 +4548,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestReturnRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createtestreturn";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/testreturn";
 
             /// <summary>Initializes Createtestreturn parameter list.</summary>
@@ -4759,24 +4565,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4794,8 +4598,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string orderId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -4812,13 +4615,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string OrderId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4826,24 +4629,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4861,8 +4662,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetbymerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersGetByMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Getbymerchantorderid request.</summary>
-            public GetbymerchantorderidRequest(Google.Apis.Services.IClientService service, ulong merchantId, string merchantOrderId)
-                : base(service)
+            public GetbymerchantorderidRequest(Google.Apis.Services.IClientService service, ulong merchantId, string merchantOrderId) : base(service)
             {
                 MerchantId = merchantId;
                 MerchantOrderId = merchantOrderId;
@@ -4879,13 +4679,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string MerchantOrderId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getbymerchantorderid";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/ordersbymerchantid/{merchantOrderId}";
 
             /// <summary>Initializes Getbymerchantorderid parameter list.</summary>
@@ -4893,24 +4693,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "merchantOrderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantOrderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("merchantOrderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantOrderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4930,8 +4728,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GettestordertemplateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersGetTestOrderTemplateResponse>
         {
             /// <summary>Constructs a new Gettestordertemplate request.</summary>
-            public GettestordertemplateRequest(Google.Apis.Services.IClientService service, ulong merchantId, GettestordertemplateRequest.TemplateNameEnum templateName)
-                : base(service)
+            public GettestordertemplateRequest(Google.Apis.Services.IClientService service, ulong merchantId, GettestordertemplateRequest.TemplateNameEnum templateName) : base(service)
             {
                 MerchantId = merchantId;
                 TemplateName = templateName;
@@ -4970,13 +4767,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string Country { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "gettestordertemplate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/testordertemplates/{templateName}";
 
             /// <summary>Initializes Gettestordertemplate parameter list.</summary>
@@ -4984,33 +4781,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "templateName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "templateName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("templateName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "templateName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5039,8 +4833,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InstorerefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemResponse>
         {
             /// <summary>Constructs a new Instorerefundlineitem request.</summary>
-            public InstorerefundlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public InstorerefundlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5061,16 +4854,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "instorerefundlineitem";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/inStoreRefundLineItem";
 
             /// <summary>Initializes Instorerefundlineitem parameter list.</summary>
@@ -5078,24 +4871,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5112,8 +4903,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -5190,13 +4980,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5204,78 +4994,70 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acknowledged", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acknowledged",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placedDateEnd", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placedDateEnd",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placedDateStart", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placedDateStart",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "statuses", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "statuses",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acknowledged", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acknowledged",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placedDateEnd", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placedDateEnd",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placedDateStart", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placedDateStart",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("statuses", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "statuses",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5294,8 +5076,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class RefunditemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemResponse>
         {
             /// <summary>Constructs a new Refunditem request.</summary>
-            public RefunditemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public RefunditemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5316,16 +5097,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "refunditem";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/refunditem";
 
             /// <summary>Initializes Refunditem parameter list.</summary>
@@ -5333,24 +5114,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5369,8 +5148,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class RefundorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderResponse>
         {
             /// <summary>Constructs a new Refundorder request.</summary>
-            public RefundorderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public RefundorderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5391,16 +5169,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "refundorder";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/refundorder";
 
             /// <summary>Initializes Refundorder parameter list.</summary>
@@ -5408,24 +5186,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5444,8 +5220,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class RejectreturnlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersRejectReturnLineItemResponse>
         {
             /// <summary>Constructs a new Rejectreturnlineitem request.</summary>
-            public RejectreturnlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRejectReturnLineItemRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public RejectreturnlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersRejectReturnLineItemRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5466,16 +5241,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersRejectReturnLineItemRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "rejectreturnlineitem";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/rejectReturnLineItem";
 
             /// <summary>Initializes Rejectreturnlineitem parameter list.</summary>
@@ -5483,24 +5258,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5527,8 +5300,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ReturnrefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemResponse>
         {
             /// <summary>Constructs a new Returnrefundlineitem request.</summary>
-            public ReturnrefundlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public ReturnrefundlineitemRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5549,16 +5321,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "returnrefundlineitem";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/returnRefundLineItem";
 
             /// <summary>Initializes Returnrefundlineitem parameter list.</summary>
@@ -5566,24 +5338,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5608,8 +5378,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class SetlineitemmetadataRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataResponse>
         {
             /// <summary>Constructs a new Setlineitemmetadata request.</summary>
-            public SetlineitemmetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public SetlineitemmetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5630,16 +5399,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setlineitemmetadata";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/setLineItemMetadata";
 
             /// <summary>Initializes Setlineitemmetadata parameter list.</summary>
@@ -5647,24 +5416,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5683,8 +5450,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ShiplineitemsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersShipLineItemsResponse>
         {
             /// <summary>Constructs a new Shiplineitems request.</summary>
-            public ShiplineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersShipLineItemsRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public ShiplineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersShipLineItemsRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5705,16 +5471,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersShipLineItemsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "shiplineitems";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/shipLineItems";
 
             /// <summary>Initializes Shiplineitems parameter list.</summary>
@@ -5722,24 +5488,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5758,8 +5522,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdatelineitemshippingdetailsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateLineItemShippingDetailsResponse>
         {
             /// <summary>Constructs a new Updatelineitemshippingdetails request.</summary>
-            public UpdatelineitemshippingdetailsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateLineItemShippingDetailsRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public UpdatelineitemshippingdetailsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateLineItemShippingDetailsRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5780,16 +5543,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateLineItemShippingDetailsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updatelineitemshippingdetails";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/updateLineItemShippingDetails";
 
             /// <summary>Initializes Updatelineitemshippingdetails parameter list.</summary>
@@ -5797,24 +5560,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5833,8 +5594,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdatemerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Updatemerchantorderid request.</summary>
-            public UpdatemerchantorderidRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateMerchantOrderIdRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public UpdatemerchantorderidRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateMerchantOrderIdRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5855,16 +5615,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateMerchantOrderIdRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updatemerchantorderid";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/updateMerchantOrderId";
 
             /// <summary>Initializes Updatemerchantorderid parameter list.</summary>
@@ -5872,24 +5632,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5908,8 +5666,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateshipmentRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateShipmentResponse>
         {
             /// <summary>Constructs a new Updateshipment request.</summary>
-            public UpdateshipmentRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateShipmentRequest body, ulong merchantId, string orderId)
-                : base(service)
+            public UpdateshipmentRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateShipmentRequest body, ulong merchantId, string orderId) : base(service)
             {
                 MerchantId = merchantId;
                 OrderId = orderId;
@@ -5930,16 +5687,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateShipmentRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateshipment";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/orders/{orderId}/updateShipment";
 
             /// <summary>Initializes Updateshipment parameter list.</summary>
@@ -5947,24 +5704,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5997,8 +5752,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -6009,16 +5763,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.PosCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "pos/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -6045,8 +5799,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6068,13 +5821,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string StoreCode { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -6082,33 +5835,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "storeCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "storeCode",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("storeCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "storeCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6128,8 +5878,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosStore>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6151,13 +5900,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string StoreCode { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6165,33 +5914,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "storeCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "storeCode",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("storeCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "storeCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6210,8 +5956,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosStore>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosStore body, ulong merchantId, ulong targetMerchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosStore body, ulong merchantId, ulong targetMerchantId) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6232,16 +5977,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.PosStore Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6249,24 +5994,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6285,8 +6028,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InventoryRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosInventoryResponse>
         {
             /// <summary>Constructs a new Inventory request.</summary>
-            public InventoryRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId)
-                : base(service)
+            public InventoryRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6307,16 +6049,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.PosInventoryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "inventory";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/inventory";
 
             /// <summary>Initializes Inventory parameter list.</summary>
@@ -6324,24 +6066,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6359,8 +6099,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6377,13 +6116,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong TargetMerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6391,24 +6130,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6427,8 +6164,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class SaleRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PosSaleResponse>
         {
             /// <summary>Constructs a new Sale request.</summary>
-            public SaleRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId)
-                : base(service)
+            public SaleRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId) : base(service)
             {
                 MerchantId = merchantId;
                 TargetMerchantId = targetMerchantId;
@@ -6449,16 +6185,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.PosSaleRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "sale";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pos/{targetMerchantId}/sale";
 
             /// <summary>Initializes Sale parameter list.</summary>
@@ -6466,24 +6202,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetMerchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetMerchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("targetMerchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "targetMerchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6516,8 +6250,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ProductsCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ProductsCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -6528,16 +6261,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ProductsCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "products/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -6562,8 +6295,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId) : base(service)
             {
                 MerchantId = merchantId;
                 ProductId = productId;
@@ -6585,13 +6317,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual System.Nullable<ulong> FeedId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products/{productId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -6599,33 +6331,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "feedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "feedId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6643,8 +6372,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Product>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId) : base(service)
             {
                 MerchantId = merchantId;
                 ProductId = productId;
@@ -6662,13 +6390,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ProductId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products/{productId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6676,24 +6404,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6713,8 +6439,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Product>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -6735,16 +6460,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Product Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6752,24 +6477,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "feedId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "feedId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6790,8 +6513,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -6812,13 +6534,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6826,33 +6548,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6885,8 +6604,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -6897,16 +6615,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "productstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -6931,8 +6649,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string productId) : base(service)
             {
                 MerchantId = merchantId;
                 ProductId = productId;
@@ -6955,13 +6672,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/productstatuses/{productId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6969,33 +6686,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7012,8 +6726,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -7039,13 +6752,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/productstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7053,42 +6766,38 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7121,8 +6830,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -7134,13 +6842,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong MerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pubsubnotificationsettings";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7148,15 +6856,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7175,8 +6882,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings body, ulong merchantId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -7192,16 +6898,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/pubsubnotificationsettings";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -7209,15 +6915,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7250,8 +6955,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RegionalinventoryCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RegionalinventoryCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RegionalinventoryCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -7262,16 +6966,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.RegionalinventoryCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "regionalinventory/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -7300,8 +7004,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory body, ulong merchantId, string productId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory body, ulong merchantId, string productId) : base(service)
             {
                 MerchantId = merchantId;
                 ProductId = productId;
@@ -7323,16 +7026,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/products/{productId}/regionalinventory";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -7340,24 +7043,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7390,8 +7091,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -7402,16 +7102,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "returnaddress/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -7436,8 +7136,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnAddressId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnAddressId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnAddressId = returnAddressId;
@@ -7454,13 +7153,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ReturnAddressId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnaddress/{returnAddressId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -7468,24 +7167,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnAddressId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnAddressId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnAddressId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnAddressId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7503,8 +7200,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnAddressId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnAddressId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnAddressId = returnAddressId;
@@ -7521,13 +7217,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ReturnAddressId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnaddress/{returnAddressId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7535,24 +7231,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnAddressId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnAddressId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnAddressId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnAddressId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7569,8 +7263,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress body, ulong merchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -7586,16 +7279,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnaddress";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -7603,15 +7296,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7627,8 +7319,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -7653,13 +7344,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnaddress";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7667,42 +7358,38 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7735,8 +7422,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -7747,16 +7433,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "returnpolicy/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -7781,8 +7467,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnPolicyId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnPolicyId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnPolicyId = returnPolicyId;
@@ -7799,13 +7484,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ReturnPolicyId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnpolicy/{returnPolicyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -7813,24 +7498,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnPolicyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnPolicyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPolicyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPolicyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7848,8 +7531,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnPolicyId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnPolicyId) : base(service)
             {
                 MerchantId = merchantId;
                 ReturnPolicyId = returnPolicyId;
@@ -7866,13 +7548,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ReturnPolicyId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnpolicy/{returnPolicyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7880,24 +7562,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnPolicyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnPolicyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPolicyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPolicyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7914,8 +7594,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy body, ulong merchantId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy body, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 Body = body;
@@ -7931,16 +7610,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnpolicy";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -7948,15 +7627,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7972,8 +7650,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -7985,13 +7662,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong MerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/returnpolicy";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7999,15 +7676,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8042,8 +7718,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.SettlementReport>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string settlementId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string settlementId) : base(service)
             {
                 MerchantId = merchantId;
                 SettlementId = settlementId;
@@ -8060,13 +7735,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string SettlementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/settlementreports/{settlementId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8074,24 +7749,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "settlementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "settlementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("settlementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "settlementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8107,8 +7780,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.SettlementreportsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -8139,13 +7811,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string TransferStartDate { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/settlementreports";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8153,51 +7825,46 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transferEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transferEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transferStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transferStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("transferEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transferEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("transferStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transferStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8232,8 +7899,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.SettlementtransactionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId, string settlementId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId, string settlementId) : base(service)
             {
                 MerchantId = merchantId;
                 SettlementId = settlementId;
@@ -8264,13 +7930,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual Google.Apis.Util.Repeatable<string> TransactionIds { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/settlementreports/{settlementId}/transactions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8278,51 +7944,46 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "settlementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "settlementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transactionIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transactionIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("settlementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "settlementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("transactionIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transactionIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8355,8 +8016,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
-            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsCustomBatchRequest body)
-                : base(service)
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsCustomBatchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -8367,16 +8027,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsCustomBatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "custombatch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "shippingsettings/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
@@ -8403,8 +8063,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -8423,13 +8082,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong AccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/shippingsettings/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8437,24 +8096,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8470,8 +8127,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetsupportedcarriersRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsGetSupportedCarriersResponse>
         {
             /// <summary>Constructs a new Getsupportedcarriers request.</summary>
-            public GetsupportedcarriersRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public GetsupportedcarriersRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -8483,13 +8139,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong MerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getsupportedcarriers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/supportedCarriers";
 
             /// <summary>Initializes Getsupportedcarriers parameter list.</summary>
@@ -8497,15 +8153,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8521,8 +8176,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetsupportedholidaysRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsGetSupportedHolidaysResponse>
         {
             /// <summary>Constructs a new Getsupportedholidays request.</summary>
-            public GetsupportedholidaysRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public GetsupportedholidaysRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -8534,13 +8188,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong MerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getsupportedholidays";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/supportedHolidays";
 
             /// <summary>Initializes Getsupportedholidays parameter list.</summary>
@@ -8548,15 +8202,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8572,8 +8225,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class GetsupportedpickupservicesRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsGetSupportedPickupServicesResponse>
         {
             /// <summary>Constructs a new Getsupportedpickupservices request.</summary>
-            public GetsupportedpickupservicesRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public GetsupportedpickupservicesRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -8585,13 +8237,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual ulong MerchantId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getsupportedpickupservices";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/supportedPickupServices";
 
             /// <summary>Initializes Getsupportedpickupservices parameter list.</summary>
@@ -8599,15 +8251,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8623,8 +8274,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId) : base(service)
             {
                 MerchantId = merchantId;
                 InitParameters();
@@ -8644,13 +8294,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/shippingsettings";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8658,33 +8308,30 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8707,8 +8354,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings body, ulong merchantId, ulong accountId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings body, ulong merchantId, ulong accountId) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
@@ -8731,16 +8377,16 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{merchantId}/shippingsettings/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -8748,24 +8394,22 @@ namespace Google.Apis.ShoppingContent.v2_1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "merchantId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "merchantId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

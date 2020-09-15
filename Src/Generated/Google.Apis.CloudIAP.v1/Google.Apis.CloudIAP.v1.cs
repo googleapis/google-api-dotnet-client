@@ -18,17 +18,16 @@ namespace Google.Apis.CloudIAP.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudIAPService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudIAPService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudIAPService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudIAPService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
             V1 = new V1Resource(this);
@@ -84,12 +83,11 @@ namespace Google.Apis.CloudIAP.v1
         public virtual V1Resource V1 { get; }
     }
 
-    ///<summary>A base abstract class for CloudIAP requests.</summary>
+    /// <summary>A base abstract class for CloudIAP requests.</summary>
     public abstract class CloudIAPBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudIAPBaseServiceRequest instance.</summary>
-        protected CloudIAPBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudIAPBaseServiceRequest instance.</summary>
+        protected CloudIAPBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -169,105 +167,94 @@ namespace Google.Apis.CloudIAP.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -340,8 +327,7 @@ namespace Google.Apis.CloudIAP.v1
                 public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -359,16 +345,16 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/identityAwareProxyClients";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -376,15 +362,14 @@ namespace Google.Apis.CloudIAP.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/brands/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                        });
                     }
 
                 }
@@ -405,8 +390,7 @@ namespace Google.Apis.CloudIAP.v1
                 public class DeleteRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -420,13 +404,13 @@ namespace Google.Apis.CloudIAP.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -434,15 +418,14 @@ namespace Google.Apis.CloudIAP.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                        });
                     }
 
                 }
@@ -461,8 +444,7 @@ namespace Google.Apis.CloudIAP.v1
                 public class GetRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -476,13 +458,13 @@ namespace Google.Apis.CloudIAP.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -490,15 +472,14 @@ namespace Google.Apis.CloudIAP.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                        });
                     }
 
                 }
@@ -515,8 +496,7 @@ namespace Google.Apis.CloudIAP.v1
                 public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListIdentityAwareProxyClientsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -541,13 +521,13 @@ namespace Google.Apis.CloudIAP.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/identityAwareProxyClients";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -555,33 +535,30 @@ namespace Google.Apis.CloudIAP.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/brands/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -601,8 +578,7 @@ namespace Google.Apis.CloudIAP.v1
                 public class ResetSecretRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
                 {
                     /// <summary>Constructs a new ResetSecret request.</summary>
-                    public ResetSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest body, string name)
-                        : base(service)
+                    public ResetSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -620,16 +596,16 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "resetSecret";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:resetSecret";
 
                     /// <summary>Initializes ResetSecret parameter list.</summary>
@@ -637,15 +613,14 @@ namespace Google.Apis.CloudIAP.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                        });
                     }
 
                 }
@@ -674,8 +649,7 @@ namespace Google.Apis.CloudIAP.v1
             public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.Brand body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.Brand body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -692,16 +666,16 @@ namespace Google.Apis.CloudIAP.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudIAP.v1.Data.Brand Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/brands";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -709,15 +683,14 @@ namespace Google.Apis.CloudIAP.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -734,8 +707,7 @@ namespace Google.Apis.CloudIAP.v1
             public class GetRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -748,13 +720,13 @@ namespace Google.Apis.CloudIAP.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -762,15 +734,14 @@ namespace Google.Apis.CloudIAP.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/brands/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                    });
                 }
 
             }
@@ -787,8 +758,7 @@ namespace Google.Apis.CloudIAP.v1
             public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListBrandsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -801,13 +771,13 @@ namespace Google.Apis.CloudIAP.v1
                 public virtual string Parent { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/brands";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -815,15 +785,14 @@ namespace Google.Apis.CloudIAP.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -863,8 +832,7 @@ namespace Google.Apis.CloudIAP.v1
         public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.GetIamPolicyRequest body, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -881,16 +849,16 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudIAP.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -898,15 +866,14 @@ namespace Google.Apis.CloudIAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
         }
@@ -923,8 +890,7 @@ namespace Google.Apis.CloudIAP.v1
         public class GetIapSettingsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IapSettings>
         {
             /// <summary>Constructs a new GetIapSettings request.</summary>
-            public GetIapSettingsRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetIapSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -937,13 +903,13 @@ namespace Google.Apis.CloudIAP.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIapSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}:iapSettings";
 
             /// <summary>Initializes GetIapSettings parameter list.</summary>
@@ -951,15 +917,14 @@ namespace Google.Apis.CloudIAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
         }
@@ -981,8 +946,7 @@ namespace Google.Apis.CloudIAP.v1
         public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.SetIamPolicyRequest body, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -999,16 +963,16 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudIAP.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1016,15 +980,14 @@ namespace Google.Apis.CloudIAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
         }
@@ -1046,8 +1009,7 @@ namespace Google.Apis.CloudIAP.v1
         public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.TestIamPermissionsRequest body, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1064,16 +1026,16 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudIAP.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1081,15 +1043,14 @@ namespace Google.Apis.CloudIAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
         }
@@ -1108,8 +1069,7 @@ namespace Google.Apis.CloudIAP.v1
         public class UpdateIapSettingsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IapSettings>
         {
             /// <summary>Constructs a new UpdateIapSettings request.</summary>
-            public UpdateIapSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IapSettings body, string name)
-                : base(service)
+            public UpdateIapSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IapSettings body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -1131,16 +1091,16 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudIAP.v1.Data.IapSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateIapSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}:iapSettings";
 
             /// <summary>Initializes UpdateIapSettings parameter list.</summary>
@@ -1148,24 +1108,22 @@ namespace Google.Apis.CloudIAP.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.Apigateway.v1alpha1
         public const string Version = "v1alpha1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ApigatewayService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ApigatewayService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ApigatewayService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ApigatewayService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Apigateway.v1alpha1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Apigateway requests.</summary>
+    /// <summary>A base abstract class for Apigateway requests.</summary>
     public abstract class ApigatewayBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ApigatewayBaseServiceRequest instance.</summary>
-        protected ApigatewayBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ApigatewayBaseServiceRequest instance.</summary>
+        protected ApigatewayBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.Apigateway.v1alpha1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -356,8 +343,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                            : base(service)
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                         {
                             Resource = resource;
                             InitParameters();
@@ -379,13 +365,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1alpha1/{+resource}:getIamPolicy";
 
                         /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -393,24 +379,22 @@ namespace Google.Apis.Apigateway.v1alpha1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "options.requestedPolicyVersion",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -430,8 +414,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource)
-                            : base(service)
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -448,16 +431,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1alpha1/{+resource}:setIamPolicy";
 
                         /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -465,15 +448,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                            });
                         }
 
                     }
@@ -497,8 +479,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
-                            : base(service)
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -515,16 +496,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "testIamPermissions";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1alpha1/{+resource}:testIamPermissions";
 
                         /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -532,15 +513,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                            });
                         }
 
                     }
@@ -560,8 +540,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                     {
                         Resource = resource;
                         InitParameters();
@@ -583,13 +562,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -597,24 +576,22 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "options.requestedPolicyVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -634,8 +611,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -652,16 +628,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -669,15 +645,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                        });
                     }
 
                 }
@@ -701,8 +676,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -719,16 +693,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -736,15 +710,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                        });
                     }
 
                 }
@@ -782,8 +755,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                     {
                         Resource = resource;
                         InitParameters();
@@ -805,13 +777,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -819,24 +791,22 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "options.requestedPolicyVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -856,8 +826,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -874,16 +843,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Apigateway.v1alpha1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -891,15 +860,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
                     }
 
                 }
@@ -923,8 +891,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -941,16 +908,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Apigateway.v1alpha1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -958,15 +925,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
                     }
 
                 }
@@ -1014,8 +980,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class CancelRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayCancelOperationRequest body, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1alpha1.Data.ApigatewayCancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1031,16 +996,16 @@ namespace Google.Apis.Apigateway.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Apigateway.v1alpha1.Data.ApigatewayCancelOperationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -1048,15 +1013,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1076,8 +1040,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1089,13 +1052,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1103,15 +1066,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1129,8 +1091,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1142,13 +1103,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1156,15 +1117,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1192,8 +1152,7 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1217,13 +1176,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1231,42 +1190,38 @@ namespace Google.Apis.Apigateway.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1283,8 +1238,7 @@ namespace Google.Apis.Apigateway.v1alpha1
             public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayLocation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1296,13 +1250,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1310,15 +1264,14 @@ namespace Google.Apis.Apigateway.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
 
             }
@@ -1334,8 +1287,7 @@ namespace Google.Apis.Apigateway.v1alpha1
             public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1alpha1.Data.ApigatewayListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1359,13 +1311,13 @@ namespace Google.Apis.Apigateway.v1alpha1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1373,42 +1325,38 @@ namespace Google.Apis.Apigateway.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

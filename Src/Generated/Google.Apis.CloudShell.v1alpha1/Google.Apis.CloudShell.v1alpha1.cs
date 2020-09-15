@@ -18,17 +18,16 @@ namespace Google.Apis.CloudShell.v1alpha1
         public const string Version = "v1alpha1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudShellService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudShellService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudShellService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudShellService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Users = new UsersResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.CloudShell.v1alpha1
         public virtual UsersResource Users { get; }
     }
 
-    ///<summary>A base abstract class for CloudShell requests.</summary>
+    /// <summary>A base abstract class for CloudShell requests.</summary>
     public abstract class CloudShellBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudShellBaseServiceRequest instance.</summary>
-        protected CloudShellBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudShellBaseServiceRequest instance.</summary>
+        protected CloudShellBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.CloudShell.v1alpha1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -337,8 +324,7 @@ namespace Google.Apis.CloudShell.v1alpha1
                 public class CreateRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.PublicKey>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.CreatePublicKeyRequest body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.CreatePublicKeyRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -354,16 +340,16 @@ namespace Google.Apis.CloudShell.v1alpha1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudShell.v1alpha1.Data.CreatePublicKeyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+parent}/publicKeys";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -371,15 +357,14 @@ namespace Google.Apis.CloudShell.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^users/[^/]+/environments/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/environments/[^/]+$",
+                        });
                     }
 
                 }
@@ -398,8 +383,7 @@ namespace Google.Apis.CloudShell.v1alpha1
                 public class DeleteRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -412,13 +396,13 @@ namespace Google.Apis.CloudShell.v1alpha1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -426,15 +410,14 @@ namespace Google.Apis.CloudShell.v1alpha1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^users/[^/]+/environments/[^/]+/publicKeys/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/environments/[^/]+/publicKeys/[^/]+$",
+                        });
                     }
 
                 }
@@ -457,8 +440,7 @@ namespace Google.Apis.CloudShell.v1alpha1
             public class AuthorizeRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Authorize request.</summary>
-                public AuthorizeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.AuthorizeEnvironmentRequest body, string name)
-                    : base(service)
+                public AuthorizeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.AuthorizeEnvironmentRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -475,16 +457,16 @@ namespace Google.Apis.CloudShell.v1alpha1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudShell.v1alpha1.Data.AuthorizeEnvironmentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "authorize";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}:authorize";
 
                 /// <summary>Initializes Authorize parameter list.</summary>
@@ -492,15 +474,14 @@ namespace Google.Apis.CloudShell.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^users/[^/]+/environments/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/environments/[^/]+$",
+                    });
                 }
 
             }
@@ -517,8 +498,7 @@ namespace Google.Apis.CloudShell.v1alpha1
             public class GetRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Environment>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -531,13 +511,13 @@ namespace Google.Apis.CloudShell.v1alpha1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -545,15 +525,14 @@ namespace Google.Apis.CloudShell.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^users/[^/]+/environments/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/environments/[^/]+$",
+                    });
                 }
 
             }
@@ -571,8 +550,7 @@ namespace Google.Apis.CloudShell.v1alpha1
             public class PatchRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Environment>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.Environment body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.Environment body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -593,16 +571,16 @@ namespace Google.Apis.CloudShell.v1alpha1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudShell.v1alpha1.Data.Environment Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -610,24 +588,22 @@ namespace Google.Apis.CloudShell.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^users/[^/]+/environments/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/environments/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -653,8 +629,7 @@ namespace Google.Apis.CloudShell.v1alpha1
             public class StartRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Operation>
             {
                 /// <summary>Constructs a new Start request.</summary>
-                public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.StartEnvironmentRequest body, string name)
-                    : base(service)
+                public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudShell.v1alpha1.Data.StartEnvironmentRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -671,16 +646,16 @@ namespace Google.Apis.CloudShell.v1alpha1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudShell.v1alpha1.Data.StartEnvironmentRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "start";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha1/{+name}:start";
 
                 /// <summary>Initializes Start parameter list.</summary>
@@ -688,15 +663,14 @@ namespace Google.Apis.CloudShell.v1alpha1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^users/[^/]+/environments/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/environments/[^/]+$",
+                    });
                 }
 
             }

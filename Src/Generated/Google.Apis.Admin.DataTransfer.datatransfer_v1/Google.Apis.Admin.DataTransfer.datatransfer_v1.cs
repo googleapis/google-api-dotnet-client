@@ -18,17 +18,16 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public const string Version = "datatransfer_v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DataTransferService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DataTransferService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DataTransferService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DataTransferService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Applications = new ApplicationsResource(this);
             Transfers = new TransfersResource(this);
@@ -90,12 +89,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public virtual TransfersResource Transfers { get; }
     }
 
-    ///<summary>A base abstract class for DataTransfer requests.</summary>
+    /// <summary>A base abstract class for DataTransfer requests.</summary>
     public abstract class DataTransferBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DataTransferBaseServiceRequest instance.</summary>
-        protected DataTransferBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DataTransferBaseServiceRequest instance.</summary>
+        protected DataTransferBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -175,105 +173,94 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -304,8 +291,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.Application>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long applicationId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long applicationId) : base(service)
             {
                 ApplicationId = applicationId;
                 InitParameters();
@@ -317,13 +303,13 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             public virtual long ApplicationId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/datatransfer/v1/applications/{applicationId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -331,15 +317,14 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -354,8 +339,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.ApplicationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -374,13 +358,13 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/datatransfer/v1/applications";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -388,33 +372,30 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -448,8 +429,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string dataTransferId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string dataTransferId) : base(service)
             {
                 DataTransferId = dataTransferId;
                 InitParameters();
@@ -462,13 +442,13 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             public virtual string DataTransferId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/datatransfer/v1/transfers/{dataTransferId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -476,15 +456,14 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "dataTransferId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dataTransferId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("dataTransferId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dataTransferId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -500,8 +479,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public class InsertRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -512,16 +490,16 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/datatransfer/v1/transfers";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -543,8 +521,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -575,13 +552,13 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             public virtual string Status { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/datatransfer/v1/transfers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -589,60 +566,54 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "newOwnerUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "newOwnerUserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "oldOwnerUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "oldOwnerUserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("newOwnerUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "newOwnerUserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("oldOwnerUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "oldOwnerUserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

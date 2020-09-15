@@ -18,17 +18,16 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ClouderrorreportingService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ClouderrorreportingService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ClouderrorreportingService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ClouderrorreportingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Clouderrorreporting requests.</summary>
+    /// <summary>A base abstract class for Clouderrorreporting requests.</summary>
     public abstract class ClouderrorreportingBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ClouderrorreportingBaseServiceRequest instance.</summary>
-        protected ClouderrorreportingBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ClouderrorreportingBaseServiceRequest instance.</summary>
+        protected ClouderrorreportingBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -317,8 +304,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public class ListRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ListEventsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectName) : base(service)
                 {
                     ProjectName = projectName;
                     InitParameters();
@@ -391,13 +377,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+projectName}/events";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -405,78 +391,70 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "groupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.resourceType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.service",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.version",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timeRange.period", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timeRange.period",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("groupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "groupId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.resourceType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.service", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.service",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.period", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.period",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -501,8 +479,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
             {
                 /// <summary>Constructs a new Report request.</summary>
-                public ReportRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
-                    : base(service)
+                public ReportRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName) : base(service)
                 {
                     ProjectName = projectName;
                     Body = body;
@@ -521,16 +498,16 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "report";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+projectName}/events:report";
 
                 /// <summary>Initializes Report parameter list.</summary>
@@ -538,15 +515,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -583,8 +559,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public class ListRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ListGroupStatsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectName) : base(service)
                 {
                     ProjectName = projectName;
                     InitParameters();
@@ -721,13 +696,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 public virtual object TimedCountDuration { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+projectName}/groupStats";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -735,114 +710,102 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "alignment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alignment",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "alignmentTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alignmentTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "groupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "order", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "order",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.resourceType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.service",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.version",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timeRange.period", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timeRange.period",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timedCountDuration", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timedCountDuration",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("alignment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alignment",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("alignmentTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alignmentTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("groupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "groupId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("order", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.resourceType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.service", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.service",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceFilter.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceFilter.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.period", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.period",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timedCountDuration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timedCountDuration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -880,8 +843,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public class GetRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string groupName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string groupName) : base(service)
                 {
                     GroupName = groupName;
                     InitParameters();
@@ -896,13 +858,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 public virtual string GroupName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+groupName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -910,15 +872,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "groupName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
-                        });
+                    RequestParameters.Add("groupName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "groupName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/groups/[^/]+$",
+                    });
                 }
 
             }
@@ -935,8 +896,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public class UpdateRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -952,16 +912,16 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/{+name}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -969,15 +929,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/groups/[^/]+$",
+                    });
                 }
 
             }
@@ -996,8 +955,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         public class DeleteEventsRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.DeleteEventsResponse>
         {
             /// <summary>Constructs a new DeleteEvents request.</summary>
-            public DeleteEventsRequest(Google.Apis.Services.IClientService service, string projectName)
-                : base(service)
+            public DeleteEventsRequest(Google.Apis.Services.IClientService service, string projectName) : base(service)
             {
                 ProjectName = projectName;
                 InitParameters();
@@ -1011,13 +969,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public virtual string ProjectName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteEvents";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/{+projectName}/events";
 
             /// <summary>Initializes DeleteEvents parameter list.</summary>
@@ -1025,15 +983,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.Vault.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public VaultService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public VaultService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public VaultService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public VaultService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Matters = new MattersResource(this);
             Operations = new OperationsResource(this);
@@ -90,12 +89,11 @@ namespace Google.Apis.Vault.v1
         public virtual OperationsResource Operations { get; }
     }
 
-    ///<summary>A base abstract class for Vault requests.</summary>
+    /// <summary>A base abstract class for Vault requests.</summary>
     public abstract class VaultBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new VaultBaseServiceRequest instance.</summary>
-        protected VaultBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new VaultBaseServiceRequest instance.</summary>
+        protected VaultBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -175,105 +173,94 @@ namespace Google.Apis.Vault.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -326,8 +313,7 @@ namespace Google.Apis.Vault.v1
             public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Export>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Export body, string matterId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Export body, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     Body = body;
@@ -343,16 +329,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Export Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/exports";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -360,15 +346,14 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -385,8 +370,7 @@ namespace Google.Apis.Vault.v1
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string exportId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string exportId) : base(service)
                 {
                     MatterId = matterId;
                     ExportId = exportId;
@@ -403,13 +387,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string ExportId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/exports/{exportId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -417,24 +401,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "exportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "exportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("exportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "exportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -451,8 +433,7 @@ namespace Google.Apis.Vault.v1
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Export>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string exportId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string exportId) : base(service)
                 {
                     MatterId = matterId;
                     ExportId = exportId;
@@ -469,13 +450,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string ExportId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/exports/{exportId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -483,24 +464,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "exportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "exportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("exportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "exportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -516,8 +495,7 @@ namespace Google.Apis.Vault.v1
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListExportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string matterId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     InitParameters();
@@ -537,13 +515,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/exports";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -551,33 +529,30 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -637,8 +612,7 @@ namespace Google.Apis.Vault.v1
                 public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.HeldAccount>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.HeldAccount body, string matterId, string holdId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.HeldAccount body, string matterId, string holdId) : base(service)
                     {
                         MatterId = matterId;
                         HoldId = holdId;
@@ -659,16 +633,16 @@ namespace Google.Apis.Vault.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vault.v1.Data.HeldAccount Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/matters/{matterId}/holds/{holdId}/accounts";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -676,24 +650,22 @@ namespace Google.Apis.Vault.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "matterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "holdId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "holdId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "holdId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -714,8 +686,7 @@ namespace Google.Apis.Vault.v1
                 public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string holdId, string accountId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string holdId, string accountId) : base(service)
                     {
                         MatterId = matterId;
                         HoldId = holdId;
@@ -737,13 +708,13 @@ namespace Google.Apis.Vault.v1
                     public virtual string AccountId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -751,33 +722,30 @@ namespace Google.Apis.Vault.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "matterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "holdId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "holdId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "holdId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -796,8 +764,7 @@ namespace Google.Apis.Vault.v1
                 public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHeldAccountsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string matterId, string holdId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string matterId, string holdId) : base(service)
                     {
                         MatterId = matterId;
                         HoldId = holdId;
@@ -814,13 +781,13 @@ namespace Google.Apis.Vault.v1
                     public virtual string HoldId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/matters/{matterId}/holds/{holdId}/accounts";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -828,24 +795,22 @@ namespace Google.Apis.Vault.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "matterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matterId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "holdId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "holdId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "holdId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -866,8 +831,7 @@ namespace Google.Apis.Vault.v1
             public class AddHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.AddHeldAccountsResponse>
             {
                 /// <summary>Constructs a new AddHeldAccounts request.</summary>
-                public AddHeldAccountsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.AddHeldAccountsRequest body, string matterId, string holdId)
-                    : base(service)
+                public AddHeldAccountsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.AddHeldAccountsRequest body, string matterId, string holdId) : base(service)
                 {
                     MatterId = matterId;
                     HoldId = holdId;
@@ -888,16 +852,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.AddHeldAccountsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "addHeldAccounts";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts";
 
                 /// <summary>Initializes AddHeldAccounts parameter list.</summary>
@@ -905,24 +869,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "holdId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "holdId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "holdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -939,8 +901,7 @@ namespace Google.Apis.Vault.v1
             public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Hold body, string matterId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Hold body, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     Body = body;
@@ -956,16 +917,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Hold Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -973,15 +934,14 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -998,8 +958,7 @@ namespace Google.Apis.Vault.v1
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string holdId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string holdId) : base(service)
                 {
                     MatterId = matterId;
                     HoldId = holdId;
@@ -1016,13 +975,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string HoldId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds/{holdId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1030,24 +989,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "holdId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "holdId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "holdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1064,8 +1021,7 @@ namespace Google.Apis.Vault.v1
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string holdId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string holdId) : base(service)
                 {
                     MatterId = matterId;
                     HoldId = holdId;
@@ -1101,13 +1057,13 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds/{holdId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1115,33 +1071,30 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "holdId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "holdId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "holdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1159,8 +1112,7 @@ namespace Google.Apis.Vault.v1
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHoldsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string matterId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     InitParameters();
@@ -1201,13 +1153,13 @@ namespace Google.Apis.Vault.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1215,42 +1167,38 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1272,8 +1220,7 @@ namespace Google.Apis.Vault.v1
             public class RemoveHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.RemoveHeldAccountsResponse>
             {
                 /// <summary>Constructs a new RemoveHeldAccounts request.</summary>
-                public RemoveHeldAccountsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.RemoveHeldAccountsRequest body, string matterId, string holdId)
-                    : base(service)
+                public RemoveHeldAccountsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.RemoveHeldAccountsRequest body, string matterId, string holdId) : base(service)
                 {
                     MatterId = matterId;
                     HoldId = holdId;
@@ -1294,16 +1241,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.RemoveHeldAccountsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "removeHeldAccounts";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts";
 
                 /// <summary>Initializes RemoveHeldAccounts parameter list.</summary>
@@ -1311,24 +1258,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "holdId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "holdId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "holdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1350,8 +1295,7 @@ namespace Google.Apis.Vault.v1
             public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Hold body, string matterId, string holdId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Hold body, string matterId, string holdId) : base(service)
                 {
                     MatterId = matterId;
                     HoldId = holdId;
@@ -1372,16 +1316,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Hold Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/holds/{holdId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1389,24 +1333,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "holdId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "holdId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("holdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "holdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1442,8 +1384,7 @@ namespace Google.Apis.Vault.v1
             public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.SavedQuery>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.SavedQuery body, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     Body = body;
@@ -1459,16 +1400,16 @@ namespace Google.Apis.Vault.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.SavedQuery Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/savedQueries";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1476,15 +1417,14 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1502,8 +1442,7 @@ namespace Google.Apis.Vault.v1
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId) : base(service)
                 {
                     MatterId = matterId;
                     SavedQueryId = savedQueryId;
@@ -1520,13 +1459,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string SavedQueryId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/savedQueries/{savedQueryId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1534,24 +1473,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "savedQueryId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "savedQueryId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "savedQueryId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1569,8 +1506,7 @@ namespace Google.Apis.Vault.v1
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.SavedQuery>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId) : base(service)
                 {
                     MatterId = matterId;
                     SavedQueryId = savedQueryId;
@@ -1587,13 +1523,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string SavedQueryId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/savedQueries/{savedQueryId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1601,24 +1537,22 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "savedQueryId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "savedQueryId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "savedQueryId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1637,8 +1571,7 @@ namespace Google.Apis.Vault.v1
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListSavedQueriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string matterId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string matterId) : base(service)
                 {
                     MatterId = matterId;
                     InitParameters();
@@ -1660,13 +1593,13 @@ namespace Google.Apis.Vault.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/matters/{matterId}/savedQueries";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1674,33 +1607,30 @@ namespace Google.Apis.Vault.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "matterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "matterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "matterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1718,8 +1648,7 @@ namespace Google.Apis.Vault.v1
         public class AddPermissionsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.MatterPermission>
         {
             /// <summary>Constructs a new AddPermissions request.</summary>
-            public AddPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.AddMatterPermissionsRequest body, string matterId)
-                : base(service)
+            public AddPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.AddMatterPermissionsRequest body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -1735,16 +1664,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.AddMatterPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "addPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}:addPermissions";
 
             /// <summary>Initializes AddPermissions parameter list.</summary>
@@ -1752,15 +1681,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1777,8 +1705,7 @@ namespace Google.Apis.Vault.v1
         public class CloseRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.CloseMatterResponse>
         {
             /// <summary>Constructs a new Close request.</summary>
-            public CloseRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.CloseMatterRequest body, string matterId)
-                : base(service)
+            public CloseRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.CloseMatterRequest body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -1794,16 +1721,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.CloseMatterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "close";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}:close";
 
             /// <summary>Initializes Close parameter list.</summary>
@@ -1811,15 +1738,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1837,8 +1763,7 @@ namespace Google.Apis.Vault.v1
         public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Matter body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Matter body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1849,16 +1774,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.Matter Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1881,8 +1806,7 @@ namespace Google.Apis.Vault.v1
         public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string matterId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string matterId) : base(service)
             {
                 MatterId = matterId;
                 InitParameters();
@@ -1894,13 +1818,13 @@ namespace Google.Apis.Vault.v1
             public virtual string MatterId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1908,15 +1832,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1932,8 +1855,7 @@ namespace Google.Apis.Vault.v1
         public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string matterId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string matterId) : base(service)
             {
                 MatterId = matterId;
                 InitParameters();
@@ -1964,13 +1886,13 @@ namespace Google.Apis.Vault.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1978,24 +1900,22 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2010,8 +1930,7 @@ namespace Google.Apis.Vault.v1
         public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListMattersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2068,13 +1987,13 @@ namespace Google.Apis.Vault.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2082,42 +2001,38 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "state", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "state",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("state", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "state",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2134,8 +2049,7 @@ namespace Google.Apis.Vault.v1
         public class RemovePermissionsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
         {
             /// <summary>Constructs a new RemovePermissions request.</summary>
-            public RemovePermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.RemoveMatterPermissionsRequest body, string matterId)
-                : base(service)
+            public RemovePermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.RemoveMatterPermissionsRequest body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -2151,16 +2065,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.RemoveMatterPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "removePermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}:removePermissions";
 
             /// <summary>Initializes RemovePermissions parameter list.</summary>
@@ -2168,15 +2082,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2193,8 +2106,7 @@ namespace Google.Apis.Vault.v1
         public class ReopenRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ReopenMatterResponse>
         {
             /// <summary>Constructs a new Reopen request.</summary>
-            public ReopenRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.ReopenMatterRequest body, string matterId)
-                : base(service)
+            public ReopenRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.ReopenMatterRequest body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -2210,16 +2122,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.ReopenMatterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reopen";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}:reopen";
 
             /// <summary>Initializes Reopen parameter list.</summary>
@@ -2227,15 +2139,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2252,8 +2163,7 @@ namespace Google.Apis.Vault.v1
         public class UndeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.UndeleteMatterRequest body, string matterId)
-                : base(service)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.UndeleteMatterRequest body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -2269,16 +2179,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.UndeleteMatterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "undelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}:undelete";
 
             /// <summary>Initializes Undelete parameter list.</summary>
@@ -2286,15 +2196,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2313,8 +2222,7 @@ namespace Google.Apis.Vault.v1
         public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Matter body, string matterId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.Matter body, string matterId) : base(service)
             {
                 MatterId = matterId;
                 Body = body;
@@ -2330,16 +2238,16 @@ namespace Google.Apis.Vault.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.Matter Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/matters/{matterId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2347,15 +2255,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "matterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "matterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2392,8 +2299,7 @@ namespace Google.Apis.Vault.v1
         public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -2405,13 +2311,13 @@ namespace Google.Apis.Vault.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2419,15 +2325,14 @@ namespace Google.Apis.Vault.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
             }
 
         }

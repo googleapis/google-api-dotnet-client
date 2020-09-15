@@ -18,17 +18,16 @@ namespace Google.Apis.Bigquery.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public BigqueryService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public BigqueryService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public BigqueryService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public BigqueryService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Datasets = new DatasetsResource(this);
             Jobs = new JobsResource(this);
@@ -146,12 +145,11 @@ namespace Google.Apis.Bigquery.v2
         public virtual TablesResource Tables { get; }
     }
 
-    ///<summary>A base abstract class for Bigquery requests.</summary>
+    /// <summary>A base abstract class for Bigquery requests.</summary>
     public abstract class BigqueryBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new BigqueryBaseServiceRequest instance.</summary>
-        protected BigqueryBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new BigqueryBaseServiceRequest instance.</summary>
+        protected BigqueryBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -198,69 +196,62 @@ namespace Google.Apis.Bigquery.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -297,8 +288,7 @@ namespace Google.Apis.Bigquery.v2
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -320,13 +310,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual System.Nullable<bool> DeleteContents { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -334,33 +324,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deleteContents", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deleteContents",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deleteContents", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deleteContents",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -378,8 +365,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -396,13 +382,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string DatasetId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -410,24 +396,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -444,8 +428,7 @@ namespace Google.Apis.Bigquery.v2
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -461,16 +444,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -478,15 +461,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -504,8 +486,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.DatasetList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -535,13 +516,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -549,51 +530,46 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "all", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "all",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("all", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "all",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -616,8 +592,7 @@ namespace Google.Apis.Bigquery.v2
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -638,16 +613,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -655,24 +630,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -693,8 +666,7 @@ namespace Google.Apis.Bigquery.v2
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -715,16 +687,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -732,24 +704,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -788,8 +758,7 @@ namespace Google.Apis.Bigquery.v2
         public class CancelRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                : base(service)
+            public CancelRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
             {
                 ProjectId = projectId;
                 JobId = jobId;
@@ -811,13 +780,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string Location { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancel";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/jobs/{jobId}/cancel";
 
             /// <summary>Initializes Cancel parameter list.</summary>
@@ -825,33 +794,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "jobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "jobId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -871,8 +837,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Job>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
             {
                 ProjectId = projectId;
                 JobId = jobId;
@@ -894,13 +859,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string Location { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/jobs/{jobId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -908,33 +873,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "jobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "jobId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -952,8 +914,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetQueryResultsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetQueryResultsResponse>
         {
             /// <summary>Constructs a new GetQueryResults request.</summary>
-            public GetQueryResultsRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                : base(service)
+            public GetQueryResultsRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
             {
                 ProjectId = projectId;
                 JobId = jobId;
@@ -993,13 +954,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual System.Nullable<long> TimeoutMs { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getQueryResults";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/queries/{jobId}";
 
             /// <summary>Initializes GetQueryResults parameter list.</summary>
@@ -1007,69 +968,62 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "jobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "jobId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeoutMs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeoutMs",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeoutMs", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeoutMs",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1086,8 +1040,7 @@ namespace Google.Apis.Bigquery.v2
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Job>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Job body, string projectId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Job body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1103,16 +1056,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Job Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/jobs";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1120,15 +1073,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1249,8 +1201,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -1322,13 +1273,13 @@ namespace Google.Apis.Bigquery.v2
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/jobs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1336,87 +1287,78 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "allUsers", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "allUsers",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parentJobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parentJobId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "stateFilter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "stateFilter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allUsers", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allUsers",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxCreationTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxCreationTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minCreationTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minCreationTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parentJobId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parentJobId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("stateFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "stateFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1435,8 +1377,7 @@ namespace Google.Apis.Bigquery.v2
         public class QueryRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.QueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.QueryRequest body, string projectId)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.QueryRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1452,16 +1393,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.QueryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/queries";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -1469,15 +1410,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1514,8 +1454,7 @@ namespace Google.Apis.Bigquery.v2
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -1537,13 +1476,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string ModelId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1551,33 +1490,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "modelId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "modelId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("modelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "modelId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -1597,8 +1533,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -1620,13 +1555,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string ModelId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1634,33 +1569,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "modelId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "modelId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("modelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "modelId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -1678,8 +1610,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListModelsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -1705,13 +1636,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/models";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1719,42 +1650,38 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1775,8 +1702,7 @@ namespace Google.Apis.Bigquery.v2
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -1802,16 +1728,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Model Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1819,33 +1745,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "modelId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "modelId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("modelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "modelId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -1880,8 +1803,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetServiceAccountRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetServiceAccountResponse>
         {
             /// <summary>Constructs a new GetServiceAccount request.</summary>
-            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -1893,13 +1815,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string ProjectId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getServiceAccount";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/serviceAccount";
 
             /// <summary>Initializes GetServiceAccount parameter list.</summary>
@@ -1907,15 +1829,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1930,8 +1851,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ProjectList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1946,13 +1866,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1960,24 +1880,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2014,8 +1932,7 @@ namespace Google.Apis.Bigquery.v2
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2037,13 +1954,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string RoutineId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2051,33 +1968,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "routineId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "routineId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("routineId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "routineId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -2097,8 +2011,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2125,13 +2038,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual object ReadMask { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2139,42 +2052,38 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "routineId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "routineId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "readMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("routineId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "routineId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2193,8 +2102,7 @@ namespace Google.Apis.Bigquery.v2
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2215,16 +2123,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/routines";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2232,24 +2140,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -2267,8 +2173,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListRoutinesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2307,13 +2212,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual object ReadMask { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/routines";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2321,60 +2226,54 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "readMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2397,8 +2296,7 @@ namespace Google.Apis.Bigquery.v2
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2424,16 +2322,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2441,33 +2339,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "routineId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "routineId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("routineId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "routineId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -2506,8 +2401,7 @@ namespace Google.Apis.Bigquery.v2
         public class InsertAllRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableDataInsertAllResponse>
         {
             /// <summary>Constructs a new InsertAll request.</summary>
-            public InsertAllRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest body, string projectId, string datasetId, string tableId)
-                : base(service)
+            public InsertAllRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest body, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2533,16 +2427,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insertAll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll";
 
             /// <summary>Initializes InsertAll parameter list.</summary>
@@ -2550,33 +2444,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2595,8 +2486,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableDataList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2634,13 +2524,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual System.Nullable<ulong> StartIndex { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2648,69 +2538,62 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "selectedFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "selectedFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("selectedFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "selectedFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2748,8 +2631,7 @@ namespace Google.Apis.Bigquery.v2
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2771,13 +2653,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string TableId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2785,33 +2667,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2832,8 +2711,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -2859,13 +2737,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string SelectedFields { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2873,42 +2751,38 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "selectedFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "selectedFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("selectedFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "selectedFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2928,8 +2802,7 @@ namespace Google.Apis.Bigquery.v2
         public class GetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2946,16 +2819,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{+resource}:getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -2963,15 +2836,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                });
             }
 
         }
@@ -2990,8 +2862,7 @@ namespace Google.Apis.Bigquery.v2
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -3012,16 +2883,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3029,24 +2900,22 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3064,8 +2933,7 @@ namespace Google.Apis.Bigquery.v2
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -3090,13 +2958,13 @@ namespace Google.Apis.Bigquery.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3104,42 +2972,38 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3163,8 +3027,7 @@ namespace Google.Apis.Bigquery.v2
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -3190,16 +3053,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3207,33 +3070,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3253,8 +3113,7 @@ namespace Google.Apis.Bigquery.v2
         public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -3271,16 +3130,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{+resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -3288,15 +3147,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                });
             }
 
         }
@@ -3320,8 +3178,7 @@ namespace Google.Apis.Bigquery.v2
         public class TestIamPermissionsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -3338,16 +3195,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{+resource}:testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -3355,15 +3212,14 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                });
             }
 
         }
@@ -3385,8 +3241,7 @@ namespace Google.Apis.Bigquery.v2
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId) : base(service)
             {
                 ProjectId = projectId;
                 DatasetId = datasetId;
@@ -3412,16 +3267,16 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "projects/{projectId}/datasets/{datasetId}/tables/{tableId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3429,33 +3284,30 @@ namespace Google.Apis.Bigquery.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "datasetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "datasetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tableId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tableId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

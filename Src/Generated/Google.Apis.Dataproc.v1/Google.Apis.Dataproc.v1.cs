@@ -18,17 +18,16 @@ namespace Google.Apis.Dataproc.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DataprocService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DataprocService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DataprocService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DataprocService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Dataproc.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Dataproc requests.</summary>
+    /// <summary>A base abstract class for Dataproc requests.</summary>
     public abstract class DataprocBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DataprocBaseServiceRequest instance.</summary>
-        protected DataprocBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DataprocBaseServiceRequest instance.</summary>
+        protected DataprocBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.Dataproc.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -339,8 +326,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -361,16 +347,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/autoscalingPolicies";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -378,15 +364,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -408,8 +393,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -426,13 +410,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -440,15 +424,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -468,8 +451,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -486,13 +468,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -500,15 +482,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -528,8 +509,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -546,16 +526,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -563,15 +543,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -591,8 +570,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListAutoscalingPoliciesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -619,13 +597,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/autoscalingPolicies";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -633,33 +611,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -679,8 +654,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -697,16 +671,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -714,15 +688,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -746,8 +719,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -764,16 +736,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -781,15 +753,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -812,8 +783,7 @@ namespace Google.Apis.Dataproc.v1
                 public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -834,16 +804,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -851,15 +821,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -899,8 +868,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -921,16 +889,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -938,15 +906,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -967,8 +934,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -991,13 +957,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual System.Nullable<int> Version { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1005,24 +971,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "version", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "version",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1044,8 +1008,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1067,13 +1030,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual System.Nullable<int> Version { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1081,24 +1044,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "version", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "version",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1118,8 +1079,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1136,16 +1096,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1153,15 +1113,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -1199,8 +1158,7 @@ namespace Google.Apis.Dataproc.v1
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
-                    public InstantiateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
-                        : base(service)
+                    public InstantiateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1222,16 +1180,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "instantiate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:instantiate";
 
                     /// <summary>Initializes Instantiate parameter list.</summary>
@@ -1239,15 +1197,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -1286,8 +1243,7 @@ namespace Google.Apis.Dataproc.v1
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
-                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
-                        : base(service)
+                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1317,16 +1273,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "instantiateInline";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates:instantiateInline";
 
                     /// <summary>Initializes InstantiateInline parameter list.</summary>
@@ -1334,24 +1290,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1371,8 +1325,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListWorkflowTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1398,13 +1351,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1412,33 +1365,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1458,8 +1408,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1476,16 +1425,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1493,15 +1442,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -1525,8 +1473,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1543,16 +1490,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1560,15 +1507,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -1591,8 +1537,7 @@ namespace Google.Apis.Dataproc.v1
                 public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1613,16 +1558,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1630,15 +1575,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -1702,8 +1646,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1724,16 +1667,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/autoscalingPolicies";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1741,15 +1684,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                        });
                     }
 
                 }
@@ -1771,8 +1713,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1789,13 +1730,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1803,15 +1744,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -1831,8 +1771,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1849,13 +1788,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1863,15 +1802,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -1891,8 +1829,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1909,16 +1846,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1926,15 +1863,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -1954,8 +1890,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListAutoscalingPoliciesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1982,13 +1917,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/autoscalingPolicies";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1996,33 +1931,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2042,8 +1974,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -2060,16 +1991,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -2077,15 +2008,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -2109,8 +2039,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -2127,16 +2056,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -2144,15 +2073,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -2175,8 +2103,7 @@ namespace Google.Apis.Dataproc.v1
                 public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2197,16 +2124,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -2214,15 +2141,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
                     }
 
                 }
@@ -2264,8 +2190,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2297,16 +2222,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.Cluster Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2314,33 +2239,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2364,8 +2286,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2403,13 +2324,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string RequestId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2417,51 +2338,46 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterUuid",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterUuid", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterUuid",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2490,8 +2406,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Diagnose request.</summary>
-                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName)
-                        : base(service)
+                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2518,16 +2433,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.DiagnoseClusterRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "diagnose";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose";
 
                     /// <summary>Initializes Diagnose parameter list.</summary>
@@ -2535,33 +2450,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2581,8 +2493,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Cluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2605,13 +2516,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string ClusterName { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2619,33 +2530,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2665,8 +2573,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -2683,16 +2590,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -2700,15 +2607,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -2726,8 +2632,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2765,13 +2670,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2779,51 +2684,46 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2848,8 +2748,7 @@ namespace Google.Apis.Dataproc.v1
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region, string clusterName)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region, string clusterName) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -2908,16 +2807,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.Cluster Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -2925,60 +2824,54 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gracefulDecommissionTimeout",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gracefulDecommissionTimeout",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2998,8 +2891,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -3016,16 +2908,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -3033,15 +2925,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -3065,8 +2956,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -3083,16 +2973,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -3100,15 +2990,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
+                        });
                     }
 
                 }
@@ -3156,8 +3045,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Job>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.CancelJobRequest body, string projectId, string region, string jobId)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.CancelJobRequest body, string projectId, string region, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3184,16 +3072,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.CancelJobRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -3201,33 +3089,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3249,8 +3134,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3273,13 +3157,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string JobId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs/{jobId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3287,33 +3171,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3333,8 +3214,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Job>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3357,13 +3237,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string JobId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs/{jobId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3371,33 +3251,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3417,8 +3294,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -3435,16 +3311,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -3452,15 +3328,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
+                        });
                     }
 
                 }
@@ -3478,8 +3353,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3541,13 +3415,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3555,69 +3429,62 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobStateMatcher",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobStateMatcher", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobStateMatcher",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3638,8 +3505,7 @@ namespace Google.Apis.Dataproc.v1
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Job>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Job body, string projectId, string region, string jobId)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Job body, string projectId, string region, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3673,16 +3539,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.Job Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs/{jobId}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3690,42 +3556,38 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3745,8 +3607,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -3763,16 +3624,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -3780,15 +3641,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
+                        });
                     }
 
                 }
@@ -3807,8 +3667,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SubmitRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Job>
                 {
                     /// <summary>Constructs a new Submit request.</summary>
-                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region)
-                        : base(service)
+                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3830,16 +3689,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SubmitJobRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "submit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs:submit";
 
                     /// <summary>Initializes Submit parameter list.</summary>
@@ -3847,24 +3706,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3883,8 +3740,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SubmitAsOperationRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SubmitAsOperation request.</summary>
-                    public SubmitAsOperationRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region)
-                        : base(service)
+                    public SubmitAsOperationRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region) : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
@@ -3906,16 +3762,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SubmitJobRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "submitAsOperation";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation";
 
                     /// <summary>Initializes SubmitAsOperation parameter list.</summary>
@@ -3923,24 +3779,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "region", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "region",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3964,8 +3818,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -3982,16 +3835,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -3999,15 +3852,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
+                        });
                     }
 
                 }
@@ -4054,8 +3906,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4067,13 +3918,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -4081,15 +3932,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4109,8 +3959,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4122,13 +3971,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4136,15 +3985,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4162,8 +4010,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4175,13 +4022,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4189,15 +4036,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4217,8 +4063,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4235,16 +4080,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -4252,15 +4097,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4288,8 +4132,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4313,13 +4156,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4327,42 +4170,38 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4382,8 +4221,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4400,16 +4238,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -4417,15 +4255,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4449,8 +4286,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4467,16 +4303,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -4484,15 +4320,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4532,8 +4367,7 @@ namespace Google.Apis.Dataproc.v1
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -4554,16 +4388,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4571,15 +4405,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                        });
                     }
 
                 }
@@ -4600,8 +4433,7 @@ namespace Google.Apis.Dataproc.v1
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4624,13 +4456,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual System.Nullable<int> Version { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4638,24 +4470,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "version", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "version",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4677,8 +4507,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4700,13 +4529,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual System.Nullable<int> Version { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4714,24 +4543,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "version", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "version",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4751,8 +4578,7 @@ namespace Google.Apis.Dataproc.v1
                 public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4769,16 +4595,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -4786,15 +4612,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -4832,8 +4657,7 @@ namespace Google.Apis.Dataproc.v1
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
-                    public InstantiateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
-                        : base(service)
+                    public InstantiateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -4855,16 +4679,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "instantiate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:instantiate";
 
                     /// <summary>Initializes Instantiate parameter list.</summary>
@@ -4872,15 +4696,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -4919,8 +4742,7 @@ namespace Google.Apis.Dataproc.v1
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
-                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
-                        : base(service)
+                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -4950,16 +4772,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "instantiateInline";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates:instantiateInline";
 
                     /// <summary>Initializes InstantiateInline parameter list.</summary>
@@ -4967,24 +4789,22 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5004,8 +4824,7 @@ namespace Google.Apis.Dataproc.v1
                 public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListWorkflowTemplatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -5031,13 +4850,13 @@ namespace Google.Apis.Dataproc.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/workflowTemplates";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5045,33 +4864,30 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5091,8 +4907,7 @@ namespace Google.Apis.Dataproc.v1
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -5109,16 +4924,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -5126,15 +4941,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -5158,8 +4972,7 @@ namespace Google.Apis.Dataproc.v1
                 public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -5176,16 +4989,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -5193,15 +5006,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -5224,8 +5036,7 @@ namespace Google.Apis.Dataproc.v1
                 public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WorkflowTemplate>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -5246,16 +5057,16 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1.Data.WorkflowTemplate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -5263,15 +5074,14 @@ namespace Google.Apis.Dataproc.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                        });
                     }
 
                 }

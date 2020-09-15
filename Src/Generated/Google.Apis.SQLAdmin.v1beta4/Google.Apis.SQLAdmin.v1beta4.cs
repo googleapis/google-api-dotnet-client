@@ -18,17 +18,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public const string Version = "v1beta4";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public SQLAdminService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public SQLAdminService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public SQLAdminService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public SQLAdminService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BackupRuns = new BackupRunsResource(this);
             Databases = new DatabasesResource(this);
@@ -118,12 +117,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public virtual UsersResource Users { get; }
     }
 
-    ///<summary>A base abstract class for SQLAdmin requests.</summary>
+    /// <summary>A base abstract class for SQLAdmin requests.</summary>
     public abstract class SQLAdminBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new SQLAdminBaseServiceRequest instance.</summary>
-        protected SQLAdminBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new SQLAdminBaseServiceRequest instance.</summary>
+        protected SQLAdminBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -203,105 +201,94 @@ namespace Google.Apis.SQLAdmin.v1beta4
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -336,8 +323,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, long id) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -359,13 +345,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -373,33 +359,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -419,8 +402,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.BackupRun>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, long id) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -442,13 +424,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -456,33 +438,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -503,8 +482,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.BackupRun body, string project, string instance)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.BackupRun body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -525,16 +503,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.BackupRun Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -542,24 +520,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -579,8 +555,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.BackupRunsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -606,13 +581,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -620,42 +595,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -692,8 +663,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, string database)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, string database) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -715,13 +685,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Database { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -729,33 +699,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "database", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "database",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "database",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -775,8 +742,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Database>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, string database)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, string database) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -798,13 +764,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Database { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -812,33 +778,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "database", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "database",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "database",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -857,8 +820,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -879,16 +841,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -896,24 +858,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -931,8 +891,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.DatabasesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -949,13 +908,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -963,24 +922,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1003,8 +960,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1030,16 +986,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1047,33 +1003,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "database", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "database",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "database",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1094,8 +1047,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1121,16 +1073,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1138,33 +1090,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "database", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "database",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "database",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1196,8 +1145,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.FlagsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1209,13 +1157,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string DatabaseVersion { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/flags";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1223,15 +1171,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "databaseVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "databaseVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("databaseVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "databaseVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1272,8 +1219,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class AddServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new AddServerCa request.</summary>
-            public AddServerCaRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public AddServerCaRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1290,13 +1236,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "addServerCa";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa";
 
             /// <summary>Initializes AddServerCa parameter list.</summary>
@@ -1304,24 +1250,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1343,8 +1287,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class CloneRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Clone request.</summary>
-            public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesCloneRequest body, string project, string instance)
-                : base(service)
+            public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesCloneRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1366,16 +1309,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesCloneRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clone";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/clone";
 
             /// <summary>Initializes Clone parameter list.</summary>
@@ -1383,24 +1326,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1418,8 +1359,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1436,13 +1376,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1450,24 +1390,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1488,8 +1426,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DemoteMasterRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new DemoteMaster request.</summary>
-            public DemoteMasterRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest body, string project, string instance)
-                : base(service)
+            public DemoteMasterRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1510,16 +1447,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "demoteMaster";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster";
 
             /// <summary>Initializes DemoteMaster parameter list.</summary>
@@ -1527,24 +1464,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1565,8 +1500,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ExportRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Export request.</summary>
-            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesExportRequest body, string project, string instance)
-                : base(service)
+            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesExportRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1587,16 +1521,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesExportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "export";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/export";
 
             /// <summary>Initializes Export parameter list.</summary>
@@ -1604,24 +1538,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1642,8 +1574,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class FailoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Failover request.</summary>
-            public FailoverRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesFailoverRequest body, string project, string instance)
-                : base(service)
+            public FailoverRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesFailoverRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1664,16 +1595,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesFailoverRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "failover";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/failover";
 
             /// <summary>Initializes Failover parameter list.</summary>
@@ -1681,24 +1612,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1716,8 +1645,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1734,13 +1662,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1748,24 +1676,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1784,8 +1710,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ImportRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Import request.</summary>
-            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesImportRequest body, string project, string instance)
-                : base(service)
+            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesImportRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -1806,16 +1731,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesImportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "import";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/import";
 
             /// <summary>Initializes Import parameter list.</summary>
@@ -1823,24 +1748,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1858,8 +1781,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1876,16 +1798,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1893,15 +1815,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1917,8 +1838,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.InstancesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -1947,13 +1867,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1961,42 +1881,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2020,8 +1936,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListServerCasRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.InstancesListServerCasResponse>
         {
             /// <summary>Constructs a new ListServerCas request.</summary>
-            public ListServerCasRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ListServerCasRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2038,13 +1953,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listServerCas";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas";
 
             /// <summary>Initializes ListServerCas parameter list.</summary>
@@ -2052,24 +1967,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2088,8 +2001,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2110,16 +2022,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2127,24 +2039,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2164,8 +2074,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class PromoteReplicaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new PromoteReplica request.</summary>
-            public PromoteReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public PromoteReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2182,13 +2091,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "promoteReplica";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica";
 
             /// <summary>Initializes PromoteReplica parameter list.</summary>
@@ -2196,24 +2105,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2233,8 +2140,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ResetSslConfigRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new ResetSslConfig request.</summary>
-            public ResetSslConfigRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ResetSslConfigRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2251,13 +2157,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetSslConfig";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig";
 
             /// <summary>Initializes ResetSslConfig parameter list.</summary>
@@ -2265,24 +2171,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2300,8 +2204,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class RestartRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Restart request.</summary>
-            public RestartRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public RestartRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2318,13 +2221,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "restart";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/restart";
 
             /// <summary>Initializes Restart parameter list.</summary>
@@ -2332,24 +2235,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2370,8 +2271,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class RestoreBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new RestoreBackup request.</summary>
-            public RestoreBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesRestoreBackupRequest body, string project, string instance)
-                : base(service)
+            public RestoreBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesRestoreBackupRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2392,16 +2292,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRestoreBackupRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "restoreBackup";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup";
 
             /// <summary>Initializes RestoreBackup parameter list.</summary>
@@ -2409,24 +2309,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2447,8 +2345,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class RotateServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new RotateServerCa request.</summary>
-            public RotateServerCaRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest body, string project, string instance)
-                : base(service)
+            public RotateServerCaRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2469,16 +2366,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "rotateServerCa";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa";
 
             /// <summary>Initializes RotateServerCa parameter list.</summary>
@@ -2486,24 +2383,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2521,8 +2416,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class StartReplicaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new StartReplica request.</summary>
-            public StartReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public StartReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2539,13 +2433,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "startReplica";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/startReplica";
 
             /// <summary>Initializes StartReplica parameter list.</summary>
@@ -2553,24 +2447,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2588,8 +2480,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class StopReplicaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new StopReplica request.</summary>
-            public StopReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public StopReplicaRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2606,13 +2497,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stopReplica";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica";
 
             /// <summary>Initializes StopReplica parameter list.</summary>
@@ -2620,24 +2511,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2656,8 +2545,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class TruncateLogRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new TruncateLog request.</summary>
-            public TruncateLogRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest body, string project, string instance)
-                : base(service)
+            public TruncateLogRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2678,16 +2566,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "truncateLog";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog";
 
             /// <summary>Initializes TruncateLog parameter list.</summary>
@@ -2695,24 +2583,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2733,8 +2619,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -2755,16 +2640,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2772,24 +2657,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2824,8 +2707,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string operation)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string operation) : base(service)
             {
                 Project = project;
                 Operation = operation;
@@ -2842,13 +2724,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Operation { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/operations/{operation}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2856,24 +2738,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "operation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "operation",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2891,8 +2771,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.OperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -2917,13 +2796,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/operations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2931,42 +2810,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3021,8 +2896,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public class RescheduleMaintenanceRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
             {
                 /// <summary>Constructs a new RescheduleMaintenance request.</summary>
-                public RescheduleMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesRescheduleMaintenanceRequestBody body, string project, string instance)
-                    : base(service)
+                public RescheduleMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesRescheduleMaintenanceRequestBody body, string project, string instance) : base(service)
                 {
                     Project = project;
                     Instance = instance;
@@ -3043,16 +2917,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesRescheduleMaintenanceRequestBody Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "rescheduleMaintenance";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance";
 
                 /// <summary>Initializes RescheduleMaintenance parameter list.</summary>
@@ -3060,24 +2934,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "instance", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "instance",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3095,8 +2967,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public class StartExternalSyncRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
             {
                 /// <summary>Constructs a new StartExternalSync request.</summary>
-                public StartExternalSyncRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                    : base(service)
+                public StartExternalSyncRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
                 {
                     Project = project;
                     Instance = instance;
@@ -3132,13 +3003,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "startExternalSync";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync";
 
                 /// <summary>Initializes StartExternalSync parameter list.</summary>
@@ -3146,33 +3017,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "instance", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "instance",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "syncMode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "syncMode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("syncMode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncMode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3190,8 +3058,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public class VerifyExternalSyncSettingsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsResponse>
             {
                 /// <summary>Constructs a new VerifyExternalSyncSettings request.</summary>
-                public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                    : base(service)
+                public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
                 {
                     Project = project;
                     Instance = instance;
@@ -3231,13 +3098,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "verifyExternalSyncSettings";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings";
 
                 /// <summary>Initializes VerifyExternalSyncSettings parameter list.</summary>
@@ -3245,42 +3112,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "instance", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "instance",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "syncMode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "syncMode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "verifyConnectionOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "verifyConnectionOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("syncMode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncMode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("verifyConnectionOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "verifyConnectionOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3321,8 +3184,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class CreateEphemeralRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCert>
         {
             /// <summary>Constructs a new CreateEphemeral request.</summary>
-            public CreateEphemeralRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest body, string project, string instance)
-                : base(service)
+            public CreateEphemeralRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3343,16 +3205,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createEphemeral";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral";
 
             /// <summary>Initializes CreateEphemeral parameter list.</summary>
@@ -3360,24 +3222,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3399,8 +3259,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, string sha1Fingerprint)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, string sha1Fingerprint) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3422,13 +3281,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Sha1Fingerprint { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3436,33 +3295,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sha1Fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sha1Fingerprint",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sha1Fingerprint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sha1Fingerprint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3484,8 +3340,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCert>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, string sha1Fingerprint)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance, string sha1Fingerprint) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3507,13 +3362,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Sha1Fingerprint { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3521,33 +3376,30 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sha1Fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sha1Fingerprint",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sha1Fingerprint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sha1Fingerprint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3568,8 +3420,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertResponse>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertRequest body, string project, string instance)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3590,16 +3441,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3607,24 +3458,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3642,8 +3491,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCertsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3660,13 +3508,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3674,24 +3522,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3726,8 +3572,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.TiersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -3739,13 +3584,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Project { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/tiers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3753,15 +3598,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3796,8 +3640,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3822,13 +3665,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Name { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/users";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3836,42 +3679,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "host",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("host", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "host",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3890,8 +3729,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3912,16 +3750,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/users";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3929,24 +3767,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3964,8 +3800,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.UsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -3982,13 +3817,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/users";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3996,24 +3831,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4032,8 +3865,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -4062,16 +3894,16 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/users";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4079,42 +3911,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instance",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "host",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("host", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "host",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

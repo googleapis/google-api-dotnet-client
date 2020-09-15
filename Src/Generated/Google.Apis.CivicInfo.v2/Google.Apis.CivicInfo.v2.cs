@@ -18,17 +18,16 @@ namespace Google.Apis.CivicInfo.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CivicInfoService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CivicInfoService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CivicInfoService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CivicInfoService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Divisions = new DivisionsResource(this);
             Elections = new ElectionsResource(this);
@@ -74,12 +73,11 @@ namespace Google.Apis.CivicInfo.v2
         public virtual RepresentativesResource Representatives { get; }
     }
 
-    ///<summary>A base abstract class for CivicInfo requests.</summary>
+    /// <summary>A base abstract class for CivicInfo requests.</summary>
     public abstract class CivicInfoBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CivicInfoBaseServiceRequest instance.</summary>
-        protected CivicInfoBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CivicInfoBaseServiceRequest instance.</summary>
+        protected CivicInfoBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -159,105 +157,94 @@ namespace Google.Apis.CivicInfo.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -287,8 +274,7 @@ namespace Google.Apis.CivicInfo.v2
         public class SearchRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.DivisionSearchResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -302,13 +288,13 @@ namespace Google.Apis.CivicInfo.v2
             public virtual string Query { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "civicinfo/v2/divisions";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -316,15 +302,14 @@ namespace Google.Apis.CivicInfo.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -356,21 +341,20 @@ namespace Google.Apis.CivicInfo.v2
         public class ElectionQueryRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.ElectionsQueryResponse>
         {
             /// <summary>Constructs a new ElectionQuery request.</summary>
-            public ElectionQueryRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ElectionQueryRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "electionQuery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "civicinfo/v2/elections";
 
             /// <summary>Initializes ElectionQuery parameter list.</summary>
@@ -393,8 +377,7 @@ namespace Google.Apis.CivicInfo.v2
         public class VoterInfoQueryRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.VoterInfoResponse>
         {
             /// <summary>Constructs a new VoterInfoQuery request.</summary>
-            public VoterInfoQueryRequest(Google.Apis.Services.IClientService service, string address)
-                : base(service)
+            public VoterInfoQueryRequest(Google.Apis.Services.IClientService service, string address) : base(service)
             {
                 Address = address;
                 InitParameters();
@@ -423,13 +406,13 @@ namespace Google.Apis.CivicInfo.v2
             public virtual System.Nullable<bool> ReturnAllAvailableData { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "voterInfoQuery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "civicinfo/v2/voterinfo";
 
             /// <summary>Initializes VoterInfoQuery parameter list.</summary>
@@ -437,42 +420,38 @@ namespace Google.Apis.CivicInfo.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "address", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "address",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "electionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "electionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "0",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "officialOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "officialOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnAllAvailableData", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnAllAvailableData",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "address",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("electionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "electionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "0",
+                    Pattern = null,
+                });
+                RequestParameters.Add("officialOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "officialOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnAllAvailableData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnAllAvailableData",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -504,8 +483,7 @@ namespace Google.Apis.CivicInfo.v2
         public class RepresentativeInfoByAddressRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.RepresentativeInfoResponse>
         {
             /// <summary>Constructs a new RepresentativeInfoByAddress request.</summary>
-            public RepresentativeInfoByAddressRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public RepresentativeInfoByAddressRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -584,13 +562,13 @@ namespace Google.Apis.CivicInfo.v2
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "representativeInfoByAddress";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "civicinfo/v2/representatives";
 
             /// <summary>Initializes RepresentativeInfoByAddress parameter list.</summary>
@@ -598,42 +576,38 @@ namespace Google.Apis.CivicInfo.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "address", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "address",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeOffices", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeOffices",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "levels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "levels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "roles", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "roles",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "address",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeOffices", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeOffices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("levels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "levels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("roles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "roles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -649,8 +623,7 @@ namespace Google.Apis.CivicInfo.v2
         public class RepresentativeInfoByDivisionRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.RepresentativeInfoData>
         {
             /// <summary>Constructs a new RepresentativeInfoByDivision request.</summary>
-            public RepresentativeInfoByDivisionRequest(Google.Apis.Services.IClientService service, string ocdId)
-                : base(service)
+            public RepresentativeInfoByDivisionRequest(Google.Apis.Services.IClientService service, string ocdId) : base(service)
             {
                 OcdId = ocdId;
                 InitParameters();
@@ -730,13 +703,13 @@ namespace Google.Apis.CivicInfo.v2
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "representativeInfoByDivision";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "civicinfo/v2/representatives/{ocdId}";
 
             /// <summary>Initializes RepresentativeInfoByDivision parameter list.</summary>
@@ -744,42 +717,38 @@ namespace Google.Apis.CivicInfo.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "ocdId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ocdId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "levels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "levels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "recursive", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "recursive",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "roles", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "roles",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("ocdId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ocdId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("levels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "levels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recursive",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("roles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "roles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

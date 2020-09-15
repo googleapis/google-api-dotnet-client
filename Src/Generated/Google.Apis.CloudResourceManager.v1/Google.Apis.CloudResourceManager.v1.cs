@@ -18,17 +18,16 @@ namespace Google.Apis.CloudResourceManager.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudResourceManagerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudResourceManagerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudResourceManagerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudResourceManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Folders = new FoldersResource(this);
             Liens = new LiensResource(this);
@@ -102,12 +101,11 @@ namespace Google.Apis.CloudResourceManager.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for CloudResourceManager requests.</summary>
+    /// <summary>A base abstract class for CloudResourceManager requests.</summary>
     public abstract class CloudResourceManagerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudResourceManagerBaseServiceRequest instance.</summary>
-        protected CloudResourceManagerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudResourceManagerBaseServiceRequest instance.</summary>
+        protected CloudResourceManagerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -187,105 +185,94 @@ namespace Google.Apis.CloudResourceManager.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -317,8 +304,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ClearOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new ClearOrgPolicy request.</summary>
-            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
+            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -334,16 +320,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clearOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:clearOrgPolicy";
 
             /// <summary>Initializes ClearOrgPolicy parameter list.</summary>
@@ -351,15 +337,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -382,8 +367,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetEffectiveOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetEffectiveOrgPolicy request.</summary>
-            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -399,16 +383,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEffectiveOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getEffectiveOrgPolicy";
 
             /// <summary>Initializes GetEffectiveOrgPolicy parameter list.</summary>
@@ -416,15 +400,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -445,8 +428,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
-            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -462,16 +444,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getOrgPolicy";
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
@@ -479,15 +461,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -504,8 +485,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListAvailableOrgPolicyConstraintsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsResponse>
         {
             /// <summary>Constructs a new ListAvailableOrgPolicyConstraints request.</summary>
-            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
-                : base(service)
+            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -521,16 +501,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listAvailableOrgPolicyConstraints";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listAvailableOrgPolicyConstraints";
 
             /// <summary>Initializes ListAvailableOrgPolicyConstraints parameter list.</summary>
@@ -538,15 +518,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -563,8 +542,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListOrgPoliciesRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesResponse>
         {
             /// <summary>Constructs a new ListOrgPolicies request.</summary>
-            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
-                : base(service)
+            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -580,16 +558,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listOrgPolicies";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listOrgPolicies";
 
             /// <summary>Initializes ListOrgPolicies parameter list.</summary>
@@ -597,15 +575,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -626,8 +603,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
-            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
+            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -643,16 +619,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setOrgPolicy";
 
             /// <summary>Initializes SetOrgPolicy parameter list.</summary>
@@ -660,15 +636,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
             }
 
         }
@@ -707,8 +682,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Lien body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Lien body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -719,16 +693,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.Lien Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/liens";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -755,8 +729,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -768,13 +741,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -782,15 +755,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^liens/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^liens/.*$",
+                });
             }
 
         }
@@ -810,8 +782,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -823,13 +794,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -837,15 +808,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^liens/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^liens/.*$",
+                });
             }
 
         }
@@ -864,8 +834,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListLiensResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -886,13 +855,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string Parent { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/liens";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -900,33 +869,30 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -961,8 +927,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -974,13 +939,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -988,15 +953,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
             }
 
         }
@@ -1030,8 +994,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ClearOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new ClearOrgPolicy request.</summary>
-            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
+            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1047,16 +1010,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clearOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:clearOrgPolicy";
 
             /// <summary>Initializes ClearOrgPolicy parameter list.</summary>
@@ -1064,15 +1027,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1089,8 +1051,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Organization>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -1103,13 +1064,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1117,15 +1078,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1148,8 +1108,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetEffectiveOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetEffectiveOrgPolicy request.</summary>
-            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1165,16 +1124,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEffectiveOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getEffectiveOrgPolicy";
 
             /// <summary>Initializes GetEffectiveOrgPolicy parameter list.</summary>
@@ -1182,15 +1141,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1214,8 +1172,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1232,16 +1189,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1249,15 +1206,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1278,8 +1234,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
-            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1295,16 +1250,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getOrgPolicy";
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
@@ -1312,15 +1267,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1337,8 +1291,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListAvailableOrgPolicyConstraintsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsResponse>
         {
             /// <summary>Constructs a new ListAvailableOrgPolicyConstraints request.</summary>
-            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
-                : base(service)
+            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1354,16 +1307,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listAvailableOrgPolicyConstraints";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listAvailableOrgPolicyConstraints";
 
             /// <summary>Initializes ListAvailableOrgPolicyConstraints parameter list.</summary>
@@ -1371,15 +1324,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1396,8 +1348,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListOrgPoliciesRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesResponse>
         {
             /// <summary>Constructs a new ListOrgPolicies request.</summary>
-            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
-                : base(service)
+            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1413,16 +1364,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listOrgPolicies";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listOrgPolicies";
 
             /// <summary>Initializes ListOrgPolicies parameter list.</summary>
@@ -1430,15 +1381,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1460,8 +1410,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest body)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1472,16 +1421,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/organizations:search";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -1512,8 +1461,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1530,16 +1478,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1547,15 +1495,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1576,8 +1523,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
-            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
+            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1593,16 +1539,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setOrgPolicy";
 
             /// <summary>Initializes SetOrgPolicy parameter list.</summary>
@@ -1610,15 +1556,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1640,8 +1585,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1658,16 +1602,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1675,15 +1619,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -1717,8 +1660,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ClearOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new ClearOrgPolicy request.</summary>
-            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
+            public ClearOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1734,16 +1676,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clearOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:clearOrgPolicy";
 
             /// <summary>Initializes ClearOrgPolicy parameter list.</summary>
@@ -1751,15 +1693,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -1789,8 +1730,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Project body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Project body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1801,16 +1741,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.Project Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1847,8 +1787,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -1860,13 +1799,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string ProjectId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1874,15 +1813,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1900,8 +1838,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -1913,13 +1850,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string ProjectId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1927,15 +1864,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1956,8 +1892,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetAncestryRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.GetAncestryResponse>
         {
             /// <summary>Constructs a new GetAncestry request.</summary>
-            public GetAncestryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest body, string projectId)
-                : base(service)
+            public GetAncestryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -1973,16 +1908,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAncestry";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:getAncestry";
 
             /// <summary>Initializes GetAncestry parameter list.</summary>
@@ -1990,15 +1925,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2021,8 +1955,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetEffectiveOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetEffectiveOrgPolicy request.</summary>
-            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetEffectiveOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2038,16 +1971,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEffectiveOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getEffectiveOrgPolicy";
 
             /// <summary>Initializes GetEffectiveOrgPolicy parameter list.</summary>
@@ -2055,15 +1988,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -2089,8 +2021,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2107,16 +2038,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{resource}:getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -2124,15 +2055,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2153,8 +2083,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class GetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new GetOrgPolicy request.</summary>
-            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
+            public GetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2170,16 +2099,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getOrgPolicy";
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
@@ -2187,15 +2116,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -2224,8 +2152,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2261,13 +2188,13 @@ namespace Google.Apis.CloudResourceManager.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2275,33 +2202,30 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2318,8 +2242,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListAvailableOrgPolicyConstraintsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsResponse>
         {
             /// <summary>Constructs a new ListAvailableOrgPolicyConstraints request.</summary>
-            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
-                : base(service)
+            public ListAvailableOrgPolicyConstraintsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2335,16 +2258,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listAvailableOrgPolicyConstraints";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listAvailableOrgPolicyConstraints";
 
             /// <summary>Initializes ListAvailableOrgPolicyConstraints parameter list.</summary>
@@ -2352,15 +2275,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -2377,8 +2299,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class ListOrgPoliciesRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesResponse>
         {
             /// <summary>Constructs a new ListOrgPolicies request.</summary>
-            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
-                : base(service)
+            public ListOrgPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2394,16 +2315,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listOrgPolicies";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:listOrgPolicies";
 
             /// <summary>Initializes ListOrgPolicies parameter list.</summary>
@@ -2411,15 +2332,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -2481,8 +2401,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2499,16 +2418,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -2516,15 +2435,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2545,8 +2463,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class SetOrgPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
         {
             /// <summary>Constructs a new SetOrgPolicy request.</summary>
-            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
+            public SetOrgPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2562,16 +2479,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setOrgPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setOrgPolicy";
 
             /// <summary>Initializes SetOrgPolicy parameter list.</summary>
@@ -2579,15 +2496,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -2611,8 +2527,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -2629,16 +2544,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{resource}:testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -2646,15 +2561,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2675,8 +2589,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId)
-                : base(service)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -2692,16 +2605,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "undelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}:undelete";
 
             /// <summary>Initializes Undelete parameter list.</summary>
@@ -2709,15 +2622,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2736,8 +2648,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public class UpdateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Project>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Project body, string projectId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Project body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -2753,16 +2664,16 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1.Data.Project Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/projects/{projectId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2770,15 +2681,14 @@ namespace Google.Apis.CloudResourceManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

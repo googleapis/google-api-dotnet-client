@@ -18,17 +18,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public const string Version = "v1beta2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudNaturalLanguageService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudNaturalLanguageService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudNaturalLanguageService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudNaturalLanguageService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Documents = new DocumentsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public virtual DocumentsResource Documents { get; }
     }
 
-    ///<summary>A base abstract class for CloudNaturalLanguage requests.</summary>
+    /// <summary>A base abstract class for CloudNaturalLanguage requests.</summary>
     public abstract class CloudNaturalLanguageBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudNaturalLanguageBaseServiceRequest instance.</summary>
-        protected CloudNaturalLanguageBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudNaturalLanguageBaseServiceRequest instance.</summary>
+        protected CloudNaturalLanguageBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -302,8 +289,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class AnalyzeEntitiesRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesResponse>
         {
             /// <summary>Constructs a new AnalyzeEntities request.</summary>
-            public AnalyzeEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest body)
-                : base(service)
+            public AnalyzeEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -314,16 +300,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeEntities";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:analyzeEntities";
 
             /// <summary>Initializes AnalyzeEntities parameter list.</summary>
@@ -348,8 +334,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class AnalyzeEntitySentimentRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentResponse>
         {
             /// <summary>Constructs a new AnalyzeEntitySentiment request.</summary>
-            public AnalyzeEntitySentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest body)
-                : base(service)
+            public AnalyzeEntitySentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -360,16 +345,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeEntitySentiment";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:analyzeEntitySentiment";
 
             /// <summary>Initializes AnalyzeEntitySentiment parameter list.</summary>
@@ -392,8 +377,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class AnalyzeSentimentRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentResponse>
         {
             /// <summary>Constructs a new AnalyzeSentiment request.</summary>
-            public AnalyzeSentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentRequest body)
-                : base(service)
+            public AnalyzeSentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -404,16 +388,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeSentiment";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:analyzeSentiment";
 
             /// <summary>Initializes AnalyzeSentiment parameter list.</summary>
@@ -438,8 +422,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class AnalyzeSyntaxRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxResponse>
         {
             /// <summary>Constructs a new AnalyzeSyntax request.</summary>
-            public AnalyzeSyntaxRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest body)
-                : base(service)
+            public AnalyzeSyntaxRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -450,16 +433,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeSyntax";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:analyzeSyntax";
 
             /// <summary>Initializes AnalyzeSyntax parameter list.</summary>
@@ -484,8 +467,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class AnnotateTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextResponse>
         {
             /// <summary>Constructs a new AnnotateText request.</summary>
-            public AnnotateTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest body)
-                : base(service)
+            public AnnotateTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -496,16 +478,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "annotateText";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:annotateText";
 
             /// <summary>Initializes AnnotateText parameter list.</summary>
@@ -528,8 +510,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public class ClassifyTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextResponse>
         {
             /// <summary>Constructs a new ClassifyText request.</summary>
-            public ClassifyTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextRequest body)
-                : base(service)
+            public ClassifyTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -540,16 +521,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "classifyText";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta2/documents:classifyText";
 
             /// <summary>Initializes ClassifyText parameter list.</summary>

@@ -18,17 +18,16 @@ namespace Google.Apis.AndroidPublisher.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AndroidPublisherService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AndroidPublisherService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Edits = new EditsResource(this);
             Inappproducts = new InappproductsResource(this);
@@ -104,12 +103,11 @@ namespace Google.Apis.AndroidPublisher.v3
         public virtual SystemapksResource Systemapks { get; }
     }
 
-    ///<summary>A base abstract class for AndroidPublisher requests.</summary>
+    /// <summary>A base abstract class for AndroidPublisher requests.</summary>
     public abstract class AndroidPublisherBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AndroidPublisherBaseServiceRequest instance.</summary>
-        protected AndroidPublisherBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AndroidPublisherBaseServiceRequest instance.</summary>
+        protected AndroidPublisherBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -189,105 +187,94 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -352,8 +339,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class AddexternallyhostedRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedResponse>
             {
                 /// <summary>Constructs a new Addexternallyhosted request.</summary>
-                public AddexternallyhostedRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest body, string packageName, string editId)
-                    : base(service)
+                public AddexternallyhostedRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest body, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -374,16 +360,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "addexternallyhosted";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted";
 
                 /// <summary>Initializes Addexternallyhosted parameter list.</summary>
@@ -391,24 +377,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -426,8 +410,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ApksListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -444,13 +427,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -458,24 +441,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -493,8 +474,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Apk>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -511,13 +491,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -525,24 +505,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -720,8 +698,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BundlesListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -738,13 +715,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -752,24 +729,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -793,8 +768,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Bundle>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -816,13 +790,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -830,33 +804,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ackBundleInstallationWarning", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ackBundleInstallationWarning",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ackBundleInstallationWarning", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ackBundleInstallationWarning",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1046,8 +1017,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeobfuscationFilesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1088,13 +1058,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -1102,42 +1072,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apkVersionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apkVersionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deobfuscationFileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deobfuscationFileType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("apkVersionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apkVersionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deobfuscationFileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deobfuscationFileType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1345,8 +1311,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppDetails>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1363,13 +1328,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/details";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1377,24 +1342,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1413,8 +1376,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppDetails>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1435,16 +1397,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.AppDetails Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/details";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1452,24 +1414,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1488,8 +1448,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppDetails>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1510,16 +1469,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.AppDetails Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/details";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1527,24 +1486,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1585,8 +1542,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, GetRequest.ExpansionFileTypeEnum expansionFileType)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, GetRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1628,13 +1584,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1642,42 +1598,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apkVersionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apkVersionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "expansionFileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "expansionFileType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("apkVersionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apkVersionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("expansionFileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "expansionFileType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1702,8 +1654,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, PatchRequest.ExpansionFileTypeEnum expansionFileType)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, PatchRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1749,16 +1700,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ExpansionFile Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1766,42 +1717,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apkVersionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apkVersionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "expansionFileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "expansionFileType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("apkVersionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apkVersionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("expansionFileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "expansionFileType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1826,8 +1773,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, UpdateRequest.ExpansionFileTypeEnum expansionFileType)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, UpdateRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1873,16 +1819,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ExpansionFile Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1890,42 +1836,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apkVersionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apkVersionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "expansionFileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "expansionFileType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("apkVersionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apkVersionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("expansionFileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "expansionFileType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1947,8 +1889,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFilesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.ExpansionFileTypeEnum expansionFileType)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1990,13 +1931,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -2004,42 +1945,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apkVersionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apkVersionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "expansionFileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "expansionFileType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("apkVersionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apkVersionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("expansionFileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "expansionFileType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2253,8 +2190,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteRequest.ImageTypeEnum imageType, string imageId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteRequest.ImageTypeEnum imageType, string imageId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2322,13 +2258,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string ImageId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2336,51 +2272,46 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imageType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imageType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imageId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imageId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imageType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imageType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imageId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imageId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2404,8 +2335,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteallRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesDeleteAllResponse>
             {
                 /// <summary>Constructs a new Deleteall request.</summary>
-                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteallRequest.ImageTypeEnum imageType)
-                    : base(service)
+                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteallRequest.ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2468,13 +2398,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteall";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}";
 
                 /// <summary>Initializes Deleteall parameter list.</summary>
@@ -2482,42 +2412,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imageType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imageType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imageType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imageType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2540,8 +2466,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ListRequest.ImageTypeEnum imageType)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ListRequest.ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2606,13 +2531,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2620,42 +2545,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imageType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imageType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imageType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imageType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2677,8 +2598,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, UploadRequest.ImageTypeEnum imageType)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, UploadRequest.ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2741,13 +2661,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -2755,42 +2675,38 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imageType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imageType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imageType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imageType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3022,8 +2938,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3046,13 +2961,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Language { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3060,33 +2975,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3104,8 +3016,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteallRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Deleteall request.</summary>
-                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3122,13 +3033,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteall";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings";
 
                 /// <summary>Initializes Deleteall parameter list.</summary>
@@ -3136,24 +3047,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3173,8 +3082,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Listing>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3197,13 +3105,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Language { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3211,33 +3119,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3255,8 +3160,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListingsListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3273,13 +3177,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3287,24 +3191,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3325,8 +3227,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Listing>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3353,16 +3254,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Listing Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3370,33 +3271,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3417,8 +3315,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Listing>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3445,16 +3342,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Listing Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3462,33 +3359,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "language", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "language",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3526,8 +3420,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string track)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3549,13 +3442,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Track { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3563,33 +3456,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3609,8 +3499,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3636,16 +3525,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Testers Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3653,33 +3542,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3699,8 +3585,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3726,16 +3611,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Testers Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3743,33 +3628,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3807,8 +3689,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Track>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string track)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3830,13 +3711,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Track { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3844,33 +3725,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3888,8 +3766,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.TracksListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3906,13 +3783,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3920,24 +3797,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3957,8 +3832,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Track>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -3984,16 +3858,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Track Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -4001,33 +3875,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4047,8 +3918,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Track>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -4074,16 +3944,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Track Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -4091,33 +3961,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "editId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "editId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "track", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "track",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4136,8 +4003,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class CommitRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppEdit>
         {
             /// <summary>Constructs a new Commit request.</summary>
-            public CommitRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                : base(service)
+            public CommitRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
             {
                 PackageName = packageName;
                 EditId = editId;
@@ -4154,13 +4020,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit";
 
             /// <summary>Initializes Commit parameter list.</summary>
@@ -4168,24 +4034,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "editId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "editId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "editId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4203,8 +4067,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
             {
                 PackageName = packageName;
                 EditId = editId;
@@ -4221,13 +4084,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4235,24 +4098,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "editId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "editId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "editId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4270,8 +4131,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppEdit>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
             {
                 PackageName = packageName;
                 EditId = editId;
@@ -4288,13 +4148,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4302,24 +4162,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "editId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "editId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "editId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4336,8 +4194,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class InsertRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppEdit>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppEdit body, string packageName)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AppEdit body, string packageName) : base(service)
             {
                 PackageName = packageName;
                 Body = body;
@@ -4353,16 +4210,16 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.AppEdit Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4370,15 +4227,14 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4396,8 +4252,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class ValidateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppEdit>
         {
             /// <summary>Constructs a new Validate request.</summary>
-            public ValidateRequest(Google.Apis.Services.IClientService service, string packageName, string editId)
-                : base(service)
+            public ValidateRequest(Google.Apis.Services.IClientService service, string packageName, string editId) : base(service)
             {
                 PackageName = packageName;
                 EditId = editId;
@@ -4414,13 +4269,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "validate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate";
 
             /// <summary>Initializes Validate parameter list.</summary>
@@ -4428,24 +4283,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "editId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "editId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "editId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4480,8 +4333,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string sku)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string sku) : base(service)
             {
                 PackageName = packageName;
                 Sku = sku;
@@ -4498,13 +4350,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string Sku { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4512,24 +4364,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sku", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sku",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sku", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sku",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4547,8 +4397,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string sku)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string sku) : base(service)
             {
                 PackageName = packageName;
                 Sku = sku;
@@ -4565,13 +4414,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string Sku { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4579,24 +4428,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sku", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sku",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sku", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sku",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4613,8 +4460,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class InsertRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName) : base(service)
             {
                 PackageName = packageName;
                 Body = body;
@@ -4636,16 +4482,16 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4653,24 +4499,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "autoConvertMissingPrices",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autoConvertMissingPrices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4686,8 +4530,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InappproductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string packageName)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
             {
                 PackageName = packageName;
                 InitParameters();
@@ -4711,13 +4554,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string Token { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4725,42 +4568,38 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4779,8 +4618,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku) : base(service)
             {
                 PackageName = packageName;
                 Sku = sku;
@@ -4807,16 +4645,16 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -4824,33 +4662,30 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sku", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sku",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "autoConvertMissingPrices",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sku", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sku",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autoConvertMissingPrices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4869,8 +4704,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku) : base(service)
             {
                 PackageName = packageName;
                 Sku = sku;
@@ -4897,16 +4731,16 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4914,33 +4748,30 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sku", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sku",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "autoConvertMissingPrices",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sku", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sku",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autoConvertMissingPrices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4979,8 +4810,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class UploadapkRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadapk request.</summary>
-            public UploadapkRequest(Google.Apis.Services.IClientService service, string packageName)
-                : base(service)
+            public UploadapkRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
             {
                 PackageName = packageName;
                 InitParameters();
@@ -4992,13 +4822,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string PackageName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "uploadapk";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk";
 
             /// <summary>Initializes Uploadapk parameter list.</summary>
@@ -5006,15 +4836,14 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5172,8 +5001,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadbundle request.</summary>
-            public UploadbundleRequest(Google.Apis.Services.IClientService service, string packageName)
-                : base(service)
+            public UploadbundleRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
             {
                 PackageName = packageName;
                 InitParameters();
@@ -5185,13 +5013,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string PackageName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "uploadbundle";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle";
 
             /// <summary>Initializes Uploadbundle parameter list.</summary>
@@ -5199,15 +5027,14 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5379,8 +5206,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Refund request.</summary>
-            public RefundRequest(Google.Apis.Services.IClientService service, string packageName, string orderId)
-                : base(service)
+            public RefundRequest(Google.Apis.Services.IClientService service, string packageName, string orderId) : base(service)
             {
                 PackageName = packageName;
                 OrderId = orderId;
@@ -5405,13 +5231,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual System.Nullable<bool> Revoke { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "refund";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund";
 
             /// <summary>Initializes Refund parameter list.</summary>
@@ -5419,33 +5245,30 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revoke", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revoke",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revoke", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revoke",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5505,8 +5328,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class AcknowledgeRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Acknowledge request.</summary>
-                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token)
-                    : base(service)
+                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token) : base(service)
                 {
                     PackageName = packageName;
                     ProductId = productId;
@@ -5533,16 +5355,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "acknowledge";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge";
 
                 /// <summary>Initializes Acknowledge parameter list.</summary>
@@ -5550,33 +5372,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "productId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "productId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5597,8 +5416,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ProductPurchase>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string token)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string token) : base(service)
                 {
                     PackageName = packageName;
                     ProductId = productId;
@@ -5621,13 +5439,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Token { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5635,33 +5453,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "productId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "productId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5702,8 +5517,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class AcknowledgeRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Acknowledge request.</summary>
-                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -5730,16 +5544,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "acknowledge";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge";
 
                 /// <summary>Initializes Acknowledge parameter list.</summary>
@@ -5747,33 +5561,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5796,8 +5607,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -5820,13 +5630,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Token { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -5834,33 +5644,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5882,8 +5689,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeferRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferResponse>
             {
                 /// <summary>Constructs a new Defer request.</summary>
-                public DeferRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest body, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public DeferRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest body, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -5910,16 +5716,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "defer";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer";
 
                 /// <summary>Initializes Defer parameter list.</summary>
@@ -5927,33 +5733,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5974,8 +5777,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchase>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -5998,13 +5800,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Token { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6012,33 +5814,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6061,8 +5860,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Refund request.</summary>
-                public RefundRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public RefundRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -6085,13 +5883,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Token { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "refund";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund";
 
                 /// <summary>Initializes Refund parameter list.</summary>
@@ -6099,33 +5897,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6148,8 +5943,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class RevokeRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Revoke request.</summary>
-                public RevokeRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token)
-                    : base(service)
+                public RevokeRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
                     SubscriptionId = subscriptionId;
@@ -6172,13 +5966,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string Token { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "revoke";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke";
 
                 /// <summary>Initializes Revoke parameter list.</summary>
@@ -6186,33 +5980,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "subscriptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscriptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6248,8 +6039,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.VoidedPurchasesListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
                 {
                     PackageName = packageName;
                     InitParameters();
@@ -6303,13 +6093,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual System.Nullable<int> Type { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6317,69 +6107,62 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "token",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "type", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6415,8 +6198,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Review>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string reviewId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string reviewId) : base(service)
             {
                 PackageName = packageName;
                 ReviewId = reviewId;
@@ -6437,13 +6219,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string TranslationLanguage { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6451,33 +6233,30 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reviewId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reviewId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "translationLanguage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "translationLanguage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reviewId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reviewId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("translationLanguage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "translationLanguage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6493,8 +6272,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ReviewsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string packageName)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
             {
                 PackageName = packageName;
                 InitParameters();
@@ -6522,13 +6300,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string TranslationLanguage { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/reviews";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6536,51 +6314,46 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "translationLanguage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "translationLanguage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("translationLanguage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "translationLanguage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6599,8 +6372,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public class ReplyRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyResponse>
         {
             /// <summary>Constructs a new Reply request.</summary>
-            public ReplyRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest body, string packageName, string reviewId)
-                : base(service)
+            public ReplyRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest body, string packageName, string reviewId) : base(service)
             {
                 PackageName = packageName;
                 ReviewId = reviewId;
@@ -6621,16 +6393,16 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reply";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply";
 
             /// <summary>Initializes Reply parameter list.</summary>
@@ -6638,24 +6410,22 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reviewId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reviewId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reviewId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reviewId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6712,8 +6482,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Variant>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Variant body, string packageName, long versionCode)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Variant body, string packageName, long versionCode) : base(service)
                 {
                     PackageName = packageName;
                     VersionCode = versionCode;
@@ -6734,16 +6503,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Variant Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -6751,24 +6520,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "versionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6790,8 +6557,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DownloadRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Download request.</summary>
-                public DownloadRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId)
-                    : base(service)
+                public DownloadRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId) : base(service)
                 {
                     PackageName = packageName;
                     VersionCode = versionCode;
@@ -6814,13 +6580,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual long VariantId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "download";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download";
 
                 /// <summary>Initializes Download parameter list.</summary>
@@ -6828,33 +6594,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "versionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "variantId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "variantId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("variantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "variantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
                 /// <summary>Gets the media downloader.</summary>
@@ -6926,8 +6689,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Variant>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId) : base(service)
                 {
                     PackageName = packageName;
                     VersionCode = versionCode;
@@ -6949,13 +6711,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual long VariantId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6963,33 +6725,30 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "versionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "variantId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "variantId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("variantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "variantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7007,8 +6766,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SystemApksListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode) : base(service)
                 {
                     PackageName = packageName;
                     VersionCode = versionCode;
@@ -7025,13 +6783,13 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual long VersionCode { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7039,24 +6797,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "packageName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "packageName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "versionCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionCode",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

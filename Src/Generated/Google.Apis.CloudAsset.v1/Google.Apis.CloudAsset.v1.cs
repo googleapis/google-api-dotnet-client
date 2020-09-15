@@ -18,17 +18,16 @@ namespace Google.Apis.CloudAsset.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudAssetService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudAssetService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Feeds = new FeedsResource(this);
             Operations = new OperationsResource(this);
@@ -88,12 +87,11 @@ namespace Google.Apis.CloudAsset.v1
         public virtual V1Resource V1 { get; }
     }
 
-    ///<summary>A base abstract class for CloudAsset requests.</summary>
+    /// <summary>A base abstract class for CloudAsset requests.</summary>
     public abstract class CloudAssetBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudAssetBaseServiceRequest instance.</summary>
-        protected CloudAssetBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudAssetBaseServiceRequest instance.</summary>
+        protected CloudAssetBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -173,105 +171,94 @@ namespace Google.Apis.CloudAsset.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -305,8 +292,7 @@ namespace Google.Apis.CloudAsset.v1
         public class CreateRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.CreateFeedRequest body, string parent)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.CreateFeedRequest body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -325,16 +311,16 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudAsset.v1.Data.CreateFeedRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+parent}/feeds";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -342,15 +328,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }
@@ -368,8 +353,7 @@ namespace Google.Apis.CloudAsset.v1
         public class DeleteRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -383,13 +367,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -397,15 +381,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                });
             }
 
         }
@@ -423,8 +406,7 @@ namespace Google.Apis.CloudAsset.v1
         public class GetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -438,13 +420,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -452,15 +434,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                });
             }
 
         }
@@ -478,8 +459,7 @@ namespace Google.Apis.CloudAsset.v1
         public class ListRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.ListFeedsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -493,13 +473,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Parent { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+parent}/feeds";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -507,15 +487,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }
@@ -535,8 +514,7 @@ namespace Google.Apis.CloudAsset.v1
         public class PatchRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest body, string name)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -555,16 +533,16 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -572,15 +550,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                });
             }
 
         }
@@ -615,8 +592,7 @@ namespace Google.Apis.CloudAsset.v1
         public class GetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -628,13 +604,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -642,15 +618,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/operations/[^/]+/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/operations/[^/]+/.*$",
+                });
             }
 
         }
@@ -691,8 +666,7 @@ namespace Google.Apis.CloudAsset.v1
         public class BatchGetAssetsHistoryRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.BatchGetAssetsHistoryResponse>
         {
             /// <summary>Constructs a new BatchGetAssetsHistory request.</summary>
-            public BatchGetAssetsHistoryRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public BatchGetAssetsHistoryRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -747,13 +721,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual object ReadTimeWindowStartTime { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchGetAssetsHistory";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+parent}:batchGetAssetsHistory";
 
             /// <summary>Initializes BatchGetAssetsHistory parameter list.</summary>
@@ -761,51 +735,46 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("assetNames", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "assetNames",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readTimeWindow.endTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readTimeWindow.startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -836,8 +805,7 @@ namespace Google.Apis.CloudAsset.v1
         public class ExportAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Operation>
         {
             /// <summary>Constructs a new ExportAssets request.</summary>
-            public ExportAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.ExportAssetsRequest body, string parent)
-                : base(service)
+            public ExportAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.ExportAssetsRequest body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -855,16 +823,16 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudAsset.v1.Data.ExportAssetsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "exportAssets";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+parent}:exportAssets";
 
             /// <summary>Initializes ExportAssets parameter list.</summary>
@@ -872,15 +840,14 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }
@@ -905,8 +872,7 @@ namespace Google.Apis.CloudAsset.v1
         public class SearchAllIamPoliciesRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.SearchAllIamPoliciesResponse>
         {
             /// <summary>Constructs a new SearchAllIamPolicies request.</summary>
-            public SearchAllIamPoliciesRequest(Google.Apis.Services.IClientService service, string scope)
-                : base(service)
+            public SearchAllIamPoliciesRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
             {
                 Scope = scope;
                 InitParameters();
@@ -954,13 +920,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Query { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchAllIamPolicies";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+scope}:searchAllIamPolicies";
 
             /// <summary>Initializes SearchAllIamPolicies parameter list.</summary>
@@ -968,42 +934,38 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1028,8 +990,7 @@ namespace Google.Apis.CloudAsset.v1
         public class SearchAllResourcesRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.SearchAllResourcesResponse>
         {
             /// <summary>Constructs a new SearchAllResources request.</summary>
-            public SearchAllResourcesRequest(Google.Apis.Services.IClientService service, string scope)
-                : base(service)
+            public SearchAllResourcesRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
             {
                 Scope = scope;
                 InitParameters();
@@ -1096,13 +1057,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Query { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchAllResources";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+scope}:searchAllResources";
 
             /// <summary>Initializes SearchAllResources parameter list.</summary>
@@ -1110,60 +1071,54 @@ namespace Google.Apis.CloudAsset.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "assetTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("assetTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "assetTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

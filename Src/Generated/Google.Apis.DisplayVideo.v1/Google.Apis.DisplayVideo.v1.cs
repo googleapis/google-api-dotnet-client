@@ -18,17 +18,16 @@ namespace Google.Apis.DisplayVideo.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DisplayVideoService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DisplayVideoService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DisplayVideoService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DisplayVideoService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Advertisers = new AdvertisersResource(this);
             CombinedAudiences = new CombinedAudiencesResource(this);
@@ -152,12 +151,11 @@ namespace Google.Apis.DisplayVideo.v1
         public virtual UsersResource Users { get; }
     }
 
-    ///<summary>A base abstract class for DisplayVideo requests.</summary>
+    /// <summary>A base abstract class for DisplayVideo requests.</summary>
     public abstract class DisplayVideoBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DisplayVideoBaseServiceRequest instance.</summary>
-        protected DisplayVideoBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DisplayVideoBaseServiceRequest instance.</summary>
+        protected DisplayVideoBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -237,105 +235,94 @@ namespace Google.Apis.DisplayVideo.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -396,8 +383,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CreateAssetResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId)
-                    : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -413,16 +399,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/assets";
 
                 /// <summary>Initializes Upload parameter list.</summary>
@@ -430,15 +416,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -609,8 +594,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -626,16 +610,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Campaign Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -643,15 +627,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -671,8 +654,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CampaignId = campaignId;
@@ -689,13 +671,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long CampaignId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -703,24 +685,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "campaignId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "campaignId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "campaignId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -738,8 +718,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CampaignId = campaignId;
@@ -756,13 +735,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long CampaignId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -770,24 +749,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "campaignId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "campaignId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "campaignId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -807,8 +784,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCampaignsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -847,13 +823,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -861,51 +837,46 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -924,8 +895,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId, long campaignId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId, long campaignId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CampaignId = campaignId;
@@ -950,16 +920,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Campaign Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -967,33 +937,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "campaignId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "campaignId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "campaignId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1054,8 +1021,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
-                        : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -1076,16 +1042,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "bulkEdit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
@@ -1093,24 +1059,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -1129,8 +1093,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -1155,16 +1118,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1172,33 +1135,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1218,8 +1178,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId, string urlOrAppId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId, string urlOrAppId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -1245,13 +1204,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1259,42 +1218,38 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "urlOrAppId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "urlOrAppId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("urlOrAppId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "urlOrAppId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1312,8 +1267,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -1359,13 +1313,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1373,69 +1327,62 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1453,8 +1400,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -1474,16 +1420,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/channels";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1491,24 +1437,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1526,8 +1470,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     ChannelId = channelId;
@@ -1548,13 +1491,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{+channelId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1562,33 +1505,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "channelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "channelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "channelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1604,8 +1544,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListChannelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -1646,13 +1585,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/channels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1660,60 +1599,54 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1732,8 +1665,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     ChannelId = channelId;
@@ -1762,16 +1694,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{channelId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1779,42 +1711,38 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "channelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "channelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "channelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1850,8 +1778,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -1867,16 +1794,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Creative Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/creatives";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1884,15 +1811,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -1914,8 +1840,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CreativeId = creativeId;
@@ -1932,13 +1857,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long CreativeId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1946,24 +1871,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -1981,8 +1904,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CreativeId = creativeId;
@@ -1999,13 +1921,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long CreativeId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2013,24 +1935,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -2050,8 +1970,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -2106,13 +2025,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/creatives";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2120,51 +2039,46 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2183,8 +2097,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId, long creativeId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId, long creativeId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CreativeId = creativeId;
@@ -2209,16 +2122,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Creative Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2226,33 +2139,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2290,8 +2200,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -2307,16 +2216,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.InsertionOrder Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2324,15 +2233,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -2354,8 +2262,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InsertionOrderId = insertionOrderId;
@@ -2372,13 +2279,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long InsertionOrderId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2386,24 +2293,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "insertionOrderId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "insertionOrderId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "insertionOrderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -2423,8 +2328,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InsertionOrderId = insertionOrderId;
@@ -2441,13 +2345,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long InsertionOrderId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2455,24 +2359,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "insertionOrderId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "insertionOrderId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "insertionOrderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -2492,8 +2394,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInsertionOrdersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -2537,13 +2438,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2551,51 +2452,46 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2617,8 +2513,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId, long insertionOrderId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId, long insertionOrderId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InsertionOrderId = insertionOrderId;
@@ -2643,16 +2538,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.InsertionOrder Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2660,33 +2555,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "insertionOrderId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "insertionOrderId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "insertionOrderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2766,8 +2658,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -2926,16 +2817,16 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -2943,33 +2834,30 @@ namespace Google.Apis.DisplayVideo.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "advertiserId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "advertiserId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "lineItemId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "lineItemId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "targetingType", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "targetingType",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
                         }
 
                     }
@@ -2991,8 +2879,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -3152,13 +3039,13 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3166,42 +3053,38 @@ namespace Google.Apis.DisplayVideo.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "advertiserId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "advertiserId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "lineItemId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "lineItemId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "targetingType", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "targetingType",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "assignedTargetingOptionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
                         }
 
                     }
@@ -3224,8 +3107,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -3386,13 +3268,13 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3400,42 +3282,38 @@ namespace Google.Apis.DisplayVideo.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "advertiserId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "advertiserId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "lineItemId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "lineItemId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "targetingType", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "targetingType",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "assignedTargetingOptionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
                         }
 
                     }
@@ -3455,8 +3333,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemAssignedTargetingOptionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -3641,13 +3518,13 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3655,69 +3532,62 @@ namespace Google.Apis.DisplayVideo.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "advertiserId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "advertiserId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "lineItemId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "lineItemId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "targetingType", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "targetingType",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "orderBy", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "orderBy",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3744,8 +3614,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class BulkEditLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new BulkEditLineItemAssignedTargetingOptions request.</summary>
-                public BulkEditLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest body, long advertiserId, long lineItemId)
-                    : base(service)
+                public BulkEditLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest body, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -3766,16 +3635,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "bulkEditLineItemAssignedTargetingOptions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}:bulkEditLineItemAssignedTargetingOptions";
 
                 /// <summary>Initializes BulkEditLineItemAssignedTargetingOptions parameter list.</summary>
@@ -3783,24 +3652,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "lineItemId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lineItemId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -3818,8 +3685,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class BulkListLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListLineItemAssignedTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new BulkListLineItemAssignedTargetingOptions request.</summary>
-                public BulkListLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId)
-                    : base(service)
+                public BulkListLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -3867,13 +3733,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "bulkListLineItemAssignedTargetingOptions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}:bulkListLineItemAssignedTargetingOptions";
 
                 /// <summary>Initializes BulkListLineItemAssignedTargetingOptions parameter list.</summary>
@@ -3881,60 +3747,54 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "lineItemId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lineItemId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3951,8 +3811,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -3968,16 +3827,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.LineItem Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3985,15 +3844,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -4015,8 +3873,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -4033,13 +3890,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long LineItemId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4047,24 +3904,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "lineItemId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lineItemId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -4082,8 +3937,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -4100,13 +3954,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long LineItemId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4114,24 +3968,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "lineItemId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lineItemId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -4151,8 +4003,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -4198,13 +4049,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4212,51 +4063,46 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4275,8 +4121,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId, long lineItemId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -4301,16 +4146,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.LineItem Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -4318,33 +4163,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "lineItemId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lineItemId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4408,8 +4250,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
-                        : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -4431,16 +4272,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "bulkEdit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
@@ -4448,24 +4289,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "locationListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -4485,8 +4324,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedLocation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -4508,16 +4346,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.AssignedLocation Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4525,24 +4363,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "locationListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4563,8 +4399,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId, long assignedLocationId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId, long assignedLocationId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -4586,13 +4421,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long AssignedLocationId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4600,33 +4435,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "locationListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "assignedLocationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "assignedLocationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("assignedLocationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedLocationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -4645,8 +4477,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedLocationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -4689,13 +4520,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4703,60 +4534,54 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "locationListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4774,8 +4599,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -4791,16 +4615,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -4808,15 +4632,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -4834,8 +4657,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LocationListId = locationListId;
@@ -4853,13 +4675,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long LocationListId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists/{+locationListId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4867,24 +4689,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "locationListId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationListId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationListId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -4901,8 +4721,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLocationListsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -4941,13 +4760,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4955,51 +4774,46 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5019,8 +4833,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LocationListId = locationListId;
@@ -5045,16 +4858,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists/{locationListId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -5062,33 +4875,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "locationListId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationListId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("locationListId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationListId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5154,8 +4964,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
-                        : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -5178,16 +4987,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "bulkEdit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
@@ -5195,24 +5004,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "negativeKeywordListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -5232,8 +5039,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeyword>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -5256,16 +5062,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.NegativeKeyword Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5273,24 +5079,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "negativeKeywordListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -5311,8 +5115,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId, string keywordValue)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId, string keywordValue) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -5336,13 +5139,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string KeywordValue { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -5350,33 +5153,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "negativeKeywordListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "keywordValue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "keywordValue",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("keywordValue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "keywordValue",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -5395,8 +5195,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListNegativeKeywordsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -5440,13 +5239,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5454,60 +5253,54 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "negativeKeywordListId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "negativeKeywordListId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5528,8 +5321,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -5546,16 +5338,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -5563,15 +5355,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -5592,8 +5383,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     NegativeKeywordListId = negativeKeywordListId;
@@ -5611,13 +5401,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long NegativeKeywordListId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5625,24 +5415,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "negativeKeywordListId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "negativeKeywordListId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -5661,8 +5449,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     NegativeKeywordListId = negativeKeywordListId;
@@ -5680,13 +5467,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long NegativeKeywordListId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5694,24 +5481,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "negativeKeywordListId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "negativeKeywordListId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -5728,8 +5513,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListNegativeKeywordListsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InitParameters();
@@ -5753,13 +5537,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5767,33 +5551,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5815,8 +5596,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     NegativeKeywordListId = negativeKeywordListId;
@@ -5842,16 +5622,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -5859,33 +5639,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "negativeKeywordListId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "negativeKeywordListId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("negativeKeywordListId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "negativeKeywordListId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5944,8 +5721,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6096,16 +5872,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -6113,24 +5889,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -6150,8 +5924,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6303,13 +6076,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -6317,33 +6090,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "assignedTargetingOptionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedTargetingOptionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -6364,8 +6134,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6518,13 +6287,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -6532,33 +6301,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "assignedTargetingOptionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedTargetingOptionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -6576,8 +6342,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertiserAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, ListRequest.TargetingTypeEnum targetingType)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, ListRequest.TargetingTypeEnum targetingType) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6752,13 +6517,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -6766,60 +6531,54 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -6841,8 +6600,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class AuditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AuditAdvertiserResponse>
         {
             /// <summary>Constructs a new Audit request.</summary>
-            public AuditRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                : base(service)
+            public AuditRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 InitParameters();
@@ -6861,13 +6619,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object ReadMask { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "audit";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}:audit";
 
             /// <summary>Initializes Audit parameter list.</summary>
@@ -6875,24 +6633,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "readMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6915,8 +6671,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class BulkEditAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsResponse>
         {
             /// <summary>Constructs a new BulkEditAdvertiserAssignedTargetingOptions request.</summary>
-            public BulkEditAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
-                : base(service)
+            public BulkEditAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 Body = body;
@@ -6932,16 +6687,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "bulkEditAdvertiserAssignedTargetingOptions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}:bulkEditAdvertiserAssignedTargetingOptions";
 
             /// <summary>Initializes BulkEditAdvertiserAssignedTargetingOptions parameter list.</summary>
@@ -6949,15 +6704,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -6973,8 +6727,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class BulkListAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListAdvertiserAssignedTargetingOptionsResponse>
         {
             /// <summary>Constructs a new BulkListAdvertiserAssignedTargetingOptions request.</summary>
-            public BulkListAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                : base(service)
+            public BulkListAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 InitParameters();
@@ -7012,13 +6765,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "bulkListAdvertiserAssignedTargetingOptions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}:bulkListAdvertiserAssignedTargetingOptions";
 
             /// <summary>Initializes BulkListAdvertiserAssignedTargetingOptions parameter list.</summary>
@@ -7026,51 +6779,46 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7088,8 +6836,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -7100,16 +6847,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.Advertiser Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -7134,8 +6881,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 InitParameters();
@@ -7147,13 +6893,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long AdvertiserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -7161,15 +6907,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -7185,8 +6930,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long advertiserId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 InitParameters();
@@ -7198,13 +6942,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long AdvertiserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7212,15 +6956,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -7237,8 +6980,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertisersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -7276,13 +7018,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7290,51 +7032,46 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7351,8 +7088,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body, long advertiserId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 Body = body;
@@ -7372,16 +7108,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.Advertiser Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -7389,24 +7125,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7439,8 +7173,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CombinedAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long combinedAudienceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long combinedAudienceId) : base(service)
             {
                 CombinedAudienceId = combinedAudienceId;
                 InitParameters();
@@ -7460,13 +7193,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/combinedAudiences/{+combinedAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7474,33 +7207,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "combinedAudienceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "combinedAudienceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("combinedAudienceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "combinedAudienceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7515,8 +7245,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCombinedAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -7556,13 +7285,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/combinedAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7570,60 +7299,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7656,8 +7379,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
             {
                 CustomBiddingAlgorithmId = customBiddingAlgorithmId;
                 InitParameters();
@@ -7677,13 +7399,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7691,33 +7413,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customBiddingAlgorithmId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customBiddingAlgorithmId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7734,8 +7453,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomBiddingAlgorithmsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -7782,13 +7500,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/customBiddingAlgorithms";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7796,60 +7514,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7882,8 +7594,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomList>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long customListId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long customListId) : base(service)
             {
                 CustomListId = customListId;
                 InitParameters();
@@ -7899,13 +7610,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/customLists/{+customListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7913,24 +7624,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customListId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customListId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customListId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customListId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7945,8 +7654,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomListsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -7982,13 +7690,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/customLists";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7996,51 +7704,46 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8074,8 +7777,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long firstAndThirdPartyAudienceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long firstAndThirdPartyAudienceId) : base(service)
             {
                 FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
                 InitParameters();
@@ -8096,13 +7798,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8110,33 +7812,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "firstAndThirdPartyAudienceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "firstAndThirdPartyAudienceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8151,8 +7850,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListFirstAndThirdPartyAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -8194,13 +7892,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/firstAndThirdPartyAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8208,60 +7906,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8294,8 +7986,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FloodlightGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long floodlightGroupId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long floodlightGroupId) : base(service)
             {
                 FloodlightGroupId = floodlightGroupId;
                 InitParameters();
@@ -8311,13 +8002,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/floodlightGroups/{+floodlightGroupId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8325,24 +8016,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "floodlightGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightGroupId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightGroupId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8360,8 +8049,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FloodlightGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FloodlightGroup body, long floodlightGroupId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FloodlightGroup body, long floodlightGroupId) : base(service)
             {
                 FloodlightGroupId = floodlightGroupId;
                 Body = body;
@@ -8385,16 +8073,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.FloodlightGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/floodlightGroups/{floodlightGroupId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -8402,33 +8090,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "floodlightGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightGroupId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightGroupId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8461,8 +8146,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long googleAudienceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long googleAudienceId) : base(service)
             {
                 GoogleAudienceId = googleAudienceId;
                 InitParameters();
@@ -8482,13 +8166,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/googleAudiences/{+googleAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8496,33 +8180,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "googleAudienceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "googleAudienceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("googleAudienceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "googleAudienceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8537,8 +8218,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListGoogleAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -8578,13 +8258,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/googleAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8592,60 +8272,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8707,8 +8381,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesResponse>
             {
                 /// <summary>Constructs a new BulkEdit request.</summary>
-                public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
-                    : base(service)
+                public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     Body = body;
@@ -8725,16 +8398,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "bulkEdit";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit";
 
                 /// <summary>Initializes BulkEdit parameter list.</summary>
@@ -8742,15 +8415,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "inventorySourceGroupId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
+                    RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
                 }
 
             }
@@ -8768,8 +8440,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     Body = body;
@@ -8796,16 +8467,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -8813,33 +8484,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "inventorySourceGroupId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8858,8 +8526,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId, long assignedInventorySourceId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId, long assignedInventorySourceId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     AssignedInventorySourceId = assignedInventorySourceId;
@@ -8887,13 +8554,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -8901,42 +8568,38 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "inventorySourceGroupId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "assignedInventorySourceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "assignedInventorySourceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("assignedInventorySourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assignedInventorySourceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8953,8 +8616,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedInventorySourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     InitParameters();
@@ -9003,13 +8665,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -9017,69 +8679,62 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "inventorySourceGroupId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inventorySourceGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -9098,8 +8753,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -9121,16 +8775,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySourceGroups";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -9138,24 +8792,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9171,8 +8823,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
             {
                 InventorySourceGroupId = inventorySourceGroupId;
                 InitParameters();
@@ -9194,13 +8845,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -9208,33 +8859,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inventorySourceGroupId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceGroupId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9250,8 +8898,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
             {
                 InventorySourceGroupId = inventorySourceGroupId;
                 InitParameters();
@@ -9274,13 +8921,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -9288,33 +8935,30 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inventorySourceGroupId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceGroupId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9331,8 +8975,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourceGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -9375,13 +9018,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySourceGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -9389,60 +9032,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9462,8 +9099,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId) : base(service)
             {
                 InventorySourceGroupId = inventorySourceGroupId;
                 Body = body;
@@ -9493,16 +9129,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySourceGroups/{inventorySourceGroupId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -9510,42 +9146,38 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "inventorySourceGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inventorySourceGroupId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("inventorySourceGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceGroupId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9578,8 +9210,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceId) : base(service)
             {
                 InventorySourceId = inventorySourceId;
                 InitParameters();
@@ -9596,13 +9227,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySources/{+inventorySourceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -9610,24 +9241,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "inventorySourceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inventorySourceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9646,8 +9275,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourcesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -9690,13 +9318,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/inventorySources";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -9704,60 +9332,54 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9792,8 +9414,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class DownloadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
         {
             /// <summary>Constructs a new Download request.</summary>
-            public DownloadRequest(Google.Apis.Services.IClientService service, string resourceName)
-                : base(service)
+            public DownloadRequest(Google.Apis.Services.IClientService service, string resourceName) : base(service)
             {
                 ResourceName = resourceName;
                 MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
@@ -9806,13 +9427,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string ResourceName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "download";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "download/{+resourceName}";
 
             /// <summary>Initializes Download parameter list.</summary>
@@ -9820,15 +9441,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resourceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("resourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -9959,8 +9579,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId)
-                        : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -9981,16 +9600,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "bulkEdit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
@@ -9998,24 +9617,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -10034,8 +9651,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -10060,16 +9676,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -10077,33 +9693,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -10123,8 +9736,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId, string urlOrAppId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId, string urlOrAppId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -10150,13 +9762,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual System.Nullable<long> AdvertiserId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -10164,42 +9776,38 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "urlOrAppId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "urlOrAppId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("urlOrAppId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "urlOrAppId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -10217,8 +9825,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -10264,13 +9871,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{+partnerId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -10278,69 +9885,62 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "channelId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "channelId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "advertiserId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "advertiserId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "channelId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "advertiserId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -10358,8 +9958,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId) : base(service)
                 {
                     PartnerId = partnerId;
                     Body = body;
@@ -10379,16 +9978,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/partners/{+partnerId}/channels";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -10396,24 +9995,22 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -10431,8 +10028,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId) : base(service)
                 {
                     PartnerId = partnerId;
                     ChannelId = channelId;
@@ -10453,13 +10049,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/partners/{+partnerId}/channels/{+channelId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -10467,33 +10063,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "channelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "channelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "channelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -10509,8 +10102,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListChannelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long partnerId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long partnerId) : base(service)
                 {
                     PartnerId = partnerId;
                     InitParameters();
@@ -10551,13 +10143,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/partners/{+partnerId}/channels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -10565,60 +10157,54 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -10637,8 +10223,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId) : base(service)
                 {
                     PartnerId = partnerId;
                     ChannelId = channelId;
@@ -10667,16 +10252,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/partners/{+partnerId}/channels/{channelId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -10684,42 +10269,38 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "partnerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "channelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "channelId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("channelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "channelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -10779,8 +10360,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -10933,16 +10513,16 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -10950,24 +10530,22 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -10988,8 +10566,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -11143,13 +10720,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -11157,33 +10734,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "assignedTargetingOptionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedTargetingOptionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -11204,8 +10778,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long partnerId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long partnerId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -11360,13 +10933,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string AssignedTargetingOptionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -11374,33 +10947,30 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "assignedTargetingOptionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assignedTargetingOptionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
                     }
 
                 }
@@ -11419,8 +10989,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListPartnerAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, ListRequest.TargetingTypeEnum targetingType)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, ListRequest.TargetingTypeEnum targetingType) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -11597,13 +11166,13 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -11611,60 +11180,54 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "partnerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "partnerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "targetingType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "targetingType",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "partnerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetingType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -11689,8 +11252,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class BulkEditPartnerAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsResponse>
         {
             /// <summary>Constructs a new BulkEditPartnerAssignedTargetingOptions request.</summary>
-            public BulkEditPartnerAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId)
-                : base(service)
+            public BulkEditPartnerAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId) : base(service)
             {
                 PartnerId = partnerId;
                 Body = body;
@@ -11706,16 +11268,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "bulkEditPartnerAssignedTargetingOptions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/partners/{+partnerId}:bulkEditPartnerAssignedTargetingOptions";
 
             /// <summary>Initializes BulkEditPartnerAssignedTargetingOptions parameter list.</summary>
@@ -11723,15 +11285,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -11747,8 +11308,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Partner>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long partnerId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long partnerId) : base(service)
             {
                 PartnerId = partnerId;
                 InitParameters();
@@ -11760,13 +11320,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long PartnerId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/partners/{+partnerId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -11774,15 +11334,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "partnerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partnerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -11799,8 +11358,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListPartnersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -11833,13 +11391,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/partners";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11847,42 +11405,38 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11936,8 +11490,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -11949,13 +11502,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -11963,15 +11516,14 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^sdfdownloadtasks/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sdfdownloadtasks/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -11998,8 +11550,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -12010,16 +11561,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/sdfdownloadtasks";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -12080,8 +11631,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.TargetingOption>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, GetRequest.TargetingTypeEnum targetingType, string targetingOptionId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, GetRequest.TargetingTypeEnum targetingType, string targetingOptionId) : base(service)
                 {
                     TargetingType = targetingType;
                     TargetingOptionId = targetingOptionId;
@@ -12228,13 +11778,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -12242,33 +11792,30 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "targetingType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "targetingType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "targetingOptionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "targetingOptionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetingType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("targetingOptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetingOptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -12284,8 +11831,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, ListRequest.TargetingTypeEnum targetingType)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, ListRequest.TargetingTypeEnum targetingType) : base(service)
                 {
                     TargetingType = targetingType;
                     InitParameters();
@@ -12458,13 +12004,13 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/targetingTypes/{+targetingType}/targetingOptions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -12472,60 +12018,54 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "targetingType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "targetingType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "advertiserId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "advertiserId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetingType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -12564,8 +12104,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class BulkEditAssignedUserRolesRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesResponse>
         {
             /// <summary>Constructs a new BulkEditAssignedUserRoles request.</summary>
-            public BulkEditAssignedUserRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest body, long userId)
-                : base(service)
+            public BulkEditAssignedUserRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest body, long userId) : base(service)
             {
                 UserId = userId;
                 Body = body;
@@ -12581,16 +12120,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "bulkEditAssignedUserRoles";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users/{+userId}:bulkEditAssignedUserRoles";
 
             /// <summary>Initializes BulkEditAssignedUserRoles parameter list.</summary>
@@ -12598,15 +12137,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -12622,8 +12160,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -12634,16 +12171,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -12666,8 +12203,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long userId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -12679,13 +12215,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users/{+userId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -12693,15 +12229,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -12717,8 +12252,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -12730,13 +12264,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users/{+userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12744,15 +12278,14 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }
@@ -12769,8 +12302,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListUsersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -12813,13 +12345,13 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12827,42 +12359,38 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12879,8 +12407,7 @@ namespace Google.Apis.DisplayVideo.v1
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body, long userId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body, long userId) : base(service)
             {
                 UserId = userId;
                 Body = body;
@@ -12900,16 +12427,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DisplayVideo.v1.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/users/{+userId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -12917,24 +12444,22 @@ namespace Google.Apis.DisplayVideo.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

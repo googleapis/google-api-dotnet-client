@@ -18,17 +18,16 @@ namespace Google.Apis.Games.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public GamesService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public GamesService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public GamesService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public GamesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AchievementDefinitions = new AchievementDefinitionsResource(this);
             Achievements = new AchievementsResource(this);
@@ -126,12 +125,11 @@ namespace Google.Apis.Games.v1
         public virtual StatsResource Stats { get; }
     }
 
-    ///<summary>A base abstract class for Games requests.</summary>
+    /// <summary>A base abstract class for Games requests.</summary>
     public abstract class GamesBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new GamesBaseServiceRequest instance.</summary>
-        protected GamesBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new GamesBaseServiceRequest instance.</summary>
+        protected GamesBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -211,105 +209,94 @@ namespace Google.Apis.Games.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -339,8 +326,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementDefinitionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -361,13 +347,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -375,33 +361,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -438,8 +421,7 @@ namespace Google.Apis.Games.v1
         public class IncrementRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementIncrementResponse>
         {
             /// <summary>Constructs a new Increment request.</summary>
-            public IncrementRequest(Google.Apis.Services.IClientService service, string achievementId, int stepsToIncrement)
-                : base(service)
+            public IncrementRequest(Google.Apis.Services.IClientService service, string achievementId, int stepsToIncrement) : base(service)
             {
                 AchievementId = achievementId;
                 StepsToIncrement = stepsToIncrement;
@@ -461,13 +443,13 @@ namespace Google.Apis.Games.v1
             public virtual System.Nullable<long> RequestId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "increment";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements/{achievementId}/increment";
 
             /// <summary>Initializes Increment parameter list.</summary>
@@ -475,33 +457,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "stepsToIncrement", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "stepsToIncrement",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("stepsToIncrement", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "stepsToIncrement",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -520,8 +499,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerAchievementListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string playerId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string playerId) : base(service)
             {
                 PlayerId = playerId;
                 InitParameters();
@@ -570,13 +548,13 @@ namespace Google.Apis.Games.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/{playerId}/achievements";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -584,51 +562,46 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "state", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "state",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("state", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "state",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -646,8 +619,7 @@ namespace Google.Apis.Games.v1
         public class RevealRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementRevealResponse>
         {
             /// <summary>Constructs a new Reveal request.</summary>
-            public RevealRequest(Google.Apis.Services.IClientService service, string achievementId)
-                : base(service)
+            public RevealRequest(Google.Apis.Services.IClientService service, string achievementId) : base(service)
             {
                 AchievementId = achievementId;
                 InitParameters();
@@ -659,13 +631,13 @@ namespace Google.Apis.Games.v1
             public virtual string AchievementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reveal";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements/{achievementId}/reveal";
 
             /// <summary>Initializes Reveal parameter list.</summary>
@@ -673,15 +645,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -703,8 +674,7 @@ namespace Google.Apis.Games.v1
         public class SetStepsAtLeastRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementSetStepsAtLeastResponse>
         {
             /// <summary>Constructs a new SetStepsAtLeast request.</summary>
-            public SetStepsAtLeastRequest(Google.Apis.Services.IClientService service, string achievementId, int steps)
-                : base(service)
+            public SetStepsAtLeastRequest(Google.Apis.Services.IClientService service, string achievementId, int steps) : base(service)
             {
                 AchievementId = achievementId;
                 Steps = steps;
@@ -721,13 +691,13 @@ namespace Google.Apis.Games.v1
             public virtual int Steps { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setStepsAtLeast";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements/{achievementId}/setStepsAtLeast";
 
             /// <summary>Initializes SetStepsAtLeast parameter list.</summary>
@@ -735,24 +705,22 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "steps", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "steps",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("steps", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "steps",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -768,8 +736,7 @@ namespace Google.Apis.Games.v1
         public class UnlockRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementUnlockResponse>
         {
             /// <summary>Constructs a new Unlock request.</summary>
-            public UnlockRequest(Google.Apis.Services.IClientService service, string achievementId)
-                : base(service)
+            public UnlockRequest(Google.Apis.Services.IClientService service, string achievementId) : base(service)
             {
                 AchievementId = achievementId;
                 InitParameters();
@@ -781,13 +748,13 @@ namespace Google.Apis.Games.v1
             public virtual string AchievementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unlock";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements/{achievementId}/unlock";
 
             /// <summary>Initializes Unlock parameter list.</summary>
@@ -795,15 +762,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -819,8 +785,7 @@ namespace Google.Apis.Games.v1
         public class UpdateMultipleRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementUpdateMultipleResponse>
         {
             /// <summary>Constructs a new UpdateMultiple request.</summary>
-            public UpdateMultipleRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.AchievementUpdateMultipleRequest body)
-                : base(service)
+            public UpdateMultipleRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.AchievementUpdateMultipleRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -831,16 +796,16 @@ namespace Google.Apis.Games.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.AchievementUpdateMultipleRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateMultiple";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/achievements/updateMultiple";
 
             /// <summary>Initializes UpdateMultiple parameter list.</summary>
@@ -884,8 +849,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Application>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string applicationId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string applicationId) : base(service)
             {
                 ApplicationId = applicationId;
                 InitParameters();
@@ -922,13 +886,13 @@ namespace Google.Apis.Games.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/applications/{applicationId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -936,33 +900,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "platformType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "platformType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("platformType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "platformType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -977,21 +938,20 @@ namespace Google.Apis.Games.v1
         public class PlayedRequest : GamesBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Played request.</summary>
-            public PlayedRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public PlayedRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "played";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/applications/played";
 
             /// <summary>Initializes Played parameter list.</summary>
@@ -1016,8 +976,7 @@ namespace Google.Apis.Games.v1
         public class VerifyRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.ApplicationVerifyResponse>
         {
             /// <summary>Constructs a new Verify request.</summary>
-            public VerifyRequest(Google.Apis.Services.IClientService service, string applicationId)
-                : base(service)
+            public VerifyRequest(Google.Apis.Services.IClientService service, string applicationId) : base(service)
             {
                 ApplicationId = applicationId;
                 InitParameters();
@@ -1029,13 +988,13 @@ namespace Google.Apis.Games.v1
             public virtual string ApplicationId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "verify";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/applications/{applicationId}/verify";
 
             /// <summary>Initializes Verify parameter list.</summary>
@@ -1043,15 +1002,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1085,8 +1043,7 @@ namespace Google.Apis.Games.v1
         public class ListByPlayerRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerEventListResponse>
         {
             /// <summary>Constructs a new ListByPlayer request.</summary>
-            public ListByPlayerRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListByPlayerRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1106,13 +1063,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByPlayer";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/events";
 
             /// <summary>Initializes ListByPlayer parameter list.</summary>
@@ -1120,33 +1077,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1161,8 +1115,7 @@ namespace Google.Apis.Games.v1
         public class ListDefinitionsRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.EventDefinitionListResponse>
         {
             /// <summary>Constructs a new ListDefinitions request.</summary>
-            public ListDefinitionsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListDefinitionsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1183,13 +1136,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listDefinitions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/eventDefinitions";
 
             /// <summary>Initializes ListDefinitions parameter list.</summary>
@@ -1197,33 +1150,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1241,8 +1191,7 @@ namespace Google.Apis.Games.v1
         public class RecordRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.EventUpdateResponse>
         {
             /// <summary>Constructs a new Record request.</summary>
-            public RecordRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.EventRecordRequest body)
-                : base(service)
+            public RecordRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.EventRecordRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1257,16 +1206,16 @@ namespace Google.Apis.Games.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.EventRecordRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "record";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/events";
 
             /// <summary>Initializes Record parameter list.</summary>
@@ -1274,15 +1223,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1315,8 +1263,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Leaderboard>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string leaderboardId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string leaderboardId) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 InitParameters();
@@ -1332,13 +1279,13 @@ namespace Google.Apis.Games.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards/{leaderboardId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1346,24 +1293,22 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1378,8 +1323,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.LeaderboardListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1399,13 +1343,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1413,33 +1357,30 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1471,21 +1412,20 @@ namespace Google.Apis.Games.v1
         public class GetMetagameConfigRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.MetagameConfig>
         {
             /// <summary>Constructs a new GetMetagameConfig request.</summary>
-            public GetMetagameConfigRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetMetagameConfigRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getMetagameConfig";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/metagameConfig";
 
             /// <summary>Initializes GetMetagameConfig parameter list.</summary>
@@ -1511,8 +1451,7 @@ namespace Google.Apis.Games.v1
         public class ListCategoriesByPlayerRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.CategoryListResponse>
         {
             /// <summary>Constructs a new ListCategoriesByPlayer request.</summary>
-            public ListCategoriesByPlayerRequest(Google.Apis.Services.IClientService service, string playerId, ListCategoriesByPlayerRequest.CollectionEnum collection)
-                : base(service)
+            public ListCategoriesByPlayerRequest(Google.Apis.Services.IClientService service, string playerId, ListCategoriesByPlayerRequest.CollectionEnum collection) : base(service)
             {
                 PlayerId = playerId;
                 Collection = collection;
@@ -1554,13 +1493,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listCategoriesByPlayer";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/{playerId}/categories/{collection}";
 
             /// <summary>Initializes ListCategoriesByPlayer parameter list.</summary>
@@ -1568,51 +1507,46 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1648,8 +1582,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Player>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string playerId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string playerId) : base(service)
             {
                 PlayerId = playerId;
                 InitParameters();
@@ -1665,13 +1598,13 @@ namespace Google.Apis.Games.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/{playerId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1679,24 +1612,22 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1712,8 +1643,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ListRequest.CollectionEnum collection)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, ListRequest.CollectionEnum collection) : base(service)
             {
                 Collection = collection;
                 InitParameters();
@@ -1755,13 +1685,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/me/players/{collection}";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1769,42 +1699,38 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1839,8 +1765,7 @@ namespace Google.Apis.Games.v1
         public class CheckRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.RevisionCheckResponse>
         {
             /// <summary>Constructs a new Check request.</summary>
-            public CheckRequest(Google.Apis.Services.IClientService service, string clientRevision)
-                : base(service)
+            public CheckRequest(Google.Apis.Services.IClientService service, string clientRevision) : base(service)
             {
                 ClientRevision = clientRevision;
                 InitParameters();
@@ -1855,13 +1780,13 @@ namespace Google.Apis.Games.v1
             public virtual string ClientRevision { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "check";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/revisions/check";
 
             /// <summary>Initializes Check parameter list.</summary>
@@ -1869,15 +1794,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "clientRevision", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientRevision",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("clientRevision", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientRevision",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1921,8 +1845,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerLeaderboardScoreListResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string playerId, string leaderboardId, GetRequest.TimeSpanEnum timeSpan)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string playerId, string leaderboardId, GetRequest.TimeSpanEnum timeSpan) : base(service)
             {
                 PlayerId = playerId;
                 LeaderboardId = leaderboardId;
@@ -2004,13 +1927,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2018,69 +1941,62 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeSpan", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeSpan",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeRankType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeRankType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeSpan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeSpan",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeRankType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeRankType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2100,8 +2016,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.LeaderboardScores>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 Collection = collection;
@@ -2170,13 +2085,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards/{leaderboardId}/scores/{collection}";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2184,60 +2099,54 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeSpan", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeSpan",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeSpan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeSpan",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2257,8 +2166,7 @@ namespace Google.Apis.Games.v1
         public class ListWindowRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.LeaderboardScores>
         {
             /// <summary>Constructs a new ListWindow request.</summary>
-            public ListWindowRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan)
-                : base(service)
+            public ListWindowRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 Collection = collection;
@@ -2338,13 +2246,13 @@ namespace Google.Apis.Games.v1
             public virtual System.Nullable<bool> ReturnTopIfAbsent { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listWindow";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards/{leaderboardId}/window/{collection}";
 
             /// <summary>Initializes ListWindow parameter list.</summary>
@@ -2352,78 +2260,70 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeSpan", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeSpan",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "resultsAbove", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resultsAbove",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "returnTopIfAbsent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "returnTopIfAbsent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeSpan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeSpan",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("resultsAbove", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resultsAbove",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnTopIfAbsent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnTopIfAbsent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2444,8 +2344,7 @@ namespace Google.Apis.Games.v1
         public class SubmitRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerScoreResponse>
         {
             /// <summary>Constructs a new Submit request.</summary>
-            public SubmitRequest(Google.Apis.Services.IClientService service, string leaderboardId, long score)
-                : base(service)
+            public SubmitRequest(Google.Apis.Services.IClientService service, string leaderboardId, long score) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 Score = score;
@@ -2475,13 +2374,13 @@ namespace Google.Apis.Games.v1
             public virtual string ScoreTag { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "submit";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards/{leaderboardId}/scores";
 
             /// <summary>Initializes Submit parameter list.</summary>
@@ -2489,42 +2388,38 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "score", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "score",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scoreTag", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scoreTag",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"[a-zA-Z0-9-._~]{0,64}",
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("score", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "score",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scoreTag", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scoreTag",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-zA-Z0-9-._~]{0,64}",
+                });
             }
 
         }
@@ -2540,8 +2435,7 @@ namespace Google.Apis.Games.v1
         public class SubmitMultipleRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerScoreListResponse>
         {
             /// <summary>Constructs a new SubmitMultiple request.</summary>
-            public SubmitMultipleRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.PlayerScoreSubmissionList body)
-                : base(service)
+            public SubmitMultipleRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.PlayerScoreSubmissionList body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2556,16 +2450,16 @@ namespace Google.Apis.Games.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.PlayerScoreSubmissionList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "submitMultiple";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/leaderboards/scores";
 
             /// <summary>Initializes SubmitMultiple parameter list.</summary>
@@ -2573,15 +2467,14 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2614,8 +2507,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Snapshot>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string snapshotId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string snapshotId) : base(service)
             {
                 SnapshotId = snapshotId;
                 InitParameters();
@@ -2631,13 +2523,13 @@ namespace Google.Apis.Games.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/snapshots/{snapshotId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2645,24 +2537,22 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "snapshotId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "snapshotId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "snapshotId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2681,8 +2571,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.SnapshotListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string playerId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string playerId) : base(service)
             {
                 PlayerId = playerId;
                 InitParameters();
@@ -2708,13 +2597,13 @@ namespace Google.Apis.Games.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/players/{playerId}/snapshots";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2722,42 +2611,38 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2791,21 +2676,20 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.StatsResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1/stats";
 
             /// <summary>Initializes Get parameter list.</summary>

@@ -18,17 +18,16 @@ namespace Google.Apis.ServiceManagement.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ServiceManagementService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ServiceManagementService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ServiceManagementService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ServiceManagementService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Operations = new OperationsResource(this);
             Services = new ServicesResource(this);
@@ -102,12 +101,11 @@ namespace Google.Apis.ServiceManagement.v1
         public virtual ServicesResource Services { get; }
     }
 
-    ///<summary>A base abstract class for ServiceManagement requests.</summary>
+    /// <summary>A base abstract class for ServiceManagement requests.</summary>
     public abstract class ServiceManagementBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ServiceManagementBaseServiceRequest instance.</summary>
-        protected ServiceManagementBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ServiceManagementBaseServiceRequest instance.</summary>
+        protected ServiceManagementBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -187,105 +185,94 @@ namespace Google.Apis.ServiceManagement.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -318,8 +305,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -331,13 +317,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -345,15 +331,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
             }
 
         }
@@ -368,8 +353,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -401,13 +385,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/operations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -415,42 +399,38 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -512,8 +492,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Service>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName) : base(service)
                 {
                     ServiceName = serviceName;
                     Body = body;
@@ -530,16 +509,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.Service Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/configs";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -547,15 +526,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -575,8 +553,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Service>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string serviceName, string configId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string serviceName, string configId) : base(service)
                 {
                     ServiceName = serviceName;
                     ConfigId = configId;
@@ -612,13 +589,13 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/configs/{configId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -626,33 +603,30 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "configId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "configId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "configId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -671,8 +645,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServiceConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string serviceName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
                 {
                     ServiceName = serviceName;
                     InitParameters();
@@ -694,13 +667,13 @@ namespace Google.Apis.ServiceManagement.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/configs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -708,33 +681,30 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -762,8 +732,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class SubmitRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Submit request.</summary>
-                public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
-                    : base(service)
+                public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName) : base(service)
                 {
                     ServiceName = serviceName;
                     Body = body;
@@ -780,16 +749,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "submit";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/configs:submit";
 
                 /// <summary>Initializes Submit parameter list.</summary>
@@ -797,15 +766,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -844,8 +812,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class GetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
-                    : base(service)
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -862,16 +829,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                 /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -879,15 +846,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+/consumers/[^/]+$",
+                    });
                 }
 
             }
@@ -907,8 +873,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
-                    : base(service)
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -925,16 +890,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                 /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -942,15 +907,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+/consumers/[^/]+$",
+                    });
                 }
 
             }
@@ -974,8 +938,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
-                    : base(service)
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -992,16 +955,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "testIamPermissions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                 /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1009,15 +972,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+/consumers/[^/]+$",
+                    });
                 }
 
             }
@@ -1066,8 +1028,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName) : base(service)
                 {
                     ServiceName = serviceName;
                     Body = body;
@@ -1084,16 +1045,16 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.Rollout Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/rollouts";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1101,15 +1062,14 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1128,8 +1088,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Rollout>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string serviceName, string rolloutId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string serviceName, string rolloutId) : base(service)
                 {
                     ServiceName = serviceName;
                     RolloutId = rolloutId;
@@ -1147,13 +1106,13 @@ namespace Google.Apis.ServiceManagement.v1
                 public virtual string RolloutId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/rollouts/{rolloutId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1161,24 +1120,22 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "rolloutId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "rolloutId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("rolloutId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "rolloutId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1197,8 +1154,7 @@ namespace Google.Apis.ServiceManagement.v1
             public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServiceRolloutsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string serviceName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
                 {
                     ServiceName = serviceName;
                     InitParameters();
@@ -1228,13 +1184,13 @@ namespace Google.Apis.ServiceManagement.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/services/{serviceName}/rollouts";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1242,42 +1198,38 @@ namespace Google.Apis.ServiceManagement.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "serviceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1300,8 +1252,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.ManagedService body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.ManagedService body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1312,16 +1263,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.ManagedService Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1349,8 +1300,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class DeleteRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string serviceName)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 InitParameters();
@@ -1363,13 +1313,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string ServiceName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1377,15 +1327,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1405,8 +1354,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class DisableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Disable request.</summary>
-            public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest body, string serviceName)
-                : base(service)
+            public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest body, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 Body = body;
@@ -1423,16 +1371,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "disable";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}:disable";
 
             /// <summary>Initializes Disable parameter list.</summary>
@@ -1440,15 +1388,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1468,8 +1415,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class EnableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
-            public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest body, string serviceName)
-                : base(service)
+            public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest body, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 Body = body;
@@ -1486,16 +1432,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "enable";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}:enable";
 
             /// <summary>Initializes Enable parameter list.</summary>
@@ -1503,15 +1449,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1537,8 +1482,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class GenerateConfigReportRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportResponse>
         {
             /// <summary>Constructs a new GenerateConfigReport request.</summary>
-            public GenerateConfigReportRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportRequest body)
-                : base(service)
+            public GenerateConfigReportRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1549,16 +1493,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateConfigReport";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services:generateConfigReport";
 
             /// <summary>Initializes GenerateConfigReport parameter list.</summary>
@@ -1582,8 +1526,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ManagedService>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string serviceName)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 InitParameters();
@@ -1596,13 +1539,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string ServiceName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1610,15 +1553,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1635,8 +1577,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class GetConfigRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Service>
         {
             /// <summary>Constructs a new GetConfig request.</summary>
-            public GetConfigRequest(Google.Apis.Services.IClientService service, string serviceName)
-                : base(service)
+            public GetConfigRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 InitParameters();
@@ -1671,13 +1612,13 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getConfig";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}/config";
 
             /// <summary>Initializes GetConfig parameter list.</summary>
@@ -1685,33 +1626,30 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "configId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "configId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1731,8 +1669,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class GetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1749,16 +1686,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1766,15 +1703,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^services/[^/]+$",
+                });
             }
 
         }
@@ -1795,8 +1731,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1821,13 +1756,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string ProducerProjectId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1835,42 +1770,38 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "consumerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "consumerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("consumerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "consumerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("producerProjectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "producerProjectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1890,8 +1821,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1908,16 +1838,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1925,15 +1855,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^services/[^/]+$",
+                });
             }
 
         }
@@ -1957,8 +1886,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
             {
                 Resource = resource;
                 Body = body;
@@ -1975,16 +1903,16 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+resource}:testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1992,15 +1920,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^services/[^/]+$",
+                });
             }
 
         }
@@ -2021,8 +1948,7 @@ namespace Google.Apis.ServiceManagement.v1
         public class UndeleteRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, string serviceName)
-                : base(service)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, string serviceName) : base(service)
             {
                 ServiceName = serviceName;
                 InitParameters();
@@ -2035,13 +1961,13 @@ namespace Google.Apis.ServiceManagement.v1
             public virtual string ServiceName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "undelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/services/{serviceName}:undelete";
 
             /// <summary>Initializes Undelete parameter list.</summary>
@@ -2049,15 +1975,14 @@ namespace Google.Apis.ServiceManagement.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

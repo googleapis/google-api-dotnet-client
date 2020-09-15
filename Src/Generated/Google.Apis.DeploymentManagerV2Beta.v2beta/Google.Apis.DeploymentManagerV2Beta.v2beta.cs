@@ -18,17 +18,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public const string Version = "v2beta";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DeploymentManagerV2BetaService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DeploymentManagerV2BetaService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DeploymentManagerV2BetaService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DeploymentManagerV2BetaService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             CompositeTypes = new CompositeTypesResource(this);
             Deployments = new DeploymentsResource(this);
@@ -126,12 +125,11 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public virtual TypesResource Types { get; }
     }
 
-    ///<summary>A base abstract class for DeploymentManagerV2Beta requests.</summary>
+    /// <summary>A base abstract class for DeploymentManagerV2Beta requests.</summary>
     public abstract class DeploymentManagerV2BetaBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DeploymentManagerV2BetaBaseServiceRequest instance.</summary>
-        protected DeploymentManagerV2BetaBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DeploymentManagerV2BetaBaseServiceRequest instance.</summary>
+        protected DeploymentManagerV2BetaBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -178,69 +176,62 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -273,8 +264,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class DeleteRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string compositeType)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -291,13 +281,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string CompositeType { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -305,24 +295,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "compositeType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compositeType",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("compositeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compositeType",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -340,8 +328,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string compositeType)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -358,13 +345,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string CompositeType { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -372,24 +359,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "compositeType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compositeType",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("compositeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compositeType",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -406,8 +391,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class InsertRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -423,16 +407,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -440,15 +424,14 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
             }
 
         }
@@ -464,8 +447,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -520,13 +502,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -534,51 +516,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -597,8 +574,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class PatchRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project, string compositeType)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -619,16 +595,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -636,24 +612,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "compositeType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compositeType",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("compositeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compositeType",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -672,8 +646,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class UpdateRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project, string compositeType)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType body, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -694,16 +667,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.CompositeType Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -711,24 +684,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "compositeType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compositeType",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("compositeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compositeType",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -764,8 +735,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class CancelPreviewRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new CancelPreview request.</summary>
-            public CancelPreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsCancelPreviewRequest body, string project, string deployment)
-                : base(service)
+            public CancelPreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsCancelPreviewRequest body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -786,16 +756,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsCancelPreviewRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancelPreview";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/cancelPreview";
 
             /// <summary>Initializes CancelPreview parameter list.</summary>
@@ -803,24 +773,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -838,8 +806,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class DeleteRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string deployment)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -869,13 +836,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -883,33 +850,30 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deletePolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deletePolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DELETE",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deletePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deletePolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DELETE",
+                    Pattern = null,
+                });
             }
 
         }
@@ -927,8 +891,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -945,13 +908,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Deployment { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -959,24 +922,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -996,8 +957,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetIamPolicyRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource) : base(service)
             {
                 Project = project;
                 Resource = resource;
@@ -1014,13 +974,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Resource { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{resource}/getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1028,24 +988,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
             }
 
         }
@@ -1062,8 +1020,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class InsertRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1103,16 +1060,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1120,33 +1077,30 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "createPolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "createPolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "CREATE_OR_ACQUIRE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "preview", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "preview",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("createPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "createPolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "CREATE_OR_ACQUIRE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "preview",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1162,8 +1116,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -1218,13 +1171,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1232,51 +1185,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1295,8 +1243,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class PatchRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project, string deployment)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1355,16 +1302,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1372,51 +1319,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "createPolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "createPolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "CREATE_OR_ACQUIRE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deletePolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deletePolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DELETE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "preview", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "preview",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("createPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "createPolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "CREATE_OR_ACQUIRE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("deletePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deletePolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DELETE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "preview",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1435,8 +1377,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class SetIamPolicyRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.GlobalSetPolicyRequest body, string project, string resource)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
             {
                 Project = project;
                 Resource = resource;
@@ -1457,16 +1398,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.GlobalSetPolicyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{resource}/setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1474,24 +1415,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
             }
 
         }
@@ -1512,8 +1451,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class StopRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsStopRequest body, string project, string deployment)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsStopRequest body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1534,16 +1472,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.DeploymentsStopRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -1551,24 +1489,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -1587,8 +1523,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class TestIamPermissionsRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TestPermissionsRequest body, string project, string resource)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TestPermissionsRequest body, string project, string resource) : base(service)
             {
                 Project = project;
                 Resource = resource;
@@ -1609,16 +1544,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TestPermissionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{resource}/testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1626,24 +1561,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
             }
 
         }
@@ -1662,8 +1595,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class UpdateRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project, string deployment)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1722,16 +1654,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Deployment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1739,51 +1671,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "createPolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "createPolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "CREATE_OR_ACQUIRE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deletePolicy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deletePolicy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DELETE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "preview", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "preview",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("createPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "createPolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "CREATE_OR_ACQUIRE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("deletePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deletePolicy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DELETE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "preview",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1820,8 +1747,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Manifest>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string manifest)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string manifest) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1843,13 +1769,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Manifest { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/manifests/{manifest}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1857,33 +1783,30 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "manifest", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "manifest",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("manifest", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "manifest",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -1901,8 +1824,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.ManifestsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1962,13 +1884,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/manifests";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1976,60 +1898,54 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2064,8 +1980,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string operation)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string operation) : base(service)
             {
                 Project = project;
                 Operation = operation;
@@ -2082,13 +1997,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Operation { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/operations/{operation}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2096,24 +2011,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "operation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "operation",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2129,8 +2042,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.OperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -2185,13 +2097,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/operations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2199,51 +2111,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2280,8 +2187,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Resource>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string resource)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string resource) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -2303,13 +2209,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Resource { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/resources/{resource}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2317,33 +2223,30 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2361,8 +2264,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.ResourcesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -2422,13 +2324,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/deployments/{deployment}/resources";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2436,60 +2338,54 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "deployment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deployment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("deployment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deployment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2524,8 +2420,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class DeleteRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string typeProvider)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -2542,13 +2437,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string TypeProvider { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2556,24 +2451,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -2591,8 +2484,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string typeProvider)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -2609,13 +2501,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string TypeProvider { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2623,24 +2515,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -2660,8 +2550,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class GetTypeRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeInfo>
         {
             /// <summary>Constructs a new GetType request.</summary>
-            public GetTypeRequest(Google.Apis.Services.IClientService service, string project, string typeProvider, string type)
-                : base(service)
+            public GetTypeRequest(Google.Apis.Services.IClientService service, string project, string typeProvider, string type) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -2683,13 +2572,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string Type { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getType";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}/types/{type}";
 
             /// <summary>Initializes GetType parameter list.</summary>
@@ -2697,33 +2586,30 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2740,8 +2626,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class InsertRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -2757,16 +2642,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2774,15 +2659,14 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
             }
 
         }
@@ -2798,8 +2682,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvidersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -2854,13 +2737,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2868,51 +2751,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2930,8 +2808,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListTypesRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvidersListTypesResponse>
         {
             /// <summary>Constructs a new ListTypes request.</summary>
-            public ListTypesRequest(Google.Apis.Services.IClientService service, string project, string typeProvider)
-                : base(service)
+            public ListTypesRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -2991,13 +2868,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listTypes";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}/types";
 
             /// <summary>Initializes ListTypes parameter list.</summary>
@@ -3005,60 +2882,54 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3077,8 +2948,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class PatchRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project, string typeProvider)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -3099,16 +2969,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3116,24 +2986,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -3152,8 +3020,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class UpdateRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project, string typeProvider)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider body, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -3174,16 +3041,16 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypeProvider Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3191,24 +3058,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "typeProvider", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "typeProvider",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("typeProvider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "typeProvider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
             }
 
         }
@@ -3241,8 +3106,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         public class ListRequest : DeploymentManagerV2BetaBaseServiceRequest<Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -3297,13 +3161,13 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{project}/global/types";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3311,51 +3175,46 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

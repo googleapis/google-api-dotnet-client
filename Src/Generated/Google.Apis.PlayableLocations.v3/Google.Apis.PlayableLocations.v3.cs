@@ -18,17 +18,16 @@ namespace Google.Apis.PlayableLocations.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public PlayableLocationsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public PlayableLocationsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public PlayableLocationsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public PlayableLocationsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             V3 = new V3Resource(this);
         }
@@ -66,12 +65,11 @@ namespace Google.Apis.PlayableLocations.v3
         public virtual V3Resource V3 { get; }
     }
 
-    ///<summary>A base abstract class for PlayableLocations requests.</summary>
+    /// <summary>A base abstract class for PlayableLocations requests.</summary>
     public abstract class PlayableLocationsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new PlayableLocationsBaseServiceRequest instance.</summary>
-        protected PlayableLocationsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new PlayableLocationsBaseServiceRequest instance.</summary>
+        protected PlayableLocationsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -151,105 +149,94 @@ namespace Google.Apis.PlayableLocations.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -284,8 +271,7 @@ namespace Google.Apis.PlayableLocations.v3
         public class LogImpressionsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogImpressionsResponse>
         {
             /// <summary>Constructs a new LogImpressions request.</summary>
-            public LogImpressionsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogImpressionsRequest body)
-                : base(service)
+            public LogImpressionsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogImpressionsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -296,16 +282,16 @@ namespace Google.Apis.PlayableLocations.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogImpressionsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "logImpressions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3:logImpressions";
 
             /// <summary>Initializes LogImpressions parameter list.</summary>
@@ -330,8 +316,7 @@ namespace Google.Apis.PlayableLocations.v3
         public class LogPlayerReportsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse>
         {
             /// <summary>Constructs a new LogPlayerReports request.</summary>
-            public LogPlayerReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest body)
-                : base(service)
+            public LogPlayerReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -342,16 +327,16 @@ namespace Google.Apis.PlayableLocations.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "logPlayerReports";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3:logPlayerReports";
 
             /// <summary>Initializes LogPlayerReports parameter list.</summary>
@@ -378,8 +363,7 @@ namespace Google.Apis.PlayableLocations.v3
         public class SamplePlayableLocationsRequest : PlayableLocationsBaseServiceRequest<Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse>
         {
             /// <summary>Constructs a new SamplePlayableLocations request.</summary>
-            public SamplePlayableLocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest body)
-                : base(service)
+            public SamplePlayableLocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -390,16 +374,16 @@ namespace Google.Apis.PlayableLocations.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PlayableLocations.v3.Data.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "samplePlayableLocations";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3:samplePlayableLocations";
 
             /// <summary>Initializes SamplePlayableLocations parameter list.</summary>

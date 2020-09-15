@@ -18,17 +18,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudMachineLearningEngineService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudMachineLearningEngineService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudMachineLearningEngineService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudMachineLearningEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for CloudMachineLearningEngine requests.</summary>
+    /// <summary>A base abstract class for CloudMachineLearningEngine requests.</summary>
     public abstract class CloudMachineLearningEngineBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudMachineLearningEngineBaseServiceRequest instance.</summary>
-        protected CloudMachineLearningEngineBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudMachineLearningEngineBaseServiceRequest instance.</summary>
+        protected CloudMachineLearningEngineBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -323,8 +310,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest body, string name)
-                    : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -340,16 +326,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -357,15 +343,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
                 }
 
             }
@@ -382,8 +367,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -399,16 +383,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/jobs";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -416,15 +400,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -440,8 +423,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -453,13 +435,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -467,15 +449,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
                 }
 
             }
@@ -494,8 +475,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetIamPolicyRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                    : base(service)
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                 {
                     Resource = resource;
                     InitParameters();
@@ -516,13 +496,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                 /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -530,24 +510,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
+                    RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -565,8 +543,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -597,13 +574,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/jobs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -611,42 +588,38 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -665,8 +638,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class PatchRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -693,16 +665,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -710,24 +682,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -747,8 +717,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class SetIamPolicyRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
-                    : base(service)
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -765,16 +734,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                 /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -782,15 +751,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
                 }
 
             }
@@ -814,8 +782,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class TestIamPermissionsRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
-                    : base(service)
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -832,16 +799,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "testIamPermissions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                 /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -849,15 +816,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/jobs/[^/]+$",
+                    });
                 }
 
             }
@@ -924,8 +890,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -937,13 +902,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -951,15 +916,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -977,8 +941,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -990,13 +953,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1004,15 +967,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1069,8 +1031,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class AddMeasurementRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new AddMeasurement request.</summary>
-                        public AddMeasurementRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name)
-                            : base(service)
+                        public AddMeasurementRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1086,16 +1047,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "addMeasurement";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:addMeasurement";
 
                         /// <summary>Initializes AddMeasurement parameter list.</summary>
@@ -1103,15 +1064,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1130,8 +1090,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class CheckEarlyStoppingStateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new CheckEarlyStoppingState request.</summary>
-                        public CheckEarlyStoppingStateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name)
-                            : base(service)
+                        public CheckEarlyStoppingStateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1147,16 +1106,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "checkEarlyStoppingState";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:checkEarlyStoppingState";
 
                         /// <summary>Initializes CheckEarlyStoppingState parameter list.</summary>
@@ -1164,15 +1123,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1189,8 +1147,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class CompleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Complete request.</summary>
-                        public CompleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name)
-                            : base(service)
+                        public CompleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1206,16 +1163,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "complete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:complete";
 
                         /// <summary>Initializes Complete parameter list.</summary>
@@ -1223,15 +1180,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1248,8 +1204,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -1265,16 +1220,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/trials";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -1282,15 +1237,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
                         }
 
                     }
@@ -1306,8 +1260,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -1319,13 +1272,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -1333,15 +1286,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1357,8 +1309,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -1370,13 +1321,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -1384,15 +1335,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1408,8 +1358,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListTrialsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -1421,13 +1370,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         public virtual string Parent { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/trials";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -1435,15 +1384,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
                         }
 
                     }
@@ -1460,8 +1408,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class StopRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial>
                     {
                         /// <summary>Constructs a new Stop request.</summary>
-                        public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest body, string name)
-                            : base(service)
+                        public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -1477,16 +1424,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "stop";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:stop";
 
                         /// <summary>Initializes Stop parameter list.</summary>
@@ -1494,15 +1441,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$",
+                            });
                         }
 
                     }
@@ -1523,8 +1469,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public class SuggestRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Suggest request.</summary>
-                        public SuggestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent)
-                            : base(service)
+                        public SuggestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -1540,16 +1485,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "suggest";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/trials:suggest";
 
                         /// <summary>Initializes Suggest parameter list.</summary>
@@ -1557,15 +1502,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
                         }
 
                     }
@@ -1584,8 +1528,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1607,16 +1550,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/studies";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1624,24 +1567,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "studyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "studyId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("studyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1657,8 +1598,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1670,13 +1610,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1684,15 +1624,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                        });
                     }
 
                 }
@@ -1708,8 +1647,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1721,13 +1659,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1735,15 +1673,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                        });
                     }
 
                 }
@@ -1760,8 +1697,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListStudiesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1774,13 +1710,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Parent { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/studies";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1788,15 +1724,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1815,8 +1750,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1828,13 +1762,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1842,15 +1776,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
 
             }
@@ -1867,8 +1800,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1892,13 +1824,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1906,33 +1838,30 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1995,8 +1924,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2012,16 +1940,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/versions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2029,15 +1957,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+$",
+                        });
                     }
 
                 }
@@ -2058,8 +1985,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2072,13 +1998,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2086,15 +2012,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
+                        });
                     }
 
                 }
@@ -2114,8 +2039,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2127,13 +2051,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2141,15 +2065,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
+                        });
                     }
 
                 }
@@ -2171,8 +2094,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2199,13 +2121,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/versions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2213,42 +2135,38 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2267,8 +2185,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class PatchRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2294,16 +2211,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -2311,24 +2228,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2352,8 +2267,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public class SetDefaultRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version>
                 {
                     /// <summary>Constructs a new SetDefault request.</summary>
-                    public SetDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest body, string name)
-                        : base(service)
+                    public SetDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2370,16 +2284,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setDefault";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:setDefault";
 
                     /// <summary>Initializes SetDefault parameter list.</summary>
@@ -2387,15 +2301,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
+                        });
                     }
 
                 }
@@ -2417,8 +2330,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -2434,16 +2346,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/models";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2451,15 +2363,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -2477,8 +2388,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2490,13 +2400,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2504,15 +2414,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
                 }
 
             }
@@ -2530,8 +2439,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2543,13 +2451,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2557,15 +2465,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
                 }
 
             }
@@ -2584,8 +2491,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetIamPolicyRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                    : base(service)
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                 {
                     Resource = resource;
                     InitParameters();
@@ -2606,13 +2512,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                 /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -2620,24 +2526,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
+                    RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2657,8 +2561,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListModelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -2685,13 +2588,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/models";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2699,42 +2602,38 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2753,8 +2652,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class PatchRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2779,16 +2677,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2796,24 +2694,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2833,8 +2729,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class SetIamPolicyRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
-                    : base(service)
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -2851,16 +2746,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                 /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -2868,15 +2763,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
                 }
 
             }
@@ -2900,8 +2794,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class TestIamPermissionsRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
-                    : base(service)
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -2918,16 +2811,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "testIamPermissions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                 /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -2935,15 +2828,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/models/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
                 }
 
             }
@@ -2988,8 +2880,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3001,13 +2892,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -3015,15 +2906,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -3041,8 +2931,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3054,13 +2943,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3068,15 +2957,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }
@@ -3104,8 +2992,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3129,13 +3016,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/operations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3143,42 +3030,38 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3199,8 +3082,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         public class ExplainRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Explain request.</summary>
-            public ExplainRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ExplainRequest body, string name)
-                : base(service)
+            public ExplainRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ExplainRequest body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -3217,16 +3099,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ExplainRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "explain";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}:explain";
 
             /// <summary>Initializes Explain parameter list.</summary>
@@ -3234,15 +3116,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/.*$",
+                });
             }
 
         }
@@ -3262,8 +3143,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         public class GetConfigRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1GetConfigResponse>
         {
             /// <summary>Constructs a new GetConfig request.</summary>
-            public GetConfigRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -3275,13 +3155,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getConfig";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}:getConfig";
 
             /// <summary>Initializes GetConfig parameter list.</summary>
@@ -3289,15 +3169,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
             }
 
         }
@@ -3317,8 +3196,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         public class PredictRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
-            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest body, string name)
-                : base(service)
+            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -3335,16 +3213,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "predict";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}:predict";
 
             /// <summary>Initializes Predict parameter list.</summary>
@@ -3352,15 +3230,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/.*$",
+                });
             }
 
         }

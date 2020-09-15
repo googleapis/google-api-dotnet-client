@@ -18,17 +18,16 @@ namespace Google.Apis.Analytics.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AnalyticsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AnalyticsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AnalyticsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AnalyticsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Data = new DataResource(this);
             Management = new ManagementResource(this);
@@ -132,12 +131,11 @@ namespace Google.Apis.Analytics.v3
         public virtual UserDeletionResource UserDeletion { get; }
     }
 
-    ///<summary>A base abstract class for Analytics requests.</summary>
+    /// <summary>A base abstract class for Analytics requests.</summary>
     public abstract class AnalyticsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AnalyticsBaseServiceRequest instance.</summary>
-        protected AnalyticsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AnalyticsBaseServiceRequest instance.</summary>
+        protected AnalyticsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -184,69 +182,62 @@ namespace Google.Apis.Analytics.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "false",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "false",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -307,8 +298,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.GaData>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string ids, string startDate, string endDate, string metrics)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string ids, string startDate, string endDate, string metrics) : base(service)
                 {
                     Ids = ids;
                     StartDate = startDate;
@@ -408,13 +398,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "data/ga";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -422,123 +412,110 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "ids", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ids",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"ga:[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "start-date", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-date",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                        });
-                    RequestParameters.Add(
-                        "end-date", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "end-date",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                        });
-                    RequestParameters.Add(
-                        "metrics", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metrics",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"ga:.+",
-                        });
-                    RequestParameters.Add(
-                        "dimensions", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dimensions",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(ga:.+)?",
-                        });
-                    RequestParameters.Add(
-                        "filters", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filters",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"ga:.+",
-                        });
-                    RequestParameters.Add(
-                        "include-empty-rows", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "include-empty-rows",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "output", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "output",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "samplingLevel", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "samplingLevel",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "segment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "segment",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(-)?ga:.+",
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ids",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"ga:[0-9]+",
+                    });
+                    RequestParameters.Add("start-date", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-date",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
+                    });
+                    RequestParameters.Add("end-date", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "end-date",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
+                    });
+                    RequestParameters.Add("metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"ga:.+",
+                    });
+                    RequestParameters.Add("dimensions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimensions",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(ga:.+)?",
+                    });
+                    RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"ga:.+",
+                    });
+                    RequestParameters.Add("include-empty-rows", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "include-empty-rows",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("output", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "output",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("samplingLevel", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "samplingLevel",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("segment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "segment",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(-)?ga:.+",
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -583,8 +560,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.McfData>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string ids, string startDate, string endDate, string metrics)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string ids, string startDate, string endDate, string metrics) : base(service)
                 {
                     Ids = ids;
                     StartDate = startDate;
@@ -660,13 +636,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "data/mcf";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -674,96 +650,86 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "ids", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ids",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"ga:[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "start-date", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-date",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                        });
-                    RequestParameters.Add(
-                        "end-date", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "end-date",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                        });
-                    RequestParameters.Add(
-                        "metrics", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metrics",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"mcf:.+",
-                        });
-                    RequestParameters.Add(
-                        "dimensions", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dimensions",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(mcf:.+)?",
-                        });
-                    RequestParameters.Add(
-                        "filters", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filters",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"mcf:.+",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "samplingLevel", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "samplingLevel",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(-)?mcf:.+",
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ids",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"ga:[0-9]+",
+                    });
+                    RequestParameters.Add("start-date", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-date",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
+                    });
+                    RequestParameters.Add("end-date", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "end-date",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
+                    });
+                    RequestParameters.Add("metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"mcf:.+",
+                    });
+                    RequestParameters.Add("dimensions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimensions",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(mcf:.+)?",
+                    });
+                    RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"mcf:.+",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("samplingLevel", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "samplingLevel",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(-)?mcf:.+",
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -801,8 +767,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RealtimeData>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string ids, string metrics)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string ids, string metrics) : base(service)
                 {
                     Ids = ids;
                     Metrics = metrics;
@@ -839,13 +804,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string Sort { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "data/realtime";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -853,60 +818,54 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "ids", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ids",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"ga:[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "metrics", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metrics",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(ga:.+)|(rt:.+)",
-                        });
-                    RequestParameters.Add(
-                        "dimensions", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dimensions",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(ga:.+)|(rt:.+)",
-                        });
-                    RequestParameters.Add(
-                        "filters", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filters",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(ga:.+)|(rt:.+)",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = @"(-)?((ga:.+)|(rt:.+))",
-                        });
+                    RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ids",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"ga:[0-9]+",
+                    });
+                    RequestParameters.Add("metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(ga:.+)|(rt:.+)",
+                    });
+                    RequestParameters.Add("dimensions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimensions",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(ga:.+)|(rt:.+)",
+                    });
+                    RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(ga:.+)|(rt:.+)",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(-)?((ga:.+)|(rt:.+))",
+                    });
                 }
 
             }
@@ -979,8 +938,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.AccountSummaries>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -997,13 +955,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accountSummaries";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1011,24 +969,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1065,8 +1021,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string linkId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     LinkId = linkId;
@@ -1083,13 +1038,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string LinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1097,24 +1052,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1131,8 +1084,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -1148,16 +1100,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/entityUserLinks";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -1165,15 +1117,14 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1189,8 +1140,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -1211,13 +1161,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/entityUserLinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1225,33 +1175,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1270,8 +1217,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string linkId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     LinkId = linkId;
@@ -1292,16 +1238,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1309,24 +1255,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1360,8 +1304,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Accounts>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -1377,13 +1320,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1391,24 +1334,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1443,8 +1384,7 @@ namespace Google.Apis.Analytics.v3
             public class HashClientIdRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.HashClientIdResponse>
             {
                 /// <summary>Constructs a new HashClientId request.</summary>
-                public HashClientIdRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.HashClientIdRequest body)
-                    : base(service)
+                public HashClientIdRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.HashClientIdRequest body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -1455,16 +1395,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.HashClientIdRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "hashClientId";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/clientId:hashClientId";
 
                 /// <summary>Initializes HashClientId parameter list.</summary>
@@ -1508,8 +1448,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDataSources>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -1535,13 +1474,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1549,42 +1488,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1623,8 +1558,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDimension>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDimensionId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDimensionId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -1646,13 +1580,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string CustomDimensionId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1660,33 +1594,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customDimensionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDimensionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customDimensionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDimensionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1705,8 +1636,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDimension>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -1727,16 +1657,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomDimension Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -1744,24 +1674,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1779,8 +1707,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDimensions>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -1806,13 +1733,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1820,42 +1747,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1876,8 +1799,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDimension>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -1908,16 +1830,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomDimension Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1925,42 +1847,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customDimensionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDimensionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ignoreCustomDataSourceLinks",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customDimensionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDimensionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ignoreCustomDataSourceLinks",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1981,8 +1899,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomDimension>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2013,16 +1930,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomDimension Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -2030,42 +1947,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customDimensionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDimensionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ignoreCustomDataSourceLinks",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customDimensionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDimensionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ignoreCustomDataSourceLinks",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2104,8 +2017,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomMetric>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customMetricId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customMetricId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2127,13 +2039,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string CustomMetricId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2141,33 +2053,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customMetricId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customMetricId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customMetricId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customMetricId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2186,8 +2095,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomMetric>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2208,16 +2116,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomMetric Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -2225,24 +2133,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2260,8 +2166,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomMetrics>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2287,13 +2192,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2301,42 +2206,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2357,8 +2258,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomMetric>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2389,16 +2289,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomMetric Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2406,42 +2306,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customMetricId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customMetricId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ignoreCustomDataSourceLinks",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customMetricId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customMetricId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ignoreCustomDataSourceLinks",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2462,8 +2358,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.CustomMetric>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2494,16 +2389,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.CustomMetric Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -2511,42 +2406,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customMetricId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customMetricId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ignoreCustomDataSourceLinks",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customMetricId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customMetricId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ignoreCustomDataSourceLinks", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ignoreCustomDataSourceLinks",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2586,8 +2477,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string experimentId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string experimentId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2614,13 +2504,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string ExperimentId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2628,42 +2518,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "experimentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "experimentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("experimentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "experimentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2685,8 +2571,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Experiment>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string experimentId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string experimentId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2713,13 +2598,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string ExperimentId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2727,42 +2612,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "experimentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "experimentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("experimentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "experimentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2783,8 +2664,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Experiment>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2810,16 +2690,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Experiment Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -2827,33 +2707,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2873,8 +2750,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Experiments>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -2905,13 +2781,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2919,51 +2795,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2985,8 +2856,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Experiment>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3017,16 +2887,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Experiment Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3034,42 +2904,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "experimentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "experimentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("experimentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "experimentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3091,8 +2957,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Experiment>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3123,16 +2988,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Experiment Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3140,42 +3005,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "experimentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "experimentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("experimentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "experimentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3212,8 +3073,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filter>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string filterId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string filterId) : base(service)
                 {
                     AccountId = accountId;
                     FilterId = filterId;
@@ -3230,13 +3090,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string FilterId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters/{filterId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3244,24 +3104,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3279,8 +3137,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filter>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string filterId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string filterId) : base(service)
                 {
                     AccountId = accountId;
                     FilterId = filterId;
@@ -3297,13 +3154,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string FilterId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters/{filterId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3311,24 +3168,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3345,8 +3200,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filter>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -3362,16 +3216,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Filter Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -3379,15 +3233,14 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3403,8 +3256,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filters>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -3425,13 +3277,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3439,33 +3291,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3484,8 +3333,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filter>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId) : base(service)
                 {
                     AccountId = accountId;
                     FilterId = filterId;
@@ -3506,16 +3354,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Filter Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters/{filterId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3523,24 +3371,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3559,8 +3405,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Filter>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId) : base(service)
                 {
                     AccountId = accountId;
                     FilterId = filterId;
@@ -3581,16 +3426,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Filter Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/filters/{filterId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3598,24 +3443,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3655,8 +3498,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string goalId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string goalId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3683,13 +3525,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string GoalId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3697,42 +3539,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "goalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "goalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("goalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "goalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3753,8 +3591,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3780,16 +3617,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Goal Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -3797,33 +3634,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3845,8 +3679,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goals>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3880,13 +3713,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3894,51 +3727,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3960,8 +3788,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -3992,16 +3819,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Goal Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -4009,42 +3836,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "goalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "goalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("goalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "goalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4066,8 +3889,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4098,16 +3920,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Goal Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -4115,42 +3937,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "goalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "goalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("goalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "goalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4191,8 +4009,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4219,13 +4036,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string LinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4233,42 +4050,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+:\d+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+:\d+",
+                    });
                 }
 
             }
@@ -4290,8 +4103,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.ProfileFilterLink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4318,13 +4130,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string LinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4332,42 +4144,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+:\d+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+:\d+",
+                    });
                 }
 
             }
@@ -4388,8 +4196,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.ProfileFilterLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4415,16 +4222,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.ProfileFilterLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -4432,33 +4239,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
                 }
 
             }
@@ -4480,8 +4284,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.ProfileFilterLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4514,13 +4317,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4528,51 +4331,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4595,8 +4393,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.ProfileFilterLink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4627,16 +4424,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.ProfileFilterLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -4644,42 +4441,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+:\d+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+:\d+",
+                    });
                 }
 
             }
@@ -4702,8 +4495,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.ProfileFilterLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4734,16 +4526,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.ProfileFilterLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -4751,42 +4543,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+:\d+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+:\d+",
+                    });
                 }
 
             }
@@ -4826,8 +4614,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4854,13 +4641,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string LinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4868,42 +4655,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4924,8 +4707,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -4951,16 +4733,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -4968,33 +4750,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5016,8 +4795,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5050,13 +4828,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5064,51 +4842,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5130,8 +4903,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId, string linkId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5162,16 +4934,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -5179,42 +4951,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5253,8 +5021,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5276,13 +5043,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string ProfileId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5290,33 +5057,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5336,8 +5100,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Profile>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5359,13 +5122,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string ProfileId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5373,33 +5136,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-[0-9]+-[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-[0-9]+-[0-9]+",
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]+",
+                    });
                 }
 
             }
@@ -5418,8 +5178,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Profile>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5440,16 +5199,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Profile Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -5457,24 +5216,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5494,8 +5251,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Profiles>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5523,13 +5279,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5537,42 +5293,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5593,8 +5345,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Profile>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5620,16 +5371,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Profile Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -5637,33 +5388,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5684,8 +5432,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Profile>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5711,16 +5458,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Profile Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -5728,33 +5475,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5793,8 +5537,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5816,13 +5559,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string RemarketingAudienceId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5830,33 +5573,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "remarketingAudienceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "remarketingAudienceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5876,8 +5616,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5899,13 +5638,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string RemarketingAudienceId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5913,33 +5652,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "remarketingAudienceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "remarketingAudienceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5958,8 +5694,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -5980,16 +5715,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -5997,24 +5732,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6032,8 +5765,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudiences>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6063,13 +5795,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string Type { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6077,51 +5809,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "type", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "all",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "all",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6142,8 +5869,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6169,16 +5895,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -6186,33 +5912,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "remarketingAudienceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "remarketingAudienceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6233,8 +5956,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6260,16 +5982,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -6277,33 +5999,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "remarketingAudienceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "remarketingAudienceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6337,8 +6056,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Segments>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -6354,13 +6072,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/segments";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6368,24 +6086,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6426,8 +6142,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string unsampledReportId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string unsampledReportId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6454,13 +6169,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string UnsampledReportId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6468,42 +6183,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "unsampledReportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "unsampledReportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("unsampledReportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "unsampledReportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6525,8 +6236,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.UnsampledReport>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string unsampledReportId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId, string unsampledReportId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6553,13 +6263,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string UnsampledReportId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6567,42 +6277,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "unsampledReportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "unsampledReportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("unsampledReportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "unsampledReportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6623,8 +6329,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.UnsampledReport>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.UnsampledReport body, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.UnsampledReport body, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6650,16 +6355,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.UnsampledReport Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -6667,33 +6372,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6714,8 +6416,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.UnsampledReports>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string profileId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6749,13 +6450,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6763,51 +6464,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6847,8 +6543,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteUploadDataRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new DeleteUploadData request.</summary>
-                public DeleteUploadDataRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AnalyticsDataimportDeleteUploadDataRequest body, string accountId, string webPropertyId, string customDataSourceId)
-                    : base(service)
+                public DeleteUploadDataRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AnalyticsDataimportDeleteUploadDataRequest body, string accountId, string webPropertyId, string customDataSourceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6874,16 +6569,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.AnalyticsDataimportDeleteUploadDataRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteUploadData";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData";
 
                 /// <summary>Initializes DeleteUploadData parameter list.</summary>
@@ -6891,33 +6586,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "customDataSourceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDataSourceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @".{22}",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("customDataSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDataSourceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @".{22}",
+                    });
                 }
 
             }
@@ -6938,8 +6630,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Upload>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId, string uploadId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId, string uploadId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -6966,13 +6657,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string UploadId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6980,42 +6671,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "customDataSourceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDataSourceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @".{22}",
-                        });
-                    RequestParameters.Add(
-                        "uploadId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uploadId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @".{22}",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("customDataSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDataSourceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @".{22}",
+                    });
+                    RequestParameters.Add("uploadId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uploadId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @".{22}",
+                    });
                 }
 
             }
@@ -7035,8 +6722,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Uploads>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7067,13 +6753,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7081,51 +6767,46 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-(\d+)-(\d+)",
-                        });
-                    RequestParameters.Add(
-                        "customDataSourceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDataSourceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @".{22}",
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-(\d+)-(\d+)",
+                    });
+                    RequestParameters.Add("customDataSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDataSourceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @".{22}",
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7145,8 +6826,7 @@ namespace Google.Apis.Analytics.v3
             public class UploadDataRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Upload>
             {
                 /// <summary>Constructs a new UploadData request.</summary>
-                public UploadDataRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId)
-                    : base(service)
+                public UploadDataRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7168,13 +6848,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string CustomDataSourceId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "uploadData";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads";
 
                 /// <summary>Initializes UploadData parameter list.</summary>
@@ -7182,33 +6862,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-\d+-\d+",
-                        });
-                    RequestParameters.Add(
-                        "customDataSourceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customDataSourceId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-\d+-\d+",
+                    });
+                    RequestParameters.Add("customDataSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customDataSourceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7363,8 +7040,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string webPropertyAdWordsLinkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7386,13 +7062,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -7400,33 +7076,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyAdWordsLinkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyAdWordsLinkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7446,8 +7119,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string webPropertyAdWordsLinkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7469,13 +7141,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -7483,33 +7155,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyAdWordsLinkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyAdWordsLinkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7528,8 +7197,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7550,16 +7218,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityAdWordsLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -7567,24 +7235,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7602,8 +7268,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7629,13 +7294,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7643,42 +7308,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"\d+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"\d+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7701,8 +7362,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7728,16 +7388,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityAdWordsLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -7745,33 +7405,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyAdWordsLinkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyAdWordsLinkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7792,8 +7449,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7819,16 +7475,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityAdWordsLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -7836,33 +7492,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyAdWordsLinkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyAdWordsLinkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyAdWordsLinkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7899,8 +7552,7 @@ namespace Google.Apis.Analytics.v3
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Webproperty>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -7917,13 +7569,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string WebPropertyId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -7931,24 +7583,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"[0-9]+",
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"UA-[0-9]+-[0-9]+",
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]+",
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"UA-[0-9]+-[0-9]+",
+                    });
                 }
 
             }
@@ -7967,8 +7617,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Webproperty>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -7984,16 +7633,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Webproperty Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -8001,15 +7650,14 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8026,8 +7674,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Webproperties>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -8049,13 +7696,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -8063,33 +7710,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8108,8 +7752,7 @@ namespace Google.Apis.Analytics.v3
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Webproperty>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8130,16 +7773,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Webproperty Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -8147,24 +7790,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8183,8 +7824,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Webproperty>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8205,16 +7845,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.Webproperty Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -8222,24 +7862,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8278,8 +7916,7 @@ namespace Google.Apis.Analytics.v3
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string linkId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8301,13 +7938,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string LinkId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -8315,33 +7952,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8360,8 +7994,7 @@ namespace Google.Apis.Analytics.v3
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8382,16 +8015,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -8399,24 +8032,22 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8435,8 +8066,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8463,13 +8093,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -8477,42 +8107,38 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "max-results", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "max-results",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start-index", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start-index",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("max-results", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "max-results",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start-index", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start-index",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8533,8 +8159,7 @@ namespace Google.Apis.Analytics.v3
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityUserLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string linkId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string linkId) : base(service)
                 {
                     AccountId = accountId;
                     WebPropertyId = webPropertyId;
@@ -8560,16 +8185,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.EntityUserLink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -8577,33 +8202,30 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "webPropertyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "webPropertyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("webPropertyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webPropertyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8657,8 +8279,7 @@ namespace Google.Apis.Analytics.v3
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Columns>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string reportType)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string reportType) : base(service)
                 {
                     ReportType = reportType;
                     InitParameters();
@@ -8671,13 +8292,13 @@ namespace Google.Apis.Analytics.v3
                 public virtual string ReportType { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "metadata/{reportType}/columns";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -8685,15 +8306,14 @@ namespace Google.Apis.Analytics.v3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "reportType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "reportType",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"ga",
-                        });
+                    RequestParameters.Add("reportType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reportType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"ga",
+                    });
                 }
 
             }
@@ -8727,8 +8347,7 @@ namespace Google.Apis.Analytics.v3
         public class CreateAccountTicketRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.AccountTicket>
         {
             /// <summary>Constructs a new CreateAccountTicket request.</summary>
-            public CreateAccountTicketRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AccountTicket body)
-                : base(service)
+            public CreateAccountTicketRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AccountTicket body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -8739,16 +8358,16 @@ namespace Google.Apis.Analytics.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Analytics.v3.Data.AccountTicket Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createAccountTicket";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "provisioning/createAccountTicket";
 
             /// <summary>Initializes CreateAccountTicket parameter list.</summary>
@@ -8771,8 +8390,7 @@ namespace Google.Apis.Analytics.v3
         public class CreateAccountTreeRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.AccountTreeResponse>
         {
             /// <summary>Constructs a new CreateAccountTree request.</summary>
-            public CreateAccountTreeRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AccountTreeRequest body)
-                : base(service)
+            public CreateAccountTreeRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AccountTreeRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -8783,16 +8401,16 @@ namespace Google.Apis.Analytics.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Analytics.v3.Data.AccountTreeRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createAccountTree";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "provisioning/createAccountTree";
 
             /// <summary>Initializes CreateAccountTree parameter list.</summary>
@@ -8851,8 +8469,7 @@ namespace Google.Apis.Analytics.v3
             public class UpsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.UserDeletionRequest>
             {
                 /// <summary>Constructs a new Upsert request.</summary>
-                public UpsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.UserDeletionRequest body)
-                    : base(service)
+                public UpsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.UserDeletionRequest body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -8863,16 +8480,16 @@ namespace Google.Apis.Analytics.v3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Analytics.v3.Data.UserDeletionRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upsert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "userDeletion/userDeletionRequests:upsert";
 
                 /// <summary>Initializes Upsert parameter list.</summary>

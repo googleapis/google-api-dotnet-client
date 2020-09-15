@@ -18,17 +18,16 @@ namespace Google.Apis.Storage.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public StorageService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public StorageService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public StorageService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public StorageService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BucketAccessControls = new BucketAccessControlsResource(this);
             Buckets = new BucketsResource(this);
@@ -132,12 +131,11 @@ namespace Google.Apis.Storage.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Storage requests.</summary>
+    /// <summary>A base abstract class for Storage requests.</summary>
     public abstract class StorageBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new StorageBaseServiceRequest instance.</summary>
-        protected StorageBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new StorageBaseServiceRequest instance.</summary>
+        protected StorageBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -184,69 +182,62 @@ namespace Google.Apis.Storage.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -280,8 +271,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string entity)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -308,13 +298,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl/{entity}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -322,42 +312,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -376,8 +362,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControl>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string entity)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -404,13 +389,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl/{entity}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -418,42 +403,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -470,8 +451,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControl>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -496,16 +476,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.BucketAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -513,33 +493,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -555,8 +532,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControls>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -577,13 +553,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -591,33 +567,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -637,8 +610,7 @@ namespace Google.Apis.Storage.v1
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket, string entity)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -669,16 +641,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.BucketAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl/{entity}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -686,42 +658,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -741,8 +709,7 @@ namespace Google.Apis.Storage.v1
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControl>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket, string entity)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BucketAccessControl body, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -773,16 +740,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.BucketAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/acl/{entity}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -790,42 +757,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -858,8 +821,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -888,13 +850,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -902,51 +864,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -962,8 +919,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -1009,13 +965,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1023,60 +979,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1092,8 +1042,7 @@ namespace Google.Apis.Storage.v1
         public class GetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -1119,13 +1068,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/iam";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1133,42 +1082,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "optionsRequestedPolicyVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1185,8 +1130,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string project)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1281,16 +1225,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Bucket Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1298,60 +1242,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedDefaultObjectAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedDefaultObjectAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1367,8 +1305,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Buckets>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -1418,13 +1355,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1432,69 +1369,62 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1512,8 +1442,7 @@ namespace Google.Apis.Storage.v1
         public class LockRetentionPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new LockRetentionPolicy request.</summary>
-            public LockRetentionPolicyRequest(Google.Apis.Services.IClientService service, string bucket, long ifMetagenerationMatch)
-                : base(service)
+            public LockRetentionPolicyRequest(Google.Apis.Services.IClientService service, string bucket, long ifMetagenerationMatch) : base(service)
             {
                 Bucket = bucket;
                 IfMetagenerationMatch = ifMetagenerationMatch;
@@ -1540,13 +1469,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "lockRetentionPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/lockRetentionPolicy";
 
             /// <summary>Initializes LockRetentionPolicy parameter list.</summary>
@@ -1554,42 +1483,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1608,8 +1533,7 @@ namespace Google.Apis.Storage.v1
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string bucket)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -1712,16 +1636,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Bucket Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1729,78 +1653,70 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedDefaultObjectAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedDefaultObjectAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1817,8 +1733,7 @@ namespace Google.Apis.Storage.v1
         public class SetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -1843,16 +1758,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Policy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/iam";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1860,33 +1775,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1905,8 +1817,7 @@ namespace Google.Apis.Storage.v1
         public class TestIamPermissionsRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, Google.Apis.Util.Repeatable<string> permissions)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, Google.Apis.Util.Repeatable<string> permissions) : base(service)
             {
                 Bucket = bucket;
                 Permissions = permissions;
@@ -1932,13 +1843,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/iam/testPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1946,42 +1857,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "permissions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissions",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissions",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2000,8 +1907,7 @@ namespace Google.Apis.Storage.v1
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string bucket)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Bucket body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -2104,16 +2010,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Bucket Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2121,78 +2027,70 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedDefaultObjectAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedDefaultObjectAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedDefaultObjectAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2225,8 +2123,7 @@ namespace Google.Apis.Storage.v1
         public class StopRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Channel body)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2237,16 +2134,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -2291,8 +2188,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string entity)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -2319,13 +2215,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl/{entity}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2333,42 +2229,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2387,8 +2279,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string entity)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -2415,13 +2306,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl/{entity}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2429,42 +2320,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2481,8 +2368,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -2507,16 +2393,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2524,33 +2410,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2566,8 +2449,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControls>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -2598,13 +2480,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2612,51 +2494,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2676,8 +2553,7 @@ namespace Google.Apis.Storage.v1
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string entity)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -2708,16 +2584,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl/{entity}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2725,42 +2601,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2780,8 +2652,7 @@ namespace Google.Apis.Storage.v1
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string entity)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string entity) : base(service)
             {
                 Bucket = bucket;
                 Entity = entity;
@@ -2812,16 +2683,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/defaultObjectAcl/{entity}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2829,42 +2700,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2899,8 +2766,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string notification)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string notification) : base(service)
             {
                 Bucket = bucket;
                 Notification = notification;
@@ -2926,13 +2792,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/notificationConfigs/{notification}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2940,42 +2806,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notification", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notification",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("notification", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "notification",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2993,8 +2855,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notification>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string notification)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string notification) : base(service)
             {
                 Bucket = bucket;
                 Notification = notification;
@@ -3020,13 +2881,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/notificationConfigs/{notification}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3034,42 +2895,38 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notification", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notification",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("notification", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "notification",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3086,8 +2943,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notification>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Notification body, string bucket)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Notification body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -3112,16 +2968,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Notification Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/notificationConfigs";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3129,33 +2985,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3171,8 +3024,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notifications>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -3193,13 +3045,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/notificationConfigs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3207,33 +3059,30 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3271,8 +3120,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, string entity)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, string entity) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3310,13 +3158,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl/{entity}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3324,60 +3172,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3398,8 +3240,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, string entity)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, string entity) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3437,13 +3278,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl/{entity}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3451,60 +3292,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3523,8 +3358,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3560,16 +3394,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3577,51 +3411,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3639,8 +3468,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControls>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3672,13 +3500,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3686,51 +3514,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3752,8 +3575,7 @@ namespace Google.Apis.Storage.v1
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject, string entity)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject, string entity) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3795,16 +3617,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl/{entity}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3812,60 +3634,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3887,8 +3703,7 @@ namespace Google.Apis.Storage.v1
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject, string entity)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject, string entity) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -3930,16 +3745,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ObjectAccessControl Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/acl/{entity}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3947,60 +3762,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entity",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entity",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4037,8 +3846,7 @@ namespace Google.Apis.Storage.v1
         public class ComposeRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Compose request.</summary>
-            public ComposeRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ComposeRequest body, string destinationBucket, string destinationObject)
-                : base(service)
+            public ComposeRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ComposeRequest body, string destinationBucket, string destinationObject) : base(service)
             {
                 DestinationBucket = destinationBucket;
                 DestinationObject = destinationObject;
@@ -4114,16 +3922,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.ComposeRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "compose";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{destinationBucket}/o/{destinationObject}/compose";
 
             /// <summary>Initializes Compose parameter list.</summary>
@@ -4131,78 +3939,70 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "destinationBucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationBucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationObject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationObject",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationPredefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "kmsKeyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "kmsKeyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("destinationBucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationBucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationPredefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("kmsKeyName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "kmsKeyName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4228,8 +4028,7 @@ namespace Google.Apis.Storage.v1
         public class CopyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Copy request.</summary>
-            public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string sourceBucket, string sourceObject, string destinationBucket, string destinationObject)
-                : base(service)
+            public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string sourceBucket, string sourceObject, string destinationBucket, string destinationObject) : base(service)
             {
                 SourceBucket = sourceBucket;
                 SourceObject = sourceObject;
@@ -4371,16 +4170,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Object Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "copy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}";
 
             /// <summary>Initializes Copy parameter list.</summary>
@@ -4388,168 +4187,150 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "sourceBucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceBucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sourceObject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceObject",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationBucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationBucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationObject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationObject",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationKmsKeyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationKmsKeyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationPredefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sourceGeneration", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceGeneration",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("sourceBucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceBucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationBucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationBucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationKmsKeyName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationKmsKeyName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationPredefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceGeneration", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceGeneration",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4570,8 +4351,7 @@ namespace Google.Apis.Storage.v1
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -4625,13 +4405,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4639,87 +4419,78 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4738,8 +4509,7 @@ namespace Google.Apis.Storage.v1
         public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -4809,13 +4579,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4823,96 +4593,86 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -4983,8 +4743,7 @@ namespace Google.Apis.Storage.v1
         public class GetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject)
-                : base(service)
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -5016,13 +4775,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/iam";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -5030,51 +4789,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5092,8 +4846,7 @@ namespace Google.Apis.Storage.v1
         public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -5205,16 +4958,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Object Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5222,114 +4975,102 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentEncoding", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentEncoding",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "kmsKeyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "kmsKeyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentEncoding", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentEncoding",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("kmsKeyName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "kmsKeyName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5543,8 +5284,7 @@ namespace Google.Apis.Storage.v1
         public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Objects>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string bucket)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
             {
                 Bucket = bucket;
                 InitParameters();
@@ -5624,13 +5364,13 @@ namespace Google.Apis.Storage.v1
             public virtual System.Nullable<bool> Versions { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5638,114 +5378,102 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "delimiter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "delimiter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endOffset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endOffset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeTrailingDelimiter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startOffset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startOffset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "versions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "versions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("delimiter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "delimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTrailingDelimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5765,8 +5493,7 @@ namespace Google.Apis.Storage.v1
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -5867,16 +5594,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Object Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -5884,105 +5611,94 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6008,8 +5724,7 @@ namespace Google.Apis.Storage.v1
         public class RewriteRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.RewriteResponse>
         {
             /// <summary>Constructs a new Rewrite request.</summary>
-            public RewriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string sourceBucket, string sourceObject, string destinationBucket, string destinationObject)
-                : base(service)
+            public RewriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string sourceBucket, string sourceObject, string destinationBucket, string destinationObject) : base(service)
             {
                 SourceBucket = sourceBucket;
                 SourceObject = sourceObject;
@@ -6166,16 +5881,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Object Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "rewrite";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}";
 
             /// <summary>Initializes Rewrite parameter list.</summary>
@@ -6183,186 +5898,166 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "sourceBucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceBucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sourceObject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceObject",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationBucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationBucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationObject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationObject",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationKmsKeyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationKmsKeyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destinationPredefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifSourceMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxBytesRewrittenPerCall", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxBytesRewrittenPerCall",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "rewriteToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "rewriteToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sourceGeneration", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sourceGeneration",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("sourceBucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceBucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationBucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationBucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationKmsKeyName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationKmsKeyName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationPredefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxBytesRewrittenPerCall", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxBytesRewrittenPerCall",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rewriteToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rewriteToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceGeneration", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceGeneration",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6382,8 +6077,7 @@ namespace Google.Apis.Storage.v1
         public class SetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket, string storageObject)
-                : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -6419,16 +6113,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Policy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/iam";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -6436,51 +6130,46 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6502,8 +6191,7 @@ namespace Google.Apis.Storage.v1
         public class TestIamPermissionsRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, Google.Apis.Util.Repeatable<string> permissions)
-                : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, Google.Apis.Util.Repeatable<string> permissions) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -6540,13 +6228,13 @@ namespace Google.Apis.Storage.v1
             public virtual string UserProject { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "testIamPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}/iam/testPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -6554,60 +6242,54 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "permissions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissions",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissions",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6627,8 +6309,7 @@ namespace Google.Apis.Storage.v1
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject) : base(service)
             {
                 Bucket = bucket;
                 Object = storageObject;
@@ -6729,16 +6410,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Object Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/{object}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6746,105 +6427,94 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "object",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "generation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "generation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifGenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ifMetagenerationNotMatch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "predefinedAcl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "predefinedAcl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6861,8 +6531,7 @@ namespace Google.Apis.Storage.v1
         public class WatchAllRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Channel>
         {
             /// <summary>Constructs a new WatchAll request.</summary>
-            public WatchAllRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Channel body, string bucket)
-                : base(service)
+            public WatchAllRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Channel body, string bucket) : base(service)
             {
                 Bucket = bucket;
                 Body = body;
@@ -6946,16 +6615,16 @@ namespace Google.Apis.Storage.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watchAll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "b/{bucket}/o/watch";
 
             /// <summary>Initializes WatchAll parameter list.</summary>
@@ -6963,114 +6632,102 @@ namespace Google.Apis.Storage.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "bucket", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "bucket",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "delimiter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "delimiter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endOffset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endOffset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeTrailingDelimiter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "provisionalUserProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startOffset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startOffset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProject", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProject",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "versions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "versions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("delimiter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "delimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTrailingDelimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provisionalUserProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7125,8 +6782,7 @@ namespace Google.Apis.Storage.v1
             public class CreateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.HmacKey>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, string projectId, string serviceAccountEmail)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, string projectId, string serviceAccountEmail) : base(service)
                 {
                     ProjectId = projectId;
                     ServiceAccountEmail = serviceAccountEmail;
@@ -7147,13 +6803,13 @@ namespace Google.Apis.Storage.v1
                 public virtual string UserProject { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/hmacKeys";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -7161,33 +6817,30 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceAccountEmail", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceAccountEmail",
-                            IsRequired = true,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceAccountEmail", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceAccountEmail",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7205,8 +6858,7 @@ namespace Google.Apis.Storage.v1
             public class DeleteRequest : StorageBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string accessId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string accessId) : base(service)
                 {
                     ProjectId = projectId;
                     AccessId = accessId;
@@ -7227,13 +6879,13 @@ namespace Google.Apis.Storage.v1
                 public virtual string UserProject { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/hmacKeys/{accessId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -7241,33 +6893,30 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "accessId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accessId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("accessId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accessId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7285,8 +6934,7 @@ namespace Google.Apis.Storage.v1
             public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.HmacKeyMetadata>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string accessId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string accessId) : base(service)
                 {
                     ProjectId = projectId;
                     AccessId = accessId;
@@ -7307,13 +6955,13 @@ namespace Google.Apis.Storage.v1
                 public virtual string UserProject { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/hmacKeys/{accessId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -7321,33 +6969,30 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "accessId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accessId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("accessId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accessId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7363,8 +7008,7 @@ namespace Google.Apis.Storage.v1
             public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.HmacKeysMetadata>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -7401,13 +7045,13 @@ namespace Google.Apis.Storage.v1
                 public virtual string UserProject { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/hmacKeys";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7415,60 +7059,54 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "250",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceAccountEmail", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceAccountEmail",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeletedKeys", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeletedKeys",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "250",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("serviceAccountEmail", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceAccountEmail",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeletedKeys", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeletedKeys",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7489,8 +7127,7 @@ namespace Google.Apis.Storage.v1
             public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.HmacKeyMetadata>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.HmacKeyMetadata body, string projectId, string accessId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.HmacKeyMetadata body, string projectId, string accessId) : base(service)
                 {
                     ProjectId = projectId;
                     AccessId = accessId;
@@ -7515,16 +7152,16 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Storage.v1.Data.HmacKeyMetadata Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/hmacKeys/{accessId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -7532,33 +7169,30 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "accessId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accessId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("accessId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accessId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7593,8 +7227,7 @@ namespace Google.Apis.Storage.v1
             public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ServiceAccount>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -7615,13 +7248,13 @@ namespace Google.Apis.Storage.v1
                 public virtual string UserProject { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "projects/{projectId}/serviceAccount";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -7629,33 +7262,30 @@ namespace Google.Apis.Storage.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "provisionalUserProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "provisionalUserProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userProject", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userProject",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("provisionalUserProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "provisionalUserProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

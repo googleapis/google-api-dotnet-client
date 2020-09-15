@@ -18,17 +18,16 @@ namespace Google.Apis.Dataflow.v1b3
         public const string Version = "v1b3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DataflowService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DataflowService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DataflowService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DataflowService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -98,12 +97,11 @@ namespace Google.Apis.Dataflow.v1b3
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Dataflow requests.</summary>
+    /// <summary>A base abstract class for Dataflow requests.</summary>
     public abstract class DataflowBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DataflowBaseServiceRequest instance.</summary>
-        protected DataflowBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DataflowBaseServiceRequest instance.</summary>
+        protected DataflowBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -183,105 +181,94 @@ namespace Google.Apis.Dataflow.v1b3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -359,8 +346,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateTemplateVersionRequest body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateTemplateVersionRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -378,16 +364,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.CreateTemplateVersionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/{+parent}/templateVersions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -395,15 +381,14 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                        });
                     }
 
                 }
@@ -424,8 +409,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class CommitRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
             {
                 /// <summary>Constructs a new Commit request.</summary>
-                public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CommitTemplateVersionRequest body, string name)
-                    : base(service)
+                public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CommitTemplateVersionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -442,16 +426,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.CommitTemplateVersionRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "commit";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+name}:commit";
 
                 /// <summary>Initializes Commit parameter list.</summary>
@@ -459,15 +443,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                    });
                 }
 
             }
@@ -484,8 +467,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -498,13 +480,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -512,15 +494,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                    });
                 }
 
             }
@@ -541,8 +522,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -557,13 +537,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -571,15 +551,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                    });
                 }
 
             }
@@ -599,8 +578,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class LabelRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelResponse>
             {
                 /// <summary>Constructs a new Label request.</summary>
-                public LabelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelRequest body, string name)
-                    : base(service)
+                public LabelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -618,16 +596,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "label";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+name}:label";
 
                 /// <summary>Initializes Label parameter list.</summary>
@@ -635,15 +613,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                    });
                 }
 
             }
@@ -667,8 +644,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class TagRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagResponse>
             {
                 /// <summary>Constructs a new Tag request.</summary>
-                public TagRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagRequest body, string name)
-                    : base(service)
+                public TagRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -686,16 +662,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "tag";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+name}:tag";
 
                 /// <summary>Initializes Tag parameter list.</summary>
@@ -703,15 +679,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
+                    });
                 }
 
             }
@@ -769,8 +744,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetConfigRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetDebugConfigResponse>
                 {
                     /// <summary>Constructs a new GetConfig request.</summary>
-                    public GetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string jobId)
-                        : base(service)
+                    public GetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         JobId = jobId;
@@ -791,16 +765,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getConfig";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig";
 
                     /// <summary>Initializes GetConfig parameter list.</summary>
@@ -808,24 +782,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -843,8 +815,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class SendCaptureRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureResponse>
                 {
                     /// <summary>Constructs a new SendCapture request.</summary>
-                    public SendCaptureRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string jobId)
-                        : base(service)
+                    public SendCaptureRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         JobId = jobId;
@@ -865,16 +836,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "sendCapture";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture";
 
                     /// <summary>Initializes SendCapture parameter list.</summary>
@@ -882,24 +853,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -944,8 +913,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         JobId = jobId;
@@ -1028,13 +996,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual object StartTime { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/messages";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1042,78 +1010,70 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "endTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "endTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "minimumImportance", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "minimumImportance",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "startTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "startTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("minimumImportance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "minimumImportance",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1151,8 +1111,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class LeaseRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemResponse>
                 {
                     /// <summary>Constructs a new Lease request.</summary>
-                    public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string jobId)
-                        : base(service)
+                    public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         JobId = jobId;
@@ -1173,16 +1132,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "lease";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease";
 
                     /// <summary>Initializes Lease parameter list.</summary>
@@ -1190,24 +1149,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1226,8 +1183,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class ReportStatusRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusResponse>
                 {
                     /// <summary>Constructs a new ReportStatus request.</summary>
-                    public ReportStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string jobId)
-                        : base(service)
+                    public ReportStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         JobId = jobId;
@@ -1248,16 +1204,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "reportStatus";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus";
 
                     /// <summary>Initializes ReportStatus parameter list.</summary>
@@ -1265,24 +1221,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1299,8 +1253,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class AggregatedRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new Aggregated request.</summary>
-                public AggregatedRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public AggregatedRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -1376,13 +1329,13 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "aggregated";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs:aggregated";
 
                 /// <summary>Initializes Aggregated parameter list.</summary>
@@ -1390,60 +1343,54 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1466,8 +1413,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     Body = body;
@@ -1516,16 +1462,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1533,42 +1479,38 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "replaceJobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "replaceJobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("replaceJobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "replaceJobId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1592,8 +1534,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
                 {
                     ProjectId = projectId;
                     JobId = jobId;
@@ -1639,13 +1580,13 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1653,42 +1594,38 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1713,8 +1650,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
             {
                 /// <summary>Constructs a new GetMetrics request.</summary>
-                public GetMetricsRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                    : base(service)
+                public GetMetricsRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
                 {
                     ProjectId = projectId;
                     JobId = jobId;
@@ -1741,13 +1677,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual object StartTime { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getMetrics";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/metrics";
 
                 /// <summary>Initializes GetMetrics parameter list.</summary>
@@ -1755,42 +1691,38 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1814,8 +1746,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -1891,13 +1822,13 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1905,60 +1836,54 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1977,8 +1902,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
             {
                 /// <summary>Constructs a new Snapshot request.</summary>
-                public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId)
-                    : base(service)
+                public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId) : base(service)
                 {
                     ProjectId = projectId;
                     JobId = jobId;
@@ -1999,16 +1923,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "snapshot";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}:snapshot";
 
                 /// <summary>Initializes Snapshot parameter list.</summary>
@@ -2016,24 +1940,22 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2058,8 +1980,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string jobId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string jobId) : base(service)
                 {
                     ProjectId = projectId;
                     JobId = jobId;
@@ -2085,16 +2006,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -2102,33 +2023,30 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2190,8 +2108,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateResponse>
                 {
                     /// <summary>Constructs a new Launch request.</summary>
-                    public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest body, string projectId, string location)
-                        : base(service)
+                    public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest body, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -2213,16 +2130,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "launch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch";
 
                     /// <summary>Initializes Launch parameter list.</summary>
@@ -2230,24 +2147,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2310,8 +2225,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class GetConfigRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetDebugConfigResponse>
                     {
                         /// <summary>Constructs a new GetConfig request.</summary>
-                        public GetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string location, string jobId)
-                            : base(service)
+                        public GetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -2338,16 +2252,16 @@ namespace Google.Apis.Dataflow.v1b3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getConfig";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig";
 
                         /// <summary>Initializes GetConfig parameter list.</summary>
@@ -2355,33 +2269,30 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2402,8 +2313,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class SendCaptureRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureResponse>
                     {
                         /// <summary>Constructs a new SendCapture request.</summary>
-                        public SendCaptureRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string location, string jobId)
-                            : base(service)
+                        public SendCaptureRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -2430,16 +2340,16 @@ namespace Google.Apis.Dataflow.v1b3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "sendCapture";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture";
 
                         /// <summary>Initializes SendCapture parameter list.</summary>
@@ -2447,33 +2357,30 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2520,8 +2427,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -2606,13 +2512,13 @@ namespace Google.Apis.Dataflow.v1b3
                         public virtual object StartTime { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2620,78 +2526,70 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "endTime", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "endTime",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "minimumImportance", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "minimumImportance",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "startTime", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "startTime",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("minimumImportance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minimumImportance",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2730,8 +2628,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -2753,13 +2650,13 @@ namespace Google.Apis.Dataflow.v1b3
                         public virtual string JobId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2767,33 +2664,30 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2836,8 +2730,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.StageExecutionDetails>
                     {
                         /// <summary>Constructs a new GetExecutionDetails request.</summary>
-                        public GetExecutionDetailsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId, string stageId)
-                            : base(service)
+                        public GetExecutionDetailsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId, string stageId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -2884,13 +2777,13 @@ namespace Google.Apis.Dataflow.v1b3
                         public virtual object StartTime { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getExecutionDetails";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails";
 
                         /// <summary>Initializes GetExecutionDetails parameter list.</summary>
@@ -2898,78 +2791,70 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stageId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stageId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "endTime", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "endTime",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "startTime", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "startTime",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3009,8 +2894,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class LeaseRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemResponse>
                     {
                         /// <summary>Constructs a new Lease request.</summary>
-                        public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string location, string jobId)
-                            : base(service)
+                        public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -3037,16 +2921,16 @@ namespace Google.Apis.Dataflow.v1b3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "lease";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease";
 
                         /// <summary>Initializes Lease parameter list.</summary>
@@ -3054,33 +2938,30 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3101,8 +2982,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public class ReportStatusRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusResponse>
                     {
                         /// <summary>Constructs a new ReportStatus request.</summary>
-                        public ReportStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string location, string jobId)
-                            : base(service)
+                        public ReportStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string location, string jobId) : base(service)
                         {
                             ProjectId = projectId;
                             Location = location;
@@ -3129,16 +3009,16 @@ namespace Google.Apis.Dataflow.v1b3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "reportStatus";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus";
 
                         /// <summary>Initializes ReportStatus parameter list.</summary>
@@ -3146,33 +3026,30 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3199,8 +3076,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3250,16 +3126,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3267,42 +3143,38 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "replaceJobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "replaceJobId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("replaceJobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "replaceJobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3328,8 +3200,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3376,13 +3247,13 @@ namespace Google.Apis.Dataflow.v1b3
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3390,42 +3261,38 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3447,8 +3314,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobExecutionDetails>
                 {
                     /// <summary>Constructs a new GetExecutionDetails request.</summary>
-                    public GetExecutionDetailsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                        : base(service)
+                    public GetExecutionDetailsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3471,13 +3337,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string JobId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getExecutionDetails";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails";
 
                     /// <summary>Initializes GetExecutionDetails parameter list.</summary>
@@ -3485,33 +3351,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3539,8 +3402,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
                 {
                     /// <summary>Constructs a new GetMetrics request.</summary>
-                    public GetMetricsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                        : base(service)
+                    public GetMetricsRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3568,13 +3430,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual object StartTime { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getMetrics";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics";
 
                     /// <summary>Initializes GetMetrics parameter list.</summary>
@@ -3582,42 +3444,38 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "startTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "startTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3643,8 +3501,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3721,13 +3578,13 @@ namespace Google.Apis.Dataflow.v1b3
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3735,60 +3592,54 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3808,8 +3659,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
                 {
                     /// <summary>Constructs a new Snapshot request.</summary>
-                    public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId)
-                        : base(service)
+                    public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3835,16 +3685,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "snapshot";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot";
 
                     /// <summary>Initializes Snapshot parameter list.</summary>
@@ -3852,33 +3702,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3907,8 +3754,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location, string jobId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location, string jobId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -3935,16 +3781,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -3952,33 +3798,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4017,8 +3860,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.DeleteSnapshotResponse>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4040,13 +3882,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string SnapshotId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4054,33 +3896,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "snapshotId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "snapshotId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "snapshotId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4100,8 +3939,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4123,13 +3961,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string SnapshotId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4137,33 +3975,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "snapshotId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "snapshotId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "snapshotId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4181,8 +4016,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4203,13 +4037,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string JobId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/snapshots";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4217,33 +4051,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4285,8 +4116,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class ValidateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ValidateResponse>
                 {
                     /// <summary>Constructs a new Validate request.</summary>
-                    public ValidateRequest(Google.Apis.Services.IClientService service, string projectId, string location)
-                        : base(service)
+                    public ValidateRequest(Google.Apis.Services.IClientService service, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4308,13 +4138,13 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string Query { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "validate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/sql:validate";
 
                     /// <summary>Initializes Validate parameter list.</summary>
@@ -4322,33 +4152,30 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4387,8 +4214,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId, string location)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4410,16 +4236,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/templates";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4427,24 +4253,22 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4463,8 +4287,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4500,13 +4323,13 @@ namespace Google.Apis.Dataflow.v1b3
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/templates:get";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4514,42 +4337,38 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gcsPath", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gcsPath",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("gcsPath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4569,8 +4388,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
                 {
                     /// <summary>Constructs a new Launch request.</summary>
-                    public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId, string location)
-                        : base(service)
+                    public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId, string location) : base(service)
                     {
                         ProjectId = projectId;
                         Location = location;
@@ -4612,16 +4430,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "launch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/templates:launch";
 
                     /// <summary>Initializes Launch parameter list.</summary>
@@ -4629,60 +4447,54 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "dynamicTemplate.gcsPath",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "dynamicTemplate.stagingLocation",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gcsPath", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gcsPath",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "validateOnly", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "validateOnly",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dynamicTemplate.gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dynamicTemplate.stagingLocation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("gcsPath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4703,8 +4515,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class WorkerMessagesRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesResponse>
             {
                 /// <summary>Constructs a new WorkerMessages request.</summary>
-                public WorkerMessagesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId, string location)
-                    : base(service)
+                public WorkerMessagesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId, string location) : base(service)
                 {
                     ProjectId = projectId;
                     Location = location;
@@ -4726,16 +4537,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "workerMessages";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/WorkerMessages";
 
                 /// <summary>Initializes WorkerMessages parameter list.</summary>
@@ -4743,24 +4554,22 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4797,8 +4606,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string snapshotId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string snapshotId) : base(service)
                 {
                     ProjectId = projectId;
                     SnapshotId = snapshotId;
@@ -4819,13 +4627,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string Location { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/snapshots/{snapshotId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4833,33 +4641,30 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "snapshotId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "snapshotId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "snapshotId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4875,8 +4680,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -4896,13 +4700,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string Location { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/snapshots";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4910,33 +4714,30 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "jobId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4977,8 +4778,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListTemplateVersionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -5001,13 +4801,13 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/{+parent}/templateVersions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5015,33 +4815,30 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5077,8 +4874,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     Body = body;
@@ -5094,16 +4890,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/templates";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -5111,15 +4907,14 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5135,8 +4930,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -5170,13 +4964,13 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/templates:get";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5184,42 +4978,38 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "gcsPath", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gcsPath",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("gcsPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gcsPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5236,8 +5026,7 @@ namespace Google.Apis.Dataflow.v1b3
             public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
             {
                 /// <summary>Constructs a new Launch request.</summary>
-                public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId)
-                    : base(service)
+                public LaunchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     Body = body;
@@ -5277,16 +5066,16 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "launch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1b3/projects/{projectId}/templates:launch";
 
                 /// <summary>Initializes Launch parameter list.</summary>
@@ -5294,60 +5083,54 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dynamicTemplate.gcsPath",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dynamicTemplate.stagingLocation",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "gcsPath", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gcsPath",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dynamicTemplate.gcsPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dynamicTemplate.stagingLocation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("gcsPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gcsPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5364,8 +5147,7 @@ namespace Google.Apis.Dataflow.v1b3
         public class DeleteSnapshotsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.DeleteSnapshotResponse>
         {
             /// <summary>Constructs a new DeleteSnapshots request.</summary>
-            public DeleteSnapshotsRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public DeleteSnapshotsRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -5385,13 +5167,13 @@ namespace Google.Apis.Dataflow.v1b3
             public virtual string SnapshotId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteSnapshots";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1b3/projects/{projectId}/snapshots";
 
             /// <summary>Initializes DeleteSnapshots parameter list.</summary>
@@ -5399,33 +5181,30 @@ namespace Google.Apis.Dataflow.v1b3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "snapshotId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "snapshotId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "snapshotId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5442,8 +5221,7 @@ namespace Google.Apis.Dataflow.v1b3
         public class WorkerMessagesRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesResponse>
         {
             /// <summary>Constructs a new WorkerMessages request.</summary>
-            public WorkerMessagesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId)
-                : base(service)
+            public WorkerMessagesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 Body = body;
@@ -5459,16 +5237,16 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "workerMessages";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1b3/projects/{projectId}/WorkerMessages";
 
             /// <summary>Initializes WorkerMessages parameter list.</summary>
@@ -5476,15 +5254,14 @@ namespace Google.Apis.Dataflow.v1b3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

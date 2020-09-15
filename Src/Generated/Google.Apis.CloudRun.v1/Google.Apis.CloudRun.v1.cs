@@ -18,17 +18,16 @@ namespace Google.Apis.CloudRun.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudRunService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudRunService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudRunService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudRunService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Api = new ApiResource(this);
             Namespaces = new NamespacesResource(this);
@@ -88,12 +87,11 @@ namespace Google.Apis.CloudRun.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for CloudRun requests.</summary>
+    /// <summary>A base abstract class for CloudRun requests.</summary>
     public abstract class CloudRunBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudRunBaseServiceRequest instance.</summary>
-        protected CloudRunBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudRunBaseServiceRequest instance.</summary>
+        protected CloudRunBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -173,105 +171,94 @@ namespace Google.Apis.CloudRun.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -360,8 +347,7 @@ namespace Google.Apis.CloudRun.v1
                     public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -378,16 +364,16 @@ namespace Google.Apis.CloudRun.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "api/v1/{+parent}/secrets";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -395,15 +381,14 @@ namespace Google.Apis.CloudRun.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^namespaces/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^namespaces/[^/]+$",
+                            });
                         }
 
                     }
@@ -420,8 +405,7 @@ namespace Google.Apis.CloudRun.v1
                     public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -434,13 +418,13 @@ namespace Google.Apis.CloudRun.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "api/v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -448,15 +432,14 @@ namespace Google.Apis.CloudRun.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
+                            });
                         }
 
                     }
@@ -480,8 +463,7 @@ namespace Google.Apis.CloudRun.v1
                     public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                     {
                         /// <summary>Constructs a new ReplaceSecret request.</summary>
-                        public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name)
-                            : base(service)
+                        public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -498,16 +480,16 @@ namespace Google.Apis.CloudRun.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "replaceSecret";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PUT";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "api/v1/{+name}";
 
                         /// <summary>Initializes ReplaceSecret parameter list.</summary>
@@ -515,15 +497,14 @@ namespace Google.Apis.CloudRun.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^namespaces/[^/]+/secrets/[^/]+$",
+                            });
                         }
 
                     }
@@ -541,8 +522,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -555,13 +535,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "api/v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -569,15 +549,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^namespaces/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+$",
+                        });
                     }
 
                 }
@@ -595,8 +574,7 @@ namespace Google.Apis.CloudRun.v1
                 public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -618,16 +596,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Namespace Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "api/v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -635,24 +613,22 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^namespaces/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -711,8 +687,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListAuthorizedDomainsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -732,13 +707,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/domains.cloudrun.com/v1/{+parent}/authorizeddomains";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -746,33 +721,30 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -808,8 +780,7 @@ namespace Google.Apis.CloudRun.v1
             public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Configuration>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -822,13 +793,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -836,15 +807,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/configurations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/configurations/[^/]+$",
+                    });
                 }
 
             }
@@ -861,8 +831,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListConfigurationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -907,13 +876,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+parent}/configurations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -921,78 +890,70 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1029,8 +990,7 @@ namespace Google.Apis.CloudRun.v1
             public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.DomainMapping>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -1047,16 +1007,16 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.DomainMapping Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/domains.cloudrun.com/v1/{+parent}/domainmappings";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1064,15 +1024,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
                 }
 
             }
@@ -1089,8 +1048,7 @@ namespace Google.Apis.CloudRun.v1
             public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1117,13 +1075,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PropagationPolicy { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/domains.cloudrun.com/v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1131,42 +1089,38 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/domainmappings/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "kind", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "propagationPolicy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "propagationPolicy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/domainmappings/[^/]+$",
+                    });
+                    RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kind",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "propagationPolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1183,8 +1137,7 @@ namespace Google.Apis.CloudRun.v1
             public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.DomainMapping>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1197,13 +1150,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/domains.cloudrun.com/v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1211,15 +1164,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/domainmappings/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/domainmappings/[^/]+$",
+                    });
                 }
 
             }
@@ -1236,8 +1188,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListDomainMappingsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1282,13 +1233,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/domains.cloudrun.com/v1/{+parent}/domainmappings";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1296,78 +1247,70 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1403,8 +1346,7 @@ namespace Google.Apis.CloudRun.v1
             public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1431,13 +1373,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PropagationPolicy { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1445,42 +1387,38 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/revisions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "kind", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "propagationPolicy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "propagationPolicy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/revisions/[^/]+$",
+                    });
+                    RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kind",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "propagationPolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1497,8 +1435,7 @@ namespace Google.Apis.CloudRun.v1
             public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Revision>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1511,13 +1448,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1525,15 +1462,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/revisions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/revisions/[^/]+$",
+                    });
                 }
 
             }
@@ -1550,8 +1486,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRevisionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1596,13 +1531,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+parent}/revisions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1610,78 +1545,70 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1717,8 +1644,7 @@ namespace Google.Apis.CloudRun.v1
             public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Route>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1731,13 +1657,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1745,15 +1671,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/routes/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/routes/[^/]+$",
+                    });
                 }
 
             }
@@ -1770,8 +1695,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRoutesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1816,13 +1740,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+parent}/routes";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1830,78 +1754,70 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1938,8 +1854,7 @@ namespace Google.Apis.CloudRun.v1
             public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -1956,16 +1871,16 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+parent}/services";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1973,15 +1888,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
                 }
 
             }
@@ -2000,8 +1914,7 @@ namespace Google.Apis.CloudRun.v1
             public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2028,13 +1941,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PropagationPolicy { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2042,42 +1955,38 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/services/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "kind", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "propagationPolicy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "propagationPolicy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/services/[^/]+$",
+                    });
+                    RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kind",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "propagationPolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2094,8 +2003,7 @@ namespace Google.Apis.CloudRun.v1
             public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2108,13 +2016,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2122,15 +2030,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/services/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/services/[^/]+$",
+                    });
                 }
 
             }
@@ -2147,8 +2054,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListServicesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -2193,13 +2099,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+parent}/services";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2207,78 +2113,70 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2300,8 +2198,7 @@ namespace Google.Apis.CloudRun.v1
             public class ReplaceServiceRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
             {
                 /// <summary>Constructs a new ReplaceService request.</summary>
-                public ReplaceServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string name)
-                    : base(service)
+                public ReplaceServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2318,16 +2215,16 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "replaceService";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "apis/serving.knative.dev/v1/{+name}";
 
                 /// <summary>Initializes ReplaceService parameter list.</summary>
@@ -2335,15 +2232,14 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/services/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/services/[^/]+$",
+                    });
                 }
 
             }
@@ -2397,8 +2293,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListAuthorizedDomainsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -2418,13 +2313,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/authorizeddomains";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2432,33 +2327,30 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2519,8 +2411,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListAuthorizedDomainsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2540,13 +2431,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/authorizeddomains";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2554,33 +2445,30 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2616,8 +2504,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Configuration>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2630,13 +2517,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2644,15 +2531,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/configurations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/configurations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2669,8 +2555,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListConfigurationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -2715,13 +2600,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/configurations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2729,78 +2614,70 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2837,8 +2714,7 @@ namespace Google.Apis.CloudRun.v1
                 public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.DomainMapping>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2855,16 +2731,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.DomainMapping Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/domainmappings";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2872,15 +2748,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2897,8 +2772,7 @@ namespace Google.Apis.CloudRun.v1
                 public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2925,13 +2799,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string PropagationPolicy { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2939,42 +2813,38 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "kind", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "kind",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "propagationPolicy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "propagationPolicy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
+                        });
+                        RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "propagationPolicy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2991,8 +2861,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.DomainMapping>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3005,13 +2874,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3019,15 +2888,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
+                        });
                     }
 
                 }
@@ -3044,8 +2912,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListDomainMappingsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -3090,13 +2957,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/domainmappings";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3104,78 +2971,70 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3211,8 +3070,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3225,13 +3083,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3239,15 +3097,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
+                        });
                     }
 
                 }
@@ -3265,8 +3122,7 @@ namespace Google.Apis.CloudRun.v1
                 public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Namespace>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Namespace body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -3288,16 +3144,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Namespace Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3305,24 +3161,22 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3358,8 +3212,7 @@ namespace Google.Apis.CloudRun.v1
                 public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3386,13 +3239,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string PropagationPolicy { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3400,42 +3253,38 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "kind", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "kind",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "propagationPolicy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "propagationPolicy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
+                        });
+                        RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "propagationPolicy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3452,8 +3301,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Revision>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3466,13 +3314,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3480,15 +3328,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
+                        });
                     }
 
                 }
@@ -3505,8 +3352,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRevisionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -3551,13 +3397,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/revisions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3565,78 +3411,70 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3672,8 +3510,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Route>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3686,13 +3523,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3700,15 +3537,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/routes/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/routes/[^/]+$",
+                        });
                     }
 
                 }
@@ -3725,8 +3561,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRoutesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -3771,13 +3606,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/routes";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3785,78 +3620,70 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3892,8 +3719,7 @@ namespace Google.Apis.CloudRun.v1
                 public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -3910,16 +3736,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/secrets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3927,15 +3753,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -3952,8 +3777,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3966,13 +3790,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3980,15 +3804,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
                     }
 
                 }
@@ -4012,8 +3835,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ReplaceSecretRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Secret>
                 {
                     /// <summary>Constructs a new ReplaceSecret request.</summary>
-                    public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name)
-                        : base(service)
+                    public ReplaceSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Secret body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -4030,16 +3852,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Secret Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "replaceSecret";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes ReplaceSecret parameter list.</summary>
@@ -4047,15 +3869,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
                     }
 
                 }
@@ -4092,8 +3913,7 @@ namespace Google.Apis.CloudRun.v1
                 public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -4110,16 +3930,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/services";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4127,15 +3947,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -4154,8 +3973,7 @@ namespace Google.Apis.CloudRun.v1
                 public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4182,13 +4000,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string PropagationPolicy { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4196,42 +4014,38 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "kind", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "kind",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "propagationPolicy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "propagationPolicy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                        RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "propagationPolicy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4248,8 +4062,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4262,13 +4075,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4276,15 +4089,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
                     }
 
                 }
@@ -4303,8 +4115,7 @@ namespace Google.Apis.CloudRun.v1
                 public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                     {
                         Resource = resource;
                         InitParameters();
@@ -4326,13 +4137,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -4340,24 +4151,22 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "options.requestedPolicyVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4374,8 +4183,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListServicesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -4420,13 +4228,13 @@ namespace Google.Apis.CloudRun.v1
                     public virtual System.Nullable<bool> Watch { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/services";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4434,78 +4242,70 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4529,8 +4329,7 @@ namespace Google.Apis.CloudRun.v1
                 public class ReplaceServiceRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Service>
                 {
                     /// <summary>Constructs a new ReplaceService request.</summary>
-                    public ReplaceServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string name)
-                        : base(service)
+                    public ReplaceServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Service body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -4547,16 +4346,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "replaceService";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes ReplaceService parameter list.</summary>
@@ -4564,15 +4363,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
                     }
 
                 }
@@ -4592,8 +4390,7 @@ namespace Google.Apis.CloudRun.v1
                 public class SetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4610,16 +4407,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -4627,15 +4424,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
                     }
 
                 }
@@ -4655,8 +4451,7 @@ namespace Google.Apis.CloudRun.v1
                 public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -4673,16 +4468,16 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -4690,15 +4485,14 @@ namespace Google.Apis.CloudRun.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
                     }
 
                 }
@@ -4715,8 +4509,7 @@ namespace Google.Apis.CloudRun.v1
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4740,13 +4533,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4754,42 +4547,38 @@ namespace Google.Apis.CloudRun.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

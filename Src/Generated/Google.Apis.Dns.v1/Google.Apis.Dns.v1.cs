@@ -18,17 +18,16 @@ namespace Google.Apis.Dns.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DnsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DnsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DnsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DnsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Changes = new ChangesResource(this);
             DnsKeys = new DnsKeysResource(this);
@@ -122,12 +121,11 @@ namespace Google.Apis.Dns.v1
         public virtual ResourceRecordSetsResource ResourceRecordSets { get; }
     }
 
-    ///<summary>A base abstract class for Dns requests.</summary>
+    /// <summary>A base abstract class for Dns requests.</summary>
     public abstract class DnsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DnsBaseServiceRequest instance.</summary>
-        protected DnsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DnsBaseServiceRequest instance.</summary>
+        protected DnsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -207,105 +205,94 @@ namespace Google.Apis.Dns.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -340,8 +327,7 @@ namespace Google.Apis.Dns.v1
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Change>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Change body, string project, string managedZone)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Change body, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -368,16 +354,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Change Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/changes";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -385,33 +371,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -432,8 +415,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Change>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string changeId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string changeId) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -462,13 +444,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/changes/{changeId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -476,42 +458,38 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "changeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "changeId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("changeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "changeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -530,8 +508,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ChangesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -574,13 +551,13 @@ namespace Google.Apis.Dns.v1
             public virtual string SortOrder { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/changes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -588,60 +565,54 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "changeSequence",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "changeSequence",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -678,8 +649,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.DnsKey>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string dnsKeyId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string dnsKeyId) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -712,13 +682,13 @@ namespace Google.Apis.Dns.v1
             public virtual string DigestType { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -726,51 +696,46 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dnsKeyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dnsKeyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "digestType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "digestType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dnsKeyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dnsKeyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("digestType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "digestType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -789,8 +754,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.DnsKeysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -823,13 +787,13 @@ namespace Google.Apis.Dns.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -837,51 +801,46 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "digestType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "digestType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("digestType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "digestType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -918,8 +877,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string operation)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string operation) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -946,13 +904,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/operations/{operation}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -960,42 +918,38 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "operation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "operation",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1013,8 +967,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZoneOperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -1054,13 +1007,13 @@ namespace Google.Apis.Dns.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/operations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1068,51 +1021,46 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "startTime",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "startTime",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1146,8 +1094,7 @@ namespace Google.Apis.Dns.v1
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZone>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1168,16 +1115,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1185,24 +1132,22 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1221,8 +1166,7 @@ namespace Google.Apis.Dns.v1
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -1245,13 +1189,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1259,33 +1203,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1304,8 +1245,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZone>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -1328,13 +1268,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1342,33 +1282,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1384,8 +1321,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZonesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -1411,13 +1347,13 @@ namespace Google.Apis.Dns.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1425,42 +1361,38 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dnsName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dnsName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dnsName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dnsName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1480,8 +1412,7 @@ namespace Google.Apis.Dns.v1
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -1508,16 +1439,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1525,33 +1456,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1571,8 +1499,7 @@ namespace Google.Apis.Dns.v1
         public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -1599,16 +1526,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1616,33 +1543,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1676,8 +1600,7 @@ namespace Google.Apis.Dns.v1
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Policy>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1698,16 +1621,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1715,24 +1638,22 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1752,8 +1673,7 @@ namespace Google.Apis.Dns.v1
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string policy)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string policy) : base(service)
             {
                 Project = project;
                 Policy = policy;
@@ -1775,13 +1695,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies/{policy}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1789,33 +1709,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "policy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "policy",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("policy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1833,8 +1750,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Policy>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string policy)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string policy) : base(service)
             {
                 Project = project;
                 Policy = policy;
@@ -1856,13 +1772,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies/{policy}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1870,33 +1786,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "policy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "policy",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("policy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1912,8 +1825,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.PoliciesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -1935,13 +1847,13 @@ namespace Google.Apis.Dns.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1949,33 +1861,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1994,8 +1903,7 @@ namespace Google.Apis.Dns.v1
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.PoliciesPatchResponse>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project, string policy) : base(service)
             {
                 Project = project;
                 Policy = policy;
@@ -2021,16 +1929,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies/{policy}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2038,33 +1946,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "policy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "policy",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("policy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2083,8 +1988,7 @@ namespace Google.Apis.Dns.v1
         public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.PoliciesUpdateResponse>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.Policy body, string project, string policy) : base(service)
             {
                 Project = project;
                 Policy = policy;
@@ -2110,16 +2014,16 @@ namespace Google.Apis.Dns.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/policies/{policy}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2127,33 +2031,30 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "policy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "policy",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("policy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2186,8 +2087,7 @@ namespace Google.Apis.Dns.v1
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string project) : base(service)
             {
                 Project = project;
                 InitParameters();
@@ -2204,13 +2104,13 @@ namespace Google.Apis.Dns.v1
             public virtual string ClientOperationId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2218,24 +2118,22 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientOperationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientOperationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2271,8 +2169,7 @@ namespace Google.Apis.Dns.v1
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSetsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string managedZone) : base(service)
             {
                 Project = project;
                 ManagedZone = managedZone;
@@ -2309,13 +2206,13 @@ namespace Google.Apis.Dns.v1
             public virtual string Type { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2323,60 +2220,54 @@ namespace Google.Apis.Dns.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedZone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedZone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

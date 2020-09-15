@@ -18,17 +18,16 @@ namespace Google.Apis.CloudDebugger.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudDebuggerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudDebuggerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudDebuggerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudDebuggerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Controller = new ControllerResource(this);
             Debugger = new DebuggerResource(this);
@@ -90,12 +89,11 @@ namespace Google.Apis.CloudDebugger.v2
         public virtual DebuggerResource Debugger { get; }
     }
 
-    ///<summary>A base abstract class for CloudDebugger requests.</summary>
+    /// <summary>A base abstract class for CloudDebugger requests.</summary>
     public abstract class CloudDebuggerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudDebuggerBaseServiceRequest instance.</summary>
-        protected CloudDebuggerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudDebuggerBaseServiceRequest instance.</summary>
+        protected CloudDebuggerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -175,105 +173,94 @@ namespace Google.Apis.CloudDebugger.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -354,8 +341,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListActiveBreakpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         InitParameters();
@@ -386,13 +372,13 @@ namespace Google.Apis.CloudDebugger.v2
                     public virtual string WaitToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/controller/debuggees/{debuggeeId}/breakpoints";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -400,42 +386,38 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "agentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "agentId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "successOnTimeout",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "waitToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("agentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "agentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("successOnTimeout", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "successOnTimeout",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("waitToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "waitToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -462,8 +444,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class UpdateRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointResponse>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         Id = id;
@@ -484,16 +465,16 @@ namespace Google.Apis.CloudDebugger.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/controller/debuggees/{debuggeeId}/breakpoints/{id}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -501,24 +482,22 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -545,8 +524,7 @@ namespace Google.Apis.CloudDebugger.v2
             public class RegisterRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeResponse>
             {
                 /// <summary>Constructs a new Register request.</summary>
-                public RegisterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body)
-                    : base(service)
+                public RegisterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -557,16 +535,16 @@ namespace Google.Apis.CloudDebugger.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "register";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/controller/debuggees/register";
 
                 /// <summary>Initializes Register parameter list.</summary>
@@ -647,8 +625,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class DeleteRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         BreakpointId = breakpointId;
@@ -670,13 +647,13 @@ namespace Google.Apis.CloudDebugger.v2
                     public virtual string ClientVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -684,33 +661,30 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "breakpointId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "breakpointId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("breakpointId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "breakpointId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -728,8 +702,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class GetRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.GetBreakpointResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         BreakpointId = breakpointId;
@@ -751,13 +724,13 @@ namespace Google.Apis.CloudDebugger.v2
                     public virtual string ClientVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -765,33 +738,30 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "breakpointId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "breakpointId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("breakpointId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "breakpointId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -807,8 +777,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListBreakpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         InitParameters();
@@ -864,13 +833,13 @@ namespace Google.Apis.CloudDebugger.v2
                     public virtual string WaitToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/debugger/debuggees/{debuggeeId}/breakpoints";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -878,69 +847,62 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "action.value", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "action.value",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeAllUsers",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "stripResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "stripResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "waitToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("action.value", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "action.value",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeAllUsers", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeAllUsers",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeInactive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("stripResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "stripResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("waitToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "waitToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -957,8 +919,7 @@ namespace Google.Apis.CloudDebugger.v2
                 public class SetRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.SetBreakpointResponse>
                 {
                     /// <summary>Constructs a new Set request.</summary>
-                    public SetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.Breakpoint body, string debuggeeId)
-                        : base(service)
+                    public SetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.Breakpoint body, string debuggeeId) : base(service)
                     {
                         DebuggeeId = debuggeeId;
                         Body = body;
@@ -999,16 +960,16 @@ namespace Google.Apis.CloudDebugger.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudDebugger.v2.Data.Breakpoint Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "set";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/debugger/debuggees/{debuggeeId}/breakpoints/set";
 
                     /// <summary>Initializes Set parameter list.</summary>
@@ -1016,33 +977,30 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "debuggeeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debuggeeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "canaryOption", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "canaryOption",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("debuggeeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debuggeeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("canaryOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "canaryOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1058,8 +1016,7 @@ namespace Google.Apis.CloudDebugger.v2
             public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListDebuggeesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -1080,13 +1037,13 @@ namespace Google.Apis.CloudDebugger.v2
                 public virtual string Project { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/debugger/debuggees";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1094,33 +1051,30 @@ namespace Google.Apis.CloudDebugger.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "clientVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeInactive", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeInactive",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("clientVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeInactive", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeInactive",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

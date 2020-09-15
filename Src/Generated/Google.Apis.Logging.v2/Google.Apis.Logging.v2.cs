@@ -18,17 +18,16 @@ namespace Google.Apis.Logging.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public LoggingService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public LoggingService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public LoggingService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public LoggingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BillingAccounts = new BillingAccountsResource(this);
             Entries = new EntriesResource(this);
@@ -144,12 +143,11 @@ namespace Google.Apis.Logging.v2
         public virtual V2Resource V2 { get; }
     }
 
-    ///<summary>A base abstract class for Logging requests.</summary>
+    /// <summary>A base abstract class for Logging requests.</summary>
     public abstract class LoggingBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new LoggingBaseServiceRequest instance.</summary>
-        protected LoggingBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new LoggingBaseServiceRequest instance.</summary>
+        protected LoggingBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -229,105 +227,94 @@ namespace Google.Apis.Logging.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -386,8 +373,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -404,13 +390,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -418,15 +404,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/buckets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/buckets/[^/]+$",
+                    });
                 }
 
             }
@@ -466,8 +451,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -485,16 +469,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -502,15 +486,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
                 }
 
             }
@@ -529,8 +512,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -547,13 +529,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -561,15 +543,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -588,8 +569,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -606,13 +586,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -620,15 +600,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -645,8 +624,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -672,13 +650,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -686,33 +664,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -732,8 +707,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -762,16 +736,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -779,24 +753,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -854,8 +826,7 @@ namespace Google.Apis.Logging.v2
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -879,16 +850,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -896,24 +867,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "bucketId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "bucketId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -936,8 +905,7 @@ namespace Google.Apis.Logging.v2
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -954,13 +922,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -968,15 +936,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -996,8 +963,7 @@ namespace Google.Apis.Logging.v2
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1027,13 +993,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1041,33 +1007,30 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1098,8 +1061,7 @@ namespace Google.Apis.Logging.v2
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1129,16 +1091,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1146,24 +1108,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1187,8 +1147,7 @@ namespace Google.Apis.Logging.v2
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
-                        : base(service)
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1209,16 +1168,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}:undelete";
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -1226,15 +1185,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -1278,8 +1236,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName) : base(service)
                 {
                     LogName = logName;
                     InitParameters();
@@ -1295,13 +1252,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string LogName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+logName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1309,15 +1266,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/logs/[^/]+$",
-                        });
+                    RequestParameters.Add("logName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "logName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/logs/[^/]+$",
+                    });
                 }
 
             }
@@ -1336,8 +1292,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1363,13 +1318,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/logs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1377,33 +1332,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1445,8 +1397,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -1474,16 +1425,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1491,24 +1442,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1529,8 +1478,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -1546,13 +1494,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1560,15 +1508,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -1586,8 +1533,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -1602,13 +1548,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1616,15 +1562,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -1641,8 +1586,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -1668,13 +1612,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1682,33 +1626,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1732,8 +1673,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -1773,16 +1713,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1790,33 +1730,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1840,8 +1777,7 @@ namespace Google.Apis.Logging.v2
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -1881,16 +1817,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1898,33 +1834,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1962,8 +1895,7 @@ namespace Google.Apis.Logging.v2
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogEntriesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.ListLogEntriesRequest body)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.ListLogEntriesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1974,16 +1906,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.ListLogEntriesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/entries:list";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2012,8 +1944,7 @@ namespace Google.Apis.Logging.v2
         public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.WriteLogEntriesResponse>
         {
             /// <summary>Constructs a new Write request.</summary>
-            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
-                : base(service)
+            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2024,16 +1955,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.WriteLogEntriesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "write";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/entries:write";
 
             /// <summary>Initializes Write parameter list.</summary>
@@ -2078,8 +2009,7 @@ namespace Google.Apis.Logging.v2
         public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -2097,16 +2027,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/exclusions";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -2114,15 +2044,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }
@@ -2141,8 +2070,7 @@ namespace Google.Apis.Logging.v2
         public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -2159,13 +2087,13 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2173,15 +2101,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
+                });
             }
 
         }
@@ -2200,8 +2127,7 @@ namespace Google.Apis.Logging.v2
         public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -2218,13 +2144,13 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2232,15 +2158,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
+                });
             }
 
         }
@@ -2257,8 +2182,7 @@ namespace Google.Apis.Logging.v2
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -2284,13 +2208,13 @@ namespace Google.Apis.Logging.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/exclusions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2298,33 +2222,30 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2344,8 +2265,7 @@ namespace Google.Apis.Logging.v2
         public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -2373,16 +2293,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2390,24 +2310,22 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/exclusions/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2467,8 +2385,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -2486,16 +2403,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2503,15 +2420,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
                 }
 
             }
@@ -2530,8 +2446,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2548,13 +2463,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2562,15 +2477,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -2589,8 +2503,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2607,13 +2520,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2621,15 +2534,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -2646,8 +2558,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -2673,13 +2584,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2687,33 +2598,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2733,8 +2641,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2763,16 +2670,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2780,24 +2687,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2855,8 +2760,7 @@ namespace Google.Apis.Logging.v2
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2880,16 +2784,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2897,24 +2801,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "bucketId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "bucketId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2937,8 +2839,7 @@ namespace Google.Apis.Logging.v2
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2955,13 +2856,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2969,15 +2870,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -2998,8 +2898,7 @@ namespace Google.Apis.Logging.v2
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3016,13 +2915,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3030,15 +2929,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -3058,8 +2956,7 @@ namespace Google.Apis.Logging.v2
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -3089,13 +2986,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3103,33 +3000,30 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3160,8 +3054,7 @@ namespace Google.Apis.Logging.v2
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -3191,16 +3084,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3208,24 +3101,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3249,8 +3140,7 @@ namespace Google.Apis.Logging.v2
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
-                        : base(service)
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -3271,16 +3161,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}:undelete";
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -3288,15 +3178,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -3340,8 +3229,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName) : base(service)
                 {
                     LogName = logName;
                     InitParameters();
@@ -3357,13 +3245,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string LogName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+logName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3371,15 +3259,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/logs/[^/]+$",
-                        });
+                    RequestParameters.Add("logName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "logName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/logs/[^/]+$",
+                    });
                 }
 
             }
@@ -3398,8 +3285,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -3425,13 +3311,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/logs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3439,33 +3325,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3507,8 +3390,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -3536,16 +3418,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3553,24 +3435,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3591,8 +3471,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -3608,13 +3487,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3622,15 +3501,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -3648,8 +3526,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -3664,13 +3541,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3678,15 +3555,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -3703,8 +3579,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -3730,13 +3605,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3744,33 +3619,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3794,8 +3666,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -3835,16 +3706,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3852,33 +3723,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3902,8 +3770,7 @@ namespace Google.Apis.Logging.v2
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -3943,16 +3810,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3960,33 +3827,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^folders/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4043,8 +3907,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -4067,16 +3930,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/buckets";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -4084,24 +3947,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "bucketId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "bucketId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucketId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4124,8 +3985,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4142,13 +4002,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4156,15 +4016,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
                 }
 
             }
@@ -4185,8 +4044,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4203,13 +4061,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4217,15 +4075,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
                 }
 
             }
@@ -4245,8 +4102,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -4275,13 +4131,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/buckets";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4289,33 +4145,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4346,8 +4199,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -4377,16 +4229,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -4394,24 +4246,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4435,8 +4285,7 @@ namespace Google.Apis.Logging.v2
             public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Undelete request.</summary>
-                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
-                    : base(service)
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -4457,16 +4306,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "undelete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}:undelete";
 
                 /// <summary>Initializes Undelete parameter list.</summary>
@@ -4474,15 +4323,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                    });
                 }
 
             }
@@ -4524,8 +4372,7 @@ namespace Google.Apis.Logging.v2
         public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string logName) : base(service)
             {
                 LogName = logName;
                 InitParameters();
@@ -4541,13 +4388,13 @@ namespace Google.Apis.Logging.v2
             public virtual string LogName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+logName}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4555,15 +4402,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "logName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "logName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/logs/[^/]+$",
-                    });
+                RequestParameters.Add("logName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "logName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/logs/[^/]+$",
+                });
             }
 
         }
@@ -4582,8 +4428,7 @@ namespace Google.Apis.Logging.v2
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -4609,13 +4454,13 @@ namespace Google.Apis.Logging.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/logs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4623,33 +4468,30 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4681,8 +4523,7 @@ namespace Google.Apis.Logging.v2
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListMonitoredResourceDescriptorsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4701,13 +4542,13 @@ namespace Google.Apis.Logging.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/monitoredResourceDescriptors";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4715,24 +4556,22 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4792,8 +4631,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -4811,16 +4649,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -4828,15 +4666,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
                 }
 
             }
@@ -4855,8 +4692,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4873,13 +4709,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4887,15 +4723,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -4914,8 +4749,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4932,13 +4766,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4946,15 +4780,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -4971,8 +4804,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -4998,13 +4830,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5012,33 +4844,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5058,8 +4887,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -5088,16 +4916,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -5105,24 +4933,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5180,8 +5006,7 @@ namespace Google.Apis.Logging.v2
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -5205,16 +5030,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5222,24 +5047,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "bucketId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "bucketId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5262,8 +5085,7 @@ namespace Google.Apis.Logging.v2
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -5280,13 +5102,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -5294,15 +5116,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -5323,8 +5144,7 @@ namespace Google.Apis.Logging.v2
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -5341,13 +5161,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -5355,15 +5175,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -5383,8 +5202,7 @@ namespace Google.Apis.Logging.v2
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -5414,13 +5232,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5428,33 +5246,30 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5485,8 +5300,7 @@ namespace Google.Apis.Logging.v2
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -5516,16 +5330,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -5533,24 +5347,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5574,8 +5386,7 @@ namespace Google.Apis.Logging.v2
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
-                        : base(service)
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -5596,16 +5407,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}:undelete";
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -5613,15 +5424,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -5665,8 +5475,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName) : base(service)
                 {
                     LogName = logName;
                     InitParameters();
@@ -5682,13 +5491,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string LogName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+logName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5696,15 +5505,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/logs/[^/]+$",
-                        });
+                    RequestParameters.Add("logName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "logName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/logs/[^/]+$",
+                    });
                 }
 
             }
@@ -5723,8 +5531,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -5750,13 +5557,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/logs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5764,33 +5571,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5832,8 +5636,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -5861,16 +5664,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -5878,24 +5681,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5916,8 +5717,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -5933,13 +5733,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5947,15 +5747,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -5973,8 +5772,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -5989,13 +5787,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6003,15 +5801,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -6028,8 +5825,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -6055,13 +5851,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6069,33 +5865,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6119,8 +5912,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -6160,16 +5952,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -6177,33 +5969,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6227,8 +6016,7 @@ namespace Google.Apis.Logging.v2
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -6268,16 +6056,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -6285,33 +6073,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6338,8 +6123,7 @@ namespace Google.Apis.Logging.v2
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
             /// <summary>Constructs a new GetCmekSettings request.</summary>
-            public GetCmekSettingsRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetCmekSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -6356,13 +6140,13 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getCmekSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes GetCmekSettings parameter list.</summary>
@@ -6370,15 +6154,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
             }
 
         }
@@ -6409,8 +6192,7 @@ namespace Google.Apis.Logging.v2
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
             /// <summary>Constructs a new UpdateCmekSettings request.</summary>
-            public UpdateCmekSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.CmekSettings body, string name)
-                : base(service)
+            public UpdateCmekSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.CmekSettings body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -6437,16 +6219,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.CmekSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateCmekSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes UpdateCmekSettings parameter list.</summary>
@@ -6454,24 +6236,22 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6532,8 +6312,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -6551,16 +6330,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -6568,15 +6347,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -6595,8 +6373,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -6613,13 +6390,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6627,15 +6404,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -6654,8 +6430,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -6672,13 +6447,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6686,15 +6461,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                    });
                 }
 
             }
@@ -6711,8 +6485,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -6738,13 +6511,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/exclusions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6752,33 +6525,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6798,8 +6568,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -6828,16 +6597,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -6845,24 +6614,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6920,8 +6687,7 @@ namespace Google.Apis.Logging.v2
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -6945,16 +6711,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -6962,24 +6728,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "bucketId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "bucketId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bucketId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bucketId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -7002,8 +6766,7 @@ namespace Google.Apis.Logging.v2
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -7020,13 +6783,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -7034,15 +6797,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -7063,8 +6825,7 @@ namespace Google.Apis.Logging.v2
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -7081,13 +6842,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -7095,15 +6856,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -7123,8 +6883,7 @@ namespace Google.Apis.Logging.v2
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -7154,13 +6913,13 @@ namespace Google.Apis.Logging.v2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+parent}/buckets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -7168,33 +6927,30 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -7225,8 +6981,7 @@ namespace Google.Apis.Logging.v2
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogBucket body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -7256,16 +7011,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.LogBucket Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -7273,24 +7028,22 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -7314,8 +7067,7 @@ namespace Google.Apis.Logging.v2
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
-                        : base(service)
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -7336,16 +7088,16 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Logging.v2.Data.UndeleteBucketRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2/{+name}:undelete";
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -7353,15 +7105,14 @@ namespace Google.Apis.Logging.v2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
                     }
 
                 }
@@ -7405,8 +7156,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName) : base(service)
                 {
                     LogName = logName;
                     InitParameters();
@@ -7422,13 +7172,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string LogName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+logName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -7436,15 +7186,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/logs/[^/]+$",
-                        });
+                    RequestParameters.Add("logName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "logName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/logs/[^/]+$",
+                    });
                 }
 
             }
@@ -7463,8 +7212,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -7490,13 +7238,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/logs";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7504,33 +7252,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7567,8 +7312,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -7585,16 +7329,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogMetric Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/metrics";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -7602,15 +7346,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -7627,8 +7370,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string metricName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string metricName) : base(service)
                 {
                     MetricName = metricName;
                     InitParameters();
@@ -7641,13 +7383,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string MetricName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+metricName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -7655,15 +7397,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "metricName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metricName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/metrics/[^/]+$",
-                        });
+                    RequestParameters.Add("metricName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/metrics/[^/]+$",
+                    });
                 }
 
             }
@@ -7680,8 +7421,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string metricName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string metricName) : base(service)
                 {
                     MetricName = metricName;
                     InitParameters();
@@ -7694,13 +7434,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string MetricName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+metricName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -7708,15 +7448,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "metricName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metricName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/metrics/[^/]+$",
-                        });
+                    RequestParameters.Add("metricName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/metrics/[^/]+$",
+                    });
                 }
 
             }
@@ -7732,8 +7471,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogMetricsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -7758,13 +7496,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/metrics";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7772,33 +7510,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7818,8 +7553,7 @@ namespace Google.Apis.Logging.v2
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string metricName)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string metricName) : base(service)
                 {
                     MetricName = metricName;
                     Body = body;
@@ -7838,16 +7572,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogMetric Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+metricName}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -7855,15 +7589,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "metricName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metricName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/metrics/[^/]+$",
-                        });
+                    RequestParameters.Add("metricName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/metrics/[^/]+$",
+                    });
                 }
 
             }
@@ -7905,8 +7638,7 @@ namespace Google.Apis.Logging.v2
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -7934,16 +7666,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -7951,24 +7683,22 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -7989,8 +7719,7 @@ namespace Google.Apis.Logging.v2
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -8006,13 +7735,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -8020,15 +7749,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -8046,8 +7774,7 @@ namespace Google.Apis.Logging.v2
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     InitParameters();
@@ -8062,13 +7789,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -8076,15 +7803,14 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/sinks/[^/]+$",
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
                 }
 
             }
@@ -8101,8 +7827,7 @@ namespace Google.Apis.Logging.v2
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -8128,13 +7853,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+parent}/sinks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -8142,33 +7867,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8192,8 +7914,7 @@ namespace Google.Apis.Logging.v2
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -8233,16 +7954,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -8250,33 +7971,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8300,8 +8018,7 @@ namespace Google.Apis.Logging.v2
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
                 {
                     SinkName = sinkName;
                     Body = body;
@@ -8341,16 +8058,16 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2/{+sinkName}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -8358,33 +8075,30 @@ namespace Google.Apis.Logging.v2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "sinkName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sinkName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/sinks/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "uniqueWriterIdentity",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sinkName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "uniqueWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -8425,8 +8139,7 @@ namespace Google.Apis.Logging.v2
         public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -8454,16 +8167,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/sinks";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -8471,24 +8184,22 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "uniqueWriterIdentity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "uniqueWriterIdentity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8509,8 +8220,7 @@ namespace Google.Apis.Logging.v2
         public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
             {
                 SinkName = sinkName;
                 InitParameters();
@@ -8525,13 +8235,13 @@ namespace Google.Apis.Logging.v2
             public virtual string SinkName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+sinkName}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -8539,15 +8249,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "sinkName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sinkName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
-                    });
+                RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sinkName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
+                });
             }
 
         }
@@ -8565,8 +8274,7 @@ namespace Google.Apis.Logging.v2
         public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string sinkName) : base(service)
             {
                 SinkName = sinkName;
                 InitParameters();
@@ -8580,13 +8288,13 @@ namespace Google.Apis.Logging.v2
             public virtual string SinkName { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+sinkName}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8594,15 +8302,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "sinkName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sinkName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
-                    });
+                RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sinkName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
+                });
             }
 
         }
@@ -8619,8 +8326,7 @@ namespace Google.Apis.Logging.v2
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -8646,13 +8352,13 @@ namespace Google.Apis.Logging.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+parent}/sinks";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8660,33 +8366,30 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8710,8 +8413,7 @@ namespace Google.Apis.Logging.v2
         public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName) : base(service)
             {
                 SinkName = sinkName;
                 Body = body;
@@ -8749,16 +8451,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+sinkName}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -8766,33 +8468,30 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "sinkName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sinkName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "uniqueWriterIdentity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("sinkName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sinkName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
+                });
+                RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "uniqueWriterIdentity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8835,8 +8534,7 @@ namespace Google.Apis.Logging.v2
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
             /// <summary>Constructs a new GetCmekSettings request.</summary>
-            public GetCmekSettingsRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetCmekSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -8853,13 +8551,13 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getCmekSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes GetCmekSettings parameter list.</summary>
@@ -8867,15 +8565,14 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }
@@ -8906,8 +8603,7 @@ namespace Google.Apis.Logging.v2
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
             /// <summary>Constructs a new UpdateCmekSettings request.</summary>
-            public UpdateCmekSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.CmekSettings body, string name)
-                : base(service)
+            public UpdateCmekSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.CmekSettings body, string name) : base(service)
             {
                 Name = name;
                 Body = body;
@@ -8934,16 +8630,16 @@ namespace Google.Apis.Logging.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Logging.v2.Data.CmekSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateCmekSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes UpdateCmekSettings parameter list.</summary>
@@ -8951,24 +8647,22 @@ namespace Google.Apis.Logging.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
