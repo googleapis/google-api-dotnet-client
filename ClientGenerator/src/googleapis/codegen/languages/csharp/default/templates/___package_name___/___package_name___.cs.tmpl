@@ -11,17 +11,16 @@ public class {{ api.className }}Service : Google.Apis.Services.BaseClientService
 public const string Version = {% literal api.version %};
 
 /// <summary>The discovery version used to generate this service.</summary>
-public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-    Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
 /// <summary>Constructs a new service.</summary>
-public {{ api.className }}Service() :
-    this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+public {{ api.className }}Service() : this(new Google.Apis.Services.BaseClientService.Initializer())
+{
+}
 
 /// <summary>Constructs a new service.</summary>
 /// <param name="initializer">The service initializer.</param>
-public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initializer initializer)
-    : base(initializer)
+public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
 {
 {% filter noblanklines %}
 {% for resource in api.resources %}

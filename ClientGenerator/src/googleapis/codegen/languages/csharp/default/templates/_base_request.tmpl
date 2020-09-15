@@ -2,8 +2,7 @@
 public abstract class {{ api.className }}BaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
 {
     /// <summary>Constructs a new {{ api.className }}BaseServiceRequest instance.</summary>
-    protected {{ api.className }}BaseServiceRequest(Google.Apis.Services.IClientService service)
-        : base(service)
+    protected {{ api.className }}BaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
     {
     }
 {% indent %}{% for parameter in api.parameters %}
