@@ -106,16 +106,16 @@ InitParameters();
 /// <summary>Gets or sets the body of this request.</summary>
 {{ method.requestType.fullClassName }} Body { get; set; }
 
-///<summary>Returns the body of the request.</summary>
+/// <summary>Returns the body of the request.</summary>
 protected override object GetBody() => Body;
 {% endif %}
-///<summary>Gets the method name.</summary>
+/// <summary>Gets the method name.</summary>
 public override string MethodName => "{{ method.wireName }}";
 
-///<summary>Gets the HTTP method.</summary>
+/// <summary>Gets the HTTP method.</summary>
 public override string HttpMethod => "{{ method.httpMethod }}";
 
-///<summary>Gets the REST path.</summary>
+/// <summary>Gets the REST path.</summary>
 public override string RestPath => "{{ method.path }}";
 
 /// <summary>Initializes {{ method.className }} parameter list.</summary>
