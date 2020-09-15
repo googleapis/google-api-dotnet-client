@@ -20,17 +20,11 @@ public class {{ model.safeClassName }}
 public virtual string {{ property.memberName }}Raw { get; set; }{% eol %}
 
 /// <summary><seealso cref="System.DateTime"/> representation of <see cref="{{ property.memberName }}Raw"/>.</summary>
-[Newtonsoft.Json.JsonIgnore]
+[Newtonsoft.Json.JsonIgnoreAttribute]
 public virtual {{ property.codeType }} {{ property.memberName }}
 {
-    get
-    {
-        return Google.Apis.Util.Utilities.GetDateTimeFromString({{ property.memberName }}Raw);
-    }
-    set
-    {
-        {{ property.memberName }}Raw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-    }
+    get => Google.Apis.Util.Utilities.GetDateTimeFromString({{ property.memberName }}Raw);
+    set => {{ property.memberName }}Raw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
 }{% eol %}
 {% else %}
 [Newtonsoft.Json.JsonPropertyAttribute({% literal property.wireName %})]
